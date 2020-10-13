@@ -50,8 +50,11 @@ class Generic_Sniffs_Metrics_NestingLevelSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_FUNCTION);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -66,47 +69,10 @@ class Generic_Sniffs_Metrics_NestingLevelSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // Ignore abstract methods.
-        if (isset($tokens[$stackPtr]['scope_opener']) === false) {
-            return;
-        }
-
-        // Detect start and end of this function definition.
-        $start = $tokens[$stackPtr]['scope_opener'];
-        $end   = $tokens[$stackPtr]['scope_closer'];
-
-        $nestingLevel = 0;
-
-        // Find the maximum nesting level of any token in the function.
-        for ($i = ($start + 1); $i < $end; $i++) {
-            $level = $tokens[$i]['level'];
-            if ($nestingLevel < $level) {
-                $nestingLevel = $level;
-            }
-        }
-
-        // We subtract the nesting level of the function itself.
-        $nestingLevel = ($nestingLevel - $tokens[$stackPtr]['level'] - 1);
-
-        if ($nestingLevel > $this->absoluteNestingLevel) {
-            $error = 'Function\'s nesting level (%s) exceeds allowed maximum of %s';
-            $data  = array(
-                      $nestingLevel,
-                      $this->absoluteNestingLevel,
-                     );
-            $phpcsFile->addError($error, $stackPtr, 'MaxExceeded', $data);
-        } else if ($nestingLevel > $this->nestingLevel) {
-            $warning = 'Function\'s nesting level (%s) exceeds %s; consider refactoring the function';
-            $data    = array(
-                        $nestingLevel,
-                        $this->nestingLevel,
-                       );
-            $phpcsFile->addWarning($warning, $stackPtr, 'TooHigh', $data);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

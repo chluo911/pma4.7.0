@@ -25,12 +25,19 @@ class SelfCheckingResourceChecker implements ResourceCheckerInterface
 {
     public function supports(ResourceInterface $metadata)
     {
-        return $metadata instanceof SelfCheckingResourceInterface;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isFresh(ResourceInterface $resource, $timestamp)
     {
-        /* @var SelfCheckingResourceInterface $resource */
-        return $resource->isFresh($timestamp);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -3,12 +3,19 @@ class Issue1348Test extends PHPUnit_Framework_TestCase
 {
     public function testSTDOUT()
     {
-        fwrite(STDOUT, "\nSTDOUT does not break test result\n");
-        $this->assertTrue(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSTDERR()
     {
-        fwrite(STDERR, 'STDERR works as usual.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

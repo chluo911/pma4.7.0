@@ -133,7 +133,7 @@ class Sanitize
             $anchor = $found[1];
             if (strncmp('faq', $anchor, 3) == 0) {
                 $page = 'faq';
-            } else if (strncmp('cfg', $anchor, 3) == 0) {
+            } elseif (strncmp('cfg', $anchor, 3) == 0) {
                 $page = 'config';
             } else {
                 /* Guess */
@@ -195,18 +195,18 @@ class Sanitize
         $pattern = '/\[a@([^]"@]*)(@([^]"]*))?\]/';
 
         /* Find and replace all links */
-        $message = preg_replace_callback($pattern, function($match){
+        $message = preg_replace_callback($pattern, function ($match) {
             return Sanitize::replaceBBLink($match);
         }, $message);
 
         /* Replace documentation links */
         $message = preg_replace_callback(
             '/\[doc@([a-zA-Z0-9_-]+)(@([a-zA-Z0-9_-]*))?\]/',
-            function($match){
+            function ($match) {
                 return Sanitize::replaceDocLink($match);
             },
-                $message
-            );
+            $message
+        );
 
         /* Possibly escape result */
         if ($escape) {
@@ -286,7 +286,8 @@ class Sanitize
     public static function escapeJsString($string)
     {
         return preg_replace(
-            '@</script@i', '</\' + \'script',
+            '@</script@i',
+            '</\' + \'script',
             strtr(
                 $string,
                 array(

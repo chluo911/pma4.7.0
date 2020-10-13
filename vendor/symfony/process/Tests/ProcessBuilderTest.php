@@ -18,30 +18,20 @@ class ProcessBuilderTest extends TestCase
 {
     public function testInheritEnvironmentVars()
     {
-        $proc = ProcessBuilder::create()
-            ->add('foo')
-            ->getProcess();
-
-        $this->assertTrue($proc->areEnvironmentVariablesInherited());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddEnvironmentVariables()
     {
-        $pb = new ProcessBuilder();
-        $env = array(
-            'foo' => 'bar',
-            'foo2' => 'bar2',
-        );
-        $proc = $pb
-            ->add('command')
-            ->setEnv('foo', 'bar2')
-            ->addEnvironmentVariables($env)
-            ->inheritEnvironmentVariables(false)
-            ->getProcess()
-        ;
-
-        $this->assertSame($env, $proc->getEnv());
-        $this->assertFalse($proc->areEnvironmentVariablesInherited());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,96 +39,65 @@ class ProcessBuilderTest extends TestCase
      */
     public function testNegativeTimeoutFromSetter()
     {
-        $pb = new ProcessBuilder();
-        $pb->setTimeout(-1);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNullTimeout()
     {
-        $pb = new ProcessBuilder();
-        $pb->setTimeout(10);
-        $pb->setTimeout(null);
-
-        $r = new \ReflectionObject($pb);
-        $p = $r->getProperty('timeout');
-        $p->setAccessible(true);
-
-        $this->assertNull($p->getValue($pb));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShouldSetArguments()
     {
-        $pb = new ProcessBuilder(array('initial'));
-        $pb->setArguments(array('second'));
-
-        $proc = $pb->getProcess();
-
-        $this->assertContains('second', $proc->getCommandLine());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testPrefixIsPrependedToAllGeneratedProcess()
     {
-        $pb = new ProcessBuilder();
-        $pb->setPrefix('/usr/bin/php');
-
-        $proc = $pb->setArguments(array('-v'))->getProcess();
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertEquals('"/usr/bin/php" "-v"', $proc->getCommandLine());
-        } else {
-            $this->assertEquals("'/usr/bin/php' '-v'", $proc->getCommandLine());
-        }
-
-        $proc = $pb->setArguments(array('-i'))->getProcess();
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertEquals('"/usr/bin/php" "-i"', $proc->getCommandLine());
-        } else {
-            $this->assertEquals("'/usr/bin/php' '-i'", $proc->getCommandLine());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testArrayPrefixesArePrependedToAllGeneratedProcess()
     {
-        $pb = new ProcessBuilder();
-        $pb->setPrefix(array('/usr/bin/php', 'composer.phar'));
-
-        $proc = $pb->setArguments(array('-v'))->getProcess();
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertEquals('"/usr/bin/php" "composer.phar" "-v"', $proc->getCommandLine());
-        } else {
-            $this->assertEquals("'/usr/bin/php' 'composer.phar' '-v'", $proc->getCommandLine());
-        }
-
-        $proc = $pb->setArguments(array('-i'))->getProcess();
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertEquals('"/usr/bin/php" "composer.phar" "-i"', $proc->getCommandLine());
-        } else {
-            $this->assertEquals("'/usr/bin/php' 'composer.phar' '-i'", $proc->getCommandLine());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShouldEscapeArguments()
     {
-        $pb = new ProcessBuilder(array('%path%', 'foo " bar', '%baz%baz'));
-        $proc = $pb->getProcess();
-
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertSame('^%"path"^% "foo \\" bar" "%baz%baz"', $proc->getCommandLine());
-        } else {
-            $this->assertSame("'%path%' 'foo \" bar' '%baz%baz'", $proc->getCommandLine());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShouldEscapeArgumentsAndPrefix()
     {
-        $pb = new ProcessBuilder(array('arg'));
-        $pb->setPrefix('%prefix%');
-        $proc = $pb->getProcess();
-
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertSame('^%"prefix"^% "arg"', $proc->getCommandLine());
-        } else {
-            $this->assertSame("'%prefix%' 'arg'", $proc->getCommandLine());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -146,51 +105,47 @@ class ProcessBuilderTest extends TestCase
      */
     public function testShouldThrowALogicExceptionIfNoPrefixAndNoArgument()
     {
-        ProcessBuilder::create()->getProcess();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShouldNotThrowALogicExceptionIfNoArgument()
     {
-        $process = ProcessBuilder::create()
-            ->setPrefix('/usr/bin/php')
-            ->getProcess();
-
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertEquals('"/usr/bin/php"', $process->getCommandLine());
-        } else {
-            $this->assertEquals("'/usr/bin/php'", $process->getCommandLine());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShouldNotThrowALogicExceptionIfNoPrefix()
     {
-        $process = ProcessBuilder::create(array('/usr/bin/php'))
-            ->getProcess();
-
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertEquals('"/usr/bin/php"', $process->getCommandLine());
-        } else {
-            $this->assertEquals("'/usr/bin/php'", $process->getCommandLine());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShouldReturnProcessWithDisabledOutput()
     {
-        $process = ProcessBuilder::create(array('/usr/bin/php'))
-            ->disableOutput()
-            ->getProcess();
-
-        $this->assertTrue($process->isOutputDisabled());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShouldReturnProcessWithEnabledOutput()
     {
-        $process = ProcessBuilder::create(array('/usr/bin/php'))
-            ->disableOutput()
-            ->enableOutput()
-            ->getProcess();
-
-        $this->assertFalse($process->isOutputDisabled());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -199,7 +154,10 @@ class ProcessBuilderTest extends TestCase
      */
     public function testInvalidInput()
     {
-        $builder = ProcessBuilder::create();
-        $builder->setInput(array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

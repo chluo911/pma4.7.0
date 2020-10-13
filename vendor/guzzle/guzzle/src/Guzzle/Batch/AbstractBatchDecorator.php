@@ -15,7 +15,11 @@ abstract class AbstractBatchDecorator implements BatchInterface
      */
     public function __construct(BatchInterface $decoratedBatch)
     {
-        $this->decoratedBatch = $decoratedBatch;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -34,14 +38,20 @@ abstract class AbstractBatchDecorator implements BatchInterface
 
     public function add($item)
     {
-        $this->decoratedBatch->add($item);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function flush()
     {
-        return $this->decoratedBatch->flush();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isEmpty()
@@ -56,11 +66,10 @@ abstract class AbstractBatchDecorator implements BatchInterface
      */
     public function getDecorators()
     {
-        $found = array($this);
-        if (method_exists($this->decoratedBatch, 'getDecorators')) {
-            $found = array_merge($found, $this->decoratedBatch->getDecorators());
-        }
-
-        return $found;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

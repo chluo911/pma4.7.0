@@ -15,13 +15,19 @@ class PredisClusterAdapterTest extends AbstractRedisAdapterTest
 {
     public static function setupBeforeClass()
     {
-        parent::setupBeforeClass();
-        self::$redis = new \Predis\Client(array(getenv('REDIS_HOST')));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function tearDownAfterClass()
     {
-        self::$redis->getConnection()->getConnectionByKey('foo')->executeCommand(self::$redis->createCommand('FLUSHDB'));
-        self::$redis = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -6,23 +6,23 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit7033babd32da3410d35a338a5cac8c30
 {
-    public static $files = array (
+    public static $files = array(
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
     );
 
-    public static $prefixLengthsPsr4 = array (
-        'p' => 
-        array (
+    public static $prefixLengthsPsr4 = array(
+        'p' =>
+        array(
             'phpseclib\\' => 10,
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'W' => 
-        array (
+        'W' =>
+        array(
             'Webmozart\\Assert\\' => 17,
         ),
-        'S' => 
-        array (
+        'S' =>
+        array(
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Stopwatch\\' => 28,
@@ -36,12 +36,12 @@ class ComposerStaticInit7033babd32da3410d35a338a5cac8c30
             'Symfony\\Component\\Cache\\' => 24,
             'Satooshi\\' => 9,
         ),
-        'R' => 
-        array (
+        'R' =>
+        array(
             'ReCaptcha\\' => 10,
         ),
-        'P' => 
-        array (
+        'P' =>
+        array(
             'Psr\\Log\\' => 8,
             'Psr\\Cache\\' => 10,
             'PhpMyAdmin\\SqlParser\\' => 21,
@@ -49,139 +49,139 @@ class ComposerStaticInit7033babd32da3410d35a338a5cac8c30
             'PhpMyAdmin\\MoTranslator\\' => 24,
             'PMA\\' => 4,
         ),
-        'G' => 
-        array (
+        'G' =>
+        array(
             'Gitonomy\\Git\\' => 13,
         ),
-        'D' => 
-        array (
+        'D' =>
+        array(
             'Doctrine\\Instantiator\\' => 22,
         ),
     );
 
-    public static $prefixDirsPsr4 = array (
-        'phpseclib\\' => 
-        array (
+    public static $prefixDirsPsr4 = array(
+        'phpseclib\\' =>
+        array(
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
         ),
-        'phpDocumentor\\Reflection\\' => 
-        array (
+        'phpDocumentor\\Reflection\\' =>
+        array(
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
-        'Webmozart\\Assert\\' => 
-        array (
+        'Webmozart\\Assert\\' =>
+        array(
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
-        array (
+        'Symfony\\Polyfill\\Mbstring\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Component\\Yaml\\' => 
-        array (
+        'Symfony\\Component\\Yaml\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'Symfony\\Component\\Stopwatch\\' => 
-        array (
+        'Symfony\\Component\\Stopwatch\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/stopwatch',
         ),
-        'Symfony\\Component\\Process\\' => 
-        array (
+        'Symfony\\Component\\Process\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
-        'Symfony\\Component\\Filesystem\\' => 
-        array (
+        'Symfony\\Component\\Filesystem\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/filesystem',
         ),
-        'Symfony\\Component\\ExpressionLanguage\\' => 
-        array (
+        'Symfony\\Component\\ExpressionLanguage\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/expression-language',
         ),
-        'Symfony\\Component\\EventDispatcher\\' => 
-        array (
+        'Symfony\\Component\\EventDispatcher\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'Symfony\\Component\\Debug\\' => 
-        array (
+        'Symfony\\Component\\Debug\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/debug',
         ),
-        'Symfony\\Component\\Console\\' => 
-        array (
+        'Symfony\\Component\\Console\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Symfony\\Component\\Config\\' => 
-        array (
+        'Symfony\\Component\\Config\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/config',
         ),
-        'Symfony\\Component\\Cache\\' => 
-        array (
+        'Symfony\\Component\\Cache\\' =>
+        array(
             0 => __DIR__ . '/..' . '/symfony/cache',
         ),
-        'Satooshi\\' => 
-        array (
+        'Satooshi\\' =>
+        array(
             0 => __DIR__ . '/..' . '/satooshi/php-coveralls/src/Satooshi',
         ),
-        'ReCaptcha\\' => 
-        array (
+        'ReCaptcha\\' =>
+        array(
             0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
         ),
-        'Psr\\Log\\' => 
-        array (
+        'Psr\\Log\\' =>
+        array(
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Cache\\' => 
-        array (
+        'Psr\\Cache\\' =>
+        array(
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'PhpMyAdmin\\SqlParser\\' => 
-        array (
+        'PhpMyAdmin\\SqlParser\\' =>
+        array(
             0 => __DIR__ . '/..' . '/phpmyadmin/sql-parser/src',
         ),
-        'PhpMyAdmin\\ShapeFile\\' => 
-        array (
+        'PhpMyAdmin\\ShapeFile\\' =>
+        array(
             0 => __DIR__ . '/..' . '/phpmyadmin/shapefile/src',
         ),
-        'PhpMyAdmin\\MoTranslator\\' => 
-        array (
+        'PhpMyAdmin\\MoTranslator\\' =>
+        array(
             0 => __DIR__ . '/..' . '/phpmyadmin/motranslator/src',
         ),
-        'PMA\\' => 
-        array (
+        'PMA\\' =>
+        array(
             0 => __DIR__ . '/../..' . '/',
         ),
-        'Gitonomy\\Git\\' => 
-        array (
+        'Gitonomy\\Git\\' =>
+        array(
             0 => __DIR__ . '/..' . '/gitonomy/gitlib/src/Gitonomy/Git',
         ),
-        'Doctrine\\Instantiator\\' => 
-        array (
+        'Doctrine\\Instantiator\\' =>
+        array(
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'Prophecy\\' => 
-            array (
+    public static $prefixesPsr0 = array(
+        'P' =>
+        array(
+            'Prophecy\\' =>
+            array(
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
         ),
-        'G' => 
-        array (
-            'Guzzle\\Tests' => 
-            array (
+        'G' =>
+        array(
+            'Guzzle\\Tests' =>
+            array(
                 0 => __DIR__ . '/..' . '/guzzle/guzzle/tests',
             ),
-            'Guzzle' => 
-            array (
+            'Guzzle' =>
+            array(
                 0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
             ),
         ),
     );
 
-    public static $classMap = array (
+    public static $classMap = array(
         'Codacy\\Coverage\\Application' => __DIR__ . '/..' . '/codacy/coverage/src/Codacy/Coverage/Application.php',
         'Codacy\\Coverage\\Command\\Clover' => __DIR__ . '/..' . '/codacy/coverage/src/Codacy/Coverage/Command/Clover.php',
         'Codacy\\Coverage\\Command\\Phpunit' => __DIR__ . '/..' . '/codacy/coverage/src/Codacy/Coverage/Command/Phpunit.php',
@@ -966,7 +966,6 @@ class ComposerStaticInit7033babd32da3410d35a338a5cac8c30
             $loader->prefixDirsPsr4 = ComposerStaticInit7033babd32da3410d35a338a5cac8c30::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit7033babd32da3410d35a338a5cac8c30::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit7033babd32da3410d35a338a5cac8c30::$classMap;
-
         }, null, ClassLoader::class);
     }
 }

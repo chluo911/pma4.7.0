@@ -101,7 +101,7 @@ class CompositeFactory implements \IteratorAggregate, \Countable, FactoryInterfa
             $factory = $this->find($factory);
         }
 
-        $this->factories = array_values(array_filter($this->factories, function($f) use ($factory) {
+        $this->factories = array_values(array_filter($this->factories, function ($f) use ($factory) {
             return $f !== $factory;
         }));
 
@@ -134,21 +134,28 @@ class CompositeFactory implements \IteratorAggregate, \Countable, FactoryInterfa
      */
     public function factory($name, array $args = array())
     {
-        foreach ($this->factories as $factory) {
-            $command = $factory->factory($name, $args);
-            if ($command) {
-                return $command;
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function count()
     {
-        return count($this->factories);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->factories);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

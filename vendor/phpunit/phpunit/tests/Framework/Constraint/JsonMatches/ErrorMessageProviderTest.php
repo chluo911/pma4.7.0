@@ -19,10 +19,11 @@ class Framework_Constraint_JsonMatches_ErrorMessageProviderTest extends PHPUnit_
      */
     public function testTranslateTypeToPrefix($expected, $type)
     {
-        $this->assertEquals(
-            $expected,
-            PHPUnit_Framework_Constraint_JsonMatches_ErrorMessageProvider::translateTypeToPrefix($type)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -31,53 +32,28 @@ class Framework_Constraint_JsonMatches_ErrorMessageProviderTest extends PHPUnit_
      */
     public function testDetermineJsonError($expected, $error, $prefix)
     {
-        $this->assertEquals(
-            $expected,
-            PHPUnit_Framework_Constraint_JsonMatches_ErrorMessageProvider::determineJsonError(
-                $error,
-                $prefix
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function determineJsonErrorDataprovider()
     {
-        return array(
-            'JSON_ERROR_NONE'  => array(
-                null, 'json_error_none', ''
-            ),
-            'JSON_ERROR_DEPTH' => array(
-                'Maximum stack depth exceeded', JSON_ERROR_DEPTH, ''
-            ),
-            'prefixed JSON_ERROR_DEPTH' => array(
-                'TUX: Maximum stack depth exceeded', JSON_ERROR_DEPTH, 'TUX: '
-            ),
-            'JSON_ERROR_STATE_MISMatch' => array(
-                'Underflow or the modes mismatch', JSON_ERROR_STATE_MISMATCH, ''
-            ),
-            'JSON_ERROR_CTRL_CHAR' => array(
-                'Unexpected control character found', JSON_ERROR_CTRL_CHAR, ''
-            ),
-            'JSON_ERROR_SYNTAX' => array(
-                'Syntax error, malformed JSON', JSON_ERROR_SYNTAX, ''
-            ),
-            'JSON_ERROR_UTF8`' => array(
-                'Malformed UTF-8 characters, possibly incorrectly encoded',
-                JSON_ERROR_UTF8,
-                ''
-            ),
-            'Invalid error indicator' => array(
-                'Unknown error', 55, ''
-            ),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function translateTypeToPrefixDataprovider()
     {
-        return array(
-            'expected' => array('Expected value JSON decode error - ', 'expected'),
-            'actual'   => array('Actual value JSON decode error - ', 'actual'),
-            'default'  => array('', ''),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

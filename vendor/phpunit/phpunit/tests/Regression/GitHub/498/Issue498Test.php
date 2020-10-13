@@ -9,7 +9,11 @@ class Issue498Test extends PHPUnit_Framework_TestCase
      */
     public function shouldBeTrue($testData)
     {
-        $this->assertTrue(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -19,26 +23,28 @@ class Issue498Test extends PHPUnit_Framework_TestCase
      */
     public function shouldBeFalse($testData)
     {
-        $this->assertFalse(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function shouldBeTrueDataProvider()
     {
-
-        //throw new Exception("Can't create the data");
-        return array(
-            array(true),
-            array(false)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function shouldBeFalseDataProvider()
     {
-        throw new Exception("Can't create the data");
-
-        return array(
-            array(true),
-            array(false)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -75,7 +75,11 @@ abstract class OptionsPropertyItem extends PropertyItem
      */
     public function setName($name)
     {
-        $this->_name = $name;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,7 +111,11 @@ abstract class OptionsPropertyItem extends PropertyItem
      */
     public function getForce()
     {
-        return $this->_force;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -129,6 +137,10 @@ abstract class OptionsPropertyItem extends PropertyItem
      */
     public function getPropertyType()
     {
-        return "options";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

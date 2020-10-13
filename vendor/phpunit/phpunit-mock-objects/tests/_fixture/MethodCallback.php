@@ -3,19 +3,19 @@ class MethodCallback
 {
     public static function staticCallback()
     {
-        $args = func_get_args();
-
-        if ($args == array('foo', 'bar')) {
-            return 'pass';
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function nonStaticCallback()
     {
-        $args = func_get_args();
-
-        if ($args == array('foo', 'bar')) {
-            return 'pass';
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

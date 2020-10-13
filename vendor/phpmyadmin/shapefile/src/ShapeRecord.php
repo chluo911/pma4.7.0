@@ -138,58 +138,11 @@ class ShapeRecord
      */
     public function saveToFile(&$SHPFile, &$DBFFile, $recordNumber)
     {
-        $this->SHPFile = $SHPFile;
-        $this->DBFFile = $DBFFile;
-        $this->recordNumber = $recordNumber;
-        $this->_saveHeaders();
-
-        switch ($this->shapeType) {
-            case 0:
-                // Nothing to save
-                break;
-            case 1:
-                $this->_savePointRecord();
-                break;
-            case 21:
-                $this->_savePointMRecord();
-                break;
-            case 11:
-                $this->_savePointZRecord();
-                break;
-            case 3:
-                $this->_savePolyLineRecord();
-                break;
-            case 23:
-                $this->_savePolyLineMRecord();
-                break;
-            case 13:
-                $this->_savePolyLineZRecord();
-                break;
-            case 5:
-                $this->_savePolygonRecord();
-                break;
-            case 25:
-                $this->_savePolygonMRecord();
-                break;
-            case 15:
-                $this->_savePolygonZRecord();
-                break;
-            case 8:
-                $this->_saveMultiPointRecord();
-                break;
-            case 28:
-                $this->_saveMultiPointMRecord();
-                break;
-            case 18:
-                $this->_saveMultiPointZRecord();
-                break;
-            default:
-                $this->setError(sprintf('The Shape Type "%s" is not supported.', $this->shapeType));
-                break;
-        }
-        if (ShapeFile::supports_dbase() && !is_null($this->DBFFile)) {
-            $this->_saveDBFData();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -199,12 +152,11 @@ class ShapeRecord
      */
     public function updateDBFInfo($header)
     {
-        $tmp = $this->DBFData;
-        unset($this->DBFData);
-        $this->DBFData = array();
-        foreach ($header as $value) {
-            $this->DBFData[$value[0]] = (isset($tmp[$value[0]])) ? $tmp[$value[0]] : '';
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -250,9 +202,11 @@ class ShapeRecord
      */
     private function _saveHeaders()
     {
-        fwrite($this->SHPFile, pack('N', $this->recordNumber));
-        fwrite($this->SHPFile, pack('N', $this->getContentLength()));
-        fwrite($this->SHPFile, pack('V', $this->shapeType));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _loadPoint()
@@ -286,23 +240,29 @@ class ShapeRecord
 
     private function _savePoint($data)
     {
-        fwrite($this->SHPFile, Util::packDouble($data['x']));
-        fwrite($this->SHPFile, Util::packDouble($data['y']));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePointM($data)
     {
-        fwrite($this->SHPFile, Util::packDouble($data['x']));
-        fwrite($this->SHPFile, Util::packDouble($data['y']));
-        fwrite($this->SHPFile, Util::packDouble($data['m']));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePointZ($data)
     {
-        fwrite($this->SHPFile, Util::packDouble($data['x']));
-        fwrite($this->SHPFile, Util::packDouble($data['y']));
-        fwrite($this->SHPFile, Util::packDouble($data['z']));
-        fwrite($this->SHPFile, Util::packDouble($data['m']));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _loadNullRecord()
@@ -327,17 +287,29 @@ class ShapeRecord
 
     private function _savePointRecord()
     {
-        $this->_savePoint($this->SHPData);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePointMRecord()
     {
-        $this->_savePointM($this->SHPData);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePointZRecord()
     {
-        $this->_savePointZ($this->SHPData);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _loadBBox()
@@ -395,13 +367,11 @@ class ShapeRecord
 
     private function _saveMultiPointRecord()
     {
-        fwrite($this->SHPFile, pack('dddd', $this->SHPData['xmin'], $this->SHPData['ymin'], $this->SHPData['xmax'], $this->SHPData['ymax']));
-
-        fwrite($this->SHPFile, pack('V', $this->SHPData['numpoints']));
-
-        for ($i = 0; $i < $this->SHPData['numpoints']; ++$i) {
-            $this->_savePoint($this->SHPData['points'][$i]);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -409,26 +379,29 @@ class ShapeRecord
      */
     private function _saveMultiPointMZRecord($type)
     {
-        fwrite($this->SHPFile, pack('dd', $this->SHPData[$type . 'min'], $this->SHPData[$type . 'max']));
-
-        for ($i = 0; $i < $this->SHPData['numpoints']; ++$i) {
-            fwrite($this->SHPFile, Util::packDouble($this->SHPData['points'][$i][$type]));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _saveMultiPointMRecord()
     {
-        $this->_saveMultiPointRecord();
-
-        $this->_saveMultiPointMZRecord('m');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _saveMultiPointZRecord()
     {
-        $this->_saveMultiPointRecord();
-
-        $this->_saveMultiPointMZRecord('z');
-        $this->_saveMultiPointMZRecord('m');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _loadPolyLineRecord()
@@ -500,21 +473,11 @@ class ShapeRecord
 
     private function _savePolyLineRecord()
     {
-        fwrite($this->SHPFile, pack('dddd', $this->SHPData['xmin'], $this->SHPData['ymin'], $this->SHPData['xmax'], $this->SHPData['ymax']));
-
-        fwrite($this->SHPFile, pack('VV', $this->SHPData['numparts'], $this->SHPData['numpoints']));
-
-        $part_index = 0;
-        for ($i = 0; $i < $this->SHPData['numparts']; ++$i) {
-            fwrite($this->SHPFile, pack('V', $part_index));
-            $part_index += count($this->SHPData['parts'][$i]['points']);
-        }
-
-        foreach ($this->SHPData['parts'] as $partData) {
-            foreach ($partData['points'] as $pointData) {
-                $this->_savePoint($pointData);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -522,28 +485,29 @@ class ShapeRecord
      */
     private function _savePolyLineMZRecord($type)
     {
-        fwrite($this->SHPFile, pack('dd', $this->SHPData[$type . 'min'], $this->SHPData[$type . 'max']));
-
-        foreach ($this->SHPData['parts'] as $partData) {
-            foreach ($partData['points'] as $pointData) {
-                fwrite($this->SHPFile, Util::packDouble($pointData[$type]));
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePolyLineMRecord()
     {
-        $this->_savePolyLineRecord();
-
-        $this->_savePolyLineMZRecord('m');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePolyLineZRecord()
     {
-        $this->_savePolyLineRecord();
-
-        $this->_savePolyLineMZRecord('z');
-        $this->_savePolyLineMZRecord('m');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _loadPolygonRecord()
@@ -563,36 +527,38 @@ class ShapeRecord
 
     private function _savePolygonRecord()
     {
-        $this->_savePolyLineRecord();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePolygonMRecord()
     {
-        $this->_savePolyLineMRecord();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _savePolygonZRecord()
     {
-        $this->_savePolyLineZRecord();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function _adjustBBox($point)
     {
-        // Adjusts bounding box based on point
-        $directions = array('x', 'y', 'z', 'm');
-        foreach ($directions as $direction) {
-            if (!isset($point[$direction])) {
-                continue;
-            }
-            $min = $direction . 'min';
-            $max = $direction . 'max';
-            if (!isset($this->SHPData[$min]) || ($this->SHPData[$min] > $point[$direction])) {
-                $this->SHPData[$min] = $point[$direction];
-            }
-            if (!isset($this->SHPData[$max]) || ($this->SHPData[$max] < $point[$direction])) {
-                $this->SHPData[$max] = $point[$direction];
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -605,11 +571,11 @@ class ShapeRecord
      */
     private function _fixPoint($point, $dimension)
     {
-        if (!isset($point[$dimension])) {
-            $point[$dimension] = 0.0; // no_value
-        }
-
-        return $point;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -621,15 +587,11 @@ class ShapeRecord
      */
     private function _adjustPoint($point)
     {
-        $type = $this->shapeType / 10;
-        if ($type >= 2) {
-            $point = $this->_fixPoint($point, 'm');
-        } elseif ($type >= 1) {
-            $point = $this->_fixPoint($point, 'z');
-            $point = $this->_fixPoint($point, 'm');
-        }
-
-        return $point;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -640,41 +602,11 @@ class ShapeRecord
      */
     public function addPoint($point, $partIndex = 0)
     {
-        $point = $this->_adjustPoint($point);
-        switch ($this->shapeType) {
-            case 0:
-                //Don't add anything
-                return;
-            case 1:
-            case 11:
-            case 21:
-                //Substitutes the value of the current point
-                $this->SHPData = $point;
-                break;
-            case 3:
-            case 5:
-            case 13:
-            case 15:
-            case 23:
-            case 25:
-                //Adds a new point to the selected part
-                $this->SHPData['parts'][$partIndex]['points'][] = $point;
-                $this->SHPData['numparts'] = count($this->SHPData['parts']);
-                $this->SHPData['numpoints'] = 1 + (isset($this->SHPData['numpoints']) ? $this->SHPData['numpoints'] : 0);
-                break;
-            case 8:
-            case 18:
-            case 28:
-                //Adds a new point
-                $this->SHPData['points'][] = $point;
-                $this->SHPData['numpoints'] = 1 + (isset($this->SHPData['numpoints']) ? $this->SHPData['numpoints'] : 0);
-                break;
-            default:
-                $this->setError(sprintf('The Shape Type "%s" is not supported.', $this->shapeType));
-
-                return;
-        }
-        $this->_adjustBBox($point);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -685,59 +617,11 @@ class ShapeRecord
      */
     public function deletePoint($pointIndex = 0, $partIndex = 0)
     {
-        switch ($this->shapeType) {
-            case 0:
-                //Don't delete anything
-                break;
-            case 1:
-            case 11:
-            case 21:
-                //Sets the value of the point to zero
-                $this->SHPData['x'] = 0.0;
-                $this->SHPData['y'] = 0.0;
-                if (in_array($this->shapeType, array(11, 21))) {
-                    $this->SHPData['m'] = 0.0;
-                }
-                if (in_array($this->shapeType, array(11))) {
-                    $this->SHPData['z'] = 0.0;
-                }
-                break;
-            case 3:
-            case 5:
-            case 13:
-            case 15:
-            case 23:
-            case 25:
-                //Deletes the point from the selected part, if exists
-                if (isset($this->SHPData['parts'][$partIndex]) && isset($this->SHPData['parts'][$partIndex]['points'][$pointIndex])) {
-                    $count = count($this->SHPData['parts'][$partIndex]['points']) - 1;
-                    for ($i = $pointIndex; $i < $count; ++$i) {
-                        $this->SHPData['parts'][$partIndex]['points'][$i] = $this->SHPData['parts'][$partIndex]['points'][$i + 1];
-                    }
-                    unset($this->SHPData['parts'][$partIndex]['points'][count($this->SHPData['parts'][$partIndex]['points']) - 1]);
-
-                    $this->SHPData['numparts'] = count($this->SHPData['parts']);
-                    --$this->SHPData['numpoints'];
-                }
-                break;
-            case 8:
-            case 18:
-            case 28:
-                //Deletes the point, if exists
-                if (isset($this->SHPData['points'][$pointIndex])) {
-                    $count = count($this->SHPData['points']) - 1;
-                    for ($i = $pointIndex; $i < $count; ++$i) {
-                        $this->SHPData['points'][$i] = $this->SHPData['points'][$i + 1];
-                    }
-                    unset($this->SHPData['points'][count($this->SHPData['points']) - 1]);
-
-                    --$this->SHPData['numpoints'];
-                }
-                break;
-            default:
-                $this->setError(sprintf('The Shape Type "%s" is not supported.', $this->shapeType));
-                break;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -812,19 +696,11 @@ class ShapeRecord
 
     private function _saveDBFData()
     {
-        if (count($this->DBFData) == 0) {
-            return;
-        }
-        unset($this->DBFData['deleted']);
-        if ($this->recordNumber <= dbase_numrecords($this->DBFFile)) {
-            if (!dbase_replace_record($this->DBFFile, array_values($this->DBFData), $this->recordNumber)) {
-                $this->setError('I wasn\'t possible to update the information in the DBF file.');
-            }
-        } else {
-            if (!dbase_add_record($this->DBFFile, array_values($this->DBFData))) {
-                $this->setError('I wasn\'t possible to add the information to the DBF file.');
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

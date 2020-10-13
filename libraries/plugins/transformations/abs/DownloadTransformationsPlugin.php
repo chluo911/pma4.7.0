@@ -24,13 +24,11 @@ abstract class DownloadTransformationsPlugin extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Displays a link to download the binary data of the column. You can'
-            . ' use the first option to specify the filename, or use the second'
-            . ' option as the name of a column which contains the filename. If'
-            . ' you use the second option, you need to set the first option to'
-            . ' the empty string.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -44,35 +42,11 @@ abstract class DownloadTransformationsPlugin extends TransformationsPlugin
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        global $row, $fields_meta;
-
-        if (isset($options[0]) && !empty($options[0])) {
-            $cn = $options[0]; // filename
-        } else {
-            if (isset($options[1]) && !empty($options[1])) {
-                foreach ($fields_meta as $key => $val) {
-                    if ($val->name == $options[1]) {
-                        $pos = $key;
-                        break;
-                    }
-                }
-                if (isset($pos)) {
-                    $cn = $row[$pos];
-                }
-            }
-            if (empty($cn)) {
-                $cn = 'binary_file.dat';
-            }
-        }
-
-        return sprintf(
-            '<a href="transformation_wrapper.php%s&amp;ct=application'
-            . '/octet-stream&amp;cn=%s" title="%s" class="disableAjax">%s</a>',
-            $options['wrapper_link'],
-            htmlspecialchars(urlencode($cn)),
-            htmlspecialchars($cn),
-            htmlspecialchars($cn)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 

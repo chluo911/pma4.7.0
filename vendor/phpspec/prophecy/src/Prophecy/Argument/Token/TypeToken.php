@@ -27,14 +27,11 @@ class TypeToken implements TokenInterface
      */
     public function __construct($type)
     {
-        $checker = "is_{$type}";
-        if (!function_exists($checker) && !interface_exists($type) && !class_exists($type)) {
-            throw new InvalidArgumentException(sprintf(
-                'Type or class name expected as an argument to TypeToken, but got %s.', $type
-            ));
-        }
-
-        $this->type = $type;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,12 +43,11 @@ class TypeToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        $checker = "is_{$this->type}";
-        if (function_exists($checker)) {
-            return call_user_func($checker, $argument) ? 5 : false;
-        }
-
-        return $argument instanceof $this->type ? 5 : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,7 +57,11 @@ class TypeToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

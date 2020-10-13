@@ -7,7 +7,11 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->ba = new BankAccount;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -15,7 +19,11 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
      */
     public function testBalanceIsInitiallyZero()
     {
-        $this->assertEquals(0, $this->ba->getBalance());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -23,15 +31,11 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
      */
     public function testBalanceCannotBecomeNegative()
     {
-        try {
-            $this->ba->withdrawMoney(1);
-        } catch (RuntimeException $e) {
-            $this->assertEquals(0, $this->ba->getBalance());
-
-            return;
-        }
-
-        $this->fail();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -39,15 +43,11 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
      */
     public function testBalanceCannotBecomeNegative2()
     {
-        try {
-            $this->ba->depositMoney(-1);
-        } catch (RuntimeException $e) {
-            $this->assertEquals(0, $this->ba->getBalance());
-
-            return;
-        }
-
-        $this->fail();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,10 +57,10 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
      */
     public function testDepositWithdrawMoney()
     {
-        $this->assertEquals(0, $this->ba->getBalance());
-        $this->ba->depositMoney(1);
-        $this->assertEquals(1, $this->ba->getBalance());
-        $this->ba->withdrawMoney(1);
-        $this->assertEquals(0, $this->ba->getBalance());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

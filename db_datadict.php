@@ -96,7 +96,9 @@ foreach ($tables as $table) {
 
     // Check if we can use Relations
     list($res_rel, $have_rel) = PMA_getRelationsAndStatus(
-        ! empty($cfgRelation['relation']), $db, $table
+        ! empty($cfgRelation['relation']),
+        $db,
+        $table
     );
 
     /**
@@ -125,7 +127,6 @@ foreach ($tables as $table) {
     }
     echo '</tr>';
     foreach ($columns as $row) {
-
         if ($row['Null'] == '') {
             $row['Null'] = 'NO';
         }
@@ -161,7 +162,7 @@ foreach ($tables as $table) {
             , ' lang="en" dir="ltr">' , $type , '</td>';
 
         echo '<td>';
-        echo (($row['Null'] == 'NO') ? __('No') : __('Yes'));
+        echo(($row['Null'] == 'NO') ? __('No') : __('Yes'));
         echo '</td>';
         echo '<td class="nowrap">';
         if (isset($row['Default'])) {

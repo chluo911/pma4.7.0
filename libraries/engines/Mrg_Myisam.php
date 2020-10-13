@@ -25,4 +25,3 @@ class Mrg_Myisam extends Merge
         return 'merge-storage-engine';
     }
 }
-

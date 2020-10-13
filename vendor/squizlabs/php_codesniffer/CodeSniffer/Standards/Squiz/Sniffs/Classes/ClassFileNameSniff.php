@@ -39,11 +39,11 @@ class Squiz_Sniffs_Classes_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(
-                T_CLASS,
-                T_INTERFACE,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -58,27 +58,10 @@ class Squiz_Sniffs_Classes_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $fullPath = basename($phpcsFile->getFilename());
-        $fileName = substr($fullPath, 0, strrpos($fullPath, '.'));
-        if ($fileName === '') {
-            // No filename probably means STDIN, so we can't do this check.
-            return;
-        }
-
-        $tokens  = $phpcsFile->getTokens();
-        $decName = $phpcsFile->findNext(T_STRING, $stackPtr);
-
-        if ($tokens[$decName]['content'] !== $fileName) {
-            $error = '%s name doesn\'t match filename; expected "%s %s"';
-            $data  = array(
-                      ucfirst($tokens[$stackPtr]['content']),
-                      $tokens[$stackPtr]['content'],
-                      $fileName,
-                     );
-            $phpcsFile->addError($error, $stackPtr, 'NoMatch', $data);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

@@ -55,64 +55,47 @@ class PhpArrayAdapterTest extends AdapterTestCase
 
     public static function setupBeforeClass()
     {
-        self::$file = sys_get_temp_dir().'/symfony-cache/php-array-adapter-test.php';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        if (file_exists(sys_get_temp_dir().'/symfony-cache')) {
-            FilesystemAdapterTest::rmdir(sys_get_temp_dir().'/symfony-cache');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function createCachePool()
     {
-        return new PhpArrayAdapterWrapper(self::$file, new NullAdapter());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStore()
     {
-        $arrayWithRefs = array();
-        $arrayWithRefs[0] = 123;
-        $arrayWithRefs[1] = &$arrayWithRefs[0];
-
-        $object = (object) array(
-            'foo' => 'bar',
-            'foo2' => 'bar2',
-        );
-
-        $expected = array(
-            'null' => null,
-            'serializedString' => serialize($object),
-            'arrayWithRefs' => $arrayWithRefs,
-            'object' => $object,
-            'arrayWithObject' => array('bar' => $object),
-        );
-
-        $adapter = $this->createCachePool();
-        $adapter->warmUp($expected);
-
-        foreach ($expected as $key => $value) {
-            $this->assertSame(serialize($value), serialize($adapter->getItem($key)->get()), 'Warm up should create a PHP file that OPCache can load in memory');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStoredFile()
     {
-        $expected = array(
-            'integer' => 42,
-            'float' => 42.42,
-            'boolean' => true,
-            'array_simple' => array('foo', 'bar'),
-            'array_associative' => array('foo' => 'bar', 'foo2' => 'bar2'),
-        );
-
-        $adapter = $this->createCachePool();
-        $adapter->warmUp($expected);
-
-        $values = eval(substr(file_get_contents(self::$file), 6));
-
-        $this->assertSame($expected, $values, 'Warm up should create a PHP file that OPCache can load in memory');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 

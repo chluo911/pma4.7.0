@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_ColonSpacingSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_COLON);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,60 +62,10 @@ class Squiz_Sniffs_CSS_ColonSpacingSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        if ($tokens[$prev]['code'] !== T_STYLE) {
-            // The colon is not part of a style definition.
-            return;
-        }
-
-        if ($tokens[$prev]['content'] === 'progid') {
-            // Special case for IE filters.
-            return;
-        }
-
-        if ($tokens[($stackPtr - 1)]['code'] === T_WHITESPACE) {
-            $error = 'There must be no space before a colon in a style definition';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr - 1), '');
-            }
-        }
-
-        if ($tokens[($stackPtr + 1)]['code'] === T_SEMICOLON) {
-            // Empty style definition, ignore it.
-            return;
-        }
-
-        if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
-            $error = 'Expected 1 space after colon in style definition; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoneAfter');
-            if ($fix === true) {
-                $phpcsFile->fixer->addContent($stackPtr, ' ');
-            }
-        } else {
-            $content = $tokens[($stackPtr + 1)]['content'];
-            if (strpos($content, $phpcsFile->eolChar) === false) {
-                $length = strlen($content);
-                if ($length !== 1) {
-                    $error = 'Expected 1 space after colon in style definition; %s found';
-                    $data  = array($length);
-                    $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'After', $data);
-                    if ($fix === true) {
-                        $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
-                    }
-                }
-            } else {
-                $error = 'Expected 1 space after colon in style definition; newline found';
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'AfterNewline');
-                if ($fix === true) {
-                    $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
-                }
-            }
-        }//end if
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

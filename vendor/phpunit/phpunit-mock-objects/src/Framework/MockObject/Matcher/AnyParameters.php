@@ -29,6 +29,10 @@ class PHPUnit_Framework_MockObject_Matcher_AnyParameters extends PHPUnit_Framewo
      */
     public function matches(PHPUnit_Framework_MockObject_Invocation $invocation)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

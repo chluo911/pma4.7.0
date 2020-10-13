@@ -78,8 +78,11 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
      */
     public function register()
     {
-        return array(T_CLOSE_CURLY_BRACKET);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -94,124 +97,10 @@ class Squiz_Sniffs_Commenting_LongConditionClosingCommentSniff implements PHP_Co
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if (isset($tokens[$stackPtr]['scope_condition']) === false) {
-            // No scope condition. It is a function closer.
-            return;
-        }
-
-        $startCondition = $tokens[$tokens[$stackPtr]['scope_condition']];
-        $startBrace     = $tokens[$tokens[$stackPtr]['scope_opener']];
-        $endBrace       = $tokens[$stackPtr];
-
-        // We are only interested in some code blocks.
-        if (in_array($startCondition['code'], self::$_openers) === false) {
-            return;
-        }
-
-        if ($startCondition['code'] === T_IF) {
-            // If this is actually an ELSE IF, skip it as the brace
-            // will be checked by the original IF.
-            $else = $phpcsFile->findPrevious(T_WHITESPACE, ($tokens[$stackPtr]['scope_condition'] - 1), null, true);
-            if ($tokens[$else]['code'] === T_ELSE) {
-                return;
-            }
-
-            // IF statements that have an ELSE block need to use
-            // "end if" rather than "end else" or "end elseif".
-            do {
-                $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-                if ($tokens[$nextToken]['code'] === T_ELSE || $tokens[$nextToken]['code'] === T_ELSEIF) {
-                    // Check for ELSE IF (2 tokens) as opposed to ELSEIF (1 token).
-                    if ($tokens[$nextToken]['code'] === T_ELSE
-                        && isset($tokens[$nextToken]['scope_closer']) === false
-                    ) {
-                        $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($nextToken + 1), null, true);
-                        if ($tokens[$nextToken]['code'] !== T_IF
-                            || isset($tokens[$nextToken]['scope_closer']) === false
-                        ) {
-                            // Not an ELSE IF or is an inline ELSE IF.
-                            break;
-                        }
-                    }
-
-                    if (isset($tokens[$nextToken]['scope_closer']) === false) {
-                        // There isn't going to be anywhere to print the "end if" comment
-                        // because there is no closer.
-                        return;
-                    }
-
-                    // The end brace becomes the ELSE's end brace.
-                    $stackPtr = $tokens[$nextToken]['scope_closer'];
-                    $endBrace = $tokens[$stackPtr];
-                } else {
-                    break;
-                }//end if
-            } while (isset($tokens[$nextToken]['scope_closer']) === true);
-        }//end if
-
-        if ($startCondition['code'] === T_TRY) {
-            // TRY statements need to check until the end of all CATCH statements.
-            do {
-                $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-                if ($tokens[$nextToken]['code'] === T_CATCH) {
-                    // The end brace becomes the CATCH's end brace.
-                    $stackPtr = $tokens[$nextToken]['scope_closer'];
-                    $endBrace = $tokens[$stackPtr];
-                } else {
-                    break;
-                }
-            } while (isset($tokens[$nextToken]['scope_closer']) === true);
-        }
-
-        $lineDifference = ($endBrace['line'] - $startBrace['line']);
-
-        $expected = sprintf($this->commentFormat, $startCondition['content']);
-        $comment  = $phpcsFile->findNext(array(T_COMMENT), $stackPtr, null, false);
-
-        if (($comment === false) || ($tokens[$comment]['line'] !== $endBrace['line'])) {
-            if ($lineDifference >= $this->lineLimit) {
-                $error = 'End comment for long condition not found; expected "%s"';
-                $data  = array($expected);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Missing', $data);
-
-                if ($fix === true) {
-                    $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-                    if ($next !== false && $tokens[$next]['line'] === $tokens[$stackPtr]['line']) {
-                        $expected .= $phpcsFile->eolChar;
-                    }
-
-                    $phpcsFile->fixer->addContent($stackPtr, $expected);
-                }
-            }
-
-            return;
-        }
-
-        if (($comment - $stackPtr) !== 1) {
-            $error = 'Space found before closing comment; expected "%s"';
-            $data  = array($expected);
-            $phpcsFile->addError($error, $stackPtr, 'SpacingBefore', $data);
-        }
-
-        if (trim($tokens[$comment]['content']) !== $expected) {
-            $found = trim($tokens[$comment]['content']);
-            $error = 'Incorrect closing comment; expected "%s" but found "%s"';
-            $data  = array(
-                      $expected,
-                      $found,
-                     );
-
-            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Invalid', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($comment, $expected.$phpcsFile->eolChar);
-            }
-
-            return;
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

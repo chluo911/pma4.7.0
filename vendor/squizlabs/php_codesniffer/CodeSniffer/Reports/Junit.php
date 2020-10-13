@@ -58,57 +58,11 @@ class PHP_CodeSniffer_Reports_Junit implements PHP_CodeSniffer_Report
         $showSources=false,
         $width=80
     ) {
-        if (count($report['messages']) === 0) {
-            $this->_tests++;
-        } else {
-            $this->_tests += ($report['errors'] + $report['warnings']);
-        }
-
-        $out = new XMLWriter;
-        $out->openMemory();
-        $out->setIndent(true);
-
-        $out->startElement('testsuite');
-        $out->writeAttribute('name', $report['filename']);
-
-        if (count($report['messages']) === 0) {
-            $out->writeAttribute('tests', 1);
-            $out->writeAttribute('failures', 0);
-
-            $out->startElement('testcase');
-            $out->writeAttribute('name', $report['filename']);
-            $out->endElement();
-        } else {
-            $failures = ($report['errors'] + $report['warnings']);
-            $out->writeAttribute('tests', $failures);
-            $out->writeAttribute('failures', $failures);
-
-            foreach ($report['messages'] as $line => $lineErrors) {
-                foreach ($lineErrors as $column => $colErrors) {
-                    foreach ($colErrors as $error) {
-                        $out->startElement('testcase');
-                        $out->writeAttribute('name', $error['source'].' at '.$report['filename']." ($line:$column)");
-
-                        $error['type'] = strtolower($error['type']);
-                        if (PHP_CODESNIFFER_ENCODING !== 'utf-8') {
-                            $error['message'] = iconv(PHP_CODESNIFFER_ENCODING, 'utf-8', $error['message']);
-                        }
-
-                        $out->startElement('failure');
-                        $out->writeAttribute('type', $error['type']);
-                        $out->writeAttribute('message', $error['message']);
-                        $out->endElement();
-
-                        $out->endElement();
-                    }
-                }
-            }
-        }//end if
-
-        $out->endElement();
-        echo $out->flush();
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generateFileReport()
 
 
@@ -137,13 +91,10 @@ class PHP_CodeSniffer_Reports_Junit implements PHP_CodeSniffer_Report
         $width=80,
         $toScreen=true
     ) {
-        $failures = ($totalErrors + $totalWarnings);
-        echo '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
-        echo '<testsuites name="PHP_CodeSniffer '.PHP_CodeSniffer::VERSION.'" tests="'.$this->_tests.'" failures="'.$failures.'">'.PHP_EOL;
-        echo $cachedData;
-        echo '</testsuites>'.PHP_EOL;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generate()
-
-
 }//end class

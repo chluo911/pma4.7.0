@@ -116,10 +116,11 @@ class Container
      */
     public function service($name, $service = null)
     {
-        if (!isset($service)) {
-            $service = $name;
-        }
-        $this->content[$name] = new ServiceItem($this, $service);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

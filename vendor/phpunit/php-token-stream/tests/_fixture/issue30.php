@@ -3,6 +3,10 @@ class Foo
 {
     public function bar()
     {
-        return Foo::CLASS;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

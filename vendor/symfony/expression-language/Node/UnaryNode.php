@@ -37,12 +37,11 @@ class UnaryNode extends Node
 
     public function compile(Compiler $compiler)
     {
-        $compiler
-            ->raw('(')
-            ->raw(self::$operators[$this->attributes['operator']])
-            ->compile($this->nodes['node'])
-            ->raw(')')
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function evaluate($functions, $values)
@@ -61,6 +60,10 @@ class UnaryNode extends Node
 
     public function toArray()
     {
-        return array('(', $this->attributes['operator'].' ', $this->nodes['node'], ')');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

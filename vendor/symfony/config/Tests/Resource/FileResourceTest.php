@@ -22,35 +22,47 @@ class FileResourceTest extends TestCase
 
     protected function setUp()
     {
-        $this->file = sys_get_temp_dir().'/tmp.xml';
-        $this->time = time();
-        touch($this->file, $this->time);
-        $this->resource = new FileResource($this->file);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        if (!file_exists($this->file)) {
-            return;
-        }
-
-        unlink($this->file);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetResource()
     {
-        $this->assertSame(realpath($this->file), $this->resource->getResource(), '->getResource() returns the path to the resource');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetResourceWithScheme()
     {
-        $resource = new FileResource('file://'.$this->file);
-        $this->assertSame('file://'.$this->file, $resource->getResource(), '->getResource() returns the path to the schemed resource');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testToString()
     {
-        $this->assertSame(realpath($this->file), (string) $this->resource);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,27 +71,37 @@ class FileResourceTest extends TestCase
      */
     public function testResourceDoesNotExist()
     {
-        $resource = new FileResource('/____foo/foobar'.mt_rand(1, 999999));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsFresh()
     {
-        $this->assertTrue($this->resource->isFresh($this->time), '->isFresh() returns true if the resource has not changed in same second');
-        $this->assertTrue($this->resource->isFresh($this->time + 10), '->isFresh() returns true if the resource has not changed');
-        $this->assertFalse($this->resource->isFresh($this->time - 86400), '->isFresh() returns false if the resource has been updated');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsFreshForDeletedResources()
     {
-        unlink($this->file);
-
-        $this->assertFalse($this->resource->isFresh($this->time), '->isFresh() returns false if the resource does not exist');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSerializeUnserialize()
     {
-        $unserialized = unserialize(serialize($this->resource));
-
-        $this->assertSame(realpath($this->file), $this->resource->getResource());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

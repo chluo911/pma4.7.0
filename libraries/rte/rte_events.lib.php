@@ -220,7 +220,7 @@ function PMA_EVN_handleEditor()
             $title = PMA_RTE_getWord('add');
             $item = PMA_EVN_getDataFromRequest();
             $mode = 'add';
-        } else if (! empty($_REQUEST['edit_item'])) {
+        } elseif (! empty($_REQUEST['edit_item'])) {
             $title = __("Edit event");
             if (! empty($_REQUEST['item_name'])
                 && empty($_REQUEST['editor_process_edit'])
@@ -612,4 +612,3 @@ function PMA_EVN_getQueryFromRequest()
 
     return $query;
 } // end PMA_EVN_getQueryFromRequest()
-

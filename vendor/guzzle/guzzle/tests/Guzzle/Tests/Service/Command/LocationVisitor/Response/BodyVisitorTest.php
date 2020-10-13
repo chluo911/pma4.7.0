@@ -13,9 +13,10 @@ class BodyVisitorTest extends AbstractResponseVisitorTest
 {
     public function testVisitsLocation()
     {
-        $visitor = new Visitor();
-        $param = new Parameter(array('location' => 'body', 'name' => 'foo'));
-        $visitor->visit($this->command, $this->response, $param, $this->value);
-        $this->assertEquals('Foo', (string) $this->value['foo']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

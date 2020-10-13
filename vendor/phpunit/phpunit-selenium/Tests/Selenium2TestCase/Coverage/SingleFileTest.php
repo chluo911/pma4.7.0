@@ -5,27 +5,20 @@ class Tests_Selenium2TestCase_Coverage_SingleFileTest extends PHPUnit_Framework_
 
     public function setUp()
     {
-        if (!extension_loaded('xdebug')) {
-            $this->markTestSkipped('Needs xdebug to run');
-        }
-        $this->coverageFilePattern = __DIR__ . '/*.' . $this->dummyTestId;
-        $this->dummyClassSourceFile = __DIR__ . '/DummyClass.php';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExecutingAFileWithThePrependedAndAppendedCoverageScriptsProducesACoverageData()
     {
-        $this->clearCoverageFiles();
-
-        exec('php ' . __DIR__ . '/singleFile.php');
-        $coverageFiles = glob($this->coverageFilePattern);
-        $this->assertEquals(1, count($coverageFiles));
-
-        $content = unserialize(file_get_contents($coverageFiles[0]));
-        $dummyClassCoverage = $content[$this->dummyClassSourceFile];
-        $this->assertCovered(6, $dummyClassCoverage);
-        $this->assertNotCovered(11, $dummyClassCoverage);
-
-        return $dummyClassCoverage;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -33,26 +26,37 @@ class Tests_Selenium2TestCase_Coverage_SingleFileTest extends PHPUnit_Framework_
      */
     public function testTheCoverageScriptReturnsTheContentOfASpecificCoverageFile($expectedDummyClassCoverage)
     {
-        $coverage = unserialize(exec('php ' . __DIR__ . '/singleFileCoverage.php ' . $this->dummyTestId));
-        $dummyClassCoverage = $coverage[$this->dummyClassSourceFile];
-        $this->assertEquals($expectedDummyClassCoverage, $dummyClassCoverage['coverage']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function clearCoverageFiles()
     {
-        $coverageFiles = glob($this->coverageFilePattern);
-        foreach ($coverageFiles as $file) {
-            unlink($file);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function assertCovered($line, array $fileCoverage)
     {
-        $this->assertEquals(1, $fileCoverage[$line]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function assertNotCovered($line, array $fileCoverage)
     {
-        $this->assertEquals(-1, $fileCoverage[$line]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

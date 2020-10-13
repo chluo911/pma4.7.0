@@ -45,8 +45,11 @@ class Squiz_Sniffs_WhiteSpace_ObjectOperatorSpacingSniff implements PHP_CodeSnif
      */
     public function register()
     {
-        return array(T_OBJECT_OPERATOR);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -61,33 +64,11 @@ class Squiz_Sniffs_WhiteSpace_ObjectOperatorSpacingSniff implements PHP_CodeSnif
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        if ($tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
-            $before = 0;
-        } else {
-            if ($tokens[($stackPtr - 2)]['line'] !== $tokens[$stackPtr]['line']) {
-                $before = 'newline';
-            } else {
-                $before = $tokens[($stackPtr - 1)]['length'];
-            }
-        }
-
-        if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
-            $after = 0;
-        } else {
-            if ($tokens[($stackPtr + 2)]['line'] !== $tokens[$stackPtr]['line']) {
-                $after = 'newline';
-            } else {
-                $after = $tokens[($stackPtr + 1)]['length'];
-            }
-        }
-
-        $phpcsFile->recordMetric($stackPtr, 'Spacing before object operator', $before);
-        $phpcsFile->recordMetric($stackPtr, 'Spacing after object operator', $after);
-
-        $this->checkSpacingBeforeOperator($phpcsFile, $stackPtr, $before);
-        $this->checkSpacingAfterOperator($phpcsFile, $stackPtr, $after);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
 
 
@@ -104,20 +85,11 @@ class Squiz_Sniffs_WhiteSpace_ObjectOperatorSpacingSniff implements PHP_CodeSnif
      */
     protected function checkSpacingBeforeOperator(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $before)
     {
-        if ($before !== 0
-            && ($before !== 'newline' || $this->ignoreNewlines === false)
-        ) {
-            $error = 'Space found before object operator';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr - 1), '');
-            }
-
-            return false;
-        }
-
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end checkSpacingBeforeOperator()
 
 
@@ -134,21 +106,10 @@ class Squiz_Sniffs_WhiteSpace_ObjectOperatorSpacingSniff implements PHP_CodeSnif
      */
     protected function checkSpacingAfterOperator(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $after)
     {
-        if ($after !== 0
-            && ($after !== 'newline' || $this->ignoreNewlines === false)
-        ) {
-            $error = 'Space found after object operator';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'After');
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
-            }
-
-            return false;
-        }
-
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end checkSpacingAfterOperator()
-
-
 }//end class

@@ -133,7 +133,8 @@ class DbSearch
             unset($_REQUEST['submit_search']);
         } else {
             $this->_criteriaTables = array_intersect(
-                $_REQUEST['criteriaTables'], $this->_tables_names_only
+                $_REQUEST['criteriaTables'],
+                $this->_tables_names_only
             );
         }
 
@@ -281,7 +282,9 @@ class DbSearch
             $num_search_result_total += $res_cnt;
             // Gets the result row's HTML for a table
             $html_output .= $this->_getResultsRow(
-                $each_table, $newsearchsqls, $res_cnt
+                $each_table,
+                $newsearchsqls,
+                $res_cnt
             );
         } // end for
         $html_output .= '</table>';
@@ -327,9 +330,11 @@ class DbSearch
         $html_output .= sprintf(
             _ngettext(
                 '%1$s match in <strong>%2$s</strong>',
-                '%1$s matches in <strong>%2$s</strong>', $res_cnt
+                '%1$s matches in <strong>%2$s</strong>',
+                $res_cnt
             ),
-            $res_cnt, htmlspecialchars($each_table)
+            $res_cnt,
+            htmlspecialchars($each_table)
         );
         $html_output .= '</td>';
         // Displays browse/delete link if result count > 0
@@ -405,7 +410,11 @@ class DbSearch
         // 5th parameter set to false to avoid htmlspecialchars() escaping
         // in the label since we have some HTML in some labels
         $html_output .= Util::getRadioFields(
-            'criteriaSearchType', $choices, $this->_criteriaSearchType, true, false
+            'criteriaSearchType',
+            $choices,
+            $this->_criteriaSearchType,
+            true,
+            false
         );
         $html_output .= '</td></tr>';
         // displays table names as select options

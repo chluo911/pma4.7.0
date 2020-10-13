@@ -89,6 +89,4 @@ interface PHP_CodeSniffer_Sniff
      *                  the rest of the file.
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr);
-
-
 }//end interface

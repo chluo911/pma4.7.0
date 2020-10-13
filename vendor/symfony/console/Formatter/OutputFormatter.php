@@ -120,7 +120,11 @@ class OutputFormatter implements OutputFormatterInterface
      */
     public function hasStyle($name)
     {
-        return isset($this->styles[strtolower($name)]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,11 +138,11 @@ class OutputFormatter implements OutputFormatterInterface
      */
     public function getStyle($name)
     {
-        if (!$this->hasStyle($name)) {
-            throw new InvalidArgumentException(sprintf('Undefined style: %s', $name));
-        }
-
-        return $this->styles[strtolower($name)];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -200,7 +204,11 @@ class OutputFormatter implements OutputFormatterInterface
      */
     public function getStyleStack()
     {
-        return $this->styleStack;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

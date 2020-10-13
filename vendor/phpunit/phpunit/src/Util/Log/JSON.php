@@ -39,15 +39,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function addError(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->writeCase(
-            'error',
-            $time,
-            PHPUnit_Util_Filter::getFilteredStacktrace($e, false),
-            $e->getMessage(),
-            $test
-        );
-
-        $this->currentTestPass = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,15 +55,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
     {
-        $this->writeCase(
-            'fail',
-            $time,
-            PHPUnit_Util_Filter::getFilteredStacktrace($e, false),
-            $e->getMessage(),
-            $test
-        );
-
-        $this->currentTestPass = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -79,15 +71,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->writeCase(
-            'error',
-            $time,
-            PHPUnit_Util_Filter::getFilteredStacktrace($e, false),
-            'Incomplete Test: ' . $e->getMessage(),
-            $test
-        );
-
-        $this->currentTestPass = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -101,15 +89,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->writeCase(
-            'error',
-            $time,
-            PHPUnit_Util_Filter::getFilteredStacktrace($e, false),
-            'Risky Test: ' . $e->getMessage(),
-            $test
-        );
-
-        $this->currentTestPass = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -121,15 +105,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->writeCase(
-            'error',
-            $time,
-            PHPUnit_Util_Filter::getFilteredStacktrace($e, false),
-            'Skipped Test: ' . $e->getMessage(),
-            $test
-        );
-
-        $this->currentTestPass = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -139,16 +119,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
-        $this->currentTestSuiteName = $suite->getName();
-        $this->currentTestName      = '';
-
-        $this->write(
-            array(
-            'event' => 'suiteStart',
-            'suite' => $this->currentTestSuiteName,
-            'tests' => count($suite)
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -158,8 +133,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
-        $this->currentTestSuiteName = '';
-        $this->currentTestName      = '';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -169,16 +147,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function startTest(PHPUnit_Framework_Test $test)
     {
-        $this->currentTestName = PHPUnit_Util_Test::describe($test);
-        $this->currentTestPass = true;
-
-        $this->write(
-            array(
-            'event' => 'testStart',
-            'suite' => $this->currentTestSuiteName,
-            'test'  => $this->currentTestName
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -189,9 +162,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     public function endTest(PHPUnit_Framework_Test $test, $time)
     {
-        if ($this->currentTestPass) {
-            $this->writeCase('pass', $time, array(), '', $test);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -203,23 +178,11 @@ class PHPUnit_Util_Log_JSON extends PHPUnit_Util_Printer implements PHPUnit_Fram
      */
     protected function writeCase($status, $time, array $trace = array(), $message = '', $test = null)
     {
-        $output = '';
-        // take care of TestSuite producing error (e.g. by running into exception) as TestSuite doesn't have hasOutput
-        if ($test !== null && method_exists($test, 'hasOutput') && $test->hasOutput()) {
-            $output = $test->getActualOutput();
-        }
-        $this->write(
-            array(
-            'event'   => 'test',
-            'suite'   => $this->currentTestSuiteName,
-            'test'    => $this->currentTestName,
-            'status'  => $status,
-            'time'    => $time,
-            'trace'   => $trace,
-            'message' => PHPUnit_Util_String::convertToUtf8($message),
-            'output'  => $output,
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

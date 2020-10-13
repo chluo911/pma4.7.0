@@ -27,7 +27,11 @@ class Text_Plain_Bool2Text extends Bool2TextTransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Text";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -37,6 +41,10 @@ class Text_Plain_Bool2Text extends Bool2TextTransformationsPlugin
      */
     public static function getMIMESubtype()
     {
-        return "Plain";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

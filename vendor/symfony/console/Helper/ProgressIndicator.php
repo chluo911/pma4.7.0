@@ -100,24 +100,11 @@ class ProgressIndicator
      */
     public function advance()
     {
-        if (!$this->started) {
-            throw new LogicException('Progress indicator has not yet been started.');
-        }
-
-        if (!$this->output->isDecorated()) {
-            return;
-        }
-
-        $currentTime = $this->getCurrentTimeInMilliseconds();
-
-        if ($currentTime < $this->indicatorUpdateTime) {
-            return;
-        }
-
-        $this->indicatorUpdateTime = $currentTime + $this->indicatorChangeInterval;
-        ++$this->indicatorCurrent;
-
-        $this->display();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -127,14 +114,11 @@ class ProgressIndicator
      */
     public function finish($message)
     {
-        if (!$this->started) {
-            throw new LogicException('Progress indicator has not yet been started.');
-        }
-
-        $this->message = $message;
-        $this->display();
-        $this->output->writeln('');
-        $this->started = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -163,11 +147,11 @@ class ProgressIndicator
      */
     public static function setPlaceholderFormatterDefinition($name, $callable)
     {
-        if (!self::$formatters) {
-            self::$formatters = self::initPlaceholderFormatters();
-        }
-
-        self::$formatters[$name] = $callable;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -179,11 +163,11 @@ class ProgressIndicator
      */
     public static function getPlaceholderFormatterDefinition($name)
     {
-        if (!self::$formatters) {
-            self::$formatters = self::initPlaceholderFormatters();
-        }
-
-        return isset(self::$formatters[$name]) ? self::$formatters[$name] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function display()
@@ -239,20 +223,11 @@ class ProgressIndicator
 
     private static function initPlaceholderFormatters()
     {
-        return array(
-            'indicator' => function (ProgressIndicator $indicator) {
-                return $indicator->indicatorValues[$indicator->indicatorCurrent % count($indicator->indicatorValues)];
-            },
-            'message' => function (ProgressIndicator $indicator) {
-                return $indicator->message;
-            },
-            'elapsed' => function (ProgressIndicator $indicator) {
-                return Helper::formatTime(time() - $indicator->startTime);
-            },
-            'memory' => function () {
-                return Helper::formatMemory(memory_get_usage(true));
-            },
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private static function initFormats()

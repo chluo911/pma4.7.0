@@ -32,11 +32,19 @@ class MockCommandIterator extends ResourceIterator
 
     public function getResources()
     {
-        return $this->resources;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getIteratedCount()
     {
-        return $this->iteratedCount;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -106,9 +106,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function addDefaultChildrenIfNoneSet($children = null)
     {
-        $this->addDefaultChildren = $children;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -120,9 +122,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function requiresAtLeastOneElement()
     {
-        $this->atLeastOne = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,9 +138,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function disallowNewKeysInSubsequentConfigs()
     {
-        $this->allowNewKeys = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -221,25 +227,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function canBeEnabled()
     {
-        $this
-            ->addDefaultsIfNotSet()
-            ->treatFalseLike(array('enabled' => false))
-            ->treatTrueLike(array('enabled' => true))
-            ->treatNullLike(array('enabled' => true))
-            ->beforeNormalization()
-                ->ifArray()
-                ->then(function ($v) {
-                    $v['enabled'] = isset($v['enabled']) ? $v['enabled'] : true;
-
-                    return $v;
-                })
-            ->end()
-            ->children()
-                ->booleanNode('enabled')
-                    ->defaultFalse()
-        ;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -251,17 +243,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function canBeDisabled()
     {
-        $this
-            ->addDefaultsIfNotSet()
-            ->treatFalseLike(array('enabled' => false))
-            ->treatTrueLike(array('enabled' => true))
-            ->treatNullLike(array('enabled' => true))
-            ->children()
-                ->booleanNode('enabled')
-                    ->defaultTrue()
-        ;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -271,9 +257,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function performNoDeepMerging()
     {
-        $this->performDeepMerging = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -291,10 +279,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function ignoreExtraKeys($remove = true)
     {
-        $this->ignoreExtraKeys = true;
-        $this->removeExtraKeys = $remove;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -306,9 +295,11 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      */
     public function normalizeKeys($bool)
     {
-        $this->normalizeKeys = (bool) $bool;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

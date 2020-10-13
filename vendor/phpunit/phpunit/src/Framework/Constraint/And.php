@@ -32,18 +32,11 @@ class PHPUnit_Framework_Constraint_And extends PHPUnit_Framework_Constraint
      */
     public function setConstraints(array $constraints)
     {
-        $this->constraints = array();
-
-        foreach ($constraints as $constraint) {
-            if (!($constraint instanceof PHPUnit_Framework_Constraint)) {
-                throw new PHPUnit_Framework_Exception(
-                    'All parameters to ' . __CLASS__ .
-                    ' must be a constraint object.'
-                );
-            }
-
-            $this->constraints[] = $constraint;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -114,12 +107,10 @@ class PHPUnit_Framework_Constraint_And extends PHPUnit_Framework_Constraint
      */
     public function count()
     {
-        $count = 0;
-
-        foreach ($this->constraints as $constraint) {
-            $count += count($constraint);
-        }
-
-        return $count;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

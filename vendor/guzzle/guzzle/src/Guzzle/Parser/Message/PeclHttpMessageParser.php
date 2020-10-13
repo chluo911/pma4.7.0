@@ -30,19 +30,10 @@ class PeclHttpMessageParser extends AbstractMessageParser
 
     public function parseResponse($message)
     {
-        if (!$message) {
-            return false;
-        }
-
-        $parts = http_parse_message($message);
-
-        return array(
-            'protocol'      => 'HTTP',
-            'version'       => number_format($parts->httpVersion, 1),
-            'code'          => $parts->responseCode,
-            'reason_phrase' => $parts->responseStatus,
-            'headers'       => $parts->headers,
-            'body'          => $parts->body
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

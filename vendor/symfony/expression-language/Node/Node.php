@@ -61,9 +61,11 @@ class Node
 
     public function compile(Compiler $compiler)
     {
-        foreach ($this->nodes as $node) {
-            $node->compile($compiler);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function evaluate($functions, $values)
@@ -78,35 +80,37 @@ class Node
 
     public function toArray()
     {
-        throw new \BadMethodCallException(sprintf('Dumping a "%s" instance is not supported yet.', get_class($this)));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function dump()
     {
-        $dump = '';
-
-        foreach ($this->toArray() as $v) {
-            $dump .= is_scalar($v) ? $v : $v->dump();
-        }
-
-        return $dump;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function dumpString($value)
     {
-        return sprintf('"%s"', addcslashes($value, "\0\t\"\\"));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function isHash(array $value)
     {
-        $expectedKey = 0;
-
-        foreach ($value as $key => $val) {
-            if ($key !== $expectedKey++) {
-                return true;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

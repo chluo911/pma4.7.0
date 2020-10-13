@@ -20,19 +20,19 @@ class NotifyingBatch extends AbstractBatchDecorator
      */
     public function __construct(BatchInterface $decoratedBatch, $callable)
     {
-        if (!is_callable($callable)) {
-            throw new InvalidArgumentException('The passed argument is not callable');
-        }
-
-        $this->callable = $callable;
-        parent::__construct($decoratedBatch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function flush()
     {
-        $items = $this->decoratedBatch->flush();
-        call_user_func($this->callable, $items);
-
-        return $items;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

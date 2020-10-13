@@ -37,8 +37,14 @@ class Call
      * @param null|string $file
      * @param null|int    $line
      */
-    public function __construct($methodName, array $arguments, $returnValue,
-                                Exception $exception = null, $file, $line)
+    public function __construct(
+        $methodName,
+        array $arguments,
+        $returnValue,
+        Exception $exception = null,
+        $file,
+        $line
+    )
     {
         $this->methodName  = $methodName;
         $this->arguments   = $arguments;
@@ -78,7 +84,11 @@ class Call
      */
     public function getReturnValue()
     {
-        return $this->returnValue;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -118,10 +128,10 @@ class Call
      */
     public function getCallPlace()
     {
-        if (null === $this->file) {
-            return 'unknown';
-        }
-
-        return sprintf('%s:%d', $this->file, $this->line);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

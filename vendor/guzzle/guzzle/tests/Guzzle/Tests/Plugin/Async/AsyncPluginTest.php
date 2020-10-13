@@ -17,77 +17,55 @@ class AsyncPluginTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testSubscribesToEvents()
     {
-        $events = AsyncPlugin::getSubscribedEvents();
-        $this->assertArrayHasKey('request.before_send', $events);
-        $this->assertArrayHasKey('request.exception', $events);
-        $this->assertArrayHasKey('curl.callback.progress', $events);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEnablesProgressCallbacks()
     {
-        $p = new AsyncPlugin();
-        $request = RequestFactory::getInstance()->create('PUT', 'http://www.example.com');
-        $event = new Event(array(
-            'request' => $request
-        ));
-        $p->onBeforeSend($event);
-        $this->assertEquals(true, $request->getCurlOptions()->get('progress'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddsTimesOutAfterSending()
     {
-        $p = new AsyncPlugin();
-        $request = RequestFactory::getInstance()->create('PUT', 'http://www.example.com');
-        $handle = CurlHandle::factory($request);
-        $event = new Event(array(
-            'request'     => $request,
-            'handle'      => $handle->getHandle(),
-            'uploaded'    => 10,
-            'upload_size' => 10,
-            'downloaded'  => 0
-        ));
-        $p->onCurlProgress($event);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEnsuresRequestIsSet()
     {
-        $p = new AsyncPlugin();
-        $event = new Event(array(
-            'uploaded'    => 10,
-            'upload_size' => 10,
-            'downloaded'  => 0
-        ));
-        $p->onCurlProgress($event);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testMasksCurlExceptions()
     {
-        $p = new AsyncPlugin();
-        $request = RequestFactory::getInstance()->create('PUT', 'http://www.example.com');
-        $e = new CurlException('Error');
-        $event = new Event(array(
-            'request'   => $request,
-            'exception' => $e
-        ));
-        $p->onRequestTimeout($event);
-        $this->assertEquals(RequestInterface::STATE_COMPLETE, $request->getState());
-        $this->assertEquals(200, $request->getResponse()->getStatusCode());
-        $this->assertTrue($request->getResponse()->hasHeader('X-Guzzle-Async'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEnsuresIntegration()
     {
-        $this->getServer()->flush();
-        $this->getServer()->enqueue("HTTP/1.1 204 FOO\r\nContent-Length: 4\r\n\r\ntest");
-        $client = new Client($this->getServer()->getUrl());
-        $request = $client->post('/', null, array(
-            'foo' => 'bar'
-        ));
-        $request->getEventDispatcher()->addSubscriber(new AsyncPlugin());
-        $request->send();
-        $this->assertEquals('', $request->getResponse()->getBody(true));
-        $this->assertTrue($request->getResponse()->hasHeader('X-Guzzle-Async'));
-        $received = $this->getServer()->getReceivedRequests(true);
-        $this->assertEquals('POST', $received[0]->getMethod());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

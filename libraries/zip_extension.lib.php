@@ -58,7 +58,7 @@ function PMA_getZipContents($file, $specific_entry = null)
     }
 
     /* Return the correct contents, not just the first entry */
-    for ( ; ; ) {
+    for (; ;) {
         $entry = zip_read($zip_handle);
         if (is_resource($entry)) {
             if (preg_match($specific_entry, zip_entry_name($entry))) {

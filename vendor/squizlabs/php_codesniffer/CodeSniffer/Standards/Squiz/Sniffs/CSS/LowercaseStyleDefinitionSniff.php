@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_LowercaseStyleDefinitionSniff implements PHP_CodeSniffer_
      */
     public function register()
     {
-        return array(T_OPEN_CURLY_BRACKET);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,52 +62,10 @@ class Squiz_Sniffs_CSS_LowercaseStyleDefinitionSniff implements PHP_CodeSniffer_
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens  = $phpcsFile->getTokens();
-        $start   = ($stackPtr + 1);
-        $end     = ($tokens[$stackPtr]['bracket_closer'] - 1);
-        $inStyle = null;
-
-        for ($i = $start; $i <= $end; $i++) {
-            // Skip nested definitions as they are checked individually.
-            if ($tokens[$i]['code'] === T_OPEN_CURLY_BRACKET) {
-                $i = $tokens[$i]['bracket_closer'];
-                continue;
-            }
-
-            if ($tokens[$i]['code'] === T_STYLE) {
-                $inStyle = $tokens[$i]['content'];
-            }
-
-            if ($tokens[$i]['code'] === T_SEMICOLON) {
-                $inStyle = null;
-            }
-
-            if ($inStyle === 'progid') {
-                // Special case for IE filters.
-                continue;
-            }
-
-            if ($tokens[$i]['code'] === T_STYLE
-                || ($inStyle !== null
-                && $tokens[$i]['code'] === T_STRING)
-            ) {
-                $expected = strtolower($tokens[$i]['content']);
-                if ($expected !== $tokens[$i]['content']) {
-                    $error = 'Style definitions must be lowercase; expected %s but found %s';
-                    $data  = array(
-                              $expected,
-                              $tokens[$i]['content'],
-                             );
-
-                    $fix = $phpcsFile->addFixableError($error, $i, 'FoundUpper', $data);
-                    if ($fix === true) {
-                        $phpcsFile->fixer->replaceToken($i, $expected);
-                    }
-                }
-            }
-        }//end for
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

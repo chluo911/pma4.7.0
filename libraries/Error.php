@@ -21,7 +21,7 @@ class Error extends Message
      *
      * @var array
      */
-    static public $errortype = array (
+    public static $errortype = array(
         0                    => 'Internal error',
         E_ERROR              => 'Error',
         E_WARNING            => 'Warning',
@@ -44,7 +44,7 @@ class Error extends Message
      *
      * @var array
      */
-    static public $errorlevel = array (
+    public static $errorlevel = array(
         0                    => 'error',
         E_ERROR              => 'error',
         E_WARNING            => 'error',
@@ -211,7 +211,7 @@ class Error extends Message
     {
         try {
             $backtrace = serialize($this->getBacktrace());
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $backtrace = '';
         }
         if ($this->hash === null) {
@@ -291,9 +291,11 @@ class Error extends Message
      */
     public function getHtmlTitle()
     {
-        return htmlspecialchars(
-            mb_substr($this->getTitle(), 0, 100)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -477,7 +479,7 @@ class Error extends Message
         $dest = @realpath($path);
 
         /* Probably affected by open_basedir */
-        if ($dest === FALSE) {
+        if ($dest === false) {
             return basename($path);
         }
 

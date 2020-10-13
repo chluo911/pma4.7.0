@@ -43,9 +43,11 @@ class ArrayNode extends Node
      */
     public function compile(Compiler $compiler)
     {
-        $compiler->raw('array(');
-        $this->compileArguments($compiler);
-        $compiler->raw(')');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function evaluate($functions, $values)
@@ -60,32 +62,11 @@ class ArrayNode extends Node
 
     public function toArray()
     {
-        $value = array();
-        foreach ($this->getKeyValuePairs() as $pair) {
-            $value[$pair['key']->attributes['value']] = $pair['value'];
-        }
-
-        $array = array();
-
-        if ($this->isHash($value)) {
-            foreach ($value as $k => $v) {
-                $array[] = ', ';
-                $array[] = new ConstantNode($k);
-                $array[] = ': ';
-                $array[] = $v;
-            }
-            $array[0] = '{';
-            $array[] = '}';
-        } else {
-            foreach ($value as $v) {
-                $array[] = ', ';
-                $array[] = $v;
-            }
-            $array[0] = '[';
-            $array[] = ']';
-        }
-
-        return $array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getKeyValuePairs()
@@ -100,21 +81,10 @@ class ArrayNode extends Node
 
     protected function compileArguments(Compiler $compiler, $withKeys = true)
     {
-        $first = true;
-        foreach ($this->getKeyValuePairs() as $pair) {
-            if (!$first) {
-                $compiler->raw(', ');
-            }
-            $first = false;
-
-            if ($withKeys) {
-                $compiler
-                    ->compile($pair['key'])
-                    ->raw(' => ')
-                ;
-            }
-
-            $compiler->compile($pair['value']);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

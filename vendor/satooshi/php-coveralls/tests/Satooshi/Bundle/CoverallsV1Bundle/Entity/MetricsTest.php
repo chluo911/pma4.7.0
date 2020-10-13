@@ -11,10 +11,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->coverage = array_fill(0, 5, null);
-        $this->coverage[1] = 1;
-        $this->coverage[3] = 1;
-        $this->coverage[4] = 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // hasStatements()
@@ -25,10 +26,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveStatementsOnConstructionWithoutCoverage()
     {
-        $object = new Metrics();
-
-        $this->assertFalse($object->hasStatements());
-        $this->assertSame(0, $object->getStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -36,10 +38,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveStatementsOnConstructionWithCoverage()
     {
-        $object = new Metrics($this->coverage);
-
-        $this->assertTrue($object->hasStatements());
-        $this->assertSame(3, $object->getStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getCoveredStatements()
@@ -49,9 +52,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveCoveredStatementsOnConstructionWithoutCoverage()
     {
-        $object = new Metrics();
-
-        $this->assertSame(0, $object->getCoveredStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,9 +64,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveCoveredStatementsOnConstructionWithCoverage()
     {
-        $object = new Metrics($this->coverage);
-
-        $this->assertSame(2, $object->getCoveredStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getLineCoverage()
@@ -71,9 +78,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveLineCoverageOnConstructionWithoutCoverage()
     {
-        $object = new Metrics();
-
-        $this->assertSame(0, $object->getLineCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,9 +90,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveLineCoverageOnConstructionWithCoverage()
     {
-        $object = new Metrics($this->coverage);
-
-        $this->assertSame(200 / 3, $object->getLineCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // merge()
@@ -93,13 +104,11 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldMergeThatWithEmptyMetrics()
     {
-        $object = new Metrics();
-        $that   = new Metrics($this->coverage);
-        $object->merge($that);
-
-        $this->assertSame(3, $object->getStatements());
-        $this->assertSame(2, $object->getCoveredStatements());
-        $this->assertSame(200 / 3, $object->getLineCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,12 +116,10 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldMergeThat()
     {
-        $object = new Metrics($this->coverage);
-        $that   = new Metrics($this->coverage);
-        $object->merge($that);
-
-        $this->assertSame(6, $object->getStatements());
-        $this->assertSame(4, $object->getCoveredStatements());
-        $this->assertSame(400 / 6, $object->getLineCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

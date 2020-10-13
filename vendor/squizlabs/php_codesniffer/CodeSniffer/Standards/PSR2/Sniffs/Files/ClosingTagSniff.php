@@ -36,8 +36,11 @@ class PSR2_Sniffs_Files_ClosingTagSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -52,49 +55,10 @@ class PSR2_Sniffs_Files_ClosingTagSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // Make sure this file only contains PHP code.
-        for ($i = 0; $i < $phpcsFile->numTokens; $i++) {
-            if ($tokens[$i]['code'] === T_INLINE_HTML
-                && trim($tokens[$i]['content']) !== ''
-            ) {
-                return $phpcsFile->numTokens;
-            }
-        }
-
-        // Find the last non-empty token.
-        for ($last = ($phpcsFile->numTokens - 1); $last > 0; $last--) {
-            if (trim($tokens[$last]['content']) !== '') {
-                break;
-            }
-        }
-
-        if ($tokens[$last]['code'] === T_CLOSE_TAG) {
-            $error = 'A closing tag is not permitted at the end of a PHP file';
-            $fix   = $phpcsFile->addFixableError($error, $last, 'NotAllowed');
-            if ($fix === true) {
-                $phpcsFile->fixer->beginChangeset();
-                $phpcsFile->fixer->replaceToken($last, $phpcsFile->eolChar);
-                $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($last - 1), null, true);
-                if ($tokens[$prev]['code'] !== T_SEMICOLON
-                    && $tokens[$prev]['code'] !== T_CLOSE_CURLY_BRACKET
-                ) {
-                    $phpcsFile->fixer->addContent($prev, ';');
-                }
-
-                $phpcsFile->fixer->endChangeset();
-            }
-
-            $phpcsFile->recordMetric($stackPtr, 'PHP closing tag at end of PHP-only file', 'yes');
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'PHP closing tag at end of PHP-only file', 'no');
-        }
-
-        // Ignore the rest of the file.
-        return $phpcsFile->numTokens;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

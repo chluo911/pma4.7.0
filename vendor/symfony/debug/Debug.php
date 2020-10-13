@@ -33,31 +33,10 @@ class Debug
      */
     public static function enable($errorReportingLevel = E_ALL, $displayErrors = true)
     {
-        if (static::$enabled) {
-            return;
-        }
-
-        static::$enabled = true;
-
-        if (null !== $errorReportingLevel) {
-            error_reporting($errorReportingLevel);
-        } else {
-            error_reporting(E_ALL);
-        }
-
-        if ('cli' !== PHP_SAPI) {
-            ini_set('display_errors', 0);
-            ExceptionHandler::register();
-        } elseif ($displayErrors && (!ini_get('log_errors') || ini_get('error_log'))) {
-            // CLI - display errors only if they're not already logged to STDERR
-            ini_set('display_errors', 1);
-        }
-        if ($displayErrors) {
-            ErrorHandler::register(new ErrorHandler(new BufferingLogger()));
-        } else {
-            ErrorHandler::register()->throwAt(0, true);
-        }
-
-        DebugClassLoader::enable();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

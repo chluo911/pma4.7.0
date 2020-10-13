@@ -3,11 +3,19 @@ class IsolationTest extends PHPUnit_Framework_TestCase
 {
     public function testIsInIsolationReturnsFalse()
     {
-        $this->assertFalse($this->isInIsolation());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsInIsolationReturnsTrue()
     {
-        $this->assertTrue($this->isInIsolation());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

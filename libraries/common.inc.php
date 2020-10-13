@@ -133,7 +133,7 @@ PMA_cleanupPathInfo();
  * we empty the global space (but avoid unsetting $variables_list
  * and $key in the foreach (), we still need them!)
  */
-$variables_whitelist = array (
+$variables_whitelist = array(
     'GLOBALS',
     '_SERVER',
     '_GET',
@@ -813,7 +813,6 @@ if (! defined('PMA_MINIMUM_COMMON')) {
             unset($_SESSION['tmpval']['navi_limit_offset']);
         }
         $_SESSION['tmpval']['previous_server'] = $GLOBALS['server'];
-
     } else { // end server connecting
         // No need to check for 'PMA_BYPASS_GET_INSTANCE' since this execution path
         // applies only to initial login

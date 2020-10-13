@@ -42,7 +42,8 @@ class TextDescriptor extends Descriptor
         $totalWidth = isset($options['total_width']) ? $options['total_width'] : Helper::strlen($argument->getName());
         $spacingWidth = $totalWidth - strlen($argument->getName());
 
-        $this->writeText(sprintf('  <info>%s</info>  %s%s%s',
+        $this->writeText(sprintf(
+            '  <info>%s</info>  %s%s%s',
             $argument->getName(),
             str_repeat(' ', $spacingWidth),
             // + 4 = 2 spaces before <info>, 2 spaces after </info>
@@ -72,14 +73,16 @@ class TextDescriptor extends Descriptor
         }
 
         $totalWidth = isset($options['total_width']) ? $options['total_width'] : $this->calculateTotalWidthForOptions(array($option));
-        $synopsis = sprintf('%s%s',
+        $synopsis = sprintf(
+            '%s%s',
             $option->getShortcut() ? sprintf('-%s, ', $option->getShortcut()) : '    ',
             sprintf('--%s%s', $option->getName(), $value)
         );
 
         $spacingWidth = $totalWidth - Helper::strlen($synopsis);
 
-        $this->writeText(sprintf('  <info>%s</info>  %s%s%s%s',
+        $this->writeText(sprintf(
+            '  <info>%s</info>  %s%s%s%s',
             $synopsis,
             str_repeat(' ', $spacingWidth),
             // + 4 = 2 spaces before <info>, 2 spaces after </info>

@@ -202,7 +202,8 @@ class ExportSql extends ExportPlugin
 
             // what to dump (structure/data/both)
             $subgroup = new OptionsPropertySubgroup(
-                "dump_table", __("Dump table")
+                "dump_table",
+                __("Dump table")
             );
             $leaf = new RadioPropertyItem('structure_or_data');
             $leaf->setValues(
@@ -221,7 +222,8 @@ class ExportSql extends ExportPlugin
             // structure options main group
             if (!$hide_structure) {
                 $structureOptions = new OptionsPropertyMainGroup(
-                    "structure", __('Object creation options')
+                    "structure",
+                    __('Object creation options')
                 );
                 $structureOptions->setForce('data');
 
@@ -339,7 +341,8 @@ class ExportSql extends ExportPlugin
 
             // begin Data options
             $dataOptions = new OptionsPropertyMainGroup(
-                "data", __('Data creation options')
+                "data",
+                __('Data creation options')
             );
             $dataOptions->setForce('structure');
             $leaf = new BoolPropertyItem(
@@ -481,7 +484,12 @@ class ExportSql extends ExportPlugin
      * @return string SQL query
      */
     protected function _exportRoutineSQL(
-        $db, $aliases, $type, $name, $routines, $delimiter
+        $db,
+        $aliases,
+        $type,
+        $name,
+        $routines,
+        $delimiter
     ) {
         global $crlf;
 
@@ -634,36 +642,11 @@ class ExportSql extends ExportPlugin
      */
     public function exportFooter()
     {
-        global $crlf;
-
-        $foot = '';
-
-        if (isset($GLOBALS['sql_disable_fk'])) {
-            $foot .= 'SET FOREIGN_KEY_CHECKS=1;' . $crlf;
-        }
-
-        if (isset($GLOBALS['sql_use_transaction'])) {
-            $foot .= 'COMMIT;' . $crlf;
-        }
-
-        // restore connection settings
-        if ($this->_sent_charset) {
-            $foot .= $crlf
-                . '/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;'
-                . $crlf
-                . '/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;'
-                . $crlf
-                . '/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;'
-                . $crlf;
-            $this->_sent_charset = false;
-        }
-
-        /* Restore timezone */
-        if (isset($GLOBALS['sql_utc_time']) && $GLOBALS['sql_utc_time']) {
-            $GLOBALS['dbi']->query('SET time_zone = "' . $GLOBALS['old_tz'] . '"');
-        }
-
-        return PMA_exportOutputHandler($foot);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -674,103 +657,11 @@ class ExportSql extends ExportPlugin
      */
     public function exportHeader()
     {
-        global $crlf, $cfg;
-
-        if (isset($GLOBALS['sql_compatibility'])) {
-            $tmp_compat = $GLOBALS['sql_compatibility'];
-            if ($tmp_compat == 'NONE') {
-                $tmp_compat = '';
-            }
-            $GLOBALS['dbi']->tryQuery('SET SQL_MODE="' . $tmp_compat . '"');
-            unset($tmp_compat);
-        }
-        $head = $this->_exportComment('phpMyAdmin SQL Dump')
-            . $this->_exportComment('version ' . PMA_VERSION)
-            . $this->_exportComment('https://www.phpmyadmin.net/')
-            . $this->_exportComment();
-        $host_string = __('Host:') . ' ' . $cfg['Server']['host'];
-        if (!empty($cfg['Server']['port'])) {
-            $host_string .= ':' . $cfg['Server']['port'];
-        }
-        $head .= $this->_exportComment($host_string);
-        $head .= $this->_exportComment(
-            __('Generation Time:') . ' '
-            . Util::localisedDate()
-        )
-        . $this->_exportComment(
-            __('Server version:') . ' ' . PMA_MYSQL_STR_VERSION
-        )
-        . $this->_exportComment(__('PHP Version:') . ' ' . phpversion())
-        . $this->_possibleCRLF();
-
-        if (isset($GLOBALS['sql_header_comment'])
-            && !empty($GLOBALS['sql_header_comment'])
-        ) {
-            // '\n' is not a newline (like "\n" would be), it's the characters
-            // backslash and n, as explained on the export interface
-            $lines = explode('\n', $GLOBALS['sql_header_comment']);
-            $head .= $this->_exportComment();
-            foreach ($lines as $one_line) {
-                $head .= $this->_exportComment($one_line);
-            }
-            $head .= $this->_exportComment();
-        }
-
-        if (isset($GLOBALS['sql_disable_fk'])) {
-            $head .= 'SET FOREIGN_KEY_CHECKS=0;' . $crlf;
-        }
-
-        // We want exported AUTO_INCREMENT columns to have still same value,
-        // do this only for recent MySQL exports
-        if ((! isset($GLOBALS['sql_compatibility'])
-            || $GLOBALS['sql_compatibility'] == 'NONE')
-        ) {
-            $head .= 'SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";' . $crlf;
-        }
-
-        if (isset($GLOBALS['sql_use_transaction'])) {
-            $head .= 'SET AUTOCOMMIT = 0;' . $crlf
-                . 'START TRANSACTION;' . $crlf;
-        }
-
-        /* Change timezone if we should export timestamps in UTC */
-        if (isset($GLOBALS['sql_utc_time']) && $GLOBALS['sql_utc_time']) {
-            $head .= 'SET time_zone = "+00:00";' . $crlf;
-            $GLOBALS['old_tz'] = $GLOBALS['dbi']
-                ->fetchValue('SELECT @@session.time_zone');
-            $GLOBALS['dbi']->query('SET time_zone = "+00:00"');
-        }
-
-        $head .= $this->_possibleCRLF();
-
-        if (! empty($GLOBALS['asfile'])) {
-            // we are saving as file, therefore we provide charset information
-            // so that a utility like the mysql client can interpret
-            // the file correctly
-            if (isset($GLOBALS['charset'])
-                && isset(Charsets::$mysql_charset_map[$GLOBALS['charset']])
-            ) {
-                // we got a charset from the export dialog
-                $set_names = Charsets::$mysql_charset_map[$GLOBALS['charset']];
-            } else {
-                // by default we use the connection charset
-                $set_names = Charsets::$mysql_charset_map['utf-8'];
-            }
-            if ($set_names == 'utf8' && PMA_MYSQL_INT_VERSION > 50503) {
-                $set_names = 'utf8mb4';
-            }
-            $head .= $crlf
-                . '/*!40101 SET @OLD_CHARACTER_SET_CLIENT='
-                . '@@CHARACTER_SET_CLIENT */;' . $crlf
-                . '/*!40101 SET @OLD_CHARACTER_SET_RESULTS='
-                . '@@CHARACTER_SET_RESULTS */;' . $crlf
-                . '/*!40101 SET @OLD_COLLATION_CONNECTION='
-                . '@@COLLATION_CONNECTION */;' . $crlf
-                . '/*!40101 SET NAMES ' . $set_names . ' */;' . $crlf . $crlf;
-            $this->_sent_charset = true;
-        }
-
-        return PMA_exportOutputHandler($head);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1097,7 +988,6 @@ class ExportSql extends ExportPlugin
 
                 // special case, designer pages and their coordinates
                 if ($type == 'pdf_pages') {
-
                     $sql_query = "SELECT `page_nr`, `page_descr` FROM "
                         . Util::backquote($cfgRelation['db'])
                         . "." . Util::backquote($cfgRelation[$type])
@@ -1566,7 +1456,6 @@ class ExportSql extends ExportPlugin
             // Views have no constraints, indexes, etc. They do not require any
             // analysis.
             if (!$view) {
-
                 if (empty($sql_backquotes)) {
                     // Option "Enclose table and column names with backquotes"
                     // was checked.
@@ -1645,7 +1534,6 @@ class ExportSql extends ExportPlugin
                 // Also, AUTO_INCREMENT attribute is removed.
                 /** @var CreateDefinition $field */
                 foreach ($statement->fields as $key => $field) {
-
                     if ($field->isConstraint) {
                         // Creating the parts that add constraints.
                         $constraints[] = $field::build($field);
@@ -1659,7 +1547,9 @@ class ExportSql extends ExportPlugin
                         } else {
                             if (empty($GLOBALS['sql_if_not_exists'])) {
                                 $indexes[] = str_replace(
-                                    'COMMENT=\'', 'COMMENT \'', $field::build($field)
+                                    'COMMENT=\'',
+                                    'COMMENT \'',
+                                    $field::build($field)
                                 );
                                 unset($statement->fields[$key]);
                             }
@@ -1681,7 +1571,6 @@ class ExportSql extends ExportPlugin
                         if ($field->options->has('AUTO_INCREMENT')
                             && empty($GLOBALS['sql_if_not_exists'])
                         ) {
-
                             $auto_increment[] = $field::build($field);
                             $field->options->remove('AUTO_INCREMENT');
                         }
@@ -2117,8 +2006,8 @@ class ExportSql extends ExportPlugin
                 __('Stand-in structure for view') . ' ' . $formatted_table_name
             )
                 . $this->_exportComment(
-                __('(See below for the actual view)')
-            )
+                    __('(See below for the actual view)')
+                )
                 . $this->_exportComment();
             // export a stand-in definition to resolve view dependencies
             $dump .= $this->getTableDefStandIn($db, $table, $crlf, $aliases);
@@ -2426,7 +2315,6 @@ class ExportSql extends ExportPlugin
             if (isset($GLOBALS['sql_type'])
                 && $GLOBALS['sql_type'] == 'UPDATE'
             ) {
-
                 $insert_line = $schema_insert;
                 for ($i = 0; $i < $fields_cnt; $i++) {
                     if (0 == $i) {
@@ -2477,7 +2365,7 @@ class ExportSql extends ExportPlugin
                         }
                     }
                     $query_size += mb_strlen($insert_line);
-                    // Other inserts case
+                // Other inserts case
                 } else {
                     $insert_line = $schema_insert
                         . '(' . implode(', ', $values) . ')';

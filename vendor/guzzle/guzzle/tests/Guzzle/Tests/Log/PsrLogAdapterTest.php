@@ -14,12 +14,10 @@ class PsrLogAdapterTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testLogsMessagesToAdaptedObject()
     {
-        $log = new Logger('test');
-        $handler = new TestHandler();
-        $log->pushHandler($handler);
-        $adapter = new PsrLogAdapter($log);
-        $adapter->log('test!', LOG_INFO);
-        $this->assertTrue($handler->hasInfoRecords());
-        $this->assertSame($log, $adapter->getLogObject());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

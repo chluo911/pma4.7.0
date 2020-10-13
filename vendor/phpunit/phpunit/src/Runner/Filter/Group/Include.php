@@ -15,6 +15,10 @@ class PHPUnit_Runner_Filter_Group_Include extends PHPUnit_Runner_Filter_GroupFil
 {
     protected function doAccept($hash)
     {
-        return in_array($hash, $this->groupTests);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -47,4 +47,3 @@ class NodeView extends NodeDatabaseChild
         return 'view';
     }
 }
-

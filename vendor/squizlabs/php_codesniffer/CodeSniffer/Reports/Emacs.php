@@ -53,27 +53,11 @@ class PHP_CodeSniffer_Reports_Emacs implements PHP_CodeSniffer_Report
         $showSources=false,
         $width=80
     ) {
-        if ($report['errors'] === 0 && $report['warnings'] === 0) {
-            // Nothing to print.
-            return false;
-        }
-
-        foreach ($report['messages'] as $line => $lineErrors) {
-            foreach ($lineErrors as $column => $colErrors) {
-                foreach ($colErrors as $error) {
-                    $message = $error['message'];
-                    if ($showSources === true) {
-                        $message .= ' ('.$error['source'].')';
-                    }
-
-                    $type = strtolower($error['type']);
-                    echo $report['filename'].':'.$line.':'.$column.': '.$type.' - '.$message.PHP_EOL;
-                }
-            }
-        }
-
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generateFileReport()
 
 
@@ -102,9 +86,10 @@ class PHP_CodeSniffer_Reports_Emacs implements PHP_CodeSniffer_Report
         $width=80,
         $toScreen=true
     ) {
-        echo $cachedData;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generate()
-
-
 }//end class

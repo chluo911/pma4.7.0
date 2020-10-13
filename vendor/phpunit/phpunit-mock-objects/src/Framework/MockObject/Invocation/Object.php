@@ -29,7 +29,10 @@ class PHPUnit_Framework_MockObject_Invocation_Object extends PHPUnit_Framework_M
      */
     public function __construct($className, $methodName, array $parameters, $object, $cloneObjects = false)
     {
-        parent::__construct($className, $methodName, $parameters, $cloneObjects);
-        $this->object = $object;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

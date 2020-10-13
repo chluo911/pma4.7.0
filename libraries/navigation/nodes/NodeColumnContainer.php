@@ -23,33 +23,10 @@ class NodeColumnContainer extends Node
      */
     public function __construct()
     {
-        parent::__construct(__('Columns'), Node::CONTAINER);
-        $this->icon = Util::getImage('pause.png', __('Columns'));
-        $this->links = array(
-            'text' => 'tbl_structure.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s&amp;table=%1$s',
-            'icon' => 'tbl_structure.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s&amp;table=%1$s',
-        );
-        $this->real_name = 'columns';
-
-        $new_label = _pgettext('Create new column', 'New');
-        $new = NodeFactory::getInstance(
-            'Node',
-            $new_label
-        );
-        $new->isNew = true;
-        $new->icon = Util::getImage('b_column_add.png', $new_label);
-        $new->links = array(
-            'text' => 'tbl_addfield.php?server=' . $GLOBALS['server']
-                . '&amp;db=%3$s&amp;table=%2$s'
-                . '&amp;field_where=last&after_field=',
-            'icon' => 'tbl_addfield.php?server=' . $GLOBALS['server']
-                . '&amp;db=%3$s&amp;table=%2$s'
-                . '&amp;field_where=last&after_field=',
-        );
-        $new->classes = 'new_column italics';
-        $this->addChild($new);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

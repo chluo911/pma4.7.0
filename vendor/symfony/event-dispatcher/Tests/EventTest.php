@@ -36,8 +36,11 @@ class EventTest extends TestCase
      */
     protected function setUp()
     {
-        $this->event = new Event();
-        $this->dispatcher = new EventDispatcher();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,19 +49,29 @@ class EventTest extends TestCase
      */
     protected function tearDown()
     {
-        $this->event = null;
-        $this->dispatcher = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsPropagationStopped()
     {
-        $this->assertFalse($this->event->isPropagationStopped());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStopPropagationAndIsPropagationStopped()
     {
-        $this->event->stopPropagation();
-        $this->assertTrue($this->event->isPropagationStopped());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,8 +79,11 @@ class EventTest extends TestCase
      */
     public function testLegacySetDispatcher()
     {
-        $this->event->setDispatcher($this->dispatcher);
-        $this->assertSame($this->dispatcher, $this->event->getDispatcher());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,7 +91,11 @@ class EventTest extends TestCase
      */
     public function testLegacyGetDispatcher()
     {
-        $this->assertNull($this->event->getDispatcher());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -83,7 +103,11 @@ class EventTest extends TestCase
      */
     public function testLegacyGetName()
     {
-        $this->assertNull($this->event->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,7 +115,10 @@ class EventTest extends TestCase
      */
     public function testLegacySetName()
     {
-        $this->event->setName('foo');
-        $this->assertEquals('foo', $this->event->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

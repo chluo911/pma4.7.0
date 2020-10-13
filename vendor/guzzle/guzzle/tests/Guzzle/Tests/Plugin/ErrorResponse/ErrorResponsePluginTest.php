@@ -17,45 +17,20 @@ class ErrorResponsePluginTest extends \Guzzle\Tests\GuzzleTestCase
 
     public static function tearDownAfterClass()
     {
-        self::getServer()->flush();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setUp()
     {
-        $mockError = 'Guzzle\Tests\Mock\ErrorResponseMock';
-        $description = ServiceDescription::factory(array(
-            'operations' => array(
-                'works' => array(
-                    'httpMethod' => 'GET',
-                    'errorResponses' => array(
-                        array('code' => 500, 'class' => $mockError),
-                        array('code' => 503, 'reason' => 'foo', 'class' => $mockError),
-                        array('code' => 200, 'reason' => 'Error!', 'class' => $mockError)
-                    )
-                ),
-                'bad_class' => array(
-                    'httpMethod' => 'GET',
-                    'errorResponses' => array(
-                        array('code' => 500, 'class' => 'Does\\Not\\Exist')
-                    )
-                ),
-                'does_not_implement' => array(
-                    'httpMethod' => 'GET',
-                    'errorResponses' => array(
-                        array('code' => 500, 'class' => __CLASS__)
-                    )
-                ),
-                'no_errors' => array('httpMethod' => 'GET'),
-                'no_class' => array(
-                    'httpMethod' => 'GET',
-                    'errorResponses' => array(
-                        array('code' => 500)
-                    )
-                ),
-            )
-        ));
-        $this->client = new Client($this->getServer()->getUrl());
-        $this->client->setDescription($description);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,16 +38,20 @@ class ErrorResponsePluginTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testSkipsWhenErrorResponsesIsNotSet()
     {
-        $this->getServer()->enqueue("HTTP/1.1 500 Foo\r\nContent-Length: 0\r\n\r\n");
-        $this->client->addSubscriber(new ErrorResponsePlugin());
-        $this->client->getCommand('no_errors')->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsWhenErrorResponsesIsNotSetAndAllowsSuccess()
     {
-        $this->getServer()->enqueue("HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n");
-        $this->client->addSubscriber(new ErrorResponsePlugin());
-        $this->client->getCommand('no_errors')->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,9 +60,11 @@ class ErrorResponsePluginTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresErrorResponseExists()
     {
-        $this->getServer()->enqueue("HTTP/1.1 500 Foo\r\nContent-Length: 0\r\n\r\n");
-        $this->client->addSubscriber(new ErrorResponsePlugin());
-        $this->client->getCommand('bad_class')->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -92,23 +73,20 @@ class ErrorResponsePluginTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresErrorResponseImplementsInterface()
     {
-        $this->getServer()->enqueue("HTTP/1.1 500 Foo\r\nContent-Length: 0\r\n\r\n");
-        $this->client->addSubscriber(new ErrorResponsePlugin());
-        $this->client->getCommand('does_not_implement')->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testThrowsSpecificErrorResponseOnMatch()
     {
-        try {
-            $this->getServer()->enqueue("HTTP/1.1 500 Foo\r\nContent-Length: 0\r\n\r\n");
-            $this->client->addSubscriber(new ErrorResponsePlugin());
-            $command = $this->client->getCommand('works');
-            $command->execute();
-            $this->fail('Exception not thrown');
-        } catch (ErrorResponseMock $e) {
-            $this->assertSame($command, $e->command);
-            $this->assertEquals(500, $e->response->getStatusCode());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -116,22 +94,28 @@ class ErrorResponsePluginTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testThrowsWhenCodeAndPhraseMatch()
     {
-        $this->getServer()->enqueue("HTTP/1.1 200 Error!\r\nContent-Length: 0\r\n\r\n");
-        $this->client->addSubscriber(new ErrorResponsePlugin());
-        $this->client->getCommand('works')->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsWhenReasonDoesNotMatch()
     {
-        $this->getServer()->enqueue("HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n");
-        $this->client->addSubscriber(new ErrorResponsePlugin());
-        $this->client->getCommand('works')->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsWhenNoClassIsSet()
     {
-        $this->getServer()->enqueue("HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n");
-        $this->client->addSubscriber(new ErrorResponsePlugin());
-        $this->client->getCommand('no_class')->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

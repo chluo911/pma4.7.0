@@ -31,8 +31,11 @@ final class Throws extends BaseTag implements Factory\StaticMethod
 
     public function __construct(Type $type, Description $description = null)
     {
-        $this->type        = $type;
-        $this->description = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -44,15 +47,11 @@ final class Throws extends BaseTag implements Factory\StaticMethod
         DescriptionFactory $descriptionFactory = null,
         TypeContext $context = null
     ) {
-        Assert::string($body);
-        Assert::allNotNull([$typeResolver, $descriptionFactory]);
-
-        $parts = preg_split('/\s+/Su', $body, 2);
-
-        $type        = $typeResolver->resolve(isset($parts[0]) ? $parts[0] : '', $context);
-        $description = $descriptionFactory->create(isset($parts[1]) ? $parts[1] : '', $context);
-
-        return new static($type, $description);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,7 +61,11 @@ final class Throws extends BaseTag implements Factory\StaticMethod
      */
     public function getType()
     {
-        return $this->type;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function __toString()

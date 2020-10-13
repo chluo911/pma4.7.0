@@ -45,8 +45,11 @@ class Generic_Sniffs_Debug_JSHintSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -62,38 +65,10 @@ class Generic_Sniffs_Debug_JSHintSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $fileName = $phpcsFile->getFilename();
-
-        $rhinoPath  = PHP_CodeSniffer::getConfigData('rhino_path');
-        $jshintPath = PHP_CodeSniffer::getConfigData('jshint_path');
-        if ($rhinoPath === null || $jshintPath === null) {
-            return;
-        }
-
-        $rhinoPath  = escapeshellcmd($rhinoPath);
-        $jshintPath = escapeshellcmd($jshintPath);
-
-        $cmd = "$rhinoPath \"$jshintPath\" ".escapeshellarg($fileName);
-        $msg = exec($cmd, $output, $retval);
-
-        if (is_array($output) === true) {
-            foreach ($output as $finding) {
-                $matches    = array();
-                $numMatches = preg_match('/^(.+)\(.+:([0-9]+).*:[0-9]+\)$/', $finding, $matches);
-                if ($numMatches === 0) {
-                    continue;
-                }
-
-                $line    = (int) $matches[2];
-                $message = 'jshint says: '.trim($matches[1]);
-                $phpcsFile->addWarningOnLine($message, $line, 'ExternalTool');
-            }
-        }
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

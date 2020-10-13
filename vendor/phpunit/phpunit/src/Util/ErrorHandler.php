@@ -32,7 +32,11 @@ class PHPUnit_Util_ErrorHandler
      */
     public static function getErrorStack()
     {
-        return self::$errorStack;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,44 +49,11 @@ class PHPUnit_Util_ErrorHandler
      */
     public static function handleError($errno, $errstr, $errfile, $errline)
     {
-        if (!($errno & error_reporting())) {
-            return false;
-        }
-
-        self::$errorStack[] = array($errno, $errstr, $errfile, $errline);
-
-        $trace = debug_backtrace(false);
-        array_shift($trace);
-
-        foreach ($trace as $frame) {
-            if ($frame['function'] == '__toString') {
-                return false;
-            }
-        }
-
-        if ($errno == E_NOTICE || $errno == E_USER_NOTICE || $errno == E_STRICT) {
-            if (PHPUnit_Framework_Error_Notice::$enabled !== true) {
-                return false;
-            }
-
-            $exception = 'PHPUnit_Framework_Error_Notice';
-        } elseif ($errno == E_WARNING || $errno == E_USER_WARNING) {
-            if (PHPUnit_Framework_Error_Warning::$enabled !== true) {
-                return false;
-            }
-
-            $exception = 'PHPUnit_Framework_Error_Warning';
-        } elseif ($errno == E_DEPRECATED || $errno == E_USER_DEPRECATED) {
-            if (PHPUnit_Framework_Error_Deprecated::$enabled !== true) {
-                return false;
-            }
-
-            $exception = 'PHPUnit_Framework_Error_Deprecated';
-        } else {
-            $exception = 'PHPUnit_Framework_Error';
-        }
-
-        throw new $exception($errstr, $errno, $errfile, $errline);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

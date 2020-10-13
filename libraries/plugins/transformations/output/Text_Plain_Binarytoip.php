@@ -25,10 +25,11 @@ class Text_Plain_Binarytoip extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Converts an Internet network address stored as a binary string'
-            . ' into a string in Internet standard (IPv4/IPv6) format.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,7 +76,11 @@ class Text_Plain_Binarytoip extends TransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Text";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

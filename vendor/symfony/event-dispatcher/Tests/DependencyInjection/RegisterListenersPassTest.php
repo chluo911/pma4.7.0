@@ -25,71 +25,20 @@ class RegisterListenersPassTest extends TestCase
      */
     public function testEventSubscriberWithoutInterface()
     {
-        // one service, not implementing any interface
-        $services = array(
-            'my_event_subscriber' => array(0 => array()),
-        );
-
-        $definition = $this->getMockBuilder('Symfony\Component\DependencyInjection\Definition')->getMock();
-        $definition->expects($this->atLeastOnce())
-            ->method('isPublic')
-            ->will($this->returnValue(true));
-        $definition->expects($this->atLeastOnce())
-            ->method('getClass')
-            ->will($this->returnValue('stdClass'));
-
-        $builder = $this->getMockBuilder('Symfony\Component\DependencyInjection\ContainerBuilder')->setMethods(array('hasDefinition', 'findTaggedServiceIds', 'getDefinition'))->getMock();
-        $builder->expects($this->any())
-            ->method('hasDefinition')
-            ->will($this->returnValue(true));
-
-        // We don't test kernel.event_listener here
-        $builder->expects($this->atLeastOnce())
-            ->method('findTaggedServiceIds')
-            ->will($this->onConsecutiveCalls(array(), $services));
-
-        $builder->expects($this->atLeastOnce())
-            ->method('getDefinition')
-            ->will($this->returnValue($definition));
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($builder);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testValidEventSubscriber()
     {
-        $services = array(
-            'my_event_subscriber' => array(0 => array()),
-        );
-
-        $definition = $this->getMockBuilder('Symfony\Component\DependencyInjection\Definition')->getMock();
-        $definition->expects($this->atLeastOnce())
-            ->method('isPublic')
-            ->will($this->returnValue(true));
-        $definition->expects($this->atLeastOnce())
-            ->method('getClass')
-            ->will($this->returnValue('Symfony\Component\EventDispatcher\Tests\DependencyInjection\SubscriberService'));
-
-        $builder = $this->getMockBuilder('Symfony\Component\DependencyInjection\ContainerBuilder')->setMethods(array('hasDefinition', 'findTaggedServiceIds', 'getDefinition', 'findDefinition'))->getMock();
-        $builder->expects($this->any())
-            ->method('hasDefinition')
-            ->will($this->returnValue(true));
-
-        // We don't test kernel.event_listener here
-        $builder->expects($this->atLeastOnce())
-            ->method('findTaggedServiceIds')
-            ->will($this->onConsecutiveCalls(array(), $services));
-
-        $builder->expects($this->atLeastOnce())
-            ->method('getDefinition')
-            ->will($this->returnValue($definition));
-
-        $builder->expects($this->atLeastOnce())
-            ->method('findDefinition')
-            ->will($this->returnValue($definition));
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($builder);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,12 +47,11 @@ class RegisterListenersPassTest extends TestCase
      */
     public function testPrivateEventListener()
     {
-        $container = new ContainerBuilder();
-        $container->register('foo', 'stdClass')->setPublic(false)->addTag('kernel.event_listener', array());
-        $container->register('event_dispatcher', 'stdClass');
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($container);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -112,12 +60,11 @@ class RegisterListenersPassTest extends TestCase
      */
     public function testPrivateEventSubscriber()
     {
-        $container = new ContainerBuilder();
-        $container->register('foo', 'stdClass')->setPublic(false)->addTag('kernel.event_subscriber', array());
-        $container->register('event_dispatcher', 'stdClass');
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($container);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -126,12 +73,11 @@ class RegisterListenersPassTest extends TestCase
      */
     public function testAbstractEventListener()
     {
-        $container = new ContainerBuilder();
-        $container->register('foo', 'stdClass')->setAbstract(true)->addTag('kernel.event_listener', array());
-        $container->register('event_dispatcher', 'stdClass');
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($container);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -140,36 +86,20 @@ class RegisterListenersPassTest extends TestCase
      */
     public function testAbstractEventSubscriber()
     {
-        $container = new ContainerBuilder();
-        $container->register('foo', 'stdClass')->setAbstract(true)->addTag('kernel.event_subscriber', array());
-        $container->register('event_dispatcher', 'stdClass');
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($container);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEventSubscriberResolvableClassName()
     {
-        $container = new ContainerBuilder();
-
-        $container->setParameter('subscriber.class', 'Symfony\Component\EventDispatcher\Tests\DependencyInjection\SubscriberService');
-        $container->register('foo', '%subscriber.class%')->addTag('kernel.event_subscriber', array());
-        $container->register('event_dispatcher', 'stdClass');
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($container);
-
-        $definition = $container->getDefinition('event_dispatcher');
-        $expected_calls = array(
-            array(
-                'addSubscriberService',
-                array(
-                    'foo',
-                    'Symfony\Component\EventDispatcher\Tests\DependencyInjection\SubscriberService',
-                ),
-            ),
-        );
-        $this->assertSame($expected_calls, $definition->getMethodCalls());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -178,12 +108,11 @@ class RegisterListenersPassTest extends TestCase
      */
     public function testEventSubscriberUnresolvableClassName()
     {
-        $container = new ContainerBuilder();
-        $container->register('foo', '%subscriber.class%')->addTag('kernel.event_subscriber', array());
-        $container->register('event_dispatcher', 'stdClass');
-
-        $registerListenersPass = new RegisterListenersPass();
-        $registerListenersPass->process($container);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 

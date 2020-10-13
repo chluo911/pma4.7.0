@@ -45,13 +45,10 @@ class PHPUnit_Framework_MockObject_Matcher_InvokedAtMostCount extends PHPUnit_Fr
      */
     public function verify()
     {
-        $count = $this->getInvocationCount();
-
-        if ($count > $this->allowedInvocations) {
-            throw new PHPUnit_Framework_ExpectationFailedException(
-                'Expected invocation at most ' . $this->allowedInvocations .
-                ' times but it occured ' . $count . ' time(s).'
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

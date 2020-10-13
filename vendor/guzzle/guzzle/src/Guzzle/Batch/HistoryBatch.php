@@ -13,10 +13,11 @@ class HistoryBatch extends AbstractBatchDecorator
 
     public function add($item)
     {
-        $this->history[] = $item;
-        $this->decoratedBatch->add($item);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -26,7 +27,11 @@ class HistoryBatch extends AbstractBatchDecorator
      */
     public function getHistory()
     {
-        return $this->history;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -34,6 +39,10 @@ class HistoryBatch extends AbstractBatchDecorator
      */
     public function clearHistory()
     {
-        $this->history = array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

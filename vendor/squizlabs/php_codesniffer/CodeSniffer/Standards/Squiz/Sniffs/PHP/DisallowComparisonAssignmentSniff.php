@@ -36,8 +36,11 @@ class Squiz_Sniffs_PHP_DisallowComparisonAssignmentSniff implements PHP_CodeSnif
      */
     public function register()
     {
-        return array(T_EQUAL);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -52,74 +55,10 @@ class Squiz_Sniffs_PHP_DisallowComparisonAssignmentSniff implements PHP_CodeSnif
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // Ignore default value assignments in function definitions.
-        $function = $phpcsFile->findPrevious(T_FUNCTION, ($stackPtr - 1), null, false, null, true);
-        if ($function !== false) {
-            $opener = $tokens[$function]['parenthesis_opener'];
-            $closer = $tokens[$function]['parenthesis_closer'];
-            if ($opener < $stackPtr && $closer > $stackPtr) {
-                return;
-            }
-        }
-
-        // Ignore values in array definitions.
-        $array = $phpcsFile->findNext(
-            T_ARRAY,
-            ($stackPtr + 1),
-            null,
-            false,
-            null,
-            true
-        );
-
-        if ($array !== false) {
-            return;
-        }
-
-        // Ignore function calls.
-        $ignore = array(
-                   T_STRING,
-                   T_WHITESPACE,
-                   T_OBJECT_OPERATOR,
-                  );
-
-        $next = $phpcsFile->findNext($ignore, ($stackPtr + 1), null, true);
-        if ($tokens[$next]['code'] === T_OPEN_PARENTHESIS
-            && $tokens[($next - 1)]['code'] === T_STRING
-        ) {
-            // Code will look like: $var = myFunction(
-            // and will be ignored.
-            return;
-        }
-
-        $endStatement = $phpcsFile->findNext(T_SEMICOLON, ($stackPtr + 1));
-        if ($tokens[$stackPtr]['conditions'] !== $tokens[$endStatement]['conditions']) {
-            // This statement doesn't end with a semicolon, which is the case for
-            // the last expression in a for loop.
-            return;
-        }
-
-        for ($i = ($stackPtr + 1); $i < $endStatement; $i++) {
-            if (isset(PHP_CodeSniffer_Tokens::$comparisonTokens[$tokens[$i]['code']]) === true
-                || $tokens[$i]['code'] === T_INLINE_THEN
-            ) {
-                $error = 'The value of a comparison must not be assigned to a variable';
-                $phpcsFile->addError($error, $stackPtr, 'AssignedComparison');
-                break;
-            }
-
-            if (isset(PHP_CodeSniffer_Tokens::$booleanOperators[$tokens[$i]['code']]) === true
-                || $tokens[$i]['code'] === T_BOOLEAN_NOT
-            ) {
-                $error = 'The value of a boolean operation must not be assigned to a variable';
-                $phpcsFile->addError($error, $stackPtr, 'AssignedBool');
-                break;
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

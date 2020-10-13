@@ -110,7 +110,10 @@ class DatabaseInterface
      *
      * @return mixed
      */
-    public function query($query, $link = null, $options = 0,
+    public function query(
+        $query,
+        $link = null,
+        $options = 0,
         $cache_affected_rows = true
     ) {
         $res = $this->tryQuery($query, $link, $options, $cache_affected_rows)
@@ -251,7 +254,10 @@ class DatabaseInterface
      *
      * @return mixed
      */
-    public function tryQuery($query, $link = null, $options = 0,
+    public function tryQuery(
+        $query,
+        $link = null,
+        $options = 0,
         $cache_affected_rows = true
     ) {
         $debug = $GLOBALS['cfg']['DBG']['sql'];
@@ -374,7 +380,7 @@ class DatabaseInterface
         if ($table_type) {
             if ($table_type == 'view') {
                 $sql_where_table .= " AND t.`TABLE_TYPE` != 'BASE TABLE'";
-            } else if ($table_type == 'table') {
+            } elseif ($table_type == 'table') {
                 $sql_where_table .= " AND t.`TABLE_TYPE` = 'BASE TABLE'";
             }
         }
@@ -450,9 +456,15 @@ class DatabaseInterface
      *
      * @return array           list of tables in given db(s)
      */
-    public function getTablesFull($database, $table = '',
-        $tbl_is_group = false,  $link = null, $limit_offset = 0,
-        $limit_count = false, $sort_by = 'Name', $sort_order = 'ASC',
+    public function getTablesFull(
+        $database,
+        $table = '',
+        $tbl_is_group = false,
+        $link = null,
+        $limit_offset = 0,
+        $limit_count = false,
+        $sort_by = 'Name',
+        $sort_order = 'ASC',
         $table_type = null
     ) {
         if (true === $limit_count) {
@@ -469,7 +481,9 @@ class DatabaseInterface
 
         if (! $GLOBALS['cfg']['Server']['DisableIS']) {
             $sql_where_table = $this->_getTableCondition(
-                $table, $tbl_is_group, $table_type
+                $table,
+                $tbl_is_group,
+                $table_type
             );
 
             // for PMA bc:
@@ -494,7 +508,10 @@ class DatabaseInterface
             }
 
             $tables = $this->fetchResult(
-                $sql, array('TABLE_SCHEMA', 'TABLE_NAME'), null, $link
+                $sql,
+                array('TABLE_SCHEMA', 'TABLE_NAME'),
+                null,
+                $link
             );
 
             if ($sort_by == 'Name' && $GLOBALS['cfg']['NaturalOrder']) {
@@ -565,7 +582,7 @@ class DatabaseInterface
                         }
                         if ($table_type == 'view') {
                             $sql .= " `Comment` = 'VIEW'";
-                        } else if ($table_type == 'table') {
+                        } elseif ($table_type == 'table') {
                             $sql .= " `Comment` != 'VIEW'";
                         }
                     }
@@ -617,7 +634,9 @@ class DatabaseInterface
 
                 if ($limit_count) {
                     $each_tables = array_slice(
-                        $each_tables, $limit_offset, $limit_count
+                        $each_tables,
+                        $limit_offset,
+                        $limit_count
                     );
                 }
 
@@ -729,21 +748,17 @@ class DatabaseInterface
      */
     public function getVirtualTables($db)
     {
-
         $tables_full = $this->getTablesFull($db);
         $views = array();
 
         foreach ($tables_full as $table=>$tmp) {
-
             $_table = $this->getTable($db, $table);
             if ($_table->isView()) {
                 $views[] = $table;
             }
-
         }
 
         return $views;
-
     }
 
 
@@ -763,9 +778,14 @@ class DatabaseInterface
      *
      * @return array $databases
      */
-    public function getDatabasesFull($database = null, $force_stats = false,
-        $link = null, $sort_by = 'SCHEMA_NAME', $sort_order = 'ASC',
-        $limit_offset = 0, $limit_count = false
+    public function getDatabasesFull(
+        $database = null,
+        $force_stats = false,
+        $link = null,
+        $sort_by = 'SCHEMA_NAME',
+        $sort_order = 'ASC',
+        $limit_offset = 0,
+        $limit_count = false
     ) {
         $sort_order = strtoupper($sort_order);
 
@@ -846,7 +866,8 @@ class DatabaseInterface
             // display only databases also in official database list
             // f.e. to apply hide_db and only_db
             $drops = array_diff(
-                array_keys($databases), (array) $GLOBALS['dblist']->databases
+                array_keys($databases),
+                (array) $GLOBALS['dblist']->databases
             );
             foreach ($drops as $drop) {
                 unset($databases[$drop]);
@@ -959,7 +980,8 @@ class DatabaseInterface
         // produces f.e.:
         // return -1 * strnatcasecmp($a["SCHEMA_TABLES"], $b["SCHEMA_TABLES"])
         return ($GLOBALS['callback_sort_order'] == 'ASC' ? 1 : -1) * $sorter(
-            $a[$GLOBALS['callback_sort_by']], $b[$GLOBALS['callback_sort_by']]
+            $a[$GLOBALS['callback_sort_by']],
+            $b[$GLOBALS['callback_sort_by']]
         );
     } // end of the '_usortComparisonCallback()' method
 
@@ -973,38 +995,11 @@ class DatabaseInterface
      */
     public function getColumnMapFromSql($sql_query, $view_columns = array())
     {
-        $result = $this->tryQuery($sql_query);
-
-        if ($result === false) {
-            return array();
-        }
-
-        $meta = $this->getFieldsMeta(
-            $result
-        );
-
-        $nbFields = count($meta);
-        if ($nbFields <= 0) {
-            return array();
-        }
-
-        $column_map = array();
-        $nbColumns = count($view_columns);
-
-        for ($i=0; $i < $nbFields; $i++) {
-
-            $map = array();
-            $map['table_name'] = $meta[$i]->table;
-            $map['refering_column'] = $meta[$i]->name;
-
-            if ($nbColumns > 1) {
-                $map['real_column'] = $view_columns[$i];
-            }
-
-            $column_map[] = $map;
-        }
-
-        return $column_map;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1018,8 +1013,11 @@ class DatabaseInterface
      *
      * @return array
      */
-    public function getColumnsFull($database = null, $table = null,
-        $column = null, $link = null
+    public function getColumnsFull(
+        $database = null,
+        $table = null,
+        $column = null,
+        $link = null
     ) {
         if (! $GLOBALS['cfg']['Server']['DisableIS']) {
             $sql_wheres = array();
@@ -1069,7 +1067,10 @@ class DatabaseInterface
             if (null === $database) {
                 foreach ($GLOBALS['dblist']->databases as $database) {
                     $columns[$database] = $this->getColumnsFull(
-                        $database, null, null, $link
+                        $database,
+                        null,
+                        null,
+                        $link
                     );
                 }
                 return $columns;
@@ -1077,7 +1078,10 @@ class DatabaseInterface
                 $tables = $this->getTables($database);
                 foreach ($tables as $table) {
                     $columns[$table] = $this->getColumnsFull(
-                        $database, $table, null, $link
+                        $database,
+                        $table,
+                        null,
+                        $link
                     );
                 }
                 return $columns;
@@ -1187,7 +1191,11 @@ class DatabaseInterface
      * @return array array indexed by column names or,
      *               if $column is given, flat array description
      */
-    public function getColumns($database, $table, $column = null, $full = false,
+    public function getColumns(
+        $database,
+        $table,
+        $column = null,
+        $full = false,
         $link = null
     ) {
         $sql = $this->getColumnsSql($database, $table, $column, $full);
@@ -1293,7 +1301,9 @@ class DatabaseInterface
      * @return mixed   value for mysql server variable
      */
     public function getVariable(
-        $var, $type = self::GETVAR_SESSION, $link = null
+        $var,
+        $type = self::GETVAR_SESSION,
+        $link = null
     ) {
         $link = $this->getLink($link);
         if ($link === false) {
@@ -1311,7 +1321,10 @@ class DatabaseInterface
             $modifier = '';
         }
         return $this->fetchValue(
-            'SHOW' . $modifier . ' VARIABLES LIKE \'' . $var . '\';', 0, 1, $link
+            'SHOW' . $modifier . ' VARIABLES LIKE \'' . $var . '\';',
+            0,
+            1,
+            $link
         );
     }
 
@@ -1331,7 +1344,9 @@ class DatabaseInterface
             return false;
         }
         $current_value = $this->getVariable(
-            $var, self::GETVAR_SESSION, $link
+            $var,
+            self::GETVAR_SESSION,
+            $link
         );
         if ($current_value == $value) {
             return true;
@@ -1364,7 +1379,10 @@ class DatabaseInterface
                 define(
                     'PMA_MYSQL_INT_VERSION',
                     (int) sprintf(
-                        '%d%02d%02d', $match[0], $match[1], intval($match[2])
+                        '%d%02d%02d',
+                        $match[0],
+                        $match[1],
+                        intval($match[2])
                     )
                 );
                 define('PMA_MYSQL_STR_VERSION', $version['@@version']);
@@ -1544,14 +1562,14 @@ class DatabaseInterface
         }
 
         switch ($type) {
-        case 'NUM' :
+        case 'NUM':
             $fetch_function = 'fetchRow';
             break;
-        case 'ASSOC' :
+        case 'ASSOC':
             $fetch_function = 'fetchAssoc';
             break;
-        case 'BOTH' :
-        default :
+        case 'BOTH':
+        default:
             $fetch_function = 'fetchArray';
             break;
         }
@@ -1631,8 +1649,12 @@ class DatabaseInterface
      *
      * @return array resultrows or values indexed by $key
      */
-    public function fetchResult($query, $key = null, $value = null,
-        $link = null, $options = 0
+    public function fetchResult(
+        $query,
+        $key = null,
+        $value = null,
+        $link = null,
+        $options = 0
     ) {
         $resultrows = array();
 
@@ -1740,7 +1762,10 @@ class DatabaseInterface
     public function getProceduresOrFunctions($db, $which, $link = null)
     {
         $shows = $this->fetchResult(
-            'SHOW ' . $which . ' STATUS;', null, null, $link
+            'SHOW ' . $which . ' STATUS;',
+            null,
+            null,
+            $link
         );
         $result = array();
         foreach ($shows as $one_show) {
@@ -2049,7 +2074,7 @@ class DatabaseInterface
                     ' (<a href="server_engines.php' .
                     URL::getCommon(
                         array('engine' => 'InnoDB', 'page' => 'Status')
-                    ) . '">' . __('Detailsâ€¦') . '</a>)';
+                    ) . '">' . __('Detailsâ€?') . '</a>)';
             }
         } else {
             $error .= ' - ' . $error_message;
@@ -2356,7 +2381,9 @@ class DatabaseInterface
         // Do not show location and backtrace for connection errors
         $GLOBALS['error_handler']->setHideLocation(true);
         $result = $this->_extension->connect(
-            $user, $password, $server
+            $user,
+            $password,
+            $server
         );
         $GLOBALS['error_handler']->setHideLocation(false);
 
@@ -2377,7 +2404,7 @@ class DatabaseInterface
                 E_USER_WARNING
             );
             return false;
-        } else if ($mode == DatabaseInterface::CONNECT_AUXILIARY) {
+        } elseif ($mode == DatabaseInterface::CONNECT_AUXILIARY) {
             // Do not go back to main login if connection failed
             // (currently used only in unit testing)
             return false;
@@ -2694,7 +2721,11 @@ class DatabaseInterface
      */
     public function fieldName($result, $i)
     {
-        return $this->_extension->fieldName($result, $i);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -2792,7 +2823,11 @@ class DatabaseInterface
      */
     public function getSystemDatabase()
     {
-        return new SystemDatabase($this);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -2844,7 +2879,7 @@ class DatabaseInterface
      *
      * @return string  $server_collation
      */
-    function getServerCollation()
+    public function getServerCollation()
     {
         return $this->fetchValue('SELECT @@collation_server');
     }

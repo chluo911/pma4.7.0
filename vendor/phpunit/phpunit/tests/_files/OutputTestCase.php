@@ -3,25 +3,37 @@ class OutputTestCase extends PHPUnit_Framework_TestCase
 {
     public function testExpectOutputStringFooActualFoo()
     {
-        $this->expectOutputString('foo');
-        print 'foo';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExpectOutputStringFooActualBar()
     {
-        $this->expectOutputString('foo');
-        print 'bar';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExpectOutputRegexFooActualFoo()
     {
-        $this->expectOutputRegex('/foo/');
-        print 'foo';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExpectOutputRegexFooActualBar()
     {
-        $this->expectOutputRegex('/foo/');
-        print 'bar';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

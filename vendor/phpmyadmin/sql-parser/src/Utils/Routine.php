@@ -62,29 +62,11 @@ class Routine
      */
     public static function getParameter($param)
     {
-        $lexer = new Lexer('(' . $param . ')');
-
-        // A dummy parser is used for error reporting.
-        $param = ParameterDefinition::parse(new Parser(), $lexer->list);
-
-        if (empty($param[0])) {
-            return array('', '', '', '', '');
-        }
-
-        $param = $param[0];
-
-        $options = array();
-        foreach ($param->type->options->options as $opt) {
-            $options[] = is_string($opt) ? $opt : $opt['value'];
-        }
-
-        return array(
-            empty($param->inOut) ? '' : $param->inOut,
-            $param->name,
-            $param->type->name,
-            implode(',', $param->type->parameters),
-            implode(' ', $options),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

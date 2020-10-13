@@ -55,47 +55,46 @@ class Extensions_Selenium2TestCaseMultipleBrowsersMethodTest extends PHPUnit_Ext
 
     public static function browsers()
     {
-        return array(
-            array(
-                'browserName' => 'firefox',
-                'host'        => 'localhost',
-                'port'        => 4444,
-                'sessionStrategy' => 'shared'
-            ),
-            array(
-                'browserName' => 'firefox',
-                'host'        => 'localhost',
-                'port'        => 4444,
-                'sessionStrategy' => 'isolated'
-            ),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setUp()
     {
-        if (!defined('PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL')) {
-            $this->markTestSkipped("You must serve the selenium-1-tests folder from an HTTP server and configure the PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL constant accordingly.");
-        }
-        $this->setBrowserUrl(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function tearDown()
     {
-        self::$testsRun++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function tearDownAfterClass()
     {
-        $expected = count(self::browsers());
-        $actual = self::$testsRun;
-        if ($expected != $actual) {
-            throw new Exception("There were $expected browsers to run but $actual were run.");
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSessionIsLaunchedCorrectly()
     {
-        $this->url('html/test_open.html');
-        $this->assertStringEndsWith('html/test_open.html', $this->url());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

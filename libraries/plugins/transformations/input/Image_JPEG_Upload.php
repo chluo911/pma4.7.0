@@ -26,7 +26,11 @@ class Image_JPEG_Upload extends ImageUploadTransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Image";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -36,6 +40,10 @@ class Image_JPEG_Upload extends ImageUploadTransformationsPlugin
      */
     public static function getMIMESubtype()
     {
-        return "JPEG";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -64,11 +64,11 @@ class Generic_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeSni
      */
     public function register()
     {
-        return array(
-                T_STRING_CONCAT,
-                T_PLUS,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -83,56 +83,10 @@ class Generic_Sniffs_Strings_UnnecessaryStringConcatSniff implements PHP_CodeSni
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        // Work out which type of file this is for.
-        $tokens = $phpcsFile->getTokens();
-        if ($tokens[$stackPtr]['code'] === T_STRING_CONCAT) {
-            if ($phpcsFile->tokenizerType === 'JS') {
-                return;
-            }
-        } else {
-            if ($phpcsFile->tokenizerType === 'PHP') {
-                return;
-            }
-        }
-
-        $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-        $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-        if ($prev === false || $next === false) {
-            return;
-        }
-
-        if (isset(PHP_CodeSniffer_Tokens::$stringTokens[$tokens[$prev]['code']]) === true
-            && isset(PHP_CodeSniffer_Tokens::$stringTokens[$tokens[$next]['code']]) === true
-        ) {
-            if ($tokens[$prev]['content'][0] === $tokens[$next]['content'][0]) {
-                // Before we throw an error for PHP, allow strings to be
-                // combined if they would have < and ? next to each other because
-                // this trick is sometimes required in PHP strings.
-                if ($phpcsFile->tokenizerType === 'PHP') {
-                    $prevChar = substr($tokens[$prev]['content'], -2, 1);
-                    $nextChar = $tokens[$next]['content'][1];
-                    $combined = $prevChar.$nextChar;
-                    if ($combined === '?'.'>' || $combined === '<'.'?') {
-                        return;
-                    }
-                }
-
-                if ($this->allowMultiline === true
-                    && $tokens[$prev]['line'] !== $tokens[$next]['line']
-                ) {
-                    return;
-                }
-
-                $error = 'String concat is not required here; use a single string instead';
-                if ($this->error === true) {
-                    $phpcsFile->addError($error, $stackPtr, 'Found');
-                } else {
-                    $phpcsFile->addWarning($error, $stackPtr, 'Found');
-                }
-            }//end if
-        }//end if
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

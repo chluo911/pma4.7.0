@@ -12,7 +12,6 @@ use PMA\libraries\URL;
 use PMA\libraries\Sanitize;
 use PMA\libraries\Config;
 
-
 /**
  * Class used to output the HTTP and HTML headers
  *
@@ -155,7 +154,9 @@ class Header
         $this->_scripts->addFile('jquery/jquery.min.js');
         $this->_scripts->addFile('jquery/jquery-migrate-3.0.0.js');
         $this->_scripts->addFile(
-            'whitelist.php' . URL::getCommon($params), false, true
+            'whitelist.php' . URL::getCommon($params),
+            false,
+            true
         );
         $this->_scripts->addFile('sprintf.js');
         $this->_scripts->addFile('ajax.js');
@@ -202,7 +203,7 @@ class Header
         $this->_scripts->addFile('indexes.js');
         $this->_scripts->addFile('common.js');
         $this->_scripts->addFile('page_settings.js');
-        if(!$GLOBALS['cfg']['DisableShortcutKeys']) {
+        if (!$GLOBALS['cfg']['DisableShortcutKeys']) {
             $this->_scripts->addFile('shortcuts_handler.js');
         }
         $this->_scripts->addCode($this->getJsParamsCode());
@@ -229,7 +230,8 @@ class Header
         $params = array(
             'common_query' => URL::getCommonRaw(),
             'opendb_url' => Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+                $GLOBALS['cfg']['DefaultTabDatabase'],
+                'database'
             ),
             'collation_connection' => $GLOBALS['collation_connection'],
             'lang' => $GLOBALS['lang'],
@@ -491,7 +493,7 @@ class Header
         if (! empty($GLOBALS['message'])) {
             $message = $GLOBALS['message'];
             unset($GLOBALS['message']);
-        } else if (! empty($_REQUEST['message'])) {
+        } elseif (! empty($_REQUEST['message'])) {
             $message = $_REQUEST['message'];
         }
         if (! empty($message)) {
@@ -717,7 +719,7 @@ class Header
             if ($GLOBALS['server'] > 0) {
                 if (! empty($GLOBALS['table'])) {
                     $temp_title = $GLOBALS['cfg']['TitleTable'];
-                } else if (! empty($GLOBALS['db'])) {
+                } elseif (! empty($GLOBALS['db'])) {
                     $temp_title = $GLOBALS['cfg']['TitleDatabase'];
                 } elseif (! empty($GLOBALS['cfg']['Server']['host'])) {
                     $temp_title = $GLOBALS['cfg']['TitleServer'];
@@ -806,4 +808,3 @@ class Header
         return "v=" . urlencode(PMA_VERSION);
     }
 }
-

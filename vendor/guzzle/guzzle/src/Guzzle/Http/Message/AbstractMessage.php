@@ -45,9 +45,11 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function setHeaderFactory(HeaderFactoryInterface $factory)
     {
-        $this->headerFactory = $factory;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getParams()
@@ -133,20 +135,11 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function getTokenizedHeader($header, $token = ';')
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use $message->getHeader()->parseParams()');
-        if ($this->hasHeader($header)) {
-            $data = new Collection();
-            foreach ($this->getHeader($header)->parseParams() as $values) {
-                foreach ($values as $key => $value) {
-                    if ($value === '') {
-                        $data->set($data->count(), $key);
-                    } else {
-                        $data->add($key, $value);
-                    }
-                }
-            }
-            return $data;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -155,8 +148,11 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function setTokenizedHeader($header, $data, $token = ';')
     {
-        Version::warn(__METHOD__ . ' is deprecated.');
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -165,12 +161,11 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function getCacheControlDirective($directive)
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use $message->getHeader(\'Cache-Control\')->getDirective()');
-        if (!($header = $this->getHeader('Cache-Control'))) {
-            return null;
-        }
-
-        return $header->getDirective($directive);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -179,12 +174,11 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function hasCacheControlDirective($directive)
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use $message->getHeader(\'Cache-Control\')->hasDirective()');
-        if ($header = $this->getHeader('Cache-Control')) {
-            return $header->hasDirective($directive);
-        } else {
-            return false;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -193,15 +187,11 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function addCacheControlDirective($directive, $value = true)
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use $message->getHeader(\'Cache-Control\')->addDirective()');
-        if (!($header = $this->getHeader('Cache-Control'))) {
-            $this->addHeader('Cache-Control', '');
-            $header = $this->getHeader('Cache-Control');
-        }
-
-        $header->addDirective($directive, $value);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -210,11 +200,10 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function removeCacheControlDirective($directive)
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use $message->getHeader(\'Cache-Control\')->removeDirective()');
-        if ($header = $this->getHeader('Cache-Control')) {
-            $header->removeDirective($directive);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

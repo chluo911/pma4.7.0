@@ -55,15 +55,16 @@
  * @method implicitWait(int $ms) Sets timeout when searching for elements
  * @method asyncScript(int $ms) Sets timeout for asynchronous scripts executed by Session::executeAsync()
  */
-class PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts
-    extends PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
+class PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts extends PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
 {
     private $maximumTimeout;
     private $lastImplicitWaitValue = 0;
 
-    public function __construct($driver,
-                                PHPUnit_Extensions_Selenium2TestCase_URL $url,
-                                $maximumTimeout)
+    public function __construct(
+        $driver,
+        PHPUnit_Extensions_Selenium2TestCase_URL $url,
+        $maximumTimeout
+    )
     {
         parent::__construct($driver, $url);
         $this->maximumTimeout = $maximumTimeout;
@@ -90,7 +91,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts
 
     public function setLastImplicitWaitValue($implicitWait)
     {
-        $this->lastImplicitWaitValue = $implicitWait;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getLastImplicitWaitValue()
@@ -100,8 +105,10 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts
 
     public function check($timeout)
     {
-        if ($timeout > $this->maximumTimeout) {
-            throw new PHPUnit_Extensions_Selenium2TestCase_Exception('There is no use in setting this timeout unless you also call $this->setSeleniumServerRequestsTimeout($seconds) in setUp().');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -83,7 +83,11 @@ class PHPUnit_Extensions_Selenium2TestCase_WaitUntil
      */
     public function __construct(PHPUnit_Extensions_Selenium2TestCase $testCase)
     {
-        $this->_testCase = $testCase;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,7 +97,7 @@ class PHPUnit_Extensions_Selenium2TestCase_WaitUntil
      * @throws PHPUnit_Extensions_Selenium2TestCase_Exception
      * @throws PHPUnit_Extensions_Selenium2TestCase_WebDriverException
      */
-    public function run($callback, $timeout = NULL)
+    public function run($callback, $timeout = null)
     {
         if (!is_callable($callback)) {
             throw new PHPUnit_Extensions_Selenium2TestCase_Exception('The valid callback is expected');
@@ -111,11 +115,11 @@ class PHPUnit_Extensions_Selenium2TestCase_WaitUntil
 
         $timeout /= 1000;
 
-        $endTime = microtime(TRUE) + $timeout;
+        $endTime = microtime(true) + $timeout;
 
-        $lastException = NULL;
+        $lastException = null;
 
-        while (TRUE) {
+        while (true) {
             try {
                 $result = call_user_func($callback, $this->_testCase);
 
@@ -126,18 +130,21 @@ class PHPUnit_Extensions_Selenium2TestCase_WaitUntil
 
                     return $result;
                 }
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 $lastException = $e;
             }
 
-            if (microtime(TRUE) > $endTime) {
+            if (microtime(true) > $endTime) {
                 if ($implicitWait) {
                     $this->_testCase->timeouts()->implicitWait($implicitWait);
                 }
 
                 $message = "Timed out after {$timeout} second" . ($timeout != 1 ? 's' : '');
-                throw new PHPUnit_Extensions_Selenium2TestCase_WebDriverException($message,
-                    PHPUnit_Extensions_Selenium2TestCase_WebDriverException::Timeout, $lastException);
+                throw new PHPUnit_Extensions_Selenium2TestCase_WebDriverException(
+                    $message,
+                    PHPUnit_Extensions_Selenium2TestCase_WebDriverException::Timeout,
+                    $lastException
+                );
             }
 
             usleep($this->_defaultSleepInterval * 1000);

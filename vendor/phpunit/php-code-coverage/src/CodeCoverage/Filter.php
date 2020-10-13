@@ -63,9 +63,11 @@ class PHP_CodeCoverage_Filter
      */
     public function addFilesToBlacklist(array $files)
     {
-        foreach ($files as $file) {
-            $this->addFileToBlacklist($file);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -133,9 +135,11 @@ class PHP_CodeCoverage_Filter
      */
     public function addFilesToWhitelist(array $files)
     {
-        foreach ($files as $file) {
-            $this->addFileToWhitelist($file);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -223,7 +227,11 @@ class PHP_CodeCoverage_Filter
      */
     public function getBlacklist()
     {
-        return array_keys($this->blacklistedFiles);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

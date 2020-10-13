@@ -50,9 +50,11 @@ class DefaultRequestSerializer implements RequestSerializerInterface
      */
     public function addVisitor($location, RequestVisitorInterface $visitor)
     {
-        $this->factory->addRequestVisitor($location, $visitor);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function prepare(CommandInterface $command)

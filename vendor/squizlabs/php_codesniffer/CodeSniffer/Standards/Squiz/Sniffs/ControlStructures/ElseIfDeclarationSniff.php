@@ -39,8 +39,11 @@ class Squiz_Sniffs_ControlStructures_ElseIfDeclarationSniff implements PHP_CodeS
      */
     public function register()
     {
-        return array(T_ELSEIF);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -55,13 +58,10 @@ class Squiz_Sniffs_ControlStructures_ElseIfDeclarationSniff implements PHP_CodeS
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $error = 'Usage of ELSEIF not allowed; use ELSE IF instead';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NotAllowed');
-        if ($fix === true) {
-            $phpcsFile->fixer->replaceToken($stackPtr, 'else if');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

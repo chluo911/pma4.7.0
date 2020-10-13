@@ -59,12 +59,18 @@ $dependency_definitions = array(
 );
 if ($cfgRelation['relwork']) {
     $dependency_definitions['existrel'] = PMA_getForeigners(
-        $db, $table, '', 'internal'
+        $db,
+        $table,
+        '',
+        'internal'
     );
 }
 if (Util::isForeignKeySupported($tbl_storage_engine)) {
     $dependency_definitions['existrel_foreign'] = PMA_getForeigners(
-        $db, $table, '', 'foreign'
+        $db,
+        $table,
+        '',
+        'foreign'
     );
 }
 if ($cfgRelation['displaywork']) {

@@ -34,8 +34,11 @@ class Generic_Sniffs_Files_LowercasedFilenameSniff implements PHP_CodeSniffer_Sn
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -50,29 +53,10 @@ class Generic_Sniffs_Files_LowercasedFilenameSniff implements PHP_CodeSniffer_Sn
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $filename = $phpcsFile->getFilename();
-        if ($filename === 'STDIN') {
-            return;
-        }
-
-        $filename          = basename($filename);
-        $lowercaseFilename = strtolower($filename);
-        if ($filename !== $lowercaseFilename) {
-            $data  = array(
-                      $filename,
-                      $lowercaseFilename,
-                     );
-            $error = 'Filename "%s" doesn\'t match the expected filename "%s"';
-            $phpcsFile->addError($error, $stackPtr, 'NotFound', $data);
-            $phpcsFile->recordMetric($stackPtr, 'Lowercase filename', 'no');
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'Lowercase filename', 'yes');
-        }
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

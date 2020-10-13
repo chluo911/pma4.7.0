@@ -43,8 +43,11 @@ class Squiz_Sniffs_Debug_JavaScriptLintSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,40 +62,10 @@ class Squiz_Sniffs_Debug_JavaScriptLintSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $fileName = $phpcsFile->getFilename();
-
-        $jslPath = PHP_CodeSniffer::getConfigData('jsl_path');
-        if (is_null($jslPath) === true) {
-            return;
-        }
-
-        $cmd = '"'.escapeshellcmd($jslPath).'" -nologo -nofilelisting -nocontext -nosummary -output-format __LINE__:__ERROR__ -process '.escapeshellarg($fileName);
-        $msg = exec($cmd, $output, $retval);
-
-        // Variable $exitCode is the last line of $output if no error occurs, on
-        // error it is numeric. Try to handle various error conditions and
-        // provide useful error reporting.
-        if ($retval === 2 || $retval === 4) {
-            if (is_array($output) === true) {
-                $msg = join('\n', $output);
-            }
-
-            throw new PHP_CodeSniffer_Exception("Failed invoking JavaScript Lint, retval was [$retval], output was [$msg]");
-        }
-
-        if (is_array($output) === true) {
-            foreach ($output as $finding) {
-                $split   = strpos($finding, ':');
-                $line    = substr($finding, 0, $split);
-                $message = substr($finding, ($split + 1));
-                $phpcsFile->addWarningOnLine(trim($message), $line, 'ExternalTool');
-            }
-        }
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

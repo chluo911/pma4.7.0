@@ -47,28 +47,11 @@ class PHP_CodeSniffer_Reports_Gitblame extends PHP_CodeSniffer_Reports_VersionCo
      */
     protected function getAuthor($line)
     {
-        $blameParts = array();
-        $line       = preg_replace('|\s+|', ' ', $line);
-        preg_match(
-            '|\(.+[0-9]{4}-[0-9]{2}-[0-9]{2}\s+[0-9]+\)|',
-            $line,
-            $blameParts
-        );
-
-        if (isset($blameParts[0]) === false) {
-            return false;
-        }
-
-        $parts = explode(' ', $blameParts[0]);
-
-        if (count($parts) < 2) {
-            return false;
-        }
-
-        $parts  = array_slice($parts, 0, (count($parts) - 2));
-        $author = preg_replace('|\(|', '', implode($parts, ' '));
-        return $author;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end getAuthor()
 
 
@@ -81,25 +64,10 @@ class PHP_CodeSniffer_Reports_Gitblame extends PHP_CodeSniffer_Reports_VersionCo
      */
     protected function getBlameContent($filename)
     {
-        $cwd = getcwd();
-
-        chdir(dirname($filename));
-        $command = 'git blame --date=short "'.$filename.'" 2>&1';
-        $handle  = popen($command, 'r');
-        if ($handle === false) {
-            echo 'ERROR: Could not execute "'.$command.'"'.PHP_EOL.PHP_EOL;
-            exit(2);
-        }
-
-        $rawContent = stream_get_contents($handle);
-        fclose($handle);
-
-        $blames = explode("\n", $rawContent);
-        chdir($cwd);
-
-        return $blames;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end getBlameContent()
-
-
 }//end class

@@ -34,8 +34,11 @@ class Generic_Sniffs_PHP_CharacterBeforePHPOpeningTagSniff implements PHP_CodeSn
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -50,25 +53,10 @@ class Generic_Sniffs_PHP_CharacterBeforePHPOpeningTagSniff implements PHP_CodeSn
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $expected = 0;
-        if ($stackPtr > 0) {
-            // Allow a shebang line.
-            $tokens = $phpcsFile->getTokens();
-            if (substr($tokens[0]['content'], 0, 2) === '#!') {
-                $expected = 1;
-            }
-        }
-
-        if ($stackPtr !== $expected) {
-            $error = 'The opening PHP tag must be the first content in the file';
-            $phpcsFile->addError($error, $stackPtr, 'Found');
-        }
-
-        // Skip the rest of the file so we don't pick up additional
-        // open tags, typically embedded in HTML.
-        return $phpcsFile->numTokens;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

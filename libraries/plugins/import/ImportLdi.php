@@ -37,7 +37,11 @@ class ImportLdi extends AbstractImportCsv
      */
     public function __construct()
     {
-        $this->setProperties();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,43 +52,11 @@ class ImportLdi extends AbstractImportCsv
      */
     protected function setProperties()
     {
-        if ($GLOBALS['cfg']['Import']['ldi_local_option'] == 'auto') {
-            $GLOBALS['cfg']['Import']['ldi_local_option'] = false;
-
-            $result = $GLOBALS['dbi']->tryQuery(
-                'SELECT @@local_infile;'
-            );
-            if ($result != false && $GLOBALS['dbi']->numRows($result) > 0) {
-                $tmp = $GLOBALS['dbi']->fetchRow($result);
-                if ($tmp[0] == 'ON') {
-                    $GLOBALS['cfg']['Import']['ldi_local_option'] = true;
-                }
-            }
-            $GLOBALS['dbi']->freeResult($result);
-            unset($result);
-        }
-
-        $generalOptions = parent::setProperties();
-        $this->properties->setText('CSV using LOAD DATA');
-        $this->properties->setExtension('ldi');
-
-        $leaf = new TextPropertyItem(
-            "columns",
-            __('Column names: ')
-        );
-        $generalOptions->addProperty($leaf);
-
-        $leaf = new BoolPropertyItem(
-            "ignore",
-            __('Do not abort on INSERT error')
-        );
-        $generalOptions->addProperty($leaf);
-
-        $leaf = new BoolPropertyItem(
-            "local_option",
-            __('Use LOCAL keyword')
-        );
-        $generalOptions->addProperty($leaf);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

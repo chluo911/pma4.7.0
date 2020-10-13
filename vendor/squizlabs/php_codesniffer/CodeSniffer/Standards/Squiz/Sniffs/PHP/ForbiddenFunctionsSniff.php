@@ -50,5 +50,4 @@ class Squiz_Sniffs_PHP_ForbiddenFunctionsSniff extends Generic_Sniffs_PHP_Forbid
                                   'is_null'         => null,
                                   'create_function' => null,
                                  );
-
 }//end class

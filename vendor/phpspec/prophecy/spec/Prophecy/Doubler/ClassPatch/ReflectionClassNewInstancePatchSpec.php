@@ -10,34 +10,42 @@ use Prophecy\Doubler\Generator\Node\MethodNode;
 
 class ReflectionClassNewInstancePatchSpec extends ObjectBehavior
 {
-    function it_is_a_patch()
+    public function it_is_a_patch()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Doubler\ClassPatch\ClassPatchInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_priority_is_50()
+    public function its_priority_is_50()
     {
-        $this->getPriority()->shouldReturn(50);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_supports_ReflectionClass_only(ClassNode $reflectionClassNode, ClassNode $anotherClassNode)
+    public function it_supports_ReflectionClass_only(ClassNode $reflectionClassNode, ClassNode $anotherClassNode)
     {
-        $reflectionClassNode->getParentClass()->willReturn('ReflectionClass');
-        $anotherClassNode->getParentClass()->willReturn('stdClass');
-
-        $this->supports($reflectionClassNode)->shouldReturn(true);
-        $this->supports($anotherClassNode)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_makes_all_newInstance_arguments_optional(
+    public function it_makes_all_newInstance_arguments_optional(
         ClassNode $class,
         MethodNode $method,
         ArgumentNode $arg1
     ) {
-        $class->getMethod('newInstance')->willReturn($method);
-        $method->getArguments()->willReturn(array($arg1));
-        $arg1->setDefault(null)->shouldBeCalled();
-
-        $this->apply($class);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

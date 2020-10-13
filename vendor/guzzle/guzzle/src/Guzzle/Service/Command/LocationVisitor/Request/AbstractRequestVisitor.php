@@ -11,12 +11,16 @@ abstract class AbstractRequestVisitor implements RequestVisitorInterface
     /**
      * @codeCoverageIgnore
      */
-    public function after(CommandInterface $command, RequestInterface $request) {}
+    public function after(CommandInterface $command, RequestInterface $request)
+    {
+    }
 
     /**
      * @codeCoverageIgnore
      */
-    public function visit(CommandInterface $command, RequestInterface $request, Parameter $param, $value) {}
+    public function visit(CommandInterface $command, RequestInterface $request, Parameter $param, $value)
+    {
+    }
 
     /**
      * Prepare (filter and set desired name for request item) the value for request.

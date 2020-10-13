@@ -53,25 +53,25 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.0
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Url
-    extends PHPUnit_Extensions_Selenium2TestCase_Command
+class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Url extends PHPUnit_Extensions_Selenium2TestCase_Command
 {
     public function __construct($url, $commandUrl, PHPUnit_Extensions_Selenium2TestCase_URL $baseUrl)
     {
-        if ($url !== NULL) {
+        if ($url !== null) {
             $absoluteLocation = $baseUrl->jump($url)->getValue();
             $jsonParameters = array('url' => $absoluteLocation);
         } else {
-            $jsonParameters = NULL;
+            $jsonParameters = null;
         }
         parent::__construct($jsonParameters, $commandUrl);
     }
 
     public function httpMethod()
     {
-        if ($this->jsonParameters) {
-            return 'POST';
-        }
-        return 'GET';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

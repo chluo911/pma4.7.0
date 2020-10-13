@@ -3,13 +3,19 @@ class ClassThatImplementsSerializable implements Serializable
 {
     public function serialize()
     {
-        return get_object_vars($this);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function unserialize($serialized)
     {
-        foreach (unserialize($serialized) as $key => $value) {
-            $this->{$key} = $value;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

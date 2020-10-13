@@ -50,11 +50,11 @@ class DbList
     public function __get($param)
     {
         switch ($param) {
-        case 'databases' :
+        case 'databases':
             return $this->getDatabaseList();
-        case 'userlink' :
+        case 'userlink':
             return $this->userlink;
-        case 'controllink' :
+        case 'controllink':
             return $this->controllink;
         }
 
@@ -73,10 +73,10 @@ class DbList
     public function __set($param, $value)
     {
         switch ($param) {
-        case 'userlink' :
+        case 'userlink':
             $this->userlink = $value;
             break;
-        case 'controllink' :
+        case 'controllink':
             $this->controllink = $value;
             break;
         }

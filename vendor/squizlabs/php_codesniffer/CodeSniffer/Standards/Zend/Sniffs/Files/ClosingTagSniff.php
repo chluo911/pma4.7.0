@@ -38,8 +38,11 @@ class Zend_Sniffs_Files_ClosingTagSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -54,30 +57,10 @@ class Zend_Sniffs_Files_ClosingTagSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        // Find the last non-empty token.
-        $tokens = $phpcsFile->getTokens();
-        for ($last = ($phpcsFile->numTokens - 1); $last > 0; $last--) {
-            if (trim($tokens[$last]['content']) !== '') {
-                break;
-            }
-        }
-
-        if ($tokens[$last]['code'] === T_CLOSE_TAG) {
-            $error = 'A closing tag is not permitted at the end of a PHP file';
-            $fix   = $phpcsFile->addFixableError($error, $last, 'NotAllowed');
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($last, '');
-            }
-
-            $phpcsFile->recordMetric($stackPtr, 'PHP closing tag at EOF', 'yes');
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'PHP closing tag at EOF', 'no');
-        }
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

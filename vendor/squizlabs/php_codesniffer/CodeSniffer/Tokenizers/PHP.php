@@ -733,7 +733,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                         $newToken['code'] = T_NULLABLE;
                         $newToken['type'] = 'T_NULLABLE';
                         break;
-                    } else if (in_array($tokenType, array(T_OPEN_TAG, T_OPEN_TAG_WITH_ECHO, '{', ';')) === true) {
+                    } elseif (in_array($tokenType, array(T_OPEN_TAG, T_OPEN_TAG_WITH_ECHO, '{', ';')) === true) {
                         $newToken['code'] = T_INLINE_THEN;
                         $newToken['type'] = 'T_INLINE_THEN';
 
@@ -1024,7 +1024,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     $cacheKey = null;
                     if ($token[0] === T_STRING) {
                         $cacheKey = strtolower($token[1]);
-                    } else if ($token[0] !== T_CURLY_OPEN) {
+                    } elseif ($token[0] !== T_CURLY_OPEN) {
                         $cacheKey = $token[0];
                     }
 
@@ -1054,7 +1054,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     for ($i = $stackPtr; $i < $numTokens; $i++) {
                         if ($tokens[$i] === '(') {
                             break;
-                        } else if ($tokens[$i][0] === T_VARIABLE) {
+                        } elseif ($tokens[$i][0] === T_VARIABLE) {
                             $newToken['code'] = T_ARRAY_HINT;
                             $newToken['type'] = 'T_ARRAY_HINT';
                             break;
@@ -1119,7 +1119,6 @@ class PHP_CodeSniffer_Tokenizers_PHP
         }
 
         return $finalTokens;
-
     }//end tokenizeString()
 
 
@@ -1190,7 +1189,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     }
 
                     $tokenAfterReturnTypeHint = $tokens[$i]['scope_opener'];
-                } else if (isset($tokens[$i]['parenthesis_closer']) === true) {
+                } elseif (isset($tokens[$i]['parenthesis_closer']) === true) {
                     $tokenAfterReturnTypeHint = null;
                     for ($x = ($tokens[$i]['parenthesis_closer'] + 1); $x < $numTokens; $x++) {
                         if ($tokens[$x]['code'] === T_SEMICOLON) {
@@ -1231,7 +1230,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 }
 
                 continue;
-            } else if ($tokens[$i]['code'] === T_CLASS && isset($tokens[$i]['scope_opener']) === true) {
+            } elseif ($tokens[$i]['code'] === T_CLASS && isset($tokens[$i]['scope_opener']) === true) {
                 /*
                     Detect anonymous classes and assign them a different token.
                 */
@@ -1268,7 +1267,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 }
 
                 continue;
-            } else if ($tokens[$i]['code'] === T_OPEN_SQUARE_BRACKET) {
+            } elseif ($tokens[$i]['code'] === T_OPEN_SQUARE_BRACKET) {
                 if (isset($tokens[$i]['bracket_closer']) === false) {
                     continue;
                 }
@@ -1325,7 +1324,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 }
 
                 continue;
-            } else if ($tokens[$i]['code'] === T_STATIC) {
+            } elseif ($tokens[$i]['code'] === T_STATIC) {
                 for ($x = ($i - 1); $x > 0; $x--) {
                     if (isset(PHP_CodeSniffer_Tokens::$emptyTokens[$tokens[$x]['code']]) === false) {
                         break;
@@ -1343,7 +1342,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                 }
 
                 continue;
-            } else if ($tokens[$i]['code'] === T_ECHO && $tokens[$i]['content'] === '<?=') {
+            } elseif ($tokens[$i]['code'] === T_ECHO && $tokens[$i]['content'] === '<?=') {
                 // HHVM tokenizes <?= as T_ECHO but it should be T_OPEN_TAG_WITH_ECHO.
                 $tokens[$i]['code'] = T_OPEN_TAG_WITH_ECHO;
                 $tokens[$i]['type'] = 'T_OPEN_TAG_WITH_ECHO';
@@ -1352,7 +1351,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     $line = $tokens[$i]['line'];
                     echo "\t* token $i on line $line changed from T_ECHO to T_OPEN_TAG_WITH_ECHO".PHP_EOL;
                 }
-            } else if ($tokens[$i]['code'] === T_TRUE
+            } elseif ($tokens[$i]['code'] === T_TRUE
                 || $tokens[$i]['code'] === T_FALSE
                 || $tokens[$i]['code'] === T_NULL
             ) {
@@ -1378,7 +1377,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
                     $tokens[$i]['code'] = T_STRING;
                     $tokens[$i]['type'] = 'T_STRING';
                 }
-            } else if ($tokens[$i]['code'] === T_CONST) {
+            } elseif ($tokens[$i]['code'] === T_CONST) {
                 // Context sensitive keywords support.
                 for ($x = ($i + 1); $i < $numTokens; $x++) {
                     if (isset(PHP_CodeSniffer_Tokens::$emptyTokens[$tokens[$x]['code']]) === false) {
@@ -1517,7 +1516,6 @@ class PHP_CodeSniffer_Tokenizers_PHP
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
             echo "\t*** END ADDITIONAL PHP PROCESSING ***".PHP_EOL;
         }
-
     }//end processAdditional()
 
 
@@ -1539,7 +1537,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
             $cacheKey = null;
             if ($token[0] === T_STRING) {
                 $cacheKey = strtolower($token[1]);
-            } else if ($token[0] !== T_CURLY_OPEN) {
+            } elseif ($token[0] !== T_CURLY_OPEN) {
                 $cacheKey = $token[0];
             }
 
@@ -1579,7 +1577,7 @@ class PHP_CodeSniffer_Tokenizers_PHP
             $newToken['code'] = constant($newToken['type']);
 
             self::$_resolveTokenCache[$cacheKey] = $newToken;
-        } else if ($token[0] === T_CURLY_OPEN) {
+        } elseif ($token[0] === T_CURLY_OPEN) {
             $newToken = array(
                          'code' => T_OPEN_CURLY_BRACKET,
                          'type' => 'T_OPEN_CURLY_BRACKET',
@@ -1595,7 +1593,6 @@ class PHP_CodeSniffer_Tokenizers_PHP
 
         $newToken['content'] = $token[1];
         return $newToken;
-
     }//end standardiseToken()
 
 
@@ -1700,8 +1697,5 @@ class PHP_CodeSniffer_Tokenizers_PHP
 
         self::$_resolveTokenCache[$token] = $newToken;
         return $newToken;
-
     }//end resolveSimpleToken()
-
-
 }//end class

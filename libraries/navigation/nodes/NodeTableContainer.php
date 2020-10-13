@@ -22,32 +22,10 @@ class NodeTableContainer extends NodeDatabaseChildContainer
      */
     public function __construct()
     {
-        parent::__construct(__('Tables'), Node::CONTAINER);
-        $this->icon = PMA\libraries\Util::getImage('b_browse.png', __('Tables'));
-        $this->links = array(
-            'text' => 'db_structure.php?server=' . $GLOBALS['server']
-                . '&amp;db=%1$s&amp;tbl_type=table',
-            'icon' => 'db_structure.php?server=' . $GLOBALS['server']
-                . '&amp;db=%1$s&amp;tbl_type=table',
-        );
-        $this->real_name = 'tables';
-        $this->classes = 'tableContainer subContainer';
-
-        $new_label = _pgettext('Create new table', 'New');
-        $new = NodeFactory::getInstance(
-            'Node',
-            $new_label
-        );
-        $new->isNew = true;
-        $new->icon = PMA\libraries\Util::getImage('b_table_add.png', $new_label);
-        $new->links = array(
-            'text' => 'tbl_create.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s',
-            'icon' => 'tbl_create.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s',
-        );
-        $new->classes = 'new_table italics';
-        $this->addChild($new);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

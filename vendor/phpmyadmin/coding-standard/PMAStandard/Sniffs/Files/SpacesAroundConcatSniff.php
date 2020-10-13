@@ -40,8 +40,11 @@ class PMAStandard_Sniffs_Files_SpacesAroundConcatSniff implements PHP_CodeSniffe
      */
     public function register()
     {
-        return array(T_STRING_CONCAT);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
     // }}}
@@ -60,19 +63,14 @@ class PMAStandard_Sniffs_Files_SpacesAroundConcatSniff implements PHP_CodeSniffe
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        if ($tokens[$stackPtr-1]['type'] !== 'T_WHITESPACE') {
-            $warning = 'Whitespace is expected before any concat operator "."';
-            $phpcsFile->addWarning($warning, $stackPtr, 'Found');
-        }
-        if ($tokens[$stackPtr+1]['type'] !== 'T_WHITESPACE') {
-            $warning = 'Whitespace is expected after any concat operator "."';
-            $phpcsFile->addWarning($warning, $stackPtr, 'Found');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
 
     // }}}
-
 }//end class
 
 // }}}

@@ -41,29 +41,9 @@ PMA_processExportSchema($_REQUEST['export_type']);
  */
 function PMA_processExportSchema($export_type)
 {
-    /**
-     * default is PDF, otherwise validate it's only letters a-z
-     */
-    if (! isset($export_type) || ! preg_match('/^[a-zA-Z]+$/', $export_type)) {
-        $export_type = 'pdf';
-    }
-
-    // sanitize this parameter which will be used below in a file inclusion
-    $export_type = PMA_securePath($export_type);
-
-    // get the specific plugin
-    /* @var $export_plugin SchemaPlugin */
-    $export_plugin = PMA_getPlugin(
-        "schema",
-        $export_type,
-        'libraries/plugins/schema/'
-    );
-
-    // Check schema export type
-    if (! isset($export_plugin)) {
-        PMA_fatalError(__('Bad type!'));
-    }
-
-    $GLOBALS['dbi']->selectDb($GLOBALS['db']);
-    $export_plugin->exportSchema($GLOBALS['db']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

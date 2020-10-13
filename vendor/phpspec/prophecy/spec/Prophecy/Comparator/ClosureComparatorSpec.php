@@ -7,33 +7,39 @@ use Prophecy\Argument;
 
 class ClosureComparatorSpec extends ObjectBehavior
 {
-    function it_is_comparator()
+    public function it_is_comparator()
     {
-        $this->shouldHaveType('SebastianBergmann\Comparator\Comparator');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_accepts_only_closures()
+    public function it_accepts_only_closures()
     {
-        $this->accepts(123, 321)->shouldReturn(false);
-        $this->accepts('string', 'string')->shouldReturn(false);
-        $this->accepts(false, true)->shouldReturn(false);
-        $this->accepts(true, false)->shouldReturn(false);
-        $this->accepts((object)array(), (object)array())->shouldReturn(false);
-        $this->accepts(function(){}, (object)array())->shouldReturn(false);
-        $this->accepts(function(){}, (object)array())->shouldReturn(false);
-
-        $this->accepts(function(){}, function(){})->shouldReturn(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_asserts_that_all_closures_are_different()
+    public function it_asserts_that_all_closures_are_different()
     {
-        $this->shouldThrow()->duringAssertEquals(function(){}, function(){});
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_asserts_that_all_closures_are_different_even_if_its_the_same_closure()
+    public function it_asserts_that_all_closures_are_different_even_if_its_the_same_closure()
     {
-        $closure = function(){};
-
-        $this->shouldThrow()->duringAssertEquals($closure, $closure);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

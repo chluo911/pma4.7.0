@@ -175,9 +175,19 @@ class Process implements \IteratorAggregate
 
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         $this->stop(0);
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     public function __clone()
@@ -226,15 +236,11 @@ class Process implements \IteratorAggregate
      */
     public function mustRun(callable $callback = null)
     {
-        if (!$this->enhanceSigchildCompatibility && $this->isSigchildEnabled()) {
-            throw new RuntimeException('This PHP has been compiled with --enable-sigchild. You must use setEnhanceSigchildCompatibility() to use this method.');
-        }
-
-        if (0 !== $this->run($callback)) {
-            throw new ProcessFailedException($this);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -347,14 +353,11 @@ class Process implements \IteratorAggregate
      */
     public function restart(callable $callback = null)
     {
-        if ($this->isRunning()) {
-            throw new RuntimeException('Process is already running');
-        }
-
-        $process = clone $this;
-        $process->start($callback);
-
-        return $process;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -426,9 +429,11 @@ class Process implements \IteratorAggregate
      */
     public function signal($signal)
     {
-        $this->doSignal($signal, true);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -462,13 +467,11 @@ class Process implements \IteratorAggregate
      */
     public function enableOutput()
     {
-        if ($this->isRunning()) {
-            throw new RuntimeException('Enabling output while the process is running is not possible.');
-        }
-
-        $this->outputDisabled = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -478,7 +481,11 @@ class Process implements \IteratorAggregate
      */
     public function isOutputDisabled()
     {
-        return $this->outputDisabled;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -513,16 +520,11 @@ class Process implements \IteratorAggregate
      */
     public function getIncrementalOutput()
     {
-        $this->readPipesForOutput(__FUNCTION__);
-
-        $latest = stream_get_contents($this->stdout, -1, $this->incrementalOutputOffset);
-        $this->incrementalOutputOffset = ftell($this->stdout);
-
-        if (false === $latest) {
-            return '';
-        }
-
-        return $latest;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -629,16 +631,11 @@ class Process implements \IteratorAggregate
      */
     public function getIncrementalErrorOutput()
     {
-        $this->readPipesForOutput(__FUNCTION__);
-
-        $latest = stream_get_contents($this->stderr, -1, $this->incrementalErrorOutputOffset);
-        $this->incrementalErrorOutputOffset = ftell($this->stderr);
-
-        if (false === $latest) {
-            return '';
-        }
-
-        return $latest;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -686,11 +683,11 @@ class Process implements \IteratorAggregate
      */
     public function getExitCodeText()
     {
-        if (null === $exitcode = $this->getExitCode()) {
-            return;
-        }
-
-        return isset(self::$exitCodes[$exitcode]) ? self::$exitCodes[$exitcode] : 'Unknown error';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -715,13 +712,11 @@ class Process implements \IteratorAggregate
      */
     public function hasBeenSignaled()
     {
-        $this->requireProcessIsTerminated(__FUNCTION__);
-
-        if (!$this->enhanceSigchildCompatibility && $this->isSigchildEnabled()) {
-            throw new RuntimeException('This PHP has been compiled with --enable-sigchild. Term signal can not be retrieved.');
-        }
-
-        return $this->processInformation['signaled'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -736,13 +731,11 @@ class Process implements \IteratorAggregate
      */
     public function getTermSignal()
     {
-        $this->requireProcessIsTerminated(__FUNCTION__);
-
-        if ($this->isSigchildEnabled() && (!$this->enhanceSigchildCompatibility || -1 === $this->processInformation['termsig'])) {
-            throw new RuntimeException('This PHP has been compiled with --enable-sigchild. Term signal can not be retrieved.');
-        }
-
-        return $this->processInformation['termsig'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -756,9 +749,11 @@ class Process implements \IteratorAggregate
      */
     public function hasBeenStopped()
     {
-        $this->requireProcessIsTerminated(__FUNCTION__);
-
-        return $this->processInformation['stopped'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -772,9 +767,11 @@ class Process implements \IteratorAggregate
      */
     public function getStopSignal()
     {
-        $this->requireProcessIsTerminated(__FUNCTION__);
-
-        return $this->processInformation['stopsig'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -810,9 +807,11 @@ class Process implements \IteratorAggregate
      */
     public function isTerminated()
     {
-        $this->updateStatus(false);
-
-        return $this->status == self::STATUS_TERMINATED;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -824,9 +823,11 @@ class Process implements \IteratorAggregate
      */
     public function getStatus()
     {
-        $this->updateStatus(false);
-
-        return $this->status;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -875,11 +876,11 @@ class Process implements \IteratorAggregate
      */
     public function addOutput($line)
     {
-        $this->lastOutputTime = microtime(true);
-
-        fseek($this->stdout, 0, SEEK_END);
-        fwrite($this->stdout, $line);
-        fseek($this->stdout, $this->incrementalOutputOffset);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -891,11 +892,11 @@ class Process implements \IteratorAggregate
      */
     public function addErrorOutput($line)
     {
-        $this->lastOutputTime = microtime(true);
-
-        fseek($this->stderr, 0, SEEK_END);
-        fwrite($this->stderr, $line);
-        fseek($this->stderr, $this->incrementalErrorOutputOffset);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -917,9 +918,11 @@ class Process implements \IteratorAggregate
      */
     public function setCommandLine($commandline)
     {
-        $this->commandline = $commandline;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -994,24 +997,11 @@ class Process implements \IteratorAggregate
      */
     public function setTty($tty)
     {
-        if ('\\' === DIRECTORY_SEPARATOR && $tty) {
-            throw new RuntimeException('TTY mode is not supported on Windows platform.');
-        }
-        if ($tty) {
-            static $isTtySupported;
-
-            if (null === $isTtySupported) {
-                $isTtySupported = (bool) @proc_open('echo 1 >/dev/null', array(array('file', '/dev/tty', 'r'), array('file', '/dev/tty', 'w'), array('file', '/dev/tty', 'w')), $pipes);
-            }
-
-            if (!$isTtySupported) {
-                throw new RuntimeException('TTY mode requires /dev/tty to be read/writable.');
-            }
-        }
-
-        $this->tty = (bool) $tty;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1033,9 +1023,11 @@ class Process implements \IteratorAggregate
      */
     public function setPty($bool)
     {
-        $this->pty = (bool) $bool;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1055,13 +1047,11 @@ class Process implements \IteratorAggregate
      */
     public function getWorkingDirectory()
     {
-        if (null === $this->cwd) {
-            // getcwd() will return false if any one of the parent directories does not have
-            // the readable or search mode set, even if the current directory does
-            return getcwd() ?: null;
-        }
-
-        return $this->cwd;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1073,9 +1063,11 @@ class Process implements \IteratorAggregate
      */
     public function setWorkingDirectory($cwd)
     {
-        $this->cwd = $cwd;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1085,7 +1077,11 @@ class Process implements \IteratorAggregate
      */
     public function getEnv()
     {
-        return $this->env;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1120,7 +1116,11 @@ class Process implements \IteratorAggregate
      */
     public function getInput()
     {
-        return $this->input;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1178,7 +1178,11 @@ class Process implements \IteratorAggregate
      */
     public function getEnhanceWindowsCompatibility()
     {
-        return $this->enhanceWindowsCompatibility;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1190,9 +1194,11 @@ class Process implements \IteratorAggregate
      */
     public function setEnhanceWindowsCompatibility($enhance)
     {
-        $this->enhanceWindowsCompatibility = (bool) $enhance;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1202,7 +1208,11 @@ class Process implements \IteratorAggregate
      */
     public function getEnhanceSigchildCompatibility()
     {
-        return $this->enhanceSigchildCompatibility;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1218,9 +1228,11 @@ class Process implements \IteratorAggregate
      */
     public function setEnhanceSigchildCompatibility($enhance)
     {
-        $this->enhanceSigchildCompatibility = (bool) $enhance;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1244,7 +1256,11 @@ class Process implements \IteratorAggregate
      */
     public function areEnvironmentVariablesInherited()
     {
-        return $this->inheritEnv;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1585,8 +1601,10 @@ class Process implements \IteratorAggregate
      */
     private function requireProcessIsTerminated($functionName)
     {
-        if (!$this->isTerminated()) {
-            throw new LogicException(sprintf('Process must be terminated before calling %s.', $functionName));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

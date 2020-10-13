@@ -94,7 +94,6 @@ class Scripts
     {
         $this->_files  = array();
         $this->_code   = '';
-
     }
 
     /**
@@ -190,7 +189,6 @@ class Scripts
                 'name' => $file['filename'],
                 'fire' => $file['has_onload']
             );
-
         }
         return $retval;
     }

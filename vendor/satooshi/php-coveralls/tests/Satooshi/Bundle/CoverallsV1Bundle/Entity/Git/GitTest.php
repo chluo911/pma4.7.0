@@ -12,33 +12,29 @@ class GitTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->branchName = 'branch_name';
-        $this->commit     = $this->createCommit();
-        $this->remote     = $this->createRemote();
-
-        $this->object = new Git($this->branchName, $this->commit, array($this->remote));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function createRemote($name = 'name', $url  = 'url')
     {
-        $remote = new Remote();
-
-        return $remote
-        ->setName($name)
-        ->setUrl($url);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function createCommit($id = 'id', $authorName  = 'author_name', $authorEmail = 'author_email', $committerName = 'committer_name', $committerEmail = 'committer_email', $message = 'message')
     {
-        $commit = new Commit();
-
-        return $commit
-        ->setId($id)
-        ->setAuthorName($authorName)
-        ->setAuthorEmail($authorEmail)
-        ->setCommitterName($committerName)
-        ->setCommitterEmail($committerEmail)
-        ->setMessage($message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getBranch()
@@ -48,7 +44,11 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveBranchNameOnConstruction()
     {
-        $this->assertSame($this->branchName, $this->object->getBranch());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getHead()
@@ -58,7 +58,11 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveHeadCommitOnConstruction()
     {
-        $this->assertSame($this->commit, $this->object->getHead());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getRemotes()
@@ -68,7 +72,11 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveRemotesOnConstruction()
     {
-        $this->assertSame(array($this->remote), $this->object->getRemotes());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // toArray()
@@ -78,13 +86,10 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertToArray()
     {
-        $expected = array(
-            'branch'  => $this->branchName,
-            'head'    => $this->commit->toArray(),
-            'remotes' => array($this->remote->toArray()),
-        );
-
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

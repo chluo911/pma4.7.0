@@ -751,53 +751,11 @@ class Query
      */
     public static function getFirstStatement($query, $delimiter = null)
     {
-        $lexer = new Lexer($query, false, $delimiter);
-        $list = $lexer->list;
-
-        /**
-         * Whether a full statement was found.
-         *
-         * @var bool
-         */
-        $fullStatement = false;
-
-        /**
-         * The first full statement.
-         *
-         * @var string
-         */
-        $statement = '';
-
-        for ($list->idx = 0; $list->idx < $list->count; ++$list->idx) {
-            $token = $list->tokens[$list->idx];
-
-            if ($token->type === Token::TYPE_COMMENT) {
-                continue;
-            }
-
-            $statement .= $token->token;
-
-            if (($token->type === Token::TYPE_DELIMITER) && (!empty($token->token))) {
-                $delimiter = $token->token;
-                $fullStatement = true;
-                break;
-            }
-        }
-
-        // No statement was found so we return the entire query as being the
-        // remaining part.
-        if (!$fullStatement) {
-            return array(null, $query, $delimiter);
-        }
-
-        // At least one query was found so we have to build the rest of the
-        // remaining query.
-        $query = '';
-        for (++$list->idx; $list->idx < $list->count; ++$list->idx) {
-            $query .= $list->tokens[$list->idx]->token;
-        }
-
-        return array(trim($statement), $query, $delimiter);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

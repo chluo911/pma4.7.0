@@ -32,9 +32,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new See(new Fqsen('\DateTime'), new Description('Description'));
-
-        $this->assertSame('see', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,9 +49,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new See(new Fqsen('\DateTime'), new Description('Description'));
-
-        $this->assertSame('@see \DateTime Description', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,12 +63,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new See(new Fqsen('\DateTime'), new Description('Description'));
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,11 +76,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasReferenceToFqsen()
     {
-        $expected = new Fqsen('\DateTime');
-
-        $fixture = new See($expected);
-
-        $this->assertSame($expected, $fixture->getReference());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,11 +90,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasDescription()
     {
-        $expected = new Description('Description');
-
-        $fixture = new See(new Fqsen('\DateTime'), $expected);
-
-        $this->assertSame($expected, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -101,9 +104,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new See(new Fqsen('\DateTime'), new Description('Description'));
-
-        $this->assertSame('\DateTime Description', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -117,22 +122,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $resolver = m::mock(FqsenResolver::class);
-        $context = new Context('');
-
-        $fqsen = new Fqsen('\DateTime');
-        $description = new Description('My Description');
-
-        $descriptionFactory
-            ->shouldReceive('create')->with('My Description', $context)->andReturn($description);
-        $resolver->shouldReceive('resolve')->with('DateTime', $context)->andReturn($fqsen);
-
-        $fixture = See::create('DateTime My Description', $resolver, $descriptionFactory, $context);
-
-        $this->assertSame('\DateTime My Description', (string)$fixture);
-        $this->assertSame($fqsen, $fixture->getReference());
-        $this->assertSame($description, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,7 +135,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfBodyIsNotString()
     {
-        $this->assertNull(See::create([]));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -150,7 +148,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfBodyIsNotEmpty()
     {
-        $this->assertNull(See::create(''));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -159,7 +161,11 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfResolverIsNull()
     {
-        See::create('body');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -168,6 +174,10 @@ class SeeTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfDescriptionFactoryIsNull()
     {
-        See::create('body', new FqsenResolver());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

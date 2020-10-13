@@ -7,34 +7,57 @@ use spec\Prophecy\Exception\Prophecy;
 
 class MethodNotFoundExceptionSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith('', 'User', 'getName', array(1, 2, 3));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_DoubleException()
+    public function it_is_DoubleException()
     {
-        $this->shouldHaveType('Prophecy\Exception\Doubler\DoubleException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_MethodName()
+    public function it_has_MethodName()
     {
-        $this->getMethodName()->shouldReturn('getName');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_classnamej()
+    public function it_has_classnamej()
     {
-        $this->getClassname()->shouldReturn('User');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_an_arguments_list()
+    public function it_has_an_arguments_list()
     {
-        $this->getArguments()->shouldReturn(array(1, 2, 3));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_default_null_argument_list()
+    public function it_has_a_default_null_argument_list()
     {
-        $this->beConstructedWith('', 'User', 'getName');
-        $this->getArguments()->shouldReturn(null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

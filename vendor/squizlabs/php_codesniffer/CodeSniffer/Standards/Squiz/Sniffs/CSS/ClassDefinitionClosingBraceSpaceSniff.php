@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_ClassDefinitionClosingBraceSpaceSniff implements PHP_Code
      */
     public function register()
     {
-        return array(T_CLOSE_CURLY_BRACKET);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,64 +62,10 @@ class Squiz_Sniffs_CSS_ClassDefinitionClosingBraceSpaceSniff implements PHP_Code
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-        if ($next === false) {
-            return;
-        }
-
-        if ($tokens[$next]['code'] !== T_CLOSE_TAG) {
-            $found = (($tokens[$next]['line'] - $tokens[$stackPtr]['line']) - 1);
-            if ($found !== 1) {
-                $error = 'Expected one blank line after closing brace of class definition; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingAfterClose', $data);
-
-                if ($fix === true) {
-                    if ($found === 0) {
-                        $phpcsFile->fixer->addNewline($stackPtr);
-                    } else {
-                        $nextContent = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-                        $phpcsFile->fixer->beginChangeset();
-                        for ($i = ($stackPtr + 1); $i < ($nextContent - 1); $i++) {
-                            $phpcsFile->fixer->replaceToken($i, '');
-                        }
-
-                        $phpcsFile->fixer->addNewline($i);
-                        $phpcsFile->fixer->endChangeset();
-                    }
-                }
-            }//end if
-        }//end if
-
-        // Ignore nested style definitions from here on. The spacing before the closing brace
-        // (a single blank line) will be enforced by the above check, which ensures there is a
-        // blank line after the last nested class.
-        $found = $phpcsFile->findPrevious(
-            T_CLOSE_CURLY_BRACKET,
-            ($stackPtr - 1),
-            $tokens[$stackPtr]['bracket_opener']
-        );
-
-        if ($found !== false) {
-            return;
-        }
-
-        $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        if ($prev === false) {
-            return;
-        }
-
-        if ($tokens[$prev]['line'] === $tokens[$stackPtr]['line']) {
-            $error = 'Closing brace of class definition must be on new line';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'ContentBeforeClose');
-            if ($fix === true) {
-                $phpcsFile->fixer->addNewlineBefore($stackPtr);
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

@@ -73,11 +73,11 @@ class ExportYaml extends ExportPlugin
      */
     public function exportHeader()
     {
-        PMA_exportOutputHandler(
-            '%YAML 1.1' . $GLOBALS['crlf'] . '---' . $GLOBALS['crlf']
-        );
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,9 +87,11 @@ class ExportYaml extends ExportPlugin
      */
     public function exportFooter()
     {
-        PMA_exportOutputHandler('...' . $GLOBALS['crlf']);
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -102,7 +104,11 @@ class ExportYaml extends ExportPlugin
      */
     public function exportDBHeader($db, $db_alias = '')
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -114,7 +120,11 @@ class ExportYaml extends ExportPlugin
      */
     public function exportDBFooter($db)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -128,7 +138,11 @@ class ExportYaml extends ExportPlugin
      */
     public function exportDBCreate($db, $export_type, $db_alias = '')
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -151,67 +165,10 @@ class ExportYaml extends ExportPlugin
         $sql_query,
         $aliases = array()
     ) {
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-        $result = $GLOBALS['dbi']->query(
-            $sql_query,
-            null,
-            PMA\libraries\DatabaseInterface::QUERY_UNBUFFERED
-        );
-
-        $columns_cnt = $GLOBALS['dbi']->numFields($result);
-        $columns = array();
-        for ($i = 0; $i < $columns_cnt; $i++) {
-            $col_as = $GLOBALS['dbi']->fieldName($result, $i);
-            if (!empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
-                $col_as = $aliases[$db]['tables'][$table]['columns'][$col_as];
-            }
-            $columns[$i] = stripslashes($col_as);
-        }
-
-        $buffer = '';
-        $record_cnt = 0;
-        while ($record = $GLOBALS['dbi']->fetchRow($result)) {
-            $record_cnt++;
-
-            // Output table name as comment if this is the first record of the table
-            if ($record_cnt == 1) {
-                $buffer = '# ' . $db_alias . '.' . $table_alias . $crlf;
-                $buffer .= '-' . $crlf;
-            } else {
-                $buffer = '-' . $crlf;
-            }
-
-            for ($i = 0; $i < $columns_cnt; $i++) {
-                if (!isset($record[$i])) {
-                    continue;
-                }
-
-                if (is_null($record[$i])) {
-                    $buffer .= '  ' . $columns[$i] . ': null' . $crlf;
-                    continue;
-                }
-
-                if (is_numeric($record[$i])) {
-                    $buffer .= '  ' . $columns[$i] . ': ' . $record[$i] . $crlf;
-                    continue;
-                }
-
-                $record[$i] = str_replace(
-                    array('\\', '"', "\n", "\r"),
-                    array('\\\\', '\"', '\n', '\r'),
-                    $record[$i]
-                );
-                $buffer .= '  ' . $columns[$i] . ': "' . $record[$i] . '"' . $crlf;
-            }
-
-            if (!PMA_exportOutputHandler($buffer)) {
-                return false;
-            }
-        }
-        $GLOBALS['dbi']->freeResult($result);
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     } // end getTableYAML
 }

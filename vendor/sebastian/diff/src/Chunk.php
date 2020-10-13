@@ -47,11 +47,11 @@ class Chunk
      */
     public function __construct($start = 0, $startRange = 1, $end = 0, $endRange = 1, array $lines = array())
     {
-        $this->start      = (int) $start;
-        $this->startRange = (int) $startRange;
-        $this->end        = (int) $end;
-        $this->endRange   = (int) $endRange;
-        $this->lines      = $lines;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,7 +59,11 @@ class Chunk
      */
     public function getStart()
     {
-        return $this->start;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,7 +71,11 @@ class Chunk
      */
     public function getStartRange()
     {
-        return $this->startRange;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,7 +83,11 @@ class Chunk
      */
     public function getEnd()
     {
-        return $this->end;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -83,7 +95,11 @@ class Chunk
      */
     public function getEndRange()
     {
-        return $this->endRange;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,7 +107,11 @@ class Chunk
      */
     public function getLines()
     {
-        return $this->lines;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

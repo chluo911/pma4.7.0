@@ -23,10 +23,11 @@ final class StaticClient
      */
     public static function mount($className = 'Guzzle', ClientInterface $client = null)
     {
-        class_alias(__CLASS__, $className);
-        if ($client) {
-            self::$client = $client;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,7 +69,11 @@ final class StaticClient
      */
     public static function get($url, $options = array())
     {
-        return self::request('GET', $url, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -82,7 +87,11 @@ final class StaticClient
      */
     public static function head($url, $options = array())
     {
-        return self::request('HEAD', $url, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,7 +105,11 @@ final class StaticClient
      */
     public static function delete($url, $options = array())
     {
-        return self::request('DELETE', $url, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -124,7 +137,11 @@ final class StaticClient
      */
     public static function put($url, $options = array())
     {
-        return self::request('PUT', $url, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -138,7 +155,11 @@ final class StaticClient
      */
     public static function patch($url, $options = array())
     {
-        return self::request('PATCH', $url, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -152,6 +173,10 @@ final class StaticClient
      */
     public static function options($url, $options = array())
     {
-        return self::request('OPTIONS', $url, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -32,7 +32,11 @@ class ConfigCacheFactory implements ConfigCacheFactoryInterface
      */
     public function __construct($debug)
     {
-        $this->debug = $debug;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,15 +44,10 @@ class ConfigCacheFactory implements ConfigCacheFactoryInterface
      */
     public function cache($file, $callback)
     {
-        if (!is_callable($callback)) {
-            throw new \InvalidArgumentException(sprintf('Invalid type for callback argument. Expected callable, but got "%s".', gettype($callback)));
-        }
-
-        $cache = new ConfigCache($file, $this->debug);
-        if (!$cache->isFresh()) {
-            call_user_func($callback, $cache);
-        }
-
-        return $cache;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

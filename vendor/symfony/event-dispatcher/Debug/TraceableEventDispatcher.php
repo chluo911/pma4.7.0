@@ -88,7 +88,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
      */
     public function removeSubscriber(EventSubscriberInterface $subscriber)
     {
-        return $this->dispatcher->removeSubscriber($subscriber);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -116,7 +120,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
      */
     public function hasListeners($eventName = null)
     {
-        return $this->dispatcher->hasListeners($eventName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -154,15 +162,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
      */
     public function getCalledListeners()
     {
-        $called = array();
-        foreach ($this->called as $eventName => $listeners) {
-            foreach ($listeners as $listener) {
-                $info = $this->getListenerInfo($listener->getWrappedListener(), $eventName);
-                $called[$eventName.'.'.$info['pretty']] = $info;
-            }
-        }
-
-        return $called;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -170,41 +174,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
      */
     public function getNotCalledListeners()
     {
-        try {
-            $allListeners = $this->getListeners();
-        } catch (\Exception $e) {
-            if (null !== $this->logger) {
-                $this->logger->info('An exception was thrown while getting the uncalled listeners.', array('exception' => $e));
-            }
-
-            // unable to retrieve the uncalled listeners
-            return array();
-        }
-
-        $notCalled = array();
-        foreach ($allListeners as $eventName => $listeners) {
-            foreach ($listeners as $listener) {
-                $called = false;
-                if (isset($this->called[$eventName])) {
-                    foreach ($this->called[$eventName] as $l) {
-                        if ($l->getWrappedListener() === $listener) {
-                            $called = true;
-
-                            break;
-                        }
-                    }
-                }
-
-                if (!$called) {
-                    $info = $this->getListenerInfo($listener, $eventName);
-                    $notCalled[$eventName.'.'.$info['pretty']] = $info;
-                }
-            }
-        }
-
-        uasort($notCalled, array($this, 'sortListenersByPriority'));
-
-        return $notCalled;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -355,22 +329,10 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
 
     private function sortListenersByPriority($a, $b)
     {
-        if (is_int($a['priority']) && !is_int($b['priority'])) {
-            return 1;
-        }
-
-        if (!is_int($a['priority']) && is_int($b['priority'])) {
-            return -1;
-        }
-
-        if ($a['priority'] === $b['priority']) {
-            return 0;
-        }
-
-        if ($a['priority'] > $b['priority']) {
-            return -1;
-        }
-
-        return 1;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

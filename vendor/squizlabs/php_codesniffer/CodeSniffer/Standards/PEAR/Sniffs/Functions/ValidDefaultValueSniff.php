@@ -39,11 +39,11 @@ class PEAR_Sniffs_Functions_ValidDefaultValueSniff implements PHP_CodeSniffer_Sn
      */
     public function register()
     {
-        return array(
-                T_FUNCTION,
-                T_CLOSURE,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -58,41 +58,10 @@ class PEAR_Sniffs_Functions_ValidDefaultValueSniff implements PHP_CodeSniffer_Sn
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $argStart = $tokens[$stackPtr]['parenthesis_opener'];
-        $argEnd   = $tokens[$stackPtr]['parenthesis_closer'];
-
-        // Flag for when we have found a default in our arg list.
-        // If there is a value without a default after this, it is an error.
-        $defaultFound = false;
-
-        $params = $phpcsFile->getMethodParameters($stackPtr);
-        foreach ($params as $param) {
-            if ($param['variable_length'] === true) {
-                continue;
-            }
-
-            if (array_key_exists('default', $param) === true) {
-                $defaultFound = true;
-                // Check if the arg is type hinted and using NULL for the default.
-                // This does not make the argument optional - it just allows NULL
-                // to be passed in.
-                if ($param['type_hint'] !== '' && strtolower($param['default']) === 'null') {
-                    $defaultFound = false;
-                }
-
-                continue;
-            }
-
-            if ($defaultFound === true) {
-                $error = 'Arguments with default values must be at the end of the argument list';
-                $phpcsFile->addError($error, $param['token'], 'NotAtEnd');
-                return;
-            }
-        }//end foreach
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

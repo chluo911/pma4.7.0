@@ -21,15 +21,11 @@ class FqsenResolver
 
     public function resolve($fqsen, Context $context = null)
     {
-        if ($context === null) {
-            $context = new Context('');
-        }
-
-        if ($this->isFqsen($fqsen)) {
-            return new Fqsen($fqsen);
-        }
-
-        return $this->resolvePartialStructuralElementName($fqsen, $context);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,7 +37,11 @@ class FqsenResolver
      */
     private function isFqsen($type)
     {
-        return strpos($type, self::OPERATOR_NAMESPACE) === 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,22 +55,10 @@ class FqsenResolver
      */
     private function resolvePartialStructuralElementName($type, Context $context)
     {
-        $typeParts = explode(self::OPERATOR_NAMESPACE, $type, 2);
-
-        $namespaceAliases = $context->getNamespaceAliases();
-
-        // if the first segment is not an alias; prepend namespace name and return
-        if (!isset($namespaceAliases[$typeParts[0]])) {
-            $namespace = $context->getNamespace();
-            if ('' !== $namespace) {
-                $namespace .= self::OPERATOR_NAMESPACE;
-            }
-
-            return new Fqsen(self::OPERATOR_NAMESPACE . $namespace . $type);
-        }
-
-        $typeParts[0] = $namespaceAliases[$typeParts[0]];
-
-        return new Fqsen(self::OPERATOR_NAMESPACE . implode(self::OPERATOR_NAMESPACE, $typeParts));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

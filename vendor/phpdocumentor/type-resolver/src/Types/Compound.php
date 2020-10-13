@@ -33,13 +33,11 @@ final class Compound implements Type
      */
     public function __construct(array $types)
     {
-        foreach ($types as $type) {
-            if (!$type instanceof Type) {
-                throw new \InvalidArgumentException('A compound type can only have other types as elements');
-            }
-        }
-
-        $this->types = $types;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

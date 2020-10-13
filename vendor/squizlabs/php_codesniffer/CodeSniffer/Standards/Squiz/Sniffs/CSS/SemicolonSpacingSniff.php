@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_SemicolonSpacingSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_STYLE);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,26 +62,10 @@ class Squiz_Sniffs_CSS_SemicolonSpacingSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $semicolon = $phpcsFile->findNext(T_SEMICOLON, ($stackPtr + 1));
-        if ($semicolon === false || $tokens[$semicolon]['line'] !== $tokens[$stackPtr]['line']) {
-            $error = 'Style definitions must end with a semicolon';
-            $phpcsFile->addError($error, $stackPtr, 'NotAtEnd');
-            return;
-        }
-
-        if ($tokens[($semicolon - 1)]['code'] === T_WHITESPACE) {
-            $length = strlen($tokens[($semicolon - 1)]['content']);
-            $error  = 'Expected 0 spaces before semicolon in style definition; %s found';
-            $data   = array($length);
-            $fix    = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceFound', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($semicolon - 1), '');
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

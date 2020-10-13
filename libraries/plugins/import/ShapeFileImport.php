@@ -20,7 +20,11 @@ class ShapeFileImport extends ShapeFile
      */
     public function readSHP($bytes)
     {
-        return ImportShp::readFromBuffer($bytes);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -30,9 +34,10 @@ class ShapeFileImport extends ShapeFile
      */
     public function eofSHP()
     {
-        global $eof;
-
-        return $eof;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

@@ -27,9 +27,13 @@ class SystemDatabase
      * @param DatabaseInterface $dbi Database interface for the system database
      *
      */
-    function __construct(DatabaseInterface $dbi)
+    public function __construct(DatabaseInterface $dbi)
     {
-        $this->dbi = $dbi;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,18 +46,11 @@ class SystemDatabase
      */
     public function getExistingTransformationData($db)
     {
-        $cfgRelation = \PMA_getRelationsParam();
-
-        // Get the existing transformation details of the same database
-        // from pma__column_info table
-        $pma_transformation_sql = sprintf(
-            "SELECT * FROM %s.%s WHERE `db_name` = '%s'",
-            Util::backquote($cfgRelation['db']),
-            Util::backquote($cfgRelation['column_info']),
-            $GLOBALS['dbi']->escapeString($db)
-        );
-
-        return $this->dbi->tryQuery($pma_transformation_sql);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,60 +63,16 @@ class SystemDatabase
      *
      * @return string $new_transformations_sql SQL query for new transformations
      */
-    function getNewTransformationDataSql(
-        $pma_transformation_data, $column_map, $view_name, $db
+    public function getNewTransformationDataSql(
+        $pma_transformation_data,
+        $column_map,
+        $view_name,
+        $db
     ) {
-        $cfgRelation = \PMA_getRelationsParam();
-
-        // Need to store new transformation details for VIEW
-        $new_transformations_sql = sprintf(
-            "INSERT INTO %s.%s ("
-            . "`db_name`, `table_name`, `column_name`, "
-            . "`comment`, `mimetype`, `transformation`, "
-            . "`transformation_options`) VALUES",
-            Util::backquote($cfgRelation['db']),
-            Util::backquote($cfgRelation['column_info'])
-        );
-
-        $column_count = 0;
-        $add_comma = false;
-
-        while ($data_row = $this->dbi->fetchAssoc($pma_transformation_data)) {
-
-            foreach ($column_map as $column) {
-
-                if ($data_row['table_name'] != $column['table_name']
-                    || $data_row['column_name'] != $column['refering_column']
-                ) {
-                    continue;
-                }
-
-                $new_transformations_sql .= sprintf(
-                    "%s ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-                    $add_comma ? ', ' : '',
-                    $db,
-                    $view_name,
-                    isset($column['real_column'])
-                    ? $column['real_column']
-                    : $column['refering_column'],
-                    $data_row['comment'],
-                    $data_row['mimetype'],
-                    $data_row['transformation'],
-                    $GLOBALS['dbi']->escapeString(
-                        $data_row['transformation_options']
-                    )
-                );
-
-                $add_comma = true;
-                $column_count++;
-                break;
-            }
-
-            if ($column_count == count($column_map)) {
-                break;
-            }
-        }
-
-        return ($column_count > 0) ? $new_transformations_sql : '';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

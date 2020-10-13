@@ -21,18 +21,11 @@ class CodeExporter
      */
     public function constants(Snapshot $snapshot)
     {
-        $result = '';
-
-        foreach ($snapshot->constants() as $name => $value) {
-            $result .= sprintf(
-                'if (!defined(\'%s\')) define(\'%s\', %s);' . "\n",
-                $name,
-                $name,
-                $this->exportVariable($value)
-            );
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,17 +34,11 @@ class CodeExporter
      */
     public function iniSettings(Snapshot $snapshot)
     {
-        $result = '';
-
-        foreach ($snapshot->iniSettings() as $key => $value) {
-            $result .= sprintf(
-                '@ini_set(%s, %s);' . "\n",
-                $this->exportVariable($key),
-                $this->exportVariable($value)
-            );
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -60,12 +47,11 @@ class CodeExporter
      */
     private function exportVariable($variable)
     {
-        if (is_scalar($variable) || is_null($variable) ||
-            (is_array($variable) && $this->arrayOnlyContainsScalars($variable))) {
-            return var_export($variable, true);
-        }
-
-        return 'unserialize(' . var_export(serialize($variable), true) . ')';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -74,20 +60,10 @@ class CodeExporter
      */
     private function arrayOnlyContainsScalars(array $array)
     {
-        $result = true;
-
-        foreach ($array as $element) {
-            if (is_array($element)) {
-                $result = self::arrayOnlyContainsScalars($element);
-            } elseif (!is_scalar($element) && !is_null($element)) {
-                $result = false;
-            }
-
-            if ($result === false) {
-                break;
-            }
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

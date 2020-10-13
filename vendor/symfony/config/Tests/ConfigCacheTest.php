@@ -21,18 +21,20 @@ class ConfigCacheTest extends TestCase
 
     protected function setUp()
     {
-        $this->cacheFile = tempnam(sys_get_temp_dir(), 'config_');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        $files = array($this->cacheFile, $this->cacheFile.'.meta');
-
-        foreach ($files as $file) {
-            if (file_exists($file)) {
-                unlink($file);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,21 +42,20 @@ class ConfigCacheTest extends TestCase
      */
     public function testCacheIsNotValidIfNothingHasBeenCached($debug)
     {
-        unlink($this->cacheFile); // remove tempnam() side effect
-        $cache = new ConfigCache($this->cacheFile, $debug);
-
-        $this->assertFalse($cache->isFresh());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsAlwaysFreshInProduction()
     {
-        $staleResource = new ResourceStub();
-        $staleResource->setFresh(false);
-
-        $cache = new ConfigCache($this->cacheFile, false);
-        $cache->write('', array($staleResource));
-
-        $this->assertTrue($cache->isFresh());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,38 +63,37 @@ class ConfigCacheTest extends TestCase
      */
     public function testIsFreshWhenNoResourceProvided($debug)
     {
-        $cache = new ConfigCache($this->cacheFile, $debug);
-        $cache->write('', array());
-        $this->assertTrue($cache->isFresh());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFreshResourceInDebug()
     {
-        $freshResource = new ResourceStub();
-        $freshResource->setFresh(true);
-
-        $cache = new ConfigCache($this->cacheFile, true);
-        $cache->write('', array($freshResource));
-
-        $this->assertTrue($cache->isFresh());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStaleResourceInDebug()
     {
-        $staleResource = new ResourceStub();
-        $staleResource->setFresh(false);
-
-        $cache = new ConfigCache($this->cacheFile, true);
-        $cache->write('', array($staleResource));
-
-        $this->assertFalse($cache->isFresh());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function debugModes()
     {
-        return array(
-            array(true),
-            array(false),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -98,17 +98,10 @@ class TransactionStatement extends Statement
      */
     public function build()
     {
-        $ret = OptionsArray::build($this->options);
-        if ($this->type === self::TYPE_BEGIN) {
-            foreach ($this->statements as $statement) {
-                /*
-                 * @var SelectStatement $statement
-                 */
-                $ret .= ';' . $statement->build();
-            }
-            $ret .= ';' . $this->end->build();
-        }
-
-        return $ret;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

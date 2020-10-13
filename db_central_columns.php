@@ -32,14 +32,30 @@ if (isset($_POST['edit_save']) || isset($_POST['add_new_column'])) {
     $collation = $_POST['collation'];
     if (isset($orig_col_name) && $orig_col_name) {
         echo PMA_updateOneColumn(
-            $db, $orig_col_name, $col_name, $col_type, $col_attribute,
-            $col_length, $col_isNull, $collation, $col_extra, $col_default
+            $db,
+            $orig_col_name,
+            $col_name,
+            $col_type,
+            $col_attribute,
+            $col_length,
+            $col_isNull,
+            $collation,
+            $col_extra,
+            $col_default
         );
         exit;
     } else {
         $tmp_msg = PMA_updateOneColumn(
-            $db, "", $col_name, $col_type, $col_attribute,
-            $col_length, $col_isNull, $collation, $col_extra, $col_default
+            $db,
+            "",
+            $col_name,
+            $col_type,
+            $col_attribute,
+            $col_length,
+            $col_isNull,
+            $collation,
+            $col_extra,
+            $col_default
         );
     }
 }
@@ -73,7 +89,8 @@ if (isset($_REQUEST['edit_central_columns_page'])) {
     $selected_fld = $_REQUEST['selected_fld'];
     $selected_db = $_REQUEST['db'];
     $edit_central_column_page = PMA_getHTMLforEditingPage(
-        $selected_fld, $selected_db
+        $selected_fld,
+        $selected_db
     );
     $response->addHTML($edit_central_column_page);
     exit;
@@ -130,14 +147,18 @@ $table_struct = '<div id="tableslistcontainer">'
         . 'style="min-width:100%" class="data">';
 $response->addHTML($table_struct);
 $tableheader = PMA_getCentralColumnsTableHeader(
-    'column_heading', __('Click to sort.'), 2
+    'column_heading',
+    __('Click to sort.'),
+    2
 );
 $response->addHTML($tableheader);
 $result = PMA_getColumnsList($db, $pos, $max_rows);
 $row_num = 0;
 foreach ($result as $row) {
     $tableHtmlRow = PMA_getHTMLforCentralColumnsTableRow(
-        $row, $row_num, $db
+        $row,
+        $row_num,
+        $db
     );
     $response->addHTML($tableHtmlRow);
     $row_num++;

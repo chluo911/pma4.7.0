@@ -188,7 +188,9 @@ if (isset($ret_message)) {
  */
 if (isset($_REQUEST['change_copy'])) {
     $queries = PMA_getDbSpecificPrivsQueriesForChangeOrCopyUser(
-        $queries, $username, $hostname
+        $queries,
+        $username,
+        $hostname
     );
 }
 
@@ -242,7 +244,7 @@ if (! empty($_REQUEST['changeUserGroup']) && $cfgRelation['menuswork']
  * Revokes Privileges
  */
 if (isset($_REQUEST['revokeall'])) {
-    list ($message, $sql_query) = PMA_getMessageAndSqlQueryForPrivilegesRevoke(
+    list($message, $sql_query) = PMA_getMessageAndSqlQueryForPrivilegesRevoke(
         (isset($dbname) ? $dbname : ''),
         (isset($tablename)
             ? $tablename
@@ -258,7 +260,9 @@ if (isset($_REQUEST['revokeall'])) {
  */
 if (isset($_REQUEST['change_pw'])) {
     $message = PMA_updatePassword(
-        $err_url, $username, $hostname
+        $err_url,
+        $username,
+        $hostname
     );
 }
 
@@ -398,7 +402,8 @@ if (isset($_REQUEST['adduser'])) {
         // check the privileges for a particular table.
         $response->addHTML(
             PMA_getHtmlForSpecificTablePrivileges(
-                $_REQUEST['checkprivsdb'], $_REQUEST['checkprivstable']
+                $_REQUEST['checkprivsdb'],
+                $_REQUEST['checkprivstable']
             )
         );
     } else {
@@ -423,10 +428,13 @@ if (isset($_REQUEST['adduser'])) {
         $response->addHTML(
             PMA_getHtmlForUserOverview($pmaThemeImage, $text_dir)
         );
-    } else if (!empty($routinename)) {
+    } elseif (!empty($routinename)) {
         $response->addHTML(
             PMA_getHtmlForRoutineSpecificPrivilges(
-                $username, $hostname, $dbname, $routinename,
+                $username,
+                $hostname,
+                $dbname,
+                $routinename,
                 (isset($url_dbname) ? $url_dbname : '')
             )
         );
@@ -441,7 +449,8 @@ if (isset($_REQUEST['adduser'])) {
             PMA_getHtmlForUserProperties(
                 (isset($dbname_is_wildcard) ? $dbname_is_wildcard : ''),
                 (isset($url_dbname) ? $url_dbname : ''),
-                $username, $hostname,
+                $username,
+                $hostname,
                 (isset($dbname) ? $dbname : ''),
                 (isset($tablename) ? $tablename : '')
             )

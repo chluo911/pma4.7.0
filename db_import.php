@@ -41,6 +41,9 @@ require 'libraries/display_import.lib.php';
 $response = Response::getInstance();
 $response->addHTML(
     PMA_getImportDisplay(
-        'database', $db, $table, $max_upload_size
+        'database',
+        $db,
+        $table,
+        $max_upload_size
     )
 );

@@ -73,17 +73,11 @@ class Git extends Coveralls
      */
     public function toArray()
     {
-        $remotes = array();
-
-        foreach ($this->remotes as $remote) {
-            $remotes[] = $remote->toArray();
-        }
-
-        return array(
-            'branch'  => $this->branch,
-            'head'    => $this->head->toArray(),
-            'remotes' => $remotes,
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // accessor
@@ -95,7 +89,11 @@ class Git extends Coveralls
      */
     public function getBranch()
     {
-        return $this->branch;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,7 +103,11 @@ class Git extends Coveralls
      */
     public function getHead()
     {
-        return $this->head;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

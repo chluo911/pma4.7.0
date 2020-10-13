@@ -8,10 +8,10 @@ class ValidationExceptionTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testCanSetAndRetrieveErrors()
     {
-        $errors = array('foo', 'bar');
-
-        $e = new ValidationException('Foo');
-        $e->setErrors($errors);
-        $this->assertEquals($errors, $e->getErrors());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

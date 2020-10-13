@@ -43,8 +43,11 @@ class Generic_Sniffs_Debug_CSSLintSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,49 +62,10 @@ class Generic_Sniffs_Debug_CSSLintSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $fileName = $phpcsFile->getFilename();
-
-        $csslintPath = PHP_CodeSniffer::getConfigData('csslint_path');
-        if ($csslintPath === null) {
-            return;
-        }
-
-        $cmd = escapeshellcmd($csslintPath).' '.escapeshellarg($fileName).' 2>&1';
-        exec($cmd, $output, $retval);
-
-        if (is_array($output) === false) {
-            return;
-        }
-
-        $count = count($output);
-
-        for ($i = 0; $i < $count; $i++) {
-            $matches    = array();
-            $numMatches = preg_match(
-                '/(error|warning) at line (\d+)/',
-                $output[$i],
-                $matches
-            );
-
-            if ($numMatches === 0) {
-                continue;
-            }
-
-            $line    = (int) $matches[2];
-            $message = 'csslint says: '.$output[($i + 1)];
-            // First line is message with error line and error code.
-            // Second is error message.
-            // Third is wrong line in file.
-            // Fourth is empty line.
-            $i += 4;
-
-            $phpcsFile->addWarningOnLine($message, $line, 'ExternalTool');
-        }//end for
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

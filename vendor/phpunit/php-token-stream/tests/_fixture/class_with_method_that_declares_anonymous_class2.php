@@ -1,16 +1,27 @@
 <?php
-class Test {
-	public function methodOne() {
-		$foo = new class {
-			public function method_in_anonymous_class() {
-				return true;
-			}
-		};
+class Test
+{
+    public function methodOne()
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
+                return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
+    }
 
-		return $foo->method_in_anonymous_class();
-	}
-
-	public function methodTwo() {
-		return false;
-	}
+    public function methodTwo()
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
+    }
 }

@@ -39,11 +39,11 @@ class Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSniff
      */
     public function register()
     {
-        return array(
-                T_LOGICAL_AND,
-                T_LOGICAL_OR,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -58,26 +58,10 @@ class Squiz_Sniffs_Operators_ValidLogicalOperatorsSniff implements PHP_CodeSniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $replacements = array(
-                         'and' => '&&',
-                         'or'  => '||',
-                        );
-
-        $operator = strtolower($tokens[$stackPtr]['content']);
-        if (isset($replacements[$operator]) === false) {
-            return;
-        }
-
-        $error = 'Logical operator "%s" is prohibited; use "%s" instead';
-        $data  = array(
-                  $operator,
-                  $replacements[$operator],
-                 );
-        $phpcsFile->addError($error, $stackPtr, 'NotAllowed', $data);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

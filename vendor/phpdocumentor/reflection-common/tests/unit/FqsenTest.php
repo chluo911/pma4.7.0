@@ -24,8 +24,11 @@ class FqsenTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidFormats($fqsen, $name)
     {
-        $instance  = new Fqsen($fqsen);
-        $this->assertEquals($name, $instance->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -35,19 +38,11 @@ class FqsenTest extends \PHPUnit_Framework_TestCase
      */
     public function validFqsenProvider()
     {
-        return [
-            ['\\', ''],
-            ['\My\Space', 'Space'],
-            ['\My\Space\myFunction()', 'myFunction'],
-            ['\My\Space\MY_CONSTANT', 'MY_CONSTANT'],
-            ['\My\Space\MY_CONSTANT2', 'MY_CONSTANT2'],
-            ['\My\Space\MyClass', 'MyClass'],
-            ['\My\Space\MyInterface', 'MyInterface'],
-            ['\My\Space\MyTrait', 'MyTrait'],
-            ['\My\Space\MyClass::myMethod()', 'myMethod'],
-            ['\My\Space\MyClass::$my_property', 'my_property'],
-            ['\My\Space\MyClass::MY_CONSTANT', 'MY_CONSTANT'],
-        ];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,7 +53,11 @@ class FqsenTest extends \PHPUnit_Framework_TestCase
      */
     public function testInValidFormats($fqsen)
     {
-        new Fqsen($fqsen);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,11 +67,11 @@ class FqsenTest extends \PHPUnit_Framework_TestCase
      */
     public function invalidFqsenProvider()
     {
-        return [
-            ['\My\*'],
-            ['\My\Space\.()'],
-            ['My\Space'],
-        ];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,8 +80,10 @@ class FqsenTest extends \PHPUnit_Framework_TestCase
      */
     public function testToString()
     {
-        $className = new Fqsen('\\phpDocumentor\\Application');
-
-        $this->assertEquals('\\phpDocumentor\\Application', (string)$className);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

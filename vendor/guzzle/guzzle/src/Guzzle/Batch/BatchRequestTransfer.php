@@ -23,7 +23,11 @@ class BatchRequestTransfer implements BatchTransferInterface, BatchDivisorInterf
      */
     public function __construct($batchSize = 50)
     {
-        $this->batchSize = $batchSize;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,34 +36,19 @@ class BatchRequestTransfer implements BatchTransferInterface, BatchDivisorInterf
      */
     public function createBatches(\SplQueue $queue)
     {
-        // Create batches by client objects
-        $groups = new \SplObjectStorage();
-        foreach ($queue as $item) {
-            if (!$item instanceof RequestInterface) {
-                throw new InvalidArgumentException('All items must implement Guzzle\Http\Message\RequestInterface');
-            }
-            $client = $item->getClient();
-            if (!$groups->contains($client)) {
-                $groups->attach($client, array($item));
-            } else {
-                $current = $groups[$client];
-                $current[] = $item;
-                $groups[$client] = $current;
-            }
-        }
-
-        $batches = array();
-        foreach ($groups as $batch) {
-            $batches = array_merge($batches, array_chunk($groups[$batch], $this->batchSize));
-        }
-
-        return $batches;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function transfer(array $batch)
     {
-        if ($batch) {
-            reset($batch)->getClient()->send($batch);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

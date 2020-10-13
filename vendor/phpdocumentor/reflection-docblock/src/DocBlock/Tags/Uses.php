@@ -37,8 +37,11 @@ final class Uses extends BaseTag implements Factory\StaticMethod
      */
     public function __construct(Fqsen $refers, Description $description = null)
     {
-        $this->refers      = $refers;
-        $this->description = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -50,15 +53,11 @@ final class Uses extends BaseTag implements Factory\StaticMethod
         DescriptionFactory $descriptionFactory = null,
         TypeContext $context = null
     ) {
-        Assert::string($body);
-        Assert::allNotNull([$resolver, $descriptionFactory]);
-
-        $parts = preg_split('/\s+/Su', $body, 2);
-
-        return new static(
-            $resolver->resolve($parts[0], $context),
-            $descriptionFactory->create(isset($parts[1]) ? $parts[1] : '', $context)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,7 +67,11 @@ final class Uses extends BaseTag implements Factory\StaticMethod
      */
     public function getReference()
     {
-        return $this->refers;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

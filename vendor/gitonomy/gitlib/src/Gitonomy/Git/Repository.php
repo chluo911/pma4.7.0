@@ -169,7 +169,11 @@ class Repository
      */
     public function isBare()
     {
-        return null === $this->workingDir;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -237,7 +241,11 @@ class Repository
      */
     public function isHeadDetached()
     {
-        return !$this->isHeadAttached();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -245,7 +253,11 @@ class Repository
      */
     public function isHeadAttached()
     {
-        return $this->getHead() instanceof Reference;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -255,7 +267,11 @@ class Repository
      */
     public function getPath()
     {
-        return $this->workingDir === null ? $this->gitDir : $this->workingDir;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -276,7 +292,11 @@ class Repository
      */
     public function getWorkingDir()
     {
-        return $this->workingDir;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -296,7 +316,11 @@ class Repository
      */
     public function getWorkingCopy()
     {
-        return new WorkingCopy($this);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -354,20 +378,20 @@ class Repository
      */
     public function getBlob($hash)
     {
-        if (!isset($this->objects[$hash])) {
-            $this->objects[$hash] = new Blob($this, $hash);
-        }
-
-        return $this->objects[$hash];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getBlame($revision, $file, $lineRange = null)
     {
-        if (is_string($revision)) {
-            $revision = $this->getRevision($revision);
-        }
-
-        return new Blame($this, $revision, $file, $lineRange);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -443,14 +467,11 @@ class Repository
      */
     public function shell($command, array $env = array())
     {
-        $argument = sprintf('%s \'%s\'', $command, $this->gitDir);
-
-        $prefix = '';
-        foreach ($env as $name => $value) {
-            $prefix .= sprintf('export %s=%s;', escapeshellarg($name), escapeshellarg($value));
-        }
-
-        proc_open($prefix.'git shell -c '.escapeshellarg($argument), array(STDIN, STDOUT, STDERR), $pipes);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -460,7 +481,11 @@ class Repository
      */
     public function getHooks()
     {
-        return new Hooks($this);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -495,7 +520,11 @@ class Repository
      */
     public function hasDescription()
     {
-        return static::DEFAULT_DESCRIPTION !== $this->getDescription();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -584,7 +613,11 @@ class Repository
      */
     public function getLogger()
     {
-        return $this->logger;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -597,7 +630,11 @@ class Repository
      */
     public function cloneTo($path, $bare = true, array $options = array())
     {
-        return Admin::cloneTo($path, $this->gitDir, $bare, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

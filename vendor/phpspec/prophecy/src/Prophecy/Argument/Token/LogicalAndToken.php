@@ -25,12 +25,11 @@ class LogicalAndToken implements TokenInterface
      */
     public function __construct(array $arguments)
     {
-        foreach ($arguments as $argument) {
-            if (!$argument instanceof TokenInterface) {
-                $argument = new ExactValueToken($argument);
-            }
-            $this->tokens[] = $argument;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,20 +41,11 @@ class LogicalAndToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        if (0 === count($this->tokens)) {
-            return false;
-        }
-
-        $maxScore = 0;
-        foreach ($this->tokens as $token) {
-            $score = $token->scoreArgument($argument);
-            if (false === $score) {
-                return false;
-            }
-            $maxScore = max($score, $maxScore);
-        }
-
-        return $maxScore;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,7 +55,11 @@ class LogicalAndToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

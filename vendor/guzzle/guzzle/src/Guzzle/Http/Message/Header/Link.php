@@ -20,13 +20,11 @@ class Link extends Header
      */
     public function addLink($url, $rel, array $params = array())
     {
-        $values = array("<{$url}>", "rel=\"{$rel}\"");
-
-        foreach ($params as $k => $v) {
-            $values[] = "{$k}=\"{$v}\"";
-        }
-
-        return $this->add(implode('; ', $values));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,7 +36,11 @@ class Link extends Header
      */
     public function hasLink($rel)
     {
-        return $this->getLink($rel) !== null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

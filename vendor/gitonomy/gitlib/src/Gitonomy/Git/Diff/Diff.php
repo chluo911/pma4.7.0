@@ -66,7 +66,11 @@ class Diff
      */
     public function getRevisions()
     {
-        return $this->revisions;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,7 +90,11 @@ class Diff
      */
     public function getRawDiff()
     {
-        return $this->rawDiff;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,14 +104,11 @@ class Diff
      */
     public function toArray()
     {
-        return array(
-            'rawDiff' => $this->rawDiff,
-            'files' => array_map(
-                function (File $file) {
-                    return $file->toArray();
-                }, $this->files
-            ),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -115,13 +120,10 @@ class Diff
      */
     public static function fromArray(array $array)
     {
-        return new static(
-            array_map(
-                function ($array) {
-                    return File::fromArray($array);
-                }, $array['files']
-            ),
-            $array['rawDiff']
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

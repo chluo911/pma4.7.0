@@ -62,38 +62,11 @@ final class Param extends BaseTag implements Factory\StaticMethod
         DescriptionFactory $descriptionFactory = null,
         TypeContext $context = null
     ) {
-        Assert::stringNotEmpty($body);
-        Assert::allNotNull([$typeResolver, $descriptionFactory]);
-
-        $parts = preg_split('/(\s+)/Su', $body, 3, PREG_SPLIT_DELIM_CAPTURE);
-        $type = null;
-        $variableName = '';
-        $isVariadic = false;
-
-        // if the first item that is encountered is not a variable; it is a type
-        if (isset($parts[0]) && (strlen($parts[0]) > 0) && ($parts[0][0] !== '$')) {
-            $type = $typeResolver->resolve(array_shift($parts), $context);
-            array_shift($parts);
-        }
-
-        // if the next item starts with a $ or ...$ it must be the variable name
-        if (isset($parts[0]) && (strlen($parts[0]) > 0) && ($parts[0][0] == '$' || substr($parts[0], 0, 4) === '...$')) {
-            $variableName = array_shift($parts);
-            array_shift($parts);
-
-            if (substr($variableName, 0, 3) === '...') {
-                $isVariadic = true;
-                $variableName = substr($variableName, 3);
-            }
-
-            if (substr($variableName, 0, 1) === '$') {
-                $variableName = substr($variableName, 1);
-            }
-        }
-
-        $description = $descriptionFactory->create(implode('', $parts), $context);
-
-        return new static($variableName, $type, $isVariadic, $description);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,7 +76,11 @@ final class Param extends BaseTag implements Factory\StaticMethod
      */
     public function getVariableName()
     {
-        return $this->variableName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

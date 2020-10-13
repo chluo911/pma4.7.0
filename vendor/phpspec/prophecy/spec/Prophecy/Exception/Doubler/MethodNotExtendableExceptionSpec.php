@@ -7,23 +7,39 @@ use spec\Prophecy\Exception\Prophecy;
 
 class MethodNotExtendableExceptionSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith('', 'User', 'getName');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_DoubleException()
+    public function it_is_DoubleException()
     {
-        $this->shouldHaveType('Prophecy\Exception\Doubler\DoubleException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_MethodName()
+    public function it_has_MethodName()
     {
-        $this->getMethodName()->shouldReturn('getName');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_classname()
+    public function it_has_classname()
     {
-        $this->getClassName()->shouldReturn('User');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

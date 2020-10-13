@@ -51,8 +51,11 @@ class Generic_Sniffs_Files_ByteOrderMarkSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_INLINE_HTML);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -67,28 +70,10 @@ class Generic_Sniffs_Files_ByteOrderMarkSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        // The BOM will be the very first token in the file.
-        if ($stackPtr !== 0) {
-            return;
-        }
-
-        $tokens = $phpcsFile->getTokens();
-
-        foreach ($this->bomDefinitions as $bomName => $expectedBomHex) {
-            $bomByteLength = (strlen($expectedBomHex) / 2);
-            $htmlBomHex    = bin2hex(substr($tokens[$stackPtr]['content'], 0, $bomByteLength));
-            if ($htmlBomHex === $expectedBomHex) {
-                $errorData = array($bomName);
-                $error     = 'File contains %s byte order mark, which may corrupt your application';
-                $phpcsFile->addError($error, $stackPtr, 'Found', $errorData);
-                $phpcsFile->recordMetric($stackPtr, 'Using byte order mark', 'yes');
-                return;
-            }
-        }
-
-        $phpcsFile->recordMetric($stackPtr, 'Using byte order mark', 'no');
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

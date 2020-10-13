@@ -21,7 +21,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->env = new Runtime;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,7 +36,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testAbilityToCollectCodeCoverageCanBeAssessed()
     {
-        $this->assertInternalType('boolean', $this->env->canCollectCodeCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,7 +49,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryCanBeRetrieved()
     {
-        $this->assertInternalType('string', $this->env->getBinary());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,7 +61,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testCanBeDetected()
     {
-        $this->assertInternalType('boolean', $this->env->isHHVM());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,7 +74,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testCanBeDetected2()
     {
-        $this->assertInternalType('boolean', $this->env->isPHP());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,7 +88,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testXdebugCanBeDetected()
     {
-        $this->assertInternalType('boolean', $this->env->hasXdebug());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -80,7 +104,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testNameAndVersionCanBeRetrieved()
     {
-        $this->assertInternalType('string', $this->env->getNameWithVersion());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -89,7 +117,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testNameCanBeRetrieved()
     {
-        $this->assertInternalType('string', $this->env->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,7 +130,11 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testVersionCanBeRetrieved()
     {
-        $this->assertInternalType('string', $this->env->getVersion());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,6 +143,10 @@ class RuntimeTest extends PHPUnit_Framework_TestCase
      */
     public function testVendorUrlCanBeRetrieved()
     {
-        $this->assertInternalType('string', $this->env->getVendorUrl());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

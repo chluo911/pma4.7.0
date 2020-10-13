@@ -17,4 +17,3 @@ use PMA\libraries\StorageEngine;
 class Merge extends StorageEngine
 {
 }
-

@@ -21,28 +21,19 @@ class UrlParser implements UrlParserInterface
      */
     public function setUtf8Support($utf8)
     {
-        $this->utf8 = $utf8;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function parseUrl($url)
     {
-        Version::warn(__CLASS__ . ' is deprecated. Just use parse_url()');
-
-        static $defaults = array('scheme' => null, 'host' => null, 'path' => null, 'port' => null, 'query' => null,
-            'user' => null, 'pass' => null, 'fragment' => null);
-
-        $parts = parse_url($url);
-
-        // Need to handle query parsing specially for UTF-8 requirements
-        if ($this->utf8 && isset($parts['query'])) {
-            $queryPos = strpos($url, '?');
-            if (isset($parts['fragment'])) {
-                $parts['query'] = substr($url, $queryPos + 1, strpos($url, '#') - $queryPos - 1);
-            } else {
-                $parts['query'] = substr($url, $queryPos + 1);
-            }
-        }
-
-        return $parts + $defaults;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

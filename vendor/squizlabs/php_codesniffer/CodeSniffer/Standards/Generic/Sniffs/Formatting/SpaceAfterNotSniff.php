@@ -46,8 +46,11 @@ class Generic_Sniffs_Formatting_SpaceAfterNotSniff implements PHP_CodeSniffer_Sn
      */
     public function register()
     {
-        return array(T_BOOLEAN_NOT);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -62,29 +65,10 @@ class Generic_Sniffs_Formatting_SpaceAfterNotSniff implements PHP_CodeSniffer_Sn
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $spacing = 0;
-        if ($tokens[($stackPtr + 1)]['code'] === T_WHITESPACE) {
-            $spacing = $tokens[($stackPtr + 1)]['length'];
-        }
-
-        if ($spacing === 1) {
-            return;
-        }
-
-        $message = 'There must be a single space after a NOT operator; %s found';
-        $fix     = $phpcsFile->addFixableError($message, $stackPtr, 'Incorrect', array($spacing));
-
-        if ($fix === true) {
-            if ($spacing === 0) {
-                $phpcsFile->fixer->addContent($stackPtr, ' ');
-            } else {
-                $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

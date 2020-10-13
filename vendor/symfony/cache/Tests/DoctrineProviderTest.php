@@ -20,26 +20,10 @@ class DoctrineProviderTest extends TestCase
 {
     public function testProvider()
     {
-        $pool = new ArrayAdapter();
-        $cache = new DoctrineProvider($pool);
-
-        $this->assertInstanceOf(CacheProvider::class, $cache);
-
-        $key = '{}()/\@:';
-
-        $this->assertTrue($cache->delete($key));
-        $this->assertFalse($cache->contains($key));
-
-        $this->assertTrue($cache->save($key, 'bar'));
-        $this->assertTrue($cache->contains($key));
-        $this->assertSame('bar', $cache->fetch($key));
-
-        $this->assertTrue($cache->delete($key));
-        $this->assertFalse($cache->fetch($key));
-        $this->assertTrue($cache->save($key, 'bar'));
-
-        $cache->flushAll();
-        $this->assertFalse($cache->fetch($key));
-        $this->assertFalse($cache->contains($key));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

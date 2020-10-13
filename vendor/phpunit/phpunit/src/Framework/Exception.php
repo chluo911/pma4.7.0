@@ -53,7 +53,11 @@ class PHPUnit_Framework_Exception extends RuntimeException implements PHPUnit_Ex
      */
     public function getSerializableTrace()
     {
-        return $this->serializableTrace;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

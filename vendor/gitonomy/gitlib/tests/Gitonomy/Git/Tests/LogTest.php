@@ -20,11 +20,11 @@ class LogTest extends AbstractTest
      */
     public function testRevisionAndPath($repository)
     {
-        $logReadme = $repository->getLog(self::LONGFILE_COMMIT, 'README');
-        $logImage = $repository->getLog(self::LONGFILE_COMMIT, 'image.jpg');
-
-        $this->assertEquals(3, count($logReadme));
-        $this->assertEquals(2, count($logImage));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,13 +32,11 @@ class LogTest extends AbstractTest
      */
     public function testGetCommits($repository)
     {
-        $log = $repository->getLog(self::LONGFILE_COMMIT, null, null, 3);
-
-        $commits = $log->getCommits();
-
-        $this->assertEquals(3, count($commits), '3 commits in log');
-        $this->assertEquals(self::LONGFILE_COMMIT, $commits[0]->getHash(), 'First is requested one');
-        $this->assertEquals(self::BEFORE_LONGFILE_COMMIT, $commits[1]->getHash(), "Second is longfile parent\'s");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,9 +44,11 @@ class LogTest extends AbstractTest
      */
     public function testCountCommits($repository)
     {
-        $log = $repository->getLog(self::LONGFILE_COMMIT, null, 2, 3);
-
-        $this->assertEquals(8, $log->countCommits(), '8 commits found in history');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,9 +56,11 @@ class LogTest extends AbstractTest
      */
     public function testCountAllCommits($repository)
     {
-        $log = $log = $repository->getLog();
-
-        $this->assertGreaterThan(100, $log->countCommits(), 'Returns all commits from all branches');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,15 +68,10 @@ class LogTest extends AbstractTest
      */
     public function testIterable($repository)
     {
-        $log = $repository->getLog(self::LONGFILE_COMMIT);
-
-        $expectedHashes = array(self::LONGFILE_COMMIT, self::BEFORE_LONGFILE_COMMIT);
-        foreach ($log as $entry) {
-            $hash = array_shift($expectedHashes);
-            $this->assertEquals($hash, $entry->getHash());
-            if (count($expectedHashes) == 0) {
-                break;
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -21,12 +21,11 @@ class Types
      */
     public function getUnaryOperators()
     {
-        return array(
-            'IS NULL',
-            'IS NOT NULL',
-            "= ''",
-            "!= ''",
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,7 +37,11 @@ class Types
      */
     public function isUnaryOperator($op)
     {
-        return in_array($op, $this->getUnaryOperators());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

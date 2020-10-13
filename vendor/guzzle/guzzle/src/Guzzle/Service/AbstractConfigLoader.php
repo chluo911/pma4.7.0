@@ -28,18 +28,11 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
 
     public function load($config, array $options = array())
     {
-        // Reset the array of loaded files because this is a new config
-        $this->loadedFiles = array();
-
-        if (is_string($config)) {
-            $config = $this->loadFile($config);
-        } elseif (!is_array($config)) {
-            throw new InvalidArgumentException('Unknown type passed to configuration loader: ' . gettype($config));
-        } else {
-            $this->mergeIncludes($config);
-        }
-
-        return $this->build($config, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,9 +45,11 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
      */
     public function addAlias($filename, $alias)
     {
-        $this->aliases[$filename] = $alias;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,9 +61,11 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
      */
     public function removeAlias($alias)
     {
-        unset($this->aliases[$alias]);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -79,7 +76,7 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
      *
      * @return mixed
      */
-    protected abstract function build($config, array $options);
+    abstract protected function build($config, array $options);
 
     /**
      * Load a configuration file (can load JSON or PHP files that return an array when included)
@@ -92,49 +89,11 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
      */
     protected function loadFile($filename)
     {
-        if (isset($this->aliases[$filename])) {
-            $filename = $this->aliases[$filename];
-        }
-
-        switch (pathinfo($filename, PATHINFO_EXTENSION)) {
-            case 'js':
-            case 'json':
-                $level = error_reporting(0);
-                $json = file_get_contents($filename);
-                error_reporting($level);
-
-                if ($json === false) {
-                    $err = error_get_last();
-                    throw new InvalidArgumentException("Unable to open {$filename}: " . $err['message']);
-                }
-
-                $config = json_decode($json, true);
-                // Throw an exception if there was an error loading the file
-                if ($error = json_last_error()) {
-                    $message = isset(self::$jsonErrors[$error]) ? self::$jsonErrors[$error] : 'Unknown error';
-                    throw new RuntimeException("Error loading JSON data from {$filename}: ({$error}) - {$message}");
-                }
-                break;
-            case 'php':
-                if (!is_readable($filename)) {
-                    throw new InvalidArgumentException("Unable to open {$filename} for reading");
-                }
-                $config = require $filename;
-                if (!is_array($config)) {
-                    throw new InvalidArgumentException('PHP files must return an array of configuration data');
-                }
-                break;
-            default:
-                throw new InvalidArgumentException('Unknown file extension: ' . $filename);
-        }
-
-        // Keep track of this file being loaded to prevent infinite recursion
-        $this->loadedFiles[$filename] = true;
-
-        // Merge include files into the configuration array
-        $this->mergeIncludes($config, dirname($filename));
-
-        return $config;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -147,19 +106,11 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
      */
     protected function mergeIncludes(&$config, $basePath = null)
     {
-        if (!empty($config['includes'])) {
-            foreach ($config['includes'] as &$path) {
-                // Account for relative paths
-                if ($path[0] != DIRECTORY_SEPARATOR && !isset($this->aliases[$path]) && $basePath) {
-                    $path = "{$basePath}/{$path}";
-                }
-                // Don't load the same files more than once
-                if (!isset($this->loadedFiles[$path])) {
-                    $this->loadedFiles[$path] = true;
-                    $config = $this->mergeData($this->loadFile($path), $config);
-                }
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -172,6 +123,10 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
      */
     protected function mergeData(array $a, array $b)
     {
-        return array_merge_recursive($a, $b);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

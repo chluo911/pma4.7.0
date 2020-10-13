@@ -21,38 +21,30 @@ class PrototypedArrayNodeTest extends TestCase
 {
     public function testGetDefaultValueReturnsAnEmptyArrayForPrototypes()
     {
-        $node = new PrototypedArrayNode('root');
-        $prototype = new ArrayNode(null, $node);
-        $node->setPrototype($prototype);
-        $this->assertEmpty($node->getDefaultValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetDefaultValueReturnsDefaultValueForPrototypes()
     {
-        $node = new PrototypedArrayNode('root');
-        $prototype = new ArrayNode(null, $node);
-        $node->setPrototype($prototype);
-        $node->setDefaultValue(array('test'));
-        $this->assertEquals(array('test'), $node->getDefaultValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // a remapped key (e.g. "mapping" -> "mappings") should be unset after being used
     public function testRemappedKeysAreUnset()
     {
-        $node = new ArrayNode('root');
-        $mappingsNode = new PrototypedArrayNode('mappings');
-        $node->addChild($mappingsNode);
-
-        // each item under mappings is just a scalar
-        $prototype = new ScalarNode(null, $mappingsNode);
-        $mappingsNode->setPrototype($prototype);
-
-        $remappings = array();
-        $remappings[] = array('mapping', 'mappings');
-        $node->setXmlRemappings($remappings);
-
-        $normalized = $node->normalize(array('mapping' => array('foo', 'bar')));
-        $this->assertEquals(array('mappings' => array('foo', 'bar')), $normalized);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,21 +67,11 @@ class PrototypedArrayNodeTest extends TestCase
      */
     public function testMappedAttributeKeyIsRemoved()
     {
-        $node = new PrototypedArrayNode('root');
-        $node->setKeyAttribute('id', true);
-
-        // each item under the root is an array, with one scalar item
-        $prototype = new ArrayNode(null, $node);
-        $prototype->addChild(new ScalarNode('foo'));
-        $node->setPrototype($prototype);
-
-        $children = array();
-        $children[] = array('id' => 'item_name', 'foo' => 'bar');
-        $normalized = $node->normalize($children);
-
-        $expected = array();
-        $expected['item_name'] = array('foo' => 'bar');
-        $this->assertEquals($expected, $normalized);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,86 +80,38 @@ class PrototypedArrayNodeTest extends TestCase
      */
     public function testMappedAttributeKeyNotRemoved()
     {
-        $node = new PrototypedArrayNode('root');
-        $node->setKeyAttribute('id', false);
-
-        // each item under the root is an array, with two scalar items
-        $prototype = new ArrayNode(null, $node);
-        $prototype->addChild(new ScalarNode('foo'));
-        $prototype->addChild(new ScalarNode('id')); // the key attribute will remain
-        $node->setPrototype($prototype);
-
-        $children = array();
-        $children[] = array('id' => 'item_name', 'foo' => 'bar');
-        $normalized = $node->normalize($children);
-
-        $expected = array();
-        $expected['item_name'] = array('id' => 'item_name', 'foo' => 'bar');
-        $this->assertEquals($expected, $normalized);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddDefaultChildren()
     {
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setAddChildrenIfNoneSet();
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array(array('foo' => 'bar')), $node->getDefaultValue());
-
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setKeyAttribute('foobar');
-        $node->setAddChildrenIfNoneSet();
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array('defaults' => array('foo' => 'bar')), $node->getDefaultValue());
-
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setKeyAttribute('foobar');
-        $node->setAddChildrenIfNoneSet('defaultkey');
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array('defaultkey' => array('foo' => 'bar')), $node->getDefaultValue());
-
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setKeyAttribute('foobar');
-        $node->setAddChildrenIfNoneSet(array('defaultkey'));
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array('defaultkey' => array('foo' => 'bar')), $node->getDefaultValue());
-
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setKeyAttribute('foobar');
-        $node->setAddChildrenIfNoneSet(array('dk1', 'dk2'));
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array('dk1' => array('foo' => 'bar'), 'dk2' => array('foo' => 'bar')), $node->getDefaultValue());
-
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setAddChildrenIfNoneSet(array(5, 6));
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array(0 => array('foo' => 'bar'), 1 => array('foo' => 'bar')), $node->getDefaultValue());
-
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setAddChildrenIfNoneSet(2);
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array(array('foo' => 'bar'), array('foo' => 'bar')), $node->getDefaultValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDefaultChildrenWinsOverDefaultValue()
     {
-        $node = $this->getPrototypeNodeWithDefaultChildren();
-        $node->setAddChildrenIfNoneSet();
-        $node->setDefaultValue(array('bar' => 'foo'));
-        $this->assertTrue($node->hasDefaultValue());
-        $this->assertEquals(array(array('foo' => 'bar')), $node->getDefaultValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getPrototypeNodeWithDefaultChildren()
     {
-        $node = new PrototypedArrayNode('root');
-        $prototype = new ArrayNode(null, $node);
-        $child = new ScalarNode('foo');
-        $child->setDefaultValue('bar');
-        $prototype->addChild($child);
-        $prototype->setAddIfNotSet(true);
-        $node->setPrototype($prototype);
-
-        return $node;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -267,76 +201,19 @@ class PrototypedArrayNodeTest extends TestCase
      */
     public function testMappedAttributeKeyIsRemovedLeftValueOnly($value, $children, $expected)
     {
-        $node = new PrototypedArrayNode('root');
-        $node->setKeyAttribute('id', true);
-
-        // each item under the root is an array, with one scalar item
-        $prototype = new ArrayNode(null, $node);
-        $prototype->addChild(new ScalarNode('id'));
-        $prototype->addChild(new ScalarNode('foo'));
-        $prototype->addChild($value);
-        $node->setPrototype($prototype);
-
-        $normalized = $node->normalize($children);
-        $this->assertEquals($expected, $normalized);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getDataForKeyRemovedLeftValueOnly()
     {
-        $scalarValue = new ScalarNode('value');
-
-        $arrayValue = new ArrayNode('value');
-        $arrayValue->addChild(new ScalarNode('foo'));
-        $arrayValue->addChild(new ScalarNode('bar'));
-
-        $variableValue = new VariableNode('value');
-
-        return array(
-           array(
-               $scalarValue,
-               array(
-                   array('id' => 'option1', 'value' => 'value1'),
-               ),
-               array('option1' => 'value1'),
-           ),
-
-           array(
-               $scalarValue,
-               array(
-                   array('id' => 'option1', 'value' => 'value1'),
-                   array('id' => 'option2', 'value' => 'value2', 'foo' => 'foo2'),
-               ),
-               array(
-                   'option1' => 'value1',
-                   'option2' => array('value' => 'value2', 'foo' => 'foo2'),
-               ),
-           ),
-
-           array(
-               $arrayValue,
-               array(
-                   array(
-                       'id' => 'option1',
-                       'value' => array('foo' => 'foo1', 'bar' => 'bar1'),
-                   ),
-               ),
-               array(
-                   'option1' => array('foo' => 'foo1', 'bar' => 'bar1'),
-               ),
-           ),
-
-           array($variableValue,
-               array(
-                   array(
-                       'id' => 'option1', 'value' => array('foo' => 'foo1', 'bar' => 'bar1'),
-                   ),
-                   array('id' => 'option2', 'value' => 'value2'),
-               ),
-               array(
-                   'option1' => array('foo' => 'foo1', 'bar' => 'bar1'),
-                   'option2' => 'value2',
-               ),
-           ),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

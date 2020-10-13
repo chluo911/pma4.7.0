@@ -19,8 +19,11 @@ class FlushingBatch extends AbstractBatchDecorator
      */
     public function __construct(BatchInterface $decoratedBatch, $threshold)
     {
-        $this->threshold = $threshold;
-        parent::__construct($decoratedBatch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,9 +35,11 @@ class FlushingBatch extends AbstractBatchDecorator
      */
     public function setThreshold($threshold)
     {
-        $this->threshold = $threshold;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -44,17 +49,19 @@ class FlushingBatch extends AbstractBatchDecorator
      */
     public function getThreshold()
     {
-        return $this->threshold;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function add($item)
     {
-        $this->decoratedBatch->add($item);
-        if (++$this->currentTotal >= $this->threshold) {
-            $this->currentTotal = 0;
-            $this->decoratedBatch->flush();
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

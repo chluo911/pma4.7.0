@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_ClassDefinitionNameSpacingSniff implements PHP_CodeSniffe
      */
     public function register()
     {
-        return array(T_OPEN_CURLY_BRACKET);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,60 +62,10 @@ class Squiz_Sniffs_CSS_ClassDefinitionNameSpacingSniff implements PHP_CodeSniffe
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // Do not check nested style definitions as, for example, in @media style rules.
-        $nested = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1), $tokens[$stackPtr]['bracket_closer']);
-        if ($nested !== false) {
-            return;
-        }
-
-        // Find the first blank line before this opening brace, unless we get
-        // to another style definition, comment or the start of the file.
-        $endTokens  = array(
-                       T_OPEN_CURLY_BRACKET  => T_OPEN_CURLY_BRACKET,
-                       T_CLOSE_CURLY_BRACKET => T_CLOSE_CURLY_BRACKET,
-                       T_OPEN_TAG            => T_OPEN_TAG,
-                      );
-        $endTokens += PHP_CodeSniffer_Tokens::$commentTokens;
-
-        $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-
-        $foundContent = false;
-        $currentLine  = $tokens[$prev]['line'];
-        for ($i = ($stackPtr - 1); $i >= 0; $i--) {
-            if (isset($endTokens[$tokens[$i]['code']]) === true) {
-                break;
-            }
-
-            if ($tokens[$i]['line'] === $currentLine) {
-                if ($tokens[$i]['code'] !== T_WHITESPACE) {
-                    $foundContent = true;
-                }
-
-                continue;
-            }
-
-            // We changed lines.
-            if ($foundContent === false) {
-                // Before we throw an error, make sure we are not looking
-                // at a gap before the style definition.
-                $prev = $phpcsFile->findPrevious(T_WHITESPACE, $i, null, true);
-                if ($prev !== false
-                    && isset($endTokens[$tokens[$prev]['code']]) === false
-                ) {
-                    $error = 'Blank lines are not allowed between class names';
-                    $phpcsFile->addError($error, ($i + 1), 'BlankLinesFound');
-                }
-
-                break;
-            }
-
-            $foundContent = false;
-            $currentLine  = $tokens[$i]['line'];
-        }//end for
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

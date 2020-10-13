@@ -45,9 +45,11 @@ class Server
      */
     public function __construct($port = null)
     {
-        $this->port = $port ?: self::DEFAULT_PORT;
-        $this->client = new Client($this->getUrl());
-        register_shutdown_function(array($this, 'stop'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,7 +58,11 @@ class Server
      */
     public function flush()
     {
-        $this->client->delete('guzzle-server/requests')->send();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,26 +76,11 @@ class Server
      */
     public function enqueue($responses)
     {
-        $data = array();
-        foreach ((array) $responses as $response) {
-
-            // Create the response object from a string
-            if (is_string($response)) {
-                $response = Response::fromMessage($response);
-            } elseif (!($response instanceof Response)) {
-                throw new BadResponseException('Responses must be strings or implement Response');
-            }
-
-            $data[] = array(
-                'statusCode'   => $response->getStatusCode(),
-                'reasonPhrase' => $response->getReasonPhrase(),
-                'headers'      => $response->getHeaders()->toArray(),
-                'body'         => $response->getBody(true)
-            );
-        }
-
-        $request = $this->client->put('guzzle-server/responses', null, json_encode($data));
-        $request->send();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,17 +90,11 @@ class Server
      */
     public function isRunning()
     {
-        if ($this->running) {
-            return true;
-        }
-
-        try {
-            $this->client->get('guzzle-server/perf', array(), array('timeout' => 5))->send();
-            $this->running = true;
-            return true;
-        } catch (\Exception $e) {
-            return false;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -144,15 +129,11 @@ class Server
      */
     public function getReceivedRequests($hydrate = false)
     {
-        $response = $this->client->get('guzzle-server/requests')->send();
-        $data = array_filter(explode(self::REQUEST_DELIMITER, $response->getBody(true)));
-        if ($hydrate) {
-            $data = array_map(function($message) {
-                return RequestFactory::getInstance()->fromMessage($message);
-            }, $data);
-        }
-
-        return $data;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -160,20 +141,11 @@ class Server
      */
     public function start()
     {
-        if (!$this->isRunning()) {
-            exec('node ' . __DIR__ . \DIRECTORY_SEPARATOR
-                . 'server.js ' . $this->port
-                . ' >> /tmp/server.log 2>&1 &');
-            // Wait at most 5 seconds for the server the setup before
-            // proceeding.
-            $start = time();
-            while (!$this->isRunning() && time() - $start < 5);
-            if (!$this->running) {
-                throw new RuntimeException(
-                    'Unable to contact server.js. Have you installed node.js v0.5.0+? node must be in your path.'
-                );
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -181,11 +153,10 @@ class Server
      */
     public function stop()
     {
-        if (!$this->isRunning()) {
-            return false;
-        }
-
-        $this->running = false;
-        $this->client->delete('guzzle-server')->send();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

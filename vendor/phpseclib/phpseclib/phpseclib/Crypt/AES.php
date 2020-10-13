@@ -67,9 +67,13 @@ class AES extends Rijndael
      * @access public
      * @param int $length
      */
-    function setBlockLength($length)
+    public function setBlockLength($length)
     {
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -82,7 +86,7 @@ class AES extends Rijndael
      * @access public
      * @param int $length
      */
-    function setKeyLength($length)
+    public function setKeyLength($length)
     {
         switch ($length) {
             case 160:
@@ -104,7 +108,7 @@ class AES extends Rijndael
      * @access public
      * @param string $key
      */
-    function setKey($key)
+    public function setKey($key)
     {
         parent::setKey($key);
 

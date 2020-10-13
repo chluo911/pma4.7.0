@@ -3,7 +3,11 @@ class Tests_SeleniumTestCase_Ticket114Test extends Tests_SeleniumTestCase_BaseTe
 {
     public function testDependable()
     {
-        return 'dependsValue';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -12,14 +16,19 @@ class Tests_SeleniumTestCase_Ticket114Test extends Tests_SeleniumTestCase_BaseTe
      */
     public function testDependent($dataProvider, $depends)
     {
-        $this->assertSame($dataProvider, 'dataProviderValue');
-        $this->assertSame($depends, 'dependsValue');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function exampleDataProvider()
     {
-        return array(
-            array('dataProviderValue'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

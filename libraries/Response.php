@@ -243,7 +243,6 @@ class Response
                 $this->_JSON[$json] = $value;
             }
         }
-
     }
 
     /**
@@ -288,7 +287,7 @@ class Response
 
         if (! isset($this->_JSON['message'])) {
             $this->_JSON['message'] = $this->_getDisplay();
-        } else if ($this->_JSON['message'] instanceof Message) {
+        } elseif ($this->_JSON['message'] instanceof Message) {
             $this->_JSON['message'] = $this->_JSON['message']->getDisplay();
         }
 
@@ -399,6 +398,7 @@ class Response
                 break;
                 case JSON_ERROR_UNSUPPORTED_TYPE:
                     $error = 'A value of a type that cannot be encoded was given';
+                    // no break
                 default:
                     $error = 'Unknown error';
                 break;

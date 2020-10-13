@@ -28,7 +28,11 @@ class ProxyAdapterTest extends AdapterTestCase
 
     public function createCachePool($defaultLifetime = 0)
     {
-        return new ProxyAdapter(new ArrayAdapter(), '', $defaultLifetime);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -37,13 +41,11 @@ class ProxyAdapterTest extends AdapterTestCase
      */
     public function testProxyfiedItem()
     {
-        $item = new CacheItem();
-        $pool = new ProxyAdapter(new TestingArrayAdapter($item));
-
-        $proxyItem = $pool->getItem('foo');
-
-        $this->assertFalse($proxyItem === $item);
-        $pool->save($proxyItem->set('bar'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 

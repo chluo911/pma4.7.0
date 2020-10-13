@@ -6,53 +6,84 @@ use PhpSpec\ObjectBehavior;
 
 class ArrayCountTokenSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith(2);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_implements_TokenInterface()
+    public function it_implements_TokenInterface()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Argument\Token\TokenInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_not_last()
+    public function it_is_not_last()
     {
-        $this->shouldNotBeLast();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_scores_6_if_argument_array_has_proper_count()
+    public function it_scores_6_if_argument_array_has_proper_count()
     {
-        $this->scoreArgument(array(1,2))->shouldReturn(6);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_scores_6_if_argument_countable_object_has_proper_count(\Countable $countable)
+    public function it_scores_6_if_argument_countable_object_has_proper_count(\Countable $countable)
     {
-        $countable->count()->willReturn(2);
-        $this->scoreArgument($countable)->shouldReturn(6);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_argument_is_neither_array_nor_countable_object()
+    public function it_does_not_score_if_argument_is_neither_array_nor_countable_object()
     {
-        $this->scoreArgument('string')->shouldBe(false);
-        $this->scoreArgument(5)->shouldBe(false);
-        $this->scoreArgument(new \stdClass)->shouldBe(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_argument_array_has_wrong_count()
+    public function it_does_not_score_if_argument_array_has_wrong_count()
     {
-        $this->scoreArgument(array(1))->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_argument_countable_object_has_wrong_count(\Countable $countable)
+    public function it_does_not_score_if_argument_countable_object_has_wrong_count(\Countable $countable)
     {
-        $countable->count()->willReturn(3);
-        $this->scoreArgument($countable)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_simple_string_representation()
+    public function it_has_simple_string_representation()
     {
-        $this->__toString()->shouldBe('count(2)');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-
 }

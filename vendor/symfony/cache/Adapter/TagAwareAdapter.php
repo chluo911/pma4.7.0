@@ -31,50 +31,11 @@ class TagAwareAdapter implements TagAwareAdapterInterface
 
     public function __construct(AdapterInterface $itemsAdapter, AdapterInterface $tagsAdapter = null)
     {
-        $this->itemsAdapter = $itemsAdapter;
-        $this->tagsAdapter = $tagsAdapter ?: $itemsAdapter;
-        $this->createCacheItem = \Closure::bind(
-            function ($key, $value, CacheItem $protoItem) {
-                $item = new CacheItem();
-                $item->key = $key;
-                $item->value = $value;
-                $item->isHit = false;
-                $item->defaultLifetime = $protoItem->defaultLifetime;
-                $item->expiry = $protoItem->expiry;
-                $item->innerItem = $protoItem->innerItem;
-                $item->poolHash = $protoItem->poolHash;
-
-                return $item;
-            },
-            null,
-            CacheItem::class
-        );
-        $this->getTagsByKey = \Closure::bind(
-            function ($deferred) {
-                $tagsByKey = array();
-                foreach ($deferred as $key => $item) {
-                    $tagsByKey[$key] = $item->tags;
-                }
-
-                return $tagsByKey;
-            },
-            null,
-            CacheItem::class
-        );
-        $this->invalidateTags = \Closure::bind(
-            function (AdapterInterface $tagsAdapter, array $tags) {
-                foreach ($tagsAdapter->getItems($tags) as $v) {
-                    $v->set(1 + (int) $v->get());
-                    $v->defaultLifetime = 0;
-                    $v->expiry = null;
-                    $tagsAdapter->saveDeferred($v);
-                }
-
-                return $tagsAdapter->commit();
-            },
-            null,
-            CacheItem::class
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -82,14 +43,11 @@ class TagAwareAdapter implements TagAwareAdapterInterface
      */
     public function invalidateTags(array $tags)
     {
-        foreach ($tags as $k => $tag) {
-            if ('' !== $tag && is_string($tag)) {
-                $tags[$k] = $tag.static::TAGS_PREFIX;
-            }
-        }
-        $f = $this->invalidateTags;
-
-        return $f($this->tagsAdapter, $tags);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -159,9 +117,11 @@ class TagAwareAdapter implements TagAwareAdapterInterface
      */
     public function clear()
     {
-        $this->deferred = array();
-
-        return $this->itemsAdapter->clear();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -251,9 +211,19 @@ class TagAwareAdapter implements TagAwareAdapterInterface
 
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         $this->commit();
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     private function generateItems($items, array $tagKeys)

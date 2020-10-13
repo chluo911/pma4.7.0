@@ -27,12 +27,20 @@ class StringContainsToken implements TokenInterface
      */
     public function __construct($value)
     {
-        $this->value = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function scoreArgument($argument)
     {
-        return strpos($argument, $this->value) !== false ? 6 : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,7 +60,11 @@ class StringContainsToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

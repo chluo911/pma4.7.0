@@ -45,11 +45,11 @@
 require_once 'File/Iterator/Autoload.php';
 
 spl_autoload_register(
-  function ($class) {
-      static $classes = NULL;
-      static $path = NULL;
+    function ($class) {
+      static $classes = null;
+      static $path = null;
 
-      if ($classes === NULL) {
+      if ($classes === null) {
           $classes = array(
             'phpunit_extensions_selenium2testcase' => '/Extensions/Selenium2TestCase.php',
             'phpunit_extensions_selenium2testcase_command' => '/Extensions/Selenium2TestCase/Command.php',

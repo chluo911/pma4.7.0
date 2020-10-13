@@ -19,41 +19,38 @@ class DelegatingLoaderTest extends TestCase
 {
     public function testConstructor()
     {
-        $loader = new DelegatingLoader($resolver = new LoaderResolver());
-        $this->assertTrue(true, '__construct() takes a loader resolver as its first argument');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetSetResolver()
     {
-        $resolver = new LoaderResolver();
-        $loader = new DelegatingLoader($resolver);
-        $this->assertSame($resolver, $loader->getResolver(), '->getResolver() gets the resolver loader');
-        $loader->setResolver($resolver = new LoaderResolver());
-        $this->assertSame($resolver, $loader->getResolver(), '->setResolver() sets the resolver loader');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSupports()
     {
-        $loader1 = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')->getMock();
-        $loader1->expects($this->once())->method('supports')->will($this->returnValue(true));
-        $loader = new DelegatingLoader(new LoaderResolver(array($loader1)));
-        $this->assertTrue($loader->supports('foo.xml'), '->supports() returns true if the resource is loadable');
-
-        $loader1 = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')->getMock();
-        $loader1->expects($this->once())->method('supports')->will($this->returnValue(false));
-        $loader = new DelegatingLoader(new LoaderResolver(array($loader1)));
-        $this->assertFalse($loader->supports('foo.foo'), '->supports() returns false if the resource is not loadable');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testLoad()
     {
-        $loader = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')->getMock();
-        $loader->expects($this->once())->method('supports')->will($this->returnValue(true));
-        $loader->expects($this->once())->method('load');
-        $resolver = new LoaderResolver(array($loader));
-        $loader = new DelegatingLoader($resolver);
-
-        $loader->load('foo');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,11 +58,10 @@ class DelegatingLoaderTest extends TestCase
      */
     public function testLoadThrowsAnExceptionIfTheResourceCannotBeLoaded()
     {
-        $loader = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')->getMock();
-        $loader->expects($this->once())->method('supports')->will($this->returnValue(false));
-        $resolver = new LoaderResolver(array($loader));
-        $loader = new DelegatingLoader($resolver);
-
-        $loader->load('foo');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

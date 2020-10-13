@@ -93,7 +93,11 @@ class ConsoleOutput extends StreamOutput implements ConsoleOutputInterface
      */
     public function setErrorOutput(OutputInterface $error)
     {
-        $this->stderr = $error;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

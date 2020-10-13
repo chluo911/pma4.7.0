@@ -65,12 +65,11 @@ class TableProperty
      */
     public function __construct($row)
     {
-        $this->name = trim($row[0]);
-        $this->type = trim($row[1]);
-        $this->nullable = trim($row[2]);
-        $this->key = trim($row[3]);
-        $this->defaultValue = trim($row[4]);
-        $this->ext = trim($row[5]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -80,11 +79,11 @@ class TableProperty
      */
     public function getPureType()
     {
-        $pos = mb_strpos($this->type, "(");
-        if ($pos > 0) {
-            return mb_substr($this->type, 0, $pos);
-        }
-        return $this->type;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -94,7 +93,11 @@ class TableProperty
      */
     public function isNotNull()
     {
-        return $this->nullable == "NO" ? "true" : "false";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,38 +110,18 @@ class TableProperty
         return $this->key == "PRI" || $this->key == "UNI" ? "true" : "false";
     }
 
-     /**
-     * Gets the .NET primitive type
-     *
-     * @return string type
-     */
+    /**
+    * Gets the .NET primitive type
+    *
+    * @return string type
+    */
     public function getDotNetPrimitiveType()
     {
-        if (mb_strpos($this->type, "int") === 0) {
-            return "int";
-        }
-        if (mb_strpos($this->type, "longtext") === 0) {
-            return "string";
-        }
-        if (mb_strpos($this->type, "long") === 0) {
-            return "long";
-        }
-        if (mb_strpos($this->type, "char") === 0) {
-            return "string";
-        }
-        if (mb_strpos($this->type, "varchar") === 0) {
-            return "string";
-        }
-        if (mb_strpos($this->type, "text") === 0) {
-            return "string";
-        }
-        if (mb_strpos($this->type, "tinyint") === 0) {
-            return "bool";
-        }
-        if (mb_strpos($this->type, "datetime") === 0) {
-            return "DateTime";
-        }
-        return "unknown";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -148,31 +131,11 @@ class TableProperty
      */
     public function getDotNetObjectType()
     {
-        if (mb_strpos($this->type, "int") === 0) {
-            return "Int32";
-        }
-        if (mb_strpos($this->type, "longtext") === 0) {
-            return "String";
-        }
-        if (mb_strpos($this->type, "long") === 0) {
-            return "Long";
-        }
-        if (mb_strpos($this->type, "char") === 0) {
-            return "String";
-        }
-        if (mb_strpos($this->type, "varchar") === 0) {
-            return "String";
-        }
-        if (mb_strpos($this->type, "text") === 0) {
-            return "String";
-        }
-        if (mb_strpos($this->type, "tinyint") === 0) {
-            return "Boolean";
-        }
-        if (mb_strpos($this->type, "datetime") === 0) {
-            return "DateTime";
-        }
-        return "Unknown";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -182,12 +145,11 @@ class TableProperty
      */
     public function getIndexName()
     {
-        if (strlen($this->key) > 0) {
-            return "index=\""
-                . htmlspecialchars($this->name, ENT_COMPAT, 'UTF-8')
-                . "\"";
-        }
-        return "";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -197,7 +159,11 @@ class TableProperty
      */
     public function isPK()
     {
-        return $this->key == "PRI";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -209,12 +175,11 @@ class TableProperty
      */
     public function formatCs($text)
     {
-        $text = str_replace(
-            "#name#",
-            ExportCodegen::cgMakeIdentifier($this->name, false),
-            $text
-        );
-        return $this->format($text);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -226,17 +191,11 @@ class TableProperty
      */
     public function formatXml($text)
     {
-        $text = str_replace(
-            "#name#",
-            htmlspecialchars($this->name, ENT_COMPAT, 'UTF-8'),
-            $text
-        );
-        $text = str_replace(
-            "#indexName#",
-            $this->getIndexName(),
-            $text
-        );
-        return $this->format($text);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -248,36 +207,10 @@ class TableProperty
      */
     public function format($text)
     {
-        $text = str_replace(
-            "#ucfirstName#",
-            ExportCodegen::cgMakeIdentifier($this->name),
-            $text
-        );
-        $text = str_replace(
-            "#dotNetPrimitiveType#",
-            $this->getDotNetPrimitiveType(),
-            $text
-        );
-        $text = str_replace(
-            "#dotNetObjectType#",
-            $this->getDotNetObjectType(),
-            $text
-        );
-        $text = str_replace(
-            "#type#",
-            $this->getPureType(),
-            $text
-        );
-        $text = str_replace(
-            "#notNull#",
-            $this->isNotNull(),
-            $text
-        );
-        $text = str_replace(
-            "#unique#",
-            $this->isUnique(),
-            $text
-        );
-        return $text;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

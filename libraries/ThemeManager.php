@@ -34,32 +34,32 @@ class ThemeManager
     /**
      * @var array available themes
      */
-    var $themes = array();
+    public $themes = array();
 
     /**
      * @var string  cookie name
      */
-    var $cookie_name = 'pma_theme';
+    public $cookie_name = 'pma_theme';
 
     /**
      * @var boolean
      */
-    var $per_server = false;
+    public $per_server = false;
 
     /**
      * @var string name of active theme
      */
-    var $active_theme = '';
+    public $active_theme = '';
 
     /**
      * @var Theme Theme active theme
      */
-    var $theme = null;
+    public $theme = null;
 
     /**
      * @var string
      */
-    var $theme_default;
+    public $theme_default;
 
     /**
      * @const string The name of the fallback theme
@@ -177,15 +177,11 @@ class ThemeManager
      */
     public function checkConfig()
     {
-        if ($this->theme_default != $GLOBALS['cfg']['ThemeDefault']
-        ) {
-            $this->init();
-        } else {
-            // at least the theme path needs to be checked every time for new
-            // themes, as there is no other way at the moment to keep track of
-            // new or removed themes
-            $this->loadThemes();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -403,16 +399,11 @@ class ThemeManager
      */
     public function makeBc()
     {
-        $GLOBALS['theme']           = $this->theme->getId();
-        $GLOBALS['pmaThemePath']    = $this->theme->getPath();
-        $GLOBALS['pmaThemeImage']   = $this->theme->getImgPath();
-
-        /**
-         * load layout file if exists
-         */
-        if (file_exists($this->theme->getLayoutFile())) {
-            include $this->theme->getLayoutFile();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

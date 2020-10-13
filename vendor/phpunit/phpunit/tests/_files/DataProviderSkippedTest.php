@@ -6,7 +6,11 @@ class DataProviderSkippedTest extends PHPUnit_Framework_TestCase
      */
     public function testSkipped($a, $b, $c)
     {
-        $this->assertTrue(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -14,24 +18,28 @@ class DataProviderSkippedTest extends PHPUnit_Framework_TestCase
      */
     public function testAdd($a, $b, $c)
     {
-        $this->assertEquals($c, $a + $b);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function skippedTestProviderMethod()
     {
-        $this->markTestSkipped('skipped');
-
-        return array(
-          array(0, 0, 0),
-          array(0, 1, 1),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function providerMethod()
     {
-        return array(
-          array(0, 0, 0),
-          array(0, 1, 1),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

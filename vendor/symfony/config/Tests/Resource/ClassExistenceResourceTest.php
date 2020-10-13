@@ -18,38 +18,37 @@ class ClassExistenceResourceTest extends TestCase
 {
     public function testToString()
     {
-        $res = new ClassExistenceResource('BarClass');
-        $this->assertSame('BarClass', (string) $res);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetResource()
     {
-        $res = new ClassExistenceResource('BarClass');
-        $this->assertSame('BarClass', $res->getResource());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsFreshWhenClassDoesNotExist()
     {
-        $res = new ClassExistenceResource('Symfony\Component\Config\Tests\Fixtures\BarClass');
-
-        $this->assertTrue($res->isFresh(time()));
-
-        eval(<<<EOF
-namespace Symfony\Component\Config\Tests\Fixtures;
-
-class BarClass
-{
-}
-EOF
-        );
-
-        $this->assertFalse($res->isFresh(time()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsFreshWhenClassExists()
     {
-        $res = new ClassExistenceResource('Symfony\Component\Config\Tests\Resource\ClassExistenceResourceTest');
-
-        $this->assertTrue($res->isFresh(time()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

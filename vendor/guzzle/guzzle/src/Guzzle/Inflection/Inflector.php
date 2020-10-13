@@ -28,11 +28,19 @@ class Inflector implements InflectorInterface
 
     public function snake($word)
     {
-        return ctype_lower($word) ? $word : strtolower(preg_replace('/(.)([A-Z])/', "$1_$2", $word));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function camel($word)
     {
-        return str_replace(' ', '', ucwords(strtr($word, '_-', '  ')));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

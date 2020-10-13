@@ -49,11 +49,13 @@ $is_gotofile  = true;
 if (empty($goto)) {
     if (empty($table)) {
         $goto = Util::getScriptNameForOption(
-            $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+            $GLOBALS['cfg']['DefaultTabDatabase'],
+            'database'
         );
     } else {
         $goto = Util::getScriptNameForOption(
-            $GLOBALS['cfg']['DefaultTabTable'], 'table'
+            $GLOBALS['cfg']['DefaultTabTable'],
+            'table'
         );
     }
 } // end if
@@ -61,7 +63,8 @@ if (empty($goto)) {
 if (! isset($err_url)) {
     $err_url = (! empty($back) ? $back : $goto)
         . '?' . URL::getCommon(array('db' => $GLOBALS['db']))
-        . ((mb_strpos(' ' . $goto, 'db_') != 1
+        . (
+            (mb_strpos(' ' . $goto, 'db_') != 1
             && strlen($table) > 0)
             ? '&amp;table=' . urlencode($table)
             : ''
@@ -107,7 +110,8 @@ if (isset($_REQUEST['get_default_fk_check_value'])
 ) {
     $response = Response::getInstance();
     $response->addJSON(
-        'default_fk_check_value', Util::isForeignKeyCheck()
+        'default_fk_check_value',
+        Util::isForeignKeyCheck()
     );
     exit;
 }
@@ -157,7 +161,9 @@ if ($table != $table_from_sql && !empty($table_from_sql)) {
  * into account this case.
  */
 if (PMA_hasNoRightsToDropDatabase(
-    $analyzed_sql_results, $cfg['AllowUserDropDatabase'], $is_superuser
+    $analyzed_sql_results,
+    $cfg['AllowUserDropDatabase'],
+    $is_superuser
 )) {
     Util::mysqlDie(
         __('"DROP DATABASE" statements are disabled.'),

@@ -346,7 +346,7 @@ class PHP_CodeSniffer_Tokenizers_CSS extends PHP_CodeSniffer_Tokenizers_PHP
                         $finalTokens[($stackPtr + 1)]['content'] = $newContent;
                         unset($finalTokens[$stackPtr]);
                     }
-                } else if ($finalTokens[($stackPtr + 1)]['code'] === T_LNUMBER) {
+                } elseif ($finalTokens[($stackPtr + 1)]['code'] === T_LNUMBER) {
                     // They can also be used to provide negative numbers.
                     if (PHP_CODESNIFFER_VERBOSITY > 1) {
                         echo "\t\t* token is part of a negative number; adding content to next token and ignoring *".PHP_EOL;
@@ -446,7 +446,7 @@ class PHP_CodeSniffer_Tokenizers_CSS extends PHP_CodeSniffer_Tokenizers_PHP
                             echo "\t\t=> token content changed to: $content".PHP_EOL;
                         }
                     }
-                } else if ($finalTokens[$stackPtr]['content'][0] === '-'
+                } elseif ($finalTokens[$stackPtr]['content'][0] === '-'
                     && $finalTokens[($stackPtr + 1)]['code'] === T_STRING
                 ) {
                     if (isset($finalTokens[($stackPtr - 1)]) === true
@@ -512,7 +512,6 @@ class PHP_CodeSniffer_Tokenizers_CSS extends PHP_CodeSniffer_Tokenizers_PHP
         }
 
         return $finalTokens;
-
     }//end tokenizeString()
 
 
@@ -530,8 +529,5 @@ class PHP_CodeSniffer_Tokenizers_CSS extends PHP_CodeSniffer_Tokenizers_PHP
             We override this method because we don't want the PHP version to
             run during CSS processing because it is wasted processing time.
         */
-
     }//end processAdditional()
-
-
 }//end class

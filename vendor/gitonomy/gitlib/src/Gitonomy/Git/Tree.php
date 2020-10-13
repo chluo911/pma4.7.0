@@ -37,28 +37,11 @@ class Tree
 
     protected function initialize()
     {
-        if (true === $this->isInitialized) {
-            return;
-        }
-
-        $output = $this->repository->run('cat-file', array('-p', $this->hash));
-        $parser = new Parser\TreeParser();
-        $parser->parse($output);
-
-        $this->entries = array();
-
-        foreach ($parser->entries as $entry) {
-            list($mode, $type, $hash, $name) = $entry;
-            if ($type == 'blob') {
-                $this->entries[$name] = array($mode, $this->repository->getBlob($hash));
-            } elseif ($type == 'tree') {
-                $this->entries[$name] = array($mode, $this->repository->getTree($hash));
-            } else {
-                $this->entries[$name] = array($mode, new CommitReference($hash));
-            }
-        }
-
-        $this->isInitialized = true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,42 +49,28 @@ class Tree
      */
     public function getEntries()
     {
-        $this->initialize();
-
-        return $this->entries;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getEntry($name)
     {
-        $this->initialize();
-
-        if (!isset($this->entries[$name])) {
-            throw new InvalidArgumentException('No entry '.$name);
-        }
-
-        return $this->entries[$name][1];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function resolvePath($path)
     {
-        if ($path == '') {
-            return $this;
-        }
-
-        $path = preg_replace('#^/#', '', $path);
-
-        $segments = explode('/', $path);
-        $element = $this;
-        foreach ($segments as $segment) {
-            if ($element instanceof self) {
-                $element = $element->getEntry($segment);
-            } elseif ($entry instanceof Blob) {
-                throw new InvalidArgumentException('Unresolvable path');
-            } else {
-                throw new UnexpectedValueException('Unknow type of element');
-            }
-        }
-
-        return $element;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

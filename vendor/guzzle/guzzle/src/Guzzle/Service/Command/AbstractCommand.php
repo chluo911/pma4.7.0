@@ -270,20 +270,28 @@ abstract class AbstractCommand extends Collection implements CommandInterface
      */
     public function setValidator(ValidatorInterface $validator)
     {
-        $this->validator = $validator;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getRequestHeaders()
     {
-        return $this[self::HEADERS_OPTION];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
      * Initialize the command (hook that can be implemented in subclasses)
      */
-    protected function init() {}
+    protected function init()
+    {
+    }
 
     /**
      * Create the request object that will carry out the command
@@ -381,10 +389,10 @@ abstract class AbstractCommand extends Collection implements CommandInterface
      */
     public function getValidationErrors()
     {
-        if (!$this->validator) {
-            return false;
-        }
-
-        return $this->validator->getErrors();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -60,4 +60,3 @@ function PMA_getHtmlForSubPageHeader($type, $link='', $is_image=true)
     }
     return $html;
 }
-

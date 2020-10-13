@@ -28,11 +28,11 @@ class ArrayEveryEntryToken implements TokenInterface
      */
     public function __construct($value)
     {
-        if (!$value instanceof TokenInterface) {
-            $value = new ExactValueToken($value);
-        }
-
-        $this->value = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,20 +40,11 @@ class ArrayEveryEntryToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        if (!$argument instanceof \Traversable && !is_array($argument)) {
-            return false;
-        }
-
-        $scores = array();
-        foreach ($argument as $key => $argumentEntry) {
-            $scores[] = $this->value->scoreArgument($argumentEntry);
-        }
-
-        if (empty($scores) || in_array(false, $scores, true)) {
-            return false;
-        }
-
-        return array_sum($scores) / count($scores);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,7 +52,11 @@ class ArrayEveryEntryToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -108,9 +108,11 @@ class OutputFormatterStyleStack
      */
     public function setEmptyStyle(OutputFormatterStyleInterface $emptyStyle)
     {
-        $this->emptyStyle = $emptyStyle;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -118,6 +120,10 @@ class OutputFormatterStyleStack
      */
     public function getEmptyStyle()
     {
-        return $this->emptyStyle;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

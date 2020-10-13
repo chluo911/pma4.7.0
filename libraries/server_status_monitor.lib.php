@@ -284,7 +284,7 @@ function PMA_getHtmlForSettingsDialog()
     $retval .= ServerStatusData::getHtmlForRefreshList(
         'gridChartRefresh',
         5,
-        Array(2, 3, 4, 5, 10, 20, 40, 60, 120, 300, 600, 1200)
+        array(2, 3, 4, 5, 10, 20, 40, 60, 120, 300, 600, 1200)
     );
     $retval .= '<br />';
     $retval .= '</div>';
@@ -375,7 +375,12 @@ function PMA_getJsonForChartingData()
 
     /* Accumulate all required variables and data */
     list($serverVars, $statusVars, $ret) = PMA_getJsonForChartingDataGet(
-        $ret, $serverVars, $statusVars, $sysinfo, $cpuload, $memory
+        $ret,
+        $serverVars,
+        $statusVars,
+        $sysinfo,
+        $cpuload,
+        $memory
     );
 
     // Retrieve all required status variables
@@ -452,7 +457,12 @@ function PMA_getJsonForChartingDataSet($ret, $statusVarValues, $serverVarValues)
  * @return array
  */
 function PMA_getJsonForChartingDataGet(
-    $ret, $serverVars, $statusVars, $sysinfo, $cpuload, $memory
+    $ret,
+    $serverVars,
+    $statusVars,
+    $sysinfo,
+    $cpuload,
+    $memory
 ) {
     // For each chart
     foreach ($ret as $chart_id => $chartNodes) {
@@ -462,9 +472,14 @@ function PMA_getJsonForChartingDataGet(
             foreach ($nodeDataPoints as $point_id => $dataPoint) {
                 list($serverVars, $statusVars, $ret[$chart_id][$node_id][$point_id])
                     = PMA_getJsonForChartingDataSwitch(
-                        $dataPoint['type'], $dataPoint['name'], $serverVars,
-                        $statusVars, $ret[$chart_id][$node_id][$point_id],
-                        $sysinfo, $cpuload, $memory
+                        $dataPoint['type'],
+                        $dataPoint['name'],
+                        $serverVars,
+                        $statusVars,
+                        $ret[$chart_id][$node_id][$point_id],
+                        $sysinfo,
+                        $cpuload,
+                        $memory
                     );
             } /* foreach */
         } /* foreach */
@@ -487,8 +502,14 @@ function PMA_getJsonForChartingDataGet(
  * @return array
  */
 function PMA_getJsonForChartingDataSwitch(
-    $type, $pName, $serverVars, $statusVars, $ret,
-    $sysinfo, $cpuload, $memory
+    $type,
+    $pName,
+    $serverVars,
+    $statusVars,
+    $ret,
+    $sysinfo,
+    $cpuload,
+    $memory
 ) {
     switch ($type) {
     /* We only collect the status and server variables here to
@@ -580,7 +601,7 @@ function PMA_getJsonForLogDataTypeSlow($start, $end)
             )
         );
 
-        switch($type) {
+        switch ($type) {
         case 'insert':
         case 'update':
             //Cut off big inserts and updates, but append byte count instead
@@ -588,7 +609,9 @@ function PMA_getJsonForLogDataTypeSlow($start, $end)
                 $implode_sql_text = implode(
                     ' ',
                     PMA\libraries\Util::formatByteDown(
-                        mb_strlen($row['sql_text']), 2, 2
+                        mb_strlen($row['sql_text']),
+                        2,
+                        2
                     )
                 );
                 $row['sql_text'] = mb_substr($row['sql_text'], 0, 200)
@@ -655,14 +678,15 @@ function PMA_getJsonForLogDataTypeGeneral($start, $end)
         }
         $return['sum'][$type] += $row['#'];
 
-        switch($type) {
+        switch ($type) {
         /** @noinspection PhpMissingBreakStatementInspection */
         case 'insert':
             // Group inserts if selected
             if ($removeVars
                 && preg_match(
                     '/^INSERT INTO (`|\'|"|)([^\s\\1]+)\\1/i',
-                    $row['argument'], $matches
+                    $row['argument'],
+                    $matches
                 )
             ) {
                 $insertTables[$matches[2]]++;
@@ -685,7 +709,7 @@ function PMA_getJsonForLogDataTypeGeneral($start, $end)
                     $insertTables[$matches[2]] += $row['#'] - 1;
                 }
             }
-            // No break here
+            // no break here
 
         case 'update':
             // Cut off big inserts and updates,
@@ -754,7 +778,6 @@ function PMA_getJsonForLoggingVars()
                 'SET GLOBAL ' . $_REQUEST['varName'] . ' = ' . $value
             );
         }
-
     }
 
     $loggingVars = $GLOBALS['dbi']->fetchResult(
@@ -816,4 +839,3 @@ function PMA_getJsonForQueryAnalyzer()
     }
     return $return;
 }
-

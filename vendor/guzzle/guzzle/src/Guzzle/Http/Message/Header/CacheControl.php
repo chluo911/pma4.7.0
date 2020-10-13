@@ -33,9 +33,11 @@ class CacheControl extends Header
      */
     public function hasDirective($param)
     {
-        $directives = $this->getDirectives();
-
-        return isset($directives[$param]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,9 +49,11 @@ class CacheControl extends Header
      */
     public function getDirective($param)
     {
-        $directives = $this->getDirectives();
-
-        return isset($directives[$param]) ? $directives[$param] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,11 +66,11 @@ class CacheControl extends Header
      */
     public function addDirective($param, $value)
     {
-        $directives = $this->getDirectives();
-        $directives[$param] = $value;
-        $this->updateFromDirectives($directives);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,11 +82,11 @@ class CacheControl extends Header
      */
     public function removeDirective($param)
     {
-        $directives = $this->getDirectives();
-        unset($directives[$param]);
-        $this->updateFromDirectives($directives);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -92,16 +96,11 @@ class CacheControl extends Header
      */
     public function getDirectives()
     {
-        if ($this->directives === null) {
-            $this->directives = array();
-            foreach ($this->parseParams() as $collection) {
-                foreach ($collection as $key => $value) {
-                    $this->directives[$key] = $value === '' ? true : $value;
-                }
-            }
-        }
-
-        return $this->directives;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -111,11 +110,10 @@ class CacheControl extends Header
      */
     protected function updateFromDirectives(array $directives)
     {
-        $this->directives = $directives;
-        $this->values = array();
-
-        foreach ($directives as $key => $value) {
-            $this->values[] = $value === true ? $key : "{$key}={$value}";
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

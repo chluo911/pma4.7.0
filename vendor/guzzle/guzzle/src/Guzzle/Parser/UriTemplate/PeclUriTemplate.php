@@ -14,9 +14,11 @@ class PeclUriTemplate implements UriTemplateInterface
 {
     public function __construct()
     {
-        if (!extension_loaded('uri_template')) {
-            throw new RuntimeException('uri_template PECL extension must be installed to use PeclUriTemplate');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function expand($template, array $variables)

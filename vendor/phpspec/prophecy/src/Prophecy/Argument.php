@@ -29,7 +29,11 @@ class Argument
      */
     public static function exact($value)
     {
-        return new Token\ExactValueToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,7 +45,11 @@ class Argument
      */
     public static function type($type)
     {
-        return new Token\TypeToken($type);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,7 +62,11 @@ class Argument
      */
     public static function which($methodName, $value)
     {
-        return new Token\ObjectStateToken($methodName, $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,7 +78,11 @@ class Argument
      */
     public static function that($callback)
     {
-        return new Token\CallbackToken($callback);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -76,7 +92,11 @@ class Argument
      */
     public static function any()
     {
-        return new Token\AnyValueToken;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,7 +106,11 @@ class Argument
      */
     public static function cetera()
     {
-        return new Token\AnyValuesToken;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,7 +122,11 @@ class Argument
      */
     public static function allOf()
     {
-        return new Token\LogicalAndToken(func_get_args());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -110,7 +138,11 @@ class Argument
      */
     public static function size($value)
     {
-        return new Token\ArrayCountToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -123,7 +155,11 @@ class Argument
      */
     public static function withEntry($key, $value)
     {
-        return new Token\ArrayEntryToken($key, $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -135,7 +171,11 @@ class Argument
      */
     public static function withEveryEntry($value)
     {
-        return new Token\ArrayEveryEntryToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -147,7 +187,11 @@ class Argument
      */
     public static function containing($value)
     {
-        return new Token\ArrayEntryToken(self::any(), $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -159,7 +203,11 @@ class Argument
      */
     public static function withKey($key)
     {
-        return new Token\ArrayEntryToken($key, self::any());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -171,7 +219,11 @@ class Argument
      */
     public static function not($value)
     {
-        return new Token\LogicalNotToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -181,7 +233,11 @@ class Argument
      */
     public static function containingString($value)
     {
-        return new Token\StringContainsToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -193,7 +249,11 @@ class Argument
      */
     public static function is($value)
     {
-        return new Token\IdenticalValueToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -207,6 +267,10 @@ class Argument
      */
     public static function approximate($value, $precision = 0)
     {
-        return new Token\ApproximateValueToken($value, $precision);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

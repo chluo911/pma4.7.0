@@ -30,12 +30,11 @@ class PHP_CodeCoverage_Report_CloverTest extends PHP_CodeCoverage_TestCase
      */
     public function testCloverForBankAccountTest()
     {
-        $clover = new PHP_CodeCoverage_Report_Clover;
-
-        $this->assertStringMatchesFormatFile(
-            TEST_FILES_PATH . 'BankAccount-clover.xml',
-            $clover->process($this->getCoverageForBankAccount(), null, 'BankAccount')
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -43,12 +42,11 @@ class PHP_CodeCoverage_Report_CloverTest extends PHP_CodeCoverage_TestCase
      */
     public function testCloverForFileWithIgnoredLines()
     {
-        $clover = new PHP_CodeCoverage_Report_Clover;
-
-        $this->assertStringMatchesFormatFile(
-            TEST_FILES_PATH . 'ignored-lines-clover.xml',
-            $clover->process($this->getCoverageForFileWithIgnoredLines())
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,11 +54,10 @@ class PHP_CodeCoverage_Report_CloverTest extends PHP_CodeCoverage_TestCase
      */
     public function testCloverForClassWithAnonymousFunction()
     {
-        $clover = new PHP_CodeCoverage_Report_Clover;
-
-        $this->assertStringMatchesFormatFile(
-            TEST_FILES_PATH . 'class-with-anonymous-function-clover.xml',
-            $clover->process($this->getCoverageForClassWithAnonymousFunction())
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

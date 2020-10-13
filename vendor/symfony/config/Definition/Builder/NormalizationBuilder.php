@@ -56,12 +56,10 @@ class NormalizationBuilder
      */
     public function before(\Closure $closure = null)
     {
-        if (null !== $closure) {
-            $this->before[] = $closure;
-
-            return $this;
-        }
-
-        return $this->before[] = new ExprBuilder($this->node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

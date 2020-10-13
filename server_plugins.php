@@ -27,6 +27,7 @@ $container->alias('response', 'PMA\libraries\Response');
 
 /** @var ServerPluginsController $controller */
 $controller = $container->get(
-    'ServerPluginsController', array()
+    'ServerPluginsController',
+    array()
 );
 $controller->indexAction();

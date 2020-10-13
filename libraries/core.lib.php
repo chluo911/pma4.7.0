@@ -12,7 +12,6 @@ use PMA\libraries\Response;
 use PMA\libraries\URL;
 use PMA\libraries\Sanitize;
 
-
 if (! defined('PHPMYADMIN')) {
     exit;
 }
@@ -121,22 +120,22 @@ function PMA_isValid(&$var, $type = 'length', $compare = null)
     // allow some aliases of var types
     $type = strtolower($type);
     switch ($type) {
-    case 'identic' :
+    case 'identic':
         $type = 'identical';
         break;
-    case 'len' :
+    case 'len':
         $type = 'length';
         break;
-    case 'bool' :
+    case 'bool':
         $type = 'boolean';
         break;
-    case 'float' :
+    case 'float':
         $type = 'double';
         break;
-    case 'int' :
+    case 'int':
         $type = 'integer';
         break;
-    case 'null' :
+    case 'null':
         $type = 'NULL';
         break;
     }
@@ -213,7 +212,8 @@ function PMA_securePath($path)
  *
  * @return void
  */
-function PMA_fatalError($error_message, $message_args = null) {
+function PMA_fatalError($error_message, $message_args = null)
+{
     /* Use format string if applicable */
     if (is_string($message_args)) {
         $error_message = sprintf($error_message, $message_args);
@@ -330,18 +330,11 @@ function PMA_warnMissingExtension($extension, $fatal = false, $extra = '')
  */
 function PMA_getTableCount($db)
 {
-    $tables = $GLOBALS['dbi']->tryQuery(
-        'SHOW TABLES FROM ' . PMA\libraries\Util::backquote($db) . ';',
-        null, PMA\libraries\DatabaseInterface::QUERY_STORE
-    );
-    if ($tables) {
-        $num_tables = $GLOBALS['dbi']->numRows($tables);
-        $GLOBALS['dbi']->freeResult($tables);
-    } else {
-        $num_tables = 0;
-    }
-
-    return $num_tables;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -888,14 +881,16 @@ function PMA_cleanupPathInfo()
     }
 
     $path = [];
-    foreach(explode('/', $PMA_PHP_SELF) as $part) {
+    foreach (explode('/', $PMA_PHP_SELF) as $part) {
         // ignore parts that have no value
-        if (empty($part) || $part === '.') continue;
+        if (empty($part) || $part === '.') {
+            continue;
+        }
 
         if ($part !== '..') {
             // cool, we found a new part
             array_push($path, $part);
-        } else if (count($path) > 0) {
+        } elseif (count($path) > 0) {
             // going back up? sure
             array_pop($path);
         }
@@ -979,7 +974,7 @@ function PMA_getIp()
 
 
 /* Compatibility with PHP < 5.6 */
-if(! function_exists('hash_equals')) {
+if (! function_exists('hash_equals')) {
 
     /**
      * Timing attack safe string comparison
@@ -989,7 +984,8 @@ if(! function_exists('hash_equals')) {
      *
      * @return boolean whether they are equal
      */
-    function hash_equals($a, $b) {
+    function hash_equals($a, $b)
+    {
         $ret = strlen($a) ^ strlen($b);
         $ret |= array_sum(unpack("C*", $a ^ $b));
         return ! $ret;
@@ -1079,8 +1075,7 @@ function PMA_safeUnserialize($data)
     for ($i = 0; $i < $length; $i++) {
         $value = $data[$i];
 
-        switch ($value)
-        {
+        switch ($value) {
             case '}':
                 /* end of array */
                 if ($depth <= 0) {

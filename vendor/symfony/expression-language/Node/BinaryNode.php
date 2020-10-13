@@ -43,45 +43,11 @@ class BinaryNode extends Node
 
     public function compile(Compiler $compiler)
     {
-        $operator = $this->attributes['operator'];
-
-        if ('matches' == $operator) {
-            $compiler
-                ->raw('preg_match(')
-                ->compile($this->nodes['right'])
-                ->raw(', ')
-                ->compile($this->nodes['left'])
-                ->raw(')')
-            ;
-
-            return;
-        }
-
-        if (isset(self::$functions[$operator])) {
-            $compiler
-                ->raw(sprintf('%s(', self::$functions[$operator]))
-                ->compile($this->nodes['left'])
-                ->raw(', ')
-                ->compile($this->nodes['right'])
-                ->raw(')')
-            ;
-
-            return;
-        }
-
-        if (isset(self::$operators[$operator])) {
-            $operator = self::$operators[$operator];
-        }
-
-        $compiler
-            ->raw('(')
-            ->compile($this->nodes['left'])
-            ->raw(' ')
-            ->raw($operator)
-            ->raw(' ')
-            ->compile($this->nodes['right'])
-            ->raw(')')
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function evaluate($functions, $values)
@@ -157,6 +123,10 @@ class BinaryNode extends Node
 
     public function toArray()
     {
-        return array('(', $this->nodes['left'], ' '.$this->attributes['operator'].' ', $this->nodes['right'], ')');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

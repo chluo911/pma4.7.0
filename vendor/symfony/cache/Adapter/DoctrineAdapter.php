@@ -22,9 +22,11 @@ class DoctrineAdapter extends AbstractAdapter
 
     public function __construct(CacheProvider $provider, $namespace = '', $defaultLifetime = 0)
     {
-        parent::__construct('', $defaultLifetime);
-        $this->provider = $provider;
-        $provider->setNamespace($namespace);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,11 +68,11 @@ class DoctrineAdapter extends AbstractAdapter
      */
     protected function doClear($namespace)
     {
-        $namespace = $this->provider->getNamespace();
-
-        return isset($namespace[0])
-            ? $this->provider->deleteAll()
-            : $this->provider->flushAll();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

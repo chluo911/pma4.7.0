@@ -25,11 +25,11 @@ abstract class PreApPendTransformationsPlugin extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Prepends and/or Appends text to a string. First option is text'
-            . ' to be prepended, second is appended (enclosed in single'
-            . ' quotes, default empty string).'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -43,11 +43,11 @@ abstract class PreApPendTransformationsPlugin extends TransformationsPlugin
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        $options = $this->getOptions($options, array('', ''));
-
-        //just prepend and/or append the options to the original text
-        return htmlspecialchars($options[0]) . htmlspecialchars($buffer)
-            . htmlspecialchars($options[1]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */

@@ -45,42 +45,11 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
      */
     protected function processMemberVar(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $memberProps = $phpcsFile->getMemberProperties($stackPtr);
-        if (empty($memberProps) === true) {
-            return;
-        }
-
-        $memberName     = ltrim($tokens[$stackPtr]['content'], '$');
-        $scope          = $memberProps['scope'];
-        $scopeSpecified = $memberProps['scope_specified'];
-
-        if ($memberProps['scope'] === 'private') {
-            $isPublic = false;
-        } else {
-            $isPublic = true;
-        }
-
-        // If it's a private member, it must have an underscore on the front.
-        if ($isPublic === false && $memberName{0} !== '_') {
-            $error = 'Private member variable "%s" must be prefixed with an underscore';
-            $data  = array($memberName);
-            $phpcsFile->addError($error, $stackPtr, 'PrivateNoUnderscore', $data);
-            return;
-        }
-
-        // If it's not a private member, it must not have an underscore on the front.
-        if ($isPublic === true && $scopeSpecified === true && $memberName{0} === '_') {
-            $error = '%s member variable "%s" must not be prefixed with an underscore';
-            $data  = array(
-                      ucfirst($scope),
-                      $memberName,
-                     );
-            $phpcsFile->addError($error, $stackPtr, 'PublicUnderscore', $data);
-            return;
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end processMemberVar()
 
 
@@ -94,10 +63,11 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
      */
     protected function processVariable(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        /*
-            We don't care about normal variables.
-        */
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end processVariable()
 
 
@@ -111,11 +81,10 @@ class PEAR_Sniffs_NamingConventions_ValidVariableNameSniff extends PHP_CodeSniff
      */
     protected function processVariableInString(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        /*
-            We don't care about normal variables.
-        */
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end processVariableInString()
-
-
 }//end class

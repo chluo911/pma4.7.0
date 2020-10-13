@@ -12,7 +12,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->object = new Commit();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getId()
@@ -22,7 +26,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveIdOnConstruction()
     {
-        $this->assertNull($this->object->getId());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getAuthorName()
@@ -32,7 +40,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHoveAuthorNameOnConstruction()
     {
-        $this->assertNull($this->object->getAuthorName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getAuthorEmail()
@@ -42,7 +54,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHoveAuthorEmailOnConstruction()
     {
-        $this->assertNull($this->object->getAuthorEmail());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getCommitterName()
@@ -52,7 +68,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHoveCommitterNameOnConstruction()
     {
-        $this->assertNull($this->object->getCommitterName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getCommitterEmail()
@@ -62,7 +82,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHoveCommitterEmailOnConstruction()
     {
-        $this->assertNull($this->object->getCommitterEmail());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getMessage()
@@ -72,7 +96,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHoveMessageOnConstruction()
     {
-        $this->assertNull($this->object->getMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setId()
@@ -82,12 +110,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetId()
     {
-        $expected = 'id';
-
-        $obj = $this->object->setId($expected);
-
-        $this->assertSame($expected, $this->object->getId());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setAuthorName()
@@ -97,12 +124,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetAuthorName()
     {
-        $expected = 'author_name';
-
-        $obj = $this->object->setAuthorName($expected);
-
-        $this->assertSame($expected, $this->object->getAuthorName());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setAuthorEmail()
@@ -112,12 +138,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetAuthorEmail()
     {
-        $expected = 'author_email';
-
-        $obj = $this->object->setAuthorEmail($expected);
-
-        $this->assertSame($expected, $this->object->getAuthorEmail());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setCommitterName()
@@ -127,12 +152,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetCommitterName()
     {
-        $expected = 'committer_name';
-
-        $obj = $this->object->setCommitterName($expected);
-
-        $this->assertSame($expected, $this->object->getCommitterName());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setCommitterEmail()
@@ -142,12 +166,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetCommitterEmail()
     {
-        $expected = 'committer_email';
-
-        $obj = $this->object->setCommitterEmail($expected);
-
-        $this->assertSame($expected, $this->object->getCommitterEmail());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setMessage()
@@ -157,12 +180,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetMessage()
     {
-        $expected = 'message';
-
-        $obj = $this->object->setMessage($expected);
-
-        $this->assertSame($expected, $this->object->getMessage());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // toArray()
@@ -172,17 +194,11 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertToArray()
     {
-        $expected = array(
-            'id'              => null,
-            'author_name'     => null,
-            'author_email'    => null,
-            'committer_name'  => null,
-            'committer_email' => null,
-            'message'         => null,
-        );
-
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -190,31 +206,10 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertToFilledArray()
     {
-        $id             = 'id';
-        $authorName     = 'author_name';
-        $authorEmail    = 'author_email';
-        $committerName  = 'committer_name';
-        $committerEmail = 'committer_email';
-        $message        = 'message';
-
-        $this->object
-        ->setId($id)
-        ->setAuthorName($authorName)
-        ->setAuthorEmail($authorEmail)
-        ->setCommitterName($committerName)
-        ->setCommitterEmail($committerEmail)
-        ->setMessage($message);
-
-        $expected = array(
-            'id'              => $id,
-            'author_name'     => $authorName,
-            'author_email'    => $authorEmail,
-            'committer_name'  => $committerName,
-            'committer_email' => $committerEmail,
-            'message'         => $message,
-        );
-
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

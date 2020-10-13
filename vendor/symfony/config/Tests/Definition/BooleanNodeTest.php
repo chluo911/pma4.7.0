@@ -21,8 +21,11 @@ class BooleanNodeTest extends TestCase
      */
     public function testNormalize($value)
     {
-        $node = new BooleanNode('test');
-        $this->assertSame($value, $node->normalize($value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,18 +35,20 @@ class BooleanNodeTest extends TestCase
      */
     public function testValidNonEmptyValues($value)
     {
-        $node = new BooleanNode('test');
-        $node->setAllowEmptyValue(false);
-
-        $this->assertSame($value, $node->finalize($value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getValidValues()
     {
-        return array(
-            array(false),
-            array(true),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,23 +57,19 @@ class BooleanNodeTest extends TestCase
      */
     public function testNormalizeThrowsExceptionOnInvalidValues($value)
     {
-        $node = new BooleanNode('test');
-        $node->normalize($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getInvalidValues()
     {
-        return array(
-            array(null),
-            array(''),
-            array('foo'),
-            array(0),
-            array(1),
-            array(0.0),
-            array(0.1),
-            array(array()),
-            array(array('foo' => 'bar')),
-            array(new \stdClass()),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

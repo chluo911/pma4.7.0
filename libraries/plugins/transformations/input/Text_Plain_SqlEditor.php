@@ -25,9 +25,11 @@ class Text_Plain_SqlEditor extends CodeMirrorEditorTransformationPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Syntax highlighted CodeMirror editor for SQL.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,7 +69,11 @@ class Text_Plain_SqlEditor extends CodeMirrorEditorTransformationPlugin
      */
     public static function getMIMEType()
     {
-        return "Text";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -77,6 +83,10 @@ class Text_Plain_SqlEditor extends CodeMirrorEditorTransformationPlugin
      */
     public static function getMIMESubtype()
     {
-        return "Plain";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

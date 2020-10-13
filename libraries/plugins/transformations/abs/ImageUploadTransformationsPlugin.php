@@ -24,11 +24,11 @@ abstract class ImageUploadTransformationsPlugin extends IOTransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Image upload functionality which also displays a thumbnail.'
-            . ' The options are the width and height of the thumbnail'
-            . ' in pixels. Defaults to 100 X 100.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

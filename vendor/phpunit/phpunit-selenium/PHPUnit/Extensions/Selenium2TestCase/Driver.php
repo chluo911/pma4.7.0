@@ -92,29 +92,33 @@ class PHPUnit_Extensions_Selenium2TestCase_Driver
      * @param string $url
      * @param array $params       JSON parameters for POST requests
      */
-    public function curl($http_method,
-                         PHPUnit_Extensions_Selenium2TestCase_URL $url,
-                         $params = NULL)
+    public function curl(
+        $http_method,
+        PHPUnit_Extensions_Selenium2TestCase_URL $url,
+        $params = null
+    )
     {
         $curl = curl_init($url->getValue());
         curl_setopt($curl, CURLOPT_TIMEOUT, $this->seleniumServerRequestsTimeout);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($curl,
-                    CURLOPT_HTTPHEADER,
-                    array(
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt(
+            $curl,
+            CURLOPT_HTTPHEADER,
+            array(
                         'Content-type: application/json;charset=UTF-8',
                         'Accept: application/json;charset=UTF-8'
-                     ));
+                     )
+        );
 
         if ($http_method === 'POST') {
-            curl_setopt($curl, CURLOPT_POST, TRUE);
+            curl_setopt($curl, CURLOPT_POST, true);
             if ($params && is_array($params)) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));
             } else {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, '');
             }
-            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
-        } else if ($http_method == 'DELETE') {
+            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+        } elseif ($http_method == 'DELETE') {
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
         }
 
@@ -133,13 +137,13 @@ class PHPUnit_Extensions_Selenium2TestCase_Driver
             throw new BadMethodCallException("The command $url is not recognized by the server.");
         }
         curl_close($curl);
-        $content = json_decode($rawResponse, TRUE);
+        $content = json_decode($rawResponse, true);
         if ($info['http_code'] == 500) {
             $message = '';
             if (isset($content['value']['message'])) {
                 $message .= $content['value']['message'];
             } else {
-                $message .= "Internal server error while executing $http_method request at $url. Response: " . var_export($content, TRUE);
+                $message .= "Internal server error while executing $http_method request at $url. Response: " . var_export($content, true);
             }
             if (isset($content['value']['class'])) {
                 $message .= PHP_EOL . $content['value']['class'];
@@ -151,8 +155,10 @@ class PHPUnit_Extensions_Selenium2TestCase_Driver
 
     public function execute(PHPUnit_Extensions_Selenium2TestCase_Command $command)
     {
-        return $this->curl($command->httpMethod(),
-                           $command->url(),
-                           $command->jsonParameters());
+        return $this->curl(
+            $command->httpMethod(),
+            $command->url(),
+            $command->jsonParameters()
+        );
     }
 }

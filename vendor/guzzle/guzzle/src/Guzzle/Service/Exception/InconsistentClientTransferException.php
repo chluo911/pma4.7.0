@@ -19,11 +19,11 @@ class InconsistentClientTransferException extends RuntimeException
      */
     public function __construct(array $commands)
     {
-        $this->invalidCommands = $commands;
-        parent::__construct(
-            'Encountered commands in a batch transfer that use inconsistent clients. The batching ' .
-            'strategy you use with a command transfer must divide command batches by client.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

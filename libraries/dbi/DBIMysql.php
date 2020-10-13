@@ -47,7 +47,11 @@ class DBIMysql implements DBIExtension
      *
      * @return mixed   false on error or a mysql connection resource on success
      */
-    private function _realConnect($server, $user, $password, $client_flags,
+    private function _realConnect(
+        $server,
+        $user,
+        $password,
+        $client_flags,
         $persistent = false
     ) {
         global $cfg;
@@ -63,7 +67,11 @@ class DBIMysql implements DBIExtension
                 $link = @mysql_pconnect($server, $user, $password, $client_flags);
             } else {
                 $link = @mysql_connect(
-                    $server, $user, $password, false, $client_flags
+                    $server,
+                    $user,
+                    $password,
+                    false,
+                    $client_flags
                 );
             }
         }
@@ -99,7 +107,9 @@ class DBIMysql implements DBIExtension
      * @return mixed false on error or a mysqli object on success
      */
     public function connect(
-        $user, $password, $server
+        $user,
+        $password,
+        $server
     ) {
         if ($server['port'] === 0) {
             $server_port = '';
@@ -137,7 +147,9 @@ class DBIMysql implements DBIExtension
         } else {
             $link = $this->_realConnect(
                 $server['host'] . $server_port . $server_socket,
-                $user, $password, null
+                $user,
+                $password,
+                null
             );
         }
         return $link;
@@ -420,7 +432,11 @@ class DBIMysql implements DBIExtension
      */
     public function fieldName($result, $i)
     {
-        return mysql_field_name($result, $i);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

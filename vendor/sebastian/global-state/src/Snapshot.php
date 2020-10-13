@@ -185,7 +185,11 @@ class Snapshot
      */
     public function iniSettings()
     {
-        return $this->iniSettings;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -193,7 +197,11 @@ class Snapshot
      */
     public function includedFiles()
     {
-        return $this->includedFiles;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -201,7 +209,11 @@ class Snapshot
      */
     public function constants()
     {
-        return $this->constants;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -209,7 +221,11 @@ class Snapshot
      */
     public function functions()
     {
-        return $this->functions;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -217,7 +233,11 @@ class Snapshot
      */
     public function interfaces()
     {
-        return $this->interfaces;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -233,7 +253,11 @@ class Snapshot
      */
     public function traits()
     {
-        return $this->traits;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

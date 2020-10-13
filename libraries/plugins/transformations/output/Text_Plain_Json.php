@@ -25,15 +25,11 @@ class Text_Plain_Json extends TransformationsPlugin
      */
     public function __construct()
     {
-        if (!empty($GLOBALS['cfg']['CodemirrorEnable'])) {
-            $response = Response::getInstance();
-            $scripts = $response->getHeader()
-                ->getScripts();
-            $scripts->addFile('codemirror/lib/codemirror.js');
-            $scripts->addFile('codemirror/mode/javascript/javascript.js');
-            $scripts->addFile('codemirror/addon/runmode/runmode.js');
-            $scripts->addFile('transformations/json.js');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -43,9 +39,11 @@ class Text_Plain_Json extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Formats text as JSON with syntax highlighting.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,7 +71,11 @@ class Text_Plain_Json extends TransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Text";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

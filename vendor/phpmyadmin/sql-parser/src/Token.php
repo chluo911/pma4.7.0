@@ -306,10 +306,10 @@ class Token
      */
     public function getInlineToken()
     {
-        return str_replace(
-            array("\r", "\n", "\t"),
-            array('\r', '\n', '\t'),
-            $this->token
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

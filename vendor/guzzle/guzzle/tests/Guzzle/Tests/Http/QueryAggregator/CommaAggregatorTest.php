@@ -9,22 +9,19 @@ class CommaAggregatorTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testAggregates()
     {
-        $query = new QueryString();
-        $a = new Ag();
-        $key = 'test 123';
-        $value = array('foo 123', 'baz', 'bar');
-        $result = $a->aggregate($key, $value, $query);
-        $this->assertEquals(array('test%20123' => 'foo%20123,baz,bar'), $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEncodes()
     {
-        $query = new QueryString();
-        $query->useUrlEncoding(false);
-        $a = new Ag();
-        $key = 'test 123';
-        $value = array('foo 123', 'baz', 'bar');
-        $result = $a->aggregate($key, $value, $query);
-        $this->assertEquals(array('test 123' => 'foo 123,baz,bar'), $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

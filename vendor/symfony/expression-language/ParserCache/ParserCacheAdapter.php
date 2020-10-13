@@ -83,7 +83,11 @@ class ParserCacheAdapter implements CacheItemPoolInterface
      */
     public function clear()
     {
-        throw new \BadMethodCallException('Not implemented');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

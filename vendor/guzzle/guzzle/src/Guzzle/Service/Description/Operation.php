@@ -173,9 +173,11 @@ class Operation implements OperationInterface
 
     public function setServiceDescription(ServiceDescriptionInterface $description)
     {
-        $this->description = $description;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getParams()
@@ -185,7 +187,11 @@ class Operation implements OperationInterface
 
     public function getParamNames()
     {
-        return array_keys($this->parameters);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function hasParam($name)
@@ -195,7 +201,11 @@ class Operation implements OperationInterface
 
     public function getParam($param)
     {
-        return isset($this->parameters[$param]) ? $this->parameters[$param] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -222,9 +232,11 @@ class Operation implements OperationInterface
      */
     public function removeParam($name)
     {
-        unset($this->parameters[$name]);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getHttpMethod()
@@ -241,9 +253,11 @@ class Operation implements OperationInterface
      */
     public function setHttpMethod($httpMethod)
     {
-        $this->httpMethod = $httpMethod;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getClass()
@@ -298,14 +312,20 @@ class Operation implements OperationInterface
      */
     public function setSummary($summary)
     {
-        $this->summary = $summary;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getNotes()
     {
-        return $this->notes;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -317,14 +337,20 @@ class Operation implements OperationInterface
      */
     public function setNotes($notes)
     {
-        $this->notes = $notes;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getDocumentationUrl()
     {
-        return $this->documentationUrl;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -336,9 +362,11 @@ class Operation implements OperationInterface
      */
     public function setDocumentationUrl($docUrl)
     {
-        $this->documentationUrl = $docUrl;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getResponseClass()
@@ -356,10 +384,11 @@ class Operation implements OperationInterface
      */
     public function setResponseClass($responseClass)
     {
-        $this->responseClass = $responseClass;
-        $this->inferResponseType();
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getResponseType()
@@ -394,7 +423,11 @@ class Operation implements OperationInterface
 
     public function getResponseNotes()
     {
-        return $this->responseNotes;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -406,14 +439,20 @@ class Operation implements OperationInterface
      */
     public function setResponseNotes($notes)
     {
-        $this->responseNotes = $notes;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getDeprecated()
     {
-        return $this->deprecated;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -425,9 +464,11 @@ class Operation implements OperationInterface
      */
     public function setDeprecated($isDeprecated)
     {
-        $this->deprecated = $isDeprecated;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getUri()
@@ -444,14 +485,20 @@ class Operation implements OperationInterface
      */
     public function setUri($uri)
     {
-        $this->uri = $uri;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getErrorResponses()
     {
-        return $this->errorResponses;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -465,9 +512,11 @@ class Operation implements OperationInterface
      */
     public function addErrorResponse($code, $reason, $class)
     {
-        $this->errorResponses[] = array('code' => $code, 'reason' => $reason, 'class' => $class);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -479,9 +528,11 @@ class Operation implements OperationInterface
      */
     public function setErrorResponses(array $errorResponses)
     {
-        $this->errorResponses = $errorResponses;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getData($name)
@@ -523,11 +574,11 @@ class Operation implements OperationInterface
      */
     public function setAdditionalParameters($parameter)
     {
-        if ($this->additionalParameters = $parameter) {
-            $this->additionalParameters->setParent($this);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

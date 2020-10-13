@@ -53,8 +53,7 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.13
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Click
-    extends PHPUnit_Extensions_Selenium2TestCase_Command
+class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Click extends PHPUnit_Extensions_Selenium2TestCase_Command
 {
     const LEFT = 0;
     const MIDDLE = 1;
@@ -63,7 +62,7 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Click
     public function __construct($argument, PHPUnit_Extensions_Selenium2TestCase_URL $url)
     {
         if (is_null($argument)) {
-            $jsonParameters = NULL;
+            $jsonParameters = null;
         } elseif (!is_scalar($argument) || !in_array($argument, array(
             self::LEFT, self::RIGHT, self::MIDDLE
         ))) {
@@ -77,6 +76,10 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Click
 
     public function httpMethod()
     {
-        return 'POST';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

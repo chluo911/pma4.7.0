@@ -31,10 +31,11 @@ class GenericEventTest extends TestCase
      */
     protected function setUp()
     {
-        parent::setUp();
-
-        $this->subject = new \stdClass();
-        $this->event = new GenericEvent($this->subject, array('name' => 'Event'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,15 +43,20 @@ class GenericEventTest extends TestCase
      */
     protected function tearDown()
     {
-        $this->subject = null;
-        $this->event = null;
-
-        parent::tearDown();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstruct()
     {
-        $this->assertEquals($this->event, new GenericEvent($this->subject, array('name' => 'Event')));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,28 +64,38 @@ class GenericEventTest extends TestCase
      */
     public function testGetArguments()
     {
-        // test getting all
-        $this->assertSame(array('name' => 'Event'), $this->event->getArguments());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetArguments()
     {
-        $result = $this->event->setArguments(array('foo' => 'bar'));
-        $this->assertAttributeSame(array('foo' => 'bar'), 'arguments', $this->event);
-        $this->assertSame($this->event, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetArgument()
     {
-        $result = $this->event->setArgument('foo2', 'bar2');
-        $this->assertAttributeSame(array('name' => 'Event', 'foo2' => 'bar2'), 'arguments', $this->event);
-        $this->assertEquals($this->event, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetArgument()
     {
-        // test getting key
-        $this->assertEquals('Event', $this->event->getArgument('name'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,54 +103,73 @@ class GenericEventTest extends TestCase
      */
     public function testGetArgException()
     {
-        $this->event->getArgument('nameNotExist');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOffsetGet()
     {
-        // test getting key
-        $this->assertEquals('Event', $this->event['name']);
-
-        // test getting invalid arg
-        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}('InvalidArgumentException');
-        $this->assertFalse($this->event['nameNotExist']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOffsetSet()
     {
-        $this->event['foo2'] = 'bar2';
-        $this->assertAttributeSame(array('name' => 'Event', 'foo2' => 'bar2'), 'arguments', $this->event);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOffsetUnset()
     {
-        unset($this->event['name']);
-        $this->assertAttributeSame(array(), 'arguments', $this->event);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOffsetIsset()
     {
-        $this->assertTrue(isset($this->event['name']));
-        $this->assertFalse(isset($this->event['nameNotExist']));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasArgument()
     {
-        $this->assertTrue($this->event->hasArgument('name'));
-        $this->assertFalse($this->event->hasArgument('nameNotExist'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetSubject()
     {
-        $this->assertSame($this->subject, $this->event->getSubject());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasIterator()
     {
-        $data = array();
-        foreach ($this->event as $key => $value) {
-            $data[$key] = $value;
-        }
-        $this->assertEquals(array('name' => 'Event'), $data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

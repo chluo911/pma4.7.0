@@ -10,45 +10,52 @@ use Prophecy\Doubler\Generator\Node\MethodNode;
 
 class DisableConstructorPatchSpec extends ObjectBehavior
 {
-    function it_is_a_patch()
+    public function it_is_a_patch()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Doubler\ClassPatch\ClassPatchInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_priority_is_100()
+    public function its_priority_is_100()
     {
-        $this->getPriority()->shouldReturn(100);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_supports_anything(ClassNode $node)
+    public function it_supports_anything(ClassNode $node)
     {
-        $this->supports($node)->shouldReturn(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_makes_all_constructor_arguments_optional(
+    public function it_makes_all_constructor_arguments_optional(
         ClassNode $class,
         MethodNode $method,
         ArgumentNode $arg1,
         ArgumentNode $arg2
     ) {
-        $class->hasMethod('__construct')->willReturn(true);
-        $class->getMethod('__construct')->willReturn($method);
-        $method->getArguments()->willReturn(array($arg1, $arg2));
-
-        $arg1->setDefault(null)->shouldBeCalled();
-        $arg2->setDefault(null)->shouldBeCalled();
-
-        $method->setCode(Argument::type('string'))->shouldBeCalled();
-
-        $this->apply($class);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_creates_new_constructor_if_object_has_none(ClassNode $class)
+    public function it_creates_new_constructor_if_object_has_none(ClassNode $class)
     {
-        $class->hasMethod('__construct')->willReturn(false);
-        $class->addMethod(Argument::type('Prophecy\Doubler\Generator\Node\MethodNode'))
-            ->shouldBeCalled();
-
-        $this->apply($class);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

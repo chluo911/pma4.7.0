@@ -47,7 +47,11 @@ abstract class OutputStyle implements OutputInterface, StyleInterface
      */
     public function createProgressBar($max = 0)
     {
-        return new ProgressBar($this->output, $max);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,7 +123,11 @@ abstract class OutputStyle implements OutputInterface, StyleInterface
      */
     public function isQuiet()
     {
-        return $this->output->isQuiet();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -135,7 +143,11 @@ abstract class OutputStyle implements OutputInterface, StyleInterface
      */
     public function isVeryVerbose()
     {
-        return $this->output->isVeryVerbose();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

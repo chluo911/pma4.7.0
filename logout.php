@@ -12,4 +12,3 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST' || $token_mismatch) {
 } else {
     $auth_plugin->logOut();
 }
-

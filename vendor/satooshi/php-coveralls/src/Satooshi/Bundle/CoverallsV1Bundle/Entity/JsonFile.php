@@ -108,34 +108,11 @@ class JsonFile extends Coveralls
      */
     public function toArray()
     {
-        $array = array();
-
-        $arrayMap = array(
-            // json key => property name
-            'service_name'         => 'serviceName',
-            'service_job_id'       => 'serviceJobId',
-            'service_number'       => 'serviceNumber',
-            'service_build_url'    => 'serviceBuildUrl',
-            'service_branch'       => 'serviceBranch',
-            'service_pull_request' => 'servicePullRequest',
-            'service_event_type'   => 'serviceEventType',
-            'repo_token'           => 'repoToken',
-            'git'                  => 'git',
-            'run_at'               => 'runAt',
-            'source_files'         => 'sourceFiles',
-        );
-
-        foreach ($arrayMap as $jsonKey => $propName) {
-            if (isset($this->$propName)) {
-                $array[$jsonKey] = $this->toJsonProperty($this->$propName);
-            }
-        }
-
-        $array['environment'] = array(
-            'packagist_version' => Version::VERSION,
-        );
-
-        return $array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -203,13 +180,11 @@ class JsonFile extends Coveralls
      */
     protected function toJsonProperty($prop)
     {
-        if ($prop instanceof Coveralls) {
-            return $prop->toArray();
-        } elseif (is_array($prop)) {
-            return $this->toJsonPropertyArray($prop);
-        }
-
-        return $prop;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -221,13 +196,11 @@ class JsonFile extends Coveralls
      */
     protected function toJsonPropertyArray(array $propArray)
     {
-        $array = array();
-
-        foreach ($propArray as $prop) {
-            $array[] = $this->toJsonProperty($prop);
-        }
-
-        return $array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -485,9 +458,11 @@ class JsonFile extends Coveralls
      */
     public function setServiceJobId($serviceJobId)
     {
-        $this->serviceJobId = $serviceJobId;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -497,11 +472,11 @@ class JsonFile extends Coveralls
      */
     public function getServiceJobId()
     {
-        if (isset($this->serviceJobId)) {
-            return $this->serviceJobId;
-        }
-
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -511,7 +486,11 @@ class JsonFile extends Coveralls
      */
     public function getServiceNumber()
     {
-        return $this->serviceNumber;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -521,7 +500,11 @@ class JsonFile extends Coveralls
      */
     public function getServiceEventType()
     {
-        return $this->serviceEventType;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -531,7 +514,11 @@ class JsonFile extends Coveralls
      */
     public function getServiceBuildUrl()
     {
-        return $this->serviceBuildUrl;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -541,7 +528,11 @@ class JsonFile extends Coveralls
      */
     public function getServiceBranch()
     {
-        return $this->serviceBranch;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -551,7 +542,11 @@ class JsonFile extends Coveralls
      */
     public function getServicePullRequest()
     {
-        return $this->servicePullRequest;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -575,11 +570,11 @@ class JsonFile extends Coveralls
      */
     public function getGit()
     {
-        if (isset($this->git)) {
-            return $this->git;
-        }
-
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -603,11 +598,11 @@ class JsonFile extends Coveralls
      */
     public function getRunAt()
     {
-        if (isset($this->runAt)) {
-            return $this->runAt;
-        }
-
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

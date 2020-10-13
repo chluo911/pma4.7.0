@@ -53,14 +53,14 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.0
  */
-class PHPUnit_Extensions_Selenium2TestCase_ElementCommand_Value
-    extends PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Keys
+class PHPUnit_Extensions_Selenium2TestCase_ElementCommand_Value extends PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Keys
 {
     public function httpMethod()
     {
-        if ($this->jsonParameters) {
-            return 'POST';
-        }
-        throw new BadMethodCallException("JSON Wire Protocol only supports POST to /value now. To get the value of an element GET /attribute/:naem should be used and this object should never be involved.");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

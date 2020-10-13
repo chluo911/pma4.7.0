@@ -27,11 +27,10 @@ class SnapshotClass
 
     public static function init()
     {
-        self::$dom = new DomDocument();
-        self::$closure = function () {};
-        self::$arrayObject = new ArrayObject(array(1, 2, 3));
-        self::$snapshotDomDocument = new SnapshotDomDocument();
-        self::$resource = fopen('php://memory', 'r');
-        self::$stdClass = new \stdClass();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

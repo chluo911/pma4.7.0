@@ -19,8 +19,12 @@ class UnexpectedCallException extends ObjectProphecyException
     private $methodName;
     private $arguments;
 
-    public function __construct($message, ObjectProphecy $objectProphecy,
-                                $methodName, array $arguments)
+    public function __construct(
+        $message,
+        ObjectProphecy $objectProphecy,
+        $methodName,
+        array $arguments
+    )
     {
         parent::__construct($message, $objectProphecy);
 
@@ -35,6 +39,10 @@ class UnexpectedCallException extends ObjectProphecyException
 
     public function getArguments()
     {
-        return $this->arguments;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -36,215 +36,164 @@ class Framework_TestCaseTest extends PHPUnit_Framework_TestCase
 
     public function testCaseToString()
     {
-        $this->assertEquals(
-            'Framework_TestCaseTest::testCaseToString',
-            $this->toString()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSuccess()
     {
-        $test   = new Success;
-        $result = $test->run();
-
-        $this->assertEquals(PHPUnit_Runner_BaseTestRunner::STATUS_PASSED, $test->getStatus());
-        $this->assertEquals(0, $result->errorCount());
-        $this->assertEquals(0, $result->failureCount());
-        $this->assertEquals(0, $result->skippedCount());
-        $this->assertEquals(1, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFailure()
     {
-        $test   = new Failure;
-        $result = $test->run();
-
-        $this->assertEquals(PHPUnit_Runner_BaseTestRunner::STATUS_FAILURE, $test->getStatus());
-        $this->assertEquals(0, $result->errorCount());
-        $this->assertEquals(1, $result->failureCount());
-        $this->assertEquals(0, $result->skippedCount());
-        $this->assertEquals(1, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testError()
     {
-        $test   = new TestError;
-        $result = $test->run();
-
-        $this->assertEquals(PHPUnit_Runner_BaseTestRunner::STATUS_ERROR, $test->getStatus());
-        $this->assertEquals(1, $result->errorCount());
-        $this->assertEquals(0, $result->failureCount());
-        $this->assertEquals(0, $result->skippedCount());
-        $this->assertEquals(1, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipped()
     {
-        $test   = new TestSkipped();
-        $result = $test->run();
-
-        $this->assertEquals(PHPUnit_Runner_BaseTestRunner::STATUS_SKIPPED, $test->getStatus());
-        $this->assertEquals('Skipped test', $test->getStatusMessage());
-        $this->assertEquals(0, $result->errorCount());
-        $this->assertEquals(0, $result->failureCount());
-        $this->assertEquals(1, $result->skippedCount());
-        $this->assertEquals(1, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIncomplete()
     {
-        $test   = new TestIncomplete();
-        $result = $test->run();
-
-        $this->assertEquals(PHPUnit_Runner_BaseTestRunner::STATUS_INCOMPLETE, $test->getStatus());
-        $this->assertEquals('Incomplete test', $test->getStatusMessage());
-        $this->assertEquals(0, $result->errorCount());
-        $this->assertEquals(0, $result->failureCount());
-        $this->assertEquals(0, $result->skippedCount());
-        $this->assertEquals(1, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionInSetUp()
     {
-        $test   = new ExceptionInSetUpTest('testSomething');
-        $result = $test->run();
-
-        $this->assertTrue($test->setUp);
-        $this->assertFalse($test->assertPreConditions);
-        $this->assertFalse($test->testSomething);
-        $this->assertFalse($test->assertPostConditions);
-        $this->assertTrue($test->tearDown);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionInAssertPreConditions()
     {
-        $test   = new ExceptionInAssertPreConditionsTest('testSomething');
-        $result = $test->run();
-
-        $this->assertTrue($test->setUp);
-        $this->assertTrue($test->assertPreConditions);
-        $this->assertFalse($test->testSomething);
-        $this->assertFalse($test->assertPostConditions);
-        $this->assertTrue($test->tearDown);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionInTest()
     {
-        $test   = new ExceptionInTest('testSomething');
-        $result = $test->run();
-
-        $this->assertTrue($test->setUp);
-        $this->assertTrue($test->assertPreConditions);
-        $this->assertTrue($test->testSomething);
-        $this->assertFalse($test->assertPostConditions);
-        $this->assertTrue($test->tearDown);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionInAssertPostConditions()
     {
-        $test   = new ExceptionInAssertPostConditionsTest('testSomething');
-        $result = $test->run();
-
-        $this->assertTrue($test->setUp);
-        $this->assertTrue($test->assertPreConditions);
-        $this->assertTrue($test->testSomething);
-        $this->assertTrue($test->assertPostConditions);
-        $this->assertTrue($test->tearDown);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionInTearDown()
     {
-        $test   = new ExceptionInTearDownTest('testSomething');
-        $result = $test->run();
-
-        $this->assertTrue($test->setUp);
-        $this->assertTrue($test->assertPreConditions);
-        $this->assertTrue($test->testSomething);
-        $this->assertTrue($test->assertPostConditions);
-        $this->assertTrue($test->tearDown);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNoArgTestCasePasses()
     {
-        $result = new PHPUnit_Framework_TestResult;
-        $t      = new PHPUnit_Framework_TestSuite('NoArgTestCaseTest');
-
-        $t->run($result);
-
-        $this->assertEquals(1, count($result));
-        $this->assertEquals(0, $result->failureCount());
-        $this->assertEquals(0, $result->errorCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testWasRun()
     {
-        $test = new WasRun;
-        $test->run();
-
-        $this->assertTrue($test->wasRun);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testException()
     {
-        $test = new ThrowExceptionTestCase('test');
-        $test->setExpectedException('RuntimeException');
-
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertTrue($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionWithMessage()
     {
-        $test = new ThrowExceptionTestCase('test');
-        $test->setExpectedException('RuntimeException', 'A runtime error occurred');
-
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertTrue($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionWithWrongMessage()
     {
-        $test = new ThrowExceptionTestCase('test');
-        $test->setExpectedException('RuntimeException', 'A logic error occurred');
-
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->failureCount());
-        $this->assertEquals(1, count($result));
-        $this->assertEquals(
-            "Failed asserting that exception message 'A runtime error occurred' contains 'A logic error occurred'.",
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionWithRegexpMessage()
     {
-        $test = new ThrowExceptionTestCase('test');
-        $test->setExpectedExceptionRegExp('RuntimeException', '/runtime .*? occurred/');
-
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertTrue($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExceptionWithWrongRegexpMessage()
     {
-        $test = new ThrowExceptionTestCase('test');
-        $test->setExpectedExceptionRegExp('RuntimeException', '/logic .*? occurred/');
-
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->failureCount());
-        $this->assertEquals(1, count($result));
-        $this->assertEquals(
-            "Failed asserting that exception message 'A runtime error occurred' matches '/logic .*? occurred/'.",
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -252,37 +201,29 @@ class Framework_TestCaseTest extends PHPUnit_Framework_TestCase
      */
     public function testExceptionWithInvalidRegexpMessage()
     {
-        $test = new ThrowExceptionTestCase('test');
-        $test->setExpectedExceptionRegExp('RuntimeException', '#runtime .*? occurred/'); // wrong delimiter
-
-        $result = $test->run();
-
-        $this->assertEquals(
-            "Invalid expected exception message regex given: '#runtime .*? occurred/'",
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNoException()
     {
-        $test = new ThrowNoExceptionTestCase('test');
-        $test->setExpectedException('RuntimeException');
-
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->failureCount());
-        $this->assertEquals(1, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testWrongException()
     {
-        $test = new ThrowExceptionTestCase('test');
-        $test->setExpectedException('InvalidArgumentException');
-
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->failureCount());
-        $this->assertEquals(1, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -290,64 +231,20 @@ class Framework_TestCaseTest extends PHPUnit_Framework_TestCase
      */
     public function testGlobalsBackupPre()
     {
-        global $a;
-        global $i;
-
-        $this->assertEquals('a', $a);
-        $this->assertEquals('a', $GLOBALS['a']);
-        $this->assertEquals('b', $_ENV['b']);
-        $this->assertEquals('c', $_POST['c']);
-        $this->assertEquals('d', $_GET['d']);
-        $this->assertEquals('e', $_COOKIE['e']);
-        $this->assertEquals('f', $_SERVER['f']);
-        $this->assertEquals('g', $_FILES['g']);
-        $this->assertEquals('h', $_REQUEST['h']);
-        $this->assertEquals('i', $i);
-        $this->assertEquals('i', $GLOBALS['i']);
-
-        $GLOBALS['a']   = 'aa';
-        $GLOBALS['foo'] = 'bar';
-        $_ENV['b']      = 'bb';
-        $_POST['c']     = 'cc';
-        $_GET['d']      = 'dd';
-        $_COOKIE['e']   = 'ee';
-        $_SERVER['f']   = 'ff';
-        $_FILES['g']    = 'gg';
-        $_REQUEST['h']  = 'hh';
-        $GLOBALS['i']   = 'ii';
-
-        $this->assertEquals('aa', $a);
-        $this->assertEquals('aa', $GLOBALS['a']);
-        $this->assertEquals('bar', $GLOBALS['foo']);
-        $this->assertEquals('bb', $_ENV['b']);
-        $this->assertEquals('cc', $_POST['c']);
-        $this->assertEquals('dd', $_GET['d']);
-        $this->assertEquals('ee', $_COOKIE['e']);
-        $this->assertEquals('ff', $_SERVER['f']);
-        $this->assertEquals('gg', $_FILES['g']);
-        $this->assertEquals('hh', $_REQUEST['h']);
-        $this->assertEquals('ii', $i);
-        $this->assertEquals('ii', $GLOBALS['i']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalsBackupPost()
     {
-        global $a;
-        global $i;
-
-        $this->assertEquals('a', $a);
-        $this->assertEquals('a', $GLOBALS['a']);
-        $this->assertEquals('b', $_ENV['b']);
-        $this->assertEquals('c', $_POST['c']);
-        $this->assertEquals('d', $_GET['d']);
-        $this->assertEquals('e', $_COOKIE['e']);
-        $this->assertEquals('f', $_SERVER['f']);
-        $this->assertEquals('g', $_FILES['g']);
-        $this->assertEquals('h', $_REQUEST['h']);
-        $this->assertEquals('ii', $i);
-        $this->assertEquals('ii', $GLOBALS['i']);
-
-        $this->assertArrayNotHasKey('foo', $GLOBALS);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -356,8 +253,11 @@ class Framework_TestCaseTest extends PHPUnit_Framework_TestCase
      */
     public function testStaticAttributesBackupPre()
     {
-        $GLOBALS['singleton'] = Singleton::getInstance();
-        self::$_testStatic    = 123;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -365,177 +265,164 @@ class Framework_TestCaseTest extends PHPUnit_Framework_TestCase
      */
     public function testStaticAttributesBackupPost()
     {
-        $this->assertNotSame($GLOBALS['singleton'], Singleton::getInstance());
-        $this->assertSame(0, self::$_testStatic);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsInIsolationReturnsFalse()
     {
-        $test   = new IsolationTest('testIsInIsolationReturnsFalse');
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertTrue($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsInIsolationReturnsTrue()
     {
-        $test   = new IsolationTest('testIsInIsolationReturnsTrue');
-        $test->setRunTestInSeparateProcess(true);
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertTrue($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExpectOutputStringFooActualFoo()
     {
-        $test   = new OutputTestCase('testExpectOutputStringFooActualFoo');
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertTrue($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExpectOutputStringFooActualBar()
     {
-        $test   = new OutputTestCase('testExpectOutputStringFooActualBar');
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertFalse($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExpectOutputRegexFooActualFoo()
     {
-        $test   = new OutputTestCase('testExpectOutputRegexFooActualFoo');
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertTrue($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExpectOutputRegexFooActualBar()
     {
-        $test   = new OutputTestCase('testExpectOutputRegexFooActualBar');
-        $result = $test->run();
-
-        $this->assertEquals(1, count($result));
-        $this->assertFalse($result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsIfRequiresHigherVersionOfPHPUnit()
     {
-        $test   = new RequirementsTest('testAlwaysSkip');
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->skippedCount());
-        $this->assertEquals(
-            'PHPUnit 1111111 (or later) is required.',
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsIfRequiresHigherVersionOfPHP()
     {
-        $test   = new RequirementsTest('testAlwaysSkip2');
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->skippedCount());
-        $this->assertEquals(
-            'PHP 9999999 (or later) is required.',
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsIfRequiresNonExistingOs()
     {
-        $test   = new RequirementsTest('testAlwaysSkip3');
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->skippedCount());
-        $this->assertEquals(
-            'Operating system matching /DOESNOTEXIST/i is required.',
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsIfRequiresNonExistingFunction()
     {
-        $test   = new RequirementsTest('testNine');
-        $result = $test->run();
-
-        $this->assertEquals(1, $result->skippedCount());
-        $this->assertEquals(
-            'Function testFunc is required.',
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsIfRequiresNonExistingExtension()
     {
-        $test   = new RequirementsTest('testTen');
-        $result = $test->run();
-
-        $this->assertEquals(
-            'Extension testExt is required.',
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkipsProvidesMessagesForAllSkippingReasons()
     {
-        $test   = new RequirementsTest('testAllPossibleRequirements');
-        $result = $test->run();
-
-        $this->assertEquals(
-            'PHP 99-dev (or later) is required.' . PHP_EOL .
-            'PHPUnit 9-dev (or later) is required.' . PHP_EOL .
-            'Operating system matching /DOESNOTEXIST/i is required.' . PHP_EOL .
-            'Function testFuncOne is required.' . PHP_EOL .
-            'Function testFuncTwo is required.' . PHP_EOL .
-            'Extension testExtOne is required.' . PHP_EOL .
-            'Extension testExtTwo is required.',
-            $test->getStatusMessage()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRequiringAnExistingMethodDoesNotSkip()
     {
-        $test   = new RequirementsTest('testExistingMethod');
-        $result = $test->run();
-        $this->assertEquals(0, $result->skippedCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRequiringAnExistingFunctionDoesNotSkip()
     {
-        $test   = new RequirementsTest('testExistingFunction');
-        $result = $test->run();
-        $this->assertEquals(0, $result->skippedCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRequiringAnExistingExtensionDoesNotSkip()
     {
-        $test   = new RequirementsTest('testExistingExtension');
-        $result = $test->run();
-        $this->assertEquals(0, $result->skippedCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRequiringAnExistingOsDoesNotSkip()
     {
-        $test   = new RequirementsTest('testExistingOs');
-        $result = $test->run();
-        $this->assertEquals(0, $result->skippedCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCurrentWorkingDirectoryIsRestored()
     {
-        $expectedCwd = getcwd();
-
-        $test = new ChangeCurrentWorkingDirectoryTest('testSomethingThatChangesTheCwd');
-        $test->run();
-
-        $this->assertSame($expectedCwd, getcwd());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -544,7 +431,10 @@ class Framework_TestCaseTest extends PHPUnit_Framework_TestCase
      */
     public function testTypeErrorCanBeExpected()
     {
-        $o = new ClassWithScalarTypeDeclarations;
-        $o->foo(null, null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

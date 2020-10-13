@@ -49,41 +49,10 @@ class PSR2_Sniffs_Methods_FunctionCallSignatureSniff extends PEAR_Sniffs_Functio
      */
     public function isMultiLineCall(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $openBracket, $tokens)
     {
-        // If the first argument is on a new line, this is a multi-line
-        // function call, even if there is only one argument.
-        $next = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($openBracket + 1), null, true);
-        if ($tokens[$next]['line'] !== $tokens[$stackPtr]['line']) {
-            return true;
-        }
-
-        $closeBracket = $tokens[$openBracket]['parenthesis_closer'];
-
-        $end = $phpcsFile->findEndOfStatement($openBracket + 1);
-        while ($tokens[$end]['code'] === T_COMMA) {
-            // If the next bit of code is not on the same line, this is a
-            // multi-line function call.
-            $next = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($end + 1), $closeBracket, true);
-            if ($next === false) {
-                return false;
-            }
-
-            if ($tokens[$next]['line'] !== $tokens[$end]['line']) {
-                return true;
-            }
-
-            $end = $phpcsFile->findEndOfStatement($next);
-        }
-
-        // We've reached the last argument, so see if the next content
-        // (should be the close bracket) is also on the same line.
-        $next = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($end + 1), $closeBracket, true);
-        if ($next !== false && $tokens[$next]['line'] !== $tokens[$end]['line']) {
-            return true;
-        }
-
-        return false;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end isMultiLineCall()
-
-
 }//end class

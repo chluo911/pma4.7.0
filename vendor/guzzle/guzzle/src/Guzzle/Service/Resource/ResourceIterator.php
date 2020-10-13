@@ -42,12 +42,11 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
 
     public static function getAllEvents()
     {
-        return array(
-            // About to issue another command to get more results
-            'resource_iterator.before_send',
-            // Issued another command to get more results
-            'resource_iterator.after_send'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,13 +58,11 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
      */
     public function __construct(CommandInterface $command, array $data = array())
     {
-        // Clone the command to keep track of the originating command for rewind
-        $this->originalCommand = $command;
-
-        // Parse options from the array of options
-        $this->data = $data;
-        $this->limit = array_key_exists('limit', $data) ? $data['limit'] : 0;
-        $this->pageSize = array_key_exists('page_size', $data) ? $data['page_size'] : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -80,18 +77,20 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
 
     public function setLimit($limit)
     {
-        $this->limit = $limit;
-        $this->resetState();
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setPageSize($pageSize)
     {
-        $this->pageSize = $pageSize;
-        $this->resetState();
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -133,7 +132,11 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
 
     public function count()
     {
-        return $this->retrievedCount;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -143,7 +146,11 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
      */
     public function getRequestCount()
     {
-        return $this->requestCount;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -178,7 +185,6 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
         }
 
         if ($sendRequest) {
-
             $this->dispatch('resource_iterator.before_send', array(
                 'iterator'  => $this,
                 'resources' => $this->resources
@@ -215,7 +221,11 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
      */
     public function getNextToken()
     {
-        return $this->nextToken;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

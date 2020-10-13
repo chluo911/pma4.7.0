@@ -18,16 +18,10 @@ class TerminalTest extends TestCase
 {
     public function test()
     {
-        putenv('COLUMNS=100');
-        putenv('LINES=50');
-        $terminal = new Terminal();
-        $this->assertSame(100, $terminal->getWidth());
-        $this->assertSame(50, $terminal->getHeight());
-
-        putenv('COLUMNS=120');
-        putenv('LINES=60');
-        $terminal = new Terminal();
-        $this->assertSame(120, $terminal->getWidth());
-        $this->assertSame(60, $terminal->getHeight());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

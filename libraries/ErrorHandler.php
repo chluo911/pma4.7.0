@@ -59,7 +59,13 @@ class ErrorHandler
      */
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         if (isset($_SESSION)) {
             if (! isset($_SESSION['errors'])) {
                 $_SESSION['errors'] = array();
@@ -80,14 +86,18 @@ class ErrorHandler
                     );
                     $_SESSION['errors'][$error->getHash()] = $error;
                     break;
-                } else if (($error instanceof Error)
+                } elseif (($error instanceof Error)
                     && ! $error->isDisplayed()
                 ) {
                     $_SESSION['errors'][$key] = $error;
                 }
             }
         }
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     /**
@@ -137,9 +147,11 @@ class ErrorHandler
      */
     public function sliceErrors($count)
     {
-        $errors = $this->getErrors(false);
-        $this->errors = array_splice($errors, 0, $count);
-        return array_splice($errors, $count);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -244,9 +256,11 @@ class ErrorHandler
      */
     public function triggerError($errorInfo, $errorNumber = null)
     {
-        // we could also extract file and line from backtrace
-        // and call handleError() directly
-        trigger_error($errorInfo, $errorNumber);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -450,7 +464,11 @@ class ErrorHandler
      */
     public function hasUserErrors()
     {
-        return (bool) $this->countUserErrors();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

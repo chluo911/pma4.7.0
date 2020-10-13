@@ -24,15 +24,11 @@ class Text_Plain_Sql extends SQLTransformationsPlugin
      */
     public function __construct()
     {
-        if (!empty($GLOBALS['cfg']['CodemirrorEnable'])) {
-            $response = Response::getInstance();
-            $scripts = $response->getHeader()
-                ->getScripts();
-            $scripts->addFile('codemirror/lib/codemirror.js');
-            $scripts->addFile('codemirror/mode/sql/sql.js');
-            $scripts->addFile('codemirror/addon/runmode/runmode.js');
-            $scripts->addFile('function.js');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,7 +38,11 @@ class Text_Plain_Sql extends SQLTransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Text";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,6 +52,10 @@ class Text_Plain_Sql extends SQLTransformationsPlugin
      */
     public static function getMIMESubtype()
     {
-        return "Plain";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

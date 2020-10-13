@@ -7,61 +7,109 @@ class Issue1335Test extends PHPUnit_Framework_TestCase
 {
     public function testGlobalString()
     {
-        $this->assertEquals('Hello', $GLOBALS['globalString']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalIntTruthy()
     {
-        $this->assertEquals(1, $GLOBALS['globalIntTruthy']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalIntFalsey()
     {
-        $this->assertEquals(0, $GLOBALS['globalIntFalsey']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalFloat()
     {
-        $this->assertEquals(1.123, $GLOBALS['globalFloat']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalBoolTrue()
     {
-        $this->assertEquals(true, $GLOBALS['globalBoolTrue']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalBoolFalse()
     {
-        $this->assertEquals(false, $GLOBALS['globalBoolFalse']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalNull()
     {
-        $this->assertEquals(null, $GLOBALS['globalNull']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalArray()
     {
-        $this->assertEquals(array('foo'), $GLOBALS['globalArray']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalNestedArray()
     {
-        $this->assertEquals(array(array('foo')), $GLOBALS['globalNestedArray']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalObject()
     {
-        $this->assertEquals((object) array('foo'=> 'bar'), $GLOBALS['globalObject']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalObjectWithBackSlashString()
     {
-        $this->assertEquals((object) array('foo'=> 'back\\slash'), $GLOBALS['globalObjectWithBackSlashString']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalObjectWithDoubleBackSlashString()
     {
-        $this->assertEquals((object) array('foo'=> 'back\\\\slash'), $GLOBALS['globalObjectWithDoubleBackSlashString']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

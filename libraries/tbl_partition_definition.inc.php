@@ -9,7 +9,6 @@
 use PMA\libraries\Template;
 
 if (!isset($partitionDetails)) {
-
     $partitionDetails = array();
 
     // Extract some partitioning and subpartitioning parameters from the request

@@ -67,7 +67,9 @@ class DBIMysqli implements DBIExtension
      * @return mixed false on error or a mysqli object on success
      */
     public function connect(
-        $user, $password, $server
+        $user,
+        $password,
+        $server
     ) {
         if ($server) {
             $server['host'] = (empty($server['host']))
@@ -504,7 +506,11 @@ class DBIMysqli implements DBIExtension
      */
     public function fieldName($result, $i)
     {
-        return mysqli_fetch_field_direct($result, $i)->name;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

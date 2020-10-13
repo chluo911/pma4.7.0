@@ -53,17 +53,18 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.6
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Isolated
-    implements PHPUnit_Extensions_Selenium2TestCase_SessionStrategy
+class PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Isolated implements PHPUnit_Extensions_Selenium2TestCase_SessionStrategy
 {
     public function session(array $parameters)
     {
         $seleniumServerUrl = PHPUnit_Extensions_Selenium2TestCase_URL::fromHostAndPort($parameters['host'], $parameters['port']);
         $driver = new PHPUnit_Extensions_Selenium2TestCase_Driver($seleniumServerUrl, $parameters['seleniumServerRequestsTimeout']);
-        $capabilities = array_merge($parameters['desiredCapabilities'],
-                                    array(
+        $capabilities = array_merge(
+            $parameters['desiredCapabilities'],
+            array(
                                         'browserName' => $parameters['browserName']
-                                    ));
+                                    )
+        );
         $session = $driver->startSession($capabilities, $parameters['browserUrl']);
         return $session;
     }
@@ -72,9 +73,9 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Isolated
     {
     }
 
-    public function endOfTest(PHPUnit_Extensions_Selenium2TestCase_Session $session = NULL)
+    public function endOfTest(PHPUnit_Extensions_Selenium2TestCase_Session $session = null)
     {
-        if ($session !== NULL) {
+        if ($session !== null) {
             $session->stop();
         }
     }

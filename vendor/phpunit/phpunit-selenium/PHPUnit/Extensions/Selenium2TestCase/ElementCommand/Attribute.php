@@ -53,14 +53,15 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.4
  */
-class PHPUnit_Extensions_Selenium2TestCase_ElementCommand_Attribute
-    extends PHPUnit_Extensions_Selenium2TestCase_Command
+class PHPUnit_Extensions_Selenium2TestCase_ElementCommand_Attribute extends PHPUnit_Extensions_Selenium2TestCase_Command
 {
     /**
      * @param array $parameter
      */
-    public function __construct($parameter,
-                                PHPUnit_Extensions_Selenium2TestCase_URL $attributeResourceBaseUrl)
+    public function __construct(
+        $parameter,
+        PHPUnit_Extensions_Selenium2TestCase_URL $attributeResourceBaseUrl
+    )
     {
         $this->jsonParameters = array();
         $this->url = $attributeResourceBaseUrl->descend($parameter);
@@ -68,6 +69,10 @@ class PHPUnit_Extensions_Selenium2TestCase_ElementCommand_Attribute
 
     public function httpMethod()
     {
-        return 'GET';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

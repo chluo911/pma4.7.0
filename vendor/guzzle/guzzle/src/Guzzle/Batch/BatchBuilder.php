@@ -41,7 +41,11 @@ class BatchBuilder
      */
     public static function factory()
     {
-        return new self();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,9 +57,11 @@ class BatchBuilder
      */
     public function autoFlushAt($threshold)
     {
-        $this->autoFlush = $threshold;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,9 +71,11 @@ class BatchBuilder
      */
     public function keepHistory()
     {
-        $this->history = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,9 +86,11 @@ class BatchBuilder
      */
     public function bufferExceptions()
     {
-        $this->exceptionBuffering = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,9 +103,11 @@ class BatchBuilder
      */
     public function notify($callable)
     {
-        $this->afterFlush = $callable;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -108,11 +120,11 @@ class BatchBuilder
      */
     public function transferRequests($batchSize = 50)
     {
-        $className = self::$mapping['request'];
-        $this->transferStrategy = new $className($batchSize);
-        $this->divisorStrategy = $this->transferStrategy;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -125,11 +137,11 @@ class BatchBuilder
      */
     public function transferCommands($batchSize = 50)
     {
-        $className = self::$mapping['command'];
-        $this->transferStrategy = new $className($batchSize);
-        $this->divisorStrategy = $this->transferStrategy;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,9 +153,11 @@ class BatchBuilder
      */
     public function createBatchesWith(BatchDivisorInterface $divisorStrategy)
     {
-        $this->divisorStrategy = $divisorStrategy;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -155,9 +169,11 @@ class BatchBuilder
      */
     public function transferWith(BatchTransferInterface $transferStrategy)
     {
-        $this->transferStrategy = $transferStrategy;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -168,32 +184,10 @@ class BatchBuilder
      */
     public function build()
     {
-        if (!$this->transferStrategy) {
-            throw new RuntimeException('No transfer strategy has been specified');
-        }
-
-        if (!$this->divisorStrategy) {
-            throw new RuntimeException('No divisor strategy has been specified');
-        }
-
-        $batch = new Batch($this->transferStrategy, $this->divisorStrategy);
-
-        if ($this->exceptionBuffering) {
-            $batch = new ExceptionBufferingBatch($batch);
-        }
-
-        if ($this->afterFlush) {
-            $batch = new NotifyingBatch($batch, $this->afterFlush);
-        }
-
-        if ($this->autoFlush) {
-            $batch = new FlushingBatch($batch, $this->autoFlush);
-        }
-
-        if ($this->history) {
-            $batch = new HistoryBatch($batch);
-        }
-
-        return $batch;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -27,6 +27,7 @@ $container->alias('response', 'PMA\libraries\Response');
 
 /** @var ServerEnginesController $controller */
 $controller = $container->get(
-    'ServerEnginesController', array()
+    'ServerEnginesController',
+    array()
 );
 $controller->indexAction();

@@ -22,8 +22,11 @@ class NodeBuilderTest extends TestCase
      */
     public function testThrowsAnExceptionWhenTryingToCreateANonRegisteredNodeType()
     {
-        $builder = new BaseNodeBuilder();
-        $builder->node('', 'foobar');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -31,62 +34,47 @@ class NodeBuilderTest extends TestCase
      */
     public function testThrowsAnExceptionWhenTheNodeClassIsNotFound()
     {
-        $builder = new BaseNodeBuilder();
-        $builder
-            ->setNodeClass('noclasstype', '\\foo\\bar\\noclass')
-            ->node('', 'noclasstype');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddingANewNodeType()
     {
-        $class = __NAMESPACE__.'\\SomeNodeDefinition';
-
-        $builder = new BaseNodeBuilder();
-        $node = $builder
-            ->setNodeClass('newtype', $class)
-            ->node('', 'newtype');
-
-        $this->assertInstanceOf($class, $node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOverridingAnExistingNodeType()
     {
-        $class = __NAMESPACE__.'\\SomeNodeDefinition';
-
-        $builder = new BaseNodeBuilder();
-        $node = $builder
-            ->setNodeClass('variable', $class)
-            ->node('', 'variable');
-
-        $this->assertInstanceOf($class, $node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNodeTypesAreNotCaseSensitive()
     {
-        $builder = new BaseNodeBuilder();
-
-        $node1 = $builder->node('', 'VaRiAbLe');
-        $node2 = $builder->node('', 'variable');
-
-        $this->assertInstanceOf(get_class($node1), $node2);
-
-        $builder->setNodeClass('CuStOm', __NAMESPACE__.'\\SomeNodeDefinition');
-
-        $node1 = $builder->node('', 'CUSTOM');
-        $node2 = $builder->node('', 'custom');
-
-        $this->assertInstanceOf(get_class($node1), $node2);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNumericNodeCreation()
     {
-        $builder = new BaseNodeBuilder();
-
-        $node = $builder->integerNode('foo')->min(3)->max(5);
-        $this->assertInstanceOf('Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition', $node);
-
-        $node = $builder->floatNode('bar')->min(3.0)->max(5.0);
-        $this->assertInstanceOf('Symfony\Component\Config\Definition\Builder\FloatNodeDefinition', $node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 

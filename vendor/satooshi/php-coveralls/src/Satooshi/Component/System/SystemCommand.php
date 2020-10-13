@@ -25,9 +25,11 @@ abstract class SystemCommand
      */
     public function execute()
     {
-        $command = $this->createCommand();
-
-        return $this->executeCommand($command);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // internal method
@@ -78,7 +80,11 @@ abstract class SystemCommand
      */
     public function setCommandPath($commandPath)
     {
-        $this->commandPath = $commandPath;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,6 +94,10 @@ abstract class SystemCommand
      */
     public function getCommandPath()
     {
-        return $this->commandPath;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

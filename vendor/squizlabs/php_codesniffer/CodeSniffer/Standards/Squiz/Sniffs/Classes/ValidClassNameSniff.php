@@ -38,12 +38,11 @@ class Squiz_Sniffs_Classes_ValidClassNameSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(
-                T_CLASS,
-                T_INTERFACE,
-                T_TRAIT,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -58,43 +57,10 @@ class Squiz_Sniffs_Classes_ValidClassNameSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if (isset($tokens[$stackPtr]['scope_opener']) === false) {
-            $error = 'Possible parse error: %s missing opening or closing brace';
-            $data  = array($tokens[$stackPtr]['content']);
-            $phpcsFile->addWarning($error, $stackPtr, 'MissingBrace', $data);
-            return;
-        }
-
-        // Determine the name of the class or interface. Note that we cannot
-        // simply look for the first T_STRING because a class name
-        // starting with the number will be multiple tokens.
-        $opener    = $tokens[$stackPtr]['scope_opener'];
-        $nameStart = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), $opener, true);
-        $nameEnd   = $phpcsFile->findNext(T_WHITESPACE, $nameStart, $opener);
-        if ($nameEnd === false) {
-            $name = $tokens[$nameStart]['content'];
-        } else {
-            $name = trim($phpcsFile->getTokensAsString($nameStart, ($nameEnd - $nameStart)));
-        }
-
-        // Check for camel caps format.
-        $valid = PHP_CodeSniffer::isCamelCaps($name, true, true, false);
-        if ($valid === false) {
-            $type  = ucfirst($tokens[$stackPtr]['content']);
-            $error = '%s name "%s" is not in camel caps format';
-            $data  = array(
-                      $type,
-                      $name,
-                     );
-            $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
-            $phpcsFile->recordMetric($stackPtr, 'CamelCase class name', 'no');
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'CamelCase class name', 'yes');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

@@ -34,54 +34,73 @@ class FileChange
 
     public function getCount($type)
     {
-        $result = 0;
-        foreach ($this->lines as $line) {
-            if ($line[0] === $type) {
-                ++$result;
-            }
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getRangeOldStart()
     {
-        return $this->rangeOldStart;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getRangeOldCount()
     {
-        return $this->rangeOldCount;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getRangeNewStart()
     {
-        return $this->rangeNewStart;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getRangeNewCount()
     {
-        return $this->rangeNewCount;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getLines()
     {
-        return $this->lines;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function toArray()
     {
-        return array(
-            'range_old_start' => $this->rangeOldStart,
-            'range_old_count' => $this->rangeOldCount,
-            'range_new_start' => $this->rangeNewStart,
-            'range_new_count' => $this->rangeNewCount,
-            'lines' => $this->lines,
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function fromArray(array $array)
     {
-        return new self($array['range_old_start'], $array['range_old_count'], $array['range_new_start'], $array['range_new_count'], $array['lines']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

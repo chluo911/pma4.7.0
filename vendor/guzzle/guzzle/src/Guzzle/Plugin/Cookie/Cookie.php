@@ -143,7 +143,11 @@ class Cookie implements ToArrayInterface
      */
     public function setDomain($domain)
     {
-        return $this->setData('domain', $domain);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,7 +191,11 @@ class Cookie implements ToArrayInterface
      */
     public function setMaxAge($maxAge)
     {
-        return $this->setData('max_age', $maxAge);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -231,7 +239,11 @@ class Cookie implements ToArrayInterface
      */
     public function setVersion($version)
     {
-        return $this->setData('version', $version);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -241,7 +253,11 @@ class Cookie implements ToArrayInterface
      */
     public function getSecure()
     {
-        return $this->data['secure'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -253,7 +269,11 @@ class Cookie implements ToArrayInterface
      */
     public function setSecure($secure)
     {
-        return $this->setData('secure', (bool) $secure);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -275,7 +295,11 @@ class Cookie implements ToArrayInterface
      */
     public function setDiscard($discard)
     {
-        return $this->setData('discard', $discard);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -297,7 +321,11 @@ class Cookie implements ToArrayInterface
      */
     public function setComment($comment)
     {
-        return $this->setData('comment', $comment);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -307,7 +335,11 @@ class Cookie implements ToArrayInterface
      */
     public function getCommentUrl()
     {
-        return $this->data['comment_url'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -319,7 +351,11 @@ class Cookie implements ToArrayInterface
      */
     public function setCommentUrl($commentUrl)
     {
-        return $this->setData('comment_url', $commentUrl);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -341,7 +377,11 @@ class Cookie implements ToArrayInterface
      */
     public function setPorts(array $ports)
     {
-        return $this->setData('port', $ports);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -351,7 +391,11 @@ class Cookie implements ToArrayInterface
      */
     public function getHttpOnly()
     {
-        return $this->data['http_only'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -363,7 +407,11 @@ class Cookie implements ToArrayInterface
      */
     public function setHttpOnly($httpOnly)
     {
-        return $this->setData('http_only', $httpOnly);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -412,32 +460,11 @@ class Cookie implements ToArrayInterface
      */
     public function matchesPath($path)
     {
-        // RFC6265 http://tools.ietf.org/search/rfc6265#section-5.1.4
-        // A request-path path-matches a given cookie-path if at least one of
-        // the following conditions holds:
-
-        // o  The cookie-path and the request-path are identical.
-        if ($path == $this->getPath()) {
-            return true;
-        }
-
-        $pos = stripos($path, $this->getPath());
-        if ($pos === 0) {
-            // o  The cookie-path is a prefix of the request-path, and the last
-            // character of the cookie-path is %x2F ("/").
-            if (substr($this->getPath(), -1, 1) === "/") {
-                return true;
-            }
-
-            // o  The cookie-path is a prefix of the request-path, and the first
-            // character of the request-path that is not included in the cookie-
-            // path is a %x2F ("/") character.
-            if (substr($path, strlen($this->getPath()), 1) === "/") {
-                return true;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -449,20 +476,11 @@ class Cookie implements ToArrayInterface
      */
     public function matchesDomain($domain)
     {
-        // Remove the leading '.' as per spec in RFC 6265: http://tools.ietf.org/html/rfc6265#section-5.2.3
-        $cookieDomain = ltrim($this->getDomain(), '.');
-
-        // Domain not set or exact match.
-        if (!$cookieDomain || !strcasecmp($domain, $cookieDomain)) {
-            return true;
-        }
-
-        // Matching the subdomain according to RFC 6265: http://tools.ietf.org/html/rfc6265#section-5.1.3
-        if (filter_var($domain, FILTER_VALIDATE_IP)) {
-            return false;
-        }
-
-        return (bool) preg_match('/\.' . preg_quote($cookieDomain, '/') . '$/i', $domain);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -474,7 +492,11 @@ class Cookie implements ToArrayInterface
      */
     public function matchesPort($port)
     {
-        return count($this->getPorts()) == 0 || in_array($port, $this->getPorts());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -484,7 +506,11 @@ class Cookie implements ToArrayInterface
      */
     public function isExpired()
     {
-        return $this->getExpires() && time() > $this->getExpires();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -109,7 +109,10 @@ function PMA_saveUserprefs(array $config_array)
         . '\'';
 
     $has_config = $GLOBALS['dbi']->fetchValue(
-        $query, 0, 0, $GLOBALS['controllink']
+        $query,
+        0,
+        0,
+        $GLOBALS['controllink']
     );
     $config_data = json_encode($config_array);
     if ($has_config) {
@@ -245,8 +248,10 @@ function PMA_persistOption($path, $value, $default_value)
  *
  * @return void
  */
-function PMA_userprefsRedirect($file_name,
-    $params = null, $hash = null
+function PMA_userprefsRedirect(
+    $file_name,
+    $params = null,
+    $hash = null
 ) {
     // redirect
     $url_params = array('saved' => 1);
@@ -256,7 +261,8 @@ function PMA_userprefsRedirect($file_name,
     if ($hash) {
         $hash = '#' . urlencode($hash);
     }
-    PMA_sendHeaderLocation('./' . $file_name
+    PMA_sendHeaderLocation(
+        './' . $file_name
         . URL::getCommonRaw($url_params) . $hash
     );
 }

@@ -83,7 +83,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
     /**
      * @var    boolean
      */
-    protected $collectCodeCoverageInformation = FALSE;
+    protected $collectCodeCoverageInformation = false;
 
     /**
      * @var    string
@@ -118,7 +118,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
     /**
      * @var    boolean
      */
-    protected $useWaitForPageToLoad = TRUE;
+    protected $useWaitForPageToLoad = true;
 
     /**
      * @var    boolean
@@ -162,7 +162,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function setWebDriverCapabilities(array $capabilities)
     {
-        $this->webDriverCapabilities = $capabilities;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -170,36 +174,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function start()
     {
-        if ($this->browserUrl == NULL) {
-            throw new PHPUnit_Framework_Exception(
-              'setBrowserUrl() needs to be called before start().'
-            );
-        }
-
-        if ($this->webDriverCapabilities !== NULL) {
-            $seleniumServerUrl = PHPUnit_Extensions_Selenium2TestCase_URL::fromHostAndPort($this->host, $this->port);
-            $driver = new PHPUnit_Extensions_Selenium2TestCase_Driver($seleniumServerUrl);
-            $session = $driver->startSession($this->webDriverCapabilities, new PHPUnit_Extensions_Selenium2TestCase_URL($this->browserUrl));
-            $webDriverSessionId = $session->id();
-            $this->sessionId = $this->getString(
-              'getNewBrowserSession',
-              array($this->browser, $this->browserUrl, '',
-                "webdriver.remote.sessionid=$webDriverSessionId")
-            );
-
-            $this->doCommand('setTimeout', array($this->seleniumTimeout * 1000));
-        }
-
-        if (!isset($this->sessionId)) {
-            $this->sessionId = $this->getString(
-              'getNewBrowserSession',
-              array($this->browser, $this->browserUrl)
-            );
-
-            $this->doCommand('setTimeout', array($this->seleniumTimeout * 1000));
-        }
-
-        return $this->sessionId;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -208,7 +187,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function getSessionId()
     {
-        return $this->sessionId;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -224,13 +207,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function stop()
     {
-        if (!isset($this->sessionId)) {
-            return;
-        }
-
-        $this->doCommand('testComplete');
-
-        $this->sessionId = NULL;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -261,13 +242,17 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
     {
         $this->testId = $testId;
     }
-	
-	/**
+    
+    /**
      * @return integer $testId
      */
     public function getTestId()
     {
-        return $this->testId;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -304,13 +289,17 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
         $this->browser = $browser;
     }
 
-		/**
-		 * @return string
-		 */
-		public function getBrowser()
-		{
-			return $this->browser;
-		}
+    /**
+     * @return string
+     */
+    public function getBrowser()
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
+    }
 
     /**
      * @param  string $browserUrl
@@ -318,11 +307,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function setBrowserUrl($browserUrl)
     {
-        if (!is_string($browserUrl)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'string');
-        }
-
-        $this->browserUrl = $browserUrl;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -368,7 +357,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
     {
         return $this->port;
     }
-	
+    
     /**
      * @param  integer $timeout for Selenium RC in seconds
      * @throws InvalidArgumentException
@@ -401,11 +390,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function setSleep($seconds)
     {
-        if (!is_int($seconds)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'integer');
-        }
-
-        $this->sleep = $seconds;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -417,11 +406,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function setWait($seconds)
     {
-        if (!is_int($seconds)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'integer');
-        }
-
-        $this->wait = $seconds;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -433,53 +422,53 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     public function setWaitForPageToLoad($flag)
     {
-        if (!is_bool($flag)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
-        }
-
-        $this->useWaitForPageToLoad = $flag;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-	/**
+    /**
      * Sets whether captureScreenshotOnFailure (TRUE) or (FALSE)
      * if true, the takeScreenshot() is triggered in onNotSuccessfulTest().
      *
      * @param  boolean $flag
      * @throws InvalidArgumentException
      */
-	public function setCaptureScreenshotOnFailure($flag)
+    public function setCaptureScreenshotOnFailure($flag)
     {
-        if (!is_bool($flag)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
-        }
-
-        $this->captureScreenshotOnFailure = $flag;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-	
-	/**
+    
+    /**
      * @param  string $screenshotUrl
      * @throws InvalidArgumentException
      */
     public function setScreenshotUrl($screenshotUrl)
     {
-        if (!is_string($screenshotUrl)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'string');
-        }
-
-        $this->screenshotUrl = $screenshotUrl;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-	/**
+    /**
      * @param  string $screenshotPath
      * @throws InvalidArgumentException
      */
     public function setScreenshotPath($screenshotPath)
     {
-        if (!is_string($screenshotPath)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'string');
-        }
-
-        $this->screenshotPath = $screenshotPath;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-	
+    
     /**
      * Adds allowed user commands into {@link self::$userCommands}. See
      * {@link self::__call()} (switch/case -> default) for usage.
@@ -489,15 +478,15 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      * @return $this
      * @see    self::__call()
      */
-	 
-	
+     
+    
     public function addUserCommand($command)
     {
-        if (!is_string($command)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'string');
-        }
-        $this->userCommands[] = $command;
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -728,11 +717,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
     {
         $arguments = $this->preprocessParameters($arguments);
 
-        $wait = FALSE;
+        $wait = false;
 
         if (substr($command, -7, 7) == 'AndWait') {
             $command = substr($command, 0, -7);
-            $wait    = TRUE;
+            $wait    = true;
         }
 
         switch ($command) {
@@ -830,8 +819,8 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
                             $this->deleteCookie('PHPUNIT_SELENIUM_TEST_ID', 'path=/');
 
                             $this->createCookie(
-                              'PHPUNIT_SELENIUM_TEST_ID=' . $this->testId,
-                              'path=/'
+                                'PHPUNIT_SELENIUM_TEST_ID=' . $this->testId,
+                                'path=/'
                             );
                         }
                     }
@@ -998,7 +987,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
             default: {
                 if (!in_array($command, $this->userCommands)) {
                     throw new BadMethodCallException(
-                      "Method $command not defined."
+                        "Method $command not defined."
                     );
                 }
                 $this->doCommand($command, $arguments);
@@ -1017,73 +1006,20 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     protected function doCommand($command, array $arguments = array(), array $namedArguments = array())
     {
-        $url = sprintf(
-          'http://%s:%s/selenium-server/driver/',
-          $this->host,
-          $this->port
-        );
-
-        $numArguments = count($arguments);
-        $postData = sprintf('cmd=%s', urlencode($command));
-        for ($i = 0; $i < $numArguments; $i++) {
-            $argNum = strval($i + 1);
-
-            if ($arguments[$i] == ' ') {
-                $postData .= sprintf('&%s=%s', $argNum, urlencode($arguments[$i]));
-            } else {
-                $postData .= sprintf('&%s=%s', $argNum, urlencode(trim($arguments[$i])));
-            }
-        }
-        foreach ($namedArguments as $key => $value) {
-            $postData .= sprintf('&%s=%s', $key, urlencode($value));
-        }
-
-        if (isset($this->sessionId)) {
-            $postData .= sprintf('&%s=%s', 'sessionId', $this->sessionId);
-        }
-
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_setopt($curl, CURLOPT_POST, TRUE);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/x-www-form-urlencoded; charset=utf-8'
-        ));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
-
-        $response = curl_exec($curl);
-        $info     = curl_getinfo($curl);
-
-        if (!$response) {
-            throw new RuntimeException("CURL error while accessing the Selenium Server at '$url': " . curl_error($curl));
-        }
-
-        curl_close($curl);
-
-        if (!preg_match('/^OK/', $response)) {
-            throw new RuntimeException("Invalid response while accessing the Selenium Server at '$url': " . $response);
-        }
-
-        if ($info['http_code'] != 200) {
-            throw new RuntimeException(
-              'The response from the Selenium RC server is invalid: ' .
-              $response
-            );
-        }
-
-        return $response;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function preprocessParameters($params)
     {
-        foreach ($params as $key => $param ) {
-            if (is_string($param) && (strlen($param) > 0)) {
-                $params[$key] = $this->getString('getExpression', array($param));
-            }
-        }
-        return $params;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1098,19 +1034,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     protected function getBoolean($command, array $arguments)
     {
-        $result = $this->getString($command, $arguments);
-
-        switch ($result) {
-            case 'true':  return TRUE;
-
-            case 'false': return FALSE;
-
-            default: {
-                throw new PHPUnit_Framework_Exception(
-                  'Result is neither "true" nor "false": ' . PHPUnit_Util_Type::export($result)
-                );
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1125,15 +1053,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     protected function getNumber($command, array $arguments)
     {
-        $result = $this->getString($command, $arguments);
-
-        if (!is_numeric($result)) {
-            throw new PHPUnit_Framework_Exception(
-              'Result is not numeric: ' . PHPUnit_Util_Type::export($result)
-            );
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1148,15 +1072,11 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     protected function getString($command, array $arguments)
     {
-        try {
-            $result = $this->doCommand($command, $arguments);
-        }
-
-        catch (RuntimeException $e) {
-            throw $e;
-        }
-
-        return (strlen($result) > 3) ? substr($result, 3) : '';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1171,154 +1091,56 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
      */
     protected function getStringArray($command, array $arguments)
     {
-        $csv     = $this->getString($command, $arguments);
-        $token   = '';
-        $tokens  = array();
-        $letters = preg_split('//', $csv, -1, PREG_SPLIT_NO_EMPTY);
-        $count   = count($letters);
-
-        for ($i = 0; $i < $count; $i++) {
-            $letter = $letters[$i];
-
-            switch($letter) {
-                case '\\': {
-                    $letter = $letters[++$i];
-                    $token .= $letter;
-                }
-                break;
-
-                case ',': {
-                    $tokens[] = $token;
-                    $token    = '';
-                }
-                break;
-
-                default: {
-                    $token .= $letter;
-                }
-            }
-        }
-
-        $tokens[] = $token;
-
-        return $tokens;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getVerificationErrors()
     {
-        return $this->verificationErrors;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function clearVerificationErrors()
     {
-        $this->verificationErrors = array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function assertCommand($command, $arguments, $info)
     {
-        $method = $info['originalMethod'];
-        $requiresTarget = $info['requiresTarget'];
-        $result = $this->__call($method, $arguments);
-        $message = "Failed command: " . $command . "('"
-            . (array_key_exists(0, $arguments) ? $arguments[0] . "'" : '')
-            . (array_key_exists(1, $arguments) ? ", '" . $arguments[1] . "'" : '')
-            . ")";
-
-        if ($info['isBoolean']) {
-            if (!isset($info['negative']) || !$info['negative']) {
-                PHPUnit_Framework_Assert::assertTrue($result, $message);
-            } else {
-                PHPUnit_Framework_Assert::assertFalse($result, $message);
-            }
-        } else {
-            if ($requiresTarget === TRUE) {
-                $expected = $arguments[1];
-            } else {
-                $expected = $arguments[0];
-            }
-
-            if (strpos($expected, 'exact:') === 0) {
-                $expected = substr($expected, strlen('exact:'));
-
-                if (!isset($info['negative']) || !$info['negative']) {
-                    PHPUnit_Framework_Assert::assertEquals($expected, $result, $message);
-                } else {
-                    PHPUnit_Framework_Assert::assertNotEquals($expected, $result, $message);
-                }
-            } else {
-                $caseInsensitive = FALSE;
-
-                if (strpos($expected, 'regexp:') === 0) {
-                    $expected = substr($expected, strlen('regexp:'));
-                }
-
-                else if (strpos($expected, 'regexpi:') === 0) {
-                    $expected        = substr($expected, strlen('regexpi:'));
-                    $caseInsensitive = TRUE;
-                }
-
-                else {
-                    if (strpos($expected, 'glob:') === 0) {
-                        $expected = substr($expected, strlen('glob:'));
-                    }
-
-                    $expected = '^' . str_replace(
-                      array('*', '?'), array('.*', '.?'), $expected
-                    ) . '$';
-                }
-
-                $expected = '/' . str_replace('/', '\/', $expected) . '/';
-
-                if ($caseInsensitive) {
-                    $expected .= 'i';
-                }
-
-                if (!isset($info['negative']) || !$info['negative']) {
-                    PHPUnit_Framework_Assert::assertRegExp(
-                      $expected, $result, $message
-                    );
-                } else {
-                    PHPUnit_Framework_Assert::assertNotRegExp(
-                      $expected, $result, $message
-                    );
-                }
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function verifyCommand($command, $arguments, $info)
     {
-        try {
-            $this->assertCommand($command, $arguments, $info);
-        }
-
-        catch (PHPUnit_Framework_AssertionFailedError $e) {
-            array_push($this->verificationErrors, $e->toString());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function waitForCommand($command, $arguments, $info)
     {
-        $lastExceptionMessage = '';
-        for ($second = 0; ; $second++) {
-            if ($second > $this->httpTimeout) {
-                PHPUnit_Framework_Assert::fail(
-                    "WaitFor timeout. \n"
-                    . "Last exception message: \n" . $lastExceptionMessage
-                );
-            }
-
-            try {
-                $this->assertCommand($command, $arguments, $info);
-                return;
-            }
-
-            catch (Exception $e) {
-                $lastExceptionMessage = $e->getMessage();
-            }
-
-            sleep(1);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1345,7 +1167,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
                     }
 
                     self::$autoGeneratedCommands['store' . $baseName] = array(
-                      'functionHelper' => FALSE
+                      'functionHelper' => false
                     );
 
                     self::$autoGeneratedCommands['assert' . $baseName] = array(
@@ -1358,7 +1180,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
                     self::$autoGeneratedCommands['assert' . $notBaseName] = array(
                       'originalMethod' => $method,
                       'isBoolean'      => $isBoolean,
-                      'negative'       => TRUE,
+                      'negative'       => true,
                       'functionHelper' => 'assertCommand',
                       'requiresTarget' => $requiresTarget
                     );
@@ -1373,7 +1195,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
                     self::$autoGeneratedCommands['verify' . $notBaseName] = array(
                       'originalMethod' => $method,
                       'isBoolean'      => $isBoolean,
-                      'negative'       => TRUE,
+                      'negative'       => true,
                       'functionHelper' => 'verifyCommand',
                       'requiresTarget' => $requiresTarget
                     );
@@ -1388,7 +1210,7 @@ class PHPUnit_Extensions_SeleniumTestCase_Driver
                     self::$autoGeneratedCommands['waitFor' . $notBaseName] = array(
                       'originalMethod' => $method,
                       'isBoolean'      => $isBoolean,
-                      'negative'       => TRUE,
+                      'negative'       => true,
                       'functionHelper' => 'waitForCommand',
                       'requiresTarget' => $requiresTarget
                     );

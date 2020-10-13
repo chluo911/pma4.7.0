@@ -49,19 +49,11 @@ class Generic_Sniffs_CodeAnalysis_EmptyStatementSniff implements PHP_CodeSniffer
      */
     public function register()
     {
-        return array(
-                T_CATCH,
-                T_DO,
-                T_ELSE,
-                T_ELSEIF,
-                T_FOR,
-                T_FOREACH,
-                T_IF,
-                T_SWITCH,
-                T_TRY,
-                T_WHILE,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -76,31 +68,10 @@ class Generic_Sniffs_CodeAnalysis_EmptyStatementSniff implements PHP_CodeSniffer
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
-
-        // Skip statements without a body.
-        if (isset($token['scope_opener']) === false) {
-            return;
-        }
-
-        $next = $phpcsFile->findNext(
-            PHP_CodeSniffer_Tokens::$emptyTokens,
-            ($token['scope_opener'] + 1),
-            ($token['scope_closer'] - 1),
-            true
-        );
-
-        if ($next !== false) {
-            return;
-        }
-
-        // Get token identifier.
-        $name  = strtoupper($token['content']);
-        $error = 'Empty %s statement detected';
-        $phpcsFile->addError($error, $stackPtr, 'Detected'.$name, array($name));
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

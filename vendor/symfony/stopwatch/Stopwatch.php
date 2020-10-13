@@ -38,7 +38,11 @@ class Stopwatch
      */
     public function getSections()
     {
-        return $this->sections;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -50,15 +54,11 @@ class Stopwatch
      */
     public function openSection($id = null)
     {
-        $current = end($this->activeSections);
-
-        if (null !== $id && null === $current->get($id)) {
-            throw new \LogicException(sprintf('The section "%s" has been started at an other level and can not be opened.', $id));
-        }
-
-        $this->start('__section__.child', 'section');
-        $this->activeSections[] = $current->open($id);
-        $this->start('__section__');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -74,14 +74,11 @@ class Stopwatch
      */
     public function stopSection($id)
     {
-        $this->stop('__section__');
-
-        if (1 == count($this->activeSections)) {
-            throw new \LogicException('There is no started section to stop.');
-        }
-
-        $this->sections[$id] = array_pop($this->activeSections)->setId($id);
-        $this->stop('__section__.child');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -130,7 +127,11 @@ class Stopwatch
      */
     public function lap($name)
     {
-        return end($this->activeSections)->stopEvent($name)->start();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -142,7 +143,11 @@ class Stopwatch
      */
     public function getEvent($name)
     {
-        return end($this->activeSections)->getEvent($name);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -154,6 +159,10 @@ class Stopwatch
      */
     public function getSectionEvents($id)
     {
-        return isset($this->sections[$id]) ? $this->sections[$id]->getEvents() : array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

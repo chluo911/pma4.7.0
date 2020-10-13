@@ -12,18 +12,11 @@ class Extensions_PhptTestCaseTest extends \PHPUnit_Framework_TestCase
 {
     public function testParseIniSection()
     {
-        $phptTestCase = new PhpTestCaseProxy(__FILE__);
-        $settings     = $phptTestCase->parseIniSection("foo=1\nbar = 2\rbaz = 3\r\nempty=\nignore");
-
-        $expected = array(
-            'foo=1',
-            'bar = 2',
-            'baz = 3',
-            'empty=',
-            'ignore',
-        );
-
-        $this->assertEquals($expected, $settings);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 

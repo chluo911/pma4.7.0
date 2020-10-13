@@ -6,64 +6,94 @@ use PhpSpec\ObjectBehavior;
 
 class ObjectStateTokenSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith('getName', 'stdClass');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_implements_TokenInterface()
+    public function it_implements_TokenInterface()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Argument\Token\TokenInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_not_last()
+    public function it_is_not_last()
     {
-        $this->shouldNotBeLast();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_scores_8_if_argument_object_has_specific_method_state(\ReflectionClass $reflection)
+    public function it_scores_8_if_argument_object_has_specific_method_state(\ReflectionClass $reflection)
     {
-        $reflection->getName()->willReturn('stdClass');
-
-        $this->scoreArgument($reflection)->shouldReturn(8);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_scores_8_if_argument_object_has_specific_property_state(\stdClass $class)
+    public function it_scores_8_if_argument_object_has_specific_property_state(\stdClass $class)
     {
-        $class->getName = 'stdClass';
-
-        $this->scoreArgument($class)->shouldReturn(8);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_argument_method_state_does_not_match()
+    public function it_does_not_score_if_argument_method_state_does_not_match()
     {
-        $value = new ObjectStateTokenFixtureB('ABC');
-        $value2 = new ObjectStateTokenFixtureB('CBA');
-
-        $this->beConstructedWith('getSelf', $value);
-        $this->scoreArgument($value2)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_argument_property_state_does_not_match(\stdClass $class)
+    public function it_does_not_score_if_argument_property_state_does_not_match(\stdClass $class)
     {
-        $class->getName = 'SplFileInfo';
-
-        $this->scoreArgument($class)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_argument_object_does_not_have_method_or_property(ObjectStateTokenFixtureA $class)
+    public function it_does_not_score_if_argument_object_does_not_have_method_or_property(ObjectStateTokenFixtureA $class)
     {
-        $this->scoreArgument($class)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_argument_is_not_object()
+    public function it_does_not_score_if_argument_is_not_object()
     {
-        $this->scoreArgument(42)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_simple_string_representation()
+    public function it_has_simple_string_representation()
     {
-        $this->__toString()->shouldReturn('state(getName(), "stdClass")');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -79,11 +109,19 @@ class ObjectStateTokenFixtureB extends ObjectStateTokenFixtureA
 
     public function __construct($value)
     {
-        $this->value = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getSelf()
     {
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -155,12 +155,18 @@ function PMA_RTE_getList($type, $items)
                 )
             );
         $retval .= PMA\libraries\Util::getButtonOrImage(
-            'submit_mult', 'mult_submit',
-            __('Export'), 'b_export.png', 'export'
+            'submit_mult',
+            'mult_submit',
+            __('Export'),
+            'b_export.png',
+            'export'
         );
         $retval .= PMA\libraries\Util::getButtonOrImage(
-            'submit_mult', 'mult_submit',
-            __('Drop'), 'b_drop.png', 'drop'
+            'submit_mult',
+            'mult_submit',
+            __('Drop'),
+            'b_drop.png',
+            'drop'
         );
         $retval .= '</div>';
     }
@@ -250,7 +256,9 @@ function PMA_RTN_getRowForList($routine, $rowclass = '')
     // otherwise we can execute it directly.
 
     $definition = $GLOBALS['dbi']->getDefinition(
-        $db, $routine['type'], $routine['name']
+        $db,
+        $routine['type'],
+        $routine['name']
     );
     if ($definition !== false) {
         $parser = new PhpMyAdmin\SqlParser\Parser($definition);
@@ -480,4 +488,3 @@ function PMA_EVN_getRowForList($event, $rowclass = '')
 
     return $retval;
 } // end PMA_EVN_getRowForList()
-

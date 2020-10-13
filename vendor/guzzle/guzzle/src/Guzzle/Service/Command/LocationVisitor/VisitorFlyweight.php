@@ -95,9 +95,11 @@ class VisitorFlyweight
      */
     public function addRequestVisitor($name, RequestVisitorInterface $visitor)
     {
-        $this->cache['request.' . $name] = $visitor;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -110,9 +112,11 @@ class VisitorFlyweight
      */
     public function addResponseVisitor($name, ResponseVisitorInterface $visitor)
     {
-        $this->cache['response.' . $name] = $visitor;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

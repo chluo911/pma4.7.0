@@ -21,11 +21,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetDiff($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $diff = $commit->getDiff();
-
-        $this->assertTrue($diff instanceof Diff, 'getDiff() returns a Diff object');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -33,9 +33,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetHash($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals(self::LONGFILE_COMMIT, $commit->getHash());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,7 +48,11 @@ class CommitTest extends AbstractTest
      */
     public function testInvalideHashThrowException($repository)
     {
-        $commit = new Commit($repository, 'that-hash-doest-not-exists');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,9 +60,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetShortHash($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('4f17752', $commit->getShortHash(), 'Short hash');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,9 +72,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetParentHashes_WithNoParent($repository)
     {
-        $commit = $repository->getCommit(self::INITIAL_COMMIT);
-
-        $this->assertEquals(0, count($commit->getParentHashes()), 'No parent on initial commit');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -74,11 +84,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetParentHashes_WithOneParent($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-        $parents = $commit->getParentHashes();
-
-        $this->assertEquals(1, count($parents), 'One parent found');
-        $this->assertEquals(self::BEFORE_LONGFILE_COMMIT, $parents[0], 'Parent hash is correct');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,12 +96,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetParents_WithOneParent($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-        $parents = $commit->getParents();
-
-        $this->assertEquals(1, count($parents), 'One parent found');
-        $this->assertTrue($parents[0] instanceof Commit, 'First parent is a Commit object');
-        $this->assertEquals(self::BEFORE_LONGFILE_COMMIT, $parents[0]->getHash(), "First parents's hash is correct");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,9 +108,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetTreeHash($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('b06890c7b10904979d2f69613c2ccda30aafe262', $commit->getTreeHash(), 'Tree hash is correct');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -109,10 +120,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetTree($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertInstanceOf('Gitonomy\Git\Tree', $commit->getTree(), 'Tree is a tree');
-        $this->assertEquals('b06890c7b10904979d2f69613c2ccda30aafe262', $commit->getTree()->getHash(), 'Tree hash is correct');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -120,9 +132,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetAuthorName($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('alice', $commit->getAuthorName(), 'Author name');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -130,9 +144,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetAuthorEmail($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('alice@example.org', $commit->getAuthorEmail(), 'Author email');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -140,9 +156,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetAuthorDate($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('2012-12-31 14:21:03', $commit->getAuthorDate()->format('Y-m-d H:i:s'), 'Author date');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -150,9 +168,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetCommitterName($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('alice', $commit->getCommitterName(), 'Committer name');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -160,9 +180,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetCommitterEmail($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('alice@example.org', $commit->getCommitterEmail(), 'Committer email');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -170,9 +192,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetCommitterDate($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('2012-12-31 14:21:03', $commit->getCommitterDate()->format('Y-m-d H:i:s'), 'Committer date');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -180,9 +204,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetMessage($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $this->assertEquals('add a long file'."\n", $commit->getMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -190,19 +216,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetShortMessage($repository)
     {
-        // tests with a multi-line message
-        $commit = $repository->getCommit(self::LONGMESSAGE_COMMIT);
-
-        $this->assertEquals('Fixed perm...', $commit->getShortMessage(10));
-        $this->assertEquals('Fixed perm!!!', $commit->getShortMessage(10, false, '!!!'));
-        $this->assertEquals('Fixed permissions!!!', $commit->getShortMessage(10, true, '!!!'));
-
-        // tests with a single-line message
-        $commit = $repository->getCommit(self::INITIAL_COMMIT);
-
-        $this->assertEquals('Add README', $commit->getShortMessage(20));
-        $this->assertEquals('A', $commit->getShortMessage(1, false, ''));
-        $this->assertEquals('Add!!!', $commit->getShortMessage(1, true, '!!!'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -210,20 +228,11 @@ class CommitTest extends AbstractTest
      */
     public function testGetBodyMessage($repository)
     {
-        $commit = $repository->getCommit(self::LONGMESSAGE_COMMIT);
-        $message = <<<EOL
-If you want to know everything,
-I ran something like `chmox +x test.sh`
-
-Hello and good bye.
-
-EOL;
-
-        $this->assertEquals($message, $commit->getBodyMessage());
-
-        $commit = $repository->getCommit(self::INITIAL_COMMIT);
-
-        $this->assertEquals('', $commit->getBodyMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -232,9 +241,11 @@ EOL;
      */
     public function testGetIncludingBranchesException($repository)
     {
-        $commit = $repository->getCommit(self::INITIAL_COMMIT);
-
-        $commit->getIncludingBranches(false, false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -242,16 +253,11 @@ EOL;
      */
     public function testGetIncludingBranches($repository)
     {
-        $commit = $repository->getCommit(self::INITIAL_COMMIT);
-
-        $branches = $commit->getIncludingBranches(true, false);
-        $this->assertCount(count($repository->getReferences()->getLocalBranches()), $branches);
-
-        $branches = $commit->getIncludingBranches(true, true);
-        $this->assertCount(count($repository->getReferences()->getBranches()), $branches);
-
-        $branches = $commit->getIncludingBranches(false, true);
-        $this->assertCount(count($repository->getReferences()->getRemoteBranches()), $branches);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -259,12 +265,11 @@ EOL;
      */
     public function testGetLastModification($repository)
     {
-        $commit = $repository->getCommit(self::LONGFILE_COMMIT);
-
-        $lastModification = $commit->getLastModification('image.jpg');
-
-        $this->assertTrue($lastModification instanceof Commit, 'Last modification is a Commit object');
-        $this->assertEquals(self::BEFORE_LONGFILE_COMMIT, $lastModification->getHash(), 'Last modification is current commit');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -272,9 +277,11 @@ EOL;
      */
     public function testMergeCommit($repository)
     {
-        $commit = $repository->getCommit(self::MERGE_COMMIT);
-
-        $this->assertEquals("Merge branch 'authors'", $commit->getSubjectMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -282,8 +289,10 @@ EOL;
      */
     public function testEncoding($repository)
     {
-        $commit = $repository->getCommit(self::ENCODING_COMMIT);
-
-        $this->assertEquals('contribute to AUTHORS file', $commit->getSubjectMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

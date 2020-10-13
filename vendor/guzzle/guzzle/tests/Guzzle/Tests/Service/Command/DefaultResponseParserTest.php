@@ -15,24 +15,20 @@ class DefaultResponseParserTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testParsesXmlResponses()
     {
-        $op = new OperationCommand(array(), new Operation());
-        $op->setClient(new Client());
-        $request = $op->prepare();
-        $request->setResponse(new Response(200, array(
-            'Content-Type' => 'application/xml'
-        ), '<Foo><Baz>Bar</Baz></Foo>'), true);
-        $this->assertInstanceOf('SimpleXMLElement', $op->execute());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testParsesJsonResponses()
     {
-        $op = new OperationCommand(array(), new Operation());
-        $op->setClient(new Client());
-        $request = $op->prepare();
-        $request->setResponse(new Response(200, array(
-            'Content-Type' => 'application/json'
-        ), '{"Baz":"Bar"}'), true);
-        $this->assertEquals(array('Baz' => 'Bar'), $op->execute());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,20 +36,19 @@ class DefaultResponseParserTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testThrowsExceptionWhenParsingJsonFails()
     {
-        $op = new OperationCommand(array(), new Operation());
-        $op->setClient(new Client());
-        $request = $op->prepare();
-        $request->setResponse(new Response(200, array('Content-Type' => 'application/json'), '{"Baz":ddw}'), true);
-        $op->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddsContentTypeWhenExpectsIsSetOnCommand()
     {
-        $op = new OperationCommand(array(), new Operation());
-        $op['command.expects'] = 'application/json';
-        $op->setClient(new Client());
-        $request = $op->prepare();
-        $request->setResponse(new Response(200, null, '{"Baz":"Bar"}'), true);
-        $this->assertEquals(array('Baz' => 'Bar'), $op->execute());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

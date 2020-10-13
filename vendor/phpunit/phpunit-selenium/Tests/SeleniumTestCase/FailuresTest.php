@@ -56,14 +56,11 @@ class Extensions_SeleniumTestCaseFailuresTest extends Tests_SeleniumTestCase_Bas
 {
     public function testOrdinaryExceptionsAreRethrown()
     {
-        $exception = new BadMethodCallException('some error from production code');
-        $line = __LINE__ - 1;
-        try {
-            $this->onNotSuccessfulTest($exception);
-        } catch (PHPUnit_Framework_Error $e) {
-            $this->assertTrue((bool) strstr($e->getMessage(), 'some error from production code'));
-            $this->assertEquals($line, $e->getLine());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -71,7 +68,11 @@ class Extensions_SeleniumTestCaseFailuresTest extends Tests_SeleniumTestCase_Bas
      */
     public function testSelectingANullWindowIsAllowed()
     {
-        $this->selectWindow(null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -80,22 +81,20 @@ class Extensions_SeleniumTestCaseFailuresTest extends Tests_SeleniumTestCase_Bas
      */
     public function testExpectationFailuresAreRethrownCorrectly()
     {
-        $exception = new PHPUnit_Framework_ExpectationFailedException("Some comparison error.");
-        try {
-            $this->onNotSuccessfulTest($exception);
-        } catch (PHPUnit_Framework_AssertionFailedError $e) {
-            $this->assertTrue((bool) strstr($e->getMessage(), 'Some comparison error.'));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testWhenAComparisonFailureIsPresentItIsIncludedInTheMessage()
     {
-        $exception = $this->getAFailure();
-        try {
-            $this->onNotSuccessfulTest($exception);
-        } catch (PHPUnit_Framework_ExpectationFailedException $e) {
-            $this->assertSame($exception, $e);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,24 +102,11 @@ class Extensions_SeleniumTestCaseFailuresTest extends Tests_SeleniumTestCase_Bas
      */
     public function testScreenshotsAreCapturedOnFailuresWhenRequired()
     {
-        $this->captureScreenshotOnFailure = true;
-        $this->screenshotPath = sys_get_temp_dir();
-        $this->screenshotUrl = 'http://...';
-
-        try {
-            $originalException = $this->getAFailure();
-            $this->firstTraceLine = __LINE__ - 1;
-            $this->onNotSuccessfulTest($originalException);
-        } catch (PHPUnit_Framework_Error $e) {
-            $this->assertTrue(file_exists($this->screenshotPath));
-            $this->assertTrue((bool) strstr($e->getMessage(), 'Screenshot: http://.../'));
-            // INCOMPLETE
-            $this->captureScreenshotOnFailure = false;
-            $this->markTestIncomplete('Need to have support for setting the trace.');
-            $this->assertOriginalLineAndTraceArePresent($e);
-            return;
-        }
-        $this->fail('An exception should have been raised by now.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -128,39 +114,29 @@ class Extensions_SeleniumTestCaseFailuresTest extends Tests_SeleniumTestCase_Bas
      */
     public function testScreenshotsAreCapturedOnErrorsWhenRequired()
     {
-        $this->captureScreenshotOnFailure = true;
-        $this->screenshotPath = sys_get_temp_dir();
-        $this->screenshotUrl = 'http://...';
-
-        try {
-            $originalException = $this->getAnError();
-            $this->onNotSuccessfulTest($originalException);
-        } catch (Exception $e) {
-            $this->assertTrue(file_exists($this->screenshotPath));
-            $message = $e->getMessage();
-            $this->assertTrue((bool) strstr($message, 'Screenshot: http://.../'), "Excpetion message does not contain screenshot path: `$message`");
-            return;
-        }
-        $this->fail('An exception should have been raised by now.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function getAFailure()
     {
-        if (class_exists('PHPUnit_Framework_ComparisonFailure')) {
-            $failure = new PHPUnit_Framework_ComparisonFailure(1, 2, '1', '2');
-        } else {
-            $failure = new SebastianBergmann\Comparator\ComparisonFailure(1, 2, '1', '2');
-        }
-
-        $this->failureLine = __LINE__ + 1;
-        return new PHPUnit_Framework_ExpectationFailedException('1 is not 2', $failure);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function getAnError()
     {
-        $error = new PHPUnit_Framework_Error('an error', 1, __FILE__, __LINE__);
-        $this->errorLine = __LINE__ - 1;
-        return $error;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -168,24 +144,29 @@ class Extensions_SeleniumTestCaseFailuresTest extends Tests_SeleniumTestCase_Bas
      */
     public function testErrorMessagesFromTheDriverAreNotCutted()
     {
-        try {
-            $result = $this->getValue('inexistentSelector');
-            $this->fail('Should have raised an exception.');
-        } catch (RuntimeException $e) {
-            $this->assertContains('ERROR: Element inexistentSelector not found', $e->getMessage());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIncompleteTestsAreTreatedAsSuchAndNotAsFailing()
     {
-        $original = new PHPUnit_Framework_IncompleteTestError('problem description');
-        $this->isRethrownWithSameMessage($original);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkippedTestsAreTreatedAsSuchAndNotAsFailing()
     {
-        $original = new PHPUnit_Framework_SkippedTestError('problem description');
-        $this->isRethrownWithSameMessage($original);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -193,34 +174,37 @@ class Extensions_SeleniumTestCaseFailuresTest extends Tests_SeleniumTestCase_Bas
      */
     public function testErrorsInExecutionMustBeSignaled()
     {
-        $this->open('/');
-        try {
-            $this->type('id=wrongId', 'Search');
-            $this->fail('A command not executed successfully should stop the test.');
-        } catch (RuntimeException $e) {
-            $this->assertContains('ERROR: Element id=wrongId not found', $e->getMessage());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function isRethrownWithSameMessage(Exception $original)
     {
-        try {
-            $this->onNotSuccessfulTest($original);
-        } catch (Exception $e) {
-            $this->assertInstanceOf(get_class($original), $e);
-            $this->assertEquals($original->getMessage(), $e->getMessage());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function test404PagesCanBeLoaded()
     {
-        $this->open('inexistent.html');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function assertOriginalLineAndTraceArePresent(Exception $e)
     {
-        $this->assertEquals($this->failureLine, $e->getLine());
-        $trace = $e->getTrace();
-        $this->assertEquals($this->firstTraceLine, $trace[0]['line']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

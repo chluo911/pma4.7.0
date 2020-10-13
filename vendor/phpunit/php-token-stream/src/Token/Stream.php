@@ -216,7 +216,11 @@ class PHP_Token_Stream implements ArrayAccess, Countable, SeekableIterator
      */
     public function count()
     {
-        return count($this->tokens);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -302,40 +306,11 @@ class PHP_Token_Stream implements ArrayAccess, Countable, SeekableIterator
      */
     public function getIncludes($categorize = false, $category = null)
     {
-        if ($this->includes === null) {
-            $this->includes = array(
-              'require_once' => array(),
-              'require'      => array(),
-              'include_once' => array(),
-              'include'      => array()
-            );
-
-            foreach ($this->tokens as $token) {
-                switch (get_class($token)) {
-                    case 'PHP_Token_REQUIRE_ONCE':
-                    case 'PHP_Token_REQUIRE':
-                    case 'PHP_Token_INCLUDE_ONCE':
-                    case 'PHP_Token_INCLUDE':
-                        $this->includes[$token->getType()][] = $token->getName();
-                        break;
-                }
-            }
-        }
-
-        if (isset($this->includes[$category])) {
-            $includes = $this->includes[$category];
-        } elseif ($categorize === false) {
-            $includes = array_merge(
-                $this->includes['require_once'],
-                $this->includes['require'],
-                $this->includes['include_once'],
-                $this->includes['include']
-            );
-        } else {
-            $includes = $this->includes;
-        }
-
-        return $includes;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -346,11 +321,11 @@ class PHP_Token_Stream implements ArrayAccess, Countable, SeekableIterator
      */
     public function getFunctionForLine($line)
     {
-        $this->parse();
-
-        if (isset($this->lineToFunctionMap[$line])) {
-            return $this->lineToFunctionMap[$line];
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function parse()
@@ -540,16 +515,11 @@ class PHP_Token_Stream implements ArrayAccess, Countable, SeekableIterator
      */
     public function offsetGet($offset)
     {
-        if (!$this->offsetExists($offset)) {
-            throw new OutOfBoundsException(
-                sprintf(
-                    'No token at position "%s"',
-                    $offset
-                )
-            );
-        }
-
-        return $this->tokens[$offset];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -558,7 +528,11 @@ class PHP_Token_Stream implements ArrayAccess, Countable, SeekableIterator
      */
     public function offsetSet($offset, $value)
     {
-        $this->tokens[$offset] = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

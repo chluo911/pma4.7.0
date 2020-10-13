@@ -59,22 +59,11 @@ class Request extends AbstractMessage implements RequestInterface
 
     public static function getAllEvents()
     {
-        return array(
-            // Called when receiving or uploading data through cURL
-            'curl.callback.read', 'curl.callback.write', 'curl.callback.progress',
-            // Cloning a request
-            'request.clone',
-            // About to send the request, sent request, completed transaction
-            'request.before_send', 'request.sent', 'request.complete',
-            // A request received a successful response
-            'request.success',
-            // A request received an unsuccessful response
-            'request.error',
-            // An exception is being thrown because of an unsuccessful response
-            'request.exception',
-            // Received response status line
-            'request.receive.status_line'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -142,9 +131,11 @@ class Request extends AbstractMessage implements RequestInterface
      */
     public static function onRequestError(Event $event)
     {
-        $e = BadResponseException::factory($event['request'], $event['response']);
-        $event['request']->setState(self::STATE_ERROR, array('exception' => $e) + $event->toArray());
-        throw $e;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setClient(ClientInterface $client)
@@ -222,9 +213,11 @@ class Request extends AbstractMessage implements RequestInterface
 
     public function setScheme($scheme)
     {
-        $this->url->setScheme($scheme);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getHost()
@@ -399,35 +392,20 @@ class Request extends AbstractMessage implements RequestInterface
 
     public function startResponse(Response $response)
     {
-        $this->state = self::STATE_TRANSFER;
-        $response->setEffectiveUrl((string) $this->getUrl());
-        $this->response = $response;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setResponse(Response $response, $queued = false)
     {
-        $response->setEffectiveUrl((string) $this->url);
-
-        if ($queued) {
-            $ed = $this->getEventDispatcher();
-            $ed->addListener('request.before_send', $f = function ($e) use ($response, &$f, $ed) {
-                $e['request']->setResponse($response);
-                $ed->removeListener('request.before_send', $f);
-            }, -9999);
-        } else {
-            $this->response = $response;
-            // If a specific response body is specified, then use it instead of the response's body
-            if ($this->responseBody && !$this->responseBody->getCustomData('default') && !$response->isRedirect()) {
-                $this->getResponseBody()->write((string) $this->response->getBody());
-            } else {
-                $this->responseBody = $this->response->getBody();
-            }
-            $this->setState(self::STATE_COMPLETE);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setResponseBody($body)
@@ -448,11 +426,11 @@ class Request extends AbstractMessage implements RequestInterface
 
     public function getResponseBody()
     {
-        if ($this->responseBody === null) {
-            $this->responseBody = EntityBody::factory()->setCustomData('default', true);
-        }
-
-        return $this->responseBody;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -464,25 +442,29 @@ class Request extends AbstractMessage implements RequestInterface
      */
     public function isResponseBodyRepeatable()
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use $request->getResponseBody()->isRepeatable()');
-        return !$this->responseBody ? true : $this->responseBody->isRepeatable();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getCookies()
     {
-        if ($cookie = $this->getHeader('Cookie')) {
-            $data = ParserRegistry::getInstance()->getParser('cookie')->parseCookie($cookie);
-            return $data['cookies'];
-        }
-
-        return array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getCookie($name)
     {
-        $cookies = $this->getCookies();
-
-        return isset($cookies[$name]) ? $cookies[$name] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addCookie($name, $value)
@@ -606,13 +588,11 @@ class Request extends AbstractMessage implements RequestInterface
      */
     public function canCache()
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use Guzzle\Plugin\Cache\DefaultCanCacheStrategy.');
-        if (class_exists('Guzzle\Plugin\Cache\DefaultCanCacheStrategy')) {
-            $canCache = new \Guzzle\Plugin\Cache\DefaultCanCacheStrategy();
-            return $canCache->canCacheRequest($this);
-        } else {
-            return false;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -621,9 +601,11 @@ class Request extends AbstractMessage implements RequestInterface
      */
     public function setIsRedirect($isRedirect)
     {
-        $this->isRedirect = $isRedirect;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -632,7 +614,10 @@ class Request extends AbstractMessage implements RequestInterface
      */
     public function isRedirect()
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use the HistoryPlugin to track this.');
-        return $this->isRedirect;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

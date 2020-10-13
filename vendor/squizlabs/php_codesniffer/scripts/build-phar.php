@@ -67,26 +67,11 @@ foreach ($scripts as $script) {
  */
 function buildFromPackage(&$phar)
 {
-    $packageFile = realpath(__DIR__.'/../package.xml');
-    $dom         = new DOMDocument('1.0', 'utf-8');
-    $loaded      = $dom->loadXML(file_get_contents($packageFile));
-    if ($loaded === false) {
-        echo "Unable to load package file: $packageFile".PHP_EOL;
-        exit(1);
-    }
-
-    $contents  = $dom->getElementsByTagName('contents');
-    $topLevels = $contents->item(0)->childNodes;
-    $tlLength  = $topLevels->length;
-    for ($l = 0; $l < $tlLength; $l++) {
-        $currentLevel = $topLevels->item($l);
-        buildFromNode($phar, $currentLevel, '');
-    }
-
-    // Add licence file.
-    $phar->addFile(realpath(__DIR__.'/../licence.txt'), 'licence.txt');
-    $phar['licence.txt']->compress(Phar::GZ);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }//end buildFromPackage()
 
 
@@ -101,28 +86,9 @@ function buildFromPackage(&$phar)
  */
 function buildFromNode(&$phar, $node, $prefix='')
 {
-    $nodeName = $node->nodeName;
-    if ($nodeName !== 'dir' && $nodeName !== 'file') {
-        // Invalid node.
-        return;
-    }
-
-    $path = $prefix.$node->getAttribute('name');
-    if ($node->getAttribute('role') === 'php' || $node->getAttribute('role') === 'data') {
-        $path = ltrim($path, '/');
-        $phar->addFile(realpath(__DIR__.'/../'.$path), $path);
-        $phar[$path]->compress(Phar::GZ);
-    }
-
-    if ($nodeName === 'dir') {
-        // Descend into the depths.
-        $path     = rtrim($path, '/').'/';
-        $children = $node->childNodes;
-        $childLn  = $children->length;
-        for ($c = 0; $c < $childLn; $c++) {
-            $child = $children->item($c);
-            buildFromNode($phar, $child, $path);
-        }
-    }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }//end buildFromNode()

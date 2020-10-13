@@ -22,8 +22,11 @@ class FilesystemAdapter extends AbstractAdapter
 
     public function __construct($namespace = '', $defaultLifetime = 0, $directory = null)
     {
-        parent::__construct('', $defaultLifetime);
-        $this->init($namespace, $directory);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -39,9 +39,11 @@ class LogPlugin implements EventSubscriberInterface
         $formatter = null,
         $wireBodies = false
     ) {
-        $this->logAdapter = $logAdapter;
-        $this->formatter = $formatter instanceof MessageFormatter ? $formatter : new MessageFormatter($formatter);
-        $this->wireBodies = $wireBodies;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,17 +56,11 @@ class LogPlugin implements EventSubscriberInterface
      */
     public static function getDebugPlugin($wireBodies = true, $stream = null)
     {
-        if ($stream === null) {
-            if (defined('STDERR')) {
-                $stream = STDERR;
-            } else {
-                $stream = fopen('php://output', 'w');
-            }
-        }
-
-        return new self(new ClosureLogAdapter(function ($m) use ($stream) {
-            fwrite($stream, $m . PHP_EOL);
-        }), "# Request:\n{request}\n\n# Response:\n{response}\n\n# Errors: {curl_code} {curl_error}", $wireBodies);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getSubscribedEvents()
@@ -84,10 +80,11 @@ class LogPlugin implements EventSubscriberInterface
      */
     public function onCurlRead(Event $event)
     {
-        // Stream the request body to the log if the body is not repeatable
-        if ($wire = $event['request']->getParams()->get('request_wire')) {
-            $wire->write($event['read']);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -97,10 +94,11 @@ class LogPlugin implements EventSubscriberInterface
      */
     public function onCurlWrite(Event $event)
     {
-        // Stream the response body to the log if the body is not repeatable
-        if ($wire = $event['request']->getParams()->get('response_wire')) {
-            $wire->write($event['write']);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -110,22 +108,11 @@ class LogPlugin implements EventSubscriberInterface
      */
     public function onRequestBeforeSend(Event $event)
     {
-        if ($this->wireBodies) {
-            $request = $event['request'];
-            // Ensure that curl IO events are emitted
-            $request->getCurlOptions()->set('emit_io', true);
-            // We need to make special handling for content wiring and non-repeatable streams.
-            if ($request instanceof EntityEnclosingRequestInterface && $request->getBody()
-                && (!$request->getBody()->isSeekable() || !$request->getBody()->isReadable())
-            ) {
-                // The body of the request cannot be recalled so logging the body will require us to buffer it
-                $request->getParams()->set('request_wire', EntityBody::factory());
-            }
-            if (!$request->getResponseBody()->isRepeatable()) {
-                // The body of the response cannot be recalled so logging the body will require us to buffer it
-                $request->getParams()->set('response_wire', EntityBody::factory());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -135,27 +122,10 @@ class LogPlugin implements EventSubscriberInterface
      */
     public function onRequestSent(Event $event)
     {
-        $request = $event['request'];
-        $response = $event['response'];
-        $handle = $event['handle'];
-
-        if ($wire = $request->getParams()->get('request_wire')) {
-            $request = clone $request;
-            $request->setBody($wire);
-        }
-
-        if ($wire = $request->getParams()->get('response_wire')) {
-            $response = clone $response;
-            $response->setBody($wire);
-        }
-
-        // Send the log message to the adapter, adding a category and host
-        $priority = $response && $response->isError() ? LOG_ERR : LOG_DEBUG;
-        $message = $this->formatter->format($request, $response, $handle);
-        $this->logAdapter->log($message, $priority, array(
-            'request'  => $request,
-            'response' => $response,
-            'handle'   => $handle
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

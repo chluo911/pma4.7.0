@@ -322,8 +322,12 @@ class Bookmark
      * @global  resource $controllink the controluser db connection handle
      *
      */
-    public static function get($db, $id, $id_field = 'id',
-        $action_bookmark_all = false, $exact_user_match = false
+    public static function get(
+        $db,
+        $id,
+        $id_field = 'id',
+        $action_bookmark_all = false,
+        $exact_user_match = false
     ) {
         global $controllink;
 

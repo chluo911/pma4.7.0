@@ -12,9 +12,13 @@ use Guzzle\Service\Description\Parameter;
  */
 abstract class AbstractResponseVisitor implements ResponseVisitorInterface
 {
-    public function before(CommandInterface $command, array &$result) {}
+    public function before(CommandInterface $command, array &$result)
+    {
+    }
 
-    public function after(CommandInterface $command) {}
+    public function after(CommandInterface $command)
+    {
+    }
 
     public function visit(
         CommandInterface $command,
@@ -22,5 +26,6 @@ abstract class AbstractResponseVisitor implements ResponseVisitorInterface
         Parameter $param,
         &$value,
         $context =  null
-    ) {}
+    ) {
+    }
 }

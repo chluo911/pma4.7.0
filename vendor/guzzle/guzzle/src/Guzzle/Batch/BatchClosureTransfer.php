@@ -25,16 +25,19 @@ class BatchClosureTransfer implements BatchTransferInterface
      */
     public function __construct($callable, $context = null)
     {
-        if (!is_callable($callable)) {
-            throw new InvalidArgumentException('Argument must be callable');
-        }
-
-        $this->callable = $callable;
-        $this->context = $context;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function transfer(array $batch)
     {
-        return empty($batch) ? null : call_user_func($this->callable, $batch, $this->context);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

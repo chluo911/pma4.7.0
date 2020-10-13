@@ -113,7 +113,6 @@ if (isset($_GET["message"]) && $_GET["message"]) {
     echo '    [ <a href="' , $_SESSION['Import_message']['go_back_url']
         . '">' , __('Back') , '</a> ]' , "\n";
     echo '</fieldset>' , "\n";
-
 } else {
     PMA_importAjaxStatus($_GET["id"]);
 }

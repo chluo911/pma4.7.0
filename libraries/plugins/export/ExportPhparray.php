@@ -74,7 +74,11 @@ class ExportPhparray extends ExportPlugin
      */
     public function commentString($string)
     {
-        return strtr($string, '*/', '-');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 
@@ -85,15 +89,11 @@ class ExportPhparray extends ExportPlugin
      */
     public function exportHeader()
     {
-        PMA_exportOutputHandler(
-            '<?php' . $GLOBALS['crlf']
-            . '/**' . $GLOBALS['crlf']
-            . ' * Export to PHP Array plugin for PHPMyAdmin' . $GLOBALS['crlf']
-            . ' * @version ' . PMA_VERSION . $GLOBALS['crlf']
-            . ' */' . $GLOBALS['crlf'] . $GLOBALS['crlf']
-        );
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,7 +103,11 @@ class ExportPhparray extends ExportPlugin
      */
     public function exportFooter()
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -116,16 +120,11 @@ class ExportPhparray extends ExportPlugin
      */
     public function exportDBHeader($db, $db_alias = '')
     {
-        if (empty($db_alias)) {
-            $db_alias = $db;
-        }
-        PMA_exportOutputHandler(
-            '/**' . $GLOBALS['crlf']
-            . ' * Database ' . $this->commentString(PMA\libraries\Util::backquote($db_alias))
-            . $GLOBALS['crlf'] . ' */' . $GLOBALS['crlf']
-        );
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -137,7 +136,11 @@ class ExportPhparray extends ExportPlugin
      */
     public function exportDBFooter($db)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -151,7 +154,11 @@ class ExportPhparray extends ExportPlugin
      */
     public function exportDBCreate($db, $export_type, $db_alias = '')
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -174,82 +181,10 @@ class ExportPhparray extends ExportPlugin
         $sql_query,
         $aliases = array()
     ) {
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-
-        $result = $GLOBALS['dbi']->query(
-            $sql_query,
-            null,
-            PMA\libraries\DatabaseInterface::QUERY_UNBUFFERED
-        );
-
-        $columns_cnt = $GLOBALS['dbi']->numFields($result);
-        $columns = array();
-        for ($i = 0; $i < $columns_cnt; $i++) {
-            $col_as = $GLOBALS['dbi']->fieldName($result, $i);
-            if (!empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
-                $col_as = $aliases[$db]['tables'][$table]['columns'][$col_as];
-            }
-            $columns[$i] = stripslashes($col_as);
-        }
-
-        // fix variable names (based on
-        // https://secure.php.net/manual/language.variables.basics.php)
-        if (!preg_match(
-            '/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/',
-            $table_alias
-        )
-        ) {
-            // fix invalid characters in variable names by replacing them with
-            // underscores
-            $tablefixed = preg_replace(
-                '/[^a-zA-Z0-9_\x7f-\xff]/',
-                '_',
-                $table_alias
-            );
-
-            // variable name must not start with a number or dash...
-            if (preg_match('/^[a-zA-Z_\x7f-\xff]/', $tablefixed) === 0) {
-                $tablefixed = '_' . $tablefixed;
-            }
-        } else {
-            $tablefixed = $table;
-        }
-
-        $buffer = '';
-        $record_cnt = 0;
-        // Output table name as comment
-        $buffer .= $crlf . '/* '
-            . $this->commentString(PMA\libraries\Util::backquote($db_alias)) . '.'
-            . $this->commentString(PMA\libraries\Util::backquote($table_alias)) . ' */' . $crlf;
-        $buffer .= '$' . $tablefixed . ' = array(';
-
-        while ($record = $GLOBALS['dbi']->fetchRow($result)) {
-            $record_cnt++;
-
-            if ($record_cnt == 1) {
-                $buffer .= $crlf . '  array(';
-            } else {
-                $buffer .= ',' . $crlf . '  array(';
-            }
-
-            for ($i = 0; $i < $columns_cnt; $i++) {
-                $buffer .= var_export($columns[$i], true)
-                    . " => " . var_export($record[$i], true)
-                    . (($i + 1 >= $columns_cnt) ? '' : ',');
-            }
-
-            $buffer .= ')';
-        }
-
-        $buffer .= $crlf . ');' . $crlf;
-        if (!PMA_exportOutputHandler($buffer)) {
-            return false;
-        }
-
-        $GLOBALS['dbi']->freeResult($result);
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

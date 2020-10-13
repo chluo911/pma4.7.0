@@ -18,17 +18,19 @@ class ParseExceptionTest extends TestCase
 {
     public function testGetMessage()
     {
-        $exception = new ParseException('Error message', 42, 'foo: bar', '/var/www/app/config.yml');
-        $message = 'Error message in "/var/www/app/config.yml" at line 42 (near "foo: bar")';
-
-        $this->assertEquals($message, $exception->getMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetMessageWithUnicodeInFilename()
     {
-        $exception = new ParseException('Error message', 42, 'foo: bar', 'äöü.yml');
-        $message = 'Error message in "äöü.yml" at line 42 (near "foo: bar")';
-
-        $this->assertEquals($message, $exception->getMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

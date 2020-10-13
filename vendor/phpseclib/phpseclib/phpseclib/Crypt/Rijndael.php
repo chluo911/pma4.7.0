@@ -77,7 +77,7 @@ class Rijndael extends Base
      * @var string
      * @access private
      */
-    var $cipher_name_mcrypt = 'rijndael-128';
+    public $cipher_name_mcrypt = 'rijndael-128';
 
     /**
      * The default salt used by setPassword()
@@ -87,7 +87,7 @@ class Rijndael extends Base
      * @var string
      * @access private
      */
-    var $password_default_salt = 'phpseclib';
+    public $password_default_salt = 'phpseclib';
 
     /**
      * The Key Schedule
@@ -96,7 +96,7 @@ class Rijndael extends Base
      * @var array
      * @access private
      */
-    var $w;
+    public $w;
 
     /**
      * The Inverse Key Schedule
@@ -105,7 +105,7 @@ class Rijndael extends Base
      * @var array
      * @access private
      */
-    var $dw;
+    public $dw;
 
     /**
      * The Block Length divided by 32
@@ -118,7 +118,7 @@ class Rijndael extends Base
      *    derive this from $block_size or vice versa, but that'd mean we'd have to do multiple shift operations, so in lieu
      *    of that, we'll just precompute it once.
      */
-    var $Nb = 4;
+    public $Nb = 4;
 
     /**
      * The Key Length (in bytes)
@@ -131,7 +131,7 @@ class Rijndael extends Base
      *    derive this from $key_length or vice versa, but that'd mean we'd have to do multiple shift operations, so in lieu
      *    of that, we'll just precompute it once.
      */
-    var $key_length = 16;
+    public $key_length = 16;
 
     /**
      * The Key Length divided by 32
@@ -141,7 +141,7 @@ class Rijndael extends Base
      * @access private
      * @internal The max value is 256 / 32 = 8, the min value is 128 / 32 = 4
      */
-    var $Nk = 4;
+    public $Nk = 4;
 
     /**
      * The Number of Rounds
@@ -150,7 +150,7 @@ class Rijndael extends Base
      * @access private
      * @internal The max value is 14, the min value is 10.
      */
-    var $Nr;
+    public $Nr;
 
     /**
      * Shift offsets
@@ -158,7 +158,7 @@ class Rijndael extends Base
      * @var array
      * @access private
      */
-    var $c;
+    public $c;
 
     /**
      * Holds the last used key- and block_size information
@@ -166,7 +166,7 @@ class Rijndael extends Base
      * @var array
      * @access private
      */
-    var $kl;
+    public $kl;
 
     /**
      * Sets the key length.
@@ -188,7 +188,7 @@ class Rijndael extends Base
      * @access public
      * @param int $length
      */
-    function setKeyLength($length)
+    public function setKeyLength($length)
     {
         switch (true) {
             case $length <= 128:
@@ -219,18 +219,13 @@ class Rijndael extends Base
      * @access public
      * @param int $length
      */
-    function setBlockLength($length)
+    public function setBlockLength($length)
     {
-        $length >>= 5;
-        if ($length > 8) {
-            $length = 8;
-        } elseif ($length < 4) {
-            $length = 4;
-        }
-        $this->Nb = $length;
-        $this->block_size = $length << 2;
-        $this->changed = true;
-        $this->_setEngine();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -243,7 +238,7 @@ class Rijndael extends Base
      * @access public
      * @return bool
      */
-    function isValidEngine($engine)
+    public function isValidEngine($engine)
     {
         switch ($engine) {
             case self::ENGINE_OPENSSL:
@@ -271,7 +266,7 @@ class Rijndael extends Base
      * @param string $in
      * @return string
      */
-    function _encryptBlock($in)
+    public function _encryptBlock($in)
     {
         static $tables;
         if (empty($tables)) {
@@ -372,7 +367,7 @@ class Rijndael extends Base
      * @param string $in
      * @return string
      */
-    function _decryptBlock($in)
+    public function _decryptBlock($in)
     {
         static $invtables;
         if (empty($invtables)) {
@@ -461,7 +456,7 @@ class Rijndael extends Base
      * @see \phpseclib\Crypt\Base::_setupKey()
      * @access private
      */
-    function _setupKey()
+    public function _setupKey()
     {
         // Each number in $rcon is equal to the previous number multiplied by two in Rijndael's finite field.
         // See http://en.wikipedia.org/wiki/Finite_field_arithmetic#Multiplicative_inverse
@@ -574,7 +569,7 @@ class Rijndael extends Base
      * @access private
      * @param int $word
      */
-    function _subWord($word)
+    public function _subWord($word)
     {
         static $sbox;
         if (empty($sbox)) {
@@ -596,7 +591,7 @@ class Rijndael extends Base
      * @access private
      * @return array &$tables
      */
-    function &_getTables()
+    public function &_getTables()
     {
         static $tables;
         if (empty($tables)) {
@@ -685,7 +680,7 @@ class Rijndael extends Base
      * @access private
      * @return array &$tables
      */
-    function &_getInvTables()
+    public function &_getInvTables()
     {
         static $tables;
         if (empty($tables)) {
@@ -766,7 +761,7 @@ class Rijndael extends Base
      * @see \phpseclib\Crypt\Base::_setupInlineCrypt()
      * @access private
      */
-    function _setupInlineCrypt()
+    public function _setupInlineCrypt()
     {
         // Note: _setupInlineCrypt() will be called only if $this->changed === true
         // So here we are'nt under the same heavy timing-stress as we are in _de/encryptBlock() or de/encrypt().

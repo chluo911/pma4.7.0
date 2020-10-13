@@ -61,7 +61,10 @@ class SetStatement extends Statement
      */
     public function build()
     {
-        return 'SET ' . OptionsArray::build($this->options)
-            . ' ' . SetOperation::build($this->set);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

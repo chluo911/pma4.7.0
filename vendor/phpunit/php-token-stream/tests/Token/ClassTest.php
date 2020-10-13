@@ -27,18 +27,11 @@ class PHP_Token_ClassTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'source2.php');
-
-        foreach ($ts as $token) {
-            if ($token instanceof PHP_Token_CLASS) {
-                $this->class = $token;
-            }
-
-            if ($token instanceof PHP_Token_FUNCTION) {
-                $this->function = $token;
-                break;
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,7 +39,11 @@ class PHP_Token_ClassTest extends PHPUnit_Framework_TestCase
      */
     public function testGetClassKeywords()
     {
-        $this->assertEquals('abstract', $this->class->getKeywords());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,7 +51,11 @@ class PHP_Token_ClassTest extends PHPUnit_Framework_TestCase
      */
     public function testGetFunctionKeywords()
     {
-        $this->assertEquals('abstract,static', $this->function->getKeywords());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,24 +63,29 @@ class PHP_Token_ClassTest extends PHPUnit_Framework_TestCase
      */
     public function testGetFunctionVisibility()
     {
-        $this->assertEquals('public', $this->function->getVisibility());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIssue19()
     {
-        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'issue19.php');
-
-        foreach ($ts as $token) {
-            if ($token instanceof PHP_Token_CLASS) {
-                $this->assertFalse($token->hasInterfaces());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIssue30()
     {
-        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'issue30.php');
-        $this->assertCount(1, $ts->getClasses());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,11 +93,11 @@ class PHP_Token_ClassTest extends PHPUnit_Framework_TestCase
      */
     public function testAnonymousClassesAreHandledCorrectly()
     {
-        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'class_with_method_that_declares_anonymous_class.php');
-
-        $classes = $ts->getClasses();
-
-        $this->assertEquals(array('class_with_method_that_declares_anonymous_class'), array_keys($classes));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -100,14 +106,11 @@ class PHP_Token_ClassTest extends PHPUnit_Framework_TestCase
      */
     public function testAnonymousClassesAreHandledCorrectly2()
     {
-        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'class_with_method_that_declares_anonymous_class2.php');
-
-        $classes = $ts->getClasses();
-
-        $this->assertEquals(array('Test'), array_keys($classes));
-        $this->assertEquals(array('methodOne', 'methodTwo'), array_keys($classes['Test']['methods']));
-
-        $this->assertEmpty($ts->getFunctions());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -115,9 +118,10 @@ class PHP_Token_ClassTest extends PHPUnit_Framework_TestCase
      */
     public function testImportedFunctionsAreHandledCorrectly()
     {
-        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'classUsesNamespacedFunction.php');
-
-        $this->assertEmpty($ts->getFunctions());
-        $this->assertCount(1, $ts->getClasses());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

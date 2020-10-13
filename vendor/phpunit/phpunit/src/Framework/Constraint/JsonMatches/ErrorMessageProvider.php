@@ -52,18 +52,10 @@ class PHPUnit_Framework_Constraint_JsonMatches_ErrorMessageProvider
      */
     public static function translateTypeToPrefix($type)
     {
-        switch (strtolower($type)) {
-            case 'expected':
-                $prefix = 'Expected value JSON decode error - ';
-                break;
-            case 'actual':
-                $prefix = 'Actual value JSON decode error - ';
-                break;
-            default:
-                $prefix = '';
-                break;
-        }
-
-        return $prefix;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

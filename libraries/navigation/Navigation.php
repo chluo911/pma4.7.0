@@ -85,20 +85,16 @@ class Navigation
      * @return void
      */
     public function hideNavigationItem(
-        $itemName, $itemType, $dbName, $tableName = null
+        $itemName,
+        $itemType,
+        $dbName,
+        $tableName = null
     ) {
-        $navTable = Util::backquote($GLOBALS['cfgRelation']['db'])
-            . "." . Util::backquote($GLOBALS['cfgRelation']['navigationhiding']);
-        $sqlQuery = "INSERT INTO " . $navTable
-            . "(`username`, `item_name`, `item_type`, `db_name`, `table_name`)"
-            . " VALUES ("
-            . "'" . $GLOBALS['dbi']->escapeString($GLOBALS['cfg']['Server']['user']) . "',"
-            . "'" . $GLOBALS['dbi']->escapeString($itemName) . "',"
-            . "'" . $GLOBALS['dbi']->escapeString($itemType) . "',"
-            . "'" . $GLOBALS['dbi']->escapeString($dbName) . "',"
-            . "'" . (! empty($tableName)? $GLOBALS['dbi']->escapeString($tableName) : "" )
-            . "')";
-        PMA_queryAsControlUser($sqlQuery, false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,22 +130,16 @@ class Navigation
      * @return void
      */
     public function unhideNavigationItem(
-        $itemName, $itemType, $dbName, $tableName = null
+        $itemName,
+        $itemType,
+        $dbName,
+        $tableName = null
     ) {
-        $navTable = Util::backquote($GLOBALS['cfgRelation']['db'])
-            . "." . Util::backquote($GLOBALS['cfgRelation']['navigationhiding']);
-        $sqlQuery = "DELETE FROM " . $navTable
-            . " WHERE"
-            . " `username`='"
-            . $GLOBALS['dbi']->escapeString($GLOBALS['cfg']['Server']['user']) . "'"
-            . " AND `item_name`='" . $GLOBALS['dbi']->escapeString($itemName) . "'"
-            . " AND `item_type`='" . $GLOBALS['dbi']->escapeString($itemType) . "'"
-            . " AND `db_name`='" . $GLOBALS['dbi']->escapeString($dbName) . "'"
-            . (! empty($tableName)
-                ? " AND `table_name`='" . $GLOBALS['dbi']->escapeString($tableName) . "'"
-                : ""
-            );
-        PMA_queryAsControlUser($sqlQuery, false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -163,73 +153,10 @@ class Navigation
      */
     public function getItemUnhideDialog($dbName, $itemType = null, $tableName = null)
     {
-        $html  = '<form method="post" action="navigation.php" class="ajax">';
-        $html .= '<fieldset>';
-        $html .= URL::getHiddenInputs($dbName, $tableName);
-
-        $navTable = Util::backquote($GLOBALS['cfgRelation']['db'])
-            . "." . Util::backquote($GLOBALS['cfgRelation']['navigationhiding']);
-        $sqlQuery = "SELECT `item_name`, `item_type` FROM " . $navTable
-            . " WHERE `username`='"
-            . $GLOBALS['dbi']->escapeString($GLOBALS['cfg']['Server']['user']) . "'"
-            . " AND `db_name`='" . $GLOBALS['dbi']->escapeString($dbName) . "'"
-            . " AND `table_name`='"
-            . (! empty($tableName) ? $GLOBALS['dbi']->escapeString($tableName) : '') . "'";
-        $result = PMA_queryAsControlUser($sqlQuery, false);
-
-        $hidden = array();
-        if ($result) {
-            while ($row = $GLOBALS['dbi']->fetchArray($result)) {
-                $type = $row['item_type'];
-                if (! isset($hidden[$type])) {
-                    $hidden[$type] = array();
-                }
-                $hidden[$type][] = $row['item_name'];
-            }
-        }
-        $GLOBALS['dbi']->freeResult($result);
-
-        $typeMap = array(
-            'group' => __('Groups:'),
-            'event' => __('Events:'),
-            'function' => __('Functions:'),
-            'procedure' => __('Procedures:'),
-            'table' => __('Tables:'),
-            'view' => __('Views:'),
-        );
-        if (empty($tableName)) {
-            $first = true;
-            foreach ($typeMap as $t => $lable) {
-                if ((empty($itemType) || $itemType == $t)
-                    && isset($hidden[$t])
-                ) {
-                    $html .= (! $first ? '<br/>' : '')
-                        . '<strong>' . $lable . '</strong>';
-                    $html .= '<table width="100%"><tbody>';
-                    foreach ($hidden[$t] as $hiddenItem) {
-                        $params = array(
-                            'unhideNavItem' => true,
-                            'itemType' => $t,
-                            'itemName' => $hiddenItem,
-                            'dbName' => $dbName
-                        );
-
-                        $html .= '<tr>';
-                        $html .= '<td>' . htmlspecialchars($hiddenItem) . '</td>';
-                        $html .= '<td style="width:80px"><a href="navigation.php'
-                            . URL::getCommon($params) . '"'
-                            . ' class="unhideNavItem ajax">'
-                            . Util::getIcon('show.png', __('Show'))
-                            .  '</a></td>';
-                    }
-                    $html .= '</tbody></table>';
-                    $first = false;
-                }
-            }
-        }
-
-        $html .= '</fieldset>';
-        $html .= '</form>';
-        return $html;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

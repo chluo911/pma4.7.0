@@ -38,8 +38,11 @@ class Generic_Sniffs_Formatting_SpaceAfterCastSniff implements PHP_CodeSniffer_S
      */
     public function register()
     {
-        return PHP_CodeSniffer_Tokens::$castTokens;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -54,30 +57,10 @@ class Generic_Sniffs_Formatting_SpaceAfterCastSniff implements PHP_CodeSniffer_S
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
-            $error = 'A cast statement must be followed by a single space';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpace');
-            if ($fix === true) {
-                $phpcsFile->fixer->addContent($stackPtr, ' ');
-            }
-
-            $phpcsFile->recordMetric($stackPtr, 'Spacing after cast statement', 0);
-            return;
-        }
-
-        $phpcsFile->recordMetric($stackPtr, 'Spacing after cast statement', $tokens[($stackPtr + 1)]['length']);
-
-        if ($tokens[($stackPtr + 1)]['length'] !== 1) {
-            $error = 'A cast statement must be followed by a single space';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpace');
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

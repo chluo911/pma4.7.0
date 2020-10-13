@@ -13,9 +13,10 @@ class StatusCodeVisitorTest extends AbstractResponseVisitorTest
 {
     public function testVisitsLocation()
     {
-        $visitor = new Visitor();
-        $param = new Parameter(array('location' => 'statusCode', 'name' => 'code'));
-        $visitor->visit($this->command, $this->response, $param, $this->value);
-        $this->assertEquals(200, $this->value['code']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -55,7 +55,11 @@ if (!@function_exists('mb_strlen')) {
      */
     function mb_substrCount($string, $needle)
     {
-        return substr_count($string, $needle);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -117,11 +121,11 @@ if (!@function_exists('mb_strlen')) {
      */
     function mb_strripos($haystack, $needle, $offset = 0)
     {
-        if (('' === $haystack || false === $haystack) && $offset >= strlen($haystack)
-        ) {
-            return false;
-        }
-        return strripos($haystack, $needle, $offset);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -152,7 +156,11 @@ if (!@function_exists('mb_strlen')) {
      */
     function mb_stristr($haystack, $needle, $before_needle = false)
     {
-        return stristr($haystack, $needle, $before_needle);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -167,7 +175,11 @@ if (!@function_exists('mb_strlen')) {
      */
     function mb_strrchr($haystack, $needle)
     {
-        return strrchr($haystack, $needle);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -208,15 +220,11 @@ if (!@function_exists('mb_ord')) {
      */
     function mb_preg_strpos($pattern, $subject, $offset = 0)
     {
-        $matches = array();
-        $bFind = preg_match(
-            $pattern, $subject, $matches, PREG_OFFSET_CAPTURE, $offset
-        );
-        if (1 !== $bFind) {
-            return false;
-        }
-
-        return $matches[1][1];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -228,7 +236,11 @@ if (!@function_exists('mb_ord')) {
      */
     function mb_ord($string)
     {
-        return ord($string);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

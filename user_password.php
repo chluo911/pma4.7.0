@@ -156,7 +156,9 @@ function PMA_changePassword($password, $message, $change_password_message)
         $orig_auth_plugin = $_REQUEST['authentication_plugin'];
     } else {
         $orig_auth_plugin = PMA_getCurrentAuthenticationPlugin(
-            'change', $username, $hostname
+            'change',
+            $username,
+            $hostname
         );
     }
 
@@ -169,7 +171,7 @@ function PMA_changePassword($password, $message, $change_password_message)
         $sql_query = 'ALTER USER \'' . $username . '\'@\'' . $hostname
             . '\' IDENTIFIED WITH ' . $orig_auth_plugin . ' BY '
             . (($password == '') ? '\'\'' : '\'***\'');
-    } else if (($serverType == 'MySQL'
+    } elseif (($serverType == 'MySQL'
         && PMA_MYSQL_INT_VERSION >= 50507)
         || ($serverType == 'MariaDB'
         && PMA_MYSQL_INT_VERSION >= 50200)
@@ -187,8 +189,12 @@ function PMA_changePassword($password, $message, $change_password_message)
     }
 
     PMA_changePassUrlParamsAndSubmitQuery(
-        $username, $hostname, $password,
-        $sql_query, $hashing_function, $orig_auth_plugin
+        $username,
+        $hostname,
+        $password,
+        $sql_query,
+        $hashing_function,
+        $orig_auth_plugin
     );
 
     $auth_plugin->handlePasswordChange($password);
@@ -204,7 +210,9 @@ function PMA_changePassword($password, $message, $change_password_message)
 function PMA_changePassHashingFunction()
 {
     if (PMA_isValid(
-        $_REQUEST['authentication_plugin'], 'identical', 'mysql_old_password'
+        $_REQUEST['authentication_plugin'],
+        'identical',
+        'mysql_old_password'
     )) {
         $hashing_function = 'OLD_PASSWORD';
     } else {
@@ -226,7 +234,12 @@ function PMA_changePassHashingFunction()
  * @return void
  */
 function PMA_changePassUrlParamsAndSubmitQuery(
-    $username, $hostname, $password, $sql_query, $hashing_function, $orig_auth_plugin
+    $username,
+    $hostname,
+    $password,
+    $sql_query,
+    $hashing_function,
+    $orig_auth_plugin
 ) {
     $err_url = 'user_password.php' . URL::getCommon();
 
@@ -238,7 +251,7 @@ function PMA_changePassUrlParamsAndSubmitQuery(
             . (($password == '')
             ? '\'\''
             : '\'' . $GLOBALS['dbi']->escapeString($password) . '\'');
-    } else if ($serverType == 'MariaDB'
+    } elseif ($serverType == 'MariaDB'
         && PMA_MYSQL_INT_VERSION >= 50200
         && PMA_MYSQL_INT_VERSION < 100100
         && $orig_auth_plugin !== ''
@@ -247,7 +260,7 @@ function PMA_changePassUrlParamsAndSubmitQuery(
             // Set the hashing method used by PASSWORD()
             // to be 'mysql_native_password' type
             $GLOBALS['dbi']->tryQuery('SET old_passwords = 0;');
-        } else if ($orig_auth_plugin == 'sha256_password') {
+        } elseif ($orig_auth_plugin == 'sha256_password') {
             // Set the hashing method used by PASSWORD()
             // to be 'sha256_password' type
             $GLOBALS['dbi']->tryQuery('SET `old_passwords` = 2;');
@@ -292,7 +305,9 @@ function PMA_changePassDisplayPage($message, $sql_query)
 {
     echo '<h1>' , __('Change password') , '</h1>' , "\n\n";
     echo PMA\libraries\Util::getMessage(
-        $message, $sql_query, 'success'
+        $message,
+        $sql_query,
+        'success'
     );
     echo '<a href="index.php' , URL::getCommon()
         , ' target="_parent">' , "\n"

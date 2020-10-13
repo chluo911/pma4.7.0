@@ -22,26 +22,37 @@ class ExceptionTest extends TestCase
 {
     public function testGetPath()
     {
-        $e = new IOException('', 0, null, '/foo');
-        $this->assertEquals('/foo', $e->getPath(), 'The pass should be returned.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGeneratedMessage()
     {
-        $e = new FileNotFoundException(null, 0, null, '/foo');
-        $this->assertEquals('/foo', $e->getPath());
-        $this->assertEquals('File "/foo" could not be found.', $e->getMessage(), 'A message should be generated.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGeneratedMessageWithoutPath()
     {
-        $e = new FileNotFoundException();
-        $this->assertEquals('File could not be found.', $e->getMessage(), 'A message should be generated.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCustomMessage()
     {
-        $e = new FileNotFoundException('bar', 0, null, '/foo');
-        $this->assertEquals('bar', $e->getMessage(), 'A custom message should be possible still.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

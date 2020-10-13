@@ -19,118 +19,127 @@ class AbstractMessageTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function setUp()
     {
-        parent::setUp();
-        $this->mock = $this->getMockForAbstractClass('Guzzle\Http\Message\AbstractMessage');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function tearDown()
     {
-        $this->mock = $this->request = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetParams()
     {
-        $request = new Request('GET', 'http://example.com');
-        $this->assertInstanceOf('Guzzle\\Common\\Collection', $request->getParams());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddHeaders()
     {
-        $this->mock->setHeader('A', 'B');
-
-        $this->assertEquals($this->mock, $this->mock->addHeaders(array(
-            'X-Data' => '123'
-        )));
-
-        $this->assertTrue($this->mock->hasHeader('X-Data') !== false);
-        $this->assertTrue($this->mock->hasHeader('A') !== false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowsHeaderToSetAsHeader()
     {
-        $h = new Header('A', 'B');
-        $this->mock->setHeader('A', $h);
-        $this->assertSame($h, $this->mock->getHeader('A'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetHeader()
     {
-        $this->mock->setHeader('Test', '123');
-        $this->assertEquals('123', $this->mock->getHeader('Test'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetHeaders()
     {
-        $this->assertSame($this->mock, $this->mock->setHeaders(array('a' => 'b', 'c' => 'd')));
-        $h = $this->mock->getHeaders();
-        $this->assertArrayHasKey('a', $h->toArray());
-        $this->assertArrayHasKey('c', $h->toArray());
-        $this->assertInstanceOf('Guzzle\Http\Message\Header\HeaderInterface', $h->get('a'));
-        $this->assertInstanceOf('Guzzle\Http\Message\Header\HeaderInterface', $h->get('c'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetHeaderLinesUsesGlue()
     {
-        $this->mock->setHeaders(array('a' => 'b', 'c' => 'd'));
-        $this->mock->addHeader('a', 'e');
-        $this->mock->getHeader('a')->setGlue('!');
-        $this->assertEquals(array(
-            'a: b! e',
-            'c: d'
-        ), $this->mock->getHeaderLines());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasHeader()
     {
-        $this->assertFalse($this->mock->hasHeader('Foo'));
-        $this->mock->setHeader('Foo', 'Bar');
-        $this->assertEquals(true, $this->mock->hasHeader('Foo'));
-        $this->mock->setHeader('foo', 'yoo');
-        $this->assertEquals(true, $this->mock->hasHeader('Foo'));
-        $this->assertEquals(true, $this->mock->hasHeader('foo'));
-        $this->assertEquals(false, $this->mock->hasHeader('bar'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRemoveHeader()
     {
-        $this->mock->setHeader('Foo', 'Bar');
-        $this->assertEquals(true, $this->mock->hasHeader('Foo'));
-        $this->mock->removeHeader('Foo');
-        $this->assertFalse($this->mock->hasHeader('Foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testReturnsNullWhenHeaderIsNotFound()
     {
-        $this->assertNull($this->mock->getHeader('foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddingHeadersPreservesOriginalHeaderCase()
     {
-        $this->mock->addHeaders(array(
-            'test' => '123',
-            'Test' => 'abc'
-        ));
-        $this->mock->addHeader('test', '456');
-        $this->mock->addHeader('test', '789');
-
-        $header = $this->mock->getHeader('test');
-        $this->assertContains('123', $header->toArray());
-        $this->assertContains('456', $header->toArray());
-        $this->assertContains('789', $header->toArray());
-        $this->assertContains('abc', $header->toArray());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCanStoreEmptyHeaders()
     {
-        $this->mock->setHeader('Content-Length', 0);
-        $this->assertTrue($this->mock->hasHeader('Content-Length'));
-        $this->assertEquals(0, (string) $this->mock->getHeader('Content-Length'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCanSetCustomHeaderFactory()
     {
-        $f = new Header\HeaderFactory();
-        $this->mock->setHeaderFactory($f);
-        $this->assertSame($f, $this->readAttribute($this->mock, 'headerFactory'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

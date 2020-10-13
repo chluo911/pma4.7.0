@@ -98,10 +98,10 @@ class Factory
      */
     public function unregister(Comparator $comparator)
     {
-        foreach ($this->comparators as $key => $_comparator) {
-            if ($comparator === $_comparator) {
-                unset($this->comparators[$key]);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -6,23 +6,39 @@ use PhpSpec\ObjectBehavior;
 
 class AnyValuesTokenSpec extends ObjectBehavior
 {
-    function it_implements_TokenInterface()
+    public function it_implements_TokenInterface()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Argument\Token\TokenInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_last()
+    public function it_is_last()
     {
-        $this->shouldBeLast();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_string_representation_is_star_with_followup()
+    public function its_string_representation_is_star_with_followup()
     {
-        $this->__toString()->shouldReturn('* [, ...]');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_scores_any_argument_as_2()
+    public function it_scores_any_argument_as_2()
     {
-        $this->scoreArgument(42)->shouldReturn(2);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

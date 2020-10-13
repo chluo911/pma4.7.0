@@ -2,7 +2,11 @@
 /**
  * Some comment
  */
-class Foo{function foo(){}
+class Foo
+{
+    public function foo()
+    {
+    }
 
     /**
      * @param Baz $baz
@@ -14,7 +18,7 @@ class Foo{function foo(){}
     /**
      * @param Foobar $foobar
      */
-    static public function foobar(Foobar $foobar)
+    public static function foobar(Foobar $foobar)
     {
     }
 

@@ -176,18 +176,10 @@ class Pbxt extends StorageEngine
      */
     public function getPageDocumentation()
     {
-        $output = '<p>' . sprintf(
-            __(
-                'Documentation and further information about PBXT'
-                . ' can be found on the %sPrimeBase XT Home Page%s.'
-            ),
-            '<a href="' . PMA_linkURL('https://mariadb.com/kb/en/mariadb/about-pbxt/')
-            . '" rel="noopener noreferrer" target="_blank">',
-            '</a>'
-        )
-        . '</p>' . "\n";
-
-        return $output;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

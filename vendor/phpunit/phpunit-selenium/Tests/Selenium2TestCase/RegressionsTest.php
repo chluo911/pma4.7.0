@@ -57,9 +57,11 @@ class Extensions_Selenium2TestCaseRegressionsTest extends Tests_Selenium2TestCas
      */
     public function testDependency()
     {
-        $this->url("html/test_open.html");
-        $title = $this->title();
-        return $title;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,8 +72,10 @@ class Extensions_Selenium2TestCaseRegressionsTest extends Tests_Selenium2TestCas
      */
     public function testDependent($expectedTitle)
     {
-        $this->url("html/test_open.html");
-        $actualTitle = $this->title();
-        $this->assertSame($expectedTitle, $actualTitle);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

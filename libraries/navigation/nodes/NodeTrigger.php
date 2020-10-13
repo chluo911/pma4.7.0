@@ -37,4 +37,3 @@ class NodeTrigger extends Node
         $this->classes = 'trigger';
     }
 }
-

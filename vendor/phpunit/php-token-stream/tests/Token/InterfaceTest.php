@@ -28,17 +28,11 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'source4.php');
-        $i  = 0;
-        foreach ($ts as $token) {
-            if ($token instanceof PHP_Token_CLASS) {
-                $this->class = $token;
-            }
-            elseif ($token instanceof PHP_Token_INTERFACE) {
-                $this->interfaces[$i] = $token;
-                $i++;
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,9 +40,11 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testGetName()
     {
-        $this->assertEquals(
-            'iTemplate', $this->interfaces[0]->getName()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,9 +52,11 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testGetParentNotExists()
     {
-        $this->assertFalse(
-            $this->interfaces[0]->getParent()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,9 +64,11 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testHasParentNotExists()
     {
-        $this->assertFalse(
-            $this->interfaces[0]->hasParent()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -76,9 +76,11 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testGetParentExists()
     {
-        $this->assertEquals(
-            'a', $this->interfaces[2]->getParent()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,9 +88,11 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testHasParentExists()
     {
-        $this->assertTrue(
-            $this->interfaces[2]->hasParent()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,10 +100,11 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testGetInterfacesExists()
     {
-        $this->assertEquals(
-            array('b'),
-            $this->class->getInterfaces()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,85 +112,65 @@ class PHP_Token_InterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testHasInterfacesExists()
     {
-        $this->assertTrue(
-            $this->class->hasInterfaces()
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
     /**
      * @covers PHP_Token_INTERFACE::getPackage
      */
-    public function testGetPackageNamespace() {
-        $tokenStream = new PHP_Token_Stream(TEST_FILES_PATH . 'classInNamespace.php');
-        foreach($tokenStream as $token) {
-            if($token instanceOf PHP_Token_INTERFACE) {
-                $package = $token->getPackage();
-                $this->assertSame('Foo\\Bar', $package['namespace']);
-            }
-        }
+    public function testGetPackageNamespace()
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 
-    public function provideFilesWithClassesWithinMultipleNamespaces() {
-        return array(
-            array(TEST_FILES_PATH . 'multipleNamespacesWithOneClassUsingBraces.php'),
-            array(TEST_FILES_PATH . 'multipleNamespacesWithOneClassUsingNonBraceSyntax.php'),
-        );
+    public function provideFilesWithClassesWithinMultipleNamespaces()
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
      * @dataProvider provideFilesWithClassesWithinMultipleNamespaces
      * @covers PHP_Token_INTERFACE::getPackage
      */
-    public function testGetPackageNamespaceForFileWithMultipleNamespaces($filepath) {
-        $tokenStream = new PHP_Token_Stream($filepath);
-        $firstClassFound = false;
-        foreach($tokenStream as $token) {
-            if($firstClassFound === false && $token instanceOf PHP_Token_INTERFACE) {
-                $package = $token->getPackage();
-                $this->assertSame('TestClassInBar', $token->getName());
-                $this->assertSame('Foo\\Bar', $package['namespace']);
-                $firstClassFound = true;
-                continue;
-            }
-            // Secound class
-            if($token instanceOf PHP_Token_INTERFACE) {
-                $package = $token->getPackage();
-                $this->assertSame('TestClassInBaz', $token->getName());
-                $this->assertSame('Foo\\Baz', $package['namespace']);
-                return;
-            }
-        }
-        $this->fail("Seachring for 2 classes failed");
+    public function testGetPackageNamespaceForFileWithMultipleNamespaces($filepath)
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    public function testGetPackageNamespaceIsEmptyForInterfacesThatAreNotWithinNamespaces() {
-        foreach($this->interfaces as $token) {
-            $package = $token->getPackage();
-            $this->assertSame("", $package['namespace']);
-        }
+    public function testGetPackageNamespaceIsEmptyForInterfacesThatAreNotWithinNamespaces()
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
      * @covers PHP_Token_INTERFACE::getPackage
      */
-    public function testGetPackageNamespaceWhenExtentingFromNamespaceClass() {
-        $tokenStream = new PHP_Token_Stream(TEST_FILES_PATH . 'classExtendsNamespacedClass.php');
-        $firstClassFound = false;
-        foreach($tokenStream as $token) {
-            if($firstClassFound === false && $token instanceOf PHP_Token_INTERFACE) {
-                $package = $token->getPackage();
-                $this->assertSame('Baz', $token->getName());
-                $this->assertSame('Foo\\Bar', $package['namespace']);
-                $firstClassFound = true;
-                continue;
-            }
-            if($token instanceOf PHP_Token_INTERFACE) {
-                $package = $token->getPackage();
-                $this->assertSame('Extender', $token->getName());
-                $this->assertSame('Other\\Space', $package['namespace']);
-                return;
-            }
-        }
-        $this->fail("Searching for 2 classes failed");
+    public function testGetPackageNamespaceWhenExtentingFromNamespaceClass()
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -31,23 +31,11 @@ trait LockableTrait
      */
     private function lock($name = null, $blocking = false)
     {
-        if (!class_exists(LockHandler::class)) {
-            throw new RuntimeException('To enable the locking feature you must install the symfony/filesystem component.');
-        }
-
-        if (null !== $this->lockHandler) {
-            throw new LogicException('A lock is already in place.');
-        }
-
-        $this->lockHandler = new LockHandler($name ?: $this->getName());
-
-        if (!$this->lockHandler->lock($blocking)) {
-            $this->lockHandler = null;
-
-            return false;
-        }
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,9 +43,10 @@ trait LockableTrait
      */
     private function release()
     {
-        if ($this->lockHandler) {
-            $this->lockHandler->release();
-            $this->lockHandler = null;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

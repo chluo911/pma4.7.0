@@ -23,56 +23,56 @@ class File
      * @var string the temporary file name
      * @access protected
      */
-    var $_name = null;
+    public $_name = null;
 
     /**
      * @var string the content
      * @access protected
      */
-    var $_content = null;
+    public $_content = null;
 
     /**
      * @var Message|null the error message
      * @access protected
      */
-    var $_error_message = null;
+    public $_error_message = null;
 
     /**
      * @var bool whether the file is temporary or not
      * @access protected
      */
-    var $_is_temp = false;
+    public $_is_temp = false;
 
     /**
      * @var string type of compression
      * @access protected
      */
-    var $_compression = null;
+    public $_compression = null;
 
     /**
      * @var integer
      */
-    var $_offset = 0;
+    public $_offset = 0;
 
     /**
      * @var integer size of chunk to read with every step
      */
-    var $_chunk_size = 32768;
+    public $_chunk_size = 32768;
 
     /**
      * @var resource file handle
      */
-    var $_handle = null;
+    public $_handle = null;
 
     /**
      * @var boolean whether to decompress content before returning
      */
-    var $_decompress = false;
+    public $_decompress = false;
 
     /**
      * @var string charset of file
      */
-    var $_charset = null;
+    public $_charset = null;
 
     /**
      * constructor
@@ -96,9 +96,19 @@ class File
      */
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         $this->cleanUp();
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     /**
@@ -342,17 +352,15 @@ class File
      * @static
      */
     public function fetchUploadedFromTblChangeRequestMultiple(
-        $file, $rownumber, $key
+        $file,
+        $rownumber,
+        $key
     ) {
-        $new_file = array(
-            'name' => $file['name']['multi_edit'][$rownumber][$key],
-            'type' => $file['type']['multi_edit'][$rownumber][$key],
-            'size' => $file['size']['multi_edit'][$rownumber][$key],
-            'tmp_name' => $file['tmp_name']['multi_edit'][$rownumber][$key],
-            'error' => $file['error']['multi_edit'][$rownumber][$key],
-        );
-
-        return $new_file;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -580,10 +588,11 @@ class File
      */
     public function getHandle()
     {
-        if (null === $this->_handle) {
-            $this->open();
-        }
-        return $this->_handle;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -595,7 +604,11 @@ class File
      */
     public function setHandle($handle)
     {
-        $this->_handle = $handle;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 
@@ -653,6 +666,7 @@ class File
                 $this->errorUnsupported();
                 return false;
             }
+            // no break
         case 'none':
             $this->_handle = @fopen($this->getName(), 'r');
             break;
@@ -745,7 +759,11 @@ class File
      */
     public function getCharset()
     {
-        return $this->_charset;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -757,7 +775,11 @@ class File
      */
     public function setCharset($charset)
     {
-        $this->_charset = $charset;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -782,7 +804,11 @@ class File
      */
     public function getOffset()
     {
-        return $this->_offset;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -792,7 +818,11 @@ class File
      */
     public function getChunkSize()
     {
-        return $this->_chunk_size;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -804,7 +834,11 @@ class File
      */
     public function setChunkSize($chunk_size)
     {
-        $this->_chunk_size = (int) $chunk_size;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -814,6 +848,10 @@ class File
      */
     public function getContentLength()
     {
-        return strlen($this->_content);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

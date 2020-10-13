@@ -83,27 +83,11 @@ class Blame implements \Countable
      */
     public function getGroupedLines()
     {
-        $result = array();
-        $commit = null;
-        $current = array();
-
-        foreach ($this->getLines() as $lineNumber => $line) {
-            if ($commit !== $line->getCommit()) {
-                if (count($current)) {
-                    $result[] = array($commit, $current);
-                }
-                $commit = $line->getCommit();
-                $current = array();
-            }
-
-            $current[$lineNumber] = $line;
-        }
-
-        if (count($current)) {
-            $result[] = array($commit, $current);
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -140,6 +124,10 @@ class Blame implements \Countable
      */
     public function count()
     {
-        return count($this->getLines());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

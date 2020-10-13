@@ -4,51 +4,46 @@ class Framework_MockObject_Invocation_StaticTest extends PHPUnit_Framework_TestC
 {
     public function testConstructorRequiresClassAndMethodAndParameters()
     {
-        new PHPUnit_Framework_MockObject_Invocation_Static('FooClass', 'FooMethod', array('an_argument'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowToGetClassNameSetInConstructor()
     {
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Static('FooClass', 'FooMethod', array('an_argument'));
-
-        $this->assertSame('FooClass', $invocation->className);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowToGetMethodNameSetInConstructor()
     {
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Static('FooClass', 'FooMethod', array('an_argument'));
-
-        $this->assertSame('FooMethod', $invocation->methodName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowToGetMethodParametersSetInConstructor()
     {
-        $expectedParameters = array(
-          'foo', 5, array('a', 'b'), new StdClass, null, false
-        );
-
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Static(
-            'FooClass',
-            'FooMethod',
-            $expectedParameters
-        );
-
-        $this->assertSame($expectedParameters, $invocation->parameters);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructorAllowToSetFlagCloneObjectsInParameters()
     {
-        $parameters = array(new StdClass);
-        $cloneObjects = true;
-
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Static(
-            'FooClass',
-            'FooMethod',
-            $parameters,
-            $cloneObjects
-        );
-
-        $this->assertEquals($parameters, $invocation->parameters);
-        $this->assertNotSame($parameters, $invocation->parameters);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

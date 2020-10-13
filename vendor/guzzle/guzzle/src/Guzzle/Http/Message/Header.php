@@ -64,7 +64,11 @@ class Header implements HeaderInterface
 
     public function getGlue()
     {
-        return $this->glue;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,7 +100,11 @@ class Header implements HeaderInterface
 
     public function hasValue($searchValue)
     {
-        return in_array($searchValue, $this->toArray());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function removeValue($searchValue)
@@ -115,12 +123,20 @@ class Header implements HeaderInterface
 
     public function count()
     {
-        return count($this->toArray());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->toArray());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function parseParams()
@@ -152,8 +168,11 @@ class Header implements HeaderInterface
      */
     public function hasExactHeader($header)
     {
-        Version::warn(__METHOD__ . ' is deprecated');
-        return $this->header == $header;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -162,8 +181,11 @@ class Header implements HeaderInterface
      */
     public function raw()
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use toArray()');
-        return $this->toArray();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -175,8 +197,10 @@ class Header implements HeaderInterface
      */
     protected function trimHeader($str)
     {
-        static $trimmed = "\"'  \n\t";
-
-        return trim($str, $trimmed);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

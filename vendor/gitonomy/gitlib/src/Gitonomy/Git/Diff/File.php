@@ -91,7 +91,11 @@ class File
      */
     public function isCreation()
     {
-        return null === $this->oldName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -101,7 +105,11 @@ class File
      */
     public function isModification()
     {
-        return null !== $this->oldName && null !== $this->newName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -113,7 +121,11 @@ class File
      */
     public function isRename()
     {
-        return $this->isModification() && $this->oldName !== $this->newName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -121,7 +133,11 @@ class File
      */
     public function isChangeMode()
     {
-        return $this->isModification() && $this->oldMode !== $this->newMode;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -131,7 +147,11 @@ class File
      */
     public function isDeletion()
     {
-        return null === $this->newName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,7 +161,11 @@ class File
      */
     public function isDelete()
     {
-        return null === $this->newName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -149,12 +173,11 @@ class File
      */
     public function getAdditions()
     {
-        $result = 0;
-        foreach ($this->changes as $change) {
-            $result += $change->getCount(FileChange::LINE_ADD);
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -162,22 +185,29 @@ class File
      */
     public function getDeletions()
     {
-        $result = 0;
-        foreach ($this->changes as $change) {
-            $result += $change->getCount(FileChange::LINE_REMOVE);
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getOldName()
     {
-        return $this->oldName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getNewName()
     {
-        return $this->newName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getName()
@@ -191,69 +221,92 @@ class File
 
     public function getOldMode()
     {
-        return $this->oldMode;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getNewMode()
     {
-        return $this->newMode;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getOldIndex()
     {
-        return $this->oldIndex;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getNewIndex()
     {
-        return $this->newIndex;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isBinary()
     {
-        return $this->isBinary;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getChanges()
     {
-        return $this->changes;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function toArray()
     {
-        return array(
-            'old_name' => $this->oldName,
-            'new_name' => $this->newName,
-            'old_mode' => $this->oldMode,
-            'new_mode' => $this->newMode,
-            'old_index' => $this->oldIndex,
-            'new_index' => $this->newIndex,
-            'is_binary' => $this->isBinary,
-            'changes' => array_map(function (FileChange $change) {
-                return $change->toArray();
-            }, $this->changes),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function fromArray(array $array)
     {
-        $file = new self($array['old_name'], $array['new_name'], $array['old_mode'], $array['new_mode'], $array['old_index'], $array['new_index'], $array['is_binary']);
-
-        foreach ($array['changes'] as $change) {
-            $file->addChange(FileChange::fromArray($change));
-        }
-
-        return $file;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getAnchor()
     {
-        return substr($this->newIndex, 0, 12);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getRepository()
     {
-        return $this->repository;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setRepository(Repository $repository)
@@ -263,27 +316,19 @@ class File
 
     public function getOldBlob()
     {
-        if (null === $this->repository) {
-            throw new \RuntimeException('Repository is missing to return Blob object.');
-        }
-
-        if ($this->isCreation()) {
-            throw new \LogicException('Can\'t return old Blob on a creation');
-        }
-
-        return $this->repository->getBlob($this->oldIndex);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getNewBlob()
     {
-        if (null === $this->repository) {
-            throw new \RuntimeException('Repository is missing to return Blob object.');
-        }
-
-        if ($this->isDeletion()) {
-            throw new \LogicException('Can\'t return new Blob on a deletion');
-        }
-
-        return $this->repository->getBlob($this->newIndex);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

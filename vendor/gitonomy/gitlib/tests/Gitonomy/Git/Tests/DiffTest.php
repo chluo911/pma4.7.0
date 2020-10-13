@@ -25,10 +25,11 @@ class DiffTest extends AbstractTest
      */
     public function testSerialization($repository)
     {
-        $data = $repository->getCommit(self::CREATE_COMMIT)->getDiff()->toArray();
-        $diff = Diff::fromArray($data);
-
-        $this->verifyCreateCommitDiff($diff);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -36,25 +37,20 @@ class DiffTest extends AbstractTest
      */
     public function testGetFiles_Addition($repository)
     {
-        $diff = $repository->getCommit(self::CREATE_COMMIT)->getDiff();
-        $this->verifyCreateCommitDiff($diff);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function verifyCreateCommitDiff(Diff $diff)
     {
-        $files = $diff->getFiles();
-
-        $this->assertEquals(2, count($files), '1 file in diff');
-
-        $this->assertTrue($files[0]->isCreation(), 'script_A.php created');
-
-        $this->assertEquals(null,           $files[0]->getOldName(), 'First file name is a new file');
-        $this->assertEquals('script_A.php', $files[0]->getNewName(), 'First file name is script_A.php');
-        $this->assertEquals(null,           $files[0]->getOldMode(), 'First file mode is a new file');
-        $this->assertEquals('100644',       $files[0]->getNewMode(), 'First file mode is correct');
-
-        $this->assertEquals(1, $files[0]->getAdditions(), '1 line added');
-        $this->assertEquals(0,  $files[0]->getDeletions(), '0 lines deleted');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,20 +58,11 @@ class DiffTest extends AbstractTest
      */
     public function testGetFiles_Modification($repository)
     {
-        $files = $repository->getCommit(self::BEFORE_LONGFILE_COMMIT)->getDiff()->getFiles();
-
-        $this->assertEquals(1, count($files), '1 files in diff');
-
-        $this->assertTrue($files[0]->isModification(), 'image.jpg modified');
-
-        $this->assertEquals('image.jpg', $files[0]->getOldName(), 'Second file name is image.jpg');
-        $this->assertEquals('image.jpg', $files[0]->getNewName(), 'Second file name is image.jpg');
-        $this->assertEquals('100644',    $files[0]->getOldMode(), 'Second file mode is a new file');
-        $this->assertEquals('100644',    $files[0]->getNewMode(), 'Second file mode is correct');
-
-        $this->assertTrue($files[0]->isBinary(), 'binary file');
-        $this->assertEquals(0, $files[0]->getAdditions(), '0 lines added');
-        $this->assertEquals(0, $files[0]->getDeletions(), '0 lines deleted');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -83,13 +70,11 @@ class DiffTest extends AbstractTest
      */
     public function testGetFiles_Deletion($repository)
     {
-        $files = $repository->getCommit(self::DELETE_COMMIT)->getDiff()->getFiles();
-
-        $this->assertEquals(1, count($files), '1 files modified');
-
-        $this->assertTrue($files[0]->isDeletion(), 'File deletion');
-        $this->assertEquals('script_B.php', $files[0]->getOldName(), 'verify old filename');
-        $this->assertEquals(1, $files[0]->getDeletions(), '1 line deleted');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -97,15 +82,11 @@ class DiffTest extends AbstractTest
      */
     public function testGetFiles_Rename($repository)
     {
-        $files = $repository->getCommit(self::RENAME_COMMIT)->getDiff()->getFiles();
-
-        $this->assertEquals(1, count($files), '1 files modified');
-
-        $this->assertTrue($files[0]->isModification());
-        $this->assertTrue($files[0]->isRename());
-        $this->assertFalse($files[0]->isDeletion());
-        $this->assertFalse($files[0]->isCreation());
-        $this->assertFalse($files[0]->isChangeMode());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -113,15 +94,11 @@ class DiffTest extends AbstractTest
      */
     public function testGetFiles_Changemode($repository)
     {
-        $files = $repository->getCommit(self::CHANGEMODE_COMMIT)->getDiff()->getFiles();
-
-        $this->assertEquals(1, count($files), '1 files modified');
-
-        $this->assertTrue($files[0]->isModification());
-        $this->assertTrue($files[0]->isChangeMode());
-        $this->assertFalse($files[0]->isDeletion());
-        $this->assertFalse($files[0]->isCreation());
-        $this->assertFalse($files[0]->isRename());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -129,14 +106,10 @@ class DiffTest extends AbstractTest
      */
     public function testDiffRangeParse($repository)
     {
-        $files = $repository->getCommit(self::CREATE_COMMIT)->getDiff()->getFiles();
-
-        $changes = $files[0]->getChanges();
-
-        $this->assertEquals(0, $changes[0]->getRangeOldStart());
-        $this->assertEquals(0, $changes[0]->getRangeOldCount());
-
-        $this->assertEquals(1, $changes[0]->getRangeNewStart());
-        $this->assertEquals(0, $changes[0]->getRangeNewCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

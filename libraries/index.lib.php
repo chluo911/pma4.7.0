@@ -22,7 +22,8 @@ function PMA_getHtmlForDisplayIndexes()
     $html_output .= '<fieldset class="tblFooters print_ignore" style="text-align: '
         . 'left;"><form action="tbl_indexes.php" method="post">';
     $html_output .= URL::getHiddenInputs(
-        $GLOBALS['db'], $GLOBALS['table']
+        $GLOBALS['db'],
+        $GLOBALS['table']
     );
     $html_output .= sprintf(
         __('Create an index on &nbsp;%s&nbsp;columns'),

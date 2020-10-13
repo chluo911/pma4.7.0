@@ -89,7 +89,8 @@ class ClassMirror
     {
         if (true === $class->isFinal()) {
             throw new ClassMirrorException(sprintf(
-                'Could not reflect class %s as it is marked final.', $class->getName()
+                'Could not reflect class %s as it is marked final.',
+                $class->getName()
             ), $class);
         }
 

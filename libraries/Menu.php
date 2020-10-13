@@ -101,7 +101,7 @@ class Menu
             $tabs = $this->_getTableTabs();
             $url_params['table'] = $this->_table;
             $level = 'table';
-        } else if (strlen($this->_db) > 0) {
+        } elseif (strlen($this->_db) > 0) {
             $tabs = $this->_getDbTabs();
             $level = 'db';
         } else {
@@ -201,7 +201,8 @@ class Menu
         $retval .= sprintf(
             $item,
             Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabServer'], 'server'
+                $GLOBALS['cfg']['DefaultTabServer'],
+                'server'
             ),
             URL::getCommon(),
             htmlspecialchars($server_info),
@@ -220,7 +221,8 @@ class Menu
             $retval .= sprintf(
                 $item,
                 Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+                    $GLOBALS['cfg']['DefaultTabDatabase'],
+                    'database'
                 ),
                 URL::getCommon(array('db' => $this->_db)),
                 htmlspecialchars($this->_db),
@@ -245,7 +247,8 @@ class Menu
                 $retval .= sprintf(
                     $item,
                     Util::getScriptNameForOption(
-                        $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        $GLOBALS['cfg']['DefaultTabTable'],
+                        'table'
                     ),
                     URL::getCommon(
                         array(
@@ -639,4 +642,3 @@ class Menu
         return $this;
     }
 }
-

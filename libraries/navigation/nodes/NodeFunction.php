@@ -49,4 +49,3 @@ class NodeFunction extends NodeDatabaseChild
         return 'function';
     }
 }
-

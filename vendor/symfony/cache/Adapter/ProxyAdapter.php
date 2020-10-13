@@ -28,26 +28,11 @@ class ProxyAdapter implements AdapterInterface
 
     public function __construct(CacheItemPoolInterface $pool, $namespace = '', $defaultLifetime = 0)
     {
-        $this->pool = $pool;
-        $this->poolHash = $poolHash = spl_object_hash($pool);
-        $this->namespace = '' === $namespace ? '' : $this->getId($namespace);
-        $this->namespaceLen = strlen($namespace);
-        $this->createCacheItem = \Closure::bind(
-            function ($key, $innerItem) use ($defaultLifetime, $poolHash) {
-                $item = new CacheItem();
-                $item->key = $key;
-                $item->value = $innerItem->get();
-                $item->isHit = $innerItem->isHit();
-                $item->defaultLifetime = $defaultLifetime;
-                $item->innerItem = $innerItem;
-                $item->poolHash = $poolHash;
-                $innerItem->set(null);
-
-                return $item;
-            },
-            null,
-            CacheItem::class
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,7 +73,11 @@ class ProxyAdapter implements AdapterInterface
      */
     public function clear()
     {
-        return $this->pool->clear();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

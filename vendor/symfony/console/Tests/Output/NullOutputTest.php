@@ -21,68 +21,82 @@ class NullOutputTest extends TestCase
 {
     public function testConstructor()
     {
-        $output = new NullOutput();
-
-        ob_start();
-        $output->write('foo');
-        $buffer = ob_get_clean();
-
-        $this->assertSame('', $buffer, '->write() does nothing (at least nothing is printed)');
-        $this->assertFalse($output->isDecorated(), '->isDecorated() returns false');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testVerbosity()
     {
-        $output = new NullOutput();
-        $this->assertSame(OutputInterface::VERBOSITY_QUIET, $output->getVerbosity(), '->getVerbosity() returns VERBOSITY_QUIET for NullOutput by default');
-
-        $output->setVerbosity(OutputInterface::VERBOSITY_VERBOSE);
-        $this->assertSame(OutputInterface::VERBOSITY_QUIET, $output->getVerbosity(), '->getVerbosity() always returns VERBOSITY_QUIET for NullOutput');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetFormatter()
     {
-        $output = new NullOutput();
-        $outputFormatter = new OutputFormatter();
-        $output->setFormatter($outputFormatter);
-        $this->assertNotSame($outputFormatter, $output->getFormatter());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetVerbosity()
     {
-        $output = new NullOutput();
-        $output->setVerbosity(Output::VERBOSITY_NORMAL);
-        $this->assertEquals(Output::VERBOSITY_QUIET, $output->getVerbosity());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetDecorated()
     {
-        $output = new NullOutput();
-        $output->setDecorated(true);
-        $this->assertFalse($output->isDecorated());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsQuiet()
     {
-        $output = new NullOutput();
-        $this->assertTrue($output->isQuiet());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsVerbose()
     {
-        $output = new NullOutput();
-        $this->assertFalse($output->isVerbose());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsVeryVerbose()
     {
-        $output = new NullOutput();
-        $this->assertFalse($output->isVeryVerbose());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsDebug()
     {
-        $output = new NullOutput();
-        $this->assertFalse($output->isDebug());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

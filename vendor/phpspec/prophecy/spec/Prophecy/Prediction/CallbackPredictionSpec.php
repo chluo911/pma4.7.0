@@ -11,24 +11,30 @@ use RuntimeException;
 
 class CallbackPredictionSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith('get_class');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_prediction()
+    public function it_is_prediction()
     {
-        $this->shouldHaveType('Prophecy\Prediction\PredictionInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_proxies_call_to_callback(ObjectProphecy $object, MethodProphecy $method, Call $call)
+    public function it_proxies_call_to_callback(ObjectProphecy $object, MethodProphecy $method, Call $call)
     {
-        $returnFirstCallCallback = function ($calls, $object, $method) {
-            throw new RuntimeException;
-        };
-
-        $this->beConstructedWith($returnFirstCallCallback);
-
-        $this->shouldThrow('RuntimeException')->duringCheck(array($call), $object, $method);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

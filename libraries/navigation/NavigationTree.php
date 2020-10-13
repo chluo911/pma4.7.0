@@ -1514,7 +1514,7 @@ class NavigationTree
      *
      * @return int See strnatcmp() and strcmp()
      */
-    static public function sortNode($a, $b)
+    public static function sortNode($a, $b)
     {
         if ($a->isNew) {
             return -1;

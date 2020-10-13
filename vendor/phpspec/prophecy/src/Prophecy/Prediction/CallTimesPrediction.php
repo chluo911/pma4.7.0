@@ -38,8 +38,11 @@ class CallTimesPrediction implements PredictionInterface
      */
     public function __construct($times, StringUtil $util = null)
     {
-        $this->times = intval($times);
-        $this->util  = $util ?: new StringUtil;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,7 +70,6 @@ class CallTimesPrediction implements PredictionInterface
                 "Expected exactly %d calls that match:\n".
                 "  %s->%s(%s)\n".
                 "but %d were made:\n%s",
-
                 $this->times,
                 get_class($object->reveal()),
                 $method->getMethodName(),
@@ -81,7 +83,6 @@ class CallTimesPrediction implements PredictionInterface
                 "  %s->%s(%s)\n".
                 "but none were made.\n".
                 "Recorded `%s(...)` calls:\n%s",
-
                 $this->times,
                 get_class($object->reveal()),
                 $method->getMethodName(),
@@ -94,7 +95,6 @@ class CallTimesPrediction implements PredictionInterface
                 "Expected exactly %d calls that match:\n".
                 "  %s->%s(%s)\n".
                 "but none were made.",
-
                 $this->times,
                 get_class($object->reveal()),
                 $method->getMethodName(),

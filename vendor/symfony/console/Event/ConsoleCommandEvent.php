@@ -37,7 +37,11 @@ class ConsoleCommandEvent extends ConsoleEvent
      */
     public function disableCommand()
     {
-        return $this->commandShouldRun = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,7 +51,11 @@ class ConsoleCommandEvent extends ConsoleEvent
      */
     public function enableCommand()
     {
-        return $this->commandShouldRun = true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -54,7 +54,9 @@ class WindowsPipes extends AbstractPipes
             $tmpCheck = false;
             $tmpDir = sys_get_temp_dir();
             $lastError = 'unknown reason';
-            set_error_handler(function ($type, $msg) use (&$lastError) { $lastError = $msg; });
+            set_error_handler(function ($type, $msg) use (&$lastError) {
+                $lastError = $msg;
+            });
             for ($i = 0;; ++$i) {
                 foreach ($pipes as $pipe => $name) {
                     $file = sprintf('%s\\sf_proc_%02X.%s', $tmpDir, $i, $name);
@@ -88,10 +90,20 @@ class WindowsPipes extends AbstractPipes
 
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         $this->close();
         $this->removeFiles();
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     /**
@@ -192,11 +204,10 @@ class WindowsPipes extends AbstractPipes
      */
     private function removeFiles()
     {
-        foreach ($this->files as $filename) {
-            if (file_exists($filename)) {
-                @unlink($filename);
-            }
-        }
-        $this->files = array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

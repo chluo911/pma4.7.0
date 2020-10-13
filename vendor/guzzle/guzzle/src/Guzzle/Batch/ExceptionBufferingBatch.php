@@ -15,19 +15,11 @@ class ExceptionBufferingBatch extends AbstractBatchDecorator
 
     public function flush()
     {
-        $items = array();
-
-        while (!$this->decoratedBatch->isEmpty()) {
-            try {
-                $transferredItems = $this->decoratedBatch->flush();
-            } catch (BatchTransferException $e) {
-                $this->exceptions[] = $e;
-                $transferredItems = $e->getTransferredItems();
-            }
-            $items = array_merge($items, $transferredItems);
-        }
-
-        return $items;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,6 +37,10 @@ class ExceptionBufferingBatch extends AbstractBatchDecorator
      */
     public function clearExceptions()
     {
-        $this->exceptions = array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

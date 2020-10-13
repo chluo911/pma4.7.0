@@ -18,8 +18,11 @@ class EnumNodeTest extends TestCase
 {
     public function testFinalizeValue()
     {
-        $node = new EnumNode('foo', null, array('foo', 'bar'));
-        $this->assertSame('foo', $node->finalize('foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -28,19 +31,29 @@ class EnumNodeTest extends TestCase
      */
     public function testConstructionWithNoValues()
     {
-        new EnumNode('foo', null, array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructionWithOneValue()
     {
-        $node = new EnumNode('foo', null, array('foo'));
-        $this->assertSame('foo', $node->finalize('foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructionWithOneDistinctValue()
     {
-        $node = new EnumNode('foo', null, array('foo', 'foo'));
-        $this->assertSame('foo', $node->finalize('foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,7 +62,10 @@ class EnumNodeTest extends TestCase
      */
     public function testFinalizeWithInvalidValue()
     {
-        $node = new EnumNode('foo', null, array('foo', 'bar'));
-        $node->finalize('foobar');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

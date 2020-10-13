@@ -32,8 +32,11 @@ class FileExistenceResource implements SelfCheckingResourceInterface, \Serializa
      */
     public function __construct($resource)
     {
-        $this->resource = (string) $resource;
-        $this->exists = file_exists($resource);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,7 +52,11 @@ class FileExistenceResource implements SelfCheckingResourceInterface, \Serializa
      */
     public function getResource()
     {
-        return $this->resource;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,7 +64,11 @@ class FileExistenceResource implements SelfCheckingResourceInterface, \Serializa
      */
     public function isFresh($timestamp)
     {
-        return file_exists($this->resource) === $this->exists;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,7 +76,11 @@ class FileExistenceResource implements SelfCheckingResourceInterface, \Serializa
      */
     public function serialize()
     {
-        return serialize(array($this->resource, $this->exists));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,6 +88,10 @@ class FileExistenceResource implements SelfCheckingResourceInterface, \Serializa
      */
     public function unserialize($serialized)
     {
-        list($this->resource, $this->exists) = unserialize($serialized);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

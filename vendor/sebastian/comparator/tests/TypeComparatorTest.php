@@ -22,45 +22,38 @@ class TypeComparatorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->comparator = new TypeComparator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function acceptsSucceedsProvider()
     {
-        return array(
-          array(true, 1),
-          array(false, array(1)),
-          array(null, new stdClass),
-          array(1.0, 5),
-          array("", "")
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsSucceedsProvider()
     {
-        return array(
-          array(true, true),
-          array(true, false),
-          array(false, false),
-          array(null, null),
-          array(new stdClass, new stdClass),
-          array(0, 0),
-          array(1.0, 2.0),
-          array("hello", "world"),
-          array("", ""),
-          array(array(), array(1,2,3))
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsFailsProvider()
     {
-        return array(
-          array(true, null),
-          array(null, false),
-          array(1.0, 0),
-          array(new stdClass, array()),
-          array("1", 1)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,9 +62,11 @@ class TypeComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAcceptsSucceeds($expected, $actual)
     {
-        $this->assertTrue(
-          $this->comparator->accepts($expected, $actual)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -80,16 +75,11 @@ class TypeComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsSucceeds($expected, $actual)
     {
-        $exception = null;
-
-        try {
-            $this->comparator->assertEquals($expected, $actual);
-        }
-
-        catch (ComparisonFailure $exception) {
-        }
-
-        $this->assertNull($exception, 'Unexpected ComparisonFailure');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,7 +88,10 @@ class TypeComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsFails($expected, $actual)
     {
-        $this->setExpectedException('SebastianBergmann\\Comparator\\ComparisonFailure', 'does not match expected type');
-        $this->comparator->assertEquals($expected, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -35,7 +35,11 @@ abstract class Reference extends Revision
 
     public function delete()
     {
-        $this->repository->getReferences()->delete($this->getFullname());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getCommitHash()
@@ -65,6 +69,10 @@ abstract class Reference extends Revision
 
     public function getLastModification($path = null)
     {
-        return $this->getCommit()->getLastModification($path);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

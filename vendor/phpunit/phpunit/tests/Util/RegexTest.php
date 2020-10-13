@@ -15,21 +15,20 @@ class Util_RegexTest extends PHPUnit_Framework_TestCase
 {
     public function validRegexpProvider()
     {
-        return array(
-          array('#valid regexp#', 'valid regexp', 1),
-          array(';val.*xp;', 'valid regexp', 1),
-          array('/val.*xp/i', 'VALID REGEXP', 1),
-          array('/a val.*p/','valid regexp', 0),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function invalidRegexpProvider()
     {
-        return array(
-          array('valid regexp', 'valid regexp'),
-          array(';val.*xp', 'valid regexp'),
-          array('val.*xp/i', 'VALID REGEXP'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,7 +37,11 @@ class Util_RegexTest extends PHPUnit_Framework_TestCase
      */
     public function testValidRegex($pattern, $subject, $return)
     {
-        $this->assertEquals($return, PHPUnit_Util_Regex::pregMatchSafe($pattern, $subject));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,6 +50,10 @@ class Util_RegexTest extends PHPUnit_Framework_TestCase
      */
     public function testInvalidRegex($pattern, $subject)
     {
-        $this->assertFalse(PHPUnit_Util_Regex::pregMatchSafe($pattern, $subject));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

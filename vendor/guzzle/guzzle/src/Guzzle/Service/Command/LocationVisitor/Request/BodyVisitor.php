@@ -20,14 +20,11 @@ class BodyVisitor extends AbstractRequestVisitor
 {
     public function visit(CommandInterface $command, RequestInterface $request, Parameter $param, $value)
     {
-        $value = $param->filter($value);
-        $entityBody = EntityBody::factory($value);
-        $request->setBody($entityBody);
-        $this->addExpectHeader($request, $entityBody, $param->getData('expect_header'));
-        // Add the Content-Encoding header if one is set on the EntityBody
-        if ($encoding = $entityBody->getContentEncoding()) {
-            $request->setHeader('Content-Encoding', $encoding);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -39,20 +36,10 @@ class BodyVisitor extends AbstractRequestVisitor
      */
     protected function addExpectHeader(EntityEnclosingRequestInterface $request, EntityBodyInterface $body, $expect)
     {
-        // Allow the `expect` data parameter to be set to remove the Expect header from the request
-        if ($expect === false) {
-            $request->removeHeader('Expect');
-        } elseif ($expect !== true) {
-            // Default to using a MB as the point in which to start using the expect header
-            $expect = $expect ?: 1048576;
-            // If the expect_header value is numeric then only add if the size is greater than the cutoff
-            if (is_numeric($expect) && $body->getSize()) {
-                if ($body->getSize() < $expect) {
-                    $request->removeHeader('Expect');
-                } else {
-                    $request->setHeader('Expect', '100-Continue');
-                }
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

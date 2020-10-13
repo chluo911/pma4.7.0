@@ -45,8 +45,11 @@ class Generic_Sniffs_PHP_SyntaxSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -61,37 +64,10 @@ class Generic_Sniffs_PHP_SyntaxSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        if ($this->_phpPath === null) {
-            $this->_phpPath = PHP_CodeSniffer::getConfigData('php_path');
-            if ($this->_phpPath === null) {
-                // PHP_BINARY is available in PHP 5.4+.
-                if (defined('PHP_BINARY') === true) {
-                    $this->_phpPath = PHP_BINARY;
-                } else {
-                    return;
-                }
-            }
-        }
-
-        $fileName = escapeshellarg($phpcsFile->getFilename());
-        if (defined('HHVM_VERSION') === false) {
-            $cmd = escapeshellcmd($this->_phpPath)." -l -d error_prepend_string='' $fileName 2>&1";
-        } else {
-            $cmd = escapeshellcmd($this->_phpPath)." -l $fileName 2>&1";
-        }
-
-        $output  = shell_exec($cmd);
-        $matches = array();
-        if (preg_match('/^.*error:(.*) in .* on line ([0-9]+)/m', trim($output), $matches) === 1) {
-            $error = trim($matches[1]);
-            $line  = (int) $matches[2];
-            $phpcsFile->addErrorOnLine("PHP syntax error: $error", $line, 'PHPSyntax');
-        }
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

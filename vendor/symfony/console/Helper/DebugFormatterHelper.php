@@ -53,33 +53,11 @@ class DebugFormatterHelper extends Helper
      */
     public function progress($id, $buffer, $error = false, $prefix = 'OUT', $errorPrefix = 'ERR')
     {
-        $message = '';
-
-        if ($error) {
-            if (isset($this->started[$id]['out'])) {
-                $message .= "\n";
-                unset($this->started[$id]['out']);
-            }
-            if (!isset($this->started[$id]['err'])) {
-                $message .= sprintf('%s<bg=red;fg=white> %s </> ', $this->getBorder($id), $errorPrefix);
-                $this->started[$id]['err'] = true;
-            }
-
-            $message .= str_replace("\n", sprintf("\n%s<bg=red;fg=white> %s </> ", $this->getBorder($id), $errorPrefix), $buffer);
-        } else {
-            if (isset($this->started[$id]['err'])) {
-                $message .= "\n";
-                unset($this->started[$id]['err']);
-            }
-            if (!isset($this->started[$id]['out'])) {
-                $message .= sprintf('%s<bg=green;fg=white> %s </> ', $this->getBorder($id), $prefix);
-                $this->started[$id]['out'] = true;
-            }
-
-            $message .= str_replace("\n", sprintf("\n%s<bg=green;fg=white> %s </> ", $this->getBorder($id), $prefix), $buffer);
-        }
-
-        return $message;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

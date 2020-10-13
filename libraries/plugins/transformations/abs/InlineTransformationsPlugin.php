@@ -31,10 +31,11 @@ abstract class InlineTransformationsPlugin extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Displays a clickable thumbnail. The options are the maximum width'
-            . ' and height in pixels. The original aspect ratio is preserved.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,19 +49,11 @@ abstract class InlineTransformationsPlugin extends TransformationsPlugin
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        if (PMA_IS_GD2) {
-            return '<a href="transformation_wrapper.php'
-                . $options['wrapper_link']
-                . '" rel="noopener noreferrer" target="_blank"><img src="transformation_wrapper.php'
-                . $options['wrapper_link'] . '&amp;resize=jpeg&amp;newWidth='
-                . (isset($options[0]) ? intval($options[0]) : '100') . '&amp;newHeight='
-                . (isset($options[1]) ? intval($options[1]) : 100)
-                . '" alt="[' . htmlspecialchars($buffer) . ']" border="0" /></a>';
-        } else {
-            return '<img src="transformation_wrapper.php'
-                . $options['wrapper_link']
-                . '" alt="[' . htmlspecialchars($buffer) . ']" width="320" height="240" />';
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 

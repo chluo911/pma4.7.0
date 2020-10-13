@@ -24,7 +24,11 @@ class TypeComparator extends Comparator
      */
     public function accepts($expected, $actual)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,20 +44,10 @@ class TypeComparator extends Comparator
      */
     public function assertEquals($expected, $actual, $delta = 0.0, $canonicalize = false, $ignoreCase = false)
     {
-        if (gettype($expected) != gettype($actual)) {
-            throw new ComparisonFailure(
-                $expected,
-                $actual,
-                // we don't need a diff
-                '',
-                '',
-                false,
-                sprintf(
-                    '%s does not match expected type "%s".',
-                    $this->exporter->shortenedExport($actual),
-                    gettype($expected)
-                )
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

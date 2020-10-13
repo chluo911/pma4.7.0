@@ -33,7 +33,11 @@ class BankAccount
      */
     public function getBalance()
     {
-        return $this->balance;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,11 +49,11 @@ class BankAccount
      */
     protected function setBalance($balance)
     {
-        if ($balance >= 0) {
-            $this->balance = $balance;
-        } else {
-            throw new BankAccountException;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,9 +65,11 @@ class BankAccount
      */
     public function depositMoney($balance)
     {
-        $this->setBalance($this->getBalance() + $balance);
-
-        return $this->getBalance();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,8 +81,10 @@ class BankAccount
      */
     public function withdrawMoney($balance)
     {
-        $this->setBalance($this->getBalance() - $balance);
-
-        return $this->getBalance();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

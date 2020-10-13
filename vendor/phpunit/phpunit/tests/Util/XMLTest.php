@@ -16,271 +16,245 @@ class Util_XMLTest extends PHPUnit_Framework_TestCase
 {
     public function testAssertValidKeysValidKeys()
     {
-        $options   = array('testA' => 1, 'testB' => 2, 'testC' => 3);
-        $valid     = array('testA', 'testB', 'testC');
-        $expected  = array('testA' => 1, 'testB' => 2, 'testC' => 3);
-        $validated = PHPUnit_Util_XML::assertValidKeys($options, $valid);
-
-        $this->assertEquals($expected, $validated);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertValidKeysValidKeysEmpty()
     {
-        $options   = array('testA' => 1, 'testB' => 2);
-        $valid     = array('testA', 'testB', 'testC');
-        $expected  = array('testA' => 1, 'testB' => 2, 'testC' => null);
-        $validated = PHPUnit_Util_XML::assertValidKeys($options, $valid);
-
-        $this->assertEquals($expected, $validated);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertValidKeysDefaultValuesA()
     {
-        $options   = array('testA' => 1, 'testB' => 2);
-        $valid     = array('testA' => 23, 'testB' => 24, 'testC' => 25);
-        $expected  = array('testA' => 1, 'testB' => 2, 'testC' => 25);
-        $validated = PHPUnit_Util_XML::assertValidKeys($options, $valid);
-
-        $this->assertEquals($expected, $validated);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertValidKeysDefaultValuesB()
     {
-        $options   = array();
-        $valid     = array('testA' => 23, 'testB' => 24, 'testC' => 25);
-        $expected  = array('testA' => 23, 'testB' => 24, 'testC' => 25);
-        $validated = PHPUnit_Util_XML::assertValidKeys($options, $valid);
-
-        $this->assertEquals($expected, $validated);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertValidKeysInvalidKey()
     {
-        $options = array('testA' => 1, 'testB' => 2, 'testD' => 3);
-        $valid   = array('testA', 'testB', 'testC');
-
-        try {
-            $validated = PHPUnit_Util_XML::assertValidKeys($options, $valid);
-            $this->fail();
-        } catch (PHPUnit_Framework_Exception $e) {
-            $this->assertEquals('Unknown key(s): testD', $e->getMessage());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertValidKeysInvalidKeys()
     {
-        $options = array('testA' => 1, 'testD' => 2, 'testE' => 3);
-        $valid   = array('testA', 'testB', 'testC');
-
-        try {
-            $validated = PHPUnit_Util_XML::assertValidKeys($options, $valid);
-            $this->fail();
-        } catch (PHPUnit_Framework_Exception $e) {
-            $this->assertEquals('Unknown key(s): testD, testE', $e->getMessage());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelect()
     {
-        $selector  = 'div#folder.open a[href="http://www.xerox.com"][title="xerox"].selected.big > span + h1';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag'        => 'div',
-                           'id'         => 'folder',
-                           'class'      => 'open',
-                           'descendant' => array('tag'        => 'a',
-                                                 'class'      => 'selected big',
-                                                 'attributes' => array('href'             => 'http://www.xerox.com',
-                                                                       'title'            => 'xerox'),
-                                                 'child'      => array('tag'              => 'span',
-                                                                       'adjacent-sibling' => array('tag' => 'h1'))));
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectElt()
     {
-        $selector  = 'div';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertClass()
     {
-        $selector  = '.foo';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('class' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertId()
     {
-        $selector  = '#foo';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('id' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertAttribute()
     {
-        $selector  = '[foo="bar"]';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('attributes' => array('foo' => 'bar'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertAttributeSpaces()
     {
-        $selector  = '[foo="bar baz"] div[value="foo bar"]';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('attributes' => array('foo'        => 'bar baz'),
-                           'descendant' => array('tag'        => 'div',
-                                                 'attributes' => array('value' => 'foo bar')));
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertAttributeMultipleSpaces()
     {
-        $selector  = '[foo="bar baz"] div[value="foo bar baz"]';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('attributes' => array('foo'        => 'bar baz'),
-                          'descendant'  => array('tag'        => 'div',
-                                                'attributes'  => array('value' => 'foo bar baz')));
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltClass()
     {
-        $selector  = 'div.foo';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'class' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltId()
     {
-        $selector  = 'div#foo';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'id' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltAttrEqual()
     {
-        $selector  = 'div[foo="bar"]';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'attributes' => array('foo' => 'bar'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltMultiAttrEqual()
     {
-        $selector  = 'div[foo="bar"][baz="fob"]';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'attributes' => array('foo' => 'bar', 'baz' => 'fob'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltAttrHasOne()
     {
-        $selector  = 'div[foo~="bar"]';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'attributes' => array('foo' => 'regexp:/.*\bbar\b.*/'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltAttrContains()
     {
-        $selector  = 'div[foo*="bar"]';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'attributes' => array('foo' => 'regexp:/.*bar.*/'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltChild()
     {
-        $selector  = 'div > a';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'child' => array('tag' => 'a'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltAdjacentSibling()
     {
-        $selector  = 'div + a';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'adjacent-sibling' => array('tag' => 'a'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectEltDescendant()
     {
-        $selector  = 'div a';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector);
-        $tag       = array('tag' => 'div', 'descendant' => array('tag' => 'a'));
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectContent()
     {
-        $selector  = '#foo';
-        $content   = 'div contents';
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector, $content);
-        $tag       = array('id' => 'foo', 'content' => 'div contents');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectTrue()
     {
-        $selector  = '#foo';
-        $content   = true;
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector, $content);
-        $tag       = array('id' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertSelectFalse()
     {
-        $selector  = '#foo';
-        $content   = false;
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector, $content);
-        $tag       = array('id' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertNumber()
     {
-        $selector  = '.foo';
-        $content   = 3;
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector, $content);
-        $tag       = array('class' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConvertAssertRange()
     {
-        $selector  = '#foo';
-        $content   = array('greater_than' => 5, 'less_than' => 10);
-        $converted = PHPUnit_Util_XML::convertSelectToTag($selector, $content);
-        $tag       = array('id' => 'foo');
-
-        $this->assertEquals($tag, $converted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -288,32 +262,20 @@ class Util_XMLTest extends PHPUnit_Framework_TestCase
      */
     public function testPrepareString($char)
     {
-        $e = null;
-
-        $escapedString = PHPUnit_Util_XML::prepareString($char);
-        $xml           = "<?xml version='1.0' encoding='UTF-8' ?><tag>$escapedString</tag>";
-        $dom           = new DomDocument('1.0', 'UTF-8');
-
-        try {
-            $dom->loadXML($xml);
-        } catch (Exception $e) {
-        }
-
-        $this->assertNull($e, sprintf(
-            'PHPUnit_Util_XML::prepareString("\x%02x") should not crash DomDocument',
-            ord($char)
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function charProvider()
     {
-        $data = array();
-
-        for ($i = 0; $i < 256; $i++) {
-            $data[] = array(chr($i));
-        }
-
-        return $data;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -322,7 +284,11 @@ class Util_XMLTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadEmptyString()
     {
-        PHPUnit_Util_XML::load('');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -331,7 +297,11 @@ class Util_XMLTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadArray()
     {
-        PHPUnit_Util_XML::load(array(1, 2, 3));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -340,24 +310,19 @@ class Util_XMLTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadBoolean()
     {
-        PHPUnit_Util_XML::load(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNestedXmlToVariable()
     {
-        $xml = '<array><element key="a"><array><element key="b"><string>foo</string></element></array></element><element key="c"><string>bar</string></element></array>';
-        $dom = new DOMDocument();
-        $dom->loadXML($xml);
-
-        $expected = array(
-            'a' => array(
-                'b' => 'foo',
-            ),
-            'c' => 'bar',
-        );
-
-        $actual = PHPUnit_Util_XML::xmlToVariable($dom->documentElement);
-
-        $this->assertSame($expected, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

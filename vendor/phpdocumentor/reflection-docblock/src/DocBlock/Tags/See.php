@@ -37,8 +37,11 @@ class See extends BaseTag implements Factory\StaticMethod
      */
     public function __construct(Fqsen $refers, Description $description = null)
     {
-        $this->refers = $refers;
-        $this->description = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -50,13 +53,11 @@ class See extends BaseTag implements Factory\StaticMethod
         DescriptionFactory $descriptionFactory = null,
         TypeContext $context = null
     ) {
-        Assert::string($body);
-        Assert::allNotNull([$resolver, $descriptionFactory]);
-
-        $parts       = preg_split('/\s+/Su', $body, 2);
-        $description = isset($parts[1]) ? $descriptionFactory->create($parts[1], $context) : null;
-
-        return new static($resolver->resolve($parts[0], $context), $description);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,7 +67,11 @@ class See extends BaseTag implements Factory\StaticMethod
      */
     public function getReference()
     {
-        return $this->refers;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

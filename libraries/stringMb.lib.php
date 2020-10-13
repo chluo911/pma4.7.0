@@ -27,15 +27,11 @@ if (!@function_exists('mb_ord')) {
      */
     function mb_preg_strpos($pattern, $subject, $offset = 0)
     {
-        $matches = array();
-        $bFind = preg_match(
-            $pattern, mb_substr($subject, $offset), $matches, PREG_OFFSET_CAPTURE
-        );
-        if (1 !== $bFind) {
-            return false;
-        }
-
-        return $matches[1][1] + $offset;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,14 +43,11 @@ if (!@function_exists('mb_ord')) {
      */
     function mb_ord($string)
     {
-        if (false === $string || null === $string || '' === $string) {
-            return 0;
-        }
-
-        $str = mb_convert_encoding($string, "UCS-4BE", "UTF-8");
-        $substr = mb_substr($str, 0, 1, "UCS-4BE");
-        $val = unpack("N", $substr);
-        return $val[1];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -72,5 +65,4 @@ if (!@function_exists('mb_ord')) {
             'UCS-4BE'
         );
     }
-
 }

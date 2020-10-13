@@ -36,14 +36,11 @@ final class Author extends BaseTag implements Factory\StaticMethod
      */
     public function __construct($authorName, $authorEmail)
     {
-        Assert::string($authorName);
-        Assert::string($authorEmail);
-        if ($authorEmail && !filter_var($authorEmail, FILTER_VALIDATE_EMAIL)) {
-            throw new \InvalidArgumentException('The author tag does not have a valid e-mail address');
-        }
-
-        $this->authorName  = $authorName;
-        $this->authorEmail = $authorEmail;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,7 +50,11 @@ final class Author extends BaseTag implements Factory\StaticMethod
      */
     public function getAuthorName()
     {
-        return $this->authorName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,7 +64,11 @@ final class Author extends BaseTag implements Factory\StaticMethod
      */
     public function getEmail()
     {
-        return $this->authorEmail;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,16 +90,10 @@ final class Author extends BaseTag implements Factory\StaticMethod
      */
     public static function create($body)
     {
-        Assert::string($body);
-
-        $splitTagContent = preg_match('/^([^\<]*)(?:\<([^\>]*)\>)?$/u', $body, $matches);
-        if (!$splitTagContent) {
-            return null;
-        }
-
-        $authorName = trim($matches[1]);
-        $email = isset($matches[2]) ? trim($matches[2]) : '';
-
-        return new static($authorName, $email);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

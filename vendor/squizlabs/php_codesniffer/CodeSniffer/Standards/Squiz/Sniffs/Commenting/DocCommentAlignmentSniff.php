@@ -48,8 +48,11 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
      */
     public function register()
     {
-        return array(T_DOC_COMMENT_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -64,104 +67,10 @@ class Squiz_Sniffs_Commenting_DocCommentAlignmentSniff implements PHP_CodeSniffe
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // We are only interested in function/class/interface doc block comments.
-        $ignore = PHP_CodeSniffer_Tokens::$emptyTokens;
-        if ($phpcsFile->tokenizerType === 'JS') {
-            $ignore[] = T_EQUAL;
-            $ignore[] = T_STRING;
-            $ignore[] = T_OBJECT_OPERATOR;
-        }
-
-        $nextToken = $phpcsFile->findNext($ignore, ($stackPtr + 1), null, true);
-        $ignore    = array(
-                      T_CLASS     => true,
-                      T_INTERFACE => true,
-                      T_FUNCTION  => true,
-                      T_PUBLIC    => true,
-                      T_PRIVATE   => true,
-                      T_PROTECTED => true,
-                      T_STATIC    => true,
-                      T_ABSTRACT  => true,
-                      T_PROPERTY  => true,
-                      T_OBJECT    => true,
-                      T_PROTOTYPE => true,
-                      T_VAR       => true,
-                     );
-
-        if (isset($ignore[$tokens[$nextToken]['code']]) === false) {
-            // Could be a file comment.
-            $prevToken = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-            if ($tokens[$prevToken]['code'] !== T_OPEN_TAG) {
-                return;
-            }
-        }
-
-        // There must be one space after each star (unless it is an empty comment line)
-        // and all the stars must be aligned correctly.
-        $requiredColumn = ($tokens[$stackPtr]['column'] + 1);
-        $endComment     = $tokens[$stackPtr]['comment_closer'];
-        for ($i = ($stackPtr + 1); $i <= $endComment; $i++) {
-            if ($tokens[$i]['code'] !== T_DOC_COMMENT_STAR
-                && $tokens[$i]['code'] !== T_DOC_COMMENT_CLOSE_TAG
-            ) {
-                continue;
-            }
-
-            if ($tokens[$i]['code'] === T_DOC_COMMENT_CLOSE_TAG) {
-                // Can't process the close tag if it is not the first thing on the line.
-                $prev = $phpcsFile->findPrevious(T_DOC_COMMENT_WHITESPACE, ($i - 1), $stackPtr, true);
-                if ($tokens[$prev]['line'] === $tokens[$i]['line']) {
-                    continue;
-                }
-            }
-
-            if ($tokens[$i]['column'] !== $requiredColumn) {
-                $error = 'Expected %s space(s) before asterisk; %s found';
-                $data  = array(
-                          ($requiredColumn - 1),
-                          ($tokens[$i]['column'] - 1),
-                         );
-                $fix   = $phpcsFile->addFixableError($error, $i, 'SpaceBeforeStar', $data);
-                if ($fix === true) {
-                    $padding = str_repeat(' ', ($requiredColumn - 1));
-                    if ($tokens[$i]['column'] === 1) {
-                        $phpcsFile->fixer->addContentBefore($i, $padding);
-                    } else {
-                        $phpcsFile->fixer->replaceToken(($i - 1), $padding);
-                    }
-                }
-            }
-
-            if ($tokens[$i]['code'] !== T_DOC_COMMENT_STAR) {
-                continue;
-            }
-
-            if ($tokens[($i + 2)]['line'] !== $tokens[$i]['line']) {
-                // Line is empty.
-                continue;
-            }
-
-            if ($tokens[($i + 1)]['code'] !== T_DOC_COMMENT_WHITESPACE) {
-                $error = 'Expected 1 space after asterisk; 0 found';
-                $fix   = $phpcsFile->addFixableError($error, $i, 'NoSpaceAfterStar');
-                if ($fix === true) {
-                    $phpcsFile->fixer->addContent($i, ' ');
-                }
-            } else if ($tokens[($i + 2)]['code'] === T_DOC_COMMENT_TAG
-                && $tokens[($i + 1)]['content'] !== ' '
-            ) {
-                $error = 'Expected 1 space after asterisk; %s found';
-                $data  = array(strlen($tokens[($i + 1)]['content']));
-                $fix   = $phpcsFile->addFixableError($error, $i, 'SpaceAfterStar', $data);
-                if ($fix === true) {
-                    $phpcsFile->fixer->replaceToken(($i + 1), ' ');
-                }
-            }
-        }//end for
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

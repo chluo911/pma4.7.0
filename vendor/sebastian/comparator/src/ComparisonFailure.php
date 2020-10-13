@@ -78,7 +78,11 @@ class ComparisonFailure extends \RuntimeException
      */
     public function getActual()
     {
-        return $this->actual;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,7 +90,11 @@ class ComparisonFailure extends \RuntimeException
      */
     public function getExpected()
     {
-        return $this->expected;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -94,7 +102,11 @@ class ComparisonFailure extends \RuntimeException
      */
     public function getActualAsString()
     {
-        return $this->actualAsString;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -102,7 +114,11 @@ class ComparisonFailure extends \RuntimeException
      */
     public function getExpectedAsString()
     {
-        return $this->expectedAsString;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

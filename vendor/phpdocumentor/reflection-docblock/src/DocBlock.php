@@ -55,8 +55,7 @@ final class DocBlock
         Location $location = null,
         $isTemplateStart = false,
         $isTemplateEnd = false
-    )
-    {
+    ) {
         Assert::string($summary);
         Assert::boolean($isTemplateStart);
         Assert::boolean($isTemplateEnd);
@@ -98,7 +97,11 @@ final class DocBlock
      */
     public function getContext()
     {
-        return $this->context;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,7 +137,11 @@ final class DocBlock
      */
     public function isTemplateStart()
     {
-        return $this->isTemplateStart;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -146,7 +153,11 @@ final class DocBlock
      */
     public function isTemplateEnd()
     {
-        return $this->isTemplateEnd;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -194,16 +205,11 @@ final class DocBlock
      */
     public function hasTag($name)
     {
-        Assert::string($name);
-
-        /** @var Tag $tag */
-        foreach ($this->getTags() as $tag) {
-            if ($tag->getName() == $name) {
-                return true;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

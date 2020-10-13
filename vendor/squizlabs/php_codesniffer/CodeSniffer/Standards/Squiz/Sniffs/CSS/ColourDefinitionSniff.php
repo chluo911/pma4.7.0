@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_ColourDefinitionSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_COLOUR);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,43 +62,10 @@ class Squiz_Sniffs_CSS_ColourDefinitionSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $colour = $tokens[$stackPtr]['content'];
-
-        $expected = strtoupper($colour);
-        if ($colour !== $expected) {
-            $error = 'CSS colours must be defined in uppercase; expected %s but found %s';
-            $data  = array(
-                      $expected,
-                      $colour,
-                     );
-
-            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'NotUpper', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($stackPtr, $expected);
-            }
-        }
-
-        // Now check if shorthand can be used.
-        if (strlen($colour) !== 7) {
-            return;
-        }
-
-        if ($colour{1} === $colour{2} && $colour{3} === $colour{4} && $colour{5} === $colour{6}) {
-            $expected = '#'.$colour{1}.$colour{3}.$colour{5};
-            $error    = 'CSS colours must use shorthand if available; expected %s but found %s';
-            $data     = array(
-                         $expected,
-                         $colour,
-                        );
-
-            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Shorthand', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($stackPtr, $expected);
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

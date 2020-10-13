@@ -94,13 +94,11 @@ class ProcessHelper extends Helper
      */
     public function mustRun(OutputInterface $output, $cmd, $error = null, callable $callback = null)
     {
-        $process = $this->run($output, $cmd, $error, $callback);
-
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-
-        return $process;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

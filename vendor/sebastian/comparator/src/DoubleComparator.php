@@ -31,7 +31,11 @@ class DoubleComparator extends NumericComparator
      */
     public function accepts($expected, $actual)
     {
-        return (is_double($expected) || is_double($actual)) && is_numeric($expected) && is_numeric($actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,10 +51,10 @@ class DoubleComparator extends NumericComparator
      */
     public function assertEquals($expected, $actual, $delta = 0.0, $canonicalize = false, $ignoreCase = false)
     {
-        if ($delta == 0) {
-            $delta = self::EPSILON;
-        }
-
-        parent::assertEquals($expected, $actual, $delta, $canonicalize, $ignoreCase);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

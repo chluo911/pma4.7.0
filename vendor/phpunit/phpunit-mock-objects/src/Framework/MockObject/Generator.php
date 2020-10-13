@@ -432,47 +432,11 @@ class PHPUnit_Framework_MockObject_Generator
      */
     public function getObjectForTrait($traitName, array $arguments = array(), $traitClassName = '', $callOriginalConstructor = true, $callOriginalClone = true, $callAutoload = true)
     {
-        if (!is_string($traitName)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'string');
-        }
-
-        if (!is_string($traitClassName)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(3, 'string');
-        }
-
-        if (!trait_exists($traitName, $callAutoload)) {
-            throw new PHPUnit_Framework_MockObject_RuntimeException(
-                sprintf(
-                    'Trait "%s" does not exist.',
-                    $traitName
-                )
-            );
-        }
-
-        $className = $this->generateClassName(
-            $traitName,
-            $traitClassName,
-            'Trait_'
-        );
-
-        $templateDir   = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Generator' .
-                         DIRECTORY_SEPARATOR;
-        $classTemplate = new Text_Template(
-            $templateDir . 'trait_class.tpl'
-        );
-
-        $classTemplate->setVar(
-            array(
-            'prologue'   => '',
-            'class_name' => $className['className'],
-            'trait_name' => $traitName
-            )
-        );
-
-        return $this->getObject(
-            $classTemplate->render(),
-            $className['className']
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

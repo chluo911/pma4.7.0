@@ -37,23 +37,11 @@ final class Fqsen
      */
     public function __construct($fqsen)
     {
-        $matches = array();
-        $result = preg_match('/^\\\\([\\w_\\\\]*)(?:[:]{2}\\$?([\\w_]+))?(?:\\(\\))?$/', $fqsen, $matches);
-
-        if ($result === 0) {
-            throw new \InvalidArgumentException(
-                sprintf('"%s" is not a valid Fqsen.', $fqsen)
-            );
-        }
-
-        $this->fqsen = $fqsen;
-
-        if (isset($matches[2])) {
-            $this->name = $matches[2];
-        } else {
-            $matches = explode('\\', $fqsen);
-            $this->name = trim(end($matches), '()');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

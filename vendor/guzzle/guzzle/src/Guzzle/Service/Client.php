@@ -47,19 +47,20 @@ class Client extends HttpClient implements ClientInterface
      */
     public static function factory($config = array())
     {
-        return new static(isset($config['base_url']) ? $config['base_url'] : null, $config);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getAllEvents()
     {
-        return array_merge(HttpClient::getAllEvents(), array(
-            'client.command.create',
-            'command.before_prepare',
-            'command.after_prepare',
-            'command.before_send',
-            'command.after_send',
-            'command.parse_response'
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,19 +79,11 @@ class Client extends HttpClient implements ClientInterface
 
     public function getCommand($name, array $args = array())
     {
-        // Add global client options to the command
-        if ($options = $this->getConfig(self::COMMAND_PARAMS)) {
-            $args += $options;
-        }
-
-        if (!($command = $this->getCommandFactory()->factory($name, $args))) {
-            throw new InvalidArgumentException("Command was not found matching {$name}");
-        }
-
-        $command->setClient($this);
-        $this->dispatch('client.command.create', array('client' => $this, 'command' => $command));
-
-        return $command;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -102,9 +95,11 @@ class Client extends HttpClient implements ClientInterface
      */
     public function setCommandFactory(CommandFactoryInterface $factory)
     {
-        $this->commandFactory = $factory;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -116,18 +111,20 @@ class Client extends HttpClient implements ClientInterface
      */
     public function setResourceIteratorFactory(ResourceIteratorFactoryInterface $factory)
     {
-        $this->resourceIteratorFactory = $factory;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getIterator($command, array $commandOptions = null, array $iteratorOptions = array())
     {
-        if (!($command instanceof CommandInterface)) {
-            $command = $this->getCommand($command, $commandOptions ?: array());
-        }
-
-        return $this->getResourceIteratorFactory()->build($command, $iteratorOptions);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function execute($command)
@@ -173,9 +170,11 @@ class Client extends HttpClient implements ClientInterface
      */
     public function setInflector(InflectorInterface $inflector)
     {
-        $this->inflector = $inflector;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,11 +184,11 @@ class Client extends HttpClient implements ClientInterface
      */
     public function getInflector()
     {
-        if (!$this->inflector) {
-            $this->inflector = Inflector::getDefault();
-        }
-
-        return $this->inflector;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -259,17 +258,11 @@ class Client extends HttpClient implements ClientInterface
 
     protected function getResourceIteratorFactory()
     {
-        if (!$this->resourceIteratorFactory) {
-            // Build the default resource iterator factory if one is not set
-            $clientClass = get_class($this);
-            $prefix = substr($clientClass, 0, strrpos($clientClass, '\\'));
-            $this->resourceIteratorFactory = new ResourceIteratorClassFactory(array(
-                "{$prefix}\\Iterator",
-                "{$prefix}\\Model"
-            ));
-        }
-
-        return $this->resourceIteratorFactory;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -292,6 +285,10 @@ class Client extends HttpClient implements ClientInterface
      */
     public function enableMagicMethods($isEnabled)
     {
-        Version::warn(__METHOD__ . ' is deprecated');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

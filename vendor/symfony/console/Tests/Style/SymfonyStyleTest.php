@@ -24,16 +24,20 @@ class SymfonyStyleTest extends TestCase
 
     protected function setUp()
     {
-        putenv('COLUMNS=121');
-        $this->command = new Command('sfstyle');
-        $this->tester = new CommandTester($this->command);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        putenv('COLUMNS');
-        $this->command = null;
-        $this->tester = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,10 +45,11 @@ class SymfonyStyleTest extends TestCase
      */
     public function testOutputs($inputCommandFilepath, $outputFilepath)
     {
-        $code = require $inputCommandFilepath;
-        $this->command->setCode($code);
-        $this->tester->execute(array(), array('interactive' => false, 'decorated' => false));
-        $this->assertStringEqualsFile($outputFilepath, $this->tester->getDisplay(true));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,23 +57,28 @@ class SymfonyStyleTest extends TestCase
      */
     public function testInteractiveOutputs($inputCommandFilepath, $outputFilepath)
     {
-        $code = require $inputCommandFilepath;
-        $this->command->setCode($code);
-        $this->tester->execute(array(), array('interactive' => true, 'decorated' => false));
-        $this->assertStringEqualsFile($outputFilepath, $this->tester->getDisplay(true));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function inputInteractiveCommandToOutputFilesProvider()
     {
-        $baseDir = __DIR__.'/../Fixtures/Style/SymfonyStyle';
-
-        return array_map(null, glob($baseDir.'/command/interactive_command_*.php'), glob($baseDir.'/output/interactive_output_*.txt'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function inputCommandToOutputFilesProvider()
     {
-        $baseDir = __DIR__.'/../Fixtures/Style/SymfonyStyle';
-
-        return array_map(null, glob($baseDir.'/command/command_*.php'), glob($baseDir.'/output/output_*.txt'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -11,11 +11,11 @@ class FilterIteratorTest extends \PHPUnit_Framework_TestCase
 {
     public function testFiltersValues()
     {
-        $i = new FilterIterator(new \ArrayIterator(range(0, 100)), function ($value) {
-            return $value % 2;
-        });
-
-        $this->assertEquals(range(1, 99, 2), iterator_to_array($i, false));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -23,6 +23,10 @@ class FilterIteratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidatesCallable()
     {
-        $i = new FilterIterator(new \ArrayIterator(), new \stdClass());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

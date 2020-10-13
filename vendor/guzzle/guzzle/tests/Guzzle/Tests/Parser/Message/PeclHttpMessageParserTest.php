@@ -11,9 +11,11 @@ class PeclHttpMessageParserTest extends MessageParserProvider
 {
     protected function setUp()
     {
-        if (!function_exists('http_parse_message')) {
-            $this->markTestSkipped('pecl_http is not available.');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -21,8 +23,11 @@ class PeclHttpMessageParserTest extends MessageParserProvider
      */
     public function testParsesRequests($message, $parts)
     {
-        $parser = new PeclHttpMessageParser();
-        $this->compareRequestResults($parts, $parser->parseRequest($message));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -30,7 +35,10 @@ class PeclHttpMessageParserTest extends MessageParserProvider
      */
     public function testParsesResponses($message, $parts)
     {
-        $parser = new PeclHttpMessageParser();
-        $this->compareResponseResults($parts, $parser->parseResponse($message));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

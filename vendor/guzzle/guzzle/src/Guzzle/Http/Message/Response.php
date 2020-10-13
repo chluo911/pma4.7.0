@@ -107,23 +107,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public static function fromMessage($message)
     {
-        $data = ParserRegistry::getInstance()->getParser('message')->parseResponse($message);
-        if (!$data) {
-            return false;
-        }
-
-        $response = new static($data['code'], $data['headers'], $data['body']);
-        $response->setProtocol($data['protocol'], $data['version'])
-                 ->setStatus($data['code'], $data['reason_phrase']);
-
-        // Set the appropriate Content-Length if the one set is inaccurate (e.g. setting to X)
-        $contentLength = (string) $response->getHeader('Content-Length');
-        $actualLength = strlen($data['body']);
-        if (strlen($data['body']) > 0 && $contentLength != $actualLength) {
-            $response->setHeader('Content-Length', $actualLength);
-        }
-
-        return $response;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -162,17 +150,20 @@ class Response extends AbstractMessage implements \Serializable
 
     public function serialize()
     {
-        return json_encode(array(
-            'status'  => $this->statusCode,
-            'body'    => (string) $this->body,
-            'headers' => $this->headers->toArray()
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function unserialize($serialize)
     {
-        $data = json_decode($serialize, true);
-        $this->__construct($data['status'], $data['headers'], $data['body']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -211,10 +202,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function setProtocol($protocol, $version)
     {
-        $this->protocol = $protocol;
-        $this->protocolVersion = $version;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -224,7 +216,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getProtocol()
     {
-        return $this->protocol;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -355,7 +351,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getAcceptRanges()
     {
-        return (string) $this->getHeader('Accept-Ranges');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -365,13 +365,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function calculateAge()
     {
-        $age = $this->getHeader('Age');
-
-        if ($age === null && $this->getDate()) {
-            $age = time() - strtotime($this->getDate());
-        }
-
-        return $age === null ? null : (int) (string) $age;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -381,7 +379,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getAge()
     {
-        return (string) $this->getHeader('Age');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -391,7 +393,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getAllow()
     {
-        return (string) $this->getHeader('Allow');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -403,16 +409,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function isMethodAllowed($method)
     {
-        $allow = $this->getHeader('Allow');
-        if ($allow) {
-            foreach (explode(',', $allow) as $allowable) {
-                if (!strcasecmp(trim($allowable), $method)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -422,7 +423,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getCacheControl()
     {
-        return (string) $this->getHeader('Cache-Control');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -432,7 +437,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getConnection()
     {
-        return (string) $this->getHeader('Connection');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -442,7 +451,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getContentEncoding()
     {
-        return (string) $this->getHeader('Content-Encoding');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -452,7 +465,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getContentLanguage()
     {
-        return (string) $this->getHeader('Content-Language');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -472,7 +489,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getContentLocation()
     {
-        return (string) $this->getHeader('Content-Location');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -482,7 +503,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getContentDisposition()
     {
-        return (string) $this->getHeader('Content-Disposition');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -492,7 +517,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getContentMd5()
     {
-        return (string) $this->getHeader('Content-MD5');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -502,7 +531,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getContentRange()
     {
-        return (string) $this->getHeader('Content-Range');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -526,7 +559,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function isContentType($type)
     {
-        return stripos($this->getHeader('Content-Type'), $type) !== false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -536,7 +573,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getDate()
     {
-        return (string) $this->getHeader('Date');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -546,7 +587,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getEtag()
     {
-        return (string) $this->getHeader('ETag');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -567,7 +612,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getLastModified()
     {
-        return (string) $this->getHeader('Last-Modified');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -588,7 +637,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getPragma()
     {
-        return (string) $this->getHeader('Pragma');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -598,7 +651,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getProxyAuthenticate()
     {
-        return (string) $this->getHeader('Proxy-Authenticate');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -609,7 +666,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getRetryAfter()
     {
-        return (string) $this->getHeader('Retry-After');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -619,7 +680,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getServer()
     {
-        return (string)  $this->getHeader('Server');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -629,7 +694,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getSetCookie()
     {
-        return (string) $this->getHeader('Set-Cookie');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -640,7 +709,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getTrailer()
     {
-        return (string) $this->getHeader('Trailer');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -650,7 +723,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getTransferEncoding()
     {
-        return (string) $this->getHeader('Transfer-Encoding');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -661,7 +738,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getVary()
     {
-        return (string) $this->getHeader('Vary');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -671,7 +752,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getVia()
     {
-        return (string) $this->getHeader('Via');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -681,7 +766,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getWarning()
     {
-        return (string) $this->getHeader('Warning');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -691,7 +780,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getWwwAuthenticate()
     {
-        return (string) $this->getHeader('WWW-Authenticate');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -721,7 +814,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function isInformational()
     {
-        return $this->statusCode < 200;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -731,7 +828,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function isRedirect()
     {
-        return $this->statusCode >= 300 && $this->statusCode < 400;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -761,24 +862,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function canCache()
     {
-        // Check if the response is cacheable based on the code
-        if (!in_array((int) $this->getStatusCode(), self::$cacheResponseCodes)) {
-            return false;
-        }
-
-        // Make sure a valid body was returned and can be cached
-        if ((!$this->getBody()->isReadable() || !$this->getBody()->isSeekable())
-            && ($this->getContentLength() > 0 || $this->getTransferEncoding() == 'chunked')) {
-            return false;
-        }
-
-        // Never cache no-store resources (this is a private cache, so private
-        // can be cached)
-        if ($this->getHeader('Cache-Control') && $this->getHeader('Cache-Control')->hasDirective('no-store')) {
-            return false;
-        }
-
-        return $this->isFresh() || $this->getFreshness() === null || $this->canValidate();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -788,21 +876,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getMaxAge()
     {
-        if ($header = $this->getHeader('Cache-Control')) {
-            // s-max-age, then max-age, then Expires
-            if ($age = $header->getDirective('s-maxage')) {
-                return $age;
-            }
-            if ($age = $header->getDirective('max-age')) {
-                return $age;
-            }
-        }
-
-        if ($this->getHeader('Expires')) {
-            return strtotime($this->getExpires()) - time();
-        }
-
-        return null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -815,9 +893,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function isFresh()
     {
-        $fresh = $this->getFreshness();
-
-        return $fresh === null ? null : $fresh >= 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -827,7 +907,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function canValidate()
     {
-        return $this->getEtag() || $this->getLastModified();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -842,10 +926,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getFreshness()
     {
-        $maxAge = $this->getMaxAge();
-        $age = $this->calculateAge();
-
-        return $maxAge && $age ? ($maxAge - $age) : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -909,7 +994,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getRedirectCount()
     {
-        return (int) $this->params->get(RedirectPlugin::REDIRECT_COUNT);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -921,9 +1010,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function setEffectiveUrl($url)
     {
-        $this->effectiveUrl = $url;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -933,7 +1024,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getEffectiveUrl()
     {
-        return $this->effectiveUrl;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -942,8 +1037,11 @@ class Response extends AbstractMessage implements \Serializable
      */
     public function getPreviousResponse()
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use the HistoryPlugin.');
-        return null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

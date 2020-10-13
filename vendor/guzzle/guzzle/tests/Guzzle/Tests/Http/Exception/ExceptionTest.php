@@ -14,10 +14,11 @@ class ExceptionTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testRequestException()
     {
-        $e = new RequestException('Message');
-        $request = new Request('GET', 'http://www.guzzle-project.com/');
-        $e->setRequest($request);
-        $this->assertEquals($request, $e->getRequest());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -25,10 +26,11 @@ class ExceptionTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testBadResponseException()
     {
-        $e = new BadResponseException('Message');
-        $response = new Response(200);
-        $e->setResponse($response);
-        $this->assertEquals($response, $e->getResponse());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -36,10 +38,11 @@ class ExceptionTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testCreatesGenericErrorExceptionOnError()
     {
-        $request = new Request('GET', 'http://www.example.com');
-        $response = new Response(307);
-        $e = BadResponseException::factory($request, $response);
-        $this->assertInstanceOf('Guzzle\Http\Exception\BadResponseException', $e);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,10 +50,11 @@ class ExceptionTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testCreatesClientErrorExceptionOnClientError()
     {
-        $request = new Request('GET', 'http://www.example.com');
-        $response = new Response(404);
-        $e = BadResponseException::factory($request, $response);
-        $this->assertInstanceOf('Guzzle\Http\Exception\ClientErrorResponseException', $e);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,9 +62,10 @@ class ExceptionTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testCreatesServerErrorExceptionOnServerError()
     {
-        $request = new Request('GET', 'http://www.example.com');
-        $response = new Response(503);
-        $e = BadResponseException::factory($request, $response);
-        $this->assertInstanceOf('Guzzle\Http\Exception\ServerErrorResponseException', $e);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

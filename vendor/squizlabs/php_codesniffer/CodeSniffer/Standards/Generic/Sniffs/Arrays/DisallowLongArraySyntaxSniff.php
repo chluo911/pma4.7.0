@@ -34,8 +34,11 @@ class Generic_Sniffs_Arrays_DisallowLongArraySyntaxSniff implements PHP_CodeSnif
      */
     public function register()
     {
-        return array(T_ARRAY);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -50,30 +53,10 @@ class Generic_Sniffs_Arrays_DisallowLongArraySyntaxSniff implements PHP_CodeSnif
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $phpcsFile->recordMetric($stackPtr, 'Short array syntax used', 'no');
-
-        $error = 'Short array syntax must be used to define arrays';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
-
-        if ($fix === true) {
-            $tokens = $phpcsFile->getTokens();
-            $opener = $tokens[$stackPtr]['parenthesis_opener'];
-            $closer = $tokens[$stackPtr]['parenthesis_closer'];
-
-            $phpcsFile->fixer->beginChangeset();
-
-            if ($opener === null) {
-                $phpcsFile->fixer->replaceToken($stackPtr, '[]');
-            } else {
-                $phpcsFile->fixer->replaceToken($stackPtr, '');
-                $phpcsFile->fixer->replaceToken($opener, '[');
-                $phpcsFile->fixer->replaceToken($closer, ']');
-            }
-
-            $phpcsFile->fixer->endChangeset();
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

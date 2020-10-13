@@ -40,7 +40,8 @@ function PMA_getIndexedColumns()
  *                             according to the request
  */
 function PMA_buildColumnCreationStatement(
-    $field_cnt, $is_create_tbl = true
+    $field_cnt,
+    $is_create_tbl = true
 ) {
     $definitions = array();
     for ($i = 0; $i < $field_cnt; ++$i) {
@@ -95,7 +96,8 @@ function PMA_buildColumnCreationStatement(
  *
  * @return string $sql_suffix suffix
  */
-function PMA_setColumnCreationStatementSuffix($current_field_num,
+function PMA_setColumnCreationStatementSuffix(
+    $current_field_num,
     $is_create_tbl = true
 ) {
     // no suffix is needed if request is a table creation
@@ -137,7 +139,9 @@ function PMA_setColumnCreationStatementSuffix($current_field_num,
  *
  * @return array an array of sql statements for indexes
  */
-function PMA_buildIndexStatements($index, $index_choice,
+function PMA_buildIndexStatements(
+    $index,
+    $index_choice,
     $is_create_tbl = true
 ) {
     $statement = array();
@@ -224,11 +228,16 @@ function PMA_getStatementPrefix($is_create_tbl = true)
  * @return array $index_definitions
  */
 function PMA_mergeIndexStatements(
-    $definitions, $is_create_tbl, $indexed_columns, $index_keyword
+    $definitions,
+    $is_create_tbl,
+    $indexed_columns,
+    $index_keyword
 ) {
     foreach ($indexed_columns as $index) {
         $statements = PMA_buildIndexStatements(
-            $index, " " . $index_keyword . " ", $is_create_tbl
+            $index,
+            " " . $index_keyword . " ",
+            $is_create_tbl
         );
         $definitions = array_merge($definitions, $statements);
     }
@@ -251,7 +260,8 @@ function PMA_getColumnCreationStatements($is_create_tbl = true)
             $field_unique, $field_fulltext, $field_spatial
             ) = PMA_getIndexedColumns();
     $definitions = PMA_buildColumnCreationStatement(
-        $field_cnt, $is_create_tbl
+        $field_cnt,
+        $is_create_tbl
     );
 
     // Builds the PRIMARY KEY statements
@@ -264,22 +274,34 @@ function PMA_getColumnCreationStatements($is_create_tbl = true)
 
     // Builds the INDEX statements
     $definitions = PMA_mergeIndexStatements(
-        $definitions, $is_create_tbl, $field_index, "INDEX"
+        $definitions,
+        $is_create_tbl,
+        $field_index,
+        "INDEX"
     );
 
     // Builds the UNIQUE statements
     $definitions = PMA_mergeIndexStatements(
-        $definitions, $is_create_tbl, $field_unique, "UNIQUE"
+        $definitions,
+        $is_create_tbl,
+        $field_unique,
+        "UNIQUE"
     );
 
     // Builds the FULLTEXT statements
     $definitions = PMA_mergeIndexStatements(
-        $definitions, $is_create_tbl, $field_fulltext, "FULLTEXT"
+        $definitions,
+        $is_create_tbl,
+        $field_fulltext,
+        "FULLTEXT"
     );
 
     // Builds the SPATIAL statements
     $definitions = PMA_mergeIndexStatements(
-        $definitions, $is_create_tbl, $field_spatial, "SPATIAL"
+        $definitions,
+        $is_create_tbl,
+        $field_spatial,
+        "SPATIAL"
     );
 
     if (count($definitions)) {
@@ -288,7 +310,6 @@ function PMA_getColumnCreationStatements($is_create_tbl = true)
     $sql_statement = preg_replace('@, $@', '', $sql_statement);
 
     return $sql_statement;
-
 }
 
 /**
@@ -471,23 +492,9 @@ function PMA_getNumberOfFieldsFromRequest()
  */
 function PMA_tryColumnCreationQuery($db, $table, $err_url)
 {
-    // get column addition statements
-    $sql_statement = PMA_getColumnCreationStatements(false);
-
-    // To allow replication, we first select the db to use and then run queries
-    // on this db.
-    if (!($GLOBALS['dbi']->selectDb($db))) {
-        PMA\libraries\Util::mysqlDie(
-            $GLOBALS['dbi']->getError(),
-            'USE ' . PMA\libraries\Util::backquote($db), false,
-            $err_url
-        );
-    }
-    $sql_query    = 'ALTER TABLE ' .
-        PMA\libraries\Util::backquote($table) . ' ' . $sql_statement . ';';
-    // If there is a request for SQL previewing.
-    if (isset($_REQUEST['preview_sql'])) {
-        PMA_previewSQL($sql_query);
-    }
-    return array($GLOBALS['dbi']->tryQuery($sql_query) , $sql_query);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

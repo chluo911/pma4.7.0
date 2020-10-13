@@ -54,33 +54,11 @@ final class Example extends BaseTag
      */
     public static function create($body)
     {
-        // File component: File path in quotes or File URI / Source information
-        if (! preg_match('/^(?:\"([^\"]+)\"|(\S+))(?:\s+(.*))?$/sux', $body, $matches)) {
-            return null;
-        }
-
-        $filePath = null;
-        $fileUri  = null;
-        if ('' !== $matches[1]) {
-            $filePath = $matches[1];
-        } else {
-            $fileUri = $matches[2];
-        }
-
-        $startingLine = 1;
-        $lineCount    = null;
-        $description  = null;
-
-        // Starting line / Number of lines / Description
-        if (preg_match('/^([1-9]\d*)\s*(?:((?1))\s+)?(.*)$/sux', $matches[3], $matches)) {
-            $startingLine = (int)$matches[1];
-            if (isset($matches[2]) && $matches[2] !== '') {
-                $lineCount = (int)$matches[2];
-            }
-            $description = $matches[3];
-        }
-
-        return new static($filePath, $fileUri, $startingLine, $lineCount, $description);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,11 +81,11 @@ final class Example extends BaseTag
      */
     public function setFilePath($filePath)
     {
-        $this->isURI = false;
-        $this->filePath = trim($filePath);
-
-        $this->description = null;
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -124,14 +102,11 @@ final class Example extends BaseTag
      */
     public function setFileURI($uri)
     {
-        $this->isURI   = true;
-        $this->description = null;
-
-        $this->filePath = $this->isUriRelative($uri)
-            ? rawurldecode(str_replace(array('/', '\\'), '%2F', $uri))
-            : $this->filePath = $uri;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

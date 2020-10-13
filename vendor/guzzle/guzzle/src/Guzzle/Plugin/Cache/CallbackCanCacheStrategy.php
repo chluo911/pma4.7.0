@@ -25,29 +25,28 @@ class CallbackCanCacheStrategy extends DefaultCanCacheStrategy
      */
     public function __construct($requestCallback = null, $responseCallback = null)
     {
-        if ($requestCallback && !is_callable($requestCallback)) {
-            throw new InvalidArgumentException('Method must be callable');
-        }
-
-        if ($responseCallback && !is_callable($responseCallback)) {
-            throw new InvalidArgumentException('Method must be callable');
-        }
-
-        $this->requestCallback = $requestCallback;
-        $this->responseCallback = $responseCallback;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function canCacheRequest(RequestInterface $request)
     {
-        return $this->requestCallback
-            ? call_user_func($this->requestCallback, $request)
-            : parent::canCacheRequest($request);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function canCacheResponse(Response $response)
     {
-        return $this->responseCallback
-            ? call_user_func($this->responseCallback, $response)
-            : parent::canCacheResponse($response);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

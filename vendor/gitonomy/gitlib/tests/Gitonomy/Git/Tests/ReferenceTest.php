@@ -23,8 +23,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testEmptyRepository($repository)
     {
-        $this->assertCount(0, $repository->getReferences());
-        $this->assertEquals(array(), $repository->getReferences()->getAll());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,10 +35,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testGetBranch($repository)
     {
-        $branch = $repository->getReferences()->getBranch('master');
-
-        $this->assertTrue($branch instanceof Branch, 'Branch object is correct type');
-        $this->assertEquals($branch->getCommitHash(), $branch->getCommit()->getHash(), 'Hash is correctly resolved');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -43,8 +47,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testHasBranch($repository)
     {
-        $this->assertTrue($repository->getReferences()->hasBranch('master'), 'Branch master exists');
-        $this->assertFalse($repository->getReferences()->hasBranch('foobar'), 'Branch foobar does not exists');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,8 +59,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testHasTag($repository)
     {
-        $this->assertTrue($repository->getReferences()->hasTag('0.1'), 'Tag 0.1 exists');
-        $this->assertFalse($repository->getReferences()->hasTag('foobar'), 'Tag foobar does not exists');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,7 +72,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testGetBranch_NotExisting_Error($repository)
     {
-        $branch = $repository->getReferences()->getBranch('notexisting');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,12 +84,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testGetTag($repository)
     {
-        $tag = $repository->getReferences()->getTag('0.1');
-
-        $this->assertTrue($tag instanceof Tag, 'Tag object is correct type');
-
-        $this->assertEquals(self::LONGFILE_COMMIT, $tag->getCommitHash(), 'Commit hash is correct');
-        $this->assertEquals(self::LONGFILE_COMMIT, $tag->getCommit()->getHash(), 'Commit hash is correct');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -84,7 +97,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testGetTag_NotExisting_Error($repository)
     {
-        $branch = $repository->getReferences()->getTag('notexisting');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -92,11 +109,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testResolve($repository)
     {
-        $commit = $repository->getReferences()->getTag('0.1')->getCommit();
-        $resolved = $repository->getReferences()->resolve($commit->getHash());
-
-        $this->assertEquals(1, count($resolved), '1 revision resolved');
-        $this->assertTrue(reset($resolved) instanceof Tag, 'Resolved object is a tag');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -104,11 +121,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testResolveTags($repository)
     {
-        $commit = $repository->getReferences()->getTag('0.1')->getCommit();
-        $resolved = $repository->getReferences()->resolveTags($commit->getHash());
-
-        $this->assertEquals(1, count($resolved), '1 revision resolved');
-        $this->assertTrue(reset($resolved) instanceof Tag, 'Resolved object is a tag');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -116,17 +133,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testResolveBranches($repository)
     {
-        $master = $repository->getReferences()->getBranch('master');
-
-        $resolved = $repository->getReferences()->resolveBranches($master->getCommitHash());
-
-        if ($repository->isBare()) {
-            $this->assertEquals(1, count($resolved), '1 revision resolved');
-        } else {
-            $this->assertEquals(2, count($resolved), '2 revision resolved');
-        }
-
-        $this->assertTrue(reset($resolved) instanceof Branch, 'Resolved object is a branch');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,7 +145,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testCountable($repository)
     {
-        $this->assertGreaterThanOrEqual(2, count($repository->getReferences()), 'At least two references in repository');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -142,11 +157,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testIterable($repository)
     {
-        $i = 0;
-        foreach ($repository->getReferences() as $ref) {
-            ++$i;
-        }
-        $this->assertGreaterThanOrEqual(2, $i, 'At least two references in repository');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -154,15 +169,11 @@ class ReferenceTest extends AbstractTest
      */
     public function testCreateAndDeleteTag($repository)
     {
-        $references = $repository->getReferences();
-        $tag = $references->createTag('0.0', self::INITIAL_COMMIT);
-
-        $this->assertTrue($references->hasTag('0.0'), 'Tag 0.0 created');
-        $this->assertEquals(self::INITIAL_COMMIT, $tag->getCommit()->getHash());
-        $this->assertSame($tag, $references->getTag('0.0'));
-
-        $tag->delete();
-        $this->assertFalse($references->hasTag('0.0'), 'Tag 0.0 removed');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -170,14 +181,10 @@ class ReferenceTest extends AbstractTest
      */
     public function testCreateAndDeleteBranch($repository)
     {
-        $references = $repository->getReferences();
-        $branch = $references->createBranch('foobar', self::INITIAL_COMMIT);
-
-        $this->assertTrue($references->hasBranch('foobar'), 'Branch foobar created');
-        $this->assertEquals(self::INITIAL_COMMIT, $branch->getCommit()->getHash());
-        $this->assertSame($branch, $references->getBranch('foobar'));
-
-        $branch->delete();
-        $this->assertFalse($references->hasBranch('foobar'), 'Branch foobar removed');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

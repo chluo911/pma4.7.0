@@ -48,8 +48,11 @@ class Generic_Sniffs_Commenting_FixmeSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return PHP_CodeSniffer_Tokens::$commentTokens;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -64,28 +67,10 @@ class Generic_Sniffs_Commenting_FixmeSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $content = $tokens[$stackPtr]['content'];
-        $matches = array();
-        preg_match('/(?:\A|[^\p{L}]+)fixme([^\p{L}]+(.*)|\Z)/ui', $content, $matches);
-        if (empty($matches) === false) {
-            // Clear whitespace and some common characters not required at
-            // the end of a fixme message to make the error more informative.
-            $type         = 'CommentFound';
-            $fixmeMessage = trim($matches[1]);
-            $fixmeMessage = trim($fixmeMessage, '-:[](). ');
-            $error        = 'Comment refers to a FIXME task';
-            $data         = array($fixmeMessage);
-            if ($fixmeMessage !== '') {
-                $type   = 'TaskFound';
-                $error .= ' "%s"';
-            }
-
-            $phpcsFile->addError($error, $stackPtr, $type, $data);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

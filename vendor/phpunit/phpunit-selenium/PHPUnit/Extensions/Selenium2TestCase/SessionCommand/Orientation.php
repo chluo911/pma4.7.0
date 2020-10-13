@@ -53,25 +53,24 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.9
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Orientation
-    extends PHPUnit_Extensions_Selenium2TestCase_SessionCommand_GenericAttribute
+class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Orientation extends PHPUnit_Extensions_Selenium2TestCase_SessionCommand_GenericAttribute
 {
-
     public function __construct($orientation, $commandUrl)
     {
-        if ($orientation !== NULL) {
+        if ($orientation !== null) {
             $jsonParameters = array('orientation' => $orientation);
         } else {
-            $jsonParameters = NULL;
+            $jsonParameters = null;
         }
         parent::__construct($jsonParameters, $commandUrl);
     }
 
     public function httpMethod()
     {
-        if ($this->jsonParameters) {
-            return 'POST';
-        }
-        return 'GET';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

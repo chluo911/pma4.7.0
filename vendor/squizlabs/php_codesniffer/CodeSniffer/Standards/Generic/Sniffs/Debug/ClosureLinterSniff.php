@@ -59,8 +59,11 @@ class Generic_Sniffs_Debug_ClosureLinterSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -76,53 +79,10 @@ class Generic_Sniffs_Debug_ClosureLinterSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $fileName = $phpcsFile->getFilename();
-
-        $lintPath = PHP_CodeSniffer::getConfigData('gjslint_path');
-        if ($lintPath === null) {
-            return;
-        }
-
-        $lintPath = escapeshellcmd($lintPath);
-        $cmd      = '$lintPath --nosummary --notime --unix_mode '.escapeshellarg($fileName);
-        $msg      = exec($cmd, $output, $retval);
-
-        if (is_array($output) === false) {
-            return;
-        }
-
-        foreach ($output as $finding) {
-            $matches    = array();
-            $numMatches = preg_match('/^(.*):([0-9]+):\(.*?([0-9]+)\)(.*)$/', $finding, $matches);
-            if ($numMatches === 0) {
-                continue;
-            }
-
-            // Skip error codes we are ignoring.
-            $code = $matches[3];
-            if (in_array($code, $this->ignoreCodes) === true) {
-                continue;
-            }
-
-            $line  = (int) $matches[2];
-            $error = trim($matches[4]);
-
-            $message = 'gjslint says: (%s) %s';
-            $data    = array(
-                        $code,
-                        $error,
-                       );
-            if (in_array($code, $this->errorCodes) === true) {
-                $phpcsFile->addErrorOnLine($message, $line, 'ExternalToolError', $data);
-            } else {
-                $phpcsFile->addWarningOnLine($message, $line, 'ExternalTool', $data);
-            }
-        }//end foreach
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

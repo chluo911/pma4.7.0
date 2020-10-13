@@ -20,19 +20,20 @@ class ChunkedIterator extends \IteratorIterator
      */
     public function __construct(\Traversable $iterator, $chunkSize)
     {
-        $chunkSize = (int) $chunkSize;
-        if ($chunkSize < 0 ) {
-            throw new \InvalidArgumentException("The chunk size must be equal or greater than zero; $chunkSize given");
-        }
-
-        parent::__construct($iterator);
-        $this->chunkSize = $chunkSize;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function rewind()
     {
-        parent::rewind();
-        $this->next();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function next()

@@ -57,7 +57,11 @@ class Extensions_Selenium2TestCaseFailuresTest extends Tests_Selenium2TestCase_B
      */
     public function testInexistentCommandCausesTheTestToFail()
     {
-        $this->inexistentSessionCommand();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,7 +69,11 @@ class Extensions_Selenium2TestCaseFailuresTest extends Tests_Selenium2TestCase_B
      */
     public function testExceptionsAreReThrownOnNotSuccessfulTests()
     {
-        $this->onNotSuccessfulTest(new DomainException);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,21 +81,20 @@ class Extensions_Selenium2TestCaseFailuresTest extends Tests_Selenium2TestCase_B
      */
     public function testInexistentElementCausesTheTestToFail()
     {
-        $this->url('html/test_open.html');
-        $this->byId('notExistent');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStaleElementsCannotBeAccessed()
     {
-        $this->url('html/test_element_selection.html');
-        $div = $this->byId('theDivId');
-        $this->url('html/test_element_selection.html');
-        try {
-            $div->text();
-            $this->fail('The element shouldn\'t be accessible.');
-        } catch (RuntimeException $e) {
-            $this->assertContains('http://seleniumhq.org/exceptions/stale_element_reference.html', $e->getMessage());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -95,8 +102,10 @@ class Extensions_Selenium2TestCaseFailuresTest extends Tests_Selenium2TestCase_B
      */
     public function testSelectObjectsCanOnlyBeCreatedOverSelectTags()
     {
-        $this->url('html/test_element_selection.html');
-        $div = $this->byId('theDivId');
-        $select = $this->select($div);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -41,11 +41,10 @@ class PHPUnit_Runner_Filter_Factory
      */
     public function factory(Iterator $iterator, PHPUnit_Framework_TestSuite $suite)
     {
-        foreach ($this->filters as $filter) {
-            list($class, $args) = $filter;
-            $iterator           = $class->newInstance($iterator, $args, $suite);
-        }
-
-        return $iterator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

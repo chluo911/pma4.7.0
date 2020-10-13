@@ -11,32 +11,36 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class CallPredictionSpec extends ObjectBehavior
 {
-    function it_is_prediction()
+    public function it_is_prediction()
     {
-        $this->shouldHaveType('Prophecy\Prediction\PredictionInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_nothing_if_there_is_more_than_one_call_been_made(
+    public function it_does_nothing_if_there_is_more_than_one_call_been_made(
         ObjectProphecy $object,
         MethodProphecy $method,
         Call $call
     ) {
-        $this->check(array($call), $object, $method)->shouldReturn(null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_throws_NoCallsException_if_no_calls_found(
+    public function it_throws_NoCallsException_if_no_calls_found(
         ObjectProphecy $object,
         MethodProphecy $method,
         ArgumentsWildcard $arguments
     ) {
-        $method->getObjectProphecy()->willReturn($object);
-        $method->getMethodName()->willReturn('getName');
-        $method->getArgumentsWildcard()->willReturn($arguments);
-        $arguments->__toString()->willReturn('123');
-        $object->reveal()->willReturn(new \stdClass());
-        $object->findProphecyMethodCalls('getName', Argument::any())->willReturn(array());
-
-        $this->shouldThrow('Prophecy\Exception\Prediction\NoCallsException')
-            ->duringCheck(array(), $object, $method);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

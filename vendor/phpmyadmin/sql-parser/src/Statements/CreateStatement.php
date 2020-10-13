@@ -266,86 +266,11 @@ class CreateStatement extends Statement
      */
     public function build()
     {
-        $fields = '';
-        if (!empty($this->fields)) {
-            if (is_array($this->fields)) {
-                $fields = CreateDefinition::build($this->fields) . ' ';
-            } elseif ($this->fields instanceof ArrayObj) {
-                $fields = ArrayObj::build($this->fields);
-            }
-        }
-        if ($this->options->has('DATABASE')) {
-            return 'CREATE '
-                . OptionsArray::build($this->options) . ' '
-                . Expression::build($this->name) . ' '
-                . OptionsArray::build($this->entityOptions);
-        } elseif ($this->options->has('TABLE') && !is_null($this->select)) {
-            return 'CREATE '
-                . OptionsArray::build($this->options) . ' '
-                . Expression::build($this->name) . ' '
-                . $this->select->build();
-        } elseif ($this->options->has('TABLE') && !is_null($this->like)) {
-            return 'CREATE '
-                . OptionsArray::build($this->options) . ' '
-                . Expression::build($this->name) . ' LIKE '
-                . Expression::build($this->like);
-        } elseif ($this->options->has('TABLE')) {
-            $partition = '';
-
-            if (!empty($this->partitionBy)) {
-                $partition .= "\nPARTITION BY " . $this->partitionBy;
-            }
-            if (!empty($this->partitionsNum)) {
-                $partition .= "\nPARTITIONS " . $this->partitionsNum;
-            }
-            if (!empty($this->subpartitionBy)) {
-                $partition .= "\nSUBPARTITION BY " . $this->subpartitionBy;
-            }
-            if (!empty($this->subpartitionsNum)) {
-                $partition .= "\nSUBPARTITIONS " . $this->subpartitionsNum;
-            }
-            if (!empty($this->partitions)) {
-                $partition .= "\n" . PartitionDefinition::build($this->partitions);
-            }
-
-            return 'CREATE '
-                . OptionsArray::build($this->options) . ' '
-                . Expression::build($this->name) . ' '
-                . $fields
-                . OptionsArray::build($this->entityOptions)
-                . $partition;
-        } elseif ($this->options->has('VIEW')) {
-            return 'CREATE '
-                . OptionsArray::build($this->options) . ' '
-                . Expression::build($this->name) . ' '
-                . $fields . ' AS ' . TokensList::build($this->body) . ' '
-                . OptionsArray::build($this->entityOptions);
-        } elseif ($this->options->has('TRIGGER')) {
-            return 'CREATE '
-                . OptionsArray::build($this->options) . ' '
-                . Expression::build($this->name) . ' '
-                . OptionsArray::build($this->entityOptions) . ' '
-                . 'ON ' . Expression::build($this->table) . ' '
-                . 'FOR EACH ROW ' . TokensList::build($this->body);
-        } elseif (($this->options->has('PROCEDURE'))
-            || ($this->options->has('FUNCTION'))
-        ) {
-            $tmp = '';
-            if ($this->options->has('FUNCTION')) {
-                $tmp = 'RETURNS ' . DataType::build($this->return);
-            }
-
-            return 'CREATE '
-                . OptionsArray::build($this->options) . ' '
-                . Expression::build($this->name) . ' '
-                . ParameterDefinition::build($this->parameters) . ' '
-                . $tmp . ' ' . TokensList::build($this->body);
-        }
-
-        return 'CREATE '
-            . OptionsArray::build($this->options) . ' '
-            . Expression::build($this->name) . ' '
-            . TokensList::build($this->body);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

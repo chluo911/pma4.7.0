@@ -160,18 +160,11 @@ class Url
      */
     public function getParts()
     {
-        $query = (string) $this->query;
-
-        return array(
-            'scheme' => $this->scheme,
-            'user' => $this->username,
-            'pass' => $this->password,
-            'host' => $this->host,
-            'port' => $this->port,
-            'path' => $this->getPath(),
-            'query' => $query !== '' ? $query : null,
-            'fragment' => $this->fragment,
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -213,15 +206,11 @@ class Url
      */
     public function setScheme($scheme)
     {
-        if ($this->scheme == 'http' && $this->port == 80) {
-            $this->port = null;
-        } elseif ($this->scheme == 'https' && $this->port == 443) {
-            $this->port = null;
-        }
-
-        $this->scheme = $scheme;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -326,15 +315,11 @@ class Url
      */
     public function addPath($relativePath)
     {
-        if ($relativePath != '/' && is_string($relativePath) && strlen($relativePath) > 0) {
-            // Add a leading slash if needed
-            if ($relativePath[0] != '/') {
-                $relativePath = '/' . $relativePath;
-            }
-            $this->setPath(str_replace('//', '/', $this->path . $relativePath));
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

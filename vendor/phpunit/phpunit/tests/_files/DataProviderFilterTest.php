@@ -6,17 +6,20 @@ class DataProviderFilterTest extends PHPUnit_Framework_TestCase
      */
     public function testTrue($truth)
     {
-        $this->assertTrue($truth);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function truthProvider()
     {
-        return array(
-           array(true),
-           array(true),
-           array(true),
-           array(true)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -24,16 +27,19 @@ class DataProviderFilterTest extends PHPUnit_Framework_TestCase
      */
     public function testFalse($false)
     {
-        $this->assertFalse($false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function falseProvider()
     {
-        return array(
-          'false test'       => array(false),
-          'false test 2'     => array(false),
-          'other false test' => array(false),
-          'other false test2'=> array(false)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

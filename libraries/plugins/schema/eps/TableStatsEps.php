@@ -59,24 +59,11 @@ class TableStatsEps extends TableStats
         $tableDimension = false,
         $offline = false
     ) {
-        parent::__construct(
-            $diagram,
-            $db,
-            $pageNumber,
-            $tableName,
-            $showKeys,
-            $tableDimension,
-            $offline
-        );
-
-        // height and width
-        $this->_setHeightTable($fontSize);
-        // setWidth must me after setHeight, because title
-        // can include table height which changes table width
-        $this->_setWidthTable($font, $fontSize);
-        if ($same_wide_width < $this->width) {
-            $same_wide_width = $this->width;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,11 +73,11 @@ class TableStatsEps extends TableStats
      */
     protected function showMissingTableError()
     {
-        ExportRelationSchema::dieSchema(
-            $this->pageNumber,
-            "EPS",
-            sprintf(__('The %s table doesn\'t exist!'), $this->tableName)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,29 +92,11 @@ class TableStatsEps extends TableStats
      */
     private function _setWidthTable($font, $fontSize)
     {
-        foreach ($this->fields as $field) {
-            $this->width = max(
-                $this->width,
-                PMA\libraries\Font::getStringWidth($field, $font, $fontSize)
-            );
-        }
-        $this->width += PMA\libraries\Font::getStringWidth(
-            '      ',
-            $font,
-            $fontSize
-        );
-        /*
-         * it is unknown what value must be added, because
-        * table title is affected by the table width value
-        */
-        while ($this->width
-            < PMA\libraries\Font::getStringWidth(
-                $this->getTitle(),
-                $font,
-                $fontSize
-            )) {
-            $this->width += 7;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -139,8 +108,11 @@ class TableStatsEps extends TableStats
      */
     private function _setHeightTable($fontSize)
     {
-        $this->heightCell = $fontSize + 4;
-        $this->height = (count($this->fields) + 1) * $this->heightCell;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -154,29 +126,10 @@ class TableStatsEps extends TableStats
      */
     public function tableDraw($showColor)
     {
-        //echo $this->tableName.'<br />';
-        $this->diagram->rect(
-            $this->x,
-            $this->y + 12,
-            $this->width,
-            $this->heightCell,
-            1
-        );
-        $this->diagram->showXY($this->getTitle(), $this->x + 5, $this->y + 14);
-        foreach ($this->fields as $field) {
-            $this->currentCell += $this->heightCell;
-            $this->diagram->rect(
-                $this->x,
-                $this->y + 12 + $this->currentCell,
-                $this->width,
-                $this->heightCell,
-                1
-            );
-            $this->diagram->showXY(
-                $field,
-                $this->x + 5,
-                $this->y + 14 + $this->currentCell
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

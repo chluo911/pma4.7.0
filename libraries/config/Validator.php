@@ -91,7 +91,10 @@ class Validator
      * @return bool|array
      */
     public static function validate(
-        ConfigFile $cf, $validator_id, &$values, $isPostSource
+        ConfigFile $cf,
+        $validator_id,
+        &$values,
+        $isPostSource
     ) {
         // find validators
         $validator_id = (array) $validator_id;
@@ -144,7 +147,8 @@ class Validator
                         $result[$key] = array();
                     }
                     $result[$key] = array_merge(
-                        $result[$key], (array)$error_list
+                        $result[$key],
+                        (array)$error_list
                     );
                 }
             }
@@ -179,40 +183,11 @@ class Validator
         $pass = null,
         $error_key = 'Server'
     ) {
-        //    static::testPHPErrorMsg();
-        $error = null;
-        $host = PMA_sanitizeMySQLHost($host);
-
-        if (DatabaseInterface::checkDbExtension('mysqli')) {
-            $socket = empty($socket) ? null : $socket;
-            $port = empty($port) ? null : $port;
-            $extension = 'mysqli';
-        } else {
-            $socket = empty($socket) ? null : ':' . ($socket[0] == '/' ? '' : '/') . $socket;
-            $port = empty($port) ? null : ':' . $port;
-            $extension = 'mysql';
-        }
-
-        if ($extension == 'mysql') {
-            $conn = @mysql_connect($host . $port . $socket, $user, $pass);
-            if (! $conn) {
-                $error = __('Could not connect to the database server!');
-            } else {
-                mysql_close($conn);
-            }
-        } else {
-            $conn = @mysqli_connect($host, $user, $pass, null, $port, $socket);
-            if (! $conn) {
-                $error = __('Could not connect to the database server!');
-            } else {
-                mysqli_close($conn);
-            }
-        }
-        //    static::testPHPErrorMsg(false);
-        if (isset($php_errormsg)) {
-            $error .= " - $php_errormsg";
-        }
-        return is_null($error) ? true : array($error_key => $error);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -227,64 +202,11 @@ class Validator
      */
     public static function validateServer($path, $values)
     {
-        $result = array(
-            'Server' => '',
-            'Servers/1/user' => '',
-            'Servers/1/SignonSession' => '',
-            'Servers/1/SignonURL' => ''
-        );
-        $error = false;
-        if (empty($values['Servers/1/auth_type'])) {
-            $values['Servers/1/auth_type'] = '';
-            $result['Servers/1/auth_type'] = __('Invalid authentication type!');
-            $error = true;
-        }
-        if ($values['Servers/1/auth_type'] == 'config'
-            && empty($values['Servers/1/user'])
-        ) {
-            $result['Servers/1/user'] = __(
-                'Empty username while using [kbd]config[/kbd] authentication method!'
-            );
-            $error = true;
-        }
-        if ($values['Servers/1/auth_type'] == 'signon'
-            && empty($values['Servers/1/SignonSession'])
-        ) {
-            $result['Servers/1/SignonSession'] = __(
-                'Empty signon session name '
-                . 'while using [kbd]signon[/kbd] authentication method!'
-            );
-            $error = true;
-        }
-        if ($values['Servers/1/auth_type'] == 'signon'
-            && empty($values['Servers/1/SignonURL'])
-        ) {
-            $result['Servers/1/SignonURL'] = __(
-                'Empty signon URL while using [kbd]signon[/kbd] authentication '
-                . 'method!'
-            );
-            $error = true;
-        }
-
-        if (! $error && $values['Servers/1/auth_type'] == 'config') {
-            $password = '';
-            if (! empty($values['Servers/1/password'])) {
-                $password = $values['Servers/1/password'];
-            }
-            $test = static::testDBConnection(
-                empty($values['Servers/1/host']) ? '' : $values['Servers/1/host'],
-                empty($values['Servers/1/port']) ? '' : $values['Servers/1/port'],
-                empty($values['Servers/1/socket']) ? '' : $values['Servers/1/socket'],
-                empty($values['Servers/1/user']) ? '' : $values['Servers/1/user'],
-                $password,
-                'Server'
-            );
-
-            if ($test !== true) {
-                $result = array_merge($result, $test);
-            }
-        }
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -299,46 +221,11 @@ class Validator
      */
     public static function validatePMAStorage($path, $values)
     {
-        $result = array(
-            'Server_pmadb' => '',
-            'Servers/1/controluser' => '',
-            'Servers/1/controlpass' => ''
-        );
-        $error = false;
-
-        if (empty($values['Servers/1/pmadb'])) {
-            return $result;
-        }
-
-        $result = array();
-        if (empty($values['Servers/1/controluser'])) {
-            $result['Servers/1/controluser'] = __(
-                'Empty phpMyAdmin control user while using phpMyAdmin configuration '
-                . 'storage!'
-            );
-            $error = true;
-        }
-        if (empty($values['Servers/1/controlpass'])) {
-            $result['Servers/1/controlpass'] = __(
-                'Empty phpMyAdmin control user password while using phpMyAdmin '
-                . 'configuration storage!'
-            );
-            $error = true;
-        }
-        if (! $error) {
-            $test = static::testDBConnection(
-                empty($values['Servers/1/host']) ? '' : $values['Servers/1/host'],
-                empty($values['Servers/1/port']) ? '' : $values['Servers/1/port'],
-                empty($values['Servers/1/socket']) ? '' : $values['Servers/1/socket'],
-                empty($values['Servers/1/controluser']) ? '' : $values['Servers/1/controluser'],
-                empty($values['Servers/1/controlpass']) ? '' : $values['Servers/1/controlpass'],
-                'Server_pmadb'
-            );
-            if ($test !== true) {
-                $result = array_merge($result, $test);
-            }
-        }
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 
@@ -394,45 +281,11 @@ class Validator
      */
     public static function validateTrustedProxies($path, $values)
     {
-        $result = array($path => array());
-
-        if (empty($values[$path])) {
-            return $result;
-        }
-
-        if (is_array($values[$path]) || is_object($values[$path])) {
-            // value already processed by FormDisplay::save
-            $lines = array();
-            foreach ($values[$path] as $ip => $v) {
-                $v = Util::requestString($v);
-                $lines[] = preg_match('/^-\d+$/', $ip)
-                    ? $v
-                    : $ip . ': ' . $v;
-            }
-        } else {
-            // AJAX validation
-            $lines = explode("\n", $values[$path]);
-        }
-        foreach ($lines as $line) {
-            $line = trim($line);
-            $matches = array();
-            // we catch anything that may (or may not) be an IP
-            if (!preg_match("/^(.+):(?:[ ]?)\\w+$/", $line, $matches)) {
-                $result[$path][] = __('Incorrect value:') . ' '
-                    . htmlspecialchars($line);
-                continue;
-            }
-            // now let's check whether we really have an IP address
-            if (filter_var($matches[1], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false
-                && filter_var($matches[1], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false
-            ) {
-                $ip = htmlspecialchars(trim($matches[1]));
-                $result[$path][] = sprintf(__('Incorrect IP address: %s'), $ip);
-                continue;
-            }
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -483,16 +336,11 @@ class Validator
      */
     public static function validatePortNumber($path, $values)
     {
-        return array(
-            $path => static::validateNumber(
-                $path,
-                $values,
-                false,
-                false,
-                65535,
-                __('Not a valid port number!')
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

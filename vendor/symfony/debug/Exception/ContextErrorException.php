@@ -22,8 +22,11 @@ class ContextErrorException extends \ErrorException
 
     public function __construct($message, $code, $severity, $filename, $lineno, $context = array())
     {
-        parent::__construct($message, $code, $severity, $filename, $lineno);
-        $this->context = $context;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -31,6 +34,10 @@ class ContextErrorException extends \ErrorException
      */
     public function getContext()
     {
-        return $this->context;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -3,19 +3,28 @@ class Issue433Test extends PHPUnit_Framework_TestCase
 {
     public function testOutputWithExpectationBefore()
     {
-        $this->expectOutputString('test');
-        print 'test';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOutputWithExpectationAfter()
     {
-        print 'test';
-        $this->expectOutputString('test');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNotMatchingOutput()
     {
-        print 'bar';
-        $this->expectOutputString('foo');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

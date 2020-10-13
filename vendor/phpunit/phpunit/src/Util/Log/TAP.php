@@ -55,7 +55,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function addError(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->writeNotOk($test, 'Error');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,37 +71,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
     {
-        $this->writeNotOk($test, 'Failure');
-
-        $message = explode(
-            "\n",
-            PHPUnit_Framework_TestFailure::exceptionToString($e)
-        );
-
-        $diagnostic = array(
-          'message'  => $message[0],
-          'severity' => 'fail'
-        );
-
-        if ($e instanceof PHPUnit_Framework_ExpectationFailedException) {
-            $cf = $e->getComparisonFailure();
-
-            if ($cf !== null) {
-                $diagnostic['data'] = array(
-                  'got'      => $cf->getActual(),
-                  'expected' => $cf->getExpected()
-                );
-            }
-        }
-
-        $yaml = new Symfony\Component\Yaml\Dumper;
-
-        $this->write(
-            sprintf(
-                "  ---\n%s  ...\n",
-                $yaml->dump($diagnostic, 2, 2)
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -109,7 +87,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->writeNotOk($test, '', 'TODO Incomplete Test');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -123,15 +105,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->write(
-            sprintf(
-                "ok %d - # RISKY%s\n",
-                $this->testNumber,
-                $e->getMessage() != '' ? ' ' . $e->getMessage() : ''
-            )
-        );
-
-        $this->testSuccessful = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -145,15 +123,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->write(
-            sprintf(
-                "ok %d - # SKIP%s\n",
-                $this->testNumber,
-                $e->getMessage() != '' ? ' ' . $e->getMessage() : ''
-            )
-        );
-
-        $this->testSuccessful = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -163,7 +137,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
-        $this->testSuiteLevel++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -173,11 +151,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
-        $this->testSuiteLevel--;
-
-        if ($this->testSuiteLevel == 0) {
-            $this->write(sprintf("1..%d\n", $this->testNumber));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,8 +165,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function startTest(PHPUnit_Framework_Test $test)
     {
-        $this->testNumber++;
-        $this->testSuccessful = true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -199,17 +180,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     public function endTest(PHPUnit_Framework_Test $test, $time)
     {
-        if ($this->testSuccessful === true) {
-            $this->write(
-                sprintf(
-                    "ok %d - %s\n",
-                    $this->testNumber,
-                    PHPUnit_Util_Test::describe($test)
-                )
-            );
-        }
-
-        $this->writeDiagnostics($test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -219,17 +194,11 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     protected function writeNotOk(PHPUnit_Framework_Test $test, $prefix = '', $directive = '')
     {
-        $this->write(
-            sprintf(
-                "not ok %d - %s%s%s\n",
-                $this->testNumber,
-                $prefix != '' ? $prefix . ': ' : '',
-                PHPUnit_Util_Test::describe($test),
-                $directive != '' ? ' # ' . $directive : ''
-            )
-        );
-
-        $this->testSuccessful = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -237,21 +206,10 @@ class PHPUnit_Util_Log_TAP extends PHPUnit_Util_Printer implements PHPUnit_Frame
      */
     private function writeDiagnostics(PHPUnit_Framework_Test $test)
     {
-        if (!$test instanceof PHPUnit_Framework_TestCase) {
-            return;
-        }
-
-        if (!$test->hasOutput()) {
-            return;
-        }
-
-        foreach (explode("\n", trim($test->getActualOutput())) as $line) {
-            $this->write(
-                sprintf(
-                    "# %s\n",
-                    $line
-                )
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

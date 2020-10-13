@@ -35,25 +35,11 @@ class Svg extends XMLWriter
      */
     public function __construct()
     {
-        $this->openMemory();
-        /*
-         * Set indenting using three spaces,
-         * so output is formatted
-         */
-
-        $this->setIndent(true);
-        $this->setIndentString('   ');
-        /*
-         * Create the XML document
-         */
-
-        $this->startDocument('1.0', 'UTF-8');
-        $this->startDtd(
-            'svg',
-            '-//W3C//DTD SVG 1.1//EN',
-            'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'
-        );
-        $this->endDtd();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -77,7 +63,11 @@ class Svg extends XMLWriter
      */
     public function setAuthor($value)
     {
-        $this->author = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -89,7 +79,11 @@ class Svg extends XMLWriter
      */
     public function setFont($value)
     {
-        $this->font = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,7 +93,11 @@ class Svg extends XMLWriter
      */
     public function getFont()
     {
-        return $this->font;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -111,7 +109,11 @@ class Svg extends XMLWriter
      */
     public function setFontSize($value)
     {
-        $this->fontSize = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -121,7 +123,11 @@ class Svg extends XMLWriter
      */
     public function getFontSize()
     {
-        return $this->fontSize;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -142,23 +148,11 @@ class Svg extends XMLWriter
      */
     public function startSvgDoc($width, $height, $x = 0, $y = 0)
     {
-        $this->startElement('svg');
-
-        if (!is_int($width)) {
-            $width = intval($width);
-        }
-
-        if (!is_int($height)) {
-            $height = intval($height);
-        }
-
-        if ($x != 0 || $y != 0) {
-            $this->writeAttribute('viewBox', "$x $y $width $height");
-        }
-        $this->writeAttribute('width', ($width - $x) . 'px');
-        $this->writeAttribute('height', ($height - $y) . 'px');
-        $this->writeAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        $this->writeAttribute('version', '1.1');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -169,8 +163,11 @@ class Svg extends XMLWriter
      */
     public function endSvgDoc()
     {
-        $this->endElement();
-        $this->endDocument();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,15 +184,11 @@ class Svg extends XMLWriter
      */
     public function showOutput($fileName)
     {
-        //ob_get_clean();
-        $output = $this->flush();
-        Response::getInstance()->disable();
-        PMA_downloadHeader(
-            $fileName,
-            'image/svg+xml',
-            strlen($output)
-        );
-        print $output;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -232,18 +225,11 @@ class Svg extends XMLWriter
         $text = '',
         $styles = ''
     ) {
-        $this->startElement($name);
-        $this->writeAttribute('width', $width);
-        $this->writeAttribute('height', $height);
-        $this->writeAttribute('x', $x);
-        $this->writeAttribute('y', $y);
-        $this->writeAttribute('style', $styles);
-        if (isset($text)) {
-            $this->writeAttribute('font-family', $this->font);
-            $this->writeAttribute('font-size', $this->fontSize . 'px');
-            $this->text($text);
-        }
-        $this->endElement();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -268,12 +254,10 @@ class Svg extends XMLWriter
      */
     public function printElementLine($name, $x1, $y1, $x2, $y2, $styles)
     {
-        $this->startElement($name);
-        $this->writeAttribute('x1', $x1);
-        $this->writeAttribute('y1', $y1);
-        $this->writeAttribute('x2', $x2);
-        $this->writeAttribute('y2', $y2);
-        $this->writeAttribute('style', $styles);
-        $this->endElement();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

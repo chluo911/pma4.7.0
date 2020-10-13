@@ -87,7 +87,11 @@ class UtfString implements \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        return ($offset >= 0) && ($offset < $this->charLen);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,36 +103,11 @@ class UtfString implements \ArrayAccess
      */
     public function offsetGet($offset)
     {
-        if (($offset < 0) || ($offset >= $this->charLen)) {
-            return null;
-        }
-
-        $delta = $offset - $this->charIdx;
-
-        if ($delta > 0) {
-            // Fast forwarding.
-            while ($delta-- > 0) {
-                $this->byteIdx += static::getCharLength($this->str[$this->byteIdx]);
-                ++$this->charIdx;
-            }
-        } elseif ($delta < 0) {
-            // Rewinding.
-            while ($delta++ < 0) {
-                do {
-                    $byte = ord($this->str[--$this->byteIdx]);
-                } while ((128 <= $byte) && ($byte < 192));
-                --$this->charIdx;
-            }
-        }
-
-        $bytesCount = static::getCharLength($this->str[$this->byteIdx]);
-
-        $ret = '';
-        for ($i = 0; $bytesCount-- > 0; ++$i) {
-            $ret .= $this->str[$this->byteIdx + $i];
-        }
-
-        return $ret;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,7 +120,11 @@ class UtfString implements \ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        throw new \Exception('Not implemented.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -171,20 +154,11 @@ class UtfString implements \ArrayAccess
      */
     public static function getCharLength($byte)
     {
-        $byte = ord($byte);
-        if ($byte < 128) {
-            return 1;
-        } elseif ($byte < 224) {
-            return 2;
-        } elseif ($byte < 240) {
-            return 3;
-        } elseif ($byte < 248) {
-            return 4;
-        } elseif ($byte < 252) {
-            return 5; // unofficial
-        }
-
-        return 6; // unofficial
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -100,28 +100,29 @@ class ReferenceBag implements \Countable, \IteratorAggregate
 
     public function update(Reference $reference)
     {
-        $fullname = $reference->getFullname();
-
-        $this->initialize();
-        $this->repository->run('update-ref', array($fullname, $reference->getCommitHash()));
-
-        $this->references[$fullname] = $reference;
-
-        return $reference;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function createBranch($name, $commitHash)
     {
-        $branch = new Branch($this->repository, 'refs/heads/'.$name, $commitHash);
-
-        return $this->update($branch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function createTag($name, $commitHash)
     {
-        $tag = new Tag($this->repository, 'refs/tags/'.$name, $commitHash);
-
-        return $this->update($tag);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function delete($fullname)
@@ -133,32 +134,47 @@ class ReferenceBag implements \Countable, \IteratorAggregate
 
     public function hasBranches()
     {
-        $this->initialize();
-
-        return count($this->branches) > 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function hasBranch($name)
     {
-        return $this->has('refs/heads/'.$name);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function hasRemoteBranch($name)
     {
-        return $this->has('refs/remotes/'.$name);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function hasTag($name)
     {
-        return $this->has('refs/tags/'.$name);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getFirstBranch()
     {
-        $this->initialize();
-        reset($this->branches);
-
-        return current($this->references);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -166,20 +182,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function resolveTags($hash)
     {
-        $this->initialize();
-
-        if ($hash instanceof Commit) {
-            $hash = $hash->getHash();
-        }
-
-        $tags = array();
-        foreach ($this->references as $reference) {
-            if ($reference instanceof Reference\Tag && $reference->getCommitHash() === $hash) {
-                $tags[] = $reference;
-            }
-        }
-
-        return $tags;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,20 +194,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function resolveBranches($hash)
     {
-        $this->initialize();
-
-        if ($hash instanceof Commit) {
-            $hash = $hash->getHash();
-        }
-
-        $branches = array();
-        foreach ($this->references as $reference) {
-            if ($reference instanceof Reference\Branch && $reference->getCommitHash() === $hash) {
-                $branches[] = $reference;
-            }
-        }
-
-        return $branches;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -208,20 +206,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function resolve($hash)
     {
-        $this->initialize();
-
-        if ($hash instanceof Commit) {
-            $hash = $hash->getHash();
-        }
-
-        $result = array();
-        foreach ($this->references as $k => $reference) {
-            if ($reference->getCommitHash() === $hash) {
-                $result[] = $reference;
-            }
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -262,14 +251,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function getLocalBranches()
     {
-        $result = array();
-        foreach ($this->getBranches() as $branch) {
-            if ($branch->isLocal()) {
-                $result[] = $branch;
-            }
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -279,14 +265,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function getRemoteBranches()
     {
-        $result = array();
-        foreach ($this->getBranches() as $branch) {
-            if ($branch->isRemote()) {
-                $result[] = $branch;
-            }
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -294,9 +277,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function getAll()
     {
-        $this->initialize();
-
-        return $this->references;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -304,9 +289,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function getTag($name)
     {
-        $this->initialize();
-
-        return $this->get('refs/tags/'.$name);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -314,9 +301,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function getBranch($name)
     {
-        $this->initialize();
-
-        return $this->get('refs/heads/'.$name);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -324,9 +313,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function getRemoteBranch($name)
     {
-        $this->initialize();
-
-        return $this->get('refs/remotes/'.$name);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function initialize()
@@ -380,9 +371,11 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function count()
     {
-        $this->initialize();
-
-        return count($this->references);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -390,8 +383,10 @@ class ReferenceBag implements \Countable, \IteratorAggregate
      */
     public function getIterator()
     {
-        $this->initialize();
-
-        return new \ArrayIterator($this->references);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

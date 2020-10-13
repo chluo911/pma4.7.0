@@ -86,7 +86,11 @@ class TokensList implements \ArrayAccess
      */
     public function add(Token $token)
     {
-        $this->tokens[$this->count++] = $token;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -155,11 +159,11 @@ class TokensList implements \ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        if ($offset === null) {
-            $this->tokens[$this->count++] = $value;
-        } else {
-            $this->tokens[$offset] = $value;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -171,7 +175,11 @@ class TokensList implements \ArrayAccess
      */
     public function offsetGet($offset)
     {
-        return $offset < $this->count ? $this->tokens[$offset] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -183,7 +191,11 @@ class TokensList implements \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        return $offset < $this->count;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

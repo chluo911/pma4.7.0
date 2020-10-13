@@ -46,23 +46,11 @@ class PHPUnit_Util_Test
      */
     public static function describe(PHPUnit_Framework_Test $test, $asString = true)
     {
-        if ($asString) {
-            if ($test instanceof PHPUnit_Framework_SelfDescribing) {
-                return $test->toString();
-            } else {
-                return get_class($test);
-            }
-        } else {
-            if ($test instanceof PHPUnit_Framework_TestCase) {
-                return array(
-                  get_class($test), $test->getName()
-                );
-            } elseif ($test instanceof PHPUnit_Framework_SelfDescribing) {
-                return array('', $test->toString());
-            } else {
-                return array('', get_class($test));
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -744,22 +732,11 @@ class PHPUnit_Util_Test
      */
     public static function getTickets($className, $methodName)
     {
-        $annotations = self::parseTestMethodAnnotations(
-            $className,
-            $methodName
-        );
-
-        $tickets = array();
-
-        if (isset($annotations['class']['ticket'])) {
-            $tickets = $annotations['class']['ticket'];
-        }
-
-        if (isset($annotations['method']['ticket'])) {
-            $tickets = array_merge($tickets, $annotations['method']['ticket']);
-        }
-
-        return array_unique($tickets);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

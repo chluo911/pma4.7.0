@@ -22,18 +22,19 @@ class AliasFactory implements FactoryInterface
      */
     public function __construct(ClientInterface $client, array $aliases)
     {
-        $this->client = $client;
-        $this->aliases = $aliases;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function factory($name, array $args = array())
     {
-        if (isset($this->aliases[$name])) {
-            try {
-                return $this->client->getCommand($this->aliases[$name], $args);
-            } catch (InvalidArgumentException $e) {
-                return null;
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

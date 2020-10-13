@@ -349,7 +349,9 @@ class Lexer extends Core
     {
         $error = new LexerException(
             Translator::gettext($msg),
-            $str, $pos, $code
+            $str,
+            $pos,
+            $code
         );
         parent::error($error);
     }

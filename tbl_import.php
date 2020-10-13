@@ -33,6 +33,9 @@ require_once 'libraries/tbl_info.inc.php';
 require 'libraries/display_import.lib.php';
 $response->addHTML(
     PMA_getImportDisplay(
-        'table', $db, $table, $max_upload_size
+        'table',
+        $db,
+        $table,
+        $max_upload_size
     )
 );

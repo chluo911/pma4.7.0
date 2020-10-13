@@ -26,7 +26,11 @@ class ExternalAdapter implements CacheItemPoolInterface
 
     public function __construct()
     {
-        $this->cache = new ArrayAdapter();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getItem($key)
@@ -46,7 +50,11 @@ class ExternalAdapter implements CacheItemPoolInterface
 
     public function clear()
     {
-        return $this->cache->clear();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function deleteItem($key)

@@ -36,8 +36,11 @@ class Squiz_Sniffs_PHP_DisallowBooleanStatementSniff implements PHP_CodeSniffer_
      */
     public function register()
     {
-        return PHP_CodeSniffer_Tokens::$booleanOperators;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -52,21 +55,10 @@ class Squiz_Sniffs_PHP_DisallowBooleanStatementSniff implements PHP_CodeSniffer_
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        if (isset($tokens[$stackPtr]['nested_parenthesis']) === true) {
-            $foundOwner = false;
-            foreach ($tokens[$stackPtr]['nested_parenthesis'] as $open => $close) {
-                if (isset($tokens[$open]['parenthesis_owner']) === true) {
-                    // Any owner means we are not just a simple statement.
-                    return;
-                }
-            }
-        }
-
-        $error = 'Boolean operators are not allowed outside of control structure conditions';
-        $phpcsFile->addError($error, $stackPtr, 'Found');
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

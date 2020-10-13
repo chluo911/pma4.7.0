@@ -16,25 +16,28 @@ class MapResourceIteratorFactoryTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresIteratorClassExists()
     {
-        $factory = new MapResourceIteratorFactory(array('Foo', 'Bar'));
-        $factory->build(new MockCommand());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testBuildsResourceIterators()
     {
-        $factory = new MapResourceIteratorFactory(array(
-            'mock_command' => 'Guzzle\Tests\Service\Mock\Model\MockCommandIterator'
-        ));
-        $iterator = $factory->build(new MockCommand());
-        $this->assertInstanceOf('Guzzle\Tests\Service\Mock\Model\MockCommandIterator', $iterator);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testUsesWildcardMappings()
     {
-        $factory = new MapResourceIteratorFactory(array(
-            '*' => 'Guzzle\Tests\Service\Mock\Model\MockCommandIterator'
-        ));
-        $iterator = $factory->build(new MockCommand());
-        $this->assertInstanceOf('Guzzle\Tests\Service\Mock\Model\MockCommandIterator', $iterator);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -39,6 +39,10 @@ class PharExceptionAsset extends PharException
      */
     public function __construct()
     {
-        throw new BadMethodCallException('Not supposed to be called!');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -21,18 +21,11 @@ class ArrayNodeDefinitionTest extends TestCase
 {
     public function testAppendingSomeNode()
     {
-        $parent = new ArrayNodeDefinition('root');
-        $child = new ScalarNodeDefinition('child');
-
-        $parent
-            ->children()
-                ->scalarNode('foo')->end()
-                ->scalarNode('bar')->end()
-            ->end()
-            ->append($child);
-
-        $this->assertCount(3, $this->getField($parent, 'children'));
-        $this->assertTrue(in_array($child, $this->getField($parent, 'children')));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,21 +34,20 @@ class ArrayNodeDefinitionTest extends TestCase
      */
     public function testPrototypeNodeSpecificOption($method, $args)
     {
-        $node = new ArrayNodeDefinition('root');
-
-        call_user_func_array(array($node, $method), $args);
-
-        $node->getNode();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function providePrototypeNodeSpecificCalls()
     {
-        return array(
-            array('defaultValue', array(array())),
-            array('addDefaultChildrenIfNoneSet', array()),
-            array('requiresAtLeastOneElement', array()),
-            array('useAttributeAsKey', array('foo')),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,12 +55,11 @@ class ArrayNodeDefinitionTest extends TestCase
      */
     public function testConcreteNodeSpecificOption()
     {
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->addDefaultsIfNotSet()
-            ->prototype('array')
-        ;
-        $node->getNode();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -76,24 +67,20 @@ class ArrayNodeDefinitionTest extends TestCase
      */
     public function testPrototypeNodesCantHaveADefaultValueWhenUsingDefaultChildren()
     {
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->defaultValue(array())
-            ->addDefaultChildrenIfNoneSet('foo')
-            ->prototype('array')
-        ;
-        $node->getNode();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testPrototypedArrayNodeDefaultWhenUsingDefaultChildren()
     {
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->addDefaultChildrenIfNoneSet()
-            ->prototype('array')
-        ;
-        $tree = $node->getNode();
-        $this->assertEquals(array(array()), $tree->getDefaultValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -101,69 +88,38 @@ class ArrayNodeDefinitionTest extends TestCase
      */
     public function testPrototypedArrayNodeDefault($args, $shouldThrowWhenUsingAttrAsKey, $shouldThrowWhenNotUsingAttrAsKey, $defaults)
     {
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->addDefaultChildrenIfNoneSet($args)
-            ->prototype('array')
-        ;
-
-        try {
-            $tree = $node->getNode();
-            $this->assertFalse($shouldThrowWhenNotUsingAttrAsKey);
-            $this->assertEquals($defaults, $tree->getDefaultValue());
-        } catch (InvalidDefinitionException $e) {
-            $this->assertTrue($shouldThrowWhenNotUsingAttrAsKey);
-        }
-
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->useAttributeAsKey('attr')
-            ->addDefaultChildrenIfNoneSet($args)
-            ->prototype('array')
-        ;
-
-        try {
-            $tree = $node->getNode();
-            $this->assertFalse($shouldThrowWhenUsingAttrAsKey);
-            $this->assertEquals($defaults, $tree->getDefaultValue());
-        } catch (InvalidDefinitionException $e) {
-            $this->assertTrue($shouldThrowWhenUsingAttrAsKey);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function providePrototypedArrayNodeDefaults()
     {
-        return array(
-            array(null, true, false, array(array())),
-            array(2, true, false, array(array(), array())),
-            array('2', false, true, array('2' => array())),
-            array('foo', false, true, array('foo' => array())),
-            array(array('foo'), false, true, array('foo' => array())),
-            array(array('foo', 'bar'), false, true, array('foo' => array(), 'bar' => array())),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNestedPrototypedArrayNodes()
     {
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->addDefaultChildrenIfNoneSet()
-            ->prototype('array')
-                  ->prototype('array')
-        ;
-        $node->getNode();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEnabledNodeDefaults()
     {
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->canBeEnabled()
-            ->children()
-                ->scalarNode('foo')->defaultValue('bar')->end()
-        ;
-
-        $this->assertEquals(array('enabled' => false, 'foo' => 'bar'), $node->getNode()->getDefaultValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -171,80 +127,55 @@ class ArrayNodeDefinitionTest extends TestCase
      */
     public function testTrueEnableEnabledNode($expected, $config, $message)
     {
-        $processor = new Processor();
-        $node = new ArrayNodeDefinition('root');
-        $node
-            ->canBeEnabled()
-            ->children()
-                ->scalarNode('foo')->defaultValue('bar')->end()
-        ;
-
-        $this->assertEquals(
-            $expected,
-            $processor->process($node->getNode(), $config),
-            $message
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCanBeDisabled()
     {
-        $node = new ArrayNodeDefinition('root');
-        $node->canBeDisabled();
-
-        $this->assertTrue($this->getField($node, 'addDefaults'));
-        $this->assertEquals(array('enabled' => false), $this->getField($node, 'falseEquivalent'));
-        $this->assertEquals(array('enabled' => true), $this->getField($node, 'trueEquivalent'));
-        $this->assertEquals(array('enabled' => true), $this->getField($node, 'nullEquivalent'));
-
-        $nodeChildren = $this->getField($node, 'children');
-        $this->assertArrayHasKey('enabled', $nodeChildren);
-
-        $enabledNode = $nodeChildren['enabled'];
-        $this->assertTrue($this->getField($enabledNode, 'default'));
-        $this->assertTrue($this->getField($enabledNode, 'defaultValue'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIgnoreExtraKeys()
     {
-        $node = new ArrayNodeDefinition('root');
-
-        $this->assertFalse($this->getField($node, 'ignoreExtraKeys'));
-
-        $result = $node->ignoreExtraKeys();
-
-        $this->assertEquals($node, $result);
-        $this->assertTrue($this->getField($node, 'ignoreExtraKeys'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNormalizeKeys()
     {
-        $node = new ArrayNodeDefinition('root');
-
-        $this->assertTrue($this->getField($node, 'normalizeKeys'));
-
-        $result = $node->normalizeKeys(false);
-
-        $this->assertEquals($node, $result);
-        $this->assertFalse($this->getField($node, 'normalizeKeys'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getEnableableNodeFixtures()
     {
-        return array(
-            array(array('enabled' => true, 'foo' => 'bar'), array(true), 'true enables an enableable node'),
-            array(array('enabled' => true, 'foo' => 'bar'), array(null), 'null enables an enableable node'),
-            array(array('enabled' => true, 'foo' => 'bar'), array(array('enabled' => true)), 'An enableable node can be enabled'),
-            array(array('enabled' => true, 'foo' => 'baz'), array(array('foo' => 'baz')), 'any configuration enables an enableable node'),
-            array(array('enabled' => false, 'foo' => 'baz'), array(array('foo' => 'baz', 'enabled' => false)), 'An enableable node can be disabled'),
-            array(array('enabled' => false, 'foo' => 'bar'), array(false), 'false disables an enableable node'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getField($object, $field)
     {
-        $reflection = new \ReflectionProperty($object, $field);
-        $reflection->setAccessible(true);
-
-        return $reflection->getValue($object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

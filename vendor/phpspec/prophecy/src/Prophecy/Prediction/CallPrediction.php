@@ -35,7 +35,11 @@ class CallPrediction implements PredictionInterface
      */
     public function __construct(StringUtil $util = null)
     {
-        $this->util = $util ?: new StringUtil;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,7 +68,6 @@ class CallPrediction implements PredictionInterface
                 "  %s->%s(%s)\n".
                 "but expected at least one.\n".
                 "Recorded `%s(...)` calls:\n%s",
-
                 get_class($object->reveal()),
                 $method->getMethodName(),
                 $method->getArgumentsWildcard(),
@@ -77,7 +80,6 @@ class CallPrediction implements PredictionInterface
             "No calls have been made that match:\n".
             "  %s->%s(%s)\n".
             "but expected at least one.",
-
             get_class($object->reveal()),
             $method->getMethodName(),
             $method->getArgumentsWildcard()

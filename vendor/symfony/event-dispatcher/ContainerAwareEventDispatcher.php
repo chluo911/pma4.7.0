@@ -51,7 +51,11 @@ class ContainerAwareEventDispatcher extends EventDispatcher
      */
     public function __construct(ContainerInterface $container)
     {
-        $this->container = $container;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,11 +72,11 @@ class ContainerAwareEventDispatcher extends EventDispatcher
      */
     public function addListenerService($eventName, $callback, $priority = 0)
     {
-        if (!is_array($callback) || 2 !== count($callback)) {
-            throw new \InvalidArgumentException('Expected an array("service", "method") argument');
-        }
-
-        $this->listenerIds[$eventName][] = array($callback[0], $callback[1], $priority);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function removeListener($eventName, $listener)
@@ -104,15 +108,11 @@ class ContainerAwareEventDispatcher extends EventDispatcher
      */
     public function hasListeners($eventName = null)
     {
-        if (null === $eventName) {
-            return (bool) count($this->listenerIds) || (bool) count($this->listeners);
-        }
-
-        if (isset($this->listenerIds[$eventName])) {
-            return true;
-        }
-
-        return parent::hasListeners($eventName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -149,22 +149,20 @@ class ContainerAwareEventDispatcher extends EventDispatcher
      */
     public function addSubscriberService($serviceId, $class)
     {
-        foreach ($class::getSubscribedEvents() as $eventName => $params) {
-            if (is_string($params)) {
-                $this->listenerIds[$eventName][] = array($serviceId, $params, 0);
-            } elseif (is_string($params[0])) {
-                $this->listenerIds[$eventName][] = array($serviceId, $params[0], isset($params[1]) ? $params[1] : 0);
-            } else {
-                foreach ($params as $listener) {
-                    $this->listenerIds[$eventName][] = array($serviceId, $listener[0], isset($listener[1]) ? $listener[1] : 0);
-                }
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getContainer()
     {
-        return $this->container;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

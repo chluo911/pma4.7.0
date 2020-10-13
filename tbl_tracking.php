@@ -47,7 +47,9 @@ $url_params['back'] = 'tbl_tracking.php';
 // Init vars for tracking report
 if (isset($_REQUEST['report']) || isset($_REQUEST['report_export'])) {
     $data = Tracker::getTrackedData(
-        $_REQUEST['db'], $_REQUEST['table'], $_REQUEST['version']
+        $_REQUEST['db'],
+        $_REQUEST['table'],
+        $_REQUEST['version']
     );
 
     $selection_schema = false;
@@ -166,8 +168,15 @@ if (isset($_REQUEST['report'])
 
 if (isset($_REQUEST['report']) || isset($_REQUEST['report_export'])) {
     $html .= PMA_getHtmlForTrackingReport(
-        $url_query, $data, $url_params, $selection_schema, $selection_data,
-        $selection_both, $filter_ts_to, $filter_ts_from, $filter_users
+        $url_query,
+        $data,
+        $url_params,
+        $selection_schema,
+        $selection_data,
+        $selection_both,
+        $filter_ts_to,
+        $filter_ts_from,
+        $filter_users
     );
 } // end of report
 
@@ -178,7 +187,8 @@ if (isset($_REQUEST['report']) || isset($_REQUEST['report_export'])) {
 $selectable_tables_sql_result = PMA_getSQLResultForSelectableTables();
 if ($GLOBALS['dbi']->numRows($selectable_tables_sql_result) > 0) {
     $html .= PMA_getHtmlForSelectableTables(
-        $selectable_tables_sql_result, $url_query
+        $selectable_tables_sql_result,
+        $url_query
     );
 }
 $html .= '<br />';
@@ -190,8 +200,12 @@ $sql_result = PMA_getListOfVersionsOfTable();
 $last_version = PMA_getTableLastVersionNumber($sql_result);
 if ($last_version > 0) {
     $html .= PMA_getHtmlForTableVersionDetails(
-        $sql_result, $last_version, $url_params,
-        $url_query, $pmaThemeImage, $text_dir
+        $sql_result,
+        $last_version,
+        $url_params,
+        $url_query,
+        $pmaThemeImage,
+        $text_dir
     );
 }
 

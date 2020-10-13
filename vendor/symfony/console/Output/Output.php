@@ -99,7 +99,11 @@ abstract class Output implements OutputInterface
      */
     public function isQuiet()
     {
-        return self::VERBOSITY_QUIET === $this->verbosity;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -115,7 +119,11 @@ abstract class Output implements OutputInterface
      */
     public function isVeryVerbose()
     {
-        return self::VERBOSITY_VERY_VERBOSE <= $this->verbosity;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

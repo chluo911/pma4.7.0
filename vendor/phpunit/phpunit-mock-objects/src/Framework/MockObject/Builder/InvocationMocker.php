@@ -36,12 +36,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function __construct(PHPUnit_Framework_MockObject_Stub_MatcherCollection $collection, PHPUnit_Framework_MockObject_Matcher_Invocation $invocationMatcher)
     {
-        $this->collection = $collection;
-        $this->matcher    = new PHPUnit_Framework_MockObject_Matcher(
-            $invocationMatcher
-        );
-
-        $this->collection->addMatcher($this->matcher);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,9 +57,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function id($id)
     {
-        $this->collection->registerId($id, $this);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,9 +70,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function will(PHPUnit_Framework_MockObject_Stub $stub)
     {
-        $this->matcher->stub = $stub;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -80,11 +83,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function willReturn($value)
     {
-        $stub = new PHPUnit_Framework_MockObject_Stub_Return(
-            $value
-        );
-
-        return $this->will($stub);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,11 +96,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function willReturnMap(array $valueMap)
     {
-        $stub = new PHPUnit_Framework_MockObject_Stub_ReturnValueMap(
-            $valueMap
-        );
-
-        return $this->will($stub);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -106,11 +109,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function willReturnArgument($argumentIndex)
     {
-        $stub = new PHPUnit_Framework_MockObject_Stub_ReturnArgument(
-            $argumentIndex
-        );
-
-        return $this->will($stub);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,11 +122,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function willReturnCallback($callback)
     {
-        $stub = new PHPUnit_Framework_MockObject_Stub_ReturnCallback(
-            $callback
-        );
-
-        return $this->will($stub);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -131,9 +134,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function willReturnSelf()
     {
-        $stub = new PHPUnit_Framework_MockObject_Stub_ReturnSelf();
-
-        return $this->will($stub);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -142,11 +147,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function willReturnOnConsecutiveCalls()
     {
-        $args = func_get_args();
-
-        $stub = new PHPUnit_Framework_MockObject_Stub_ConsecutiveCalls($args);
-
-        return $this->will($stub);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -155,9 +160,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function willThrowException(Exception $exception)
     {
-        $stub = new PHPUnit_Framework_MockObject_Stub_Exception($exception);
-
-        return $this->will($stub);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -166,9 +173,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function after($id)
     {
-        $this->matcher->afterMatchBuilderId = $id;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -178,18 +187,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     private function canDefineParameters()
     {
-        if ($this->matcher->methodNameMatcher === null) {
-            throw new PHPUnit_Framework_Exception(
-                'Method name matcher is not defined, cannot define parameter ' .
-                ' matcher without one'
-            );
-        }
-
-        if ($this->matcher->parametersMatcher !== null) {
-            throw new PHPUnit_Framework_Exception(
-                'Parameter matcher is already defined, cannot redefine'
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -198,13 +200,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function with()
     {
-        $args = func_get_args();
-
-        $this->canDefineParameters();
-
-        $this->matcher->parametersMatcher = new PHPUnit_Framework_MockObject_Matcher_Parameters($args);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -213,15 +213,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function withConsecutive()
     {
-
-        $args = func_get_args();
-
-        $this->canDefineParameters();
-
-        $this->matcher->parametersMatcher =
-          new PHPUnit_Framework_MockObject_Matcher_ConsecutiveParameters($args);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -229,11 +225,11 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function withAnyParameters()
     {
-        $this->canDefineParameters();
-
-        $this->matcher->parametersMatcher = new PHPUnit_Framework_MockObject_Matcher_AnyParameters;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -242,14 +238,10 @@ class PHPUnit_Framework_MockObject_Builder_InvocationMocker implements PHPUnit_F
      */
     public function method($constraint)
     {
-        if ($this->matcher->methodNameMatcher !== null) {
-            throw new PHPUnit_Framework_Exception(
-                'Method name matcher is already defined, cannot redefine'
-            );
-        }
-
-        $this->matcher->methodNameMatcher = new PHPUnit_Framework_MockObject_Matcher_MethodName($constraint);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

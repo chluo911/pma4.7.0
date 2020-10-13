@@ -105,7 +105,11 @@ function PMA_getHtmlForExportSelectOptions($tmp_select = '')
  * @return string
  */
 function PMA_getHtmlForHiddenInput(
-    $export_type, $db, $table, $single_table, $sql_query
+    $export_type,
+    $db,
+    $table,
+    $single_table,
+    $sql_query
 ) {
     global $cfg;
     $html = "";
@@ -337,7 +341,7 @@ function PMA_getHtmlForExportOptionsSelection($export_type, $multi_values)
     $html = '<div class="exportoptions" id="databases_and_tables">';
     if ($export_type == 'server') {
         $html .= '<h3>' . __('Databases:') . '</h3>';
-    } else if ($export_type == 'database') {
+    } elseif ($export_type == 'database') {
         $html .= '<h3>' . __('Tables:') . '</h3>';
     }
     if (! empty($multi_values)) {
@@ -395,7 +399,10 @@ function PMA_getHtmlForExportOptionsFormat($export_list)
     $html .= '<div class="exportoptions" id="submit">';
 
     $html .= PMA\libraries\Util::getExternalBug(
-        __('SQL compatibility mode'), 'mysql', '50027', '14515'
+        __('SQL compatibility mode'),
+        'mysql',
+        '50027',
+        '14515'
     );
     global $cfg;
     if ($cfg['ExecTimeLimit'] > 0) {
@@ -860,8 +867,13 @@ function PMA_getHtmlForExportOptionsOutput($export_type)
  * @return string
  */
 function PMA_getHtmlForExportOptions(
-    $export_type, $db, $table, $multi_values,
-    $num_tables, $export_list, $unlim_num_rows
+    $export_type,
+    $db,
+    $table,
+    $multi_values,
+    $num_tables,
+    $export_list,
+    $unlim_num_rows
 ) {
     global $cfg;
     $html  = PMA_getHtmlForExportOptionsMethod();
@@ -908,7 +920,10 @@ function PMA_getHtmlForAliasModalDialog($db = '', $table = '')
     $title = __('Rename exported databases/tables/columns');
     if (empty($db)) {
         $databases = $GLOBALS['dbi']->getColumnsFull(
-            null, null, null, $GLOBALS['userlink']
+            null,
+            null,
+            null,
+            $GLOBALS['userlink']
         );
         foreach ($dbs_not_allowed as $db) {
             unset($databases[$db]);
@@ -916,13 +931,19 @@ function PMA_getHtmlForAliasModalDialog($db = '', $table = '')
         // Database export does not have table set.
     } elseif (empty($table)) {
         $tables = $GLOBALS['dbi']->getColumnsFull(
-            $db, null, null, $GLOBALS['userlink']
+            $db,
+            null,
+            null,
+            $GLOBALS['userlink']
         );
         $databases = array($db => $tables);
-        // Table export
+    // Table export
     } else {
         $columns = $GLOBALS['dbi']->getColumnsFull(
-            $db, $table, null, $GLOBALS['userlink']
+            $db,
+            $table,
+            null,
+            $GLOBALS['userlink']
         );
         $databases = array(
             $db => array(
@@ -1033,8 +1054,13 @@ function PMA_getHtmlForAliasModalDialog($db = '', $table = '')
  * @return string $html
  */
 function PMA_getExportDisplay(
-    $export_type, $db, $table, $sql_query, $num_tables,
-    $unlim_num_rows, $multi_values
+    $export_type,
+    $db,
+    $table,
+    $sql_query,
+    $num_tables,
+    $unlim_num_rows,
+    $multi_values
 ) {
     $cfgRelation = PMA_getRelationsParam();
 
@@ -1168,7 +1194,8 @@ function PMA_handleExportTemplateActions($cfgRelation)
     } elseif ('load' == $_REQUEST['templateAction']) {
         $data = null;
         while ($row = $GLOBALS['dbi']->fetchAssoc(
-            $result, $GLOBALS['controllink']
+            $result,
+            $GLOBALS['controllink']
         )) {
             $data = $row['template_data'];
         }

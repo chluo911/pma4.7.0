@@ -17,31 +17,20 @@ class RedisAdapterTest extends AbstractRedisAdapterTest
 {
     public static function setupBeforeClass()
     {
-        parent::setupBeforeClass();
-        self::$redis = new \Redis();
-        self::$redis->connect(getenv('REDIS_HOST'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCreateConnection()
     {
-        $redisHost = getenv('REDIS_HOST');
-
-        $redis = RedisAdapter::createConnection('redis://'.$redisHost);
-        $this->assertInstanceOf(\Redis::class, $redis);
-        $this->assertTrue($redis->isConnected());
-        $this->assertSame(0, $redis->getDbNum());
-
-        $redis = RedisAdapter::createConnection('redis://'.$redisHost.'/2');
-        $this->assertSame(2, $redis->getDbNum());
-
-        $redis = RedisAdapter::createConnection('redis://'.$redisHost, array('timeout' => 3));
-        $this->assertEquals(3, $redis->getTimeout());
-
-        $redis = RedisAdapter::createConnection('redis://'.$redisHost.'?timeout=4');
-        $this->assertEquals(4, $redis->getTimeout());
-
-        $redis = RedisAdapter::createConnection('redis://'.$redisHost, array('read_timeout' => 5));
-        $this->assertEquals(5, $redis->getReadTimeout());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -51,16 +40,20 @@ class RedisAdapterTest extends AbstractRedisAdapterTest
      */
     public function testFailedCreateConnection($dsn)
     {
-        RedisAdapter::createConnection($dsn);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function provideFailedCreateConnection()
     {
-        return array(
-            array('redis://localhost:1234'),
-            array('redis://foo@localhost'),
-            array('redis://localhost/123'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,14 +63,19 @@ class RedisAdapterTest extends AbstractRedisAdapterTest
      */
     public function testInvalidCreateConnection($dsn)
     {
-        RedisAdapter::createConnection($dsn);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function provideInvalidCreateConnection()
     {
-        return array(
-            array('foo://localhost'),
-            array('redis://'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

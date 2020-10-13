@@ -34,7 +34,7 @@ function PMA_checkTimeout()
         return false;
     } elseif ($timeout_passed) {
         return true;
-        /* 5 in next row might be too much */
+    /* 5 in next row might be too much */
     } elseif ((time() - $timestamp) > ($maximum_time - 5)) {
         $timeout_passed = true;
         return true;
@@ -152,7 +152,9 @@ function PMA_importRunQuery($sql = '', $full = '', &$sql_data = array())
     if (!isset($import_run_buffer)) {
         // Do we have something to push into buffer?
         $import_run_buffer = PMA_ImportRunQuery_post(
-            $import_run_buffer, $sql, $full
+            $import_run_buffer,
+            $sql,
+            $full
         );
         return;
     }
@@ -162,7 +164,9 @@ function PMA_importRunQuery($sql = '', $full = '', &$sql_data = array())
         $skip_queries--;
         // Do we have something to push into buffer?
         $import_run_buffer = PMA_ImportRunQuery_post(
-            $import_run_buffer, $sql, $full
+            $import_run_buffer,
+            $sql,
+            $full
         );
         return;
     }
@@ -373,7 +377,7 @@ function PMA_importGetNextChunk($size = 32768)
         // UTF-8
         if (strncmp($result, "\xEF\xBB\xBF", 3) == 0) {
             $result = mb_substr($result, 3);
-            // UTF-16 BE, LE
+        // UTF-16 BE, LE
         } elseif (strncmp($result, "\xFE\xFF", 2) == 0
             || strncmp($result, "\xFF\xFE", 2) == 0
         ) {
@@ -457,29 +461,11 @@ function PMA_getColumnAlphaName($num)
  */
 function PMA_getColumnNumberFromName($name)
 {
-    if (empty($name)) {
-        return 0;
-    }
-
-    $name = mb_strtoupper($name);
-    $num_chars = mb_strlen($name);
-    $column_number = 0;
-    for ($i = 0; $i < $num_chars; ++$i) {
-        // read string from back to front
-        $char_pos = ($num_chars - 1) - $i;
-
-        // convert capital character to ASCII value
-        // and subtract 64 to get corresponding decimal value
-        // ASCII value of "A" is 65, "B" is 66, etc.
-        // Decimal equivalent of "A" is 1, "B" is 2, etc.
-        $number = (int)(mb_ord($name[$char_pos]) - 64);
-
-        // base26 to base10 conversion : multiply each number
-        // with corresponding value of the position, in this case
-        // $i=0 : 1; $i=1 : 26; $i=2 : 676; ...
-        $column_number += $number * pow(26, $i);
-    }
-    return $column_number;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -487,26 +473,26 @@ function PMA_getColumnNumberFromName($name)
  */
 
 /* MySQL type defs */
-define("NONE",      0);
-define("VARCHAR",   1);
-define("INT",       2);
-define("DECIMAL",   3);
-define("BIGINT",    4);
-define("GEOMETRY",  5);
+define("NONE", 0);
+define("VARCHAR", 1);
+define("INT", 2);
+define("DECIMAL", 3);
+define("BIGINT", 4);
+define("GEOMETRY", 5);
 
 /* Decimal size defs */
-define("M",         0);
-define("D",         1);
-define("FULL",      2);
+define("M", 0);
+define("D", 1);
+define("FULL", 2);
 
 /* Table array defs */
-define("TBL_NAME",  0);
+define("TBL_NAME", 0);
 define("COL_NAMES", 1);
-define("ROWS",      2);
+define("ROWS", 2);
 
 /* Analysis array defs */
-define("TYPES",        0);
-define("SIZES",        1);
+define("TYPES", 0);
+define("SIZES", 1);
 define("FORMATTEDSQL", 2);
 
 /**
@@ -580,8 +566,11 @@ function PMA_getDecimalSize($cell)
  *
  * @todo    Handle the error cases more elegantly
  */
-function PMA_detectSize($last_cumulative_size, $last_cumulative_type,
-    $curr_type, $cell
+function PMA_detectSize(
+    $last_cumulative_size,
+    $last_cumulative_type,
+    $curr_type,
+    $cell
 ) {
     $curr_size = mb_strlen((string)$cell);
 
@@ -878,15 +867,15 @@ function PMA_analyzeTable(&$table)
             if ($curr_type != NONE) {
                 if ($curr_type == VARCHAR) {
                     $types[$i] = VARCHAR;
-                } else if ($curr_type == DECIMAL) {
+                } elseif ($curr_type == DECIMAL) {
                     if ($types[$i] != VARCHAR) {
                         $types[$i] = DECIMAL;
                     }
-                } else if ($curr_type == BIGINT) {
+                } elseif ($curr_type == BIGINT) {
                     if ($types[$i] != VARCHAR && $types[$i] != DECIMAL) {
                         $types[$i] = BIGINT;
                     }
-                } else if ($curr_type == INT) {
+                } elseif ($curr_type == INT) {
                     if ($types[$i] != VARCHAR
                         && $types[$i] != DECIMAL
                         && $types[$i] != BIGINT
@@ -929,8 +918,13 @@ $import_notice = null;
  *
  * @link https://wiki.phpmyadmin.net/pma/Import
  */
-function PMA_buildSQL($db_name, &$tables, &$analyses = null,
-    &$additional_sql = null, $options = null, &$sql_data
+function PMA_buildSQL(
+    $db_name,
+    &$tables,
+    &$analyses = null,
+    &$additional_sql = null,
+    $options = null,
+    &$sql_data
 ) {
     /* Take care of the options */
     if (isset($options['db_collation'])&& ! is_null($options['db_collation'])) {
@@ -1305,7 +1299,7 @@ function PMA_buildSQL($db_name, &$tables, &$analyses = null,
  * @access  public
  *
  */
-function PMA_stopImport( Message $error_message )
+function PMA_stopImport(Message $error_message)
 {
     global $import_handle, $file_to_unlink;
 

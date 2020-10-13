@@ -25,12 +25,10 @@ class DummyOutput extends BufferedOutput
      */
     public function getLogs()
     {
-        $logs = array();
-        foreach (explode("\n", trim($this->fetch())) as $message) {
-            preg_match('/^\[(.*)\] (.*)/', $message, $matches);
-            $logs[] = sprintf('%s %s', $matches[1], $matches[2]);
-        }
-
-        return $logs;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

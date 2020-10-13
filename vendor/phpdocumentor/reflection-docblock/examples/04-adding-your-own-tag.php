@@ -54,7 +54,11 @@ final class MyTag extends BaseTag implements StaticMethod
      */
     public function __construct(Description $description = null)
     {
-        $this->description = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,10 +92,11 @@ final class MyTag extends BaseTag implements StaticMethod
      */
     public static function create($body, DescriptionFactory $descriptionFactory = null, Context $context = null)
     {
-        Assert::string($body);
-        Assert::notNull($descriptionFactory);
-
-        return new static($descriptionFactory->create($body, $context));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

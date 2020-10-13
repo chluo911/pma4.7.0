@@ -21,8 +21,11 @@ class FileCookieJar extends ArrayCookieJar
      */
     public function __construct($cookieFile)
     {
-        $this->filename = $cookieFile;
-        $this->load();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -30,9 +33,19 @@ class FileCookieJar extends ArrayCookieJar
      */
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         $this->persist();
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     /**
@@ -42,11 +55,11 @@ class FileCookieJar extends ArrayCookieJar
      */
     protected function persist()
     {
-        if (false === file_put_contents($this->filename, $this->serialize())) {
-            // @codeCoverageIgnoreStart
-            throw new RuntimeException('Unable to open file ' . $this->filename);
-            // @codeCoverageIgnoreEnd
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,14 +67,10 @@ class FileCookieJar extends ArrayCookieJar
      */
     protected function load()
     {
-        $json = file_get_contents($this->filename);
-        if (false === $json) {
-            // @codeCoverageIgnoreStart
-            throw new RuntimeException('Unable to open file ' . $this->filename);
-            // @codeCoverageIgnoreEnd
-        }
-
-        $this->unserialize($json);
-        $this->cookies = $this->cookies ?: array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

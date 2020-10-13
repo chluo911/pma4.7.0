@@ -21,27 +21,20 @@ class ApcuAdapter extends AbstractAdapter
 {
     public static function isSupported()
     {
-        return function_exists('apcu_fetch') && ini_get('apc.enabled') && !('cli' === PHP_SAPI && !ini_get('apc.enable_cli'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function __construct($namespace = '', $defaultLifetime = 0, $version = null)
     {
-        if (!static::isSupported()) {
-            throw new CacheException('APCu is not enabled');
-        }
-        if ('cli' === PHP_SAPI) {
-            ini_set('apc.use_request_time', 0);
-        }
-        parent::__construct($namespace, $defaultLifetime);
-
-        if (null !== $version) {
-            CacheItem::validateKey($version);
-
-            if (!apcu_exists($version.'@'.$namespace)) {
-                $this->doClear($namespace);
-                apcu_add($version.'@'.$namespace, null);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,9 +62,11 @@ class ApcuAdapter extends AbstractAdapter
      */
     protected function doClear($namespace)
     {
-        return isset($namespace[0]) && class_exists('APCuIterator', false)
-            ? apcu_delete(new \APCuIterator(sprintf('/^%s/', preg_quote($namespace, '/')), APC_ITER_KEY))
-            : apcu_clear_cache();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

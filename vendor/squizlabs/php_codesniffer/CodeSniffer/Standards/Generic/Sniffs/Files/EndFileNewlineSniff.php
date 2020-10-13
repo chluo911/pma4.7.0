@@ -47,8 +47,11 @@ class Generic_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -63,32 +66,10 @@ class Generic_Sniffs_Files_EndFileNewlineSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        // Skip to the end of the file.
-        $tokens   = $phpcsFile->getTokens();
-        $stackPtr = ($phpcsFile->numTokens - 1);
-
-        if ($tokens[$stackPtr]['content'] === '') {
-            $stackPtr--;
-        }
-
-        $eolCharLen = strlen($phpcsFile->eolChar);
-        $lastChars  = substr($tokens[$stackPtr]['content'], ($eolCharLen * -1));
-        if ($lastChars !== $phpcsFile->eolChar) {
-            $phpcsFile->recordMetric($stackPtr, 'Newline at EOF', 'no');
-
-            $error = 'File must end with a newline character';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NotFound');
-            if ($fix === true) {
-                $phpcsFile->fixer->addNewline($stackPtr);
-            }
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'Newline at EOF', 'yes');
-        }
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

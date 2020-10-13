@@ -29,9 +29,11 @@ class Application extends BaseApplication
      */
     public function __construct($rootDir, $name = 'UNKNOWN', $version = 'UNKNOWN')
     {
-        $this->rootDir = $rootDir;
-
-        parent::__construct($name, $version);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // internal method

@@ -29,8 +29,11 @@ class ClassExistenceResource implements SelfCheckingResourceInterface, \Serializ
      */
     public function __construct($resource)
     {
-        $this->resource = $resource;
-        $this->exists = class_exists($resource);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,7 +49,11 @@ class ClassExistenceResource implements SelfCheckingResourceInterface, \Serializ
      */
     public function getResource()
     {
-        return $this->resource;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,7 +61,11 @@ class ClassExistenceResource implements SelfCheckingResourceInterface, \Serializ
      */
     public function isFresh($timestamp)
     {
-        return class_exists($this->resource) === $this->exists;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,7 +73,11 @@ class ClassExistenceResource implements SelfCheckingResourceInterface, \Serializ
      */
     public function serialize()
     {
-        return serialize(array($this->resource, $this->exists));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,6 +85,10 @@ class ClassExistenceResource implements SelfCheckingResourceInterface, \Serializ
      */
     public function unserialize($serialized)
     {
-        list($this->resource, $this->exists) = unserialize($serialized);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

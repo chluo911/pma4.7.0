@@ -95,11 +95,11 @@ class Table
      */
     public static function setStyleDefinition($name, TableStyle $style)
     {
-        if (!self::$styles) {
-            self::$styles = self::initStyles();
-        }
-
-        self::$styles[$name] = $style;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -111,15 +111,11 @@ class Table
      */
     public static function getStyleDefinition($name)
     {
-        if (!self::$styles) {
-            self::$styles = self::initStyles();
-        }
-
-        if (isset(self::$styles[$name])) {
-            return self::$styles[$name];
-        }
-
-        throw new InvalidArgumentException(sprintf('Style "%s" is not defined.', $name));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -156,11 +152,11 @@ class Table
      */
     public function setColumnStyle($columnIndex, $name)
     {
-        $columnIndex = intval($columnIndex);
-
-        $this->columnStyles[$columnIndex] = $this->resolveStyle($name);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -191,9 +187,11 @@ class Table
      */
     public function setColumnWidth($columnIndex, $width)
     {
-        $this->columnWidths[intval($columnIndex)] = intval($width);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -205,12 +203,11 @@ class Table
      */
     public function setColumnWidths(array $widths)
     {
-        $this->columnWidths = array();
-        foreach ($widths as $index => $width) {
-            $this->setColumnWidth($index, $width);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setHeaders(array $headers)
@@ -227,42 +224,38 @@ class Table
 
     public function setRows(array $rows)
     {
-        $this->rows = array();
-
-        return $this->addRows($rows);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addRows(array $rows)
     {
-        foreach ($rows as $row) {
-            $this->addRow($row);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addRow($row)
     {
-        if ($row instanceof TableSeparator) {
-            $this->rows[] = $row;
-
-            return $this;
-        }
-
-        if (!is_array($row)) {
-            throw new InvalidArgumentException('A row must be an array or a TableSeparator instance.');
-        }
-
-        $this->rows[] = array_values($row);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setRow($column, array $row)
     {
-        $this->rows[$column] = $row;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

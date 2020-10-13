@@ -19,8 +19,11 @@ abstract class AbstractErrorCodeBackoffStrategy extends AbstractBackoffStrategy
      */
     public function __construct(array $codes = null, BackoffStrategyInterface $next = null)
     {
-        $this->errorCodes = array_fill_keys($codes ?: static::$defaultErrorCodes, 1);
-        $this->next = $next;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -30,11 +33,19 @@ abstract class AbstractErrorCodeBackoffStrategy extends AbstractBackoffStrategy
      */
     public static function getDefaultFailureCodes()
     {
-        return static::$defaultErrorCodes;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function makesDecision()
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

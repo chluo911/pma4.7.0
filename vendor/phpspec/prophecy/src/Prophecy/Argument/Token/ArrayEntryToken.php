@@ -31,8 +31,11 @@ class ArrayEntryToken implements TokenInterface
      */
     public function __construct($key, $value)
     {
-        $this->key = $this->wrapIntoExactValueToken($key);
-        $this->value = $this->wrapIntoExactValueToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,25 +49,11 @@ class ArrayEntryToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        if ($argument instanceof \Traversable) {
-            $argument = iterator_to_array($argument);
-        }
-
-        if ($argument instanceof \ArrayAccess) {
-            $argument = $this->convertArrayAccessToEntry($argument);
-        }
-
-        if (!is_array($argument) || empty($argument)) {
-            return false;
-        }
-
-        $keyScores = array_map(array($this->key,'scoreArgument'), array_keys($argument));
-        $valueScores = array_map(array($this->value,'scoreArgument'), $argument);
-        $scoreEntry = function ($value, $key) {
-            return $value && $key ? min(8, ($key + $value) / 2) : false;
-        };
-
-        return max(array_map($scoreEntry, $valueScores, $keyScores));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -74,7 +63,11 @@ class ArrayEntryToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -115,7 +108,11 @@ class ArrayEntryToken implements TokenInterface
      */
     private function wrapIntoExactValueToken($value)
     {
-        return $value instanceof TokenInterface ? $value : new ExactValueToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -128,16 +125,10 @@ class ArrayEntryToken implements TokenInterface
      */
     private function convertArrayAccessToEntry(\ArrayAccess $object)
     {
-        if (!$this->key instanceof ExactValueToken) {
-            throw new InvalidArgumentException(sprintf(
-                'You can only use exact value tokens to match key of ArrayAccess object'.PHP_EOL.
-                'But you used `%s`.',
-                $this->key
-            ));
-        }
-
-        $key = $this->key->getValue();
-
-        return $object->offsetExists($key) ? array($key => $object[$key]) : array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

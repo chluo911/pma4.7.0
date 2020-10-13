@@ -7,38 +7,43 @@ use Prophecy\Prophecy\ProphecyInterface;
 
 class RevealerSpec extends ObjectBehavior
 {
-    function it_is_revealer()
+    public function it_is_revealer()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Prophecy\RevealerInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_reveals_single_instance_of_ProphecyInterface(ProphecyInterface $prophecy, \stdClass $object)
+    public function it_reveals_single_instance_of_ProphecyInterface(ProphecyInterface $prophecy, \stdClass $object)
     {
-        $prophecy->reveal()->willReturn($object);
-
-        $this->reveal($prophecy)->shouldReturn($object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_reveals_instances_of_ProphecyInterface_inside_array(
+    public function it_reveals_instances_of_ProphecyInterface_inside_array(
         ProphecyInterface $prophecy1,
         ProphecyInterface $prophecy2,
         \stdClass $object1,
         \stdClass $object2
     ) {
-        $prophecy1->reveal()->willReturn($object1);
-        $prophecy2->reveal()->willReturn($object2);
-
-        $this->reveal(array(
-            array('item' => $prophecy2),
-            $prophecy1
-        ))->shouldReturn(array(
-            array('item' => $object2),
-            $object1
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_touch_non_prophecy_interface()
+    public function it_does_not_touch_non_prophecy_interface()
     {
-        $this->reveal(42)->shouldReturn(42);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

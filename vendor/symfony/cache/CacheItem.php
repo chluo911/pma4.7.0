@@ -84,17 +84,11 @@ final class CacheItem implements CacheItemInterface
      */
     public function expiresAfter($time)
     {
-        if (null === $time) {
-            $this->expiry = $this->defaultLifetime > 0 ? time() + $this->defaultLifetime : null;
-        } elseif ($time instanceof \DateInterval) {
-            $this->expiry = (int) \DateTime::createFromFormat('U', time())->add($time)->format('U');
-        } elseif (is_int($time)) {
-            $this->expiry = $time + time();
-        } else {
-            throw new InvalidArgumentException(sprintf('Expiration date must be an integer, a DateInterval or null, "%s" given', is_object($time) ? get_class($time) : gettype($time)));
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -108,26 +102,11 @@ final class CacheItem implements CacheItemInterface
      */
     public function tag($tags)
     {
-        if (!is_array($tags)) {
-            $tags = array($tags);
-        }
-        foreach ($tags as $tag) {
-            if (!is_string($tag)) {
-                throw new InvalidArgumentException(sprintf('Cache tag must be string, "%s" given', is_object($tag) ? get_class($tag) : gettype($tag)));
-            }
-            if (isset($this->tags[$tag])) {
-                continue;
-            }
-            if (!isset($tag[0])) {
-                throw new InvalidArgumentException('Cache tag length must be greater than zero');
-            }
-            if (false !== strpbrk($tag, '{}()/\@:')) {
-                throw new InvalidArgumentException(sprintf('Cache tag "%s" contains reserved characters {}()/\@:', $tag));
-            }
-            $this->tags[$tag] = $tag;
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

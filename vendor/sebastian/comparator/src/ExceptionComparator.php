@@ -24,7 +24,11 @@ class ExceptionComparator extends ObjectComparator
      */
     public function accepts($expected, $actual)
     {
-        return $expected instanceof \Exception && $actual instanceof \Exception;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -36,16 +40,10 @@ class ExceptionComparator extends ObjectComparator
      */
     protected function toArray($object)
     {
-        $array = parent::toArray($object);
-
-        unset(
-            $array['file'],
-            $array['line'],
-            $array['trace'],
-            $array['string'],
-            $array['xdebug_message']
-        );
-
-        return $array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

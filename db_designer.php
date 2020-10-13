@@ -14,17 +14,17 @@ require_once 'libraries/db_designer.lib.php';
 $response = Response::getInstance();
 
 if (isset($_REQUEST['dialog'])) {
-
     if ($_REQUEST['dialog'] == 'edit') {
         $html = PMA_getHtmlForEditOrDeletePages($GLOBALS['db'], 'editPage');
-    } else if ($_REQUEST['dialog'] == 'delete') {
+    } elseif ($_REQUEST['dialog'] == 'delete') {
         $html = PMA_getHtmlForEditOrDeletePages($GLOBALS['db'], 'deletePage');
-    } else if ($_REQUEST['dialog'] == 'save_as') {
+    } elseif ($_REQUEST['dialog'] == 'save_as') {
         $html = PMA_getHtmlForPageSaveAs($GLOBALS['db']);
-    } else if ($_REQUEST['dialog'] == 'export') {
+    } elseif ($_REQUEST['dialog'] == 'export') {
         include_once 'libraries/plugin_interface.lib.php';
         $html = PMA_getHtmlForSchemaExport(
-            $GLOBALS['db'], $_REQUEST['selected_page']
+            $GLOBALS['db'],
+            $_REQUEST['selected_page']
         );
     }
 
@@ -35,7 +35,6 @@ if (isset($_REQUEST['dialog'])) {
 }
 
 if (isset($_REQUEST['operation'])) {
-
     if ($_REQUEST['operation'] == 'deletePage') {
         $success = PMA_deletePage($_REQUEST['selected_page']);
         $response->setRequestStatus($success);
@@ -50,7 +49,9 @@ if (isset($_REQUEST['operation'])) {
         $response->setRequestStatus($success);
     } elseif ($_REQUEST['operation'] == 'setDisplayField') {
         PMA_saveDisplayField(
-            $_REQUEST['db'], $_REQUEST['table'], $_REQUEST['field']
+            $_REQUEST['db'],
+            $_REQUEST['table'],
+            $_REQUEST['field']
         );
         $response->setRequestStatus(true);
     } elseif ($_REQUEST['operation'] == 'addNewRelation') {
@@ -144,7 +145,10 @@ list(
 // by pmd/init.js and converted to JS variables.
 $response->addHTML(
     PMA_getHtmlForJSFields(
-        $script_tables, $script_contr, $script_display_field, $display_page
+        $script_tables,
+        $script_contr,
+        $script_display_field,
+        $display_page
     )
 );
 $response->addHTML(
@@ -167,8 +171,11 @@ $response->addHTML(PMA_getHTMLTableList($tab_pos, $display_page));
 
 $response->addHTML(
     PMA_getDatabaseTables(
-        $tab_pos, $display_page, $tab_column,
-        $tables_all_keys, $tables_pk_or_unique_keys
+        $tab_pos,
+        $display_page,
+        $tab_column,
+        $tables_all_keys,
+        $tables_pk_or_unique_keys
     )
 );
 $response->addHTML('</form>');

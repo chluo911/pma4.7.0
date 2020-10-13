@@ -26,14 +26,16 @@ $i = 0;
  */
 $i++;
 /* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['auth_type'] = 'config';
+$cfg['Servers'][$i]['user'] = 'chluo';
+$cfg['Servers'][$i]['password'] = 'chluo';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'db';
+$cfg['Servers'][$i]['host'] = 'localhost';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['compress'] = false;
 /* Select mysql if your server does not have mysqli */
 $cfg['Servers'][$i]['extension'] = 'mysqli';
-$cfg['Servers'][$i]['AllowNoPassword'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 $cfg['AllowThirdPartyFraming'] = true;
 
@@ -141,6 +143,10 @@ $cfg['SaveDir'] = '';
  * in the doc/ folder or at <http://docs.phpmyadmin.net/>.
  */
 
-$cfg['CodemirrorEnable'] = False;
+$cfg['CodemirrorEnable'] = false;
 
-?>
+//$cfg['LoginCookieValidity'] = 86400;
+//session.gc_maxlifetime = 86400
+$sessionDuration = 60*60*24*7; // 60*60*24*7 = one week
+ini_set('session.gc_maxlifetime', $sessionDuration);
+$cfg['LoginCookieValidity'] = $sessionDuration;

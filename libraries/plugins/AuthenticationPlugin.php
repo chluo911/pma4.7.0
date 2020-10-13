@@ -61,27 +61,11 @@ abstract class AuthenticationPlugin
      */
     public function logOut()
     {
-        global $PHP_AUTH_USER, $PHP_AUTH_PW;
-
-        /* Obtain redirect URL (before doing logout) */
-        if (! empty($GLOBALS['cfg']['Server']['LogoutURL'])) {
-            $redirect_url = $GLOBALS['cfg']['Server']['LogoutURL'];
-        } else {
-            $redirect_url = $this->getLoginFormURL();
-        }
-
-        /* Clear credentials */
-        $PHP_AUTH_USER = '';
-        $PHP_AUTH_PW = '';
-
-        /* delete user's choices that were stored in session */
-        $_SESSION = array();
-        if (!defined('TESTSUITE')) {
-            session_destroy();
-        }
-
-        /* Redirect to login form (or configured URL) */
-        PMA_sendHeaderLocation($redirect_url);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,7 +75,11 @@ abstract class AuthenticationPlugin
      */
     public function getLoginFormURL()
     {
-        return './index.php';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -163,5 +151,5 @@ abstract class AuthenticationPlugin
             $time = time();
         }
         $_SESSION['browser_access_time'][$guid] = $time;
-     }
+    }
 }

@@ -11,7 +11,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->object = new Configuration();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // hasRepoToken()
@@ -22,8 +26,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveRepoTokenOnConstruction()
     {
-        $this->assertFalse($this->object->hasRepoToken());
-        $this->assertNull($this->object->getRepoToken());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // hasServiceName()
@@ -34,8 +41,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveServiceNameOnConstruction()
     {
-        $this->assertFalse($this->object->hasServiceName());
-        $this->assertNull($this->object->getServiceName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getCloverXmlPaths()
@@ -45,7 +55,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveEmptyCloverXmlPathsOnConstruction()
     {
-        $this->assertEmpty($this->object->getCloverXmlPaths());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getRootDir()
@@ -55,7 +69,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotRootDirOnConstruction()
     {
-        $this->assertNull($this->object->getRootDir());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getJsonPath()
@@ -65,7 +83,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveJsonPathOnConstruction()
     {
-        $this->assertNull($this->object->getJsonPath());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // isDryRun()
@@ -75,7 +97,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeDryRunOnConstruction()
     {
-        $this->assertTrue($this->object->isDryRun());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // isExcludeNoStatements()
@@ -85,7 +111,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeExcludeNotStatementsOnConstruction()
     {
-        $this->assertFalse($this->object->isExcludeNoStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // isVerbose
@@ -95,7 +125,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeVerboseOnConstruction()
     {
-        $this->assertFalse($this->object->isVerbose());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getEnv()
@@ -105,7 +139,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeProdEnvOnConstruction()
     {
-        $this->assertSame('prod', $this->object->getEnv());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // isTestEnv()
@@ -115,14 +153,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeTestEnv()
     {
-        $expected = 'test';
-
-        $this->object->setEnv($expected);
-
-        $this->assertSame($expected, $this->object->getEnv());
-        $this->assertTrue($this->object->isTestEnv());
-        $this->assertFalse($this->object->isDevEnv());
-        $this->assertFalse($this->object->isProdEnv());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // isDevEnv()
@@ -132,14 +167,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeDevEnv()
     {
-        $expected = 'dev';
-
-        $this->object->setEnv($expected);
-
-        $this->assertSame($expected, $this->object->getEnv());
-        $this->assertFalse($this->object->isTestEnv());
-        $this->assertTrue($this->object->isDevEnv());
-        $this->assertFalse($this->object->isProdEnv());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // isProdEnv()
@@ -149,14 +181,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeProdEnv()
     {
-        $expected = 'prod';
-
-        $this->object->setEnv($expected);
-
-        $this->assertSame($expected, $this->object->getEnv());
-        $this->assertFalse($this->object->isTestEnv());
-        $this->assertFalse($this->object->isDevEnv());
-        $this->assertTrue($this->object->isProdEnv());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setRootDir()
@@ -166,12 +195,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetRootDir()
     {
-        $expected = '/root';
-
-        $same = $this->object->setRootDir($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getRootDir());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
     // setRepoToken()
 
@@ -180,12 +208,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetRepoToken()
     {
-        $expected = 'token';
-
-        $same = $this->object->setRepoToken($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getRepoToken());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setServiceName()
@@ -195,12 +222,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetServiceName()
     {
-        $expected = 'travis-ci';
-
-        $same = $this->object->setServiceName($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getServiceName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setCloverXmlPaths()
@@ -210,12 +236,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetCloverXmlPaths()
     {
-        $expected = array('/path/to/clover.xml');
-
-        $same = $this->object->setCloverXmlPaths($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getCloverXmlPaths());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // addCloverXmlPath()
@@ -225,12 +250,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldAddCloverXmlPath()
     {
-        $expected = '/path/to/clover.xml';
-
-        $same = $this->object->addCloverXmlPath($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame(array($expected), $this->object->getCloverXmlPaths());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setJsonPath()
@@ -240,12 +264,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetJsonPath()
     {
-        $expected = '/path/to/coveralls-upload.json';
-
-        $same = $this->object->setJsonPath($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getJsonPath());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setDryRun()
@@ -255,12 +278,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetDryRunFalse()
     {
-        $expected = false;
-
-        $same = $this->object->setDryRun($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertFalse($this->object->isDryRun());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -268,12 +290,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetDryRunTrue()
     {
-        $expected = true;
-
-        $same = $this->object->setDryRun($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertTrue($this->object->isDryRun());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setExcludeNoStatements()
@@ -283,12 +304,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetExcludeNoStatementsFalse()
     {
-        $expected = false;
-
-        $same = $this->object->setExcludeNoStatements($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertFalse($this->object->isExcludeNoStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -296,12 +316,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetExcludeNoStatementsTrue()
     {
-        $expected = true;
-
-        $same = $this->object->setExcludeNoStatements($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertTrue($this->object->isExcludeNoStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setExcludeNoStatementsUnlessFalse()
@@ -311,12 +330,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetExcludeNoStatementsFalseUnlessFalse()
     {
-        $expected = false;
-
-        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertFalse($this->object->isExcludeNoStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -324,12 +342,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetExcludeNoStatementsTrueUnlessFalse()
     {
-        $expected = true;
-
-        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertTrue($this->object->isExcludeNoStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -337,13 +354,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetExcludeNoStatementsTrueIfFalsePassedAndIfTrueWasSet()
     {
-        $expected = false;
-
-        $same = $this->object->setExcludeNoStatements(true);
-        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertTrue($this->object->isExcludeNoStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -351,13 +366,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetExcludeNoStatementsTrueIfTruePassedAndIfTrueWasSet()
     {
-        $expected = true;
-
-        $same = $this->object->setExcludeNoStatements(true);
-        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertTrue($this->object->isExcludeNoStatements());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setVerbose()
@@ -367,12 +380,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetVerboseFalse()
     {
-        $expected = false;
-
-        $same = $this->object->setVerbose($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertFalse($this->object->isVerbose());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -380,12 +392,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetVerboseTrue()
     {
-        $expected = true;
-
-        $same = $this->object->setVerbose($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertTrue($this->object->isVerbose());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setEnv()
@@ -395,11 +406,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetEnv()
     {
-        $expected = 'myenv';
-
-        $same = $this->object->setEnv($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getEnv());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

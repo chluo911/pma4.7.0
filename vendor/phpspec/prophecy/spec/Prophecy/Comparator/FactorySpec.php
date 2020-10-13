@@ -7,14 +7,21 @@ use Prophecy\Argument;
 
 class FactorySpec extends ObjectBehavior
 {
-    function it_extends_Sebastian_Comparator_Factory()
+    public function it_extends_Sebastian_Comparator_Factory()
     {
-        $this->shouldHaveType('SebastianBergmann\Comparator\Factory');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_have_ClosureComparator_registered()
+    public function it_should_have_ClosureComparator_registered()
     {
-        $comparator = $this->getInstance()->getComparatorFor(function(){}, function(){});
-        $comparator->shouldHaveType('Prophecy\Comparator\ClosureComparator');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

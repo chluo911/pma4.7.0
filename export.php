@@ -335,7 +335,10 @@ if ($asfile) {
         $remember_template = '';
     }
     list($filename, $mime_type) = PMA_getExportFilenameAndMimetype(
-        $export_type, $remember_template, $export_plugin, $compression,
+        $export_type,
+        $remember_template,
+        $export_plugin,
+        $compression,
         $filename_template
     );
 } else {
@@ -345,7 +348,8 @@ if ($asfile) {
 // Open file on server if needed
 if ($save_on_server) {
     list($save_filename, $message, $file_handle) = PMA_openExportFile(
-        $filename, $quick_export
+        $filename,
+        $quick_export
     );
 
     // problem opening export file on server?
@@ -379,7 +383,9 @@ if ($save_on_server) {
             }
         }
         list($html, $back_button) = PMA_getHtmlForDisplayedExportHeader(
-            $export_type, $db, $table
+            $export_type,
+            $db,
+            $table
         );
         echo $html;
         unset($html);
@@ -423,9 +429,18 @@ do {
             $db_select = '';
         }
         PMA_exportServer(
-            $db_select, $whatStrucOrData, $export_plugin, $crlf, $err_url,
-            $export_type, $do_relation, $do_comments, $do_mime, $do_dates,
-            $aliases, $separate_files
+            $db_select,
+            $whatStrucOrData,
+            $export_plugin,
+            $crlf,
+            $err_url,
+            $export_type,
+            $do_relation,
+            $do_comments,
+            $do_mime,
+            $do_dates,
+            $aliases,
+            $separate_files
         );
     } elseif ($export_type == 'database') {
         if (!isset($table_structure) || !is_array($table_structure)) {
@@ -442,9 +457,20 @@ do {
             PMA_lockTables($db, $tables, "READ");
             try {
                 PMA_exportDatabase(
-                    $db, $tables, $whatStrucOrData, $table_structure,
-                    $table_data, $export_plugin, $crlf, $err_url, $export_type,
-                    $do_relation, $do_comments, $do_mime, $do_dates, $aliases,
+                    $db,
+                    $tables,
+                    $whatStrucOrData,
+                    $table_structure,
+                    $table_data,
+                    $export_plugin,
+                    $crlf,
+                    $err_url,
+                    $export_type,
+                    $do_relation,
+                    $do_comments,
+                    $do_mime,
+                    $do_dates,
+                    $aliases,
                     $separate_files
                 );
             } finally {
@@ -452,9 +478,21 @@ do {
             }
         } else {
             PMA_exportDatabase(
-                $db, $tables, $whatStrucOrData, $table_structure, $table_data,
-                $export_plugin, $crlf, $err_url, $export_type, $do_relation,
-                $do_comments, $do_mime, $do_dates, $aliases, $separate_files
+                $db,
+                $tables,
+                $whatStrucOrData,
+                $table_structure,
+                $table_data,
+                $export_plugin,
+                $crlf,
+                $err_url,
+                $export_type,
+                $do_relation,
+                $do_comments,
+                $do_mime,
+                $do_dates,
+                $aliases,
+                $separate_files
             );
         }
     } else {
@@ -473,26 +511,50 @@ do {
             try {
                 PMA_lockTables($db, array($table), "READ");
                 PMA_exportTable(
-                    $db, $table, $whatStrucOrData, $export_plugin, $crlf,
-                    $err_url, $export_type, $do_relation, $do_comments,
-                    $do_mime, $do_dates, $allrows, $limit_to, $limit_from,
-                    $sql_query, $aliases
+                    $db,
+                    $table,
+                    $whatStrucOrData,
+                    $export_plugin,
+                    $crlf,
+                    $err_url,
+                    $export_type,
+                    $do_relation,
+                    $do_comments,
+                    $do_mime,
+                    $do_dates,
+                    $allrows,
+                    $limit_to,
+                    $limit_from,
+                    $sql_query,
+                    $aliases
                 );
             } finally {
                 PMA_unlockTables();
             }
         } else {
             PMA_exportTable(
-                $db, $table, $whatStrucOrData, $export_plugin, $crlf, $err_url,
-                $export_type, $do_relation, $do_comments, $do_mime, $do_dates,
-                $allrows, $limit_to, $limit_from, $sql_query, $aliases
+                $db,
+                $table,
+                $whatStrucOrData,
+                $export_plugin,
+                $crlf,
+                $err_url,
+                $export_type,
+                $do_relation,
+                $do_comments,
+                $do_mime,
+                $do_dates,
+                $allrows,
+                $limit_to,
+                $limit_from,
+                $sql_query,
+                $aliases
             );
         }
     }
     if (! $export_plugin->exportFooter()) {
         break;
     }
-
 } while (false);
 // End of fake loop
 
@@ -521,18 +583,21 @@ if ($output_charset_conversion) {
 if ($compression) {
     if (! empty($separate_files)) {
         $dump_buffer = PMA_compressExport(
-            $dump_buffer_objects, $compression, $filename
+            $dump_buffer_objects,
+            $compression,
+            $filename
         );
     } else {
         $dump_buffer = PMA_compressExport($dump_buffer, $compression, $filename);
     }
-
 }
 
 /* If we saved on server, we have to close file now */
 if ($save_on_server) {
     $message = PMA_closeExportFile(
-        $file_handle, $dump_buffer, $save_filename
+        $file_handle,
+        $dump_buffer,
+        $save_filename
     );
     PMA_showExportPage($db, $table, $export_type);
 } else {

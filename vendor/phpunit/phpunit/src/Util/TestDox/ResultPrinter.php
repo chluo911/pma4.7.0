@@ -88,10 +88,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function flush()
     {
-        $this->doEndClass();
-        $this->endRun();
-
-        parent::flush();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,12 +104,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function addError(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        if (!$this->isOfInterest($test)) {
-            return;
-        }
-
-        $this->testStatus = PHPUnit_Runner_BaseTestRunner::STATUS_ERROR;
-        $this->failed++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -120,12 +120,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
     {
-        if (!$this->isOfInterest($test)) {
-            return;
-        }
-
-        $this->testStatus = PHPUnit_Runner_BaseTestRunner::STATUS_FAILURE;
-        $this->failed++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -137,12 +136,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        if (!$this->isOfInterest($test)) {
-            return;
-        }
-
-        $this->testStatus = PHPUnit_Runner_BaseTestRunner::STATUS_INCOMPLETE;
-        $this->incomplete++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -156,12 +154,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        if (!$this->isOfInterest($test)) {
-            return;
-        }
-
-        $this->testStatus = PHPUnit_Runner_BaseTestRunner::STATUS_RISKY;
-        $this->risky++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -175,12 +172,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        if (!$this->isOfInterest($test)) {
-            return;
-        }
-
-        $this->testStatus = PHPUnit_Runner_BaseTestRunner::STATUS_SKIPPED;
-        $this->skipped++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -212,38 +208,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function startTest(PHPUnit_Framework_Test $test)
     {
-        if (!$this->isOfInterest($test)) {
-            return;
-        }
-
-        $class = get_class($test);
-
-        if ($this->testClass != $class) {
-            if ($this->testClass != '') {
-                $this->doEndClass();
-            }
-
-            $this->currentTestClassPrettified = $this->prettifier->prettifyTestClass($class);
-            $this->startClass($class);
-
-            $this->testClass = $class;
-            $this->tests     = array();
-        }
-
-        $prettified = false;
-
-        $annotations = $test->getAnnotations();
-
-        if (isset($annotations['method']['testdox'][0])) {
-            $this->currentTestMethodPrettified = $annotations['method']['testdox'][0];
-            $prettified                        = true;
-        }
-
-        if (!$prettified) {
-            $this->currentTestMethodPrettified = $this->prettifier->prettifyTestMethod($test->getName(false));
-        }
-
-        $this->testStatus = PHPUnit_Runner_BaseTestRunner::STATUS_PASSED;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -254,28 +223,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     public function endTest(PHPUnit_Framework_Test $test, $time)
     {
-        if (!$this->isOfInterest($test)) {
-            return;
-        }
-
-        if (!isset($this->tests[$this->currentTestMethodPrettified])) {
-            if ($this->testStatus == PHPUnit_Runner_BaseTestRunner::STATUS_PASSED) {
-                $this->tests[$this->currentTestMethodPrettified]['success'] = 1;
-                $this->tests[$this->currentTestMethodPrettified]['failure'] = 0;
-            } else {
-                $this->tests[$this->currentTestMethodPrettified]['success'] = 0;
-                $this->tests[$this->currentTestMethodPrettified]['failure'] = 1;
-            }
-        } else {
-            if ($this->testStatus == PHPUnit_Runner_BaseTestRunner::STATUS_PASSED) {
-                $this->tests[$this->currentTestMethodPrettified]['success']++;
-            } else {
-                $this->tests[$this->currentTestMethodPrettified]['failure']++;
-            }
-        }
-
-        $this->currentTestClassPrettified  = null;
-        $this->currentTestMethodPrettified = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -283,11 +235,11 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
      */
     protected function doEndClass()
     {
-        foreach ($this->tests as $name => $data) {
-            $this->onTest($name, $data['failure'] == 0);
-        }
-
-        $this->endClass($this->testClass);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -334,6 +286,10 @@ abstract class PHPUnit_Util_TestDox_ResultPrinter extends PHPUnit_Util_Printer i
 
     private function isOfInterest(PHPUnit_Framework_Test $test)
     {
-        return $test instanceof PHPUnit_Framework_TestCase && get_class($test) != 'PHPUnit_Framework_Warning';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

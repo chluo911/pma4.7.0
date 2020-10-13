@@ -26,14 +26,11 @@ class ErrorResponsePlugin implements EventSubscriberInterface
      */
     public function onCommandBeforeSend(Event $event)
     {
-        $command = $event['command'];
-        if ($operation = $command->getOperation()) {
-            if ($operation->getErrorResponses()) {
-                $request = $command->getRequest();
-                $request->getEventDispatcher()
-                    ->addListener('request.complete', $this->getErrorClosure($request, $command, $operation));
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,27 +43,10 @@ class ErrorResponsePlugin implements EventSubscriberInterface
      */
     protected function getErrorClosure(RequestInterface $request, CommandInterface $command, Operation $operation)
     {
-        return function (Event $event) use ($request, $command, $operation) {
-            $response = $event['response'];
-            foreach ($operation->getErrorResponses() as $error) {
-                if (!isset($error['class'])) {
-                    continue;
-                }
-                if (isset($error['code']) && $response->getStatusCode() != $error['code']) {
-                    continue;
-                }
-                if (isset($error['reason']) && $response->getReasonPhrase() != $error['reason']) {
-                    continue;
-                }
-                $className = $error['class'];
-                $errorClassInterface = __NAMESPACE__ . '\\ErrorResponseExceptionInterface';
-                if (!class_exists($className)) {
-                    throw new ErrorResponseException("{$className} does not exist");
-                } elseif (!(in_array($errorClassInterface, class_implements($className)))) {
-                    throw new ErrorResponseException("{$className} must implement {$errorClassInterface}");
-                }
-                throw $className::fromCommand($command, $response);
-            }
-        };
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

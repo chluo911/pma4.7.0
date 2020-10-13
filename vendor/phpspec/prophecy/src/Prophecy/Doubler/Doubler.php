@@ -47,8 +47,11 @@ class Doubler
      * @param ClassCreator  $creator
      * @param NameGenerator $namer
      */
-    public function __construct(ClassMirror $mirror = null, ClassCreator $creator = null,
-                                NameGenerator $namer = null)
+    public function __construct(
+        ClassMirror $mirror = null,
+        ClassCreator $creator = null,
+        NameGenerator $namer = null
+    )
     {
         $this->mirror  = $mirror  ?: new ClassMirror;
         $this->creator = $creator ?: new ClassCreator;
@@ -62,7 +65,11 @@ class Doubler
      */
     public function getClassPatches()
     {
-        return $this->patches;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

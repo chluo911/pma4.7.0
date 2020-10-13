@@ -19,44 +19,38 @@ class OutputFormatterStyleStackTest extends TestCase
 {
     public function testPush()
     {
-        $stack = new OutputFormatterStyleStack();
-        $stack->push($s1 = new OutputFormatterStyle('white', 'black'));
-        $stack->push($s2 = new OutputFormatterStyle('yellow', 'blue'));
-
-        $this->assertEquals($s2, $stack->getCurrent());
-
-        $stack->push($s3 = new OutputFormatterStyle('green', 'red'));
-
-        $this->assertEquals($s3, $stack->getCurrent());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testPop()
     {
-        $stack = new OutputFormatterStyleStack();
-        $stack->push($s1 = new OutputFormatterStyle('white', 'black'));
-        $stack->push($s2 = new OutputFormatterStyle('yellow', 'blue'));
-
-        $this->assertEquals($s2, $stack->pop());
-        $this->assertEquals($s1, $stack->pop());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testPopEmpty()
     {
-        $stack = new OutputFormatterStyleStack();
-        $style = new OutputFormatterStyle();
-
-        $this->assertEquals($style, $stack->pop());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testPopNotLast()
     {
-        $stack = new OutputFormatterStyleStack();
-        $stack->push($s1 = new OutputFormatterStyle('white', 'black'));
-        $stack->push($s2 = new OutputFormatterStyle('yellow', 'blue'));
-        $stack->push($s3 = new OutputFormatterStyle('green', 'red'));
-
-        $this->assertEquals($s2, $stack->pop($s2));
-        $this->assertEquals($s1, $stack->pop());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,8 +58,10 @@ class OutputFormatterStyleStackTest extends TestCase
      */
     public function testInvalidPop()
     {
-        $stack = new OutputFormatterStyleStack();
-        $stack->push(new OutputFormatterStyle('white', 'black'));
-        $stack->pop(new OutputFormatterStyle('yellow', 'blue'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -29,7 +29,11 @@ class InputStream implements \IteratorAggregate
      */
     public function onEmpty(callable $onEmpty = null)
     {
-        $this->onEmpty = $onEmpty;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -39,13 +43,11 @@ class InputStream implements \IteratorAggregate
      */
     public function write($input)
     {
-        if (null === $input) {
-            return;
-        }
-        if ($this->isClosed()) {
-            throw new RuntimeException(sprintf('%s is closed', static::class));
-        }
-        $this->input[] = ProcessUtils::validateInput(__METHOD__, $input);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,7 +55,11 @@ class InputStream implements \IteratorAggregate
      */
     public function close()
     {
-        $this->open = false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,30 +67,19 @@ class InputStream implements \IteratorAggregate
      */
     public function isClosed()
     {
-        return !$this->open;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getIterator()
     {
-        $this->open = true;
-
-        while ($this->open || $this->input) {
-            if (!$this->input) {
-                yield '';
-                continue;
-            }
-            $current = array_shift($this->input);
-
-            if ($current instanceof \Iterator) {
-                foreach ($current as $cur) {
-                    yield $cur;
-                }
-            } else {
-                yield $current;
-            }
-            if (!$this->input && $this->open && null !== $onEmpty = $this->onEmpty) {
-                $this->write($onEmpty($this));
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

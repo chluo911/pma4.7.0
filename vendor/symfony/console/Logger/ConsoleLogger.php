@@ -68,9 +68,11 @@ class ConsoleLogger extends AbstractLogger
      */
     public function __construct(OutputInterface $output, array $verbosityLevelMap = array(), array $formatLevelMap = array())
     {
-        $this->output = $output;
-        $this->verbosityLevelMap = $verbosityLevelMap + $this->verbosityLevelMap;
-        $this->formatLevelMap = $formatLevelMap + $this->formatLevelMap;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -104,7 +106,11 @@ class ConsoleLogger extends AbstractLogger
      */
     public function hasErrored()
     {
-        return $this->errored;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

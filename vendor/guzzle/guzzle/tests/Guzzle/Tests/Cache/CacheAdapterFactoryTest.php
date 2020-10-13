@@ -23,9 +23,11 @@ class CacheAdapterFactoryTest extends \Guzzle\Tests\GuzzleTestCase
      */
     protected function setup()
     {
-        parent::setUp();
-        $this->cache = new ArrayCache();
-        $this->adapter = new DoctrineCacheAdapter($this->cache);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -33,7 +35,11 @@ class CacheAdapterFactoryTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresConfigIsObject()
     {
-        CacheAdapterFactory::fromCache(array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,16 +47,20 @@ class CacheAdapterFactoryTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresKnownType()
     {
-        CacheAdapterFactory::fromCache(new \stdClass());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function cacheProvider()
     {
-        return array(
-            array(new DoctrineCacheAdapter(new ArrayCache()), 'Guzzle\Cache\DoctrineCacheAdapter'),
-            array(new ArrayCache(), 'Guzzle\Cache\DoctrineCacheAdapter'),
-            array(StorageFactory::factory(array('adapter' => 'memory')), 'Guzzle\Cache\Zf2CacheAdapter'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,7 +68,10 @@ class CacheAdapterFactoryTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testCreatesNullCacheAdapterByDefault($cache, $type)
     {
-        $adapter = CacheAdapterFactory::fromCache($cache);
-        $this->assertInstanceOf($type, $adapter);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

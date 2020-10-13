@@ -31,7 +31,11 @@ class Advisor
      */
     public function getVariables()
     {
-        return $this->variables;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,7 +74,11 @@ class Advisor
      */
     public function getParseResult()
     {
-        return $this->parseResult;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -94,7 +102,11 @@ class Advisor
      */
     public function getRunResult()
     {
-        return $this->runResult;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,7 +199,7 @@ class Advisor
 
             if (isset($rule['precondition'])) {
                 try {
-                     $precond = $this->ruleExprEvaluate($rule['precondition']);
+                    $precond = $this->ruleExprEvaluate($rule['precondition']);
                 } catch (Exception $e) {
                     $this->storeError(
                         sprintf(
@@ -464,7 +476,7 @@ class Advisor
         $rules = array();
         $lines = array();
 
-        if ($file === FALSE) {
+        if ($file === false) {
             $errors[] = sprintf(
                 __('Error in reading file: The file \'%s\' does not exist or is not readable!'),
                 $filename

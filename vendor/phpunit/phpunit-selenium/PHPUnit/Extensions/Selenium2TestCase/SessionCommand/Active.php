@@ -53,10 +53,8 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Active
-    extends PHPUnit_Extensions_Selenium2TestCase_Command
+class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Active extends PHPUnit_Extensions_Selenium2TestCase_Command
 {
-
     public function __construct($jsonParameters, PHPUnit_Extensions_Selenium2TestCase_URL $url)
     {
         $url = $url->addCommand('element')->addCommand('active');
@@ -65,6 +63,10 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Active
 
     public function httpMethod()
     {
-        return 'POST';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

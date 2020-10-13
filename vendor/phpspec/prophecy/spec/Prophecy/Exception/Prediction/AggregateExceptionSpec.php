@@ -8,43 +8,57 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class AggregateExceptionSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith(null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_prediction_exception()
+    public function it_is_prediction_exception()
     {
-        $this->shouldBeAnInstanceOf('RuntimeException');
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Prediction\PredictionException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_can_store_objectProphecy_link(ObjectProphecy $object)
+    public function it_can_store_objectProphecy_link(ObjectProphecy $object)
     {
-        $this->setObjectProphecy($object);
-        $this->getObjectProphecy()->shouldReturn($object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_not_have_exceptions_at_the_beginning()
+    public function it_should_not_have_exceptions_at_the_beginning()
     {
-        $this->getExceptions()->shouldHaveCount(0);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_append_exception_through_append_method(PredictionException $exception)
+    public function it_should_append_exception_through_append_method(PredictionException $exception)
     {
-        $exception->getMessage()->willReturn('Exception #1');
-
-        $this->append($exception);
-
-        $this->getExceptions()->shouldReturn(array($exception));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_update_message_during_append(PredictionException $exception)
+    public function it_should_update_message_during_append(PredictionException $exception)
     {
-        $exception->getMessage()->willReturn('Exception #1');
-
-        $this->append($exception);
-
-        $this->getMessage()->shouldReturn("  Exception #1");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

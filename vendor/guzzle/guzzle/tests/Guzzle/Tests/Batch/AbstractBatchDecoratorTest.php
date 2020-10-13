@@ -11,23 +11,10 @@ class AbstractBatchDecoratorTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testProxiesToWrappedObject()
     {
-        $batch = new Batch(
-            $this->getMock('Guzzle\Batch\BatchTransferInterface'),
-            $this->getMock('Guzzle\Batch\BatchDivisorInterface')
-        );
-
-        $decoratorA = $this->getMockBuilder('Guzzle\Batch\AbstractBatchDecorator')
-            ->setConstructorArgs(array($batch))
-            ->getMockForAbstractClass();
-
-        $decoratorB = $this->getMockBuilder('Guzzle\Batch\AbstractBatchDecorator')
-            ->setConstructorArgs(array($decoratorA))
-            ->getMockForAbstractClass();
-
-        $decoratorA->add('foo');
-        $this->assertFalse($decoratorB->isEmpty());
-        $this->assertFalse($batch->isEmpty());
-        $this->assertEquals(array($decoratorB, $decoratorA), $decoratorB->getDecorators());
-        $this->assertEquals(array(), $decoratorB->flush());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -28,7 +28,11 @@ class Compiler
 
     public function getFunction($name)
     {
-        return $this->functions[$name];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,7 +42,11 @@ class Compiler
      */
     public function getSource()
     {
-        return $this->source;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function reset()
@@ -57,22 +65,20 @@ class Compiler
      */
     public function compile(Node\Node $node)
     {
-        $node->compile($this);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function subcompile(Node\Node $node)
     {
-        $current = $this->source;
-        $this->source = '';
-
-        $node->compile($this);
-
-        $source = $this->source;
-        $this->source = $current;
-
-        return $source;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -84,9 +90,11 @@ class Compiler
      */
     public function raw($string)
     {
-        $this->source .= $string;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,9 +106,11 @@ class Compiler
      */
     public function string($value)
     {
-        $this->source .= sprintf('"%s"', addcslashes($value, "\0\t\"\$\\"));
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -112,37 +122,10 @@ class Compiler
      */
     public function repr($value)
     {
-        if (is_int($value) || is_float($value)) {
-            if (false !== $locale = setlocale(LC_NUMERIC, 0)) {
-                setlocale(LC_NUMERIC, 'C');
-            }
-
-            $this->raw($value);
-
-            if (false !== $locale) {
-                setlocale(LC_NUMERIC, $locale);
-            }
-        } elseif (null === $value) {
-            $this->raw('null');
-        } elseif (is_bool($value)) {
-            $this->raw($value ? 'true' : 'false');
-        } elseif (is_array($value)) {
-            $this->raw('array(');
-            $first = true;
-            foreach ($value as $key => $value) {
-                if (!$first) {
-                    $this->raw(', ');
-                }
-                $first = false;
-                $this->repr($key);
-                $this->raw(' => ');
-                $this->repr($value);
-            }
-            $this->raw(')');
-        } else {
-            $this->string($value);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

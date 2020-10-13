@@ -18,7 +18,11 @@ class CacheItemTest extends TestCase
 {
     public function testValidKey()
     {
-        $this->assertNull(CacheItem::validateKey('foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -28,40 +32,29 @@ class CacheItemTest extends TestCase
      */
     public function testInvalidKey($key)
     {
-        CacheItem::validateKey($key);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function provideInvalidKey()
     {
-        return array(
-            array(''),
-            array('{'),
-            array('}'),
-            array('('),
-            array(')'),
-            array('/'),
-            array('\\'),
-            array('@'),
-            array(':'),
-            array(true),
-            array(null),
-            array(1),
-            array(1.1),
-            array(array(array())),
-            array(new \Exception('foo')),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTag()
     {
-        $item = new CacheItem();
-
-        $this->assertSame($item, $item->tag('foo'));
-        $this->assertSame($item, $item->tag(array('bar', 'baz')));
-
-        call_user_func(\Closure::bind(function () use ($item) {
-            $this->assertSame(array('foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz'), $item->tags);
-        }, $this, CacheItem::class));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -71,7 +64,10 @@ class CacheItemTest extends TestCase
      */
     public function testInvalidTag($tag)
     {
-        $item = new CacheItem();
-        $item->tag($tag);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

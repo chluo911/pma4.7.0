@@ -37,7 +37,11 @@ abstract class PHPUnit_Framework_MockObject_Matcher_InvokedRecorder implements P
      */
     public function getInvocations()
     {
-        return $this->invocations;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

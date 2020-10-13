@@ -33,90 +33,64 @@ class DefaultRequestSerializerTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function setUp()
     {
-        $this->serializer = DefaultRequestSerializer::getInstance();
-        $this->client = new Client('http://foo.com/baz');
-        $this->operation = new Operation(array('httpMethod' => 'POST'));
-        $this->command = $this->getMockBuilder('Guzzle\Service\Command\AbstractCommand')
-            ->setConstructorArgs(array(array(), $this->operation))
-            ->getMockForAbstractClass();
-        $this->command->setClient($this->client);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowsCustomVisitor()
     {
-        $this->serializer->addVisitor('custom', new HeaderVisitor());
-        $this->command['test'] = '123';
-        $this->operation->addParam(new Parameter(array('name' => 'test', 'location' => 'custom')));
-        $request = $this->serializer->prepare($this->command);
-        $this->assertEquals('123', (string) $request->getHeader('test'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testUsesRelativePath()
     {
-        $this->operation->setUri('bar');
-        $request = $this->serializer->prepare($this->command);
-        $this->assertEquals('http://foo.com/baz/bar', (string) $request->getUrl());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testUsesRelativePathWithUriLocations()
     {
-        $this->command['test'] = '123';
-        $this->operation->setUri('bar/{test}');
-        $this->operation->addParam(new Parameter(array('name' => 'test', 'location' => 'uri')));
-        $request = $this->serializer->prepare($this->command);
-        $this->assertEquals('http://foo.com/baz/bar/123', (string) $request->getUrl());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowsCustomFactory()
     {
-        $f = new VisitorFlyweight();
-        $serializer = new DefaultRequestSerializer($f);
-        $this->assertSame($f, $this->readAttribute($serializer, 'factory'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testMixedParams()
     {
-        $this->operation->setUri('bar{?limit,fields}');
-        $this->operation->addParam(new Parameter(array(
-            'name' => 'limit',
-            'location' => 'uri',
-            'required' => false,
-        )));
-        $this->operation->addParam(new Parameter(array(
-            'name' => 'fields',
-            'location' => 'uri',
-            'required' => true,
-        )));
-
-        $this->command['fields'] = array('id', 'name');
-
-        $request = $this->serializer->prepare($this->command);
-        $this->assertEquals('http://foo.com/baz/bar?fields='.urlencode('id,name'), (string) $request->getUrl());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testValidatesAdditionalParameters()
     {
-        $description = ServiceDescription::factory(array(
-            'operations' => array(
-                'foo' => array(
-                    'httpMethod' => 'PUT',
-                    'parameters' => array(
-                        'bar' => array('location' => 'header')
-                    ),
-                    'additionalParameters' => array(
-                        'location' => 'json'
-                    )
-                )
-            )
-        ));
-
-        $client = new Client();
-        $client->setDescription($description);
-        $command = $client->getCommand('foo');
-        $command['bar'] = 'test';
-        $command['hello'] = 'abc';
-        $request = $command->prepare();
-        $this->assertEquals('test', (string) $request->getHeader('bar'));
-        $this->assertEquals('{"hello":"abc"}', (string) $request->getBody());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

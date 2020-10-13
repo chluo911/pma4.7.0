@@ -17,7 +17,11 @@ class BlobTest extends AbstractTest
 
     public function getReadmeBlob($repository)
     {
-        return $repository->getCommit(self::LONGFILE_COMMIT)->getTree()->resolvePath('README.md');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -25,9 +29,11 @@ class BlobTest extends AbstractTest
      */
     public function testGetContent($repository)
     {
-        $blob = $this->getReadmeBlob($repository);
-
-        $this->assertContains(self::README_FRAGMENT, $blob->getContent());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -36,8 +42,11 @@ class BlobTest extends AbstractTest
      */
     public function testNotExisting($repository)
     {
-        $blob = $repository->getBlob('foobar');
-        $blob->getContent();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,8 +54,11 @@ class BlobTest extends AbstractTest
      */
     public function testGetMimetype($repository)
     {
-        $blob = $this->getReadmeBlob($repository);
-        $this->assertRegexp('#text/plain#', $blob->getMimetype());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,8 +66,11 @@ class BlobTest extends AbstractTest
      */
     public function testIsText($repository)
     {
-        $blob = $this->getReadmeBlob($repository);
-        $this->assertTrue($blob->isText());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,7 +78,10 @@ class BlobTest extends AbstractTest
      */
     public function testIsBinary($repository)
     {
-        $blob = $this->getReadmeBlob($repository);
-        $this->assertFalse($blob->isBinary());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

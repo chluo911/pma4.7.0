@@ -98,7 +98,7 @@ function PMA_getRelationsParamDiagnostic($cfgRelation)
     $messages['disabled'] = '<span style="color:red">'   . __('Disabled') . '</span>';
 
     if (empty($cfgRelation['db'])) {
-        $retval .= __('Configuration of pmadbâ€¦') . ' '
+        $retval .= __('Configuration of pmadbâ€?') . ' '
              . $messages['error']
              . PMA\libraries\Util::showDocu('setup', 'linked-tables')
              . '<br />' . "\n"
@@ -351,7 +351,6 @@ function PMA_getRelationsParamDiagnostic($cfgRelation)
         $retval .= '</table>' . "\n";
 
         if (! $cfgRelation['allworks']) {
-
             $retval .= '<p>' . __('Quick steps to set up advanced features:')
                 . '</p>';
 
@@ -393,8 +392,11 @@ function PMA_getRelationsParamDiagnostic($cfgRelation)
  *
  * @return string
  */
-function PMA_getDiagMessageForFeature($feature_name,
-    $relation_parameter, $messages, $skip_line = true
+function PMA_getDiagMessageForFeature(
+    $feature_name,
+    $relation_parameter,
+    $messages,
+    $skip_line = true
 ) {
     $retval = '    <tr><td colspan=2 class="right">' . $feature_name . ': ';
     if (isset($GLOBALS['cfgRelation'][$relation_parameter])
@@ -421,8 +423,11 @@ function PMA_getDiagMessageForFeature($feature_name,
  *
  * @return string
  */
-function PMA_getDiagMessageForParameter($parameter,
-    $relationParameterSet, $messages, $docAnchor
+function PMA_getDiagMessageForParameter(
+    $parameter,
+    $relationParameterSet,
+    $messages,
+    $docAnchor
 ) {
     $retval = '<tr><th class="left">';
     $retval .= '$cfg[\'Servers\'][$i][\'' . $parameter . '\']  ... ';
@@ -485,7 +490,8 @@ function PMA_checkRelationsParam()
         || empty($GLOBALS['cfg']['Server']['pmadb'])
         || empty($GLOBALS['controllink'])
         || ! $GLOBALS['dbi']->selectDb(
-            $GLOBALS['cfg']['Server']['pmadb'], $GLOBALS['controllink']
+            $GLOBALS['cfg']['Server']['pmadb'],
+            $GLOBALS['controllink']
         )
     ) {
         // No server selected -> no bookmark table
@@ -508,7 +514,9 @@ function PMA_checkRelationsParam()
             $GLOBALS['cfg']['Server']['pmadb']
         );
     $tab_rs    = PMA_queryAsControlUser(
-        $tab_query, false, PMA\libraries\DatabaseInterface::QUERY_STORE
+        $tab_query,
+        false,
+        PMA\libraries\DatabaseInterface::QUERY_STORE
     );
 
     if (! $tab_rs) {
@@ -641,7 +649,7 @@ function PMA_checkRelationsParam()
                     $allWorks = false;
                     break;
                 }
-            } else if (is_array($table)) {
+            } elseif (is_array($table)) {
                 $oneNull = false;
                 foreach ($table as $t) {
                     if (isset($GLOBALS['cfg']['Server'][$t])
@@ -686,7 +694,9 @@ function PMA_tryUpgradeTransformations()
         )
         . ' WHERE Field IN (\'' . implode('\', \'', $new_cols) . '\')';
     $result = PMA_queryAsControlUser(
-        $query, false, PMA\libraries\DatabaseInterface::QUERY_STORE
+        $query,
+        false,
+        PMA\libraries\DatabaseInterface::QUERY_STORE
     );
     if ($result) {
         $rows = $GLOBALS['dbi']->numRows($result);
@@ -695,7 +705,7 @@ function PMA_tryUpgradeTransformations()
         // no need to upgrade
         if ($rows === 2) {
             return true;
-            // try silent upgrade without disturbing the user
+        // try silent upgrade without disturbing the user
         } else {
             // read upgrade query file
             $query = @file_get_contents(SQL_DIR . 'upgrade_column_info_4_3_0+.sql');
@@ -764,7 +774,10 @@ function PMA_getForeigners($db, $table, $column = '', $source = 'both')
                 . '\'' . $GLOBALS['dbi']->escapeString($column) . '\'';
         }
         $foreign = $GLOBALS['dbi']->fetchResult(
-            $rel_query, 'master_field', null, $GLOBALS['controllink']
+            $rel_query,
+            'master_field',
+            null,
+            $GLOBALS['controllink']
         );
     }
 
@@ -787,7 +800,7 @@ function PMA_getForeigners($db, $table, $column = '', $source = 'both')
      * Emulating relations for some information_schema tables
      */
     $isInformationSchema = mb_strtolower($db) == 'information_schema';
-        $isMysql = mb_strtolower($db) == 'mysql';
+    $isMysql = mb_strtolower($db) == 'mysql';
     if (($isInformationSchema || $isMysql)
         && ($source == 'internal' || $source == 'both')
     ) {
@@ -840,7 +853,9 @@ function PMA_getDisplayField($db, $table)
             . '\'';
 
         $row = $GLOBALS['dbi']->fetchSingleRow(
-            $disp_query, 'ASSOC', $GLOBALS['controllink']
+            $disp_query,
+            'ASSOC',
+            $GLOBALS['controllink']
         );
         if (isset($row['display_field'])) {
             return $row['display_field'];
@@ -875,7 +890,6 @@ function PMA_getDisplayField($db, $table)
      * No Luck...
      */
     return false;
-
 } // end of the 'PMA_getDisplayField()' function
 
 /**
@@ -934,7 +948,9 @@ function PMA_getDbComment($db)
                 AND table_name  = ''
                 AND column_name = '(db_comment)'";
         $com_rs = PMA_queryAsControlUser(
-            $com_qry, true, PMA\libraries\DatabaseInterface::QUERY_STORE
+            $com_qry,
+            true,
+            PMA\libraries\DatabaseInterface::QUERY_STORE
         );
 
         if ($com_rs && $GLOBALS['dbi']->numRows($com_rs) > 0) {
@@ -956,30 +972,11 @@ function PMA_getDbComment($db)
  */
 function PMA_getDbComments()
 {
-    $cfgRelation = PMA_getRelationsParam();
-    $comments = array();
-
-    if ($cfgRelation['commwork']) {
-        // pmadb internal db comment
-        $com_qry = "
-            SELECT `db_name`, `comment`
-            FROM " . PMA\libraries\Util::backquote($cfgRelation['db'])
-                . "." . PMA\libraries\Util::backquote($cfgRelation['column_info'])
-                . "
-            WHERE `column_name` = '(db_comment)'";
-        $com_rs = PMA_queryAsControlUser(
-            $com_qry, true, PMA\libraries\DatabaseInterface::QUERY_STORE
-        );
-
-        if ($com_rs && $GLOBALS['dbi']->numRows($com_rs) > 0) {
-            while ($row = $GLOBALS['dbi']->fetchAssoc($com_rs)) {
-                $comments[$row['db_name']] = $row['comment'];
-            }
-        }
-        $GLOBALS['dbi']->freeResult($com_rs);
-    }
-
-    return $comments;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 } // end of the 'PMA_getDbComments()' function
 
 /**
@@ -1090,7 +1087,6 @@ function PMA_setHistory($db, $table, $username, $sqlquery)
     );
 
     PMA_purgeHistory($username);
-
 } // end of 'PMA_setHistory()' function
 
 /**
@@ -1132,7 +1128,10 @@ function PMA_getHistory($username)
        ORDER BY `id` DESC';
 
     return $GLOBALS['dbi']->fetchResult(
-        $hist_query, null, null, $GLOBALS['controllink']
+        $hist_query,
+        null,
+        null,
+        $GLOBALS['controllink']
     );
 } // end of 'PMA_getHistory()' function
 
@@ -1168,7 +1167,10 @@ function PMA_purgeHistory($username)
         LIMIT ' . $GLOBALS['cfg']['QueryHistoryMax'] . ', 1';
 
     if ($max_time = $GLOBALS['dbi']->fetchValue(
-        $search_query, 0, 0, $GLOBALS['controllink']
+        $search_query,
+        0,
+        0,
+        $GLOBALS['controllink']
     )) {
         PMA_queryAsControlUser(
             'DELETE FROM '
@@ -1223,7 +1225,9 @@ function PMA_buildForeignDropdown($foreign, $data, $mode)
             $vtitle  = htmlspecialchars($value);
             $value  = htmlspecialchars(
                 mb_substr(
-                    $value, 0, $GLOBALS['cfg']['LimitChars']
+                    $value,
+                    0,
+                    $GLOBALS['cfg']['LimitChars']
                 ) . '...'
             );
         }
@@ -1265,7 +1269,11 @@ function PMA_buildForeignDropdown($foreign, $data, $mode)
  *
  * @access  public
  */
-function PMA_foreignDropdown($disp_row, $foreign_field, $foreign_display, $data,
+function PMA_foreignDropdown(
+    $disp_row,
+    $foreign_field,
+    $foreign_display,
+    $data,
     $max = null
 ) {
     if (null === $max) {
@@ -1350,8 +1358,12 @@ function PMA_foreignDropdown($disp_row, $foreign_field, $foreign_display, $data,
  * @access  public
  */
 function PMA_getForeignData(
-    $foreigners, $field, $override_total,
-    $foreign_filter, $foreign_limit, $get_total=false
+    $foreigners,
+    $field,
+    $override_total,
+    $foreign_filter,
+    $foreign_limit,
+    $get_total=false
 ) {
     // we always show the foreign field in the drop-down; if a display
     // field is defined, we show it besides the foreign field
@@ -1400,7 +1412,7 @@ function PMA_getForeignData(
                 . PMA\libraries\Util::backquote($foreign_field)
                 . ' LIKE "%' . $GLOBALS['dbi']->escapeString($foreign_filter) . '%"'
                 . (
-                ($foreign_display == false)
+                    ($foreign_display == false)
                     ? ''
                     : ' OR ' . PMA\libraries\Util::backquote($foreign_display)
                     . ' LIKE "%' . $GLOBALS['dbi']->escapeString($foreign_filter)
@@ -1525,7 +1537,6 @@ function PMA_REL_renameField($db, $table, $field, $new_name)
             . '   AND foreign_field = \'' . $GLOBALS['dbi']->escapeString($field)
             . '\'';
         PMA_queryAsControlUser($table_query);
-
     } // end if relwork
 }
 
@@ -1543,10 +1554,14 @@ function PMA_REL_renameField($db, $table, $field, $new_name)
  *
  * @return void
  */
-function PMA_REL_renameSingleTable($table,
-    $source_db, $target_db,
-    $source_table, $target_table,
-    $db_field, $table_field
+function PMA_REL_renameSingleTable(
+    $table,
+    $source_db,
+    $target_db,
+    $source_table,
+    $target_table,
+    $db_field,
+    $table_field
 ) {
     $query = 'UPDATE '
         . PMA\libraries\Util::backquote($GLOBALS['cfgRelation']['db']) . '.'
@@ -1583,9 +1598,12 @@ function PMA_REL_renameTable($source_db, $target_db, $source_table, $target_tabl
     if ($GLOBALS['cfgRelation']['commwork']) {
         PMA_REL_renameSingleTable(
             'column_info',
-            $source_db, $target_db,
-            $source_table, $target_table,
-            'db_name', 'table_name'
+            $source_db,
+            $target_db,
+            $source_table,
+            $target_table,
+            'db_name',
+            'table_name'
         );
     }
 
@@ -1595,25 +1613,34 @@ function PMA_REL_renameTable($source_db, $target_db, $source_table, $target_tabl
     if ($GLOBALS['cfgRelation']['displaywork']) {
         PMA_REL_renameSingleTable(
             'table_info',
-            $source_db, $target_db,
-            $source_table, $target_table,
-            'db_name', 'table_name'
+            $source_db,
+            $target_db,
+            $source_table,
+            $target_table,
+            'db_name',
+            'table_name'
         );
     }
 
     if ($GLOBALS['cfgRelation']['relwork']) {
         PMA_REL_renameSingleTable(
             'relation',
-            $source_db, $target_db,
-            $source_table, $target_table,
-            'foreign_db', 'foreign_table'
+            $source_db,
+            $target_db,
+            $source_table,
+            $target_table,
+            'foreign_db',
+            'foreign_table'
         );
 
         PMA_REL_renameSingleTable(
             'relation',
-            $source_db, $target_db,
-            $source_table, $target_table,
-            'master_db', 'master_table'
+            $source_db,
+            $target_db,
+            $source_table,
+            $target_table,
+            'master_db',
+            'master_table'
         );
     }
 
@@ -1622,9 +1649,12 @@ function PMA_REL_renameTable($source_db, $target_db, $source_table, $target_tabl
             // rename within the database can be handled
             PMA_REL_renameSingleTable(
                 'table_coords',
-                $source_db, $target_db,
-                $source_table, $target_table,
-                'db_name', 'table_name'
+                $source_db,
+                $target_db,
+                $source_table,
+                $target_table,
+                'db_name',
+                'table_name'
             );
         } else {
             // if the table is moved out of the database we can no loger keep the
@@ -1642,9 +1672,12 @@ function PMA_REL_renameTable($source_db, $target_db, $source_table, $target_tabl
     if ($GLOBALS['cfgRelation']['uiprefswork']) {
         PMA_REL_renameSingleTable(
             'table_uiprefs',
-            $source_db, $target_db,
-            $source_table, $target_table,
-            'db_name', 'table_name'
+            $source_db,
+            $target_db,
+            $source_table,
+            $target_table,
+            'db_name',
+            'table_name'
         );
     }
 
@@ -1652,9 +1685,12 @@ function PMA_REL_renameTable($source_db, $target_db, $source_table, $target_tabl
         // update hidden items inside table
         PMA_REL_renameSingleTable(
             'navigationhiding',
-            $source_db, $target_db,
-            $source_table, $target_table,
-            'db_name', 'table_name'
+            $source_db,
+            $target_db,
+            $source_table,
+            $target_table,
+            'db_name',
+            'table_name'
         );
 
         // update data for hidden table
@@ -1731,7 +1767,8 @@ function PMA_getChildReferences($db, $table, $column = '')
         }
 
         $child_references = $GLOBALS['dbi']->fetchResult(
-            $rel_query, array('referenced_column_name', null)
+            $rel_query,
+            array('referenced_column_name', null)
         );
     }
     return $child_references;
@@ -1749,7 +1786,11 @@ function PMA_getChildReferences($db, $table, $column = '')
  * @return array $column_status telling about references if foreign key.
  */
 function PMA_checkChildForeignReferences(
-    $db, $table, $column, $foreigners_full = null, $child_references_full = null
+    $db,
+    $table,
+    $column,
+    $foreigners_full = null,
+    $child_references_full = null
 ) {
     $column_status = array();
     $column_status['isEditable'] = false;

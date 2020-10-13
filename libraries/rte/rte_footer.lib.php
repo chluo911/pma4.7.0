@@ -126,4 +126,3 @@ function PMA_EVN_getFooterLinks()
 
     return $retval;
 } // end PMA_EVN_getFooterLinks()
-

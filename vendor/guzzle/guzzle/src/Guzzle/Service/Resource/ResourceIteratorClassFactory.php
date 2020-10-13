@@ -25,8 +25,11 @@ class ResourceIteratorClassFactory extends AbstractResourceIteratorFactory
      */
     public function __construct($namespaces = array(), InflectorInterface $inflector = null)
     {
-        $this->namespaces = (array) $namespaces;
-        $this->inflector = $inflector ?: Inflector::getDefault();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,23 +41,19 @@ class ResourceIteratorClassFactory extends AbstractResourceIteratorFactory
      */
     public function registerNamespace($namespace)
     {
-        array_unshift($this->namespaces, $namespace);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getClassName(CommandInterface $command)
     {
-        $iteratorName = $this->inflector->camel($command->getName()) . 'Iterator';
-
-        // Determine the name of the class to load
-        foreach ($this->namespaces as $namespace) {
-            $potentialClassName = $namespace . '\\' . $iteratorName;
-            if (class_exists($potentialClassName)) {
-                return $potentialClassName;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

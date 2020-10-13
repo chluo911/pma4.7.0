@@ -29,7 +29,8 @@ abstract class TableStats
     public $displayfield;
     public $fields = array();
     public $primary = array();
-    public $x, $y;
+    public $x;
+    public $y;
     public $width = 0;
     public $heightCell = 0;
     protected $offline;
@@ -48,27 +49,19 @@ abstract class TableStats
      *                                from the browser
      */
     public function __construct(
-        $diagram, $db, $pageNumber, $tableName, $showKeys, $tableDimension, $offline
+        $diagram,
+        $db,
+        $pageNumber,
+        $tableName,
+        $showKeys,
+        $tableDimension,
+        $offline
     ) {
-        $this->diagram    = $diagram;
-        $this->db         = $db;
-        $this->pageNumber = $pageNumber;
-        $this->tableName  = $tableName;
-
-        $this->showKeys   = $showKeys;
-        $this->tableDimension   = $tableDimension;
-
-        $this->offline    = $offline;
-
-        // checks whether the table exists
-        // and loads fields
-        $this->validateTableAndLoadFields();
-        // load table coordinates
-        $this->loadCoordinates();
-        // loads display field
-        $this->loadDisplayField();
-        // loads primary keys
-        $this->loadPrimaryKey();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,29 +71,11 @@ abstract class TableStats
      */
     protected function validateTableAndLoadFields()
     {
-        $sql = 'DESCRIBE ' . PMA\libraries\Util::backquote($this->tableName);
-        $result = $GLOBALS['dbi']->tryQuery(
-            $sql, null, PMA\libraries\DatabaseInterface::QUERY_STORE
-        );
-        if (! $result || ! $GLOBALS['dbi']->numRows($result)) {
-            $this->showMissingTableError();
-        }
-
-        if ($this->showKeys) {
-            $indexes = PMA\libraries\Index::getFromTable($this->tableName, $this->db);
-            $all_columns = array();
-            foreach ($indexes as $index) {
-                $all_columns = array_merge(
-                    $all_columns,
-                    array_flip(array_keys($index->getColumns()))
-                );
-            }
-            $this->fields = array_keys($all_columns);
-        } else {
-            while ($row = $GLOBALS['dbi']->fetchRow($result)) {
-                $this->fields[] = $row[0];
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -109,7 +84,7 @@ abstract class TableStats
      * @return void
      * @abstract
      */
-    protected abstract function showMissingTableError();
+    abstract protected function showMissingTableError();
 
     /**
      * Loads coordinates of a table
@@ -118,13 +93,11 @@ abstract class TableStats
      */
     protected function loadCoordinates()
     {
-        foreach ($_REQUEST['t_h'] as $key => $value) {
-            if ($this->db . '.' . $this->tableName == $key) {
-                $this->x = (double) $_REQUEST['t_x'][$key];
-                $this->y = (double) $_REQUEST['t_y'][$key];
-                break;
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,7 +107,11 @@ abstract class TableStats
      */
     protected function loadDisplayField()
     {
-        $this->displayfield = PMA_getDisplayField($this->db, $this->tableName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -144,17 +121,11 @@ abstract class TableStats
      */
     protected function loadPrimaryKey()
     {
-        $result = $GLOBALS['dbi']->query(
-            'SHOW INDEX FROM ' . PMA\libraries\Util::backquote($this->tableName) . ';',
-            null, PMA\libraries\DatabaseInterface::QUERY_STORE
-        );
-        if ($GLOBALS['dbi']->numRows($result) > 0) {
-            while ($row = $GLOBALS['dbi']->fetchAssoc($result)) {
-                if ($row['Key_name'] == 'PRIMARY') {
-                    $this->primary[] = $row['Column_name'];
-                }
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -165,10 +136,10 @@ abstract class TableStats
      */
     protected function getTitle()
     {
-        return ($this->tableDimension
-            ? sprintf('%.0fx%0.f', $this->width, $this->heightCell)
-            : ''
-        )
-        . ' ' . $this->tableName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -15,4 +15,3 @@ namespace PMA\libraries\engines;
 class Berkeleydb extends Bdb
 {
 }
-

@@ -23,10 +23,11 @@ class CurlAuthPlugin implements EventSubscriberInterface
      */
     public function __construct($username, $password, $scheme=CURLAUTH_BASIC)
     {
-        Version::warn(__CLASS__ . " is deprecated. Use \$client->getConfig()->setPath('request.options/auth', array('user', 'pass', 'Basic|Digest');");
-        $this->username = $username;
-        $this->password = $password;
-        $this->scheme = $scheme;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getSubscribedEvents()
@@ -41,6 +42,10 @@ class CurlAuthPlugin implements EventSubscriberInterface
      */
     public function onRequestCreate(Event $event)
     {
-        $event['request']->setAuth($this->username, $this->password, $this->scheme);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

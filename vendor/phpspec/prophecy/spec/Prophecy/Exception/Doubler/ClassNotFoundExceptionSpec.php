@@ -7,19 +7,30 @@ use spec\Prophecy\Exception\Prophecy;
 
 class ClassNotFoundExceptionSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith('msg', 'CustomClass');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_a_prophecy_exception()
+    public function it_is_a_prophecy_exception()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Exception');
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Doubler\DoubleException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_getClassname_returns_classname()
+    public function its_getClassname_returns_classname()
     {
-        $this->getClassname()->shouldReturn('CustomClass');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

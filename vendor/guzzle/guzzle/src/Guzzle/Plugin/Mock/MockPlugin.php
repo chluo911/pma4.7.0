@@ -35,17 +35,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function __construct(array $items = null, $temporary = false, $readBodies = false)
     {
-        $this->readBodies = $readBodies;
-        $this->temporary = $temporary;
-        if ($items) {
-            foreach ($items as $item) {
-                if ($item instanceof \Exception) {
-                    $this->addException($item);
-                } else {
-                    $this->addResponse($item);
-                }
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getSubscribedEvents()
@@ -56,7 +50,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
 
     public static function getAllEvents()
     {
-        return array('mock.request');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,11 +67,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public static function getMockFile($path)
     {
-        if (!file_exists($path)) {
-            throw new InvalidArgumentException('Unable to open mock file: ' . $path);
-        }
-
-        return Response::fromMessage(file_get_contents($path));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,9 +84,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function readBodies($readBodies)
     {
-        $this->readBodies = $readBodies;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,7 +98,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function count()
     {
-        return count($this->queue);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -111,16 +115,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function addResponse($response)
     {
-        if (!($response instanceof Response)) {
-            if (!is_string($response)) {
-                throw new InvalidArgumentException('Invalid response');
-            }
-            $response = self::getMockFile($response);
-        }
-
-        $this->queue[] = $response;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -132,9 +131,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function addException(CurlException $e)
     {
-        $this->queue[] = $e;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -144,9 +145,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function clearQueue()
     {
-        $this->queue = array();
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -156,7 +159,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function getQueue()
     {
-        return $this->queue;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -166,7 +173,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function isTemporary()
     {
-        return $this->temporary;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -179,29 +190,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function dequeue(RequestInterface $request)
     {
-        $this->dispatch('mock.request', array('plugin' => $this, 'request' => $request));
-
-        $item = array_shift($this->queue);
-        if ($item instanceof Response) {
-            if ($this->readBodies && $request instanceof EntityEnclosingRequestInterface) {
-                $request->getEventDispatcher()->addListener('request.sent', $f = function (Event $event) use (&$f) {
-                    while ($data = $event['request']->getBody()->read(8096));
-                    // Remove the listener after one-time use
-                    $event['request']->getEventDispatcher()->removeListener('request.sent', $f);
-                });
-            }
-            $request->setResponse($item);
-        } elseif ($item instanceof CurlException) {
-            // Emulates exceptions encountered while transferring requests
-            $item->setRequest($request);
-            $state = $request->setState(RequestInterface::STATE_ERROR, array('exception' => $item));
-            // Only throw if the exception wasn't handled
-            if ($state == RequestInterface::STATE_ERROR) {
-                throw $item;
-            }
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -209,7 +202,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function flush()
     {
-        $this->received = array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -219,7 +216,11 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function getReceivedRequests()
     {
-        return $this->received;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -230,16 +231,10 @@ class MockPlugin extends AbstractHasDispatcher implements EventSubscriberInterfa
      */
     public function onRequestBeforeSend(Event $event)
     {
-        if (!$this->queue) {
-            throw new \OutOfBoundsException('Mock queue is empty');
-        }
-
-        $request = $event['request'];
-        $this->received[] = $request;
-        // Detach the filter from the client so it's a one-time use
-        if ($this->temporary && count($this->queue) == 1 && $request->getClient()) {
-            $request->getClient()->getEventDispatcher()->removeSubscriber($this);
-        }
-        $this->dequeue($request);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

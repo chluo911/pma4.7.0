@@ -20,55 +20,19 @@ class FinalizationTest extends TestCase
 {
     public function testUnsetKeyWithDeepHierarchy()
     {
-        $tb = new TreeBuilder();
-        $tree = $tb
-            ->root('config', 'array')
-                ->children()
-                    ->node('level1', 'array')
-                        ->canBeUnset()
-                        ->children()
-                            ->node('level2', 'array')
-                                ->canBeUnset()
-                                ->children()
-                                    ->node('somevalue', 'scalar')->end()
-                                    ->node('anothervalue', 'scalar')->end()
-                                ->end()
-                            ->end()
-                            ->node('level1_scalar', 'scalar')->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-            ->buildTree()
-        ;
-
-        $a = array(
-            'level1' => array(
-                'level2' => array(
-                    'somevalue' => 'foo',
-                    'anothervalue' => 'bar',
-                ),
-                'level1_scalar' => 'foo',
-            ),
-        );
-
-        $b = array(
-            'level1' => array(
-                'level2' => false,
-            ),
-        );
-
-        $this->assertEquals(array(
-            'level1' => array(
-                'level1_scalar' => 'foo',
-            ),
-        ), $this->process($tree, array($a, $b)));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function process(NodeInterface $tree, array $configs)
     {
-        $processor = new Processor();
-
-        return $processor->process($tree, $configs);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

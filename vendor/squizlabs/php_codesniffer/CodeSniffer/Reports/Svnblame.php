@@ -49,15 +49,11 @@ class PHP_CodeSniffer_Reports_Svnblame extends PHP_CodeSniffer_Reports_VersionCo
      */
     protected function getAuthor($line)
     {
-        $blameParts = array();
-        preg_match('|\s*([^\s]+)\s+([^\s]+)|', $line, $blameParts);
-
-        if (isset($blameParts[2]) === false) {
-            return false;
-        }
-
-        return $blameParts[2];
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end getAuthor()
 
 
@@ -70,21 +66,10 @@ class PHP_CodeSniffer_Reports_Svnblame extends PHP_CodeSniffer_Reports_VersionCo
      */
     protected function getBlameContent($filename)
     {
-        $command = 'svn blame "'.$filename.'" 2>&1';
-        $handle  = popen($command, 'r');
-        if ($handle === false) {
-            echo 'ERROR: Could not execute "'.$command.'"'.PHP_EOL.PHP_EOL;
-            exit(2);
-        }
-
-        $rawContent = stream_get_contents($handle);
-        fclose($handle);
-
-        $blames = explode("\n", $rawContent);
-
-        return $blames;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end getBlameContent()
-
-
 }//end class

@@ -26,56 +26,56 @@ class Config
     /**
      * @var string  default config source
      */
-    var $default_source = './libraries/config.default.php';
+    public $default_source = './libraries/config.default.php';
 
     /**
      * @var array   default configuration settings
      */
-    var $default = array();
+    public $default = array();
 
     /**
      * @var array   configuration settings, without user preferences applied
      */
-    var $base_settings = array();
+    public $base_settings = array();
 
     /**
      * @var array   configuration settings
      */
-    var $settings = array();
+    public $settings = array();
 
     /**
      * @var string  config source
      */
-    var $source = '';
+    public $source = '';
 
     /**
      * @var int     source modification time
      */
-    var $source_mtime = 0;
-    var $default_source_mtime = 0;
-    var $set_mtime = 0;
+    public $source_mtime = 0;
+    public $default_source_mtime = 0;
+    public $set_mtime = 0;
 
     /**
      * @var boolean
      */
-    var $error_config_file = false;
+    public $error_config_file = false;
 
     /**
      * @var boolean
      */
-    var $error_config_default_file = false;
+    public $error_config_default_file = false;
 
     /**
      * @var array
      */
-    var $default_server = array();
+    public $default_server = array();
 
     /**
      * @var boolean whether init is done or not
      * set this to false to force some initial checks
      * like checking for required functions
      */
-    var $done = false;
+    public $done = false;
 
     /**
      * constructor
@@ -221,7 +221,7 @@ class Config
         )) {
             $this->set('PMA_USR_BROWSER_VER', $log_version[1]);
             $this->set('PMA_USR_BROWSER_AGENT', 'OMNIWEB');
-            // Konqueror 2.2.2 says Konqueror/2.2.2
+        // Konqueror 2.2.2 says Konqueror/2.2.2
             // Konqueror 3.0.3 says Konqueror/3
         } elseif (preg_match(
             '@(Konqueror/)(.*)(;)@',
@@ -230,34 +230,37 @@ class Config
         )) {
             $this->set('PMA_USR_BROWSER_VER', $log_version[2]);
             $this->set('PMA_USR_BROWSER_AGENT', 'KONQUEROR');
-            // must check Chrome before Safari
+        // must check Chrome before Safari
         } elseif ($is_mozilla
             && preg_match('@Chrome/([0-9.]*)@', $HTTP_USER_AGENT, $log_version)
         ) {
             $this->set('PMA_USR_BROWSER_VER', $log_version[1]);
             $this->set('PMA_USR_BROWSER_AGENT', 'CHROME');
-            // newer Safari
+        // newer Safari
         } elseif ($is_mozilla
             && preg_match('@Version/(.*) Safari@', $HTTP_USER_AGENT, $log_version)
         ) {
             $this->set(
-                'PMA_USR_BROWSER_VER', $log_version[1]
+                'PMA_USR_BROWSER_VER',
+                $log_version[1]
             );
             $this->set('PMA_USR_BROWSER_AGENT', 'SAFARI');
-            // older Safari
+        // older Safari
         } elseif ($is_mozilla
             && preg_match('@Safari/([0-9]*)@', $HTTP_USER_AGENT, $log_version)
         ) {
             $this->set(
-                'PMA_USR_BROWSER_VER', $mozilla_version[1] . '.' . $log_version[1]
+                'PMA_USR_BROWSER_VER',
+                $mozilla_version[1] . '.' . $log_version[1]
             );
             $this->set('PMA_USR_BROWSER_AGENT', 'SAFARI');
-            // Firefox
+        // Firefox
         } elseif (! mb_strstr($HTTP_USER_AGENT, 'compatible')
             && preg_match('@Firefox/([\w.]+)@', $HTTP_USER_AGENT, $log_version)
         ) {
             $this->set(
-                'PMA_USR_BROWSER_VER', $log_version[1]
+                'PMA_USR_BROWSER_VER',
+                $log_version[1]
             );
             $this->set('PMA_USR_BROWSER_AGENT', 'FIREFOX');
         } elseif (preg_match('@rv:1\.9(.*)Gecko@', $HTTP_USER_AGENT)) {
@@ -453,7 +456,7 @@ class Config
         } elseif (function_exists('gzuncompress')) {
             $git_file_name = $git_folder . '/objects/'
                 . substr($hash, 0, 2) . '/' . substr($hash, 2);
-            if (file_exists($git_file_name) ) {
+            if (file_exists($git_file_name)) {
                 if (! $commit = @file_get_contents($git_file_name)) {
                     return;
                 }
@@ -563,7 +566,8 @@ class Config
 
                     // open pack file
                     $pack_file = fopen(
-                        $git_folder . '/objects/pack/' . $pack_name, 'rb'
+                        $git_folder . '/objects/pack/' . $pack_name,
+                        'rb'
                     );
                     if ($pack_file === false) {
                         continue;
@@ -608,7 +612,7 @@ class Config
         } else {
             $link = 'https://www.phpmyadmin.net/api/commit/' . $hash . '/';
             $is_found = Util::httpRequest($link, "GET");
-            switch($is_found) {
+            switch ($is_found) {
             case false:
                 $is_remote_commit = false;
                 $_SESSION['PMA_VERSION_REMOTECOMMIT_' . $hash] = false;
@@ -636,7 +640,7 @@ class Config
             } else {
                 $link = 'https://www.phpmyadmin.net/api/tree/' . $branch . '/';
                 $is_found = Util::httpRequest($link, "GET", true);
-                switch($is_found) {
+                switch ($is_found) {
                 case true:
                     $is_remote_branch = true;
                     $_SESSION['PMA_VERSION_REMOTEBRANCH_' . $hash] = true;
@@ -675,7 +679,6 @@ class Config
                 }
             } while ($dataline != '');
             $message = trim(implode(' ', $commit));
-
         } elseif (isset($commit_json) && isset($commit_json->author) && isset($commit_json->committer)) {
             $author = array(
                 'name' => $commit_json->author->name,
@@ -803,7 +806,9 @@ class Config
          */
         $matched_keys = array_filter(
             array_keys($cfg),
-            function ($key) {return strpos($key, '/') === false;}
+            function ($key) {
+                return strpos($key, '/') === false;
+            }
         );
 
         $cfg = array_intersect_key($cfg, array_flip($matched_keys));
@@ -1025,7 +1030,10 @@ class Config
      *
      * @return void
      */
-    public function setUserValue($cookie_name, $cfg_path, $new_cfg_value,
+    public function setUserValue(
+        $cookie_name,
+        $cfg_path,
+        $new_cfg_value,
         $default_value = null
     ) {
         // use permanent user preferences if possible
@@ -1065,7 +1073,7 @@ class Config
             if ($cookie_exists) {
                 $this->removeCookie($cookie_name);
             }
-        } else if ($cookie_exists) {
+        } elseif ($cookie_exists) {
             return $_COOKIE[$cookie_name];
         }
         // return value from $cfg array
@@ -1363,7 +1371,6 @@ class Config
      */
     public function isHttps()
     {
-
         if (null !== $this->get('is_https')) {
             return $this->get('is_https');
         }
@@ -1622,8 +1629,12 @@ class Config
      *
      * @return boolean result of setcookie()
      */
-    public function setCookie($cookie, $value, $default = null,
-        $validity = null, $httponly = true
+    public function setCookie(
+        $cookie,
+        $value,
+        $default = null,
+        $validity = null,
+        $httponly = true
     ) {
         if (strlen($value) > 0 && null !== $default && $value === $default
         ) {

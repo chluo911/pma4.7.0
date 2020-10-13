@@ -15,33 +15,28 @@ class IoEmittingEntityBodyTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function setUp()
     {
-        $this->decorated = EntityBody::factory('hello');
-        $this->body = new IoEmittingEntityBody($this->decorated);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEmitsReadEvents()
     {
-        $e = null;
-        $this->body->getEventDispatcher()->addListener('body.read', function ($event) use (&$e) {
-            $e = $event;
-        });
-        $this->assertEquals('hel', $this->body->read(3));
-        $this->assertEquals('hel', $e['read']);
-        $this->assertEquals(3, $e['length']);
-        $this->assertSame($this->body, $e['body']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEmitsWriteEvents()
     {
-        $e = null;
-        $this->body->getEventDispatcher()->addListener('body.write', function ($event) use (&$e) {
-            $e = $event;
-        });
-        $this->body->seek(0, SEEK_END);
-        $this->assertEquals(5, $this->body->write('there'));
-        $this->assertEquals('there', $e['write']);
-        $this->assertEquals(5, $e['result']);
-        $this->assertSame($this->body, $e['body']);
-        $this->assertEquals('hellothere', (string) $this->body);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

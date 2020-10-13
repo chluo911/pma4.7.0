@@ -22,30 +22,28 @@ class Zf2LogAdapterTest extends \Guzzle\Tests\GuzzleTestCase
 
     protected function setUp()
     {
-        $this->stream = fopen('php://temp', 'r+');
-        $this->log = new Logger();
-        $this->log->addWriter(new Stream($this->stream));
-        $this->adapter = new Zf2LogAdapter($this->log);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testLogsMessagesToAdaptedObject()
     {
-        // Test without a priority
-        $this->adapter->log('Zend_Test!', \LOG_NOTICE);
-        rewind($this->stream);
-        $contents = stream_get_contents($this->stream);
-        $this->assertEquals(1, substr_count($contents, 'Zend_Test!'));
-
-        // Test with a priority
-        $this->adapter->log('Zend_Test!', \LOG_ALERT);
-        rewind($this->stream);
-        $contents = stream_get_contents($this->stream);
-        $this->assertEquals(2, substr_count($contents, 'Zend_Test!'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExposesAdaptedLogObject()
     {
-        $this->assertEquals($this->log, $this->adapter->getLogObject());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

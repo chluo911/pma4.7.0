@@ -20,17 +20,28 @@ class TruncatedBackoffStrategy extends AbstractBackoffStrategy
      */
     public function __construct($maxRetries, BackoffStrategyInterface $next = null)
     {
-        $this->max = $maxRetries;
-        $this->next = $next;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function makesDecision()
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getDelay($retries, RequestInterface $request, Response $response = null, HttpException $e = null)
     {
-        return $retries < $this->max ? null : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

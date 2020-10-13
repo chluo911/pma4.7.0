@@ -107,7 +107,11 @@ class Response
      */
     public function getErrorCodes()
     {
-        return $this->errorCodes;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -117,6 +121,10 @@ class Response
      */
     public function getHostname()
     {
-      return $this->hostname;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

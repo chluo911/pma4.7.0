@@ -22,9 +22,10 @@ interface BackoffStrategyInterface
      * @return bool|int Returns false to not retry or the number of seconds to delay between retries
      */
     public function getBackoffPeriod(
-        $retries,
-        RequestInterface $request,
-        Response $response = null,
-        HttpException $e = null
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     );
 }

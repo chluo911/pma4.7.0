@@ -26,8 +26,15 @@ use PMA\libraries\URL;
  * @return array
  */
 function PMA_getUrlParams(
-    $what, $reload, $action, $db, $table, $selected, $views,
-    $original_sql_query, $original_url_query
+    $what,
+    $reload,
+    $action,
+    $db,
+    $table,
+    $selected,
+    $views,
+    $original_sql_query,
+    $original_url_query
 ) {
     $_url_params = array(
         'query_type' => $what,
@@ -80,8 +87,14 @@ function PMA_getUrlParams(
  * @return array
  */
 function PMA_buildOrExecuteQueryForMulti(
-    $query_type, $selected, $db, $table, $views, $primary,
-    $from_prefix, $to_prefix
+    $query_type,
+    $selected,
+    $db,
+    $table,
+    $views,
+    $primary,
+    $from_prefix,
+    $to_prefix
 ) {
     $rebuild_database_list = false;
     $reload = null;
@@ -269,8 +282,13 @@ function PMA_buildOrExecuteQueryForMulti(
 
             // COPY TABLE AND CHANGE PREFIX PATTERN
             Table::moveCopy(
-                $db, $current, $db, $newtablename,
-                'data', false, 'one_table'
+                $db,
+                $current,
+                $db,
+                $newtablename,
+                'data',
+                false,
+                'one_table'
             );
             break;
 
@@ -298,7 +316,7 @@ function PMA_buildOrExecuteQueryForMulti(
                 PMA_clearTransformations($selected[$i]);
             } elseif ($query_type == 'drop_tbl') {
                 PMA_clearTransformations($db, $selected[$i]);
-            } else if ($query_type == 'drop_fld') {
+            } elseif ($query_type == 'drop_fld') {
                 PMA_clearTransformations($db, $table, $selected[$i]);
             }
         } // end if
@@ -306,7 +324,9 @@ function PMA_buildOrExecuteQueryForMulti(
 
     if ($deletes && ! empty($_REQUEST['pos'])) {
         $_REQUEST['pos'] = PMA_calculatePosForLastPage(
-            $db, $table, isset($_REQUEST['pos']) ? $_REQUEST['pos'] : null
+            $db,
+            $table,
+            isset($_REQUEST['pos']) ? $_REQUEST['pos'] : null
         );
     }
 
@@ -330,11 +350,12 @@ function PMA_getHtmlForCopyMultipleTables($action, $_url_params)
     $html .= URL::getHiddenInputs($_url_params);
     $html .= '<fieldset class = "input">';
     $databases_list = $GLOBALS['dblist']->databases;
-    foreach ($databases_list as $key => $db_name)
-        if ($db_name == $GLOBALS['db']){
+    foreach ($databases_list as $key => $db_name) {
+        if ($db_name == $GLOBALS['db']) {
             $databases_list->offsetUnset($key);
             break;
         }
+    }
     $html .= '<strong><label for="db_name_dropdown">' . __('Database') . ':</label></strong>';
     $html .= '<select id="db_name_dropdown" class="halfWidth" name="target_db" >'
         . $databases_list->getHtmlOptions(true, false)
@@ -358,7 +379,7 @@ function PMA_getHtmlForCopyMultipleTables($action, $_url_params)
     $html .= '</fieldset>';
     $html .= '<input type="hidden" name="mult_btn" value="' . __('Yes') . '" />';
     $html .= '</form>';
-   return $html;
+    return $html;
 }
 
 /**
@@ -575,4 +596,3 @@ function PMA_getQueryFromSelected($what, $table, $selected, $views)
 
     return array($full_query, $reload, $full_query_views);
 }
-

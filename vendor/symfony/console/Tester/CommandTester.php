@@ -38,7 +38,11 @@ class CommandTester
      */
     public function __construct(Command $command)
     {
-        $this->command = $command;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -113,7 +117,11 @@ class CommandTester
      */
     public function getInput()
     {
-        return $this->input;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -146,9 +154,11 @@ class CommandTester
      */
     public function setInputs(array $inputs)
     {
-        $this->inputs = $inputs;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private static function createStream(array $inputs)

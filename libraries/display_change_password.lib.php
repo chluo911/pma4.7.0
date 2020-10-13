@@ -43,7 +43,8 @@ function PMA_getHtmlForChangePassword($mode, $username, $hostname)
     }
     $html .= '<fieldset id="fieldset_change_password">'
         . '<legend'
-        . ($is_privileges
+        . (
+            $is_privileges
             ? ' data-submenu-label="' . __('Change password') . '"'
             : ''
         )
@@ -99,7 +100,9 @@ function PMA_getHtmlForChangePassword($mode, $username, $hostname)
             || ($is_superuser && $mode == 'edit_other')
         ) {
             $auth_plugin_dropdown = PMA_getHtmlForAuthPluginsDropdown(
-                $orig_auth_plugin, 'change_pw', 'new'
+                $orig_auth_plugin,
+                'change_pw',
+                'new'
             );
 
             $html .= '<tr class="vmiddle">'
@@ -132,7 +135,9 @@ function PMA_getHtmlForChangePassword($mode, $username, $hostname)
         }
     } else {
         $auth_plugin_dropdown = PMA_getHtmlForAuthPluginsDropdown(
-            $orig_auth_plugin, 'change_pw', 'old'
+            $orig_auth_plugin,
+            'change_pw',
+            'old'
         );
 
         $html .= '<tr class="vmiddle">'

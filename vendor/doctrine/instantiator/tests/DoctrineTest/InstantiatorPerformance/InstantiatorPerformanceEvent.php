@@ -39,13 +39,11 @@ class InstantiatorPerformanceEvent extends AthleticEvent
      */
     protected function setUp()
     {
-        $this->instantiator = new Instantiator();
-
-        $this->instantiator->instantiate(__CLASS__);
-        $this->instantiator->instantiate('ArrayObject');
-        $this->instantiator->instantiate('DoctrineTest\\InstantiatorTestAsset\\SimpleSerializableAsset');
-        $this->instantiator->instantiate('DoctrineTest\\InstantiatorTestAsset\\SerializableArrayObjectAsset');
-        $this->instantiator->instantiate('DoctrineTest\\InstantiatorTestAsset\\UnCloneableAsset');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,7 +53,11 @@ class InstantiatorPerformanceEvent extends AthleticEvent
      */
     public function testInstantiateSelf()
     {
-        $this->instantiator->instantiate(__CLASS__);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,7 +66,11 @@ class InstantiatorPerformanceEvent extends AthleticEvent
      */
     public function testInstantiateInternalClass()
     {
-        $this->instantiator->instantiate('ArrayObject');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,7 +79,11 @@ class InstantiatorPerformanceEvent extends AthleticEvent
      */
     public function testInstantiateSimpleSerializableAssetClass()
     {
-        $this->instantiator->instantiate('DoctrineTest\\InstantiatorTestAsset\\SimpleSerializableAsset');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -82,7 +92,11 @@ class InstantiatorPerformanceEvent extends AthleticEvent
      */
     public function testInstantiateSerializableArrayObjectAsset()
     {
-        $this->instantiator->instantiate('DoctrineTest\\InstantiatorTestAsset\\SerializableArrayObjectAsset');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,6 +105,10 @@ class InstantiatorPerformanceEvent extends AthleticEvent
      */
     public function testInstantiateUnCloneableAsset()
     {
-        $this->instantiator->instantiate('DoctrineTest\\InstantiatorTestAsset\\UnCloneableAsset');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -22,15 +22,11 @@ class RevisionTest extends AbstractTest
      */
     public function testGetCommit($repository)
     {
-        $revision = $repository->getRevision(self::LONGFILE_COMMIT.'^');
-
-        $this->assertTrue($revision instanceof Revision, 'Revision object type');
-
-        $commit = $revision->getCommit();
-
-        $this->assertTrue($commit instanceof Commit, 'getCommit returns a Commit');
-
-        $this->assertEquals(self::BEFORE_LONGFILE_COMMIT, $commit->getHash(), 'Resolution is correct');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,7 +36,11 @@ class RevisionTest extends AbstractTest
      */
     public function testGetFailingReference($repository)
     {
-        $revision = $repository->getRevision('non-existent-commit')->getCommit();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,13 +48,10 @@ class RevisionTest extends AbstractTest
      */
     public function testGetLog($repository)
     {
-        $revision = $repository->getRevision(self::LONGFILE_COMMIT);
-
-        $log = $revision->getLog(null, 2, 3);
-
-        $this->assertTrue($log instanceof Log, 'Log type object');
-        $this->assertEquals(2, $log->getOffset(), 'Log offset is passed');
-        $this->assertEquals(3, $log->getLimit(), 'Log limit is passed');
-        $this->assertEquals(array($revision), $log->getRevisions()->getAll(), 'Revision is passed');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

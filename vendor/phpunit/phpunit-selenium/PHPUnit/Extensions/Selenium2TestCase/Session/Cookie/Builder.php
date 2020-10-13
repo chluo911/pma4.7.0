@@ -59,7 +59,7 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie_Builder
     private $value;
     private $path;
     private $domain;
-    private $secure = FALSE;
+    private $secure = false;
     private $expiry;
 
     public function __construct($cookieFacade, $name, $value)
@@ -75,8 +75,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie_Builder
      */
     public function path($path)
     {
-        $this->path = $path;
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,8 +88,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie_Builder
      */
     public function domain($domain)
     {
-        $this->domain = $domain;
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -95,8 +101,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie_Builder
      */
     public function secure($secure)
     {
-        $this->secure = $secure;
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,8 +114,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie_Builder
      */
     public function expiry($expiry)
     {
-        $this->expiry = $expiry;
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -114,16 +126,10 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie_Builder
      */
     public function set()
     {
-        $cookieData = array(
-            'name' => $this->name,
-            'value' => $this->value,
-            'secure' => $this->secure,
-        );
-        foreach (array('path', 'domain', 'expiry') as $parameter) {
-            if ($this->$parameter !== NULL) {
-                $cookieData[$parameter] = $this->$parameter;
-            }
-        }
-        $this->cookieFacade->postCookie($cookieData);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

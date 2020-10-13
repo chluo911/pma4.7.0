@@ -39,7 +39,7 @@
  * @copyright  2010-2013 Sebastian Bergmann <sebastian@phpunit.de>
  * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
  * @link       http://www.phpunit.de/
- * @since      
+ * @since
  */
 
 /**
@@ -51,7 +51,7 @@
  * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
  * @version    Release: @package_version@
  * @link       http://www.phpunit.de/
- * @since      
+ * @since
  */
 class PHPUnit_Extensions_Selenium2TestCase_WebDriverException extends PHPUnit_Extensions_Selenium2TestCase_Exception
 {

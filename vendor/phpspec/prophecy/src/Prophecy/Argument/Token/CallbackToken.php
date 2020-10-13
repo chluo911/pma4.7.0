@@ -31,14 +31,11 @@ class CallbackToken implements TokenInterface
      */
     public function __construct($callback)
     {
-        if (!is_callable($callback)) {
-            throw new InvalidArgumentException(sprintf(
-                'Callable expected as an argument to CallbackToken, but got %s.',
-                gettype($callback)
-            ));
-        }
-
-        $this->callback = $callback;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -50,7 +47,11 @@ class CallbackToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        return call_user_func($this->callback, $argument) ? 7 : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -60,7 +61,11 @@ class CallbackToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -27,7 +27,11 @@ abstract class Loader implements LoaderInterface
      */
     public function getResolver()
     {
-        return $this->resolver;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -35,7 +39,11 @@ abstract class Loader implements LoaderInterface
      */
     public function setResolver(LoaderResolverInterface $resolver)
     {
-        $this->resolver = $resolver;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,7 +56,11 @@ abstract class Loader implements LoaderInterface
      */
     public function import($resource, $type = null)
     {
-        return $this->resolve($resource, $type)->load($resource, $type);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,16 +75,10 @@ abstract class Loader implements LoaderInterface
      */
     public function resolve($resource, $type = null)
     {
-        if ($this->supports($resource, $type)) {
-            return $this;
-        }
-
-        $loader = null === $this->resolver ? false : $this->resolver->resolve($resource, $type);
-
-        if (false === $loader) {
-            throw new FileLoaderLoadException($resource);
-        }
-
-        return $loader;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

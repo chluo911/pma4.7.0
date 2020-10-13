@@ -59,40 +59,59 @@ class PHPUnit_Extensions_Selenium2TestCase_ScreenshotListener implements PHPUnit
 
     public function __construct($directory)
     {
-        $this->directory = $directory;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addError(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->storeAScreenshot($test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
     {
-        $this->storeAScreenshot($test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function storeAScreenshot(PHPUnit_Framework_Test $test)
     {
-        if ($test instanceof PHPUnit_Extensions_Selenium2TestCase)
-        {
-            try {
-                $file = $this->directory . '/' . get_class($test) . '__' . $test->getName() . '__' . date('Y-m-d\TH-i-s') . '.png';
-                file_put_contents($file,        $test->currentScreenshot());
-            } catch (Exception $e) {
-                $file = $this->directory . '/' . get_class($test) . '__' . $test->getName() . '__' . date('Y-m-d\TH-i-s') . '.txt';
-                file_put_contents($file, "Screenshot generation doesn't work." . "\n"
-                                         . $e->getMessage() . "\n"
-                                         . $e->getTraceAsString());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time) {}
-    public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time) {}
-    public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time) {}
-    public function startTest(PHPUnit_Framework_Test $test) {}
-    public function endTest(PHPUnit_Framework_Test $test, $time) {}
-    public function startTestSuite(PHPUnit_Framework_TestSuite $suite) {}
-    public function endTestSuite(PHPUnit_Framework_TestSuite $suite) {}
+    public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+    }
+    public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+    }
+    public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+    }
+    public function startTest(PHPUnit_Framework_Test $test)
+    {
+    }
+    public function endTest(PHPUnit_Framework_Test $test, $time)
+    {
+    }
+    public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
+    {
+    }
+    public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
+    {
+    }
 }

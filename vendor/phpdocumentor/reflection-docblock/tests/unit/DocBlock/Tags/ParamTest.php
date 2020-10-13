@@ -32,9 +32,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new Param('myParameter', null, false, new Description('Description'));
-
-        $this->assertSame('param', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,17 +50,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new Param('myParameter', new String_(), true, new Description('Description'));
-        $this->assertSame('@param string ...$myParameter Description', $fixture->render());
-
-        $fixture = new Param('myParameter', new String_(), false, new Description('Description'));
-        $this->assertSame('@param string $myParameter Description', $fixture->render());
-
-        $fixture = new Param('myParameter', null, false, new Description('Description'));
-        $this->assertSame('@param $myParameter Description', $fixture->render());
-
-        $fixture = new Param('myParameter');
-        $this->assertSame('@param $myParameter', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,12 +63,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new Param('myParameter');
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,11 +76,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasVariableName()
     {
-        $expected = 'myParameter';
-
-        $fixture = new Param($expected);
-
-        $this->assertSame($expected, $fixture->getVariableName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -94,11 +89,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasType()
     {
-        $expected = new String_();
-
-        $fixture = new Param('myParameter', $expected);
-
-        $this->assertSame($expected, $fixture->getType());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,11 +102,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfParameterIsVariadic()
     {
-        $fixture = new Param('myParameter', new String_(), false);
-        $this->assertFalse($fixture->isVariadic());
-
-        $fixture = new Param('myParameter', new String_(), true);
-        $this->assertTrue($fixture->isVariadic());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -121,11 +116,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasDescription()
     {
-        $expected = new Description('Description');
-
-        $fixture = new Param('1.0', null, false, $expected);
-
-        $this->assertSame($expected, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -137,9 +132,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new Param('myParameter', new String_(), true, new Description('Description'));
-
-        $this->assertSame('string ...$myParameter Description', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -151,20 +148,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $typeResolver = new TypeResolver();
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $context = new Context('');
-
-        $description = new Description('My Description');
-        $descriptionFactory->shouldReceive('create')->with('My Description', $context)->andReturn($description);
-
-        $fixture = Param::create('string ...$myParameter My Description', $typeResolver, $descriptionFactory, $context);
-
-        $this->assertSame('string ...$myParameter My Description', (string)$fixture);
-        $this->assertSame('myParameter', $fixture->getVariableName());
-        $this->assertInstanceOf(String_::class, $fixture->getType());
-        $this->assertTrue($fixture->isVariadic());
-        $this->assertSame($description, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -176,8 +164,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfEmptyBodyIsGiven()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        Param::create('', new TypeResolver(), $descriptionFactory);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -186,7 +177,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfBodyIsNotString()
     {
-        Param::create([]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -195,7 +190,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfResolverIsNull()
     {
-        Param::create('body');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -205,7 +204,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfDescriptionFactoryIsNull()
     {
-        Param::create('body', new TypeResolver());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -214,7 +217,11 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownIfVariableNameIsNotString()
     {
-        new Param([]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -223,6 +230,10 @@ class ParamTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownIfVariadicIsNotBoolean()
     {
-        new Param('', null, []);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

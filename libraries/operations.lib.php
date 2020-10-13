@@ -204,7 +204,10 @@ function PMA_getHtmlForCopyDatabase($db)
         . 'class="textfield" value="" '
         . 'required="required" /><br />'
         . Util::getRadioFields(
-            'what', $choices, 'data', true
+            'what',
+            $choices,
+            'data',
+            true
         );
     $html_output .= '<br />';
     $html_output .= '<input type="checkbox" name="create_database_before_copying" '
@@ -322,7 +325,9 @@ function PMA_runProcedureAndFunctionDefinitions($db)
         foreach ($procedure_names as $procedure_name) {
             $GLOBALS['dbi']->selectDb($db);
             $tmp_query = $GLOBALS['dbi']->getDefinition(
-                $db, 'PROCEDURE', $procedure_name
+                $db,
+                'PROCEDURE',
+                $procedure_name
             );
             // collect for later display
             $GLOBALS['sql_query'] .= "\n" . $tmp_query;
@@ -336,7 +341,9 @@ function PMA_runProcedureAndFunctionDefinitions($db)
         foreach ($function_names as $function_name) {
             $GLOBALS['dbi']->selectDb($db);
             $tmp_query = $GLOBALS['dbi']->getDefinition(
-                $db, 'FUNCTION', $function_name
+                $db,
+                'FUNCTION',
+                $function_name
             );
             // collect for later display
             $GLOBALS['sql_query'] .= "\n" . $tmp_query;
@@ -396,7 +403,9 @@ function PMA_createDbBeforeCopy()
  * @return array $views
  */
 function PMA_getViewsAndCreateSqlViewStandIn(
-    $tables_full, $export_sql_plugin, $db
+    $tables_full,
+    $export_sql_plugin,
+    $db
 ) {
     $views = array();
     foreach ($tables_full as $each_table => $tmp) {
@@ -421,7 +430,9 @@ function PMA_getViewsAndCreateSqlViewStandIn(
             $views[] = $each_table;
             // Create stand-in definition to resolve view dependencies
             $sql_view_standin = $export_sql_plugin->getTableDefStandIn(
-                $db, $each_table, "\n"
+                $db,
+                $each_table,
+                "\n"
             );
             $GLOBALS['dbi']->selectDb($_REQUEST['newname']);
             $GLOBALS['dbi']->query($sql_view_standin);
@@ -470,9 +481,13 @@ function PMA_copyTables($tables_full, $move, $db)
             $triggers = $GLOBALS['dbi']->getTriggers($db, $each_table, '');
 
             if (! Table::moveCopy(
-                $db, $each_table, $_REQUEST['newname'], $each_table,
+                $db,
+                $each_table,
+                $_REQUEST['newname'],
+                $each_table,
                 (isset($this_what) ? $this_what : 'data'),
-                $move, 'db_copy'
+                $move,
+                'db_copy'
             )) {
                 $GLOBALS['_error'] = true;
                 break;
@@ -548,7 +563,13 @@ function PMA_handleTheViews($views, $move, $db)
     $_REQUEST['drop_if_exists'] = 'true';
     foreach ($views as $view) {
         $copying_succeeded = Table::moveCopy(
-            $db, $view, $_REQUEST['newname'], $view, 'structure', $move, 'db_copy'
+            $db,
+            $view,
+            $_REQUEST['newname'],
+            $view,
+            'structure',
+            $move,
+            'db_copy'
         );
         if (! $copying_succeeded) {
             $GLOBALS['_error'] = true;
@@ -750,8 +771,11 @@ function PMA_duplicateBookmarks($_error, $db)
         $where_fields = array('dbase' => $db);
         $new_fields = array('dbase' => $_REQUEST['newname']);
         Table::duplicateInfo(
-            'bookmarkwork', 'bookmark', $get_fields,
-            $where_fields, $new_fields
+            'bookmarkwork',
+            'bookmark',
+            $get_fields,
+            $where_fields,
+            $new_fields
         );
     }
 }
@@ -769,7 +793,8 @@ function PMA_getHtmlForOrderTheTable($columns)
     $html_output .= '<form method="post" id="alterTableOrderby" '
         . 'action="tbl_operations.php">';
     $html_output .= URL::getHiddenInputs(
-        $GLOBALS['db'], $GLOBALS['table']
+        $GLOBALS['db'],
+        $GLOBALS['table']
     );
     $html_output .= '<fieldset id="fieldset_table_order">'
         . '<legend>' . __('Alter table order by') . '</legend>'
@@ -796,7 +821,7 @@ function PMA_getHtmlForOrderTheTable($columns)
         . '</form>'
         . '</div>';
 
-     return $html_output;
+    return $html_output;
 }
 
 /**
@@ -885,22 +910,37 @@ function PMA_getHtmlForMoveTable()
  *
  * @return string $html_output
  */
-function PMA_getTableOptionDiv($pma_table, $comment, $tbl_collation, $tbl_storage_engine,
-    $pack_keys, $auto_increment, $delay_key_write,
-    $transactional, $page_checksum, $checksum
+function PMA_getTableOptionDiv(
+    $pma_table,
+    $comment,
+    $tbl_collation,
+    $tbl_storage_engine,
+    $pack_keys,
+    $auto_increment,
+    $delay_key_write,
+    $transactional,
+    $page_checksum,
+    $checksum
 ) {
     $html_output = '<div class="operations_half_width clearfloat">';
     $html_output .= '<form method="post" action="tbl_operations.php"';
     $html_output .= ' id="tableOptionsForm" class="ajax">';
     $html_output .= URL::getHiddenInputs(
-        $GLOBALS['db'], $GLOBALS['table']
+        $GLOBALS['db'],
+        $GLOBALS['table']
     );
     $html_output .= '<input type="hidden" name="reload" value="1" />';
 
     $html_output .= PMA_getTableOptionFieldset(
-        $pma_table, $comment, $tbl_collation,
-        $tbl_storage_engine, $pack_keys,
-        $delay_key_write, $auto_increment, $transactional, $page_checksum,
+        $pma_table,
+        $comment,
+        $tbl_collation,
+        $tbl_storage_engine,
+        $pack_keys,
+        $delay_key_write,
+        $auto_increment,
+        $transactional,
+        $page_checksum,
         $checksum
     );
 
@@ -1024,10 +1064,17 @@ function PMA_getHtmlForPackKeys($current_value)
  *
  * @return string $html_output
  */
-function PMA_getTableOptionFieldset($pma_table, $comment, $tbl_collation,
-    $tbl_storage_engine, $pack_keys,
-    $delay_key_write, $auto_increment, $transactional,
-    $page_checksum, $checksum
+function PMA_getTableOptionFieldset(
+    $pma_table,
+    $comment,
+    $tbl_collation,
+    $tbl_storage_engine,
+    $pack_keys,
+    $delay_key_write,
+    $auto_increment,
+    $transactional,
+    $page_checksum,
+    $checksum
 ) {
     $html_output = '<fieldset>'
         . '<legend>' . __('Table options') . '</legend>';
@@ -1042,7 +1089,9 @@ function PMA_getTableOptionFieldset($pma_table, $comment, $tbl_collation,
         . '</td>'
         . '<td>'
         . StorageEngine::getHtmlSelect(
-            'new_tbl_storage_engine', null, $tbl_storage_engine
+            'new_tbl_storage_engine',
+            null,
+            $tbl_storage_engine
         )
         . '</td>'
         . '</tr>';
@@ -1051,7 +1100,10 @@ function PMA_getTableOptionFieldset($pma_table, $comment, $tbl_collation,
     $html_output .= '<tr><td class="vmiddle">' . __('Collation') . '</td>'
         . '<td>'
         . Charsets::getCollationDropdownBox(
-            'tbl_collation', null, $tbl_collation, false
+            'tbl_collation',
+            null,
+            $tbl_collation,
+            false
         )
         . '</td>'
         . '</tr>';
@@ -1123,8 +1175,10 @@ function PMA_getTableOptionFieldset($pma_table, $comment, $tbl_collation,
             . '<label for="new_row_format">ROW_FORMAT</label></td>'
             . '<td>';
         $html_output .= Util::getDropdown(
-            'new_row_format', $possible_row_formats[$tbl_storage_engine],
-            $current_row_format, 'new_row_format'
+            'new_row_format',
+            $possible_row_formats[$tbl_storage_engine],
+            $current_row_format,
+            'new_row_format'
         );
         $html_output .= '</td></tr>';
     }
@@ -1255,7 +1309,10 @@ function PMA_getHtmlForCopytable()
     );
 
     $html_output .= Util::getRadioFields(
-        'what', $choices, 'data', true
+        'what',
+        $choices,
+        'data',
+        true
     );
     $html_output .= '<br />';
 
@@ -1566,7 +1623,8 @@ function PMA_getHtmlForPartitionMaintenance($partition_names, $url_params)
     );
 
     $partition_method = Partition::getPartitionMethod(
-        $GLOBALS['db'], $GLOBALS['table']
+        $GLOBALS['db'],
+        $GLOBALS['table']
     );
     // add COALESCE or DROP option to choices array depeding on Partition method
     if ($partition_method == 'RANGE'
@@ -1606,7 +1664,12 @@ function PMA_getHtmlForPartitionMaintenance($partition_names, $url_params)
 
     $html_output .= '<div class="clearfloat" />';
     $html_output .= Util::getRadioFields(
-        'partition_operation', $choices, 'ANALYZE', false, true, 'floatleft'
+        'partition_operation',
+        $choices,
+        'ANALYZE',
+        false,
+        true,
+        'floatleft'
     );
     $this_url_params = array_merge(
         $url_params,
@@ -1738,9 +1801,16 @@ function PMA_getQueryAndResultForReorderingTable()
  *
  * @return array  $table_alters
  */
-function PMA_getTableAltersArray($pma_table, $pack_keys,
-    $checksum, $page_checksum, $delay_key_write,
-    $row_format, $newTblStorageEngine, $transactional, $tbl_collation
+function PMA_getTableAltersArray(
+    $pma_table,
+    $pack_keys,
+    $checksum,
+    $page_checksum,
+    $delay_key_write,
+    $row_format,
+    $newTblStorageEngine,
+    $transactional,
+    $tbl_collation
 ) {
     global $auto_increment;
 
@@ -2037,8 +2107,13 @@ function PMA_moveOrCopyTable($db, $table)
             }
         } else {
             Table::moveCopy(
-                $db, $table, $_REQUEST['target_db'], $_REQUEST['new_name'],
-                $_REQUEST['what'], isset($_REQUEST['submit_move']), 'one_table'
+                $db,
+                $table,
+                $_REQUEST['target_db'],
+                $_REQUEST['new_name'],
+                $_REQUEST['what'],
+                isset($_REQUEST['submit_move']),
+                'one_table'
             );
 
             if (isset($_REQUEST['adjust_privileges'])
@@ -2046,11 +2121,17 @@ function PMA_moveOrCopyTable($db, $table)
             ) {
                 if (isset($_REQUEST['submit_move'])) {
                     PMA_AdjustPrivileges_renameOrMoveTable(
-                        $db, $table, $_REQUEST['target_db'], $_REQUEST['new_name']
+                        $db,
+                        $table,
+                        $_REQUEST['target_db'],
+                        $_REQUEST['new_name']
                     );
                 } else {
                     PMA_AdjustPrivileges_copyTable(
-                        $db, $table, $_REQUEST['target_db'], $_REQUEST['new_name']
+                        $db,
+                        $table,
+                        $_REQUEST['target_db'],
+                        $_REQUEST['new_name']
                     );
                 }
 
@@ -2069,7 +2150,6 @@ function PMA_moveOrCopyTable($db, $table)
                         )
                     );
                 }
-
             } else {
                 if (isset($_REQUEST['submit_move'])) {
                     $message = Message::success(

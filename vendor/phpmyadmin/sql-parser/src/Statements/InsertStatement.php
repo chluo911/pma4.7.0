@@ -109,22 +109,11 @@ class InsertStatement extends Statement
      */
     public function build()
     {
-        $ret = 'INSERT ' . $this->options
-            . ' INTO ' . $this->into;
-
-        if ($this->values != null && count($this->values) > 0) {
-            $ret .= ' VALUES ' . Array2d::build($this->values);
-        } elseif ($this->set != null && count($this->set) > 0) {
-            $ret .= ' SET ' . SetOperation::build($this->set);
-        } elseif ($this->select != null && strlen($this->select) > 0) {
-            $ret .= ' ' . $this->select->build();
-        }
-
-        if ($this->onDuplicateSet != null && count($this->onDuplicateSet) > 0) {
-            $ret .= ' ON DUPLICATE KEY UPDATE ' . SetOperation::build($this->onDuplicateSet);
-        }
-
-        return $ret;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

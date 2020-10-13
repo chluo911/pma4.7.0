@@ -21,8 +21,10 @@ class CurlBackoffStrategy extends AbstractErrorCodeBackoffStrategy
 
     protected function getDelay($retries, RequestInterface $request, Response $response = null, HttpException $e = null)
     {
-        if ($e && $e instanceof CurlException) {
-            return isset($this->errorCodes[$e->getErrorNo()]) ? true : null;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

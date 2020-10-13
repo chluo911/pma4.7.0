@@ -9,19 +9,30 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class UnexpectedCallsCountExceptionSpec extends ObjectBehavior
 {
-    function let( ObjectProphecy $objectProphecy, MethodProphecy $methodProphecy, Call $call1, Call $call2) {
-        $methodProphecy->getObjectProphecy()->willReturn($objectProphecy);
-
-        $this->beConstructedWith('message', $methodProphecy, 5, array($call1, $call2));
+    public function let(ObjectProphecy $objectProphecy, MethodProphecy $methodProphecy, Call $call1, Call $call2)
+    {
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_extends_UnexpectedCallsException()
+    public function it_extends_UnexpectedCallsException()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Prediction\UnexpectedCallsException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_expose_expectedCount_through_getter()
+    public function it_should_expose_expectedCount_through_getter()
     {
-        $this->getExpectedCount()->shouldReturn(5);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

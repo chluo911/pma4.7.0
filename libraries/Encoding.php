@@ -126,7 +126,11 @@ class Encoding
      */
     public static function setEngine($engine)
     {
-        self::$_engine = $engine;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -206,7 +210,11 @@ class Encoding
      */
     public static function getKanjiEncodings()
     {
-        return self::$_kanji_encodings;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -216,7 +224,11 @@ class Encoding
      */
     public static function setKanjiEncodings($value)
     {
-        self::$_kanji_encodings = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -226,12 +238,11 @@ class Encoding
      */
     public static function kanjiChangeOrder()
     {
-        $parts = explode(',', self::$_kanji_encodings);
-        if ($parts[1] == 'EUC-JP') {
-            self::$_kanji_encodings = 'ASCII,SJIS,EUC-JP,JIS';
-        } else {
-            self::$_kanji_encodings = 'ASCII,EUC-JP,SJIS,JIS';
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -278,24 +289,11 @@ class Encoding
      */
     public static function kanjiFileConv($file, $enc, $kana)
     {
-        if ($enc == '' && $kana == '') {
-            return $file;
-        }
-        $tmpfname = tempnam(ConfigFile::getDefaultTempDirectory(), $enc);
-        $fpd      = fopen($tmpfname, 'wb');
-        $fps      = fopen($file, 'r');
-        self::kanjiChangeOrder();
-        while (!feof($fps)) {
-            $line = fgets($fps, 4096);
-            $dist = self::kanjiStrConv($line, $enc, $kana);
-            fputs($fpd, $dist);
-        } // end while
-        self::kanjiChangeOrder();
-        fclose($fps);
-        fclose($fpd);
-        unlink($file);
-
-        return $tmpfname;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

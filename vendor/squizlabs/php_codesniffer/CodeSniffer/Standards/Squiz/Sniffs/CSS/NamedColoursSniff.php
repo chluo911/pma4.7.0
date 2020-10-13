@@ -71,8 +71,11 @@ class Squiz_Sniffs_CSS_NamedColoursSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_STRING);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -87,21 +90,10 @@ class Squiz_Sniffs_CSS_NamedColoursSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if ($tokens[($stackPtr - 1)]['code'] === T_HASH
-            || $tokens[($stackPtr - 1)]['code'] === T_STRING_CONCAT
-        ) {
-            // Class name.
-            return;
-        }
-
-        if (isset($this->colourNames[strtolower($tokens[$stackPtr]['content'])]) === true) {
-            $error = 'Named colours are forbidden; use hex, rgb, or rgba values instead';
-            $phpcsFile->addError($error, $stackPtr, 'Forbidden');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

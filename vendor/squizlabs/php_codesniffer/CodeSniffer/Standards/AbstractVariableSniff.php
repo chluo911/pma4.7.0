@@ -66,22 +66,11 @@ abstract class PHP_CodeSniffer_Standards_AbstractVariableSniff extends PHP_CodeS
      */
     public function __construct()
     {
-        $scopes = array(
-                   T_CLASS,
-                   T_ANON_CLASS,
-                   T_TRAIT,
-                   T_INTERFACE,
-                  );
-
-        $listen = array(
-                   T_FUNCTION,
-                   T_VARIABLE,
-                   T_DOUBLE_QUOTED_STRING,
-                   T_HEREDOC,
-                  );
-
-        parent::__construct($scopes, $listen, true);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end __construct()
 
 
@@ -95,70 +84,16 @@ abstract class PHP_CodeSniffer_Standards_AbstractVariableSniff extends PHP_CodeS
      *
      * @return void
      */
-    protected final function processTokenWithinScope(
+    final protected function processTokenWithinScope(
         PHP_CodeSniffer_File $phpcsFile,
         $stackPtr,
         $currScope
     ) {
-        if ($this->currentFile !== $phpcsFile) {
-            $this->currentFile   = $phpcsFile;
-            $this->_functionOpen = false;
-            $this->_endFunction  = -1;
-        }
-
-        $tokens = $phpcsFile->getTokens();
-
-        if ($stackPtr > $this->_endFunction) {
-            $this->_functionOpen = false;
-        }
-
-        if ($tokens[$stackPtr]['code'] === T_FUNCTION
-            && $this->_functionOpen === false
-        ) {
-            $this->_functionOpen = true;
-
-            $methodProps = $phpcsFile->getMethodProperties($stackPtr);
-
-            // If the function is abstract, or is in an interface,
-            // then set the end of the function to it's closing semicolon.
-            if ($methodProps['is_abstract'] === true
-                || $tokens[$currScope]['code'] === T_INTERFACE
-            ) {
-                $this->_endFunction
-                    = $phpcsFile->findNext(array(T_SEMICOLON), $stackPtr);
-            } else {
-                if (isset($tokens[$stackPtr]['scope_closer']) === false) {
-                    $error = 'Possible parse error: non-abstract method defined as abstract';
-                    $phpcsFile->addWarning($error, $stackPtr);
-                    return;
-                }
-
-                $this->_endFunction = $tokens[$stackPtr]['scope_closer'];
-            }
-        }//end if
-
-        if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING
-            || $tokens[$stackPtr]['code'] === T_HEREDOC
-        ) {
-            // Check to see if this string has a variable in it.
-            $pattern = '|(?<!\\\\)(?:\\\\{2})*\${?[a-zA-Z0-9_]+}?|';
-            if (preg_match($pattern, $tokens[$stackPtr]['content']) !== 0) {
-                $this->processVariableInString($phpcsFile, $stackPtr);
-            }
-
-            return;
-        }
-
-        if ($this->_functionOpen === true) {
-            if ($tokens[$stackPtr]['code'] === T_VARIABLE) {
-                $this->processVariable($phpcsFile, $stackPtr);
-            }
-        } else {
-            // What if we assign a member variable to another?
-            // ie. private $_count = $this->_otherCount + 1;.
-            $this->processMemberVar($phpcsFile, $stackPtr);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end processTokenWithinScope()
 
 
@@ -171,24 +106,15 @@ abstract class PHP_CodeSniffer_Standards_AbstractVariableSniff extends PHP_CodeS
      *
      * @return void
      */
-    protected final function processTokenOutsideScope(
+    final protected function processTokenOutsideScope(
         PHP_CodeSniffer_File $phpcsFile,
         $stackPtr
     ) {
-        $tokens = $phpcsFile->getTokens();
-        // These variables are not member vars.
-        if ($tokens[$stackPtr]['code'] === T_VARIABLE) {
-            $this->processVariable($phpcsFile, $stackPtr);
-        } else if ($tokens[$stackPtr]['code'] === T_DOUBLE_QUOTED_STRING
-            || $tokens[$stackPtr]['code'] === T_HEREDOC
-        ) {
-            // Check to see if this string has a variable in it.
-            $pattern = '|(?<!\\\\)(?:\\\\{2})*\${?[a-zA-Z0-9_]+}?|';
-            if (preg_match($pattern, $tokens[$stackPtr]['content']) !== 0) {
-                $this->processVariableInString($phpcsFile, $stackPtr);
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end processTokenOutsideScope()
 
 
@@ -240,6 +166,4 @@ abstract class PHP_CodeSniffer_Standards_AbstractVariableSniff extends PHP_CodeS
         $phpcsFile,
         $stackPtr
     );
-
-
 }//end class

@@ -59,7 +59,7 @@ class PHPUnit_Extensions_SeleniumTestSuite extends PHPUnit_Framework_TestSuite
      * Overriding the default: Selenium suites are always built from a TestCase class.
      * @var boolean
      */
-    protected $testCase = TRUE;
+    protected $testCase = true;
 
     /**
      * Making the method public.
@@ -75,92 +75,20 @@ class PHPUnit_Extensions_SeleniumTestSuite extends PHPUnit_Framework_TestSuite
      */
     public static function fromTestCaseClass($className)
     {
-        $suite = new self();
-        $suite->setName($className);
-
-        $class            = new ReflectionClass($className);
-        $classGroups      = PHPUnit_Util_Test::getGroups($className);
-        $staticProperties = $class->getStaticProperties();
-        if (isset($staticProperties['browsers'])) {
-            $browsers = $staticProperties['browsers'];
-        } else if (is_callable("{$className}::browsers")) {
-            $browsers = $className::browsers();
-        } else {
-            $browsers = null;
-        }
-
-        //BC: renamed seleneseDirectory -> selenesePath
-        if (!isset($staticProperties['selenesePath']) && isset($staticProperties['seleneseDirectory'])) {
-            $staticProperties['selenesePath'] = $staticProperties['seleneseDirectory'];
-        }
-
-        // Create tests from Selenese/HTML files.
-        if (isset($staticProperties['selenesePath']) &&
-            (is_dir($staticProperties['selenesePath']) || is_file($staticProperties['selenesePath']))) {
-
-            if (is_dir($staticProperties['selenesePath'])) {
-                $files = array_merge(
-                  self::getSeleneseFiles($staticProperties['selenesePath'], '.htm'),
-                  self::getSeleneseFiles($staticProperties['selenesePath'], '.html')
-                );
-            } else {
-                $files[] = realpath($staticProperties['selenesePath']);
-            }
-
-            // Create tests from Selenese/HTML files for multiple browsers.
-            if ($browsers) {
-                foreach ($browsers as $browser) {
-                    $browserSuite = PHPUnit_Extensions_SeleniumBrowserSuite::fromClassAndBrowser($className, $browser);
-
-                    foreach ($files as $file) {
-                        self::addGeneratedTestTo($browserSuite,
-                          new $className($file, array(), '', $browser),
-                          $classGroups
-                        );
-                    }
-
-                    $suite->addTest($browserSuite);
-                }
-            }
-            else {
-                // Create tests from Selenese/HTML files for single browser.
-                foreach ($files as $file) {
-                    self::addGeneratedTestTo($suite,
-                                              new $className($file),
-                                              $classGroups);
-                }
-            }
-        }
-
-        // Create tests from test methods for multiple browsers.
-        if ($browsers) {
-            foreach ($browsers as $browser) {
-                $browserSuite = PHPUnit_Extensions_SeleniumBrowserSuite::fromClassAndBrowser($className, $browser);
-                foreach ($class->getMethods() as $method) {
-                    $browserSuite->addTestMethod($class, $method);
-                }
-                $browserSuite->setupSpecificBrowser($browser);
-
-                $suite->addTest($browserSuite);
-            }
-        }
-        else {
-            // Create tests from test methods for single browser.
-            foreach ($class->getMethods() as $method) {
-                $suite->addTestMethod($class, $method);
-            }
-        }
-
-        return $suite;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private static function addGeneratedTestTo(PHPUnit_Framework_TestSuite $suite, PHPUnit_Framework_TestCase $test, $classGroups)
     {
-        list ($methodName, ) = explode(' ', $test->getName());
-        $test->setDependencies(
-              PHPUnit_Util_Test::getDependencies(get_class($test), $methodName)
-        );
-        $suite->addTest($test, $classGroups);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -170,9 +98,10 @@ class PHPUnit_Extensions_SeleniumTestSuite extends PHPUnit_Framework_TestSuite
      */
     private static function getSeleneseFiles($directory, $suffix)
     {
-        $facade = new File_Iterator_Facade;
-
-        return $facade->getFilesAsArray($directory, $suffix);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-
 }

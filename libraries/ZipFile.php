@@ -26,31 +26,31 @@ class ZipFile
      *
      * @var  boolean $doWrite
      */
-    var $doWrite = false;
+    public $doWrite = false;
     /**
      * Array to store compressed data
      *
      * @var  array $datasec
      */
-    var $datasec = array();
+    public $datasec = array();
     /**
      * Central directory
      *
      * @var  array $ctrl_dir
      */
-    var $ctrl_dir = array();
+    public $ctrl_dir = array();
     /**
      * End of central directory record
      *
      * @var  string $eof_ctrl_dir
      */
-    var $eof_ctrl_dir = "\x50\x4b\x05\x06\x00\x00\x00\x00";
+    public $eof_ctrl_dir = "\x50\x4b\x05\x06\x00\x00\x00\x00";
     /**
      * Last offset position
      *
      * @var  integer $old_offset
      */
-    var $old_offset = 0;
+    public $old_offset = 0;
 
     /**
      * Sets member variable this -> doWrite to true
@@ -65,9 +65,13 @@ class ZipFile
      *
      * @return void
      */
-    function setDoWrite()
+    public function setDoWrite()
     {
-        $this->doWrite = true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     } // end of the 'setDoWrite()' method
 
     /**
@@ -80,7 +84,7 @@ class ZipFile
      *
      * @access private
      */
-    function unix2DosTime($unixtime = 0)
+    public function unix2DosTime($unixtime = 0)
     {
         $timearray = ($unixtime == 0) ? getdate() : getdate($unixtime);
 
@@ -112,7 +116,7 @@ class ZipFile
      *
      * @return void
      */
-    function addFile($data, $name, $time = 0)
+    public function addFile($data, $name, $time = 0)
     {
         $name = str_replace('\\', '/', $name);
 
@@ -182,7 +186,7 @@ class ZipFile
      *
      * @access public
      */
-    function file()
+    public function file()
     {
         $ctrldir = implode('', $this->ctrl_dir);
         $header = $ctrldir .

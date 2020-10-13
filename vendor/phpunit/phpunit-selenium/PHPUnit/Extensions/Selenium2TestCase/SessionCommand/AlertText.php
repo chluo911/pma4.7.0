@@ -53,15 +53,14 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.4
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_AlertText
-    extends PHPUnit_Extensions_Selenium2TestCase_Command
+class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_AlertText extends PHPUnit_Extensions_Selenium2TestCase_Command
 {
     public function __construct($argument, PHPUnit_Extensions_Selenium2TestCase_URL $url)
     {
         if (is_string($argument)) {
             $jsonParameters =array('text' => $argument);
-        } else if ($argument == NULL) {
-            $jsonParameters = NULL;
+        } elseif ($argument == null) {
+            $jsonParameters = null;
         } else {
             throw new BadMethodCallException('Wrong parameters for alertText().');
         }
@@ -70,9 +69,10 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_AlertText
 
     public function httpMethod()
     {
-        if ($this->jsonParameters) {
-            return 'POST';
-        }
-        return 'GET';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

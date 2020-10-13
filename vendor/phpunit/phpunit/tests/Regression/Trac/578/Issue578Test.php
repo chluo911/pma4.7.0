@@ -3,18 +3,28 @@ class Issue578Test extends PHPUnit_Framework_TestCase
 {
     public function testNoticesDoublePrintStackTrace()
     {
-        $this->iniSet('error_reporting', E_ALL | E_NOTICE);
-        trigger_error('Stack Trace Test Notice', E_NOTICE);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testWarningsDoublePrintStackTrace()
     {
-        $this->iniSet('error_reporting', E_ALL | E_NOTICE);
-        trigger_error('Stack Trace Test Notice', E_WARNING);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testUnexpectedExceptionsPrintsCorrectly()
     {
-        throw new Exception('Double printed exception');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

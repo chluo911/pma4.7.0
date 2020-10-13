@@ -129,7 +129,6 @@ class PHP_CodeSniffer_Reporting
 
         $this->_reports[$type] = $reportClass;
         return $this->_reports[$type];
-
     }//end factory()
 
 
@@ -198,7 +197,6 @@ class PHP_CodeSniffer_Reporting
             $this->totalWarnings += $reportData['warnings'];
             $this->totalFixable  += $reportData['fixable'];
         }
-
     }//end cacheFileReport()
 
 
@@ -223,70 +221,11 @@ class PHP_CodeSniffer_Reporting
         $reportFile='',
         $reportWidth=80
     ) {
-        $reportClass = $this->factory($report);
-        $report      = get_class($reportClass);
-
-        if ($reportFile !== null) {
-            $filename = $reportFile;
-            $toScreen = false;
-
-            if (file_exists($filename) === true
-                && isset($this->_cachedReports[$report]) === true
-            ) {
-                $reportCache = file_get_contents($filename);
-            } else {
-                $reportCache = '';
-            }
-        } else {
-            if (isset($this->_tmpFiles[$report]) === true) {
-                $data        = stream_get_meta_data($this->_tmpFiles[$report]);
-                $filename    = $data['uri'];
-                $reportCache = file_get_contents($filename);
-                fclose($this->_tmpFiles[$report]);
-            } else {
-                $reportCache = '';
-                $filename    = null;
-            }
-
-            $toScreen = true;
-        }//end if
-
-        ob_start();
-        $reportClass->generate(
-            $reportCache,
-            $this->totalFiles,
-            $this->totalErrors,
-            $this->totalWarnings,
-            $this->totalFixable,
-            $showSources,
-            $reportWidth,
-            $toScreen
-        );
-        $generatedReport = ob_get_contents();
-        ob_end_clean();
-
-        if ($cliValues['colors'] !== true || $reportFile !== null) {
-            $generatedReport = preg_replace('`\033\[[0-9]+m`', '', $generatedReport);
-        }
-
-        if ($reportFile !== null) {
-            if (PHP_CODESNIFFER_VERBOSITY > 0) {
-                echo $generatedReport;
-            }
-
-            file_put_contents($reportFile, $generatedReport.PHP_EOL);
-        } else {
-            echo $generatedReport;
-            if ($filename !== null && file_exists($filename) === true) {
-                unlink($filename);
-            }
-        }
-
-        return array(
-                'errors'   => $this->totalErrors,
-                'warnings' => $this->totalWarnings,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end printReport()
 
 
@@ -377,7 +316,6 @@ class PHP_CodeSniffer_Reporting
         ksort($errors);
         $report['messages'] = $errors;
         return $report;
-
     }//end prepareFileReport()
 
 
@@ -388,9 +326,11 @@ class PHP_CodeSniffer_Reporting
      */
     public static function startTiming()
     {
-
-        self::$startTime = microtime(true);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end startTiming()
 
 
@@ -401,25 +341,10 @@ class PHP_CodeSniffer_Reporting
      */
     public static function printRunTime()
     {
-        $time = ((microtime(true) - self::$startTime) * 1000);
-
-        if ($time > 60000) {
-            $mins = floor($time / 60000);
-            $secs = round((($time % 60000) / 1000), 2);
-            $time = $mins.' mins';
-            if ($secs !== 0) {
-                $time .= ", $secs secs";
-            }
-        } else if ($time > 1000) {
-            $time = round(($time / 1000), 2).' secs';
-        } else {
-            $time = round($time).'ms';
-        }
-
-        $mem = round((memory_get_peak_usage(true) / (1024 * 1024)), 2).'Mb';
-        echo "Time: $time; Memory: $mem".PHP_EOL.PHP_EOL;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end printRunTime()
-
-
 }//end class

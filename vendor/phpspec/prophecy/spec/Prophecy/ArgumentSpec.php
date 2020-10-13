@@ -6,102 +6,147 @@ use PhpSpec\ObjectBehavior;
 
 class ArgumentSpec extends ObjectBehavior
 {
-    function it_has_a_shortcut_for_exact_argument_token()
+    public function it_has_a_shortcut_for_exact_argument_token()
     {
-        $token = $this->exact(42);
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ExactValueToken');
-        $token->getValue()->shouldReturn(42);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_any_argument_token()
+    public function it_has_a_shortcut_for_any_argument_token()
     {
-        $token = $this->any();
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\AnyValueToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_multiple_arguments_token()
+    public function it_has_a_shortcut_for_multiple_arguments_token()
     {
-        $token = $this->cetera();
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\AnyValuesToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_type_token()
+    public function it_has_a_shortcut_for_type_token()
     {
-        $token = $this->type('integer');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\TypeToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_callback_token()
+    public function it_has_a_shortcut_for_callback_token()
     {
-        $token = $this->that('get_class');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\CallbackToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_object_state_token()
+    public function it_has_a_shortcut_for_object_state_token()
     {
-        $token = $this->which('getName', 'everzet');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ObjectStateToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_logical_and_token()
+    public function it_has_a_shortcut_for_logical_and_token()
     {
-        $token = $this->allOf('integer', 5);
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\LogicalAndToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_array_count_token()
+    public function it_has_a_shortcut_for_array_count_token()
     {
-        $token = $this->size(5);
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ArrayCountToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_array_entry_token()
+    public function it_has_a_shortcut_for_array_entry_token()
     {
-        $token = $this->withEntry('key', 'value');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ArrayEntryToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_array_every_entry_token()
+    public function it_has_a_shortcut_for_array_every_entry_token()
     {
-        $token = $this->withEveryEntry('value');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ArrayEveryEntryToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_identical_value_token()
+    public function it_has_a_shortcut_for_identical_value_token()
     {
-        $token = $this->is('value');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\IdenticalValueToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_array_entry_token_matching_any_key()
+    public function it_has_a_shortcut_for_array_entry_token_matching_any_key()
     {
-        $token = $this->containing('value');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ArrayEntryToken');
-        $token->getKey()->shouldHaveType('Prophecy\Argument\Token\AnyValueToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_array_entry_token_matching_any_value()
+    public function it_has_a_shortcut_for_array_entry_token_matching_any_value()
     {
-        $token = $this->withKey('key');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ArrayEntryToken');
-        $token->getValue()->shouldHaveType('Prophecy\Argument\Token\AnyValueToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_logical_not_token()
+    public function it_has_a_shortcut_for_logical_not_token()
     {
-        $token = $this->not('kagux');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\LogicalNotToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_string_contains_token()
+    public function it_has_a_shortcut_for_string_contains_token()
     {
-        $token = $this->containingString('string');
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\StringContainsToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_a_shortcut_for_approximate_token()
+    public function it_has_a_shortcut_for_approximate_token()
     {
-        $token = $this->approximate(10);
-        $token->shouldBeAnInstanceOf('Prophecy\Argument\Token\ApproximateValueToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

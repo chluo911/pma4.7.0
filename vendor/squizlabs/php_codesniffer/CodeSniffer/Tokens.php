@@ -730,7 +730,6 @@ final class PHP_CodeSniffer_Tokens
      */
     private function __construct()
     {
-
     }//end __construct()
 
 
@@ -751,27 +750,10 @@ final class PHP_CodeSniffer_Tokens
      */
     public static function getHighestWeightedToken(array $tokens)
     {
-        $highest     = -1;
-        $highestType = false;
-
-        $weights = self::$weightings;
-
-        foreach ($tokens as $token) {
-            if (isset($weights[$token]) === true) {
-                $weight = $weights[$token];
-            } else {
-                $weight = 0;
-            }
-
-            if ($weight > $highest) {
-                $highest     = $weight;
-                $highestType = $token;
-            }
-        }
-
-        return $highestType;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end getHighestWeightedToken()
-
-
 }//end class

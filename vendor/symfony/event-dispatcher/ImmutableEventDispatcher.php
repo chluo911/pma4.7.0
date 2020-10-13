@@ -72,7 +72,11 @@ class ImmutableEventDispatcher implements EventDispatcherInterface
      */
     public function removeSubscriber(EventSubscriberInterface $subscriber)
     {
-        throw new \BadMethodCallException('Unmodifiable event dispatchers must not be modified.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,6 +100,10 @@ class ImmutableEventDispatcher implements EventDispatcherInterface
      */
     public function hasListeners($eventName = null)
     {
-        return $this->dispatcher->hasListeners($eventName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

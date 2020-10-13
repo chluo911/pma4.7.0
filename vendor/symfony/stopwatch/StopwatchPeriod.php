@@ -42,7 +42,11 @@ class StopwatchPeriod
      */
     public function getStartTime()
     {
-        return $this->start;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,7 +56,11 @@ class StopwatchPeriod
      */
     public function getEndTime()
     {
-        return $this->end;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

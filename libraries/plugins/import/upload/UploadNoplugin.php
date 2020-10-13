@@ -38,23 +38,10 @@ class UploadNoplugin implements UploadInterface
      */
     public static function getUploadStatus($id)
     {
-        global $SESSION_KEY;
-
-        if (trim($id) == "") {
-            return null;
-        }
-        if (!array_key_exists($id, $_SESSION[$SESSION_KEY])) {
-            $_SESSION[$SESSION_KEY][$id] = array(
-                'id'       => $id,
-                'finished' => false,
-                'percent'  => 0,
-                'total'    => 0,
-                'complete' => 0,
-                'plugin'   => UploadNoplugin::getIdKey(),
-            );
-        }
-        $ret = $_SESSION[$SESSION_KEY][$id];
-
-        return $ret;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

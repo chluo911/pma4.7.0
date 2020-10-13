@@ -33,14 +33,17 @@ class RelationStatsEps extends RelationStats
      * @param string $foreign_field The relation field in the foreign table
      */
     public function __construct(
-        $diagram, $master_table, $master_field, $foreign_table, $foreign_field
+        $diagram,
+        $master_table,
+        $master_field,
+        $foreign_table,
+        $foreign_field
     ) {
-        $this->wTick = 10;
-        parent::__construct(
-            $diagram, $master_table, $master_field, $foreign_table, $foreign_field
-        );
-        $this->ySrc  += 10;
-        $this->yDest += 10;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,58 +56,10 @@ class RelationStatsEps extends RelationStats
      */
     public function relationDraw()
     {
-        // draw a line like -- to foreign field
-        $this->diagram->line(
-            $this->xSrc,
-            $this->ySrc,
-            $this->xSrc + $this->srcDir * $this->wTick,
-            $this->ySrc,
-            1
-        );
-        // draw a line like -- to master field
-        $this->diagram->line(
-            $this->xDest + $this->destDir * $this->wTick,
-            $this->yDest,
-            $this->xDest,
-            $this->yDest,
-            1
-        );
-        // draw a line that connects to master field line and foreign field line
-        $this->diagram->line(
-            $this->xSrc + $this->srcDir * $this->wTick,
-            $this->ySrc,
-            $this->xDest + $this->destDir * $this->wTick,
-            $this->yDest,
-            1
-        );
-        $root2 = 2 * sqrt(2);
-        $this->diagram->line(
-            $this->xSrc + $this->srcDir * $this->wTick * 0.75,
-            $this->ySrc,
-            $this->xSrc + $this->srcDir * (0.75 - 1 / $root2) * $this->wTick,
-            $this->ySrc + $this->wTick / $root2,
-            1
-        );
-        $this->diagram->line(
-            $this->xSrc + $this->srcDir * $this->wTick * 0.75,
-            $this->ySrc,
-            $this->xSrc + $this->srcDir * (0.75 - 1 / $root2) * $this->wTick,
-            $this->ySrc - $this->wTick / $root2,
-            1
-        );
-        $this->diagram->line(
-            $this->xDest + $this->destDir * $this->wTick / 2,
-            $this->yDest,
-            $this->xDest + $this->destDir * (0.5 + 1 / $root2) * $this->wTick,
-            $this->yDest + $this->wTick / $root2,
-            1
-        );
-        $this->diagram->line(
-            $this->xDest + $this->destDir * $this->wTick / 2,
-            $this->yDest,
-            $this->xDest + $this->destDir * (0.5 + 1 / $root2) * $this->wTick,
-            $this->yDest - $this->wTick / $root2,
-            1
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

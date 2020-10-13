@@ -41,8 +41,11 @@ class Squiz_Sniffs_Objects_DisallowObjectStringIndexSniff implements PHP_CodeSni
      */
     public function register()
     {
-        return array(T_OPEN_SQUARE_BRACKET);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -57,40 +60,10 @@ class Squiz_Sniffs_Objects_DisallowObjectStringIndexSniff implements PHP_CodeSni
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // Check if the next non whitespace token is a string.
-        $index = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-        if ($tokens[$index]['code'] !== T_CONSTANT_ENCAPSED_STRING) {
-            return;
-        }
-
-        // Make sure it is the only thing in the square brackets.
-        $next = $phpcsFile->findNext(T_WHITESPACE, ($index + 1), null, true);
-        if ($tokens[$next]['code'] !== T_CLOSE_SQUARE_BRACKET) {
-            return;
-        }
-
-        // Allow indexes that have dots in them because we can't write
-        // them in dot notation.
-        $content = trim($tokens[$index]['content'], '"\' ');
-        if (strpos($content, '.') !== false) {
-            return;
-        }
-
-        // Also ignore reserved words.
-        if ($content === 'super') {
-            return;
-        }
-
-        // Token before the opening square bracket cannot be a var name.
-        $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-        if ($tokens[$prev]['code'] === T_STRING) {
-            $error = 'Object indexes must be written in dot notation';
-            $phpcsFile->addError($error, $prev, 'Found');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

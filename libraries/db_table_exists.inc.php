@@ -65,7 +65,8 @@ if (empty($is_table)
             $_result = $GLOBALS['dbi']->tryQuery(
                 'SHOW TABLES LIKE \''
                 . $GLOBALS['dbi']->escapeString($table) . '\';',
-                null, PMA\libraries\DatabaseInterface::QUERY_STORE
+                null,
+                PMA\libraries\DatabaseInterface::QUERY_STORE
             );
             $is_table = @$GLOBALS['dbi']->numRows($_result);
             $GLOBALS['dbi']->freeResult($_result);

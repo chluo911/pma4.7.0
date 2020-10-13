@@ -38,8 +38,11 @@ class Squiz_Sniffs_Objects_ObjectInstantiationSniff implements PHP_CodeSniffer_S
      */
     public function register()
     {
-        return array(T_NEW);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -54,28 +57,10 @@ class Squiz_Sniffs_Objects_ObjectInstantiationSniff implements PHP_CodeSniffer_S
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $allowedTokens   = PHP_CodeSniffer_Tokens::$emptyTokens;
-        $allowedTokens[] = T_BITWISE_AND;
-
-        $prev = $phpcsFile->findPrevious($allowedTokens, ($stackPtr - 1), null, true);
-
-        $allowedTokens = array(
-                          T_EQUAL        => true,
-                          T_DOUBLE_ARROW => true,
-                          T_THROW        => true,
-                          T_RETURN       => true,
-                          T_INLINE_THEN  => true,
-                          T_INLINE_ELSE  => true,
-                         );
-
-        if (isset($allowedTokens[$tokens[$prev]['code']]) === false) {
-            $error = 'New objects must be assigned to a variable';
-            $phpcsFile->addError($error, $stackPtr, 'NotAssigned');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

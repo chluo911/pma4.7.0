@@ -70,6 +70,10 @@ class ParserRegistry
      */
     public function registerParser($name, $parser)
     {
-        $this->instances[$name] = $parser;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

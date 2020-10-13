@@ -100,10 +100,11 @@ function PMA_Import_progressCheck()
   */
 function PMA_Import_sessionCheck()
 {
-    if (! ini_get('session.upload_progress.enabled')) {
-        return false;
-    }
-    return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -128,8 +129,9 @@ function PMA_Import_nopluginCheck()
   */
 function PMA_importAjaxStatus($id)
 {
-    PMA_headerJSON();
-    echo json_encode(
-        $_SESSION[$GLOBALS['SESSION_KEY']]['handler']::getUploadStatus($id)
-    );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

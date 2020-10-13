@@ -59,26 +59,11 @@ class TableStatsPdf extends TableStats
         $tableDimension = false,
         $offline = false
     ) {
-        parent::__construct(
-            $diagram,
-            $db,
-            $pageNumber,
-            $tableName,
-            $showKeys,
-            $tableDimension,
-            $offline
-        );
-
-        $this->heightCell = 6;
-        $this->_setHeight();
-        /*
-         * setWidth must me after setHeight, because title
-        * can include table height which changes table width
-        */
-        $this->_setWidth($fontSize);
-        if ($sameWideWidth < $this->width) {
-            $sameWideWidth = $this->width;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,11 +73,11 @@ class TableStatsPdf extends TableStats
      */
     protected function showMissingTableError()
     {
-        ExportRelationSchema::dieSchema(
-            $this->pageNumber,
-            "PDF",
-            sprintf(__('The %s table doesn\'t exist!'), $this->tableName)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,12 +88,11 @@ class TableStatsPdf extends TableStats
      */
     protected function getTitle()
     {
-        $ret = '';
-        if ($this->tableDimension) {
-            $ret = sprintf('%.0fx%0.f', $this->width, $this->height);
-        }
-
-        return $ret . ' ' . $this->tableName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -124,19 +108,11 @@ class TableStatsPdf extends TableStats
      */
     private function _setWidth($fontSize)
     {
-        foreach ($this->fields as $field) {
-            $this->width = max($this->width, $this->diagram->GetStringWidth($field));
-        }
-        $this->width += $this->diagram->GetStringWidth('      ');
-        $this->diagram->SetFont($this->_ff, 'B', $fontSize);
-        /*
-         * it is unknown what value must be added, because
-         * table title is affected by the table width value
-         */
-        while ($this->width < $this->diagram->GetStringWidth($this->getTitle())) {
-            $this->width += 5;
-        }
-        $this->diagram->SetFont($this->_ff, '', $fontSize);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -148,7 +124,11 @@ class TableStatsPdf extends TableStats
      */
     private function _setHeight()
     {
-        $this->height = (count($this->fields) + 1) * $this->heightCell;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -166,67 +146,10 @@ class TableStatsPdf extends TableStats
      */
     public function tableDraw($fontSize, $withDoc, $setColor = 0)
     {
-        $this->diagram->setXyScale($this->x, $this->y);
-        $this->diagram->SetFont($this->_ff, 'B', $fontSize);
-        if ($setColor) {
-            $this->diagram->SetTextColor(200);
-            $this->diagram->SetFillColor(0, 0, 128);
-        }
-        if ($withDoc) {
-            $this->diagram->SetLink(
-                $this->diagram->PMA_links['RT'][$this->tableName]['-'],
-                -1
-            );
-        } else {
-            $this->diagram->PMA_links['doc'][$this->tableName]['-'] = '';
-        }
-
-        $this->diagram->cellScale(
-            $this->width,
-            $this->heightCell,
-            $this->getTitle(),
-            1,
-            1,
-            'C',
-            $setColor,
-            $this->diagram->PMA_links['doc'][$this->tableName]['-']
-        );
-        $this->diagram->setXScale($this->x);
-        $this->diagram->SetFont($this->_ff, '', $fontSize);
-        $this->diagram->SetTextColor(0);
-        $this->diagram->SetFillColor(255);
-
-        foreach ($this->fields as $field) {
-            if ($setColor) {
-                if (in_array($field, $this->primary)) {
-                    $this->diagram->SetFillColor(215, 121, 123);
-                }
-                if ($field == $this->displayfield) {
-                    $this->diagram->SetFillColor(142, 159, 224);
-                }
-            }
-            if ($withDoc) {
-                $this->diagram->SetLink(
-                    $this->diagram->PMA_links['RT'][$this->tableName][$field],
-                    -1
-                );
-            } else {
-                $this->diagram->PMA_links['doc'][$this->tableName][$field] = '';
-            }
-
-            $this->diagram->cellScale(
-                $this->width,
-                $this->heightCell,
-                ' ' . $field,
-                1,
-                1,
-                'L',
-                $setColor,
-                $this->diagram->PMA_links['doc'][$this->tableName][$field]
-            );
-            $this->diagram->setXScale($this->x);
-            $this->diagram->SetFillColor(255);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

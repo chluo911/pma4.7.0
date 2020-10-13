@@ -50,19 +50,11 @@ class Generic_Sniffs_PHP_DeprecatedFunctionsSniff extends Generic_Sniffs_PHP_For
      */
     public function __construct()
     {
-        $functions = get_defined_functions();
-
-        foreach ($functions['internal'] as $functionName) {
-            $function = new ReflectionFunction($functionName);
-            if (method_exists($function, 'isDeprecated') === false) {
-                break;
-            }
-
-            if ($function->isDeprecated() === true) {
-                $this->forbiddenFunctions[$functionName] = null;
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end __construct()
 
 
@@ -79,17 +71,10 @@ class Generic_Sniffs_PHP_DeprecatedFunctionsSniff extends Generic_Sniffs_PHP_For
      */
     protected function addError($phpcsFile, $stackPtr, $function, $pattern=null)
     {
-        $data  = array($function);
-        $error = 'Function %s() has been deprecated';
-        $type  = 'Deprecated';
-
-        if ($this->error === true) {
-            $phpcsFile->addError($error, $stackPtr, $type, $data);
-        } else {
-            $phpcsFile->addWarning($error, $stackPtr, $type, $data);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end addError()
-
-
 }//end class

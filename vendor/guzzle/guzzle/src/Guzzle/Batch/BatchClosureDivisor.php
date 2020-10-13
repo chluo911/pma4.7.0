@@ -24,16 +24,19 @@ class BatchClosureDivisor implements BatchDivisorInterface
      */
     public function __construct($callable, $context = null)
     {
-        if (!is_callable($callable)) {
-            throw new InvalidArgumentException('Must pass a callable');
-        }
-
-        $this->callable = $callable;
-        $this->context = $context;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function createBatches(\SplQueue $queue)
     {
-        return call_user_func($this->callable, $queue, $this->context);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

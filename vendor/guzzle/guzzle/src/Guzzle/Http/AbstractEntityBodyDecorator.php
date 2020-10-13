@@ -45,24 +45,38 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
 
     public function setRewindFunction($callable)
     {
-        $this->body->setRewindFunction($callable);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function rewind()
     {
-        return $this->body->rewind();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function compress($filter = 'zlib.deflate')
     {
-        return $this->body->compress($filter);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function uncompress($filter = 'zlib.inflate')
     {
-        return $this->body->uncompress($filter);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getContentLength()
@@ -77,19 +91,29 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
 
     public function getContentMd5($rawOutput = false, $base64Encode = false)
     {
-        $hash = Stream::getHash($this, 'md5', $rawOutput);
-
-        return $hash && $base64Encode ? base64_encode($hash) : $hash;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getContentEncoding()
     {
-        return $this->body->getContentEncoding();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getMetaData($key = null)
     {
-        return $this->body->getMetaData($key);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getStream()
@@ -106,24 +130,38 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
 
     public function detachStream()
     {
-        $this->body->detachStream();
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getWrapper()
     {
-        return $this->body->getWrapper();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getWrapperData()
     {
-        return $this->body->getWrapperData();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getStreamType()
     {
-        return $this->body->getStreamType();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getUri()
@@ -138,17 +176,29 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
 
     public function isReadable()
     {
-        return $this->body->isReadable();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isRepeatable()
     {
-        return $this->isSeekable() && $this->isReadable();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isWritable()
     {
-        return $this->body->isWritable();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isConsumed()
@@ -167,7 +217,11 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
 
     public function isLocal()
     {
-        return $this->body->isLocal();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isSeekable()
@@ -199,7 +253,11 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
 
     public function readLine($maxLength = null)
     {
-        return $this->body->readLine($maxLength);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function ftell()
@@ -209,7 +267,11 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
 
     public function getCustomData($key)
     {
-        return $this->body->getCustomData($key);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setCustomData($key, $value)

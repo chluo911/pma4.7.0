@@ -27,12 +27,20 @@ class MockObserver implements \Countable, EventSubscriberInterface
 
     public function getLastEvent()
     {
-        return end($this->events);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function count()
     {
-        return count($this->events);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getGrouped()
@@ -60,6 +68,10 @@ class MockObserver implements \Countable, EventSubscriberInterface
 
     public function update(Event $event)
     {
-        $this->events[] = $event;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

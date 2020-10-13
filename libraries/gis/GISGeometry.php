@@ -28,7 +28,7 @@ abstract class GISGeometry
      * @return string the code related to a row in the GIS dataset
      * @access public
      */
-    public abstract function prepareRowAsSvg($spatial, $label, $color, $scale_data);
+    abstract public function prepareRowAsSvg($spatial, $label, $color, $scale_data);
 
     /**
      * Adds to the PNG image object, the data related to a row in the GIS dataset.
@@ -42,7 +42,7 @@ abstract class GISGeometry
      * @return object the modified image object
      * @access public
      */
-    public abstract function prepareRowAsPng(
+    abstract public function prepareRowAsPng(
         $spatial,
         $label,
         $color,
@@ -62,7 +62,7 @@ abstract class GISGeometry
      * @return TCPDF the modified TCPDF instance
      * @access public
      */
-    public abstract function prepareRowAsPdf(
+    abstract public function prepareRowAsPdf(
         $spatial,
         $label,
         $color,
@@ -83,7 +83,7 @@ abstract class GISGeometry
      * @return string the JavaScript related to a row in the GIS dataset
      * @access public
      */
-    public abstract function prepareRowAsOl(
+    abstract public function prepareRowAsOl(
         $spatial,
         $srid,
         $label,
@@ -99,7 +99,7 @@ abstract class GISGeometry
      * @return array array containing the min, max values for x and y coordinates
      * @access public
      */
-    public abstract function scaleRow($spatial);
+    abstract public function scaleRow($spatial);
 
     /**
      * Generates the WKT with the set of parameters passed by the GIS editor.
@@ -111,7 +111,7 @@ abstract class GISGeometry
      * @return string WKT with the set of parameters passed by the GIS editor
      * @access public
      */
-    public abstract function generateWkt($gis_data, $index, $empty = '');
+    abstract public function generateWkt($gis_data, $index, $empty = '');
 
     /**
      * Returns OpenLayers.Bounds object that correspond to the bounds of GIS data.
@@ -125,15 +125,11 @@ abstract class GISGeometry
      */
     protected function getBoundsForOl($srid, $scale_data)
     {
-        return 'bound = new OpenLayers.Bounds(); '
-        . 'bound.extend(new OpenLayers.LonLat('
-        . $scale_data['minX'] . ', ' . $scale_data['minY']
-        . ').transform(new OpenLayers.Projection("EPSG:'
-        . intval($srid) . '"), map.getProjectionObject())); '
-        . 'bound.extend(new OpenLayers.LonLat('
-        . $scale_data['maxX'] . ', ' . $scale_data['maxY']
-        . ').transform(new OpenLayers.Projection("EPSG:'
-        . intval($srid) . '"), map.getProjectionObject()));';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -147,30 +143,11 @@ abstract class GISGeometry
      */
     protected function setMinMax($point_set, $min_max)
     {
-        // Separate each point
-        $points = explode(",", $point_set);
-
-        foreach ($points as $point) {
-            // Extract coordinates of the point
-            $cordinates = explode(" ", $point);
-
-            $x = (float)$cordinates[0];
-            if (!isset($min_max['maxX']) || $x > $min_max['maxX']) {
-                $min_max['maxX'] = $x;
-            }
-            if (!isset($min_max['minX']) || $x < $min_max['minX']) {
-                $min_max['minX'] = $x;
-            }
-            $y = (float)$cordinates[1];
-            if (!isset($min_max['maxY']) || $y > $min_max['maxY']) {
-                $min_max['maxY'] = $y;
-            }
-            if (!isset($min_max['minY']) || $y < $min_max['minY']) {
-                $min_max['minY'] = $y;
-            }
-        }
-
-        return $min_max;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,20 +162,11 @@ abstract class GISGeometry
      */
     protected function generateParams($value)
     {
-        $geom_types = '(POINT|MULTIPOINT|LINESTRING|MULTILINESTRING'
-            . '|POLYGON|MULTIPOLYGON|GEOMETRYCOLLECTION)';
-        $srid = 0;
-        $wkt = '';
-
-        if (preg_match("/^'" . $geom_types . "\(.*\)',[0-9]*$/i", $value)) {
-            $last_comma = mb_strripos($value, ",");
-            $srid = trim(mb_substr($value, $last_comma + 1));
-            $wkt = trim(mb_substr($value, 1, $last_comma - 2));
-        } elseif (preg_match("/^" . $geom_types . "\(.*\)$/i", $value)) {
-            $wkt = $value;
-        }
-
-        return array('srid' => $srid, 'wkt' => $wkt);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -213,41 +181,11 @@ abstract class GISGeometry
      */
     protected function extractPoints($point_set, $scale_data, $linear = false)
     {
-        $points_arr = array();
-
-        // Separate each point
-        $points = explode(",", $point_set);
-
-        foreach ($points as $point) {
-            // Extract coordinates of the point
-            $cordinates = explode(" ", $point);
-
-            if (isset($cordinates[0]) && trim($cordinates[0]) != ''
-                && isset($cordinates[1])
-                && trim($cordinates[1]) != ''
-            ) {
-                if ($scale_data != null) {
-                    $x = ($cordinates[0] - $scale_data['x']) * $scale_data['scale'];
-                    $y = $scale_data['height']
-                        - ($cordinates[1] - $scale_data['y']) * $scale_data['scale'];
-                } else {
-                    $x = floatval(trim($cordinates[0]));
-                    $y = floatval(trim($cordinates[1]));
-                }
-            } else {
-                $x = 0;
-                $y = 0;
-            }
-
-            if (!$linear) {
-                $points_arr[] = array($x, $y);
-            } else {
-                $points_arr[] = $x;
-                $points_arr[] = $y;
-            }
-        }
-
-        return $points_arr;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -261,21 +199,11 @@ abstract class GISGeometry
      */
     protected function getPolygonArrayForOpenLayers($polygons, $srid)
     {
-        $ol_array = 'new Array(';
-        foreach ($polygons as $polygon) {
-            $rings = explode("),(", $polygon);
-            $ol_array .= $this->getPolygonForOpenLayers($rings, $srid) . ', ';
-        }
-
-        $ol_array
-            = mb_substr(
-                $ol_array,
-                0,
-                mb_strlen($ol_array) - 2
-            );
-        $ol_array .= ')';
-
-        return $ol_array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -289,9 +217,11 @@ abstract class GISGeometry
      */
     protected function getPolygonForOpenLayers($polygon, $srid)
     {
-        return 'new OpenLayers.Geometry.Polygon('
-        . $this->getLineArrayForOpenLayers($polygon, $srid, false)
-        . ')';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -311,26 +241,11 @@ abstract class GISGeometry
         $srid,
         $is_line_string = true
     ) {
-        $ol_array = 'new Array(';
-        foreach ($lines as $line) {
-            $points_arr = $this->extractPoints($line, null);
-            $ol_array .= $this->getLineForOpenLayers(
-                $points_arr,
-                $srid,
-                $is_line_string
-            );
-            $ol_array .= ', ';
-        }
-
-        $ol_array
-            = mb_substr(
-                $ol_array,
-                0,
-                mb_strlen($ol_array) - 2
-            );
-        $ol_array .= ')';
-
-        return $ol_array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -348,10 +263,11 @@ abstract class GISGeometry
         $srid,
         $is_line_string = true
     ) {
-        return 'new OpenLayers.Geometry.'
-        . ($is_line_string ? 'LineString' : 'LinearRing') . '('
-        . $this->getPointsArrayForOpenLayers($points_arr, $srid)
-        . ')';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -365,20 +281,11 @@ abstract class GISGeometry
      */
     protected function getPointsArrayForOpenLayers($points_arr, $srid)
     {
-        $ol_array = 'new Array(';
-        foreach ($points_arr as $point) {
-            $ol_array .= $this->getPointForOpenLayers($point, $srid) . ', ';
-        }
-
-        $ol_array
-            = mb_substr(
-                $ol_array,
-                0,
-                mb_strlen($ol_array) - 2
-            );
-        $ol_array .= ')';
-
-        return $ol_array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -392,8 +299,10 @@ abstract class GISGeometry
      */
     protected function getPointForOpenLayers($point, $srid)
     {
-        return '(new OpenLayers.Geometry.Point(' . $point[0] . ',' . $point[1] . '))'
-        . '.transform(new OpenLayers.Projection("EPSG:'
-        . intval($srid) . '"), map.getProjectionObject())';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

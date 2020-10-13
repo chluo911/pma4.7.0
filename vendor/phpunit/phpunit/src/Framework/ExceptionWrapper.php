@@ -68,7 +68,11 @@ class PHPUnit_Framework_ExceptionWrapper extends PHPUnit_Framework_Exception
      */
     public function getPreviousWrapped()
     {
-        return $this->previous;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

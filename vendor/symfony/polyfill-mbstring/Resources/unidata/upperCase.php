@@ -1,6 +1,6 @@
 <?php
 
-static $data = array (
+static $data = array(
   'a' => 'A',
   'b' => 'B',
   'c' => 'C',

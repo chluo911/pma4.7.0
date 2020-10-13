@@ -21,7 +21,7 @@ class Tracker
     /**
      * Whether tracking is ready.
      */
-    static protected $enabled = false;
+    protected static $enabled = false;
 
     /**
      * Actually enables tracking. This needs to be done after all
@@ -31,7 +31,7 @@ class Tracker
      *
      * @return void
      */
-    static public function enable()
+    public static function enable()
     {
         self::$enabled = true;
     }
@@ -43,7 +43,7 @@ class Tracker
      *
      * @return boolean (true=on|false=off)
      */
-    static public function isActive()
+    public static function isActive()
     {
         if (! self::$enabled) {
             return false;
@@ -76,23 +76,13 @@ class Tracker
      *
      * @return string the name of table
      */
-    static protected function getTableName($string)
+    protected static function getTableName($string)
     {
-        if (mb_strstr($string, '.')) {
-            $temp = explode('.', $string);
-            $tablename = $temp[1];
-        } else {
-            $tablename = $string;
-        }
-
-        $str = explode("\n", $tablename);
-        $tablename = $str[0];
-
-        $tablename = str_replace(';', '', $tablename);
-        $tablename = str_replace('`', '', $tablename);
-        $tablename = trim($tablename);
-
-        return $tablename;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 
@@ -106,7 +96,7 @@ class Tracker
      *
      * @return boolean true or false
      */
-    static public function isTracked($dbname, $tablename)
+    public static function isTracked($dbname, $tablename)
     {
         if (! self::$enabled) {
             return false;
@@ -137,7 +127,7 @@ class Tracker
      *
      * @return string Comment, contains date and username
      */
-    static public function getLogComment()
+    public static function getLogComment()
     {
         $date = date('Y-m-d H:i:s');
         $user = preg_replace('/\s+/', ' ', $GLOBALS['cfg']['Server']['user']);
@@ -159,8 +149,12 @@ class Tracker
      *
      * @return int result of version insertion
      */
-    static public function createVersion($dbname, $tablename, $version,
-        $tracking_set = '', $is_view = false
+    public static function createVersion(
+        $dbname,
+        $tablename,
+        $version,
+        $tracking_set = '',
+        $is_view = false
     ) {
         global $sql_backquotes, $export_type;
 
@@ -211,7 +205,6 @@ class Tracker
         ) {
             $create_sql .= self::getLogComment()
                 . 'DROP TABLE IF EXISTS ' . Util::backquote($tablename) . ";\n";
-
         }
 
         if ($GLOBALS['cfg']['Server']['tracking_add_drop_view'] == true
@@ -272,7 +265,7 @@ class Tracker
      *
      * @return int result of version insertion
      */
-    static public function deleteTracking($dbname, $tablename, $version = '')
+    public static function deleteTracking($dbname, $tablename, $version = '')
     {
         $sql_query = "/*NOTRACK*/\n"
             . "DELETE FROM " . self::_getTrackingTable()
@@ -302,7 +295,10 @@ class Tracker
      *
      * @return int result of version insertion
      */
-    static public function createDatabaseVersion($dbname, $version, $query,
+    public static function createDatabaseVersion(
+        $dbname,
+        $version,
+        $query,
         $tracking_set = 'CREATE DATABASE,ALTER DATABASE,DROP DATABASE'
     ) {
         $date = date('Y-m-d H:i:s');
@@ -365,10 +361,12 @@ class Tracker
      *
      * @return int result of SQL query
      */
-    static private function _changeTracking($dbname, $tablename,
-        $version, $new_state
+    private static function _changeTracking(
+        $dbname,
+        $tablename,
+        $version,
+        $new_state
     ) {
-
         $sql_query = " UPDATE " . self::_getTrackingTable() .
         " SET `tracking_active` = '" . $new_state . "' " .
         " WHERE `db_name` = '" . $GLOBALS['dbi']->escapeString($dbname) . "' " .
@@ -393,8 +391,12 @@ class Tracker
      *
      * @return bool result of change
      */
-    static public function changeTrackingData($dbname, $tablename,
-        $version, $type, $new_data
+    public static function changeTrackingData(
+        $dbname,
+        $tablename,
+        $version,
+        $type,
+        $new_data
     ) {
         if ($type == 'DDL') {
             $save_to = 'schema_sql';
@@ -437,7 +439,7 @@ class Tracker
      *
      * @return int result of SQL query
      */
-    static public function activateTracking($dbname, $tablename, $version)
+    public static function activateTracking($dbname, $tablename, $version)
     {
         return self::_changeTracking($dbname, $tablename, $version, 1);
     }
@@ -454,7 +456,7 @@ class Tracker
      *
      * @return int result of SQL query
      */
-    static public function deactivateTracking($dbname, $tablename, $version)
+    public static function deactivateTracking($dbname, $tablename, $version)
     {
         return self::_changeTracking($dbname, $tablename, $version, 0);
     }
@@ -472,7 +474,7 @@ class Tracker
      *
      * @return int (-1 if no version exists | >  0 if a version exists)
      */
-    static public function getVersion($dbname, $tablename, $statement = null)
+    public static function getVersion($dbname, $tablename, $statement = null)
     {
         $sql_query = " SELECT MAX(version) FROM " . self::_getTrackingTable() .
         " WHERE `db_name` = '" . $GLOBALS['dbi']->escapeString($dbname) . "' " .
@@ -501,7 +503,7 @@ class Tracker
      * @return mixed record DDM log, DDL log, structure snapshot, tracked
      *         statements.
      */
-    static public function getTrackedData($dbname, $tablename, $version)
+    public static function getTrackedData($dbname, $tablename, $version)
     {
         $sql_query = " SELECT * FROM " . self::_getTrackingTable() .
             " WHERE `db_name` = '" . $GLOBALS['dbi']->escapeString($dbname) . "' ";
@@ -515,8 +517,8 @@ class Tracker
         $mixed = $GLOBALS['dbi']->fetchAssoc(PMA_queryAsControlUser($sql_query));
 
         // Parse log
-        $log_schema_entries = explode('# log ',  $mixed['schema_sql']);
-        $log_data_entries   = explode('# log ',  $mixed['data_sql']);
+        $log_schema_entries = explode('# log ', $mixed['schema_sql']);
+        $log_data_entries   = explode('# log ', $mixed['data_sql']);
 
         $ddl_date_from = $date = date('Y-m-d H:i:s');
 
@@ -529,7 +531,9 @@ class Tracker
             if (trim($log_entry) != '') {
                 $date      = mb_substr($log_entry, 0, 19);
                 $username  = mb_substr(
-                    $log_entry, 20, mb_strpos($log_entry, "\n") - 20
+                    $log_entry,
+                    20,
+                    mb_strpos($log_entry, "\n") - 20
                 );
                 if ($first_iteration) {
                     $ddl_date_from = $date;
@@ -557,7 +561,9 @@ class Tracker
             if (trim($log_entry) != '') {
                 $date      = mb_substr($log_entry, 0, 19);
                 $username  = mb_substr(
-                    $log_entry, 20, mb_strpos($log_entry, "\n") - 20
+                    $log_entry,
+                    20,
+                    mb_strpos($log_entry, "\n") - 20
                 );
                 if ($first_iteration) {
                     $dml_date_from = $date;
@@ -609,7 +615,7 @@ class Tracker
      * @return mixed Array containing identifier, type and tablename.
      *
      */
-    static public function parseQuery($query)
+    public static function parseQuery($query)
     {
         // Usage of PMA_SQP does not work here
         //
@@ -656,7 +662,7 @@ class Tracker
                           || $options[6] == 'UNIQUE INDEX'
                           || $options[6] == 'FULLTEXT INDEX'
                           || $options[6] == 'SPATIAL INDEX'
-                ){
+                ) {
                     $result['identifier'] = 'CREATE INDEX';
 
                     // In case of CREATE INDEX, we have to get the table name from body of the statement
@@ -756,7 +762,7 @@ class Tracker
      *
      * @return void
      */
-    static public function handleQuery($query)
+    public static function handleQuery($query)
     {
         // If query is marked as untouchable, leave
         if (mb_strstr($query, "/*NOTRACK*/")) {
@@ -780,7 +786,9 @@ class Tracker
         // If we found a valid statement
         if (isset($result['identifier'])) {
             $version = self::getVersion(
-                $dbname, $result['tablename'], $result['identifier']
+                $dbname,
+                $result['tablename'],
+                $result['identifier']
             );
 
             // If version not exists and auto-creation is enabled
@@ -796,7 +804,11 @@ class Tracker
                     break;
                 case 'CREATE VIEW':
                     self::createVersion(
-                        $dbname, $result['tablename'], '1', '', true
+                        $dbname,
+                        $result['tablename'],
+                        '1',
+                        '',
+                        true
                     );
                     break;
                 case 'CREATE DATABASE':

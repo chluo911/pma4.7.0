@@ -70,9 +70,11 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      */
     public function setLimit($limit)
     {
-        $this->limit = (int) $limit;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -82,7 +84,11 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      */
     public function getLimit()
     {
-        return $this->limit;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,7 +99,11 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      */
     public function getAll()
     {
-        return $this->transactions;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,11 +113,11 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      */
     public function getIterator()
     {
-        // Return an iterator just like the old iteration of the HistoryPlugin for BC compatibility (use getAll())
-        return new \ArrayIterator(array_map(function ($entry) {
-            $entry['request']->getParams()->set('actual_response', $entry['response']);
-            return $entry['request'];
-        }, $this->transactions));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -117,7 +127,11 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      */
     public function count()
     {
-        return count($this->transactions);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -127,9 +141,11 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      */
     public function getLastRequest()
     {
-        $last = end($this->transactions);
-
-        return $last['request'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -139,9 +155,11 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      */
     public function getLastResponse()
     {
-        $last = end($this->transactions);
-
-        return isset($last['response']) ? $last['response'] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -158,6 +176,10 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
 
     public function onRequestSent(Event $event)
     {
-        $this->add($event['request'], $event['response']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

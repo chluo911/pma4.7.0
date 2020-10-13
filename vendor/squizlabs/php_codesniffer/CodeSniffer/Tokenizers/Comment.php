@@ -171,7 +171,6 @@ class PHP_CodeSniffer_Tokenizers_Comment
         }
 
         return $tokens;
-
     }//end tokenizeString()
 
 
@@ -245,7 +244,6 @@ class PHP_CodeSniffer_Tokenizers_Comment
         }
 
         return $tokens;
-
     }//end _processLine()
 
 
@@ -280,8 +278,5 @@ class PHP_CodeSniffer_Tokenizers_Comment
                  );
 
         return $token;
-
     }//end _collectWhitespace()
-
-
 }//end class

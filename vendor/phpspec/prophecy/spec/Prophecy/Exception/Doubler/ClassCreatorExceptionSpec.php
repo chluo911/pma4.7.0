@@ -8,19 +8,30 @@ use spec\Prophecy\Exception\Prophecy;
 
 class ClassCreatorExceptionSpec extends ObjectBehavior
 {
-    function let(ClassNode $node)
+    public function let(ClassNode $node)
     {
-        $this->beConstructedWith('', $node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_a_prophecy_exception()
+    public function it_is_a_prophecy_exception()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Exception');
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Doubler\DoublerException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_contains_a_reflected_node($node)
+    public function it_contains_a_reflected_node($node)
     {
-        $this->getClassNode()->shouldReturn($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

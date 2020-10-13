@@ -19,27 +19,37 @@ class TextDescriptorTest extends AbstractDescriptorTest
 {
     public function getDescribeCommandTestData()
     {
-        return $this->getDescriptionTestData(array_merge(
-            ObjectsProvider::getCommands(),
-            array('command_mbstring' => new DescriptorCommandMbString())
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getDescribeApplicationTestData()
     {
-        return $this->getDescriptionTestData(array_merge(
-            ObjectsProvider::getApplications(),
-            array('application_mbstring' => new DescriptorApplicationMbString())
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getDescriptor()
     {
-        return new TextDescriptor();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getFormat()
     {
-        return 'txt';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

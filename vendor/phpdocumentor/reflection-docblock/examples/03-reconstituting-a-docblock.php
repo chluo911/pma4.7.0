@@ -24,4 +24,3 @@ $serializer = new Serializer();
 
 // Reconstitution is performed by the `getDocComment()` method.
 $reconstitutedDocComment = $serializer->getDocComment($docblock);
-

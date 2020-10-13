@@ -85,7 +85,8 @@ class ClassNode
 
         if (!in_array($visibility, array('public', 'private', 'protected'))) {
             throw new InvalidArgumentException(sprintf(
-                '`%s` property visibility is not supported.', $visibility
+                '`%s` property visibility is not supported.',
+                $visibility
             ));
         }
 
@@ -102,9 +103,10 @@ class ClassNode
 
     public function addMethod(MethodNode $method)
     {
-        if (!$this->isExtendable($method->getName())){
+        if (!$this->isExtendable($method->getName())) {
             $message = sprintf(
-                'Method `%s` is not extendable, so can not be added.', $method->getName()
+                'Method `%s` is not extendable, so can not be added.',
+                $method->getName()
             );
             throw new MethodNotExtendableException($message, $this->getParentClass(), $method->getName());
         }
@@ -141,7 +143,11 @@ class ClassNode
      */
     public function getUnextendableMethods()
     {
-        return $this->unextendableMethods;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -149,7 +155,7 @@ class ClassNode
      */
     public function addUnextendableMethod($unextendableMethod)
     {
-        if (!$this->isExtendable($unextendableMethod)){
+        if (!$this->isExtendable($unextendableMethod)) {
             return;
         }
         $this->unextendableMethods[] = $unextendableMethod;

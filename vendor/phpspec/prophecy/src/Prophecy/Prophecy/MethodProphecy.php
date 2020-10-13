@@ -49,7 +49,9 @@ class MethodProphecy
         $double = $objectProphecy->reveal();
         if (!method_exists($double, $methodName)) {
             throw new MethodNotFoundException(sprintf(
-                'Method `%s::%s()` is not defined.', get_class($double), $methodName
+                'Method `%s::%s()` is not defined.',
+                get_class($double),
+                $methodName
             ), get_class($double), $methodName, $arguments);
         }
 
@@ -88,7 +90,8 @@ class MethodProphecy
 
                     case 'callable':
                     case 'Closure':
-                        return function () {};
+                        return function () {
+                        };
 
                     case 'Traversable':
                     case 'Generator':
@@ -191,11 +194,11 @@ class MethodProphecy
      */
     public function willReturnArgument($index = 0)
     {
-        if ($this->voidReturnType) {
-            throw new MethodProphecyException("The method \"$this->methodName\" has a void return type", $this);
-        }
-
-        return $this->will(new Promise\ReturnArgumentPromise($index));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -209,7 +212,11 @@ class MethodProphecy
      */
     public function willThrow($exception)
     {
-        return $this->will(new Promise\ThrowPromise($exception));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -223,21 +230,11 @@ class MethodProphecy
      */
     public function should($prediction)
     {
-        if (is_callable($prediction)) {
-            $prediction = new Prediction\CallbackPrediction($prediction);
-        }
-
-        if (!$prediction instanceof Prediction\PredictionInterface) {
-            throw new InvalidArgumentException(sprintf(
-                'Expected callable or instance of PredictionInterface, but got %s.',
-                gettype($prediction)
-            ));
-        }
-
-        $this->bindToObjectProphecy();
-        $this->prediction = $prediction;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -249,7 +246,11 @@ class MethodProphecy
      */
     public function shouldBeCalled()
     {
-        return $this->should(new Prediction\CallPrediction);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -261,7 +262,11 @@ class MethodProphecy
      */
     public function shouldNotBeCalled()
     {
-        return $this->should(new Prediction\NoCallsPrediction);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -275,7 +280,11 @@ class MethodProphecy
      */
     public function shouldBeCalledTimes($count)
     {
-        return $this->should(new Prediction\CallTimesPrediction($count));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -330,7 +339,11 @@ class MethodProphecy
      */
     public function shouldHaveBeenCalled()
     {
-        return $this->shouldHave(new Prediction\CallPrediction);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -342,7 +355,11 @@ class MethodProphecy
      */
     public function shouldNotHaveBeenCalled()
     {
-        return $this->shouldHave(new Prediction\NoCallsPrediction);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -355,7 +372,11 @@ class MethodProphecy
      */
     public function shouldNotBeenCalled()
     {
-        return $this->shouldNotHaveBeenCalled();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -369,7 +390,11 @@ class MethodProphecy
      */
     public function shouldHaveBeenCalledTimes($count)
     {
-        return $this->shouldHave(new Prediction\CallTimesPrediction($count));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -391,7 +416,11 @@ class MethodProphecy
      */
     public function getPromise()
     {
-        return $this->promise;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -401,7 +430,11 @@ class MethodProphecy
      */
     public function getPrediction()
     {
-        return $this->prediction;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -449,7 +482,11 @@ class MethodProphecy
      */
     public function hasReturnVoid()
     {
-        return $this->voidReturnType;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function bindToObjectProphecy()

@@ -60,4 +60,3 @@ function PMA_getHtmlForAdvisor()
 
     return $output;
 }
-

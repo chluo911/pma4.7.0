@@ -9,20 +9,30 @@ use spec\Prophecy\Exception\Prophecy;
 
 class MethodProphecyExceptionSpec extends ObjectBehavior
 {
-    function let(ObjectProphecy $objectProphecy, MethodProphecy $methodProphecy)
+    public function let(ObjectProphecy $objectProphecy, MethodProphecy $methodProphecy)
     {
-        $methodProphecy->getObjectProphecy()->willReturn($objectProphecy);
-
-        $this->beConstructedWith('message', $methodProphecy);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_extends_DoubleException()
+    public function it_extends_DoubleException()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Prophecy\ObjectProphecyException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_holds_a_stub_reference($methodProphecy)
+    public function it_holds_a_stub_reference($methodProphecy)
     {
-        $this->getMethodProphecy()->shouldReturn($methodProphecy);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

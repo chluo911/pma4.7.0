@@ -58,11 +58,21 @@ class CurlMulti extends AbstractHasDispatcher implements CurlMultiInterface
 
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         if (is_resource($this->multiHandle)) {
             curl_multi_close($this->multiHandle);
         }
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     public function add(RequestInterface $request)
@@ -358,8 +368,12 @@ class CurlMulti extends AbstractHasDispatcher implements CurlMultiInterface
         }
 
         $handle->setErrorNo($curl['result']);
-        $e = new CurlException(sprintf('[curl] %s: %s [url] %s',
-            $handle->getErrorNo(), $handle->getError(), $handle->getUrl()));
+        $e = new CurlException(sprintf(
+            '[curl] %s: %s [url] %s',
+            $handle->getErrorNo(),
+            $handle->getError(),
+            $handle->getUrl()
+        ));
         $e->setCurlHandle($handle)
             ->setRequest($request)
             ->setCurlInfo($handle->getInfo())
@@ -377,7 +391,8 @@ class CurlMulti extends AbstractHasDispatcher implements CurlMultiInterface
     private function checkCurlResult($code)
     {
         if ($code != CURLM_OK && $code != CURLM_CALL_MULTI_PERFORM) {
-            throw new CurlException(isset($this->multiErrors[$code])
+            throw new CurlException(
+                isset($this->multiErrors[$code])
                 ? "cURL error: {$code} ({$this->multiErrors[$code][0]}): cURL message: {$this->multiErrors[$code][1]}"
                 : 'Unexpected cURL error: ' . $code
             );

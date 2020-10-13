@@ -82,7 +82,11 @@ class PrototypedArrayNode extends ArrayNode
      */
     public function getKeyAttribute()
     {
-        return $this->keyAttribute;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -165,7 +169,11 @@ class PrototypedArrayNode extends ArrayNode
      */
     public function getPrototype()
     {
-        return $this->prototype;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

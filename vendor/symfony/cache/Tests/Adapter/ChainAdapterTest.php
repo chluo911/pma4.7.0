@@ -24,7 +24,11 @@ class ChainAdapterTest extends AdapterTestCase
 {
     public function createCachePool($defaultLifetime = 0)
     {
-        return new ChainAdapter(array(new ArrayAdapter($defaultLifetime), new ExternalAdapter(), new FilesystemAdapter('', $defaultLifetime)), $defaultLifetime);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -33,7 +37,11 @@ class ChainAdapterTest extends AdapterTestCase
      */
     public function testEmptyAdaptersException()
     {
-        new ChainAdapter(array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,6 +50,10 @@ class ChainAdapterTest extends AdapterTestCase
      */
     public function testInvalidAdapterException()
     {
-        new ChainAdapter(array(new \stdClass()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

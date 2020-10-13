@@ -74,8 +74,7 @@
  * @method array log(string $type) Get the log for a given log type. Log buffer is reset after each request.
  * @method array logTypes() Get available log types.
  */
-class PHPUnit_Extensions_Selenium2TestCase_Session
-    extends PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
+class PHPUnit_Extensions_Selenium2TestCase_Session extends PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
 {
     /**
      * @var string  the base URL for this session,
@@ -91,12 +90,14 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
     /**
      * @var boolean
      */
-    private $stopped = FALSE;
+    private $stopped = false;
 
-    public function __construct($driver,
-                                PHPUnit_Extensions_Selenium2TestCase_URL $url,
-                                PHPUnit_Extensions_Selenium2TestCase_URL $baseUrl,
-                                PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts $timeouts)
+    public function __construct(
+        $driver,
+        PHPUnit_Extensions_Selenium2TestCase_URL $url,
+        PHPUnit_Extensions_Selenium2TestCase_URL $baseUrl,
+        PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts $timeouts
+    )
     {
         $this->baseUrl = $baseUrl;
         $this->timeouts = $timeouts;
@@ -108,7 +109,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function id()
     {
-        return $this->url->lastSegment();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function initCommands()
@@ -179,7 +184,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function getSessionUrl()
     {
-        return $this->url;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -197,7 +206,7 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
             // sessions which aren't closed because of sharing can time out on the server. In no way trying to close them should make a test fail, as it already finished before arriving here.
             "Closing sessions: " . $e->getMessage() . "\n";
         }
-        $this->stopped = TRUE;
+        $this->stopped = true;
         if ($this->stopped) {
             return;
         }
@@ -208,11 +217,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function select(PHPUnit_Extensions_Selenium2TestCase_Element $element)
     {
-        $tag = $element->name();
-        if ($tag !== 'select') {
-            throw new InvalidArgumentException("The element is not a `select` tag but a `$tag`.");
-        }
-        return PHPUnit_Extensions_Selenium2TestCase_Element_Select::fromElement($element);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -221,7 +230,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function elementFromResponseValue($value)
     {
-        return PHPUnit_Extensions_Selenium2TestCase_Element::fromResponseValue($value, $this->getSessionUrl()->descend('element'), $this->driver);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -230,7 +243,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function clickOnElement($id)
     {
-        return $this->element($this->using('id')->value($id))->click();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function timeouts()
@@ -243,7 +260,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function currentScreenshot()
     {
-        return base64_decode($this->screenshot());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -251,13 +272,20 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function currentWindow()
     {
-        $url = $this->url->descend('window')->descend(trim($this->windowHandle(), '{}'));
-        return new PHPUnit_Extensions_Selenium2TestCase_Window($this->driver, $url);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function closeWindow()
     {
-        $this->driver->curl('DELETE', $this->url->descend('window'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -267,9 +295,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function active()
     {
-        $command = new PHPUnit_Extensions_Selenium2TestCase_SessionCommand_Active(null, $this->url);
-        $response = $this->driver->execute($command);
-        return $this->elementFromResponseValue($response->getValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -286,17 +316,28 @@ class PHPUnit_Extensions_Selenium2TestCase_Session
      */
     public function localStorage()
     {
-        $url = $this->url->addCommand('localStorage');
-        return new PHPUnit_Extensions_Selenium2TestCase_Session_Storage($this->driver, $url);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function landscape()
     {
-        $this->orientation('LANDSCAPE');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function portrait()
     {
-        $this->orientation('PORTRAIT');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

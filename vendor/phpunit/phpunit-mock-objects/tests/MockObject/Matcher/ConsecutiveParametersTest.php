@@ -3,43 +3,28 @@ class Framework_MockObject_Matcher_ConsecutiveParametersTest extends PHPUnit_Fra
 {
     public function testIntegration()
     {
-        $mock = $this->getMock('stdClass', array('foo'));
-        $mock
-            ->expects($this->any())
-            ->method('foo')
-            ->withConsecutive(
-                array('bar'),
-                array(21, 42)
-            );
-        $mock->foo('bar');
-        $mock->foo(21, 42);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIntegrationWithLessAssertionsThenMethodCalls()
     {
-        $mock = $this->getMock('stdClass', array('foo'));
-        $mock
-            ->expects($this->any())
-            ->method('foo')
-            ->withConsecutive(
-                array('bar')
-            );
-        $mock->foo('bar');
-        $mock->foo(21, 42);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIntegrationExpectingException()
     {
-        $mock = $this->getMock('stdClass', array('foo'));
-        $mock
-            ->expects($this->any())
-            ->method('foo')
-            ->withConsecutive(
-                array('bar'),
-                array(21, 42)
-            );
-        $mock->foo('bar');
-        $this->setExpectedException('PHPUnit_Framework_ExpectationFailedException');
-        $mock->foo('invalid');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

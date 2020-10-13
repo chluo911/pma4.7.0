@@ -54,83 +54,11 @@ class DiaRelationSchema extends ExportRelationSchema
      */
     public function __construct($db)
     {
-        parent::__construct($db, new Dia());
-
-        $this->setShowColor(isset($_REQUEST['dia_show_color']));
-        $this->setShowKeys(isset($_REQUEST['dia_show_keys']));
-        $this->setOrientation($_REQUEST['dia_orientation']);
-        $this->setPaper($_REQUEST['dia_paper']);
-
-        $this->diagram->startDiaDoc(
-            $this->paper,
-            $this->_topMargin,
-            $this->_bottomMargin,
-            $this->_leftMargin,
-            $this->_rightMargin,
-            $this->orientation
-        );
-
-        $alltables = $this->getTablesFromRequest();
-
-        foreach ($alltables as $table) {
-            if (!isset($this->tables[$table])) {
-                $this->_tables[$table] = new TableStatsDia(
-                    $this->diagram, $this->db, $table, $this->pageNumber,
-                    $this->showKeys, $this->offline
-                );
-            }
-        }
-
-        $seen_a_relation = false;
-        foreach ($alltables as $one_table) {
-            $exist_rel = PMA_getForeigners($this->db, $one_table, '', 'both');
-            if (!$exist_rel) {
-                continue;
-            }
-
-            $seen_a_relation = true;
-            foreach ($exist_rel as $master_field => $rel) {
-                /* put the foreign table on the schema only if selected
-                 * by the user
-                 * (do not use array_search() because we would have to
-                 * to do a === false and this is not PHP3 compatible)
-                 */
-                if ($master_field != 'foreign_keys_data') {
-                    if (in_array($rel['foreign_table'], $alltables)) {
-                        $this->_addRelation(
-                            $one_table,
-                            $master_field,
-                            $rel['foreign_table'],
-                            $rel['foreign_field'],
-                            $this->showKeys
-                        );
-                    }
-                    continue;
-                }
-
-                foreach ($rel as $one_key) {
-                    if (!in_array($one_key['ref_table_name'], $alltables)) {
-                        continue;
-                    }
-
-                    foreach ($one_key['index_list'] as $index => $one_field) {
-                        $this->_addRelation(
-                            $one_table,
-                            $one_field,
-                            $one_key['ref_table_name'],
-                            $one_key['ref_index_list'][$index],
-                            $this->showKeys
-                        );
-                    }
-                }
-            }
-        }
-        $this->_drawTables();
-
-        if ($seen_a_relation) {
-            $this->_drawRelations();
-        }
-        $this->diagram->endDiaDoc();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,7 +69,11 @@ class DiaRelationSchema extends ExportRelationSchema
      */
     public function showOutput()
     {
-        $this->diagram->showOutput($this->getFileName('.dia'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -165,27 +97,11 @@ class DiaRelationSchema extends ExportRelationSchema
         $foreignField,
         $showKeys
     ) {
-        if (!isset($this->_tables[$masterTable])) {
-            $this->_tables[$masterTable] = new TableStatsDia(
-                $this->diagram, $this->db, $masterTable, $this->pageNumber, $showKeys
-            );
-        }
-        if (!isset($this->_tables[$foreignTable])) {
-            $this->_tables[$foreignTable] = new TableStatsDia(
-                $this->diagram,
-                $this->db,
-                $foreignTable,
-                $this->pageNumber,
-                $showKeys
-            );
-        }
-        $this->_relations[] = new RelationStatsDia(
-            $this->diagram,
-            $this->_tables[$masterTable],
-            $masterField,
-            $this->_tables[$foreignTable],
-            $foreignField
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -202,9 +118,11 @@ class DiaRelationSchema extends ExportRelationSchema
      */
     private function _drawRelations()
     {
-        foreach ($this->_relations as $relation) {
-            $relation->relationDraw($this->showColor);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -220,8 +138,10 @@ class DiaRelationSchema extends ExportRelationSchema
      */
     private function _drawTables()
     {
-        foreach ($this->_tables as $table) {
-            $table->tableDraw($this->showColor);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

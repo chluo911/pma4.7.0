@@ -9,35 +9,34 @@ use Prophecy\Doubler\Generator\Node\MethodNode;
 
 class KeywordPatchSpec extends ObjectBehavior
 {
-    function it_is_a_patch()
+    public function it_is_a_patch()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Doubler\ClassPatch\ClassPatchInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_priority_is_49()
+    public function its_priority_is_49()
     {
-        $this->getPriority()->shouldReturn(49);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_will_remove_echo_and_eval_methods(
+    public function it_will_remove_echo_and_eval_methods(
         ClassNode $node,
         MethodNode $method1,
         MethodNode $method2,
         MethodNode $method3
     ) {
-        $node->removeMethod('eval')->shouldBeCalled();
-        $node->removeMethod('echo')->shouldBeCalled();
-
-        $method1->getName()->willReturn('echo');
-        $method2->getName()->willReturn('eval');
-        $method3->getName()->willReturn('notKeyword');
-
-        $node->getMethods()->willReturn(array(
-            'echo' => $method1,
-            'eval' => $method2,
-            'notKeyword' => $method3,
-        ));
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

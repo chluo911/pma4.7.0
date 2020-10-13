@@ -48,8 +48,11 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
      */
     public function register()
     {
-        return PHP_CodeSniffer_Tokens::$booleanOperators;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -64,53 +67,10 @@ class Squiz_Sniffs_WhiteSpace_LogicalOperatorSpacingSniff implements PHP_CodeSni
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        // Check there is one space before the operator.
-        if ($tokens[($stackPtr - 1)]['code'] !== T_WHITESPACE) {
-            $error = 'Expected 1 space before logical operator; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceBefore');
-            if ($fix === true) {
-                $phpcsFile->fixer->addContentBefore($stackPtr, ' ');
-            }
-        } else {
-            $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-            if ($tokens[$stackPtr]['line'] === $tokens[$prev]['line']
-                && strlen($tokens[($stackPtr - 1)]['content']) !== 1
-            ) {
-                $found = strlen($tokens[($stackPtr - 1)]['content']);
-                $error = 'Expected 1 space before logical operator; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpaceBefore', $data);
-                if ($fix === true) {
-                    $phpcsFile->fixer->replaceToken(($stackPtr - 1), ' ');
-                }
-            }
-        }
-
-        // Check there is one space after the operator.
-        if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
-            $error = 'Expected 1 space after logical operator; 0 found';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'NoSpaceAfter');
-            if ($fix === true) {
-                $phpcsFile->fixer->addContent($stackPtr, ' ');
-            }
-        } else {
-            $next = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-            if ($tokens[$stackPtr]['line'] === $tokens[$next]['line']
-                && strlen($tokens[($stackPtr + 1)]['content']) !== 1
-            ) {
-                $found = strlen($tokens[($stackPtr + 1)]['content']);
-                $error = 'Expected 1 space after logical operator; %s found';
-                $data  = array($found);
-                $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'TooMuchSpaceAfter', $data);
-                if ($fix === true) {
-                    $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
-                }
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

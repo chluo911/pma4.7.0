@@ -27,41 +27,47 @@ class WorkingCopy
 
     public function __construct(Repository $repository)
     {
-        $this->repository = $repository;
-
-        if ($this->repository->isBare()) {
-            throw new LogicException('Can\'t create a working copy on a bare repository');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getStatus()
     {
-        return WorkingStatus::parseOutput();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getUntrackedFiles()
     {
-        $lines = explode("\0", $this->run('status', array('--porcelain', '--untracked-files=all', '-z')));
-        $lines = array_filter($lines, function ($l) { return substr($l, 0, 3) === '?? '; });
-        $lines = array_map(function ($l) { return substr($l, 3); }, $lines);
-
-        return $lines;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getDiffPending()
     {
-        $diff = Diff::parse($this->run('diff', array('-r', '-p', '-m', '-M', '--full-index')));
-        $diff->setRepository($this->repository);
-
-        return $diff;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getDiffStaged()
     {
-        $diff = Diff::parse($this->run('diff', array('-r', '-p', '-m', '-M', '--full-index', '--staged')));
-        $diff->setRepository($this->repository);
-
-        return $diff;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,28 +75,19 @@ class WorkingCopy
      */
     public function checkout($revision, $branch = null)
     {
-        $args = array();
-        if ($revision instanceof Commit) {
-            $args[] = $revision->getHash();
-        } elseif ($revision instanceof Reference) {
-            $args[] = $revision->getFullname();
-        } elseif (is_string($revision)) {
-            $args[] = $revision;
-        } else {
-            throw new InvalidArgumentException(sprintf('Unknown type "%s"', gettype($revision)));
-        }
-
-        if (null !== $branch) {
-            $args = array_merge($args, array('-b', $branch));
-        }
-
-        $this->run('checkout', $args);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function run($command, array $args = array())
     {
-        return $this->repository->run($command, $args);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

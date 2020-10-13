@@ -17,21 +17,19 @@ class CompositeResourceIteratorFactoryTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresIteratorClassExists()
     {
-        $factory = new CompositeResourceIteratorFactory(array(
-            new ResourceIteratorClassFactory(array('Foo', 'Bar'))
-        ));
-        $cmd = new MockCommand();
-        $this->assertFalse($factory->canBuild($cmd));
-        $factory->build($cmd);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testBuildsResourceIterators()
     {
-        $f1 = new ResourceIteratorClassFactory('Guzzle\Tests\Service\Mock\Model');
-        $factory = new CompositeResourceIteratorFactory(array());
-        $factory->addFactory($f1);
-        $command = new MockCommand();
-        $iterator = $factory->build($command, array('client.namespace' => 'Guzzle\Tests\Service\Mock'));
-        $this->assertInstanceOf('Guzzle\Tests\Service\Mock\Model\MockCommandIterator', $iterator);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

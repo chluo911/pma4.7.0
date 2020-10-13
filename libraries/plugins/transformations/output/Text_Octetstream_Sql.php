@@ -25,7 +25,11 @@ class Text_Octetstream_Sql extends SQLTransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Text";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -35,6 +39,10 @@ class Text_Octetstream_Sql extends SQLTransformationsPlugin
      */
     public static function getMIMESubtype()
     {
-        return "Octetstream";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -18,13 +18,10 @@ class Framework_TestImplementorTest extends PHPUnit_Framework_TestCase
      */
     public function testSuccessfulRun()
     {
-        $result = new PHPUnit_Framework_TestResult;
-
-        $test = new DoubleTestCase(new Success);
-        $test->run($result);
-
-        $this->assertEquals(count($test), count($result));
-        $this->assertEquals(0, $result->errorCount());
-        $this->assertEquals(0, $result->failureCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

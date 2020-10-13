@@ -77,24 +77,11 @@ class PHPUnit_Util_Printer
      */
     public function flush()
     {
-        if ($this->out && strncmp($this->outTarget, 'php://', 6) !== 0) {
-            fclose($this->out);
-        }
-
-        if ($this->printsHTML === true &&
-            $this->outTarget !== null &&
-            strpos($this->outTarget, 'php://') !== 0 &&
-            strpos($this->outTarget, 'socket://') !== 0 &&
-            extension_loaded('tidy')) {
-            file_put_contents(
-                $this->outTarget,
-                tidy_repair_file(
-                    $this->outTarget,
-                    array('indent' => true, 'wrap' => 0),
-                    'utf8'
-                )
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -148,7 +135,11 @@ class PHPUnit_Util_Printer
      */
     public function getAutoFlush()
     {
-        return $this->autoFlush;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -163,10 +154,10 @@ class PHPUnit_Util_Printer
      */
     public function setAutoFlush($autoFlush)
     {
-        if (is_bool($autoFlush)) {
-            $this->autoFlush = $autoFlush;
-        } else {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'boolean');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

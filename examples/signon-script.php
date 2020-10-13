@@ -23,13 +23,9 @@
  */
 function get_login_credentials($user)
 {
-    /* Optionally we can use passed username */
-    if (!empty($user)) {
-        return array($user, 'password');
-    }
-
-    /* Here we would retrieve the credentials */
-    $credentials = array('root', '');
-
-    return $credentials;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

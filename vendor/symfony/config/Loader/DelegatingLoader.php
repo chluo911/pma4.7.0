@@ -30,7 +30,11 @@ class DelegatingLoader extends Loader
      */
     public function __construct(LoaderResolverInterface $resolver)
     {
-        $this->resolver = $resolver;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,11 +42,11 @@ class DelegatingLoader extends Loader
      */
     public function load($resource, $type = null)
     {
-        if (false === $loader = $this->resolver->resolve($resource, $type)) {
-            throw new FileLoaderLoadException($resource);
-        }
-
-        return $loader->load($resource, $type);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -50,6 +54,10 @@ class DelegatingLoader extends Loader
      */
     public function supports($resource, $type = null)
     {
-        return false !== $this->resolver->resolve($resource, $type);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

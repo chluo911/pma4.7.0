@@ -21,19 +21,29 @@ class StreamOutputTest extends TestCase
 
     protected function setUp()
     {
-        $this->stream = fopen('php://memory', 'a', false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        $this->stream = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructor()
     {
-        $output = new StreamOutput($this->stream, Output::VERBOSITY_QUIET, true);
-        $this->assertEquals(Output::VERBOSITY_QUIET, $output->getVerbosity(), '__construct() takes the verbosity as its first argument');
-        $this->assertTrue($output->isDecorated(), '__construct() takes the decorated flag as its second argument');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,20 +52,28 @@ class StreamOutputTest extends TestCase
      */
     public function testStreamIsRequired()
     {
-        new StreamOutput('foo');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetStream()
     {
-        $output = new StreamOutput($this->stream);
-        $this->assertEquals($this->stream, $output->getStream(), '->getStream() returns the current stream');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDoWrite()
     {
-        $output = new StreamOutput($this->stream);
-        $output->writeln('foo');
-        rewind($output->getStream());
-        $this->assertEquals('foo'.PHP_EOL, stream_get_contents($output->getStream()), '->doWrite() writes to the stream');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

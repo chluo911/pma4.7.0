@@ -23,7 +23,11 @@ class DoctrineProvider extends CacheProvider
 
     public function __construct(CacheItemPoolInterface $pool)
     {
-        $this->pool = $pool;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -31,9 +35,11 @@ class DoctrineProvider extends CacheProvider
      */
     protected function doFetch($id)
     {
-        $item = $this->pool->getItem(rawurlencode($id));
-
-        return $item->isHit() ? $item->get() : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,7 +47,11 @@ class DoctrineProvider extends CacheProvider
      */
     protected function doContains($id)
     {
-        return $this->pool->hasItem(rawurlencode($id));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,13 +59,11 @@ class DoctrineProvider extends CacheProvider
      */
     protected function doSave($id, $data, $lifeTime = 0)
     {
-        $item = $this->pool->getItem(rawurlencode($id));
-
-        if (0 < $lifeTime) {
-            $item->expiresAfter($lifeTime);
-        }
-
-        return $this->pool->save($item->set($data));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,7 +71,11 @@ class DoctrineProvider extends CacheProvider
      */
     protected function doDelete($id)
     {
-        return $this->pool->deleteItem(rawurlencode($id));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -71,7 +83,11 @@ class DoctrineProvider extends CacheProvider
      */
     protected function doFlush()
     {
-        $this->pool->clear();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

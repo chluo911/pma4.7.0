@@ -60,8 +60,11 @@ class MySource_Sniffs_CSS_BrowserSpecificStylesSniff implements PHP_CodeSniffer_
      */
     public function register()
     {
-        return array(T_STYLE);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -76,25 +79,10 @@ class MySource_Sniffs_CSS_BrowserSpecificStylesSniff implements PHP_CodeSniffer_
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        // Ignore files with browser-specific suffixes.
-        $filename  = $phpcsFile->getFilename();
-        $breakChar = strrpos($filename, '_');
-        if ($breakChar !== false && substr($filename, -4) === '.css') {
-            $specific = substr($filename, ($breakChar + 1), -4);
-            if (isset($this->specificStylesheets[$specific]) === true) {
-                return;
-            }
-        }
-
-        $tokens  = $phpcsFile->getTokens();
-        $content = $tokens[$stackPtr]['content'];
-
-        if ($content{0} === '-') {
-            $error = 'Browser-specific styles are not allowed';
-            $phpcsFile->addError($error, $stackPtr, 'ForbiddenStyle');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

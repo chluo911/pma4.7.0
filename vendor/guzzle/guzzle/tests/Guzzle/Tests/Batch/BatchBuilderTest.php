@@ -11,49 +11,74 @@ class BatchBuilderTest extends \Guzzle\Tests\GuzzleTestCase
 {
     private function getMockTransfer()
     {
-        return $this->getMock('Guzzle\Batch\BatchTransferInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function getMockDivisor()
     {
-        return $this->getMock('Guzzle\Batch\BatchDivisorInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function getMockBatchBuilder()
     {
-        return BatchBuilder::factory()
-            ->transferWith($this->getMockTransfer())
-            ->createBatchesWith($this->getMockDivisor());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFactoryCreatesInstance()
     {
-        $builder = BatchBuilder::factory();
-        $this->assertInstanceOf('Guzzle\Batch\BatchBuilder', $builder);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddsAutoFlush()
     {
-        $batch = $this->getMockBatchBuilder()->autoFlushAt(10)->build();
-        $this->assertInstanceOf('Guzzle\Batch\FlushingBatch', $batch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddsExceptionBuffering()
     {
-        $batch = $this->getMockBatchBuilder()->bufferExceptions()->build();
-        $this->assertInstanceOf('Guzzle\Batch\ExceptionBufferingBatch', $batch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddHistory()
     {
-        $batch = $this->getMockBatchBuilder()->keepHistory()->build();
-        $this->assertInstanceOf('Guzzle\Batch\HistoryBatch', $batch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddsNotify()
     {
-        $batch = $this->getMockBatchBuilder()->notify(function() {})->build();
-        $this->assertInstanceOf('Guzzle\Batch\NotifyingBatch', $batch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,7 +86,11 @@ class BatchBuilderTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testTransferStrategyMustBeSet()
     {
-        $batch = BatchBuilder::factory()->createBatchesWith($this->getMockDivisor())->build();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,18 +98,28 @@ class BatchBuilderTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testDivisorStrategyMustBeSet()
     {
-        $batch = BatchBuilder::factory()->transferWith($this->getMockTransfer())->build();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTransfersRequests()
     {
-        $batch = BatchBuilder::factory()->transferRequests(10)->build();
-        $this->assertInstanceOf('Guzzle\Batch\BatchRequestTransfer', $this->readAttribute($batch, 'transferStrategy'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTransfersCommands()
     {
-        $batch = BatchBuilder::factory()->transferCommands(10)->build();
-        $this->assertInstanceOf('Guzzle\Batch\BatchCommandTransfer', $this->readAttribute($batch, 'transferStrategy'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

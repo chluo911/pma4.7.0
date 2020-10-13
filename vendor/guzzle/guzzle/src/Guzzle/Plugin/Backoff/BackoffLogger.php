@@ -33,8 +33,11 @@ class BackoffLogger implements EventSubscriberInterface
      */
     public function __construct(LogAdapterInterface $logger, MessageFormatter $formatter = null)
     {
-        $this->logger = $logger;
-        $this->formatter = $formatter ?: new MessageFormatter(self::DEFAULT_FORMAT);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getSubscribedEvents()
@@ -51,9 +54,11 @@ class BackoffLogger implements EventSubscriberInterface
      */
     public function setTemplate($template)
     {
-        $this->formatter->setTemplate($template);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,14 +68,10 @@ class BackoffLogger implements EventSubscriberInterface
      */
     public function onRequestRetry(Event $event)
     {
-        $this->logger->log($this->formatter->format(
-            $event['request'],
-            $event['response'],
-            $event['handle'],
-            array(
-                'retries' => $event['retries'],
-                'delay'   => $event['delay']
-            )
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

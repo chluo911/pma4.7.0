@@ -56,23 +56,31 @@ class Extensions_Selenium2SuiteBuildingTest extends PHPUnit_Framework_TestCase
 {
     public function testSampleTestCaseBuildsAFullSuiteContainingAllItsTests()
     {
-        $suite = Extensions_Selenium2TestCaseSample::suite('Extensions_Selenium2TestCaseSample');
-        $this->assertInstanceOf('PHPUnit_Framework_TestSuite', $suite);
-        $this->assertEquals(2, count($suite->tests()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAMultipleBrowsersTestCaseBuildsACopyOfEachTestForEachBrowser()
     {
-        $suite = Extensions_Selenium2MultipleBrowsersTestCaseSample::suite('Extensions_Selenium2MultipleBrowsersTestCaseSample');
-        $this->assertInstanceOf('PHPUnit_Framework_TestSuite', $suite);
-        $this->assertEquals(2, count($suite->tests()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
 class Extensions_Selenium2TestCaseSample extends PHPUnit_Extensions_Selenium2TestCase
 {
-    public function testFirst() {}
-    public function testSecond() {}
+    public function testFirst()
+    {
+    }
+    public function testSecond()
+    {
+    }
 }
 
 class Extensions_Selenium2MultipleBrowsersTestCaseSample extends PHPUnit_Extensions_Selenium2TestCase
@@ -90,5 +98,7 @@ class Extensions_Selenium2MultipleBrowsersTestCaseSample extends PHPUnit_Extensi
         ),
     );
 
-    public function testSingle() {}
+    public function testSingle()
+    {
+    }
 }

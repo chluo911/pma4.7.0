@@ -56,8 +56,11 @@ class Generic_Sniffs_Files_LineLengthSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -72,18 +75,11 @@ class Generic_Sniffs_Files_LineLengthSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        for ($i = 1; $i < $phpcsFile->numTokens; $i++) {
-            if ($tokens[$i]['column'] === 1) {
-                $this->checkLineLength($phpcsFile, $tokens, $i);
-            }
-        }
-
-        $this->checkLineLength($phpcsFile, $tokens, $i);
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
 
 
@@ -98,80 +94,10 @@ class Generic_Sniffs_Files_LineLengthSniff implements PHP_CodeSniffer_Sniff
      */
     protected function checkLineLength(PHP_CodeSniffer_File $phpcsFile, $tokens, $stackPtr)
     {
-        // The passed token is the first on the line.
-        $stackPtr--;
-
-        if ($tokens[$stackPtr]['column'] === 1
-            && $tokens[$stackPtr]['length'] === 0
-        ) {
-            // Blank line.
-            return;
-        }
-
-        if ($tokens[$stackPtr]['column'] !== 1
-            && $tokens[$stackPtr]['content'] === $phpcsFile->eolChar
-        ) {
-            $stackPtr--;
-        }
-
-        $lineLength = ($tokens[$stackPtr]['column'] + $tokens[$stackPtr]['length'] - 1);
-
-        // Record metrics for common line length groupings.
-        if ($lineLength <= 80) {
-            $phpcsFile->recordMetric($stackPtr, 'Line length', '80 or less');
-        } else if ($lineLength <= 120) {
-            $phpcsFile->recordMetric($stackPtr, 'Line length', '81-120');
-        } else if ($lineLength <= 150) {
-            $phpcsFile->recordMetric($stackPtr, 'Line length', '121-150');
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'Line length', '151 or more');
-        }
-
-        // If this is a long comment, check if it can be broken up onto multiple lines.
-        // Some comments contain unbreakable strings like URLs and so it makes sense
-        // to ignore the line length in these cases if the URL would be longer than the max
-        // line length once you indent it to the correct level.
-        if ($lineLength > $this->lineLimit
-            && ($tokens[$stackPtr]['code'] === T_COMMENT
-            || $tokens[$stackPtr]['code'] === T_DOC_COMMENT_STRING)
-        ) {
-            $oldLength = strlen($tokens[$stackPtr]['content']);
-            $newLength = strlen(ltrim($tokens[$stackPtr]['content'], "/#\t "));
-            $indent    = (($tokens[$stackPtr]['column'] - 1) + ($oldLength - $newLength));
-
-            $nonBreakingLength = $tokens[$stackPtr]['length'];
-
-            $space = strrpos($tokens[$stackPtr]['content'], ' ');
-            if ($space !== false) {
-                $nonBreakingLength -= ($space + 1);
-            }
-
-            if (($nonBreakingLength + $indent) > $this->lineLimit) {
-                return;
-            }
-        }
-
-        if ($this->absoluteLineLimit > 0
-            && $lineLength > $this->absoluteLineLimit
-        ) {
-            $data = array(
-                     $this->absoluteLineLimit,
-                     $lineLength,
-                    );
-
-            $error = 'Line exceeds maximum limit of %s characters; contains %s characters';
-            $phpcsFile->addError($error, $stackPtr, 'MaxExceeded', $data);
-        } else if ($lineLength > $this->lineLimit) {
-            $data = array(
-                     $this->lineLimit,
-                     $lineLength,
-                    );
-
-            $warning = 'Line exceeds %s characters; contains %s characters';
-            $phpcsFile->addWarning($warning, $stackPtr, 'TooLong', $data);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end checkLineLength()
-
-
 }//end class

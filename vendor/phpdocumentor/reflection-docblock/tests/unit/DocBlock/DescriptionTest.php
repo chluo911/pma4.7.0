@@ -30,19 +30,11 @@ class DescriptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDescriptionCanRenderUsingABodyWithPlaceholdersAndTags()
     {
-        $body = 'This is a %1$s body.';
-        $expected = 'This is a {@internal significant } body.';
-        $tags = [new Generic('internal', new Description('significant '))];
-
-        $fixture = new Description($body, $tags);
-
-        // without formatter (thus the PassthroughFormatter by default)
-        $this->assertSame($expected, $fixture->render());
-
-        // with a custom formatter
-        $formatter = m::mock(PassthroughFormatter::class);
-        $formatter->shouldReceive('format')->with($tags[0])->andReturn('@internal significant ');
-        $this->assertSame($expected, $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,13 +47,11 @@ class DescriptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testDescriptionCanBeCastToString()
     {
-        $body = 'This is a %1$s body.';
-        $expected = 'This is a {@internal significant } body.';
-        $tags = [new Generic('internal', new Description('significant '))];
-
-        $fixture = new Description($body, $tags);
-
-        $this->assertSame($expected, (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,6 +60,10 @@ class DescriptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testBodyTemplateMustBeAString()
     {
-        new Description([]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

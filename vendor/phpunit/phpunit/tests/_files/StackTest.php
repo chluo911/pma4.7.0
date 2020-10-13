@@ -3,14 +3,11 @@ class StackTest extends PHPUnit_Framework_TestCase
 {
     public function testPush()
     {
-        $stack = array();
-        $this->assertEquals(0, count($stack));
-
-        array_push($stack, 'foo');
-        $this->assertEquals('foo', $stack[count($stack)-1]);
-        $this->assertEquals(1, count($stack));
-
-        return $stack;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -18,7 +15,10 @@ class StackTest extends PHPUnit_Framework_TestCase
      */
     public function testPop(array $stack)
     {
-        $this->assertEquals('foo', array_pop($stack));
-        $this->assertEquals(0, count($stack));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

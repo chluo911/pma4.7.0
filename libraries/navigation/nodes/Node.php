@@ -293,16 +293,11 @@ class Node
      */
     public function numChildren()
     {
-        $retval = 0;
-        foreach ($this->children as $child) {
-            if ($child->type == Node::OBJECT) {
-                $retval++;
-            } else {
-                $retval += $child->numChildren();
-            }
-        }
-
-        return $retval;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

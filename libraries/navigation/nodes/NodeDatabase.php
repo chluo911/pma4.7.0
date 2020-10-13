@@ -712,4 +712,3 @@ class NodeDatabase extends Node
         return $this->hiddenCount;
     }
 }
-

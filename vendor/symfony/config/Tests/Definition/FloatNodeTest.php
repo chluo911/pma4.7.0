@@ -21,8 +21,11 @@ class FloatNodeTest extends TestCase
      */
     public function testNormalize($value)
     {
-        $node = new FloatNode('test');
-        $this->assertSame($value, $node->normalize($value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,24 +35,20 @@ class FloatNodeTest extends TestCase
      */
     public function testValidNonEmptyValues($value)
     {
-        $node = new FloatNode('test');
-        $node->setAllowEmptyValue(false);
-
-        $this->assertSame($value, $node->finalize($value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getValidValues()
     {
-        return array(
-            array(1798.0),
-            array(-678.987),
-            array(12.56E45),
-            array(0.0),
-            // Integer are accepted too, they will be cast
-            array(17),
-            array(-10),
-            array(0),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,21 +57,19 @@ class FloatNodeTest extends TestCase
      */
     public function testNormalizeThrowsExceptionOnInvalidValues($value)
     {
-        $node = new FloatNode('test');
-        $node->normalize($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getInvalidValues()
     {
-        return array(
-            array(null),
-            array(''),
-            array('foo'),
-            array(true),
-            array(false),
-            array(array()),
-            array(array('foo' => 'bar')),
-            array(new \stdClass()),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

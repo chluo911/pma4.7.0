@@ -53,15 +53,18 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.2
  */
-class PHPUnit_Extensions_Selenium2TestCase_Element_Select
-    extends PHPUnit_Extensions_Selenium2TestCase_Element
+class PHPUnit_Extensions_Selenium2TestCase_Element_Select extends PHPUnit_Extensions_Selenium2TestCase_Element
 {
     /**
      * @return PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public static function fromElement(PHPUnit_Extensions_Selenium2TestCase_Element $element)
     {
-        return new self($element->driver, $element->url);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,11 +72,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectedLabel()
     {
-        $selectedOption = $this->selectedOption();
-        if ($selectedOption === NULL) {
-            return '';
-        }
-        return $selectedOption->text();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,11 +84,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectedValue()
     {
-        $selectedOption = $this->selectedOption();
-        if ($selectedOption === NULL) {
-            return '';
-        }
-        return $selectedOption->value();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,11 +96,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectedId()
     {
-        $selectedOption = $this->selectedOption();
-        if ($selectedOption === NULL) {
-            return '';
-        }
-        return $selectedOption->attribute('id');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,11 +108,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectedLabels()
     {
-        $labels = array();
-        foreach ($this->selectedOptions() as $option) {
-            $labels[] = $option->text();
-        }
-        return $labels;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -117,11 +120,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectedValues()
     {
-        $values = array();
-        foreach ($this->selectedOptions() as $option) {
-            $values[] = $option->value();
-        }
-        return $values;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -129,11 +132,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectedIds()
     {
-        $id = array();
-        foreach ($this->selectedOptions() as $option) {
-            $values[] = $option->attribute('id');
-        }
-        return $id;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -142,8 +145,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectOptionByLabel($label)
     {
-        $toSelect = $this->using('xpath')->value(".//option[.='$label']");
-        $this->selectOptionByCriteria($toSelect);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -152,8 +158,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectOptionByValue($value)
     {
-        $toSelect = $this->using('xpath')->value(".//option[@value='$value']");
-        $this->selectOptionByCriteria($toSelect);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -162,10 +171,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectOptionByCriteria(PHPUnit_Extensions_Selenium2TestCase_ElementCriteria $localCriteria)
     {
-        $option = $this->element($localCriteria);
-        if (!$option->selected()) {
-            $option->click();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -173,11 +183,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectOptionValues()
     {
-        $options = array();
-        foreach ($this->options() as $option) {
-            $options[] = $option->value();
-        }
-        return $options;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,11 +195,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     public function selectOptionLabels()
     {
-        $options = array();
-        foreach ($this->options() as $option) {
-            $options[] = $option->text();
-        }
-        return $options;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /***
@@ -197,35 +207,37 @@ class PHPUnit_Extensions_Selenium2TestCase_Element_Select
      */
     private function selectedOptions()
     {
-        $options = array();
-        foreach ($this->options() as $option) {
-            if ($option->selected()) {
-                $options[] = $option;
-            }
-        }
-        return $options;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function clearSelectedOptions()
     {
-        foreach ($this->selectedOptions() as $option) {
-            $option->click();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function selectedOption()
     {
-        foreach ($this->options() as $option) {
-            if ($option->selected()) {
-                return $option;
-            }
-        }
-        return NULL;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function options()
     {
-        $onlyTheOptions = $this->using('css selector')->value('option');
-        return $this->elements($onlyTheOptions);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

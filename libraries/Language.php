@@ -9,7 +9,6 @@ namespace PMA\libraries;
 
 use PMA\libraries\LanguageManager;
 
-
 /**
  * Language object
  *
@@ -52,7 +51,11 @@ class Language
      */
     public function getNativeName()
     {
-        return $this->native;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,7 +65,11 @@ class Language
      */
     public function getEnglishName()
     {
-        return $this->name;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

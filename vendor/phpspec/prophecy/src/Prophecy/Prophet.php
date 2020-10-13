@@ -45,8 +45,11 @@ class Prophet
      * @param null|RevealerInterface $revealer
      * @param null|StringUtil        $util
      */
-    public function __construct(Doubler $doubler = null, RevealerInterface $revealer = null,
-                                StringUtil $util = null)
+    public function __construct(
+        Doubler $doubler = null,
+        RevealerInterface $revealer = null,
+        StringUtil $util = null
+    )
     {
         if (null === $doubler) {
             $doubler = new Doubler;
@@ -108,7 +111,11 @@ class Prophet
      */
     public function getDoubler()
     {
-        return $this->doubler;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -28,7 +28,11 @@ class SchemaDia extends SchemaPlugin
      */
     public function __construct()
     {
-        $this->setProperties();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,48 +42,11 @@ class SchemaDia extends SchemaPlugin
      */
     protected function setProperties()
     {
-        $schemaPluginProperties = new SchemaPluginProperties();
-        $schemaPluginProperties->setText('Dia');
-        $schemaPluginProperties->setExtension('dia');
-        $schemaPluginProperties->setMimeType('application/dia');
-
-        // create the root group that will be the options field for
-        // $schemaPluginProperties
-        // this will be shown as "Format specific options"
-        $exportSpecificOptions = new OptionsPropertyRootGroup(
-            "Format Specific Options"
-        );
-
-        // specific options main group
-        $specificOptions = new OptionsPropertyMainGroup("general_opts");
-        // add options common to all plugins
-        $this->addCommonOptions($specificOptions);
-
-        $leaf = new SelectPropertyItem(
-            "orientation",
-            __('Orientation')
-        );
-        $leaf->setValues(
-            array(
-                'L' => __('Landscape'),
-                'P' => __('Portrait'),
-            )
-        );
-        $specificOptions->addProperty($leaf);
-
-        $leaf = new SelectPropertyItem(
-            "paper",
-            __('Paper size')
-        );
-        $leaf->setValues($this->getPaperSizeArray());
-        $specificOptions->addProperty($leaf);
-
-        // add the main group to the root group
-        $exportSpecificOptions->addProperty($specificOptions);
-
-        // set the options for the schema export plugin property item
-        $schemaPluginProperties->setOptions($exportSpecificOptions);
-        $this->properties = $schemaPluginProperties;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,7 +58,10 @@ class SchemaDia extends SchemaPlugin
      */
     public function exportSchema($db)
     {
-        $export = new DiaRelationSchema($db);
-        $export->showOutput();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

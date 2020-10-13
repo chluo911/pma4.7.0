@@ -58,9 +58,19 @@ class Stream implements StreamInterface
      */
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         $this->close();
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     public function __toString()
@@ -114,9 +124,11 @@ class Stream implements StreamInterface
 
     public function getMetaData($key = null)
     {
-        $meta = stream_get_meta_data($this->stream);
-
-        return !$key ? $meta : (array_key_exists($key, $meta) ? $meta[$key] : null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getStream()
@@ -139,24 +151,38 @@ class Stream implements StreamInterface
 
     public function detachStream()
     {
-        $this->stream = null;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getWrapper()
     {
-        return $this->cache[self::WRAPPER_TYPE];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getWrapperData()
     {
-        return $this->getMetaData('wrapper_data') ?: array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getStreamType()
     {
-        return $this->cache[self::STREAM_TYPE];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getUri()
@@ -189,17 +215,29 @@ class Stream implements StreamInterface
 
     public function isReadable()
     {
-        return $this->cache[self::IS_READABLE];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isRepeatable()
     {
-        return $this->cache[self::IS_READABLE] && $this->cache[self::SEEKABLE];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isWritable()
     {
-        return $this->cache[self::IS_WRITABLE];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isConsumed()
@@ -214,7 +252,11 @@ class Stream implements StreamInterface
 
     public function isLocal()
     {
-        return $this->cache[self::IS_LOCAL];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isSeekable()
@@ -254,16 +296,20 @@ class Stream implements StreamInterface
 
     public function rewind()
     {
-        return $this->seek(0);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function readLine($maxLength = null)
     {
-        if (!$this->cache[self::IS_READABLE]) {
-            return false;
-        } else {
-            return $maxLength ? fgets($this->getStream(), $maxLength) : fgets($this->getStream());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setCustomData($key, $value)
@@ -275,7 +321,11 @@ class Stream implements StreamInterface
 
     public function getCustomData($key)
     {
-        return isset($this->customData[$key]) ? $this->customData[$key] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -58,13 +58,11 @@ abstract class ParserBase
 
     protected function consumeShortHash()
     {
-        if (!preg_match('/([A-Za-z0-9]{7,40})/A', $this->content, $vars, null, $this->cursor)) {
-            throw new RuntimeException('No short hash found: '.substr($this->content, $this->cursor, 7));
-        }
-
-        $this->cursor += strlen($vars[1]);
-
-        return $vars[1];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function consumeHash()

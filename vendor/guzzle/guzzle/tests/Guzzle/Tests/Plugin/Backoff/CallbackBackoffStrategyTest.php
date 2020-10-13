@@ -14,18 +14,19 @@ class CallbackBackoffStrategyTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresIsCallable()
     {
-        $strategy = new CallbackBackoffStrategy(new \stdClass(), true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRetriesWithCallable()
     {
-        $request = $this->getMock('Guzzle\Http\Message\Request', array(), array(), '', false);
-        $strategy = new CallbackBackoffStrategy(function () { return 10; }, true);
-        $this->assertTrue($strategy->makesDecision());
-        $this->assertEquals(10, $strategy->getBackoffPeriod(0, $request));
-        // Ensure it chains correctly when null is returned
-        $strategy = new CallbackBackoffStrategy(function () { return null; }, false);
-        $this->assertFalse($strategy->makesDecision());
-        $this->assertFalse($strategy->getBackoffPeriod(0, $request));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

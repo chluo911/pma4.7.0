@@ -23,63 +23,47 @@ class ExceptionComparatorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->comparator = new ExceptionComparator;
-        $this->comparator->setFactory(new Factory);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function acceptsSucceedsProvider()
     {
-        return array(
-          array(new Exception, new Exception),
-          array(new RuntimeException, new RuntimeException),
-          array(new Exception, new RuntimeException)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function acceptsFailsProvider()
     {
-        return array(
-          array(new Exception, null),
-          array(null, new Exception),
-          array(null, null)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsSucceedsProvider()
     {
-        $exception1 = new Exception;
-        $exception2 = new Exception;
-
-        $exception3 = new RunTimeException('Error', 100);
-        $exception4 = new RunTimeException('Error', 100);
-
-        return array(
-          array($exception1, $exception1),
-          array($exception1, $exception2),
-          array($exception3, $exception3),
-          array($exception3, $exception4)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsFailsProvider()
     {
-        $typeMessage = 'not instance of expected class';
-        $equalMessage = 'Failed asserting that two objects are equal.';
-
-        $exception1 = new Exception('Error', 100);
-        $exception2 = new Exception('Error', 101);
-        $exception3 = new Exception('Errors', 101);
-
-        $exception4 = new RunTimeException('Error', 100);
-        $exception5 = new RunTimeException('Error', 101);
-
-        return array(
-          array($exception1, $exception2, $equalMessage),
-          array($exception1, $exception3, $equalMessage),
-          array($exception1, $exception4, $typeMessage),
-          array($exception2, $exception3, $equalMessage),
-          array($exception4, $exception5, $equalMessage)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,9 +72,11 @@ class ExceptionComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAcceptsSucceeds($expected, $actual)
     {
-        $this->assertTrue(
-          $this->comparator->accepts($expected, $actual)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,9 +85,11 @@ class ExceptionComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAcceptsFails($expected, $actual)
     {
-        $this->assertFalse(
-          $this->comparator->accepts($expected, $actual)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -110,16 +98,11 @@ class ExceptionComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsSucceeds($expected, $actual)
     {
-        $exception = null;
-
-        try {
-            $this->comparator->assertEquals($expected, $actual);
-        }
-
-        catch (ComparisonFailure $exception) {
-        }
-
-        $this->assertNull($exception, 'Unexpected ComparisonFailure');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -128,9 +111,10 @@ class ExceptionComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsFails($expected, $actual, $message)
     {
-        $this->setExpectedException(
-          'SebastianBergmann\\Comparator\\ComparisonFailure', $message
-        );
-        $this->comparator->assertEquals($expected, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

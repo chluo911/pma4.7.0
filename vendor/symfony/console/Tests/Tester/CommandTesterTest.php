@@ -28,88 +28,83 @@ class CommandTesterTest extends TestCase
 
     protected function setUp()
     {
-        $this->command = new Command('foo');
-        $this->command->addArgument('command');
-        $this->command->addArgument('foo');
-        $this->command->setCode(function ($input, $output) { $output->writeln('foo'); });
-
-        $this->tester = new CommandTester($this->command);
-        $this->tester->execute(array('foo' => 'bar'), array('interactive' => false, 'decorated' => false, 'verbosity' => Output::VERBOSITY_VERBOSE));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        $this->command = null;
-        $this->tester = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testExecute()
     {
-        $this->assertFalse($this->tester->getInput()->isInteractive(), '->execute() takes an interactive option');
-        $this->assertFalse($this->tester->getOutput()->isDecorated(), '->execute() takes a decorated option');
-        $this->assertEquals(Output::VERBOSITY_VERBOSE, $this->tester->getOutput()->getVerbosity(), '->execute() takes a verbosity option');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetInput()
     {
-        $this->assertEquals('bar', $this->tester->getInput()->getArgument('foo'), '->getInput() returns the current input instance');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetOutput()
     {
-        rewind($this->tester->getOutput()->getStream());
-        $this->assertEquals('foo'.PHP_EOL, stream_get_contents($this->tester->getOutput()->getStream()), '->getOutput() returns the current output instance');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetDisplay()
     {
-        $this->assertEquals('foo'.PHP_EOL, $this->tester->getDisplay(), '->getDisplay() returns the display of the last execution');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetStatusCode()
     {
-        $this->assertSame(0, $this->tester->getStatusCode(), '->getStatusCode() returns the status code');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCommandFromApplication()
     {
-        $application = new Application();
-        $application->setAutoExit(false);
-
-        $command = new Command('foo');
-        $command->setCode(function ($input, $output) { $output->writeln('foo'); });
-
-        $application->add($command);
-
-        $tester = new CommandTester($application->find('foo'));
-
-        // check that there is no need to pass the command name here
-        $this->assertEquals(0, $tester->execute(array()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCommandWithInputs()
     {
-        $questions = array(
-            'What\'s your name?',
-            'How are you?',
-            'Where do you come from?',
-        );
-
-        $command = new Command('foo');
-        $command->setHelperSet(new HelperSet(array(new QuestionHelper())));
-        $command->setCode(function ($input, $output) use ($questions, $command) {
-            $helper = $command->getHelper('question');
-            $helper->ask($input, $output, new Question($questions[0]));
-            $helper->ask($input, $output, new Question($questions[1]));
-            $helper->ask($input, $output, new Question($questions[2]));
-        });
-
-        $tester = new CommandTester($command);
-        $tester->setInputs(array('Bobby', 'Fine', 'France'));
-        $tester->execute(array());
-
-        $this->assertEquals(0, $tester->getStatusCode());
-        $this->assertEquals(implode('', $questions), $tester->getDisplay(true));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -118,46 +113,19 @@ class CommandTesterTest extends TestCase
      */
     public function testCommandWithWrongInputsNumber()
     {
-        $questions = array(
-            'What\'s your name?',
-            'How are you?',
-            'Where do you come from?',
-        );
-
-        $command = new Command('foo');
-        $command->setHelperSet(new HelperSet(array(new QuestionHelper())));
-        $command->setCode(function ($input, $output) use ($questions, $command) {
-            $helper = $command->getHelper('question');
-            $helper->ask($input, $output, new Question($questions[0]));
-            $helper->ask($input, $output, new Question($questions[1]));
-            $helper->ask($input, $output, new Question($questions[2]));
-        });
-
-        $tester = new CommandTester($command);
-        $tester->setInputs(array('Bobby', 'Fine'));
-        $tester->execute(array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSymfonyStyleCommandWithInputs()
     {
-        $questions = array(
-            'What\'s your name?',
-            'How are you?',
-            'Where do you come from?',
-        );
-
-        $command = new Command('foo');
-        $command->setCode(function ($input, $output) use ($questions, $command) {
-            $io = new SymfonyStyle($input, $output);
-            $io->ask($questions[0]);
-            $io->ask($questions[1]);
-            $io->ask($questions[2]);
-        });
-
-        $tester = new CommandTester($command);
-        $tester->setInputs(array('Bobby', 'Fine', 'France'));
-        $tester->execute(array());
-
-        $this->assertEquals(0, $tester->getStatusCode());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

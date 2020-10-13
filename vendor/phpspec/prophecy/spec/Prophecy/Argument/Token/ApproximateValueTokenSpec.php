@@ -7,49 +7,84 @@ use Prophecy\Argument;
 
 class ApproximateValueTokenSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith(10.12345678, 4);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
-        $this->shouldHaveType('Prophecy\Argument\Token\ApproximateValueToken');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_implements_TokenInterface()
+    public function it_implements_TokenInterface()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Argument\Token\TokenInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_not_last()
+    public function it_is_not_last()
     {
-        $this->shouldNotBeLast();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_scores_10_if_rounded_argument_matches_rounded_value()
+    public function it_scores_10_if_rounded_argument_matches_rounded_value()
     {
-        $this->scoreArgument(10.12345)->shouldReturn(10);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_rounded_argument_does_not_match_rounded_value()
+    public function it_does_not_score_if_rounded_argument_does_not_match_rounded_value()
     {
-        $this->scoreArgument(10.1234)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_uses_a_default_precision_of_zero()
+    public function it_uses_a_default_precision_of_zero()
     {
-        $this->beConstructedWith(10.7);
-        $this->scoreArgument(11.4)->shouldReturn(10);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_score_if_rounded_argument_is_not_numeric()
+    public function it_does_not_score_if_rounded_argument_is_not_numeric()
     {
-        $this->scoreArgument('hello')->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_simple_string_representation()
+    public function it_has_simple_string_representation()
     {
-        $this->__toString()->shouldBe('≅10.1235');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

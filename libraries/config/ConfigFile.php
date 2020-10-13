@@ -116,9 +116,11 @@ class ConfigFile
      */
     public function setPersistKeys(array $keys)
     {
-        // checking key presence is much faster than searching so move values
-        // to keys
-        $this->_persistKeys = array_flip($keys);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -128,7 +130,11 @@ class ConfigFile
      */
     public function getPersistKeysMap()
     {
-        return $this->_persistKeys;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -184,7 +190,11 @@ class ConfigFile
      */
     public function setConfigData(array $cfg)
     {
-        $_SESSION[$this->_id] = $cfg;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -394,9 +404,11 @@ class ConfigFile
      */
     public function getServers()
     {
-        return isset($_SESSION[$this->_id]['Servers'])
-            ? $_SESSION[$this->_id]['Servers']
-            : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -408,29 +420,11 @@ class ConfigFile
      */
     public function getServerDSN($server)
     {
-        if (!isset($_SESSION[$this->_id]['Servers'][$server])) {
-            return '';
-        }
-
-        $path = 'Servers/' . $server;
-        $dsn = 'mysqli://';
-        if ($this->getValue("$path/auth_type") == 'config') {
-            $dsn .= $this->getValue("$path/user");
-            if (! empty($this->getValue("$path/password"))) {
-                $dsn .= ':***';
-            }
-            $dsn .= '@';
-        }
-        if ($this->getValue("$path/host") != 'localhost') {
-            $dsn .= $this->getValue("$path/host");
-            $port = $this->getValue("$path/port");
-            if ($port) {
-                $dsn .= ':' . $port;
-            }
-        } else {
-            $dsn .= $this->getValue("$path/socket");
-        }
-        return $dsn;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -442,15 +436,11 @@ class ConfigFile
      */
     public function getServerName($id)
     {
-        if (!isset($_SESSION[$this->_id]['Servers'][$id])) {
-            return '';
-        }
-        $verbose = $this->get("Servers/$id/verbose");
-        if (!empty($verbose)) {
-            return $verbose;
-        }
-        $host = $this->get("Servers/$id/host");
-        return empty($host) ? 'localhost' : $host;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -462,22 +452,11 @@ class ConfigFile
      */
     public function removeServer($server)
     {
-        if (!isset($_SESSION[$this->_id]['Servers'][$server])) {
-            return;
-        }
-        $last_server = $this->getServerCount();
-
-        for ($i = $server; $i < $last_server; $i++) {
-            $_SESSION[$this->_id]['Servers'][$i]
-                = $_SESSION[$this->_id]['Servers'][$i + 1];
-        }
-        unset($_SESSION[$this->_id]['Servers'][$last_server]);
-
-        if (isset($_SESSION[$this->_id]['ServerDefault'])
-            && $_SESSION[$this->_id]['ServerDefault'] == $last_server
-        ) {
-            unset($_SESSION[$this->_id]['ServerDefault']);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -487,15 +466,11 @@ class ConfigFile
      */
     public function getConfig()
     {
-        $c = $_SESSION[$this->_id];
-        foreach ($this->_cfgUpdateReadMapping as $map_to => $map_from) {
-            // if the key $c exists in $map_to
-            if (PMA_arrayRead($map_to, $c) !== null) {
-                PMA_arrayWrite($map_to, $c, PMA_arrayRead($map_from, $c));
-                PMA_arrayRemove($map_from, $c);
-            }
-        }
-        return $c;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -10,10 +10,16 @@ use Guzzle\Http\Message\Response;
  */
 class SkipRevalidation extends DefaultRevalidation
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     public function revalidate(RequestInterface $request, Response $response)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

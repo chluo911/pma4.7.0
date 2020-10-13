@@ -48,8 +48,11 @@ class Generic_Sniffs_CodeAnalysis_UnnecessaryFinalModifierSniff implements PHP_C
      */
     public function register()
     {
-        return array(T_CLASS);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -64,33 +67,10 @@ class Generic_Sniffs_CodeAnalysis_UnnecessaryFinalModifierSniff implements PHP_C
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
-
-        // Skip for-statements without body.
-        if (isset($token['scope_opener']) === false) {
-            return;
-        }
-
-        // Fetch previous token.
-        $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-
-        // Skip for non final class.
-        if ($prev === false || $tokens[$prev]['code'] !== T_FINAL) {
-            return;
-        }
-
-        $next = ++$token['scope_opener'];
-        $end  = --$token['scope_closer'];
-
-        for (; $next <= $end; ++$next) {
-            if ($tokens[$next]['code'] === T_FINAL) {
-                $error = 'Unnecessary FINAL modifier in FINAL class';
-                $phpcsFile->addWarning($error, $next, 'Found');
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

@@ -52,4 +52,3 @@ class NodeProcedure extends NodeDatabaseChild
         return 'procedure';
     }
 }
-

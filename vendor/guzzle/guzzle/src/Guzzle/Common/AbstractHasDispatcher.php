@@ -16,7 +16,11 @@ class AbstractHasDispatcher implements HasDispatcherInterface
 
     public static function getAllEvents()
     {
-        return array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setEventDispatcher(EventDispatcherInterface $eventDispatcher)

@@ -33,12 +33,14 @@ $url_params['table'] = $table;
  * Defines the urls to return to in case of error in a sql statement
  */
 $err_url_0 = PMA\libraries\Util::getScriptNameForOption(
-    $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+    $GLOBALS['cfg']['DefaultTabDatabase'],
+    'database'
 )
     . URL::getCommon(array('db' => $db));
 
 $err_url = PMA\libraries\Util::getScriptNameForOption(
-    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+    $GLOBALS['cfg']['DefaultTabTable'],
+    'table'
 )
     . URL::getCommon($url_params);
 

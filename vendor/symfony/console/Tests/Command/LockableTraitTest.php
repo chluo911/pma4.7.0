@@ -21,39 +21,37 @@ class LockableTraitTest extends TestCase
 
     public static function setUpBeforeClass()
     {
-        self::$fixturesPath = __DIR__.'/../Fixtures/';
-        require_once self::$fixturesPath.'/FooLockCommand.php';
-        require_once self::$fixturesPath.'/FooLock2Command.php';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testLockIsReleased()
     {
-        $command = new \FooLockCommand();
-
-        $tester = new CommandTester($command);
-        $this->assertSame(2, $tester->execute(array()));
-        $this->assertSame(2, $tester->execute(array()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testLockReturnsFalseIfAlreadyLockedByAnotherCommand()
     {
-        $command = new \FooLockCommand();
-
-        $lock = new LockHandler($command->getName());
-        $lock->lock();
-
-        $tester = new CommandTester($command);
-        $this->assertSame(1, $tester->execute(array()));
-
-        $lock->release();
-        $this->assertSame(2, $tester->execute(array()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testMultipleLockCallsThrowLogicException()
     {
-        $command = new \FooLock2Command();
-
-        $tester = new CommandTester($command);
-        $this->assertSame(1, $tester->execute(array()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

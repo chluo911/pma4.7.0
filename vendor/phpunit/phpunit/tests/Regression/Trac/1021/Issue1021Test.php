@@ -6,7 +6,11 @@ class Issue1021Test extends PHPUnit_Framework_TestCase
      */
     public function testSomething($data)
     {
-        $this->assertTrue($data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -18,6 +22,10 @@ class Issue1021Test extends PHPUnit_Framework_TestCase
 
     public function provider()
     {
-        return array(array(true));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -42,6 +42,10 @@ class BatchSizeDivisor implements BatchDivisorInterface
 
     public function createBatches(\SplQueue $queue)
     {
-        return array_chunk(iterator_to_array($queue, false), $this->size);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

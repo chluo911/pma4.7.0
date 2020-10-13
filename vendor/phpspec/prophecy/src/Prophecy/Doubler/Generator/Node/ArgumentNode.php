@@ -41,7 +41,11 @@ class ArgumentNode
 
     public function getTypeHint()
     {
-        return $this->typeHint;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setTypeHint($typeHint = null)
@@ -51,7 +55,11 @@ class ArgumentNode
 
     public function hasDefault()
     {
-        return $this->isOptional() && !$this->isVariadic();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getDefault()
@@ -92,11 +100,19 @@ class ArgumentNode
 
     public function isNullable()
     {
-        return $this->isNullable;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setAsNullable($isNullable = true)
     {
-        $this->isNullable = $isNullable;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

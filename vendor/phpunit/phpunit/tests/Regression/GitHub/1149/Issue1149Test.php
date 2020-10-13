@@ -3,8 +3,11 @@ class Issue1149Test extends PHPUnit_Framework_TestCase
 {
     public function testOne()
     {
-        $this->assertTrue(true);
-        print '1';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -12,7 +15,10 @@ class Issue1149Test extends PHPUnit_Framework_TestCase
      */
     public function testTwo()
     {
-        $this->assertTrue(true);
-        print '2';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

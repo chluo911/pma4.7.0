@@ -12,15 +12,10 @@ class HistoryBatchTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testMaintainsHistoryOfItemsAddedToBatch()
     {
-        $batch = new Batch(
-            $this->getMock('Guzzle\Batch\BatchTransferInterface'),
-            $this->getMock('Guzzle\Batch\BatchDivisorInterface')
-        );
-
-        $history = new HistoryBatch($batch);
-        $history->add('foo')->add('baz');
-        $this->assertEquals(array('foo', 'baz'), $history->getHistory());
-        $history->clearHistory();
-        $this->assertEquals(array(), $history->getHistory());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

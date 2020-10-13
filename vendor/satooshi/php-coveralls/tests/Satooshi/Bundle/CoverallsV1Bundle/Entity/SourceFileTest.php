@@ -14,14 +14,11 @@ class SourceFileTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../../..');
-
-        $this->setUpDir($this->projectDir);
-
-        $this->filename = 'test.php';
-        $this->path     = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
-
-        $this->object = new SourceFile($this->path, $this->filename);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getName()
@@ -31,7 +28,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveNameOnConstruction()
     {
-        $this->assertSame($this->filename, $this->object->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getSource()
@@ -41,9 +42,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveSourceOnConstruction()
     {
-        $expected = trim(file_get_contents($this->path));
-
-        $this->assertSame($expected, $this->object->getSource());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getCoverage()
@@ -53,9 +56,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveNullCoverageOnConstruction()
     {
-        $expected = array_fill(0, 9, null);
-
-        $this->assertSame($expected, $this->object->getCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getPath()
@@ -65,7 +70,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHavePathOnConstruction()
     {
-        $this->assertSame($this->path, $this->object->getPath());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getFileLines()
@@ -75,7 +84,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveFileLinesOnConstruction()
     {
-        $this->assertSame(9, $this->object->getFileLines());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // toArray()
@@ -85,14 +98,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldConvertToArray()
     {
-        $expected = array(
-            'name'     => $this->filename,
-            'source'   => trim(file_get_contents($this->path)),
-            'coverage' => array_fill(0, 9, null),
-        );
-
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // addCoverage()
@@ -102,12 +112,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldAddCoverage()
     {
-        $this->object->addCoverage(5, 1);
-
-        $expected = array_fill(0, 9, null);
-        $expected[5] = 1;
-
-        $this->assertSame($expected, $this->object->getCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getMetrics()
@@ -118,12 +127,11 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldReportLineCoverage0PercentWithoutAddingCoverage()
     {
-        $metrics = $this->object->getMetrics();
-
-        $this->assertSame(0, $metrics->getStatements());
-        $this->assertSame(0, $metrics->getCoveredStatements());
-        $this->assertSame(0, $metrics->getLineCoverage());
-        $this->assertSame(0, $this->object->reportLineCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -131,13 +139,10 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldReportLineCoverage100PercentAfterAddingCoverage()
     {
-        $this->object->addCoverage(6, 1);
-
-        $metrics = $this->object->getMetrics();
-
-        $this->assertSame(1, $metrics->getStatements());
-        $this->assertSame(1, $metrics->getCoveredStatements());
-        $this->assertSame(100, $metrics->getLineCoverage());
-        $this->assertSame(100, $this->object->reportLineCoverage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -15,22 +15,9 @@ class Foo
 
 function baz()
 {
-    // a one-line comment
-    print '*'; // a one-line comment
-
-    /* a one-line comment */
-    print '*'; /* a one-line comment */
-
-    /* a one-line comment
-     */
-    print '*'; /* a one-line comment
-    */
-
-    print '*'; // @codeCoverageIgnore
-
-    print '*'; // @codeCoverageIgnoreStart
-    print '*';
-    print '*'; // @codeCoverageIgnoreEnd
-
-    print '*';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

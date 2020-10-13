@@ -20,7 +20,11 @@ class CookiePlugin implements EventSubscriberInterface
      */
     public function __construct(CookieJarInterface $cookieJar = null)
     {
-        $this->cookieJar = $cookieJar ?: new ArrayCookieJar();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getSubscribedEvents()
@@ -38,7 +42,11 @@ class CookiePlugin implements EventSubscriberInterface
      */
     public function getCookieJar()
     {
-        return $this->cookieJar;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,14 +56,11 @@ class CookiePlugin implements EventSubscriberInterface
      */
     public function onRequestBeforeSend(Event $event)
     {
-        $request = $event['request'];
-        if (!$request->getParams()->get('cookies.disable')) {
-            $request->removeHeader('Cookie');
-            // Find cookies that match this request
-            foreach ($this->cookieJar->getMatchingCookies($request) as $cookie) {
-                $request->addCookie($cookie->getName(), $cookie->getValue());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,6 +70,10 @@ class CookiePlugin implements EventSubscriberInterface
      */
     public function onRequestSent(Event $event)
     {
-        $this->cookieJar->addCookiesFromResponse($event['response'], $event['request']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

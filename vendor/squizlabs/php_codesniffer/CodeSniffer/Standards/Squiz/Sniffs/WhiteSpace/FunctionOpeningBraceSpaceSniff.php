@@ -48,11 +48,11 @@ class Squiz_Sniffs_WhiteSpace_FunctionOpeningBraceSpaceSniff implements PHP_Code
      */
     public function register()
     {
-        return array(
-                T_FUNCTION,
-                T_CLOSURE,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -67,47 +67,10 @@ class Squiz_Sniffs_WhiteSpace_FunctionOpeningBraceSpaceSniff implements PHP_Code
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if (isset($tokens[$stackPtr]['scope_opener']) === false) {
-            // Probably an interface method.
-            return;
-        }
-
-        $openBrace   = $tokens[$stackPtr]['scope_opener'];
-        $nextContent = $phpcsFile->findNext(T_WHITESPACE, ($openBrace + 1), null, true);
-
-        if ($nextContent === $tokens[$stackPtr]['scope_closer']) {
-             // The next bit of content is the closing brace, so this
-             // is an empty function and should have a blank line
-             // between the opening and closing braces.
-            return;
-        }
-
-        $braceLine = $tokens[$openBrace]['line'];
-        $nextLine  = $tokens[$nextContent]['line'];
-
-        $found = ($nextLine - $braceLine - 1);
-        if ($found > 0) {
-            $error = 'Expected 0 blank lines after opening function brace; %s found';
-            $data  = array($found);
-            $fix   = $phpcsFile->addFixableError($error, $openBrace, 'SpacingAfter', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->beginChangeset();
-                for ($i = ($openBrace + 1); $i < $nextContent; $i++) {
-                    if ($tokens[$i]['line'] === $nextLine) {
-                        break;
-                    }
-
-                    $phpcsFile->fixer->replaceToken($i, '');
-                }
-
-                $phpcsFile->fixer->addNewline($openBrace);
-                $phpcsFile->fixer->endChangeset();
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

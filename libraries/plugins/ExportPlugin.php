@@ -111,7 +111,11 @@ abstract class ExportPlugin
      */
     public function exportRoutines($db, $aliases = array())
     {
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -123,7 +127,11 @@ abstract class ExportPlugin
      */
     public function exportEvents($db)
     {
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -161,7 +169,11 @@ abstract class ExportPlugin
         $dates = false,
         $aliases = array()
     ) {
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -178,7 +190,11 @@ abstract class ExportPlugin
         $tables,
         $metadataTypes
     ) {
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

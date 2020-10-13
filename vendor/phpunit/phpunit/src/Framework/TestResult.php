@@ -164,11 +164,11 @@ class PHPUnit_Framework_TestResult implements Countable
      */
     public function removeListener(PHPUnit_Framework_TestListener $listener)
     {
-        foreach ($this->listeners as $key => $_listener) {
-            if ($listener === $_listener) {
-                unset($this->listeners[$key]);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -519,7 +519,11 @@ class PHPUnit_Framework_TestResult implements Countable
      */
     public function topTestSuite()
     {
-        return $this->topTestSuite;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -740,7 +744,11 @@ class PHPUnit_Framework_TestResult implements Countable
      */
     public function count()
     {
-        return $this->runTests;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

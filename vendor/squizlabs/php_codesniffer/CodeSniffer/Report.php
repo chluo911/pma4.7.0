@@ -46,10 +46,11 @@ interface PHP_CodeSniffer_Report
      * @return boolean
      */
     public function generateFileReport(
-        $report,
-        PHP_CodeSniffer_File $phpcsFile,
-        $showSources=false,
-        $width=80
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     );
 
 
@@ -69,15 +70,10 @@ interface PHP_CodeSniffer_Report
      * @return void
      */
     public function generate(
-        $cachedData,
-        $totalFiles,
-        $totalErrors,
-        $totalWarnings,
-        $totalFixable,
-        $showSources=false,
-        $width=80,
-        $toScreen=true
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     );
-
-
 }//end interface

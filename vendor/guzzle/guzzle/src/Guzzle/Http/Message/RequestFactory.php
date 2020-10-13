@@ -48,24 +48,11 @@ class RequestFactory implements RequestFactoryInterface
 
     public function fromMessage($message)
     {
-        $parsed = ParserRegistry::getInstance()->getParser('message')->parseRequest($message);
-
-        if (!$parsed) {
-            return false;
-        }
-
-        $request = $this->fromParts($parsed['method'], $parsed['request_url'],
-            $parsed['headers'], $parsed['body'], $parsed['protocol'],
-            $parsed['version']);
-
-        // EntityEnclosingRequest adds an "Expect: 100-Continue" header when using a raw request body for PUT or POST
-        // requests. This factory method should accurately reflect the message, so here we are removing the Expect
-        // header if one was not supplied in the message.
-        if (!isset($parsed['headers']['Expect']) && !isset($parsed['headers']['expect'])) {
-            $request->removeHeader('Expect');
-        }
-
-        return $request;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function fromParts(
@@ -137,25 +124,11 @@ class RequestFactory implements RequestFactoryInterface
      */
     public function cloneRequestWithMethod(RequestInterface $request, $method)
     {
-        // Create the request with the same client if possible
-        if ($request->getClient()) {
-            $cloned = $request->getClient()->createRequest($method, $request->getUrl(), $request->getHeaders());
-        } else {
-            $cloned = $this->create($method, $request->getUrl(), $request->getHeaders());
-        }
-
-        $cloned->getCurlOptions()->replace($request->getCurlOptions()->toArray());
-        $cloned->setEventDispatcher(clone $request->getEventDispatcher());
-        // Ensure that that the Content-Length header is not copied if changing to GET or HEAD
-        if (!($cloned instanceof EntityEnclosingRequestInterface)) {
-            $cloned->removeHeader('Content-Length');
-        } elseif ($request instanceof EntityEnclosingRequestInterface) {
-            $cloned->setBody($request->getBody());
-        }
-        $cloned->getParams()->replace($request->getParams()->toArray());
-        $cloned->dispatch('request.clone', array('request' => $cloned));
-
-        return $cloned;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function applyOptions(RequestInterface $request, array $options = array(), $flags = self::OPTIONS_NONE)

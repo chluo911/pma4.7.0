@@ -41,13 +41,11 @@ class TableStyle
      */
     public function setPaddingChar($paddingChar)
     {
-        if (!$paddingChar) {
-            throw new LogicException('The padding char must not be empty');
-        }
-
-        $this->paddingChar = $paddingChar;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -165,9 +163,11 @@ class TableStyle
      */
     public function setCellRowFormat($cellRowFormat)
     {
-        $this->cellRowFormat = $cellRowFormat;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -213,9 +213,11 @@ class TableStyle
      */
     public function setBorderFormat($borderFormat)
     {
-        $this->borderFormat = $borderFormat;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -237,13 +239,11 @@ class TableStyle
      */
     public function setPadType($padType)
     {
-        if (!in_array($padType, array(STR_PAD_LEFT, STR_PAD_RIGHT, STR_PAD_BOTH), true)) {
-            throw new InvalidArgumentException('Invalid padding type. Expected one of (STR_PAD_LEFT, STR_PAD_RIGHT, STR_PAD_BOTH).');
-        }
-
-        $this->padType = $padType;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -13,52 +13,29 @@ class HeaderVisitorTest extends AbstractResponseVisitorTest
 {
     public function testVisitsLocation()
     {
-        $visitor = new Visitor();
-        $param = new Parameter(array(
-            'location' => 'header',
-            'name'     => 'ContentType',
-            'sentAs'   => 'Content-Type'
-        ));
-        $visitor->visit($this->command, $this->response, $param, $this->value);
-        $this->assertEquals('text/plain', $this->value['ContentType']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testVisitsLocationWithFilters()
     {
-        $visitor = new Visitor();
-        $param = new Parameter(array(
-            'location' => 'header',
-            'name'     => 'Content-Type',
-            'filters'  => array('strtoupper')
-        ));
-        $visitor->visit($this->command, $this->response, $param, $this->value);
-        $this->assertEquals('TEXT/PLAIN', $this->value['Content-Type']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testVisitsMappedPrefixHeaders()
     {
-        $visitor = new Visitor();
-        $param = new Parameter(array(
-            'location'             => 'header',
-            'name'                 => 'Metadata',
-            'sentAs'               => 'X-Baz-',
-            'type'                 => 'object',
-            'additionalProperties' => array(
-                'type' => 'string'
-            )
-        ));
-        $response = new Response(200, array(
-            'X-Baz-Test'     => 'ABC',
-            'X-Baz-Bar'      => array('123', '456'),
-            'Content-Length' => 3
-        ), 'Foo');
-        $visitor->visit($this->command, $response, $param, $this->value);
-        $this->assertEquals(array(
-            'Metadata' => array(
-                'Test' => 'ABC',
-                'Bar'  => array('123', '456')
-            )
-        ), $this->value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,15 +44,11 @@ class HeaderVisitorTest extends AbstractResponseVisitorTest
      */
     public function testDiscardingUnknownHeaders()
     {
-        $visitor = new Visitor();
-        $param = new Parameter(array(
-            'location'             => 'header',
-            'name'                 => 'Content-Type',
-            'additionalParameters' => false
-        ));
-        $visitor->visit($this->command, $this->response, $param, $this->value);
-        $this->assertEquals('text/plain', $this->value['Content-Type']);
-        $this->assertArrayNotHasKey('X-Foo', $this->value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -84,15 +57,10 @@ class HeaderVisitorTest extends AbstractResponseVisitorTest
      */
     public function testDiscardingUnknownPropertiesWithAliasing()
     {
-        $visitor = new Visitor();
-        $param = new Parameter(array(
-            'location'             => 'header',
-            'name'                 => 'ContentType',
-            'sentAs'               => 'Content-Type',
-            'additionalParameters' => false
-        ));
-        $visitor->visit($this->command, $this->response, $param, $this->value);
-        $this->assertEquals('text/plain', $this->value['ContentType']);
-        $this->assertArrayNotHasKey('X-Foo', $this->value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

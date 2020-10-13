@@ -60,7 +60,11 @@ class Blacklist
      */
     public function addClass($className)
     {
-        $this->classes[] = $className;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,7 +72,11 @@ class Blacklist
      */
     public function addSubclassesOf($className)
     {
-        $this->parentClasses[] = $className;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -76,7 +84,11 @@ class Blacklist
      */
     public function addImplementorsOf($interfaceName)
     {
-        $this->interfaces[] = $interfaceName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

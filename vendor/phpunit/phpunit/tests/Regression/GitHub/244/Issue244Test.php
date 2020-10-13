@@ -7,7 +7,11 @@ class Issue244Test extends PHPUnit_Framework_TestCase
      */
     public function testWorks()
     {
-        throw new Issue244Exception;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -16,7 +20,11 @@ class Issue244Test extends PHPUnit_Framework_TestCase
      */
     public function testFails()
     {
-        throw new Issue244Exception;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -25,7 +33,11 @@ class Issue244Test extends PHPUnit_Framework_TestCase
      */
     public function testFailsTooIfExpectationIsANumber()
     {
-        throw new Issue244Exception;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -34,7 +46,11 @@ class Issue244Test extends PHPUnit_Framework_TestCase
      */
     public function testFailsTooIfExceptionCodeIsANumber()
     {
-        throw new Issue244ExceptionIntCode;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -42,7 +58,11 @@ class Issue244Exception extends Exception
 {
     public function __construct()
     {
-        $this->code = '123StringCode';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -50,6 +70,10 @@ class Issue244ExceptionIntCode extends Exception
 {
     public function __construct()
     {
-        $this->code = 123;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

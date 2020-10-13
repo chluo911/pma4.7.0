@@ -11,6 +11,10 @@ abstract class AbstractLogAdapter implements LogAdapterInterface
 
     public function getLogObject()
     {
-        return $this->log;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

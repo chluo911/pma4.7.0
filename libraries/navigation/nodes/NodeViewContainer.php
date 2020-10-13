@@ -22,32 +22,10 @@ class NodeViewContainer extends NodeDatabaseChildContainer
      */
     public function __construct()
     {
-        parent::__construct(__('Views'), Node::CONTAINER);
-        $this->icon = PMA\libraries\Util::getImage('b_views.png', __('Views'));
-        $this->links = array(
-            'text' => 'db_structure.php?server=' . $GLOBALS['server']
-                . '&amp;db=%1$s&amp;tbl_type=view',
-            'icon' => 'db_structure.php?server=' . $GLOBALS['server']
-                . '&amp;db=%1$s&amp;tbl_type=view',
-        );
-        $this->classes = 'viewContainer subContainer';
-        $this->real_name = 'views';
-
-        $new_label = _pgettext('Create new view', 'New');
-        $new = NodeFactory::getInstance(
-            'Node',
-            $new_label
-        );
-        $new->isNew = true;
-        $new->icon = PMA\libraries\Util::getImage('b_view_add.png', $new_label);
-        $new->links = array(
-            'text' => 'view_create.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s',
-            'icon' => 'view_create.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s',
-        );
-        $new->classes = 'new_view italics';
-        $this->addChild($new);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

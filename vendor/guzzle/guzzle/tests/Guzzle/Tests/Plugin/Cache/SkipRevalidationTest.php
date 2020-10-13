@@ -13,7 +13,10 @@ class SkipRevalidationTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testSkipsRequestRevalidation()
     {
-        $skip = new SkipRevalidation();
-        $this->assertTrue($skip->revalidate(new Request('GET', 'http://foo.com'), new Response(200)));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

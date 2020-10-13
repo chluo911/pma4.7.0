@@ -42,7 +42,11 @@ final class Location
      */
     public function getLineNumber()
     {
-        return $this->lineNumber;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,6 +56,10 @@ final class Location
      */
     public function getColumnNumber()
     {
-        return $this->columnNumber;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

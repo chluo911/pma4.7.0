@@ -21,6 +21,10 @@ class NamespacedProxyAdapterTest extends ProxyAdapterTest
 {
     public function createCachePool($defaultLifetime = 0)
     {
-        return new ProxyAdapter(new ArrayAdapter($defaultLifetime), 'foo', $defaultLifetime);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

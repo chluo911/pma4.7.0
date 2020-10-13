@@ -77,12 +77,11 @@ class Blob
      */
     public function getMimetype()
     {
-        if (null === $this->mimetype) {
-            $finfo = new \finfo(FILEINFO_MIME);
-            $this->mimetype = $finfo->buffer($this->getContent());
-        }
-
-        return $this->mimetype;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -92,7 +91,11 @@ class Blob
      */
     public function isBinary()
     {
-        return !$this->isText();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -102,6 +105,10 @@ class Blob
      */
     public function isText()
     {
-        return (bool) preg_match('#^text/|^application/xml#', $this->getMimetype());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

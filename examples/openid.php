@@ -39,37 +39,20 @@ $AUTH_MAP = array(
  */
 function Show_page($contents)
 {
-    header('Content-Type: text/html; charset=utf-8');
-    echo '<?xml version="1.0" encoding="utf-8"?>' , "\n";
-    ?>
-    <!DOCTYPE HTML>
-    <html lang="en" dir="ltr">
-    <head>
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
-    <meta charset="utf-8" />
-    <title>phpMyAdmin OpenID signon example</title>
-    </head>
-    <body>
-    <?php
-    if (isset($_SESSION) && isset($_SESSION['PMA_single_signon_error_message'])) {
-        echo '<p class="error">' , $_SESSION['PMA_single_signon_message'] , '</p>';
-        unset($_SESSION['PMA_single_signon_message']);
-    }
-    echo $contents;
-    ?>
-    </body>
-    </html>
-    <?php
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 function Die_error($e)
 {
-    $contents = "<div class='relyingparty_results'>\n";
-    $contents .= "<pre>" . htmlspecialchars($e->getMessage()) . "</pre>\n";
-    $contents .= "</div class='relyingparty_results'>";
-    Show_page($contents);
-    exit;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 
@@ -110,7 +93,7 @@ OpenID: <input type="text" name="identifier" /><br />
 /* Grab identifier */
 if (isset($_POST['identifier']) && is_string($_POST['identifier'])) {
     $identifier = $_POST['identifier'];
-} else if (isset($_SESSION['identifier']) && is_string($_SESSION['identifier'])) {
+} elseif (isset($_SESSION['identifier']) && is_string($_SESSION['identifier'])) {
     $identifier = $_SESSION['identifier'];
 } else {
     $identifier = null;

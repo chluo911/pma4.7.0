@@ -22,7 +22,11 @@ trait LoggerTrait
      */
     public function emergency($message, array $context = array())
     {
-        $this->log(LogLevel::EMERGENCY, $message, $context);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,7 +42,11 @@ trait LoggerTrait
      */
     public function alert($message, array $context = array())
     {
-        $this->log(LogLevel::ALERT, $message, $context);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,7 +61,11 @@ trait LoggerTrait
      */
     public function critical($message, array $context = array())
     {
-        $this->log(LogLevel::CRITICAL, $message, $context);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,7 +108,11 @@ trait LoggerTrait
      */
     public function notice($message, array $context = array())
     {
-        $this->log(LogLevel::NOTICE, $message, $context);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

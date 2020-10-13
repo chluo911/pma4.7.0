@@ -35,16 +35,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public static function getServer()
     {
-        if (!self::$server) {
-            self::$server = new Server();
-            if (self::$server->isRunning()) {
-                self::$server->flush();
-            } else {
-                self::$server->start();
-            }
-        }
-
-        return self::$server;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,7 +49,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public static function setServiceBuilder(ServiceBuilderInterface $builder)
     {
-        self::$serviceBuilder = $builder;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,11 +63,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public static function getServiceBuilder()
     {
-        if (!self::$serviceBuilder) {
-            throw new RuntimeException('No service builder has been set via setServiceBuilder()');
-        }
-
-        return self::$serviceBuilder;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,19 +80,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function hasSubscriber(HasDispatcherInterface $dispatcher, EventSubscriberInterface $subscriber)
     {
-        $class = get_class($subscriber);
-        $all = array_keys(call_user_func(array($class, 'getSubscribedEvents')));
-
-        foreach ($all as $i => $event) {
-            foreach ($dispatcher->getEventDispatcher()->getListeners($event) as $e) {
-                if ($e[0] === $subscriber) {
-                    unset($all[$i]);
-                    break;
-                }
-            }
-        }
-
-        return count($all) == 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,14 +96,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public function getWildcardObserver(HasDispatcherInterface $hasDispatcher)
     {
-        $class = get_class($hasDispatcher);
-        $o = new MockObserver();
-        $events = call_user_func(array($class, 'getAllEvents'));
-        foreach ($events as $event) {
-            $hasDispatcher->getEventDispatcher()->addListener($event, array($o, 'update'));
-        }
-
-        return $o;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -124,7 +112,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public static function setMockBasePath($path)
     {
-        self::$mockBasePath = $path;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -136,9 +128,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public function addMockedRequest(RequestInterface $request)
     {
-        $this->requests[] = $request;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -148,7 +142,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public function getMockedRequests()
     {
-        return $this->requests;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -160,9 +158,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public function getMockResponse($path)
     {
-        return $path instanceof Response
-            ? $path
-            : MockPlugin::getMockFile(self::$mockBasePath . DIRECTORY_SEPARATOR . $path);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -180,27 +180,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public function setMockResponse(Client $client, $paths)
     {
-        $this->requests = array();
-        $that = $this;
-        $mock = new MockPlugin(null, true);
-        $client->getEventDispatcher()->removeSubscriber($mock);
-        $mock->getEventDispatcher()->addListener('mock.request', function(Event $event) use ($that) {
-            $that->addMockedRequest($event['request']);
-        });
-
-        if ($paths instanceof Response) {
-            // A single response instance has been specified, create an array with that instance
-            // as the only element for the following loop to work as expected
-            $paths = array($paths);
-        }
-
-        foreach ((array) $paths as $path) {
-            $mock->addResponse($this->getMockResponse($path));
-        }
-
-        $client->getEventDispatcher()->addSubscriber($mock);
-
-        return $mock;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -216,9 +200,11 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public function compareHeaders($filteredHeaders, $actualHeaders)
     {
-        $comparison = new HeaderComparison();
-
-        return $comparison->compare($filteredHeaders, $actualHeaders);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -230,6 +216,10 @@ abstract class GuzzleTestCase extends \PHPUnit_Framework_TestCase
      */
     public function assertContainsIns($needle, $haystack, $message = null)
     {
-        $this->assertContains(strtolower($needle), strtolower($haystack), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

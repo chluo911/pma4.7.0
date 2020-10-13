@@ -47,7 +47,11 @@ abstract class CoverallsApi
      */
     public function getConfiguration()
     {
-        return $this->config;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,9 +63,11 @@ abstract class CoverallsApi
      */
     public function setHttpClient(Client $client)
     {
-        $this->client = $client;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -71,6 +77,10 @@ abstract class CoverallsApi
      */
     public function getHttpClient()
     {
-        return $this->client;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

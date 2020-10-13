@@ -14,14 +14,19 @@ class VersionTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEmitsWarnings()
     {
-        Version::$emitWarnings = true;
-        Version::warn('testing!');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCanSilenceWarnings()
     {
-        Version::$emitWarnings = false;
-        Version::warn('testing!');
-        Version::$emitWarnings = true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

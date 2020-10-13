@@ -37,7 +37,11 @@ class SerializableArrayObjectAsset extends ArrayObject implements Serializable
      */
     public function __construct()
     {
-        throw new BadMethodCallException('Not supposed to be called!');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,7 +49,11 @@ class SerializableArrayObjectAsset extends ArrayObject implements Serializable
      */
     public function serialize()
     {
-        return '';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,6 +65,10 @@ class SerializableArrayObjectAsset extends ArrayObject implements Serializable
      */
     public function unserialize($serialized)
     {
-        throw new BadMethodCallException('Not supposed to be called!');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

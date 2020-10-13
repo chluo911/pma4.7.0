@@ -6,37 +6,57 @@ use PhpSpec\ObjectBehavior;
 
 class CallbackTokenSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith('get_class');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_implements_TokenInterface()
+    public function it_implements_TokenInterface()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Argument\Token\TokenInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_not_last()
+    public function it_is_not_last()
     {
-        $this->shouldNotBeLast();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_scores_7_if_argument_matches_callback()
+    public function it_scores_7_if_argument_matches_callback()
     {
-        $this->beConstructedWith(function ($argument) { return 2 === $argument; });
-
-        $this->scoreArgument(2)->shouldReturn(7);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_does_not_scores_if_argument_does_not_match_callback()
+    public function it_does_not_scores_if_argument_does_not_match_callback()
     {
-        $this->beConstructedWith(function ($argument) { return 2 === $argument; });
-
-        $this->scoreArgument(5)->shouldReturn(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_string_representation_should_tell_that_its_callback()
+    public function its_string_representation_should_tell_that_its_callback()
     {
-        $this->__toString()->shouldReturn('callback()');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

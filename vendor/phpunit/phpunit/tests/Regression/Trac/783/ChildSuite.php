@@ -6,10 +6,10 @@ class ChildSuite
 {
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Child');
-        $suite->addTestSuite('OneTest');
-        $suite->addTestSuite('TwoTest');
-
-        return $suite;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

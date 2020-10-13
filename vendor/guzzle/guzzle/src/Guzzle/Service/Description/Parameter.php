@@ -285,9 +285,11 @@ class Parameter
      */
     public function setType($type)
     {
-        $this->type = $type;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -381,9 +383,11 @@ class Parameter
      */
     public function setMinimum($min)
     {
-        $this->minimum = $min;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -405,9 +409,11 @@ class Parameter
      */
     public function setMaximum($max)
     {
-        $this->maximum = $max;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -429,9 +435,11 @@ class Parameter
      */
     public function setMinLength($min)
     {
-        $this->minLength = $min;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -453,9 +461,11 @@ class Parameter
      */
     public function setMaxLength($max)
     {
-        $this->maxLength = $max;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -477,9 +487,11 @@ class Parameter
      */
     public function setMaxItems($max)
     {
-        $this->maxItems = $max;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -501,9 +513,11 @@ class Parameter
      */
     public function setMinItems($min)
     {
-        $this->minItems = $min;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -525,9 +539,11 @@ class Parameter
      */
     public function setLocation($location)
     {
-        $this->location = $location;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -538,7 +554,11 @@ class Parameter
      */
     public function getSentAs()
     {
-        return $this->sentAs;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -550,9 +570,11 @@ class Parameter
      */
     public function setSentAs($name)
     {
-        $this->sentAs = $name;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -628,7 +650,11 @@ class Parameter
      */
     public function getFilters()
     {
-        return $this->filters ?: array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -745,10 +771,11 @@ class Parameter
      */
     public function removeProperty($name)
     {
-        unset($this->properties[$name]);
-        $this->propertiesCache = null;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -791,9 +818,11 @@ class Parameter
      */
     public function setAdditionalProperties($additional)
     {
-        $this->additionalProperties = $additional;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -805,11 +834,11 @@ class Parameter
      */
     public function setItems(Parameter $items = null)
     {
-        if ($this->items = $items) {
-            $this->items->setParent($this);
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -846,9 +875,11 @@ class Parameter
      */
     public function setInstanceOf($instanceOf)
     {
-        $this->instanceOf = $instanceOf;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -870,9 +901,11 @@ class Parameter
      */
     public function setEnum(array $enum = null)
     {
-        $this->enum = $enum;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -894,9 +927,11 @@ class Parameter
      */
     public function setPattern($pattern)
     {
-        $this->pattern = $pattern;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -906,7 +941,11 @@ class Parameter
      */
     public function getFormat()
     {
-        return $this->format;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -918,8 +957,10 @@ class Parameter
      */
     public function setFormat($format)
     {
-        $this->format = $format;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

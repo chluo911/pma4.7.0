@@ -58,7 +58,11 @@ class PHPUnit_Extensions_Selenium2TestCase_ElementCriteria extends ArrayObject
 {
     public function __construct($strategy)
     {
-        $this['using'] = $strategy;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,7 +70,10 @@ class PHPUnit_Extensions_Selenium2TestCase_ElementCriteria extends ArrayObject
      */
     public function value($searchTarget)
     {
-        $this['value'] = $searchTarget;
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

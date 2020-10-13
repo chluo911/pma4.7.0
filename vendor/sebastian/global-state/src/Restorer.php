@@ -26,15 +26,11 @@ class Restorer
      */
     public function restoreFunctions(Snapshot $snapshot)
     {
-        if (!function_exists('uopz_delete')) {
-            throw new RuntimeException('The uopz_delete() function is required for this operation');
-        }
-
-        $functions = get_defined_functions();
-
-        foreach (array_diff($functions['user'], $snapshot->functions()) as $function) {
-            uopz_delete($function);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

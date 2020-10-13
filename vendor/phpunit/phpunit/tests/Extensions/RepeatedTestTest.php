@@ -18,47 +18,46 @@ class Extensions_RepeatedTestTest extends PHPUnit_Framework_TestCase
 
     public function __construct()
     {
-        $this->suite = new PHPUnit_Framework_TestSuite;
-
-        $this->suite->addTest(new Success);
-        $this->suite->addTest(new Success);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRepeatedOnce()
     {
-        $test = new PHPUnit_Extensions_RepeatedTest($this->suite, 1);
-        $this->assertEquals(2, count($test));
-
-        $result = $test->run();
-        $this->assertEquals(2, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRepeatedMoreThanOnce()
     {
-        $test = new PHPUnit_Extensions_RepeatedTest($this->suite, 3);
-        $this->assertEquals(6, count($test));
-
-        $result = $test->run();
-        $this->assertEquals(6, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRepeatedZero()
     {
-        $test = new PHPUnit_Extensions_RepeatedTest($this->suite, 0);
-        $this->assertEquals(0, count($test));
-
-        $result = $test->run();
-        $this->assertEquals(0, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRepeatedNegative()
     {
-        try {
-            $test = new PHPUnit_Extensions_RepeatedTest($this->suite, -1);
-        } catch (Exception $e) {
-            return;
-        }
-
-        $this->fail('Should throw an Exception');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -20,23 +20,28 @@ class ConsoleOutputTest extends TestCase
 {
     public function testConstructor()
     {
-        $output = new ConsoleOutput(Output::VERBOSITY_QUIET, true);
-        $this->assertEquals(Output::VERBOSITY_QUIET, $output->getVerbosity(), '__construct() takes the verbosity as its first argument');
-        $this->assertSame($output->getFormatter(), $output->getErrorOutput()->getFormatter(), '__construct() takes a formatter or null as the third argument');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetFormatter()
     {
-        $output = new ConsoleOutput();
-        $outputFormatter = new OutputFormatter();
-        $output->setFormatter($outputFormatter);
-        $this->assertSame($outputFormatter, $output->getFormatter());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetVerbosity()
     {
-        $output = new ConsoleOutput();
-        $output->setVerbosity(Output::VERBOSITY_VERBOSE);
-        $this->assertSame(Output::VERBOSITY_VERBOSE, $output->getVerbosity());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

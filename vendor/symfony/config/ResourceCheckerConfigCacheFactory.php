@@ -29,7 +29,11 @@ class ResourceCheckerConfigCacheFactory implements ConfigCacheFactoryInterface
      */
     public function __construct(array $resourceCheckers = array())
     {
-        $this->resourceCheckers = $resourceCheckers;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -37,15 +41,10 @@ class ResourceCheckerConfigCacheFactory implements ConfigCacheFactoryInterface
      */
     public function cache($file, $callback)
     {
-        if (!is_callable($callback)) {
-            throw new \InvalidArgumentException(sprintf('Invalid type for callback argument. Expected callable, but got "%s".', gettype($callback)));
-        }
-
-        $cache = new ResourceCheckerConfigCache($file, $this->resourceCheckers);
-        if (!$cache->isFresh()) {
-            call_user_func($callback, $cache);
-        }
-
-        return $cache;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

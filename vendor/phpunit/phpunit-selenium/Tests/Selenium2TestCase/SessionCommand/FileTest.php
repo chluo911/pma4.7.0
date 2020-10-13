@@ -4,20 +4,10 @@ class Tests_Selenium2TestCase_SessionCommand_FileTest extends Tests_Selenium2Tes
 {
     public function testUploadFile()
     {
-        $this->markTestIncomplete("Cannot get this to run <del>reliably</del><em>at all</em> on Travis CI.");
-        $this->url('php/file_upload.php');
-
-        $remote_file = $this->file('selenium-1-tests/html/banner.gif');
-
-        $this->byName('upload_here')
-            ->value($remote_file);
-
-        $this->byId('submit')
-            ->click();
-
-        $msg_displayed    = $this->byId('uploaded')
-            ->displayed();
-
-        $this->assertNotEmpty($msg_displayed);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

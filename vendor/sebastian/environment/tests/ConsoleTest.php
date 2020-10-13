@@ -21,7 +21,11 @@ class ConsoleTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->console = new Console;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -29,7 +33,11 @@ class ConsoleTest extends PHPUnit_Framework_TestCase
      */
     public function testCanDetectIfStdoutIsInteractiveByDefault()
     {
-        $this->assertInternalType('boolean', $this->console->isInteractive());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -37,7 +45,11 @@ class ConsoleTest extends PHPUnit_Framework_TestCase
      */
     public function testCanDetectIfFileDescriptorIsInteractive()
     {
-        $this->assertInternalType('boolean', $this->console->isInteractive(STDOUT));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,7 +58,11 @@ class ConsoleTest extends PHPUnit_Framework_TestCase
      */
     public function testCanDetectColorSupport()
     {
-        $this->assertInternalType('boolean', $this->console->hasColorSupport());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,6 +71,10 @@ class ConsoleTest extends PHPUnit_Framework_TestCase
      */
     public function testCanDetectNumberOfColumns()
     {
-        $this->assertInternalType('integer', $this->console->getNumberOfColumns());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

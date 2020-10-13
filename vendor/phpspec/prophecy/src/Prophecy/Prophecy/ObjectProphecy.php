@@ -97,9 +97,11 @@ class ObjectProphecy implements ProphecyInterface
      */
     public function willBeConstructedWith(array $arguments = null)
     {
-        $this->lazyDouble->setArguments($arguments);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,10 +187,11 @@ class ObjectProphecy implements ProphecyInterface
      */
     public function makeProphecyMethodCall($methodName, array $arguments)
     {
-        $arguments = $this->revealer->reveal($arguments);
-        $return    = $this->callCenter->makeCall($this, $methodName, $arguments);
-
-        return $this->revealer->reveal($return);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -244,13 +247,15 @@ class ObjectProphecy implements ProphecyInterface
         foreach ($this->getMethodProphecies($methodName) as $prophecy) {
             $argumentsWildcard = $prophecy->getArgumentsWildcard();
             $comparator = $this->comparatorFactory->getComparatorFor(
-                $argumentsWildcard, $arguments
+                $argumentsWildcard,
+                $arguments
             );
 
             try {
                 $comparator->assertEquals($argumentsWildcard, $arguments);
                 return $prophecy;
-            } catch (ComparisonFailure $failure) {}
+            } catch (ComparisonFailure $failure) {
+            }
         }
 
         return new MethodProphecy($this, $methodName, $arguments);

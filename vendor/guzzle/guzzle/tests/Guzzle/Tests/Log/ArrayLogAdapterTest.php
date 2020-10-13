@@ -8,16 +8,19 @@ class ArrayLogAdapterTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testLog()
     {
-        $adapter = new ArrayLogAdapter();
-        $adapter->log('test', \LOG_NOTICE, '127.0.0.1');
-        $this->assertEquals(array(array('message' => 'test', 'priority' => \LOG_NOTICE, 'extras' => '127.0.0.1')), $adapter->getLogs());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testClearLog()
     {
-        $adapter = new ArrayLogAdapter();
-        $adapter->log('test', \LOG_NOTICE, '127.0.0.1');
-        $adapter->clearLogs();
-        $this->assertEquals(array(), $adapter->getLogs());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

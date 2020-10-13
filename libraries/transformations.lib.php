@@ -135,7 +135,6 @@ function PMA_getAvailableMIMEtypes()
                     $stack['input_transformation'][] = $mimetype . ': ' . $parts[2];
                     $stack['input_transformation_file'][] = $sd . $file;
                 }
-
             } elseif (preg_match('|^[^.].*\.php$|', $file)) {
                 // File is a plain mimetype, no functions.
                 $base = str_replace('.php', '', $file);
@@ -244,7 +243,10 @@ function PMA_getMIME($db, $table, $strict = false, $fullName = false)
               OR `input_transformation` != \'\'
               OR `input_transformation_options` != \'\'' : '') . ')';
     $result = $GLOBALS['dbi']->fetchResult(
-        $com_qry, 'column_name', null, $GLOBALS['controllink']
+        $com_qry,
+        'column_name',
+        null,
+        $GLOBALS['controllink']
     );
 
     foreach ($result as $column => $values) {
@@ -313,8 +315,16 @@ function PMA_getMIME($db, $table, $strict = false, $fullName = false)
  *
  * @return boolean  true, if comment-query was made.
  */
-function PMA_setMIME($db, $table, $key, $mimetype, $transformation,
-    $transformationOpts, $inputTransform, $inputTransformOpts, $forcedelete = false
+function PMA_setMIME(
+    $db,
+    $table,
+    $key,
+    $mimetype,
+    $transformation,
+    $transformationOpts,
+    $inputTransform,
+    $inputTransformOpts,
+    $forcedelete = false
 ) {
     $cfgRelation = PMA_getRelationsParam();
 
@@ -336,7 +346,9 @@ function PMA_setMIME($db, $table, $key, $mimetype, $transformation,
             AND `column_name` = \'' . $GLOBALS['dbi']->escapeString($key) . '\'';
 
     $test_rs   = PMA_queryAsControlUser(
-        $test_qry, true, PMA\libraries\DatabaseInterface::QUERY_STORE
+        $test_qry,
+        true,
+        PMA\libraries\DatabaseInterface::QUERY_STORE
     );
 
     if ($test_rs && $GLOBALS['dbi']->numRows($test_rs) > 0) {
@@ -378,7 +390,6 @@ function PMA_setMIME($db, $table, $key, $mimetype, $transformation,
         || strlen($transformation) > 0
         || strlen($transformationOpts) > 0
     ) {
-
         $upd_query = 'INSERT INTO '
             . PMA\libraries\Util::backquote($cfgRelation['db'])
             . '.' . PMA\libraries\Util::backquote($cfgRelation['column_info'])
@@ -432,21 +443,15 @@ function PMA_clearTransformations($db, $table = '', $column = '')
         . ' WHERE ';
 
     if (($column != '') && ($table != '')) {
-
         $delete_sql .= '`db_name` = \'' . $db . '\' AND '
             . '`table_name` = \'' . $table . '\' AND '
             . '`column_name` = \'' . $column . '\' ';
-
-    } else if ($table != '') {
-
+    } elseif ($table != '') {
         $delete_sql .= '`db_name` = \'' . $db . '\' AND '
             . '`table_name` = \'' . $table . '\' ';
-
     } else {
         $delete_sql .= '`db_name` = \'' . $db . '\' ';
     }
 
     return $GLOBALS['dbi']->tryQuery($delete_sql);
-
 }
-

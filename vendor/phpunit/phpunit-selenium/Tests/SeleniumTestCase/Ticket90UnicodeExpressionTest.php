@@ -59,14 +59,10 @@ class Tests_SeleniumTestCase_Ticket90UnicodeExpressionTest extends Tests_Seleniu
      */
     public function testSpecialChars()
     {
-        $testString = 'Lägg i kundvagn | Příliš žluťoučký kůň úpěl ďábelské ódy';
-
-        $this->open('html/test_open.html');
-        $this->storeExpression($testString, 'foo');
-
-        $this->assertSame(
-        		$testString,
-        		$this->getExpression('${foo}')
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

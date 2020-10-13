@@ -6,6 +6,7 @@
  * @package PhpMyAdmin
  */
 namespace PMA\libraries;
+
 use PMA\libraries\Util;
 
 /**
@@ -143,7 +144,10 @@ class Charsets
      * @return string
      */
     public static function getCharsetDropdownBox(
-        $name = null, $id = null, $default = null, $label = true,
+        $name = null,
+        $id = null,
+        $default = null,
+        $label = true,
         $submitOnChange = false
     ) {
         self::loadCharsets();
@@ -189,7 +193,10 @@ class Charsets
      * @return string
      */
     public static function getCollationDropdownBox(
-        $name = null, $id = null, $default = null, $label = true,
+        $name = null,
+        $id = null,
+        $default = null,
+        $label = true,
         $submitOnChange = false
     ) {
         self::loadCharsets();

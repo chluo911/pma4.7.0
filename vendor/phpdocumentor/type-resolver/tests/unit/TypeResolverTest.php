@@ -39,11 +39,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingKeywords($keyword, $expectedClass)
     {
-        $fixture = new TypeResolver();
-
-        $resolvedType = $fixture->resolve($keyword, new Context(''));
-
-        $this->assertInstanceOf($expectedClass, $resolvedType);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,14 +62,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingFQSENs($fqsen)
     {
-        $fixture = new TypeResolver();
-
-        /** @var Object_ $resolvedType */
-        $resolvedType = $fixture->resolve($fqsen, new Context(''));
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Object_', $resolvedType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Fqsen', $resolvedType->getFqsen());
-        $this->assertSame($fqsen, (string)$resolvedType);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -84,14 +81,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingRelativeQSENsBasedOnNamespace()
     {
-        $fixture = new TypeResolver();
-
-        /** @var Object_ $resolvedType */
-        $resolvedType = $fixture->resolve('DocBlock', new Context('phpDocumentor\Reflection'));
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Object_', $resolvedType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Fqsen', $resolvedType->getFqsen());
-        $this->assertSame('\phpDocumentor\Reflection\DocBlock', (string)$resolvedType);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -106,17 +100,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingRelativeQSENsBasedOnNamespaceAlias()
     {
-        $fixture = new TypeResolver();
-
-        /** @var Object_ $resolvedType */
-        $resolvedType = $fixture->resolve(
-            'm\MockInterface',
-            new Context('phpDocumentor\Reflection', ['m' => '\Mockery'])
-        );
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Object_', $resolvedType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Fqsen', $resolvedType->getFqsen());
-        $this->assertSame('\Mockery\MockInterface', (string)$resolvedType);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -130,15 +118,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingTypedArrays()
     {
-        $fixture = new TypeResolver();
-
-        /** @var Array_ $resolvedType */
-        $resolvedType = $fixture->resolve('string[]', new Context(''));
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Array_', $resolvedType);
-        $this->assertSame('string[]', (string)$resolvedType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Compound', $resolvedType->getKeyType());
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\String_', $resolvedType->getValueType());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -152,23 +136,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingNestedTypedArrays()
     {
-        $fixture = new TypeResolver();
-
-        /** @var Array_ $resolvedType */
-        $resolvedType = $fixture->resolve('string[][]', new Context(''));
-
-        /** @var Array_ $childValueType */
-        $childValueType = $resolvedType->getValueType();
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Array_', $resolvedType);
-
-        $this->assertSame('string[][]', (string)$resolvedType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Compound', $resolvedType->getKeyType());
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Array_', $childValueType);
-
-        $this->assertSame('string[]', (string)$childValueType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Compound', $childValueType->getKeyType());
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\String_', $childValueType->getValueType());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,23 +157,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingCompoundTypes()
     {
-        $fixture = new TypeResolver();
-
-        /** @var Compound $resolvedType */
-        $resolvedType = $fixture->resolve('string|Reflection\DocBlock', new Context('phpDocumentor'));
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Compound', $resolvedType);
-        $this->assertSame('string|\phpDocumentor\Reflection\DocBlock', (string)$resolvedType);
-
-        /** @var String $secondType */
-        $firstType = $resolvedType->get(0);
-
-        /** @var Object_ $secondType */
-        $secondType = $resolvedType->get(1);
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\String_', $firstType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Object_', $secondType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Fqsen', $secondType->getFqsen());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -218,24 +178,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingCompoundTypedArrayTypes()
     {
-        $fixture = new TypeResolver();
-
-        /** @var Compound $resolvedType */
-        $resolvedType = $fixture->resolve('\stdClass[]|Reflection\DocBlock[]', new Context('phpDocumentor'));
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Compound', $resolvedType);
-        $this->assertSame('\stdClass[]|\phpDocumentor\Reflection\DocBlock[]', (string)$resolvedType);
-
-        /** @var Array_ $secondType */
-        $firstType = $resolvedType->get(0);
-
-        /** @var Array_ $secondType */
-        $secondType = $resolvedType->get(1);
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Array_', $firstType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Array_', $secondType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Object_', $firstType->getValueType());
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Object_', $secondType->getValueType());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -258,24 +205,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testResolvingCompoundTypesWithTwoArrays()
     {
-        $fixture = new TypeResolver();
-
-        /** @var Compound $resolvedType */
-        $resolvedType = $fixture->resolve('integer[]|string[]', new Context(''));
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Compound', $resolvedType);
-        $this->assertSame('int[]|string[]', (string)$resolvedType);
-
-        /** @var Array_ $firstType */
-        $firstType = $resolvedType->get(0);
-
-        /** @var Array_ $secondType */
-        $secondType = $resolvedType->get(1);
-
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Array_', $firstType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Integer', $firstType->getValueType());
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\Array_', $secondType);
-        $this->assertInstanceOf('phpDocumentor\Reflection\Types\String_', $secondType->getValueType());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -287,17 +221,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddingAKeyword()
     {
-        // Assign
-        $typeMock = m::mock(Type::class);
-
-        // Act
-        $fixture = new TypeResolver();
-        $fixture->addKeyword('mock', get_class($typeMock));
-
-        // Assert
-        $result = $fixture->resolve('mock', new Context(''));
-        $this->assertInstanceOf(get_class($typeMock), $result);
-        $this->assertNotSame($typeMock, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -308,8 +236,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddingAKeywordFailsIfTypeClassDoesNotExist()
     {
-        $fixture = new TypeResolver();
-        $fixture->addKeyword('mock', 'IDoNotExist');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -320,8 +251,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddingAKeywordFailsIfTypeClassDoesNotImplementTypeInterface()
     {
-        $fixture = new TypeResolver();
-        $fixture->addKeyword('mock', 'stdClass');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -333,8 +267,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownIfTypeIsEmpty()
     {
-        $fixture = new TypeResolver();
-        $fixture->resolve(' ', new Context(''));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -346,8 +283,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownIfTypeIsNotAString()
     {
-        $fixture = new TypeResolver();
-        $fixture->resolve(['a'], new Context(''));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -357,27 +297,11 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function provideKeywords()
     {
-        return [
-            ['string', 'phpDocumentor\Reflection\Types\String_'],
-            ['int', 'phpDocumentor\Reflection\Types\Integer'],
-            ['integer', 'phpDocumentor\Reflection\Types\Integer'],
-            ['float', 'phpDocumentor\Reflection\Types\Float_'],
-            ['double', 'phpDocumentor\Reflection\Types\Float_'],
-            ['bool', 'phpDocumentor\Reflection\Types\Boolean'],
-            ['boolean', 'phpDocumentor\Reflection\Types\Boolean'],
-            ['resource', 'phpDocumentor\Reflection\Types\Resource'],
-            ['null', 'phpDocumentor\Reflection\Types\Null_'],
-            ['callable', 'phpDocumentor\Reflection\Types\Callable_'],
-            ['callback', 'phpDocumentor\Reflection\Types\Callable_'],
-            ['array', 'phpDocumentor\Reflection\Types\Array_'],
-            ['scalar', 'phpDocumentor\Reflection\Types\Scalar'],
-            ['object', 'phpDocumentor\Reflection\Types\Object_'],
-            ['mixed', 'phpDocumentor\Reflection\Types\Mixed'],
-            ['void', 'phpDocumentor\Reflection\Types\Void_'],
-            ['$this', 'phpDocumentor\Reflection\Types\This'],
-            ['static', 'phpDocumentor\Reflection\Types\Static_'],
-            ['self', 'phpDocumentor\Reflection\Types\Self_'],
-        ];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -387,9 +311,10 @@ class TypeResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function provideFqcn()
     {
-        return [
-            'namespace' => ['\phpDocumentor\Reflection'],
-            'class'     => ['\phpDocumentor\Reflection\DocBlock'],
-        ];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

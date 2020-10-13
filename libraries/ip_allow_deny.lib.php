@@ -152,7 +152,9 @@ function PMA_ipv6MaskTest($test_range, $ip_to_test)
         // what range do we operate on?
         $range_match = array();
         $match = preg_match(
-            '/\[([0-9a-f]+)\-([0-9a-f]+)\]/', $test_range, $range_match
+            '/\[([0-9a-f]+)\-([0-9a-f]+)\]/',
+            $test_range,
+            $range_match
         );
         if ($match) {
             $range_start = $range_match[1];
@@ -298,4 +300,3 @@ function PMA_allowDeny($type)
 
     return false;
 } // end of the "PMA_AllowDeny()" function
-

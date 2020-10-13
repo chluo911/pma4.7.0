@@ -29,7 +29,11 @@ class FileLocator implements FileLocatorInterface
      */
     public function __construct($paths = array())
     {
-        $this->paths = (array) $paths;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -37,41 +41,11 @@ class FileLocator implements FileLocatorInterface
      */
     public function locate($name, $currentPath = null, $first = true)
     {
-        if ('' == $name) {
-            throw new \InvalidArgumentException('An empty file name is not valid to be located.');
-        }
-
-        if ($this->isAbsolutePath($name)) {
-            if (!file_exists($name)) {
-                throw new FileLocatorFileNotFoundException(sprintf('The file "%s" does not exist.', $name));
-            }
-
-            return $name;
-        }
-
-        $paths = $this->paths;
-
-        if (null !== $currentPath) {
-            array_unshift($paths, $currentPath);
-        }
-
-        $paths = array_unique($paths);
-        $filepaths = array();
-
-        foreach ($paths as $path) {
-            if (@file_exists($file = $path.DIRECTORY_SEPARATOR.$name)) {
-                if (true === $first) {
-                    return $file;
-                }
-                $filepaths[] = $file;
-            }
-        }
-
-        if (!$filepaths) {
-            throw new FileLocatorFileNotFoundException(sprintf('The file "%s" does not exist (in: %s).', $name, implode(', ', $paths)));
-        }
-
-        return $filepaths;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -83,16 +57,10 @@ class FileLocator implements FileLocatorInterface
      */
     private function isAbsolutePath($file)
     {
-        if ($file[0] === '/' || $file[0] === '\\'
-            || (strlen($file) > 3 && ctype_alpha($file[0])
-                && $file[1] === ':'
-                && ($file[2] === '\\' || $file[2] === '/')
-            )
-            || null !== parse_url($file, PHP_URL_SCHEME)
-        ) {
-            return true;
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

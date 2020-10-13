@@ -1261,7 +1261,11 @@ class DBIDummy implements DBIExtension
      */
     public function fieldName($result, $i)
     {
-        return '';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1300,10 +1304,11 @@ class DBIDummy implements DBIExtension
      */
     public function setResult($query, $result)
     {
-        $this->_queries[] = array(
-            'query' => $query,
-            'result' => $result,
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

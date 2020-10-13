@@ -18,29 +18,20 @@ class LoaderTest extends TestCase
 {
     public function testGetSetResolver()
     {
-        $resolver = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderResolverInterface')->getMock();
-
-        $loader = new ProjectLoader1();
-        $loader->setResolver($resolver);
-
-        $this->assertSame($resolver, $loader->getResolver(), '->setResolver() sets the resolver loader');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testResolve()
     {
-        $resolvedLoader = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')->getMock();
-
-        $resolver = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderResolverInterface')->getMock();
-        $resolver->expects($this->once())
-            ->method('resolve')
-            ->with('foo.xml')
-            ->will($this->returnValue($resolvedLoader));
-
-        $loader = new ProjectLoader1();
-        $loader->setResolver($resolver);
-
-        $this->assertSame($loader, $loader->resolve('foo.foo'), '->resolve() finds a loader');
-        $this->assertSame($resolvedLoader, $loader->resolve('foo.xml'), '->resolve() finds a loader');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,56 +39,29 @@ class LoaderTest extends TestCase
      */
     public function testResolveWhenResolverCannotFindLoader()
     {
-        $resolver = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderResolverInterface')->getMock();
-        $resolver->expects($this->once())
-            ->method('resolve')
-            ->with('FOOBAR')
-            ->will($this->returnValue(false));
-
-        $loader = new ProjectLoader1();
-        $loader->setResolver($resolver);
-
-        $loader->resolve('FOOBAR');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testImport()
     {
-        $resolvedLoader = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')->getMock();
-        $resolvedLoader->expects($this->once())
-            ->method('load')
-            ->with('foo')
-            ->will($this->returnValue('yes'));
-
-        $resolver = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderResolverInterface')->getMock();
-        $resolver->expects($this->once())
-            ->method('resolve')
-            ->with('foo')
-            ->will($this->returnValue($resolvedLoader));
-
-        $loader = new ProjectLoader1();
-        $loader->setResolver($resolver);
-
-        $this->assertEquals('yes', $loader->import('foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testImportWithType()
     {
-        $resolvedLoader = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderInterface')->getMock();
-        $resolvedLoader->expects($this->once())
-            ->method('load')
-            ->with('foo', 'bar')
-            ->will($this->returnValue('yes'));
-
-        $resolver = $this->getMockBuilder('Symfony\Component\Config\Loader\LoaderResolverInterface')->getMock();
-        $resolver->expects($this->once())
-            ->method('resolve')
-            ->with('foo', 'bar')
-            ->will($this->returnValue($resolvedLoader));
-
-        $loader = new ProjectLoader1();
-        $loader->setResolver($resolver);
-
-        $this->assertEquals('yes', $loader->import('foo', 'bar'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -109,7 +73,11 @@ class ProjectLoader1 extends Loader
 
     public function supports($resource, $type = null)
     {
-        return is_string($resource) && 'foo' === pathinfo($resource, PATHINFO_EXTENSION);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getType()

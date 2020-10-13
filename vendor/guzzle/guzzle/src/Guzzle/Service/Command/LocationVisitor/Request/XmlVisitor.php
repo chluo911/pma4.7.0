@@ -20,7 +20,11 @@ class XmlVisitor extends AbstractRequestVisitor
 
     public function __construct()
     {
-        $this->data = new \SplObjectStorage();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,9 +36,11 @@ class XmlVisitor extends AbstractRequestVisitor
      */
     public function setContentTypeHeader($header)
     {
-        $this->contentType = $header;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function visit(CommandInterface $command, RequestInterface $request, Parameter $param, $value)

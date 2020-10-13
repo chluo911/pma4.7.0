@@ -83,16 +83,11 @@ class Squiz_Sniffs_CSS_ForbiddenStylesSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        $this->forbiddenStyleNames = array_keys($this->forbiddenStyles);
-
-        if ($this->patternMatch === true) {
-            foreach ($this->forbiddenStyleNames as $i => $name) {
-                $this->forbiddenStyleNames[$i] = '/'.$name.'/i';
-            }
-        }
-
-        return array(T_STYLE);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -107,34 +102,11 @@ class Squiz_Sniffs_CSS_ForbiddenStylesSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens  = $phpcsFile->getTokens();
-        $style   = strtolower($tokens[$stackPtr]['content']);
-        $pattern = null;
-
-        if ($this->patternMatch === true) {
-            $count   = 0;
-            $pattern = preg_replace(
-                $this->forbiddenStyleNames,
-                $this->forbiddenStyleNames,
-                $style,
-                1,
-                $count
-            );
-
-            if ($count === 0) {
-                return;
-            }
-
-            // Remove the pattern delimiters and modifier.
-            $pattern = substr($pattern, 1, -2);
-        } else {
-            if (in_array($style, $this->forbiddenStyleNames) === false) {
-                return;
-            }
-        }//end if
-
-        $this->addError($phpcsFile, $stackPtr, $style, $pattern);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
 
 
@@ -151,40 +123,10 @@ class Squiz_Sniffs_CSS_ForbiddenStylesSniff implements PHP_CodeSniffer_Sniff
      */
     protected function addError($phpcsFile, $stackPtr, $style, $pattern=null)
     {
-        $data  = array($style);
-        $error = 'The use of style %s is ';
-        if ($this->error === true) {
-            $type   = 'Found';
-            $error .= 'forbidden';
-        } else {
-            $type   = 'Discouraged';
-            $error .= 'discouraged';
-        }
-
-        if ($pattern === null) {
-            $pattern = $style;
-        }
-
-        if ($this->forbiddenStyles[$pattern] !== null) {
-            $data[] = $this->forbiddenStyles[$pattern];
-            if ($this->error === true) {
-                $fix = $phpcsFile->addFixableError($error.'; use %s instead', $stackPtr, $type.'WithAlternative', $data);
-            } else {
-                $fix = $phpcsFile->addFixableWarning($error.'; use %s instead', $stackPtr, $type.'WithAlternative', $data);
-            }
-
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($stackPtr, $this->forbiddenStyles[$pattern]);
-            }
-        } else {
-            if ($this->error === true) {
-                $phpcsFile->addError($error, $stackPtr, $type, $data);
-            } else {
-                $phpcsFile->addWarning($error, $stackPtr, $type, $data);
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end addError()
-
-
 }//end class

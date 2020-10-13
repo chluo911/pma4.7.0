@@ -40,79 +40,20 @@ abstract class AbstractAdapter implements AdapterInterface, LoggerAwareInterface
 
     protected function __construct($namespace = '', $defaultLifetime = 0)
     {
-        $this->namespace = '' === $namespace ? '' : $this->getId($namespace).':';
-        if (null !== $this->maxIdLength && strlen($namespace) > $this->maxIdLength - 24) {
-            throw new InvalidArgumentException(sprintf('Namespace must be %d chars max, %d given ("%s")', $this->maxIdLength - 24, strlen($namespace), $namespace));
-        }
-        $this->createCacheItem = \Closure::bind(
-            function ($key, $value, $isHit) use ($defaultLifetime) {
-                $item = new CacheItem();
-                $item->key = $key;
-                $item->value = $value;
-                $item->isHit = $isHit;
-                $item->defaultLifetime = $defaultLifetime;
-
-                return $item;
-            },
-            null,
-            CacheItem::class
-        );
-        $this->mergeByLifetime = \Closure::bind(
-            function ($deferred, $namespace, &$expiredIds) {
-                $byLifetime = array();
-                $now = time();
-                $expiredIds = array();
-
-                foreach ($deferred as $key => $item) {
-                    if (null === $item->expiry) {
-                        $byLifetime[0 < $item->defaultLifetime ? $item->defaultLifetime : 0][$namespace.$key] = $item->value;
-                    } elseif ($item->expiry > $now) {
-                        $byLifetime[$item->expiry - $now][$namespace.$key] = $item->value;
-                    } else {
-                        $expiredIds[] = $namespace.$key;
-                    }
-                }
-
-                return $byLifetime;
-            },
-            null,
-            CacheItem::class
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function createSystemCache($namespace, $defaultLifetime, $version, $directory, LoggerInterface $logger = null)
     {
-        if (null === self::$apcuSupported) {
-            self::$apcuSupported = ApcuAdapter::isSupported();
-        }
-
-        if (!self::$apcuSupported && null === self::$phpFilesSupported) {
-            self::$phpFilesSupported = PhpFilesAdapter::isSupported();
-        }
-
-        if (self::$phpFilesSupported) {
-            $opcache = new PhpFilesAdapter($namespace, $defaultLifetime, $directory);
-            if (null !== $logger) {
-                $opcache->setLogger($logger);
-            }
-
-            return $opcache;
-        }
-
-        $fs = new FilesystemAdapter($namespace, $defaultLifetime, $directory);
-        if (null !== $logger) {
-            $fs->setLogger($logger);
-        }
-        if (!self::$apcuSupported) {
-            return $fs;
-        }
-
-        $apcu = new ApcuAdapter($namespace, (int) $defaultLifetime / 5, $version);
-        if (null !== $logger) {
-            $apcu->setLogger($logger);
-        }
-
-        return new ChainAdapter(array($apcu, $fs));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -235,15 +176,11 @@ abstract class AbstractAdapter implements AdapterInterface, LoggerAwareInterface
      */
     public function clear()
     {
-        $this->deferred = array();
-
-        try {
-            return $this->doClear($this->namespace);
-        } catch (\Exception $e) {
-            CacheItem::log($this->logger, 'Failed to clear the cache', array('exception' => $e));
-
-            return false;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -374,11 +311,21 @@ abstract class AbstractAdapter implements AdapterInterface, LoggerAwareInterface
 
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         if ($this->deferred) {
             $this->commit();
         }
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     /**
@@ -446,6 +393,10 @@ abstract class AbstractAdapter implements AdapterInterface, LoggerAwareInterface
      */
     public static function handleUnserializeCallback($class)
     {
-        throw new \DomainException('Class not found: '.$class);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -38,7 +38,7 @@ class SysInfoWINNT extends \PMA\libraries\SysInfo
      *
      * @return array with load data
      */
-    function loadavg()
+    public function loadavg()
     {
         $loadavg = "";
         $sum = 0;
@@ -98,13 +98,13 @@ class SysInfoWINNT extends \PMA\libraries\SysInfo
      *
      * @return array with memory usage data
      */
-    function memory()
+    public function memory()
     {
         $buffer = $this->_getWMI(
             "Win32_OperatingSystem",
             array('TotalVisibleMemorySize', 'FreePhysicalMemory')
         );
-        $mem = Array();
+        $mem = array();
         $mem['MemTotal'] = $buffer[0]['TotalVisibleMemorySize'];
         $mem['MemFree'] = $buffer[0]['FreePhysicalMemory'];
         $mem['MemUsed'] = $mem['MemTotal'] - $mem['MemFree'];

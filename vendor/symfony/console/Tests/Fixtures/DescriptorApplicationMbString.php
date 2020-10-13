@@ -17,8 +17,10 @@ class DescriptorApplicationMbString extends Application
 {
     public function __construct()
     {
-        parent::__construct('MbString åpplicätion');
-
-        $this->add(new DescriptorCommandMbString());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

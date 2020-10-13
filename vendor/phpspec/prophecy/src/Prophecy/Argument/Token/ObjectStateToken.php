@@ -41,11 +41,11 @@ class ObjectStateToken implements TokenInterface
         StringUtil $util = null,
         ComparatorFactory $comparatorFactory = null
     ) {
-        $this->name  = $methodName;
-        $this->value = $value;
-        $this->util  = $util ?: new StringUtil;
-
-        $this->comparatorFactory = $comparatorFactory ?: ComparatorFactory::getInstance();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,26 +57,11 @@ class ObjectStateToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        if (is_object($argument) && method_exists($argument, $this->name)) {
-            $actual = call_user_func(array($argument, $this->name));
-
-            $comparator = $this->comparatorFactory->getComparatorFor(
-                $this->value, $actual
-            );
-
-            try {
-                $comparator->assertEquals($this->value, $actual);
-                return 8;
-            } catch (ComparisonFailure $failure) {
-                return false;
-            }
-        }
-
-        if (is_object($argument) && property_exists($argument, $this->name)) {
-            return $argument->{$this->name} === $this->value ? 8 : false;
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,7 +71,11 @@ class ObjectStateToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,7 +85,8 @@ class ObjectStateToken implements TokenInterface
      */
     public function __toString()
     {
-        return sprintf('state(%s(), %s)',
+        return sprintf(
+            'state(%s(), %s)',
             $this->name,
             $this->util->stringify($this->value)
         );

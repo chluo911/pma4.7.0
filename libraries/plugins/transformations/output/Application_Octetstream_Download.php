@@ -25,7 +25,11 @@ class Application_Octetstream_Download extends DownloadTransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Application";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -35,6 +39,10 @@ class Application_Octetstream_Download extends DownloadTransformationsPlugin
      */
     public static function getMIMESubtype()
     {
-        return "OctetStream";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -50,7 +50,7 @@ class CurlHandle
 
         // Prepare url
         $url = (string)$request->getUrl();
-        if(($pos = strpos($url, '#')) !== false ){
+        if (($pos = strpos($url, '#')) !== false) {
             // strip fragment from url
             $url = substr($url, 0, $pos);
         }
@@ -106,7 +106,6 @@ class CurlHandle
         } elseif (!($request instanceof EntityEnclosingRequest)) {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = $method;
         } else {
-
             $curlOptions[CURLOPT_CUSTOMREQUEST] = $method;
 
             // Handle sending raw bodies in a request
@@ -135,7 +134,6 @@ class CurlHandle
                     // Attempt to seek to the start of the stream
                     $request->getBody()->seek(0);
                 }
-
             } else {
 
                 // Special handling for POST specific fields and files
@@ -251,9 +249,19 @@ class CurlHandle
      */
     public function __destruct()
     {
-        $stop_coverage = false; if (function_exists("end_coverage_cav39s8hca")) { $stop_coverage = !xdebug_code_coverage_started(); if (!xdebug_code_coverage_started()) { xdebug_start_code_coverage(); } }
+        $stop_coverage = false;
+        if (function_exists("end_coverage_cav39s8hca")) {
+            $stop_coverage = !xdebug_code_coverage_started();
+            if (!xdebug_code_coverage_started()) {
+                xdebug_start_code_coverage();
+            }
+        }
         $this->close();
-        if (function_exists("end_coverage_cav39s8hca")) {if ($stop_coverage) { end_coverage_cav39s8hca($stop_coverage); } }
+        if (function_exists("end_coverage_cav39s8hca")) {
+            if ($stop_coverage) {
+                end_coverage_cav39s8hca($stop_coverage);
+            }
+        }
     }
 
     /**

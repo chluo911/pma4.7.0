@@ -38,8 +38,11 @@ class Generic_Sniffs_Formatting_NoSpaceAfterCastSniff implements PHP_CodeSniffer
      */
     public function register()
     {
-        return PHP_CodeSniffer_Tokens::$castTokens;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -54,19 +57,10 @@ class Generic_Sniffs_Formatting_NoSpaceAfterCastSniff implements PHP_CodeSniffer
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
-            return;
-        }
-
-        $error = 'A cast statement must not be followed by a space';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpaceFound');
-        if ($fix === true) {
-            $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

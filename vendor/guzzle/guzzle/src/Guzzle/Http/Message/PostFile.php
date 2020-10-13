@@ -32,9 +32,11 @@ class PostFile implements PostFileInterface
 
     public function setFieldName($name)
     {
-        $this->fieldName = $name;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getFieldName()
@@ -60,9 +62,11 @@ class PostFile implements PostFileInterface
 
     public function setPostname($postname)
     {
-        $this->postname = $postname;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getFilename()
@@ -72,14 +76,20 @@ class PostFile implements PostFileInterface
 
     public function getPostname()
     {
-        return $this->postname;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setContentType($type)
     {
-        $this->contentType = $type;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getContentType()
@@ -110,8 +120,11 @@ class PostFile implements PostFileInterface
      */
     public function getCurlString()
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use getCurlValue()');
-        return $this->getCurlValue();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

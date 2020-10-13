@@ -18,131 +18,83 @@ class ExprBuilderTest extends TestCase
 {
     public function testAlwaysExpression()
     {
-        $test = $this->getTestBuilder()
-            ->always($this->returnClosure('new_value'))
-        ->end();
-
-        $this->assertFinalizedValueIs('new_value', $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIfTrueExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifTrue()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test, array('key' => true));
-
-        $test = $this->getTestBuilder()
-            ->ifTrue(function ($v) { return true; })
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test);
-
-        $test = $this->getTestBuilder()
-            ->ifTrue(function ($v) { return false; })
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('value', $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIfStringExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifString()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test);
-
-        $test = $this->getTestBuilder()
-            ->ifString()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs(45, $test, array('key' => 45));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIfNullExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifNull()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test, array('key' => null));
-
-        $test = $this->getTestBuilder()
-            ->ifNull()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('value', $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIfEmptyExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifEmpty()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test, array('key' => array()));
-
-        $test = $this->getTestBuilder()
-            ->ifEmpty()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('value', $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIfArrayExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifArray()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test, array('key' => array()));
-
-        $test = $this->getTestBuilder()
-            ->ifArray()
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('value', $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIfInArrayExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifInArray(array('foo', 'bar', 'value'))
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test);
-
-        $test = $this->getTestBuilder()
-            ->ifInArray(array('foo', 'bar'))
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('value', $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIfNotInArrayExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifNotInArray(array('foo', 'bar'))
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test);
-
-        $test = $this->getTestBuilder()
-            ->ifNotInArray(array('foo', 'bar', 'value_from_config'))
-            ->then($this->returnClosure('new_value'))
-        ->end();
-        $this->assertFinalizedValueIs('new_value', $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testThenEmptyArrayExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifString()
-            ->thenEmptyArray()
-        ->end();
-        $this->assertFinalizedValueIs(array(), $test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -150,20 +102,20 @@ class ExprBuilderTest extends TestCase
      */
     public function testThenInvalid()
     {
-        $test = $this->getTestBuilder()
-            ->ifString()
-            ->thenInvalid('Invalid value')
-        ->end();
-        $this->finalizeTestBuilder($test);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testThenUnsetExpression()
     {
-        $test = $this->getTestBuilder()
-            ->ifString()
-            ->thenUnset()
-        ->end();
-        $this->assertEquals(array(), $this->finalizeTestBuilder($test));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -172,7 +124,11 @@ class ExprBuilderTest extends TestCase
      */
     public function testEndIfPartNotSpecified()
     {
-        $this->getTestBuilder()->end();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -181,9 +137,11 @@ class ExprBuilderTest extends TestCase
      */
     public function testEndThenPartNotSpecified()
     {
-        $builder = $this->getTestBuilder();
-        $builder->ifPart = 'test';
-        $builder->end();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -193,14 +151,11 @@ class ExprBuilderTest extends TestCase
      */
     protected function getTestBuilder()
     {
-        $builder = new TreeBuilder();
-
-        return $builder
-            ->root('test')
-            ->children()
-            ->variableNode('key')
-            ->validate()
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -214,13 +169,11 @@ class ExprBuilderTest extends TestCase
      */
     protected function finalizeTestBuilder($testBuilder, $config = null)
     {
-        return $testBuilder
-            ->end()
-            ->end()
-            ->end()
-            ->buildTree()
-            ->finalize(null === $config ? array('key' => 'value') : $config)
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -232,9 +185,11 @@ class ExprBuilderTest extends TestCase
      */
     protected function returnClosure($val)
     {
-        return function ($v) use ($val) {
-            return $val;
-        };
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -246,6 +201,10 @@ class ExprBuilderTest extends TestCase
      */
     protected function assertFinalizedValueIs($value, $treeBuilder, $config = null)
     {
-        $this->assertEquals(array('key' => $value), $this->finalizeTestBuilder($treeBuilder, $config));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

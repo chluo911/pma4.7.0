@@ -7,8 +7,10 @@ class SampleClass
 
     public function __construct($a, $b, $c)
     {
-        $this->a = $a;
-        $this->b = $b;
-        $this->c = $c;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

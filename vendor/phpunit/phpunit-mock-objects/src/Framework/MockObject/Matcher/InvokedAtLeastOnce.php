@@ -34,12 +34,10 @@ class PHPUnit_Framework_MockObject_Matcher_InvokedAtLeastOnce extends PHPUnit_Fr
      */
     public function verify()
     {
-        $count = $this->getInvocationCount();
-
-        if ($count < 1) {
-            throw new PHPUnit_Framework_ExpectationFailedException(
-                'Expected invocation at least once but it never occured.'
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -29,13 +29,10 @@ class PassthroughFormatterTest extends \PHPUnit_Framework_TestCase
      */
     public function testFormatterCallsToStringAndReturnsAStandardRepresentation()
     {
-        $expected = '@unknown-tag This is a description';
-
-        $fixture = new PassthroughFormatter();
-
-        $this->assertSame(
-            $expected,
-            $fixture->format(new Generic('unknown-tag', new Description('This is a description')))
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

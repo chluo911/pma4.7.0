@@ -6,55 +6,62 @@ use PhpSpec\ObjectBehavior;
 
 class NameGeneratorSpec extends ObjectBehavior
 {
-    function its_name_generates_name_based_on_simple_class_reflection(\ReflectionClass $class)
+    public function its_name_generates_name_based_on_simple_class_reflection(\ReflectionClass $class)
     {
-        $class->getName()->willReturn('stdClass');
-        $this->name($class, array())->shouldStartWith('Double\stdClass\\');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_name_generates_name_based_on_namespaced_class_reflection(\ReflectionClass $class)
+    public function its_name_generates_name_based_on_namespaced_class_reflection(\ReflectionClass $class)
     {
-        $class->getName()->willReturn('Some\Custom\Class');
-        $this->name($class, array())->shouldStartWith('Double\Some\Custom\Class\P');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_name_generates_name_based_on_interface_shortnames(
+    public function its_name_generates_name_based_on_interface_shortnames(
         \ReflectionClass $interface1,
         \ReflectionClass $interface2
     ) {
-        $interface1->getShortName()->willReturn('HandlerInterface');
-        $interface2->getShortName()->willReturn('LoaderInterface');
-
-        $this->name(null, array($interface1, $interface2))->shouldStartWith(
-            'Double\HandlerInterface\LoaderInterface\P'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_name_for_no_class_and_interfaces_list()
+    public function it_generates_proper_name_for_no_class_and_interfaces_list()
     {
-        $this->name(null, array())->shouldStartWith('Double\stdClass\P');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_name_generates_name_based_only_on_class_if_its_available(
+    public function its_name_generates_name_based_only_on_class_if_its_available(
         \ReflectionClass $class,
         \ReflectionClass $interface1,
         \ReflectionClass $interface2
     ) {
-        $class->getName()->willReturn('Some\Custom\Class');
-        $interface1->getShortName()->willReturn('HandlerInterface');
-        $interface2->getShortName()->willReturn('LoaderInterface');
-
-        $this->name($class, array($interface1, $interface2))->shouldStartWith(
-            'Double\Some\Custom\Class\P'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getMatchers()
     {
-        return array(
-            'startWith' => function ($subject, $string) {
-                return 0 === strpos($subject, $string);
-            },
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

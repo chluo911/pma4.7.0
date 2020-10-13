@@ -24,13 +24,11 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Displays a part of a string. The first option is the number of'
-            . ' characters to skip from the beginning of the string (Default 0).'
-            . ' The second option is the number of characters to return (Default:'
-            . ' until end of string). The third option is the string to append'
-            . ' and/or prepend when truncation occurs (Default: "…").'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -44,34 +42,11 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        // possibly use a global transform and feed it with special options
-
-        // further operations on $buffer using the $options[] array.
-        $options = $this->getOptions($options, array(0, 'all', '…'));
-
-        if ($options[1] != 'all') {
-            $newtext = mb_substr(
-                $buffer,
-                $options[0],
-                $options[1]
-            );
-        } else {
-            $newtext = mb_substr($buffer, $options[0]);
-        }
-
-        $length = mb_strlen($newtext);
-        $baselength = mb_strlen($buffer);
-        if ($length != $baselength) {
-            if ($options[0] != 0) {
-                $newtext = $options[2] . $newtext;
-            }
-
-            if (($length + $options[0]) != $baselength) {
-                $newtext .= $options[2];
-            }
-        }
-
-        return htmlspecialchars($newtext);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 

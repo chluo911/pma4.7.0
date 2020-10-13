@@ -24,23 +24,20 @@ class PreComputedInflector implements InflectorInterface
      */
     public function __construct(InflectorInterface $inflector, array $snake = array(), array $camel = array(), $mirror = false)
     {
-        if ($mirror) {
-            $camel = array_merge(array_flip($snake), $camel);
-            $snake = array_merge(array_flip($camel), $snake);
-        }
-
-        $this->decoratedInflector = $inflector;
-        $this->mapping = array(
-            'snake' => $snake,
-            'camel' => $camel
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function snake($word)
     {
-        return isset($this->mapping['snake'][$word])
-            ? $this->mapping['snake'][$word]
-            : $this->decoratedInflector->snake($word);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,8 +49,10 @@ class PreComputedInflector implements InflectorInterface
      */
     public function camel($word)
     {
-        return isset($this->mapping['camel'][$word])
-            ? $this->mapping['camel'][$word]
-            : $this->decoratedInflector->camel($word);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

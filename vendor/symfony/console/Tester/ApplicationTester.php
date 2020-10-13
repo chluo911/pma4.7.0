@@ -41,7 +41,11 @@ class ApplicationTester
 
     public function __construct(Application $application)
     {
-        $this->application = $application;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -151,7 +155,11 @@ class ApplicationTester
      */
     public function getInput()
     {
-        return $this->input;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

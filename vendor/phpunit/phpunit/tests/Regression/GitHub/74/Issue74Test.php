@@ -3,7 +3,10 @@ class Issue74Test extends PHPUnit_Framework_TestCase
 {
     public function testCreateAndThrowNewExceptionInProcessIsolation()
     {
-        require_once __DIR__ . '/NewException.php';
-        throw new NewException('Testing GH-74');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

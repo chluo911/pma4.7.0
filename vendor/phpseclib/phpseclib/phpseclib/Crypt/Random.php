@@ -43,7 +43,7 @@ class Random
      * @param int $length
      * @return string
      */
-    static function string($length)
+    public static function string($length)
     {
         if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
             try {

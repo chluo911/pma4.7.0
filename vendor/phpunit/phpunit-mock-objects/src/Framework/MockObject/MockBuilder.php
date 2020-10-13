@@ -87,18 +87,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function getMock()
     {
-        return $this->testCase->getMock(
-            $this->type,
-            $this->methods,
-            $this->constructorArgs,
-            $this->mockClassName,
-            $this->originalConstructor,
-            $this->originalClone,
-            $this->autoload,
-            $this->cloneArguments,
-            $this->callOriginalMethods,
-            $this->proxyTarget
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -108,16 +101,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function getMockForAbstractClass()
     {
-        return $this->testCase->getMockForAbstractClass(
-            $this->type,
-            $this->constructorArgs,
-            $this->mockClassName,
-            $this->originalConstructor,
-            $this->originalClone,
-            $this->autoload,
-            $this->methods,
-            $this->cloneArguments
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -127,16 +115,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function getMockForTrait()
     {
-        return $this->testCase->getMockForTrait(
-            $this->type,
-            $this->constructorArgs,
-            $this->mockClassName,
-            $this->originalConstructor,
-            $this->originalClone,
-            $this->autoload,
-            $this->methods,
-            $this->cloneArguments
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -147,9 +130,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function setMethods($methods)
     {
-        $this->methods = $methods;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -160,9 +145,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function setConstructorArgs(array $args)
     {
-        $this->constructorArgs = $args;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -173,9 +160,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function setMockClassName($name)
     {
-        $this->mockClassName = $name;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,9 +174,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function disableOriginalConstructor()
     {
-        $this->originalConstructor = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -198,9 +189,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function enableOriginalConstructor()
     {
-        $this->originalConstructor = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -210,9 +203,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function disableOriginalClone()
     {
-        $this->originalClone = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -223,9 +218,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function enableOriginalClone()
     {
-        $this->originalClone = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -235,9 +232,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function disableAutoload()
     {
-        $this->autoload = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -248,9 +247,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function enableAutoload()
     {
-        $this->autoload = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -261,9 +262,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function disableArgumentCloning()
     {
-        $this->cloneArguments = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -274,9 +277,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function enableArgumentCloning()
     {
-        $this->cloneArguments = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -287,9 +292,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function enableProxyingToOriginalMethods()
     {
-        $this->callOriginalMethods = true;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -300,10 +307,11 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function disableProxyingToOriginalMethods()
     {
-        $this->callOriginalMethods = false;
-        $this->proxyTarget         = null;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -315,8 +323,10 @@ class PHPUnit_Framework_MockObject_MockBuilder
      */
     public function setProxyTarget($object)
     {
-        $this->proxyTarget = $object;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

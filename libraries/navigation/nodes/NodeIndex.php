@@ -37,4 +37,3 @@ class NodeIndex extends Node
         $this->classes = 'index';
     }
 }
-

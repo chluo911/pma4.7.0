@@ -37,11 +37,11 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
      */
     public static function createEmptyRepository($bare = true)
     {
-        $dir = self::createTempDir();
-        $repository = Admin::init($dir, $bare, self::getOptions());
-        self::registerDeletion($repository);
-
-        return $repository;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,10 +49,11 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
      */
     public static function provideFoobar()
     {
-        return array(
-            array(self::createFoobarRepository()),
-            array(self::createFoobarRepository(false)),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -60,10 +61,11 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
      */
     public static function provideEmpty()
     {
-        return array(
-            array(self::createEmptyRepository()),
-            array(self::createEmptyRepository(false)),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,26 +75,20 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
      */
     public static function createFoobarRepository($bare = true)
     {
-        if (null === self::$localRepository) {
-            self::$localRepository = Admin::cloneTo(self::createTempDir(), self::REPOSITORY_URL, $bare, self::getOptions());
-        }
-
-        $repository = self::$localRepository->cloneTo(self::createTempDir(), $bare, self::getOptions());
-        self::registerDeletion($repository);
-
-        return $repository;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function registerDeletion(Repository $repository)
     {
-        register_shutdown_function(function () use ($repository) {
-            if ($repository->getWorkingDir()) {
-                $dir = $repository->getWorkingDir();
-            } else {
-                $dir = $repository->getGitDir();
-            }
-            AbstractTest::deleteDir($dir);
-        });
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -102,11 +98,11 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
      */
     public static function createTempDir()
     {
-        $tmpDir = tempnam(sys_get_temp_dir(), 'gitlib_');
-        unlink($tmpDir);
-        mkdir($tmpDir);
-
-        return $tmpDir;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -116,32 +112,19 @@ abstract class AbstractTest extends \PHPUnit_Framework_TestCase
      */
     public static function deleteDir($dir)
     {
-        $iterator = new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::FOLLOW_SYMLINKS);
-        $iterator = new \RecursiveIteratorIterator($iterator, \RecursiveIteratorIterator::CHILD_FIRST);
-        foreach ($iterator as $file) {
-            if (!is_link($file)) {
-                chmod($file, 0777);
-            }
-            if (is_dir($file)) {
-                rmdir($file);
-            } else {
-                unlink($file);
-            }
-        }
-
-        chmod($dir, 0777);
-        rmdir($dir);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected static function getOptions()
     {
-        $command = isset($_SERVER['GIT_COMMAND']) ? $_SERVER['GIT_COMMAND'] : 'git';
-        $envs = isset($_SERVER['GIT_ENVS']) ? (array) $_SERVER['GIT_ENVS'] : array();
-
-        return array(
-            'command' => $command,
-            'environment_variables' => $envs,
-            'process_timeout' => 60,
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

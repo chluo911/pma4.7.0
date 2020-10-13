@@ -54,8 +54,7 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.3.2
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_File
-    extends PHPUnit_Extensions_Selenium2TestCase_Command
+class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_File extends PHPUnit_Extensions_Selenium2TestCase_Command
 {
 
     /**
@@ -85,7 +84,11 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_File
 
     public function httpMethod()
     {
-        return 'POST';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -94,23 +97,21 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionCommand_File
      * @param   string $file_path   FQ path to file
      * @return  string              Generated zip file
      */
-    protected function _zipArchiveFile( $file_path )
+    protected function _zipArchiveFile($file_path)
     {
 
         // file MUST be readable
-        if( !is_readable( $file_path ) ) {
-
-            throw new Exception( "Unable to read {$file_path}" );
-
+        if (!is_readable($file_path)) {
+            throw new Exception("Unable to read {$file_path}");
         } // if !file_data
 
-        $filename_hash  = sha1( time() . $file_path );
+        $filename_hash  = sha1(time() . $file_path);
         $tmp_dir        = $this->_getTmpDir();
         $zip_filename   = "{$tmp_dir}{$filename_hash}.zip";
         $zip            = $this->_getZipArchiver();
 
-        if ($zip->open($zip_filename, ZIPARCHIVE::CREATE) === FALSE) {
-            throw new Exception( "Unable to create zip archive: {$zip_filename}" );
+        if ($zip->open($zip_filename, ZIPARCHIVE::CREATE) === false) {
+            throw new Exception("Unable to create zip archive: {$zip_filename}");
         }
 
         $zip->addFile($file_path, basename($file_path));

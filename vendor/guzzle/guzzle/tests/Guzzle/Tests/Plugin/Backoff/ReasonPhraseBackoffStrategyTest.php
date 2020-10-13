@@ -13,20 +13,19 @@ class ReasonPhraseBackoffStrategyTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testRetriesWhenCodeMatches()
     {
-        $this->assertEmpty(ReasonPhraseBackoffStrategy::getDefaultFailureCodes());
-        $strategy = new ReasonPhraseBackoffStrategy(array('Foo', 'Internal Server Error'));
-        $this->assertTrue($strategy->makesDecision());
-        $request = $this->getMock('Guzzle\Http\Message\Request', array(), array(), '', false);
-        $response = new Response(200);
-        $this->assertEquals(false, $strategy->getBackoffPeriod(0, $request, $response));
-        $response->setStatus(200, 'Foo');
-        $this->assertEquals(0, $strategy->getBackoffPeriod(0, $request, $response));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIgnoresNonErrors()
     {
-        $strategy = new ReasonPhraseBackoffStrategy();
-        $request = $this->getMock('Guzzle\Http\Message\Request', array(), array(), '', false);
-        $this->assertEquals(false, $strategy->getBackoffPeriod(0, $request));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -123,11 +123,11 @@ class Commit extends Coveralls
      */
     public function getAuthorName()
     {
-        if (isset($this->authorName)) {
-            return $this->authorName;
-        }
-
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -151,11 +151,11 @@ class Commit extends Coveralls
      */
     public function getAuthorEmail()
     {
-        if (isset($this->authorEmail)) {
-            return $this->authorEmail;
-        }
-
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -179,11 +179,11 @@ class Commit extends Coveralls
      */
     public function getCommitterName()
     {
-        if (isset($this->committerName)) {
-            return $this->committerName;
-        }
-
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -207,11 +207,11 @@ class Commit extends Coveralls
      */
     public function getCommitterEmail()
     {
-        if (isset($this->committerEmail)) {
-            return $this->committerEmail;
-        }
-
-        return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

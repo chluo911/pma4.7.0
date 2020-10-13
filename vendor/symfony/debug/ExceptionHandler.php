@@ -74,10 +74,11 @@ class ExceptionHandler
      */
     public function setHandler(callable $handler = null)
     {
-        $old = $this->handler;
-        $this->handler = $handler;
-
-        return $old;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -89,10 +90,11 @@ class ExceptionHandler
      */
     public function setFileLinkFormat($fileLinkFormat)
     {
-        $old = $this->fileLinkFormat;
-        $this->fileLinkFormat = $fileLinkFormat;
-
-        return $old;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,51 +107,11 @@ class ExceptionHandler
      */
     public function handle(\Exception $exception)
     {
-        if (null === $this->handler || $exception instanceof OutOfMemoryException) {
-            $this->sendPhpResponse($exception);
-
-            return;
-        }
-
-        $caughtLength = $this->caughtLength = 0;
-
-        ob_start(function ($buffer) {
-            $this->caughtBuffer = $buffer;
-
-            return '';
-        });
-
-        $this->sendPhpResponse($exception);
-        while (null === $this->caughtBuffer && ob_end_flush()) {
-            // Empty loop, everything is in the condition
-        }
-        if (isset($this->caughtBuffer[0])) {
-            ob_start(function ($buffer) {
-                if ($this->caughtLength) {
-                    // use substr_replace() instead of substr() for mbstring overloading resistance
-                    $cleanBuffer = substr_replace($buffer, '', 0, $this->caughtLength);
-                    if (isset($cleanBuffer[0])) {
-                        $buffer = $cleanBuffer;
-                    }
-                }
-
-                return $buffer;
-            });
-
-            echo $this->caughtBuffer;
-            $caughtLength = ob_get_length();
-        }
-        $this->caughtBuffer = null;
-
-        try {
-            call_user_func($this->handler, $exception);
-            $this->caughtLength = $caughtLength;
-        } catch (\Exception $e) {
-            if (!$caughtLength) {
-                // All handlers failed. Let PHP handle that now.
-                throw $exception;
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -162,19 +124,11 @@ class ExceptionHandler
      */
     public function sendPhpResponse($exception)
     {
-        if (!$exception instanceof FlattenException) {
-            $exception = FlattenException::create($exception);
-        }
-
-        if (!headers_sent()) {
-            header(sprintf('HTTP/1.0 %s', $exception->getStatusCode()));
-            foreach ($exception->getHeaders() as $name => $value) {
-                header($name.': '.$value, false);
-            }
-            header('Content-Type: text/html; charset='.$this->charset);
-        }
-
-        echo $this->decorate($this->getContent($exception), $this->getStylesheet($exception));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

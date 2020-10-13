@@ -34,8 +34,11 @@ class Eps
      */
     public function __construct()
     {
-        $this->stringCommands = "";
-        $this->stringCommands .= "%!PS-Adobe-3.0 EPSF-3.0 \n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,7 +62,11 @@ class Eps
      */
     public function setAuthor($value)
     {
-        $this->stringCommands .= '%%Creator: ' . $value . "\n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -71,7 +78,11 @@ class Eps
      */
     public function setDate($value)
     {
-        $this->stringCommands .= '%%CreationDate: ' . $value . "\n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -83,17 +94,11 @@ class Eps
      */
     public function setOrientation($orientation)
     {
-        $this->stringCommands .= "%%PageOrder: Ascend \n";
-        if ($orientation == "L") {
-            $orientation = "Landscape";
-            $this->stringCommands .= '%%Orientation: ' . $orientation . "\n";
-        } else {
-            $orientation = "Portrait";
-            $this->stringCommands .= '%%Orientation: ' . $orientation . "\n";
-        }
-        $this->stringCommands .= "%%EndComments \n";
-        $this->stringCommands .= "%%Pages 1 \n";
-        $this->stringCommands .= "%%BoundingBox: 72 150 144 170 \n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -108,13 +113,11 @@ class Eps
      */
     public function setFont($value, $size)
     {
-        $this->font = $value;
-        $this->fontSize = $size;
-        $this->stringCommands .= "/" . $value . " findfont   % Get the basic font\n";
-        $this->stringCommands .= ""
-            . $size . " scalefont            % Scale the font to $size points\n";
-        $this->stringCommands
-            .= "setfont                 % Make it the current font\n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -124,7 +127,11 @@ class Eps
      */
     public function getFont()
     {
-        return $this->font;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,7 +141,11 @@ class Eps
      */
     public function getFontSize()
     {
-        return $this->fontSize;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -162,10 +173,11 @@ class Eps
         $y_to = 0,
         $lineWidth = 0
     ) {
-        $this->stringCommands .= $lineWidth . " setlinewidth  \n";
-        $this->stringCommands .= $x_from . ' ' . $y_from . " moveto \n";
-        $this->stringCommands .= $x_to . ' ' . $y_to . " lineto \n";
-        $this->stringCommands .= "stroke \n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -188,14 +200,11 @@ class Eps
      */
     public function rect($x_from, $y_from, $x_to, $y_to, $lineWidth)
     {
-        $this->stringCommands .= $lineWidth . " setlinewidth  \n";
-        $this->stringCommands .= "newpath \n";
-        $this->stringCommands .= $x_from . " " . $y_from . " moveto \n";
-        $this->stringCommands .= "0 " . $y_to . " rlineto \n";
-        $this->stringCommands .= $x_to . " 0 rlineto \n";
-        $this->stringCommands .= "0 -" . $y_to . " rlineto \n";
-        $this->stringCommands .= "closepath \n";
-        $this->stringCommands .= "stroke \n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -212,7 +221,11 @@ class Eps
      */
     public function moveTo($x, $y)
     {
-        $this->stringCommands .= $x . ' ' . $y . " moveto \n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -224,7 +237,11 @@ class Eps
      */
     public function show($text)
     {
-        $this->stringCommands .= '(' . $text . ") show \n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -238,8 +255,11 @@ class Eps
      */
     public function showXY($text, $x, $y)
     {
-        $this->moveTo($x, $y);
-        $this->show($text);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -249,7 +269,11 @@ class Eps
      */
     public function endEpsDoc()
     {
-        $this->stringCommands .= "showpage \n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -261,17 +285,10 @@ class Eps
      */
     public function showOutput($fileName)
     {
-        // if(ob_get_clean()){
-        //ob_end_clean();
-        //}
-        $output = $this->stringCommands;
-        Response::getInstance()
-            ->disable();
-        PMA_downloadHeader(
-            $fileName,
-            'image/x-eps',
-            strlen($output)
-        );
-        print $output;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

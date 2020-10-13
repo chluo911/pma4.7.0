@@ -26,9 +26,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new Author('Mike van Riel', 'mike@phpdoc.org');
-
-        $this->assertSame('author', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,9 +42,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new Author('Mike van Riel', 'mike@phpdoc.org');
-
-        $this->assertSame('@author Mike van Riel<mike@phpdoc.org>', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -51,12 +55,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new Author('Mike van Riel', 'mike@phpdoc.org');
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,11 +68,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasTheAuthorName()
     {
-        $expected = 'Mike van Riel';
-
-        $fixture = new Author($expected, 'mike@phpdoc.org');
-
-        $this->assertSame($expected, $fixture->getAuthorName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -79,7 +82,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testInitializationFailsIfAuthorNameIsNotAString()
     {
-        new Author([], 'mike@phpdoc.org');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,11 +95,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasTheAuthorMailAddress()
     {
-        $expected = 'mike@phpdoc.org';
-
-        $fixture = new Author('Mike van Riel', $expected);
-
-        $this->assertSame($expected, $fixture->getEmail());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -101,7 +108,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testInitializationFailsIfEmailIsNotAString()
     {
-        new Author('Mike van Riel', []);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -110,7 +121,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testInitializationFailsIfEmailIsNotValid()
     {
-        new Author('Mike van Riel', 'mike');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,9 +134,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new Author('Mike van Riel', 'mike@phpdoc.org');
-
-        $this->assertSame('Mike van Riel<mike@phpdoc.org>', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -130,11 +147,11 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $fixture = Author::create('Mike van Riel <mike@phpdoc.org>');
-
-        $this->assertSame('Mike van Riel<mike@phpdoc.org>', (string)$fixture);
-        $this->assertSame('Mike van Riel', $fixture->getAuthorName());
-        $this->assertSame('mike@phpdoc.org', $fixture->getEmail());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -143,6 +160,10 @@ class AuthorTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodReturnsNullIfItCouldNotReadBody()
     {
-        $this->assertNull(Author::create('dfgr<'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

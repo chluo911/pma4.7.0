@@ -3,7 +3,11 @@ class Issue765Test extends PHPUnit_Framework_TestCase
 {
     public function testDependee()
     {
-        $this->assertTrue(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -12,11 +16,19 @@ class Issue765Test extends PHPUnit_Framework_TestCase
      */
     public function testDependent($a)
     {
-        $this->assertTrue(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function dependentProvider()
     {
-        throw new Exception;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

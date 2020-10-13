@@ -48,12 +48,11 @@ class Generic_Sniffs_PHP_LowerCaseConstantSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(
-                T_TRUE,
-                T_FALSE,
-                T_NULL,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -68,31 +67,10 @@ class Generic_Sniffs_PHP_LowerCaseConstantSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens   = $phpcsFile->getTokens();
-        $keyword  = $tokens[$stackPtr]['content'];
-        $expected = strtolower($keyword);
-        if ($keyword !== $expected) {
-            if ($keyword === strtoupper($keyword)) {
-                $phpcsFile->recordMetric($stackPtr, 'PHP constant case', 'upper');
-            } else {
-                $phpcsFile->recordMetric($stackPtr, 'PHP constant case', 'mixed');
-            }
-
-            $error = 'TRUE, FALSE and NULL must be lowercase; expected "%s" but found "%s"';
-            $data  = array(
-                      $expected,
-                      $keyword,
-                     );
-
-            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Found', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($stackPtr, $expected);
-            }
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'PHP constant case', 'lower');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

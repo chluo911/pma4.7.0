@@ -160,7 +160,11 @@ class Section
      */
     public function lap($name)
     {
-        return $this->stopEvent($name)->start();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -174,11 +178,11 @@ class Section
      */
     public function getEvent($name)
     {
-        if (!isset($this->events[$name])) {
-            throw new \LogicException(sprintf('Event "%s" is not known.', $name));
-        }
-
-        return $this->events[$name];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -188,6 +192,10 @@ class Section
      */
     public function getEvents()
     {
-        return $this->events;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

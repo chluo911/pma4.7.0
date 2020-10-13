@@ -132,7 +132,8 @@ $strConfigExecTimeLimit_desc = __(
 );
 $strConfigExecTimeLimit_name = __('Maximum execution time');
 $strConfigExport_lock_tables_name = sprintf(
-    __('Use %s statement'), '<code>LOCK TABLES</code>'
+    __('Use %s statement'),
+    '<code>LOCK TABLES</code>'
 );
 $strConfigExport_asfile_name = __('Save as file');
 $strConfigExport_charset_name = __('Character set of the file');
@@ -200,7 +201,8 @@ $strConfigExport_sql_metadata_name = __(
 $strConfigExport_sql_create_database_name = sprintf(__('Add %s'), 'CREATE DATABASE / USE');
 $strConfigExport_sql_drop_database_name = sprintf(__('Add %s'), 'DROP DATABASE');
 $strConfigExport_sql_drop_table_name = sprintf(
-    __('Add %s'), 'DROP TABLE / VIEW / PROCEDURE / FUNCTION / EVENT / TRIGGER'
+    __('Add %s'),
+    'DROP TABLE / VIEW / PROCEDURE / FUNCTION / EVENT / TRIGGER'
 );
 $strConfigExport_sql_create_table_name = sprintf(__('Add %s'), 'CREATE TABLE');
 $strConfigExport_sql_create_view_name = sprintf(__('Add %s'), 'CREATE VIEW');

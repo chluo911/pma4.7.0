@@ -23,8 +23,11 @@ class ApproximateValueToken implements TokenInterface
 
     public function __construct($value, $precision = 0)
     {
-        $this->value = $value;
-        $this->precision = $precision;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,7 +35,11 @@ class ApproximateValueToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        return round($argument, $this->precision) === round($this->value, $this->precision) ? 10 : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,7 +47,11 @@ class ApproximateValueToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -50,6 +61,6 @@ class ApproximateValueToken implements TokenInterface
      */
     public function __toString()
     {
-        return sprintf('â‰…%s', round($this->value, $this->precision));
+        return sprintf('â‰?%s', round($this->value, $this->precision));
     }
 }

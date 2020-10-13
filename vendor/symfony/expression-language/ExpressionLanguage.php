@@ -65,7 +65,11 @@ class ExpressionLanguage
      */
     public function compile($expression, $names = array())
     {
-        return $this->getCompiler()->compile($this->parse($expression, $names)->getNodes())->getSource();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

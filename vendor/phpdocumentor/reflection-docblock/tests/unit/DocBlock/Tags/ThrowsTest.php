@@ -32,9 +32,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new Throws(new String_(), new Description('Description'));
-
-        $this->assertSame('throws', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,9 +49,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new Throws(new String_(), new Description('Description'));
-
-        $this->assertSame('@throws string Description', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,12 +63,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new Throws(new String_(), new Description('Description'));
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,11 +76,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasType()
     {
-        $expected = new String_();
-
-        $fixture = new Throws($expected);
-
-        $this->assertSame($expected, $fixture->getType());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,11 +90,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasDescription()
     {
-        $expected = new Description('Description');
-
-        $fixture = new Throws(new String_(), $expected);
-
-        $this->assertSame($expected, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -101,9 +104,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new Throws(new String_(), new Description('Description'));
-
-        $this->assertSame('string Description', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -117,19 +122,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $resolver           = new TypeResolver();
-        $context            = new Context('');
-
-        $type        = new String_();
-        $description = new Description('My Description');
-        $descriptionFactory->shouldReceive('create')->with('My Description', $context)->andReturn($description);
-
-        $fixture = Throws::create('string My Description', $resolver, $descriptionFactory, $context);
-
-        $this->assertSame('string My Description', (string)$fixture);
-        $this->assertEquals($type, $fixture->getType());
-        $this->assertSame($description, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -138,7 +135,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfBodyIsNotString()
     {
-        $this->assertNull(Throws::create([]));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -147,7 +148,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfBodyIsNotEmpty()
     {
-        $this->assertNull(Throws::create(''));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -156,7 +161,11 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfResolverIsNull()
     {
-        Throws::create('body');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -165,6 +174,10 @@ class ThrowsTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfDescriptionFactoryIsNull()
     {
-        Throws::create('body', new TypeResolver());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

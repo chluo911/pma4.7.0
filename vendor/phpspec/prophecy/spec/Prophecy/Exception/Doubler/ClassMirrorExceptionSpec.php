@@ -6,19 +6,30 @@ use PhpSpec\ObjectBehavior;
 
 class ClassMirrorExceptionSpec extends ObjectBehavior
 {
-    function let(\ReflectionClass $class)
+    public function let(\ReflectionClass $class)
     {
-        $this->beConstructedWith('', $class);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_a_prophecy_exception()
+    public function it_is_a_prophecy_exception()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Exception');
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Doubler\DoublerException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_contains_a_reflected_class_link($class)
+    public function it_contains_a_reflected_class_link($class)
     {
-        $this->getReflectedClass()->shouldReturn($class);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

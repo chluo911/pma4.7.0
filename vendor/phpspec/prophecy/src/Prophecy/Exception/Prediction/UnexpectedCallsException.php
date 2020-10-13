@@ -27,6 +27,10 @@ class UnexpectedCallsException extends MethodProphecyException implements Predic
 
     public function getCalls()
     {
-        return $this->calls;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

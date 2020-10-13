@@ -12,7 +12,11 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->object = new Remote();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getName()
@@ -22,7 +26,11 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveRemoteNameOnConstruction()
     {
-        $this->assertNull($this->object->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getUrl()
@@ -32,7 +40,11 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveUrlOnConstruction()
     {
-        $this->assertNull($this->object->getUrl());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setName()
@@ -42,12 +54,11 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetRemoteName()
     {
-        $expected = 'remote_name';
-
-        $obj = $this->object->setName($expected);
-
-        $this->assertSame($expected, $this->object->getName());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setUrl()
@@ -57,12 +68,11 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetRemoteUrl()
     {
-        $expected = 'git@github.com:satooshi/php-coveralls.git';
-
-        $obj = $this->object->setUrl($expected);
-
-        $this->assertSame($expected, $this->object->getUrl());
-        $this->assertSame($obj, $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // toArray()
@@ -72,13 +82,11 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertToArray()
     {
-        $expected = array(
-            'name' => null,
-            'url'  => null,
-        );
-
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,19 +94,10 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertToFilledArray()
     {
-        $name = 'name';
-        $url  = 'url';
-
-        $this->object
-        ->setName($name)
-        ->setUrl($url);
-
-        $expected = array(
-            'name' => $name,
-            'url'  => $url,
-        );
-
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

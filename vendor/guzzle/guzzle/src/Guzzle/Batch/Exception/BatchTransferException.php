@@ -37,15 +37,11 @@ class BatchTransferException extends \Exception implements GuzzleException
         TransferStrategy $transferStrategy = null,
         DivisorStrategy $divisorStrategy = null
     ) {
-        $this->batch = $batch;
-        $this->transferredItems = $transferredItems;
-        $this->transferStrategy = $transferStrategy;
-        $this->divisorStrategy = $divisorStrategy;
-        parent::__construct(
-            'Exception encountered while transferring batch: ' . $exception->getMessage(),
-            $exception->getCode(),
-            $exception
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,7 +51,11 @@ class BatchTransferException extends \Exception implements GuzzleException
      */
     public function getBatch()
     {
-        return $this->batch;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,7 +65,11 @@ class BatchTransferException extends \Exception implements GuzzleException
      */
     public function getTransferredItems()
     {
-        return $this->transferredItems;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,7 +79,11 @@ class BatchTransferException extends \Exception implements GuzzleException
      */
     public function getTransferStrategy()
     {
-        return $this->transferStrategy;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,6 +93,10 @@ class BatchTransferException extends \Exception implements GuzzleException
      */
     public function getDivisorStrategy()
     {
-        return $this->divisorStrategy;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

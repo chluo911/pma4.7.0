@@ -25,8 +25,11 @@ class ContextTest extends \PHPUnit_Framework_TestCase
      */
     public function testProvidesANormalizedNamespace()
     {
-        $fixture = new Context('\My\Space');
-        $this->assertSame('My\Space', $fixture->getNamespace());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -35,8 +38,11 @@ class ContextTest extends \PHPUnit_Framework_TestCase
      */
     public function testInterpretsNamespaceNamedGlobalAsRootNamespace()
     {
-        $fixture = new Context('global');
-        $this->assertSame('', $fixture->getNamespace());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,8 +51,11 @@ class ContextTest extends \PHPUnit_Framework_TestCase
      */
     public function testInterpretsNamespaceNamedDefaultAsRootNamespace()
     {
-        $fixture = new Context('default');
-        $this->assertSame('', $fixture->getNamespace());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,7 +64,10 @@ class ContextTest extends \PHPUnit_Framework_TestCase
      */
     public function testProvidesNormalizedNamespaceAliases()
     {
-        $fixture = new Context('', ['Space' => '\My\Space']);
-        $this->assertSame(['Space' => 'My\Space'], $fixture->getNamespaceAliases());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

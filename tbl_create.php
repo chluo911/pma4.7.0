@@ -20,7 +20,10 @@ PMA\libraries\Util::checkParameters(array('db'));
 /* Check if database name is empty */
 if (strlen($db) === 0) {
     PMA\libraries\Util::mysqlDie(
-        __('The database name is empty!'), '', false, 'index.php'
+        __('The database name is empty!'),
+        '',
+        false,
+        'index.php'
     );
 }
 
@@ -78,8 +81,10 @@ if (isset($_REQUEST['do_save_data'])) {
                     && strlen($_REQUEST['field_name'][$fieldindex]) > 0
                 ) {
                     PMA_setMIME(
-                        $db, $table,
-                        $_REQUEST['field_name'][$fieldindex], $mimetype,
+                        $db,
+                        $table,
+                        $_REQUEST['field_name'][$fieldindex],
+                        $mimetype,
                         $_REQUEST['field_transformation'][$fieldindex],
                         $_REQUEST['field_transformation_options'][$fieldindex],
                         $_REQUEST['field_input_transformation'][$fieldindex],

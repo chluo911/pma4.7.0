@@ -22,19 +22,19 @@ class ArgumentsNode extends ArrayNode
 {
     public function compile(Compiler $compiler)
     {
-        $this->compileArguments($compiler, false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function toArray()
     {
-        $array = array();
-
-        foreach ($this->getKeyValuePairs() as $pair) {
-            $array[] = $pair['value'];
-            $array[] = ', ';
-        }
-        array_pop($array);
-
-        return $array;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

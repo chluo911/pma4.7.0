@@ -5,6 +5,10 @@ class Coverage0
 {
     public function doSomething()
     {
-        $var = '';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

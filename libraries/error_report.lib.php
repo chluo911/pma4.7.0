@@ -70,7 +70,7 @@ function PMA_getReportData($exception_type = 'js')
         }
         $exception = $_REQUEST['exception'];
         $exception["stack"] = PMA_translateStacktrace($exception["stack"]);
-        List($uri, $script_name) = PMA_sanitizeUrl($exception["url"]);
+        list($uri, $script_name) = PMA_sanitizeUrl($exception["url"]);
         $exception["uri"] = $uri;
         unset($exception["url"]);
 
@@ -105,7 +105,6 @@ function PMA_getReportData($exception_type = 'js')
                     "stackTrace" => $errorObj->getBacktrace(5),
                     "stackhash" => $errorObj->getHash()
                     );
-
             }
         }
 
@@ -281,14 +280,15 @@ function PMA_translateStacktrace($stack)
         }
         if (preg_match("<js/get_scripts.js.php\?(.*)>", $level["url"], $matches)) {
             parse_str($matches[1], $vars);
-            List($file_name, $line_number) = PMA_getLineNumber(
-                $vars["scripts"], $level["line"]
+            list($file_name, $line_number) = PMA_getLineNumber(
+                $vars["scripts"],
+                $level["line"]
             );
             $level["filename"] = $file_name;
             $level["line"] = $line_number;
         } else {
             unset($level["context"]);
-            List($uri, $script_name) = PMA_sanitizeUrl($level["url"]);
+            list($uri, $script_name) = PMA_sanitizeUrl($level["url"]);
             $level["uri"] = $uri;
             $level["scriptname"] = $script_name;
         }

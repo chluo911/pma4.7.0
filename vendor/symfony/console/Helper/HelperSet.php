@@ -102,7 +102,11 @@ class HelperSet implements \IteratorAggregate
      */
     public function getCommand()
     {
-        return $this->command;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -110,6 +114,10 @@ class HelperSet implements \IteratorAggregate
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->helpers);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

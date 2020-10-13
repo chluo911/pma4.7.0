@@ -58,11 +58,16 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Storage
     private $driver;
     private $url;
 
-    public function __construct(PHPUnit_Extensions_Selenium2TestCase_Driver $driver,
-                                PHPUnit_Extensions_Selenium2TestCase_URL $url)
+    public function __construct(
+        PHPUnit_Extensions_Selenium2TestCase_Driver $driver,
+        PHPUnit_Extensions_Selenium2TestCase_URL $url
+    )
     {
-        $this->driver = $driver;
-        $this->url = $url;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function __set($name, $value)

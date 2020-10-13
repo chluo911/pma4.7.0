@@ -76,11 +76,11 @@ class SourceFile extends Coveralls
      */
     public function toArray()
     {
-        return array(
-            'name'     => $this->name,
-            'source'   => $this->source,
-            'coverage' => $this->coverage,
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // API
@@ -127,7 +127,11 @@ class SourceFile extends Coveralls
      */
     public function getSource()
     {
-        return $this->source;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -137,7 +141,11 @@ class SourceFile extends Coveralls
      */
     public function getCoverage()
     {
-        return $this->coverage;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -157,7 +165,11 @@ class SourceFile extends Coveralls
      */
     public function getFileLines()
     {
-        return $this->fileLines;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

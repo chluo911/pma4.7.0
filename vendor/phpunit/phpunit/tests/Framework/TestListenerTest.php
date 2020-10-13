@@ -25,27 +25,47 @@ class Framework_TestListenerTest extends PHPUnit_Framework_TestCase implements P
 
     public function addError(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->errorCount++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
     {
-        $this->failureCount++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->notImplementedCount++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->riskyCount++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
-        $this->skippedCount++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
@@ -58,51 +78,55 @@ class Framework_TestListenerTest extends PHPUnit_Framework_TestCase implements P
 
     public function startTest(PHPUnit_Framework_Test $test)
     {
-        $this->startCount++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function endTest(PHPUnit_Framework_Test $test, $time)
     {
-        $this->endCount++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUp()
     {
-        $this->result = new PHPUnit_Framework_TestResult;
-        $this->result->addListener($this);
-
-        $this->endCount            = 0;
-        $this->failureCount        = 0;
-        $this->notImplementedCount = 0;
-        $this->riskyCount          = 0;
-        $this->skippedCount        = 0;
-        $this->startCount          = 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testError()
     {
-        $test = new TestError;
-        $test->run($this->result);
-
-        $this->assertEquals(1, $this->errorCount);
-        $this->assertEquals(1, $this->endCount);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFailure()
     {
-        $test = new Failure;
-        $test->run($this->result);
-
-        $this->assertEquals(1, $this->failureCount);
-        $this->assertEquals(1, $this->endCount);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStartStop()
     {
-        $test = new Success;
-        $test->run($this->result);
-
-        $this->assertEquals(1, $this->startCount);
-        $this->assertEquals(1, $this->endCount);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -78,10 +78,11 @@ class TableGisVisualizationController extends TableController
      */
     public function saveToFileAction()
     {
-        $this->response->disable();
-        $file_name = $this->visualizationSettings['spatialColumn'];
-        $save_format = $_REQUEST['fileFormat'];
-        $this->visualization->toFile($file_name, $save_format);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,124 +92,10 @@ class TableGisVisualizationController extends TableController
      */
     public function indexAction()
     {
-        // Throw error if no sql query is set
-        if (! isset($this->sql_query) || $this->sql_query == '') {
-            $this->response->setRequestStatus(false);
-            $this->response->addHTML(
-                Message::error(__('No SQL query was set to fetch data.'))
-            );
-            return;
-        }
-
-        // Execute the query and return the result
-        $result = $this->dbi->tryQuery($this->sql_query);
-        // Get the meta data of results
-        $meta = $this->dbi->getFieldsMeta($result);
-
-        // Find the candidate fields for label column and spatial column
-        $labelCandidates = array();
-        $spatialCandidates = array();
-        foreach ($meta as $column_meta) {
-            if ($column_meta->type == 'geometry') {
-                $spatialCandidates[] = $column_meta->name;
-            } else {
-                $labelCandidates[] = $column_meta->name;
-            }
-        }
-
-        // Get settings if any posted
-        if (PMA_isValid($_REQUEST['visualizationSettings'], 'array')) {
-            $this->visualizationSettings = $_REQUEST['visualizationSettings'];
-        }
-
-        if (!isset($this->visualizationSettings['labelColumn'])
-            && isset($labelCandidates[0])
-        ) {
-            $this->visualizationSettings['labelColumn'] = '';
-        }
-
-        // If spatial column is not set, use first geometric column as spatial column
-        if (! isset($this->visualizationSettings['spatialColumn'])) {
-            $this->visualizationSettings['spatialColumn'] = $spatialCandidates[0];
-        }
-
-        // Convert geometric columns from bytes to text.
-        $pos = isset($_REQUEST['pos']) ? $_REQUEST['pos']
-            : $_SESSION['tmpval']['pos'];
-        if (isset($_REQUEST['session_max_rows'])) {
-            $rows = $_REQUEST['session_max_rows'];
-        } else {
-            if ($_SESSION['tmpval']['max_rows'] != 'all') {
-                $rows = $_SESSION['tmpval']['max_rows'];
-            } else {
-                $rows = $GLOBALS['cfg']['MaxRows'];
-            }
-        }
-        $this->visualization = GISVisualization::get(
-            $this->sql_query,
-            $this->visualizationSettings,
-            $rows,
-            $pos
-        );
-
-        if (isset($_REQUEST['saveToFile'])) {
-            $this->saveToFileAction();
-            return;
-        }
-
-        $this->response->getHeader()->getScripts()->addFiles(
-            array(
-                'openlayers/OpenLayers.js',
-                'jquery/jquery.svg.js',
-                'tbl_gis_visualization.js',
-            )
-        );
-
-        // If all the rows contain SRID, use OpenStreetMaps on the initial loading.
-        if (! isset($_REQUEST['displayVisualization'])) {
-            if ($this->visualization->hasSrid()) {
-                $this->visualizationSettings['choice'] = 'useBaseLayer';
-            } else {
-                unset($this->visualizationSettings['choice']);
-            }
-        }
-
-        $this->visualization->setUserSpecifiedSettings($this->visualizationSettings);
-        if ($this->visualizationSettings != null) {
-            foreach ($this->visualization->getSettings() as $setting => $val) {
-                if (! isset($this->visualizationSettings[$setting])) {
-                    $this->visualizationSettings[$setting] = $val;
-                }
-            }
-        }
-
-        /**
-         * Displays the page
-         */
-        $this->url_params['sql_query'] = $this->sql_query;
-        $downloadUrl = 'tbl_gis_visualization.php' . URL::getCommon(
-            array_merge(
-                $this->url_params,
-                array(
-                    'saveToFile' => true,
-                    'session_max_rows' => $rows,
-                    'pos' => $pos
-                )
-            )
-        );
-        $html = Template::get('table/gis_visualization/gis_visualization')->render(
-            array(
-                'url_params' => $this->url_params,
-                'downloadUrl' => $downloadUrl,
-                'labelCandidates' => $labelCandidates,
-                'spatialCandidates' => $spatialCandidates,
-                'visualizationSettings' => $this->visualizationSettings,
-                'sql_query' => $this->sql_query,
-                'visualization' => $this->visualization->toImage('svg'),
-                'drawOl' => $this->visualization->asOl()
-            )
-        );
-
-        $this->response->addHTML($html);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

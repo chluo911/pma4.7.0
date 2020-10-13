@@ -42,8 +42,11 @@ class GenericEvent extends Event implements \ArrayAccess, \IteratorAggregate
      */
     public function __construct($subject = null, array $arguments = array())
     {
-        $this->subject = $subject;
-        $this->arguments = $arguments;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,7 +56,11 @@ class GenericEvent extends Event implements \ArrayAccess, \IteratorAggregate
      */
     public function getSubject()
     {
-        return $this->subject;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -136,7 +143,11 @@ class GenericEvent extends Event implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetGet($key)
     {
-        return $this->getArgument($key);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -147,7 +158,11 @@ class GenericEvent extends Event implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetSet($key, $value)
     {
-        $this->setArgument($key, $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -171,7 +186,11 @@ class GenericEvent extends Event implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetExists($key)
     {
-        return $this->hasArgument($key);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -181,6 +200,10 @@ class GenericEvent extends Event implements \ArrayAccess, \IteratorAggregate
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->arguments);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

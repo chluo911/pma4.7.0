@@ -6,8 +6,11 @@ class BeforeClassAndAfterClassTest extends PHPUnit_Framework_TestCase
 
     public static function resetProperties()
     {
-        self::$beforeClassWasRun = 0;
-        self::$afterClassWasRun  = 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -15,7 +18,11 @@ class BeforeClassAndAfterClassTest extends PHPUnit_Framework_TestCase
      */
     public static function initialClassSetup()
     {
-        self::$beforeClassWasRun++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -23,7 +30,11 @@ class BeforeClassAndAfterClassTest extends PHPUnit_Framework_TestCase
      */
     public static function finalClassTeardown()
     {
-        self::$afterClassWasRun++;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function test1()

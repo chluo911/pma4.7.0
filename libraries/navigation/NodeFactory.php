@@ -89,4 +89,3 @@ class NodeFactory
         return new $class($name, $type, $is_group);
     }
 }
-

@@ -76,60 +76,11 @@ class VersionInformation
      */
     public function versionToInt($version)
     {
-        $parts = explode('-', $version);
-        if (count($parts) > 1) {
-            $suffix = $parts[1];
-        } else {
-            $suffix = '';
-        }
-        $parts = explode('.', $parts[0]);
-
-        $result = 0;
-
-        if (count($parts) >= 1 && is_numeric($parts[0])) {
-            $result += 1000000 * $parts[0];
-        }
-
-        if (count($parts) >= 2 && is_numeric($parts[1])) {
-            $result += 10000 * $parts[1];
-        }
-
-        if (count($parts) >= 3 && is_numeric($parts[2])) {
-            $result += 100 * $parts[2];
-        }
-
-        if (count($parts) >= 4 && is_numeric($parts[3])) {
-            $result += 1 * $parts[3];
-        }
-
-        if (!empty($suffix)) {
-            $matches = array();
-            if (preg_match('/^(\D+)(\d+)$/', $suffix, $matches)) {
-                $suffix = $matches[1];
-                $result += intval($matches[2]);
-            }
-            switch ($suffix) {
-            case 'pl':
-                $result += 60;
-                break;
-            case 'rc':
-                $result += 30;
-                break;
-            case 'beta':
-                $result += 20;
-                break;
-            case 'alpha':
-                $result += 10;
-                break;
-            case 'dev':
-                $result += 0;
-                break;
-            }
-        } else {
-            $result += 50; // for final
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

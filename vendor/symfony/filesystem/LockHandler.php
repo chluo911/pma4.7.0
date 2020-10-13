@@ -39,18 +39,11 @@ class LockHandler
      */
     public function __construct($name, $lockPath = null)
     {
-        $lockPath = $lockPath ?: sys_get_temp_dir();
-
-        if (!is_dir($lockPath)) {
-            $fs = new Filesystem();
-            $fs->mkdir($lockPath);
-        }
-
-        if (!is_writable($lockPath)) {
-            throw new IOException(sprintf('The directory "%s" is not writable.', $lockPath), 0, null, $lockPath);
-        }
-
-        $this->file = sprintf('%s/sf.%s.%s.lock', $lockPath, preg_replace('/[^a-z0-9\._-]+/i', '-', $name), hash('sha256', $name));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,38 +57,11 @@ class LockHandler
      */
     public function lock($blocking = false)
     {
-        if ($this->handle) {
-            return true;
-        }
-
-        // Silence error reporting
-        set_error_handler(function () {});
-
-        if (!$this->handle = fopen($this->file, 'r')) {
-            if ($this->handle = fopen($this->file, 'x')) {
-                chmod($this->file, 0444);
-            } elseif (!$this->handle = fopen($this->file, 'r')) {
-                usleep(100); // Give some time for chmod() to complete
-                $this->handle = fopen($this->file, 'r');
-            }
-        }
-        restore_error_handler();
-
-        if (!$this->handle) {
-            $error = error_get_last();
-            throw new IOException($error['message'], 0, null, $this->file);
-        }
-
-        // On Windows, even if PHP doc says the contrary, LOCK_NB works, see
-        // https://bugs.php.net/54129
-        if (!flock($this->handle, LOCK_EX | ($blocking ? 0 : LOCK_NB))) {
-            fclose($this->handle);
-            $this->handle = null;
-
-            return false;
-        }
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,10 +69,10 @@ class LockHandler
      */
     public function release()
     {
-        if ($this->handle) {
-            flock($this->handle, LOCK_UN | LOCK_NB);
-            fclose($this->handle);
-            $this->handle = null;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

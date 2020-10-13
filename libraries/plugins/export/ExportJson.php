@@ -43,13 +43,11 @@ class ExportJson extends ExportPlugin
      */
     public function encode($data)
     {
-        if (isset($GLOBALS['json_pretty_print'])
-            && $GLOBALS['json_pretty_print']
-        ) {
-            return json_encode($data, JSON_PRETTY_PRINT);
-        } else {
-            return json_encode($data);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,17 +97,11 @@ class ExportJson extends ExportPlugin
      */
     public function exportHeader()
     {
-        global $crlf;
-
-        $meta = array(
-            'type' => 'header',
-            'version' => PMA_VERSION,
-            'comment' => 'Export to JSON plugin for PHPMyAdmin',
-        );
-
-        return PMA_exportOutputHandler(
-            '[' . $crlf . $this->encode($meta) . ',' . $crlf
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,9 +111,11 @@ class ExportJson extends ExportPlugin
      */
     public function exportFooter()
     {
-        global $crlf;
-
-        return PMA_exportOutputHandler(']' . $crlf);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,20 +128,11 @@ class ExportJson extends ExportPlugin
      */
     public function exportDBHeader($db, $db_alias = '')
     {
-        global $crlf;
-
-        if (empty($db_alias)) {
-            $db_alias = $db;
-        }
-
-        $meta = array(
-            'type' => 'database',
-            'name' => $db_alias
-        );
-
-        return PMA_exportOutputHandler(
-            $this->encode($meta) . ',' . $crlf
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -159,7 +144,11 @@ class ExportJson extends ExportPlugin
      */
     public function exportDBFooter($db)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -173,7 +162,11 @@ class ExportJson extends ExportPlugin
      */
     public function exportDBCreate($db, $export_type, $db_alias = '')
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -196,77 +189,10 @@ class ExportJson extends ExportPlugin
         $sql_query,
         $aliases = array()
     ) {
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-
-        if (! $this->first) {
-            if (!PMA_exportOutputHandler(',')) {
-                return false;
-            }
-        } else {
-            $this->first = false;
-        }
-
-        $buffer = $this->encode(
-            array(
-                'type' => 'table',
-                'name' => $table_alias,
-                'database' => $db_alias,
-                'data' => "@@DATA@@"
-            )
-        );
-        list($header, $footer) = explode('"@@DATA@@"', $buffer);
-
-        if (!PMA_exportOutputHandler($header . $crlf . '[' . $crlf)) {
-            return false;
-        }
-
-        $result = $GLOBALS['dbi']->query(
-            $sql_query,
-            null,
-            PMA\libraries\DatabaseInterface::QUERY_UNBUFFERED
-        );
-        $columns_cnt = $GLOBALS['dbi']->numFields($result);
-
-        $columns = array();
-        for ($i = 0; $i < $columns_cnt; $i++) {
-            $col_as = $GLOBALS['dbi']->fieldName($result, $i);
-            if (!empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
-                $col_as = $aliases[$db]['tables'][$table]['columns'][$col_as];
-            }
-            $columns[$i] = stripslashes($col_as);
-        }
-
-        $record_cnt = 0;
-        while ($record = $GLOBALS['dbi']->fetchRow($result)) {
-
-            $record_cnt++;
-
-            // Output table name as comment if this is the first record of the table
-            if ($record_cnt > 1) {
-                if (!PMA_exportOutputHandler(',' . $crlf)) {
-                    return false;
-                }
-            }
-
-            $data = array();
-
-            for ($i = 0; $i < $columns_cnt; $i++) {
-                $data[$columns[$i]] = $record[$i];
-            }
-
-            if (!PMA_exportOutputHandler($this->encode($data))) {
-                return false;
-            }
-        }
-
-        if (!PMA_exportOutputHandler($crlf . ']' . $crlf . $footer . $crlf)) {
-            return false;
-        }
-
-        $GLOBALS['dbi']->freeResult($result);
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

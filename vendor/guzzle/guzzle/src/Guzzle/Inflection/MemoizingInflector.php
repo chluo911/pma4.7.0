@@ -31,12 +31,11 @@ class MemoizingInflector implements InflectorInterface
 
     public function snake($word)
     {
-        if (!isset($this->cache['snake'][$word])) {
-            $this->pruneCache('snake');
-            $this->cache['snake'][$word] = $this->decoratedInflector->snake($word);
-        }
-
-        return $this->cache['snake'][$word];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,12 +47,11 @@ class MemoizingInflector implements InflectorInterface
      */
     public function camel($word)
     {
-        if (!isset($this->cache['camel'][$word])) {
-            $this->pruneCache('camel');
-            $this->cache['camel'][$word] = $this->decoratedInflector->camel($word);
-        }
-
-        return $this->cache['camel'][$word];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,8 +61,10 @@ class MemoizingInflector implements InflectorInterface
      */
     protected function pruneCache($cache)
     {
-        if (count($this->cache[$cache]) == $this->maxCacheSize) {
-            $this->cache[$cache] = array_slice($this->cache[$cache], $this->maxCacheSize * 0.2);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

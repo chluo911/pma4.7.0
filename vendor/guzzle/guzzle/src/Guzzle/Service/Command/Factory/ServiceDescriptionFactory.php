@@ -47,25 +47,19 @@ class ServiceDescriptionFactory implements FactoryInterface
      */
     public function getServiceDescription()
     {
-        return $this->description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function factory($name, array $args = array())
     {
-        $command = $this->description->getOperation($name);
-
-        // If a command wasn't found, then try to uppercase the first letter and try again
-        if (!$command) {
-            $command = $this->description->getOperation(ucfirst($name));
-            // If an inflector was passed, then attempt to get the command using snake_case inflection
-            if (!$command && $this->inflector) {
-                $command = $this->description->getOperation($this->inflector->snake($name));
-            }
-        }
-
-        if ($command) {
-            $class = $command->getClass();
-            return new $class($args, $command, $this->description);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

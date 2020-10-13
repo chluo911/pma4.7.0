@@ -357,8 +357,11 @@ abstract class Context
      */
     public static function isNumber($str)
     {
-        return (($str >= '0') && ($str <= '9')) || ($str === '.')
-            || ($str === '-') || ($str === '+') || ($str === 'e') || ($str === 'E');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // -------------------------------------------------------------------------

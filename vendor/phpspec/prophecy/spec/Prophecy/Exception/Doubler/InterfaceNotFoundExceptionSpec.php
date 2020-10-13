@@ -7,18 +7,30 @@ use spec\Prophecy\Exception\Prophecy;
 
 class InterfaceNotFoundExceptionSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith('msg', 'CustomInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_extends_ClassNotFoundException()
+    public function it_extends_ClassNotFoundException()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Doubler\ClassNotFoundException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_getClassname_returns_classname()
+    public function its_getClassname_returns_classname()
     {
-        $this->getClassname()->shouldReturn('CustomInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

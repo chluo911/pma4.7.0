@@ -8,9 +8,9 @@
 
  use PMA\libraries\DatabaseInterface;
 
-if (! defined('PHPMYADMIN')) {
-    exit;
-}
+ if (! defined('PHPMYADMIN')) {
+     exit;
+ }
 
 /**
  * get master replication from server
@@ -130,42 +130,58 @@ foreach ($replication_types as $type) {
     if ($GLOBALS['replication_info'][$type]['status']) {
         if ($type == "master") {
             PMA_fillReplicationInfo(
-                $type, 'Do_DB', $server_master_replication[0],
+                $type,
+                'Do_DB',
+                $server_master_replication[0],
                 'Binlog_Do_DB'
             );
 
             PMA_fillReplicationInfo(
-                $type, 'Ignore_DB', $server_master_replication[0],
+                $type,
+                'Ignore_DB',
+                $server_master_replication[0],
                 'Binlog_Ignore_DB'
             );
         } elseif ($type == "slave") {
             PMA_fillReplicationInfo(
-                $type, 'Do_DB', $server_slave_replication[0],
+                $type,
+                'Do_DB',
+                $server_slave_replication[0],
                 'Replicate_Do_DB'
             );
 
             PMA_fillReplicationInfo(
-                $type, 'Ignore_DB', $server_slave_replication[0],
+                $type,
+                'Ignore_DB',
+                $server_slave_replication[0],
                 'Replicate_Ignore_DB'
             );
 
             PMA_fillReplicationInfo(
-                $type, 'Do_Table', $server_slave_replication[0],
+                $type,
+                'Do_Table',
+                $server_slave_replication[0],
                 'Replicate_Do_Table'
             );
 
             PMA_fillReplicationInfo(
-                $type, 'Ignore_Table', $server_slave_replication[0],
+                $type,
+                'Ignore_Table',
+                $server_slave_replication[0],
                 'Replicate_Ignore_Table'
             );
 
             PMA_fillReplicationInfo(
-                $type, 'Wild_Do_Table', $server_slave_replication[0],
+                $type,
+                'Wild_Do_Table',
+                $server_slave_replication[0],
                 'Replicate_Wild_Do_Table'
             );
 
             PMA_fillReplicationInfo(
-                $type, 'Wild_Ignore_Table', $server_slave_replication[0],
+                $type,
+                'Wild_Ignore_Table',
+                $server_slave_replication[0],
                 'Replicate_Wild_Ignore_Table'
             );
         }
@@ -183,7 +199,10 @@ foreach ($replication_types as $type) {
  * @return array
  */
 function PMA_fillReplicationInfo(
-    $type, $replicationInfoKey, $mysqlInfo, $mysqlKey
+    $type,
+    $replicationInfoKey,
+    $mysqlInfo,
+    $mysqlKey
 ) {
     $GLOBALS['replication_info'][$type][$replicationInfoKey]
         = empty($mysqlInfo[$mysqlKey])
@@ -228,17 +247,11 @@ function PMA_extractDbOrTable($string, $what = 'db')
  */
 function PMA_Replication_Slave_control($action, $control = null, $link = null)
 {
-    $action = mb_strtoupper($action);
-    $control = mb_strtoupper($control);
-
-    if ($action != "START" && $action != "STOP") {
-        return -1;
-    }
-    if ($control != "SQL_THREAD" && $control != "IO_THREAD" && $control != null) {
-        return -1;
-    }
-
-    return $GLOBALS['dbi']->tryQuery($action . " SLAVE " . $control . ";", $link);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -256,28 +269,21 @@ function PMA_Replication_Slave_control($action, $control = null, $link = null)
  *
  * @return string output of CHANGE MASTER mysql command
  */
-function PMA_Replication_Slave_changeMaster($user, $password, $host, $port,
-    $pos, $stop = true, $start = true, $link = null
+function PMA_Replication_Slave_changeMaster(
+    $user,
+    $password,
+    $host,
+    $port,
+    $pos,
+    $stop = true,
+    $start = true,
+    $link = null
 ) {
-    if ($stop) {
-        PMA_Replication_Slave_control("STOP", null, $link);
-    }
-
-    $out = $GLOBALS['dbi']->tryQuery(
-        'CHANGE MASTER TO ' .
-        'MASTER_HOST=\'' . $host . '\',' .
-        'MASTER_PORT=' . ($port * 1) . ',' .
-        'MASTER_USER=\'' . $user . '\',' .
-        'MASTER_PASSWORD=\'' . $password . '\',' .
-        'MASTER_LOG_FILE=\'' . $pos["File"] . '\',' .
-        'MASTER_LOG_POS=' . $pos["Position"] . ';', $link
-    );
-
-    if ($start) {
-        PMA_Replication_Slave_control("START", null, $link);
-    }
-
-    return $out;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -292,18 +298,17 @@ function PMA_Replication_Slave_changeMaster($user, $password, $host, $port,
  * @return mixed $link mysql link on success
  */
 function PMA_Replication_connectToMaster(
-    $user, $password, $host = null, $port = null, $socket = null
+    $user,
+    $password,
+    $host = null,
+    $port = null,
+    $socket = null
 ) {
-    $server = array();
-    $server['user'] = $user;
-    $server['password'] = $password;
-    $server["host"] = PMA_sanitizeMySQLHost($host);
-    $server["port"] = $port;
-    $server["socket"] = $socket;
-
-    // 5th parameter set to true means that it's an auxiliary connection
-    // and we must not go back to login page if it fails
-    return $GLOBALS['dbi']->connect(databaseinterface::CONNECT_AUXILIARY, $server);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 /**
  * Fetches position and file of current binary log on master
@@ -315,12 +320,9 @@ function PMA_Replication_connectToMaster(
  */
 function PMA_Replication_Slave_binLogMaster($link = null)
 {
-    $data = $GLOBALS['dbi']->fetchResult('SHOW MASTER STATUS', null, null, $link);
-    $output = array();
-
-    if (! empty($data)) {
-        $output["File"] = $data[0]["File"];
-        $output["Position"] = $data[0]["Position"];
-    }
-    return $output;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

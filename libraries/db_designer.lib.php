@@ -85,7 +85,9 @@ function PMA_getPageIdsAndNames($db)
         . " WHERE db_name = '" . $GLOBALS['dbi']->escapeString($db) . "'"
         . " ORDER BY `page_descr`";
     $page_rs = PMA_queryAsControlUser(
-        $page_query, false, PMA\libraries\DatabaseInterface::QUERY_STORE
+        $page_query,
+        false,
+        PMA\libraries\DatabaseInterface::QUERY_STORE
     );
 
     $result = array();
@@ -141,7 +143,10 @@ function PMA_getHtmlForSchemaExport($db, $page)
  * @return string html
  */
 function PMA_getHtmlForJSFields(
-    $script_tables, $script_contr, $script_display_field, $display_page
+    $script_tables,
+    $script_contr,
+    $script_display_field,
+    $display_page
 ) {
     return PMA\libraries\Template::get('database/designer/js_fields')
         ->render(
@@ -188,7 +193,6 @@ function PMA_getSideMenuParamsArray()
     $cfgRelation = PMA_getRelationsParam();
 
     if ($GLOBALS['cfgRelation']['designersettingswork']) {
-
         $query = 'SELECT `settings_data` FROM '
             . PMA\libraries\Util::backquote($cfgRelation['db']) . '.'
             . PMA\libraries\Util::backquote($cfgRelation['designer_settings'])
@@ -305,7 +309,11 @@ function PMA_getHTMLTableList($tab_pos, $display_page)
  * @return string html
  */
 function PMA_getDatabaseTables(
-    $tab_pos, $display_page, $tab_column, $tables_all_keys, $tables_pk_or_unique_keys
+    $tab_pos,
+    $display_page,
+    $tab_column,
+    $tables_all_keys,
+    $tables_pk_or_unique_keys
 ) {
     return PMA\libraries\Template::get('database/designer/database_tables')
         ->render(

@@ -69,12 +69,12 @@ class Template
      */
     public function set($data, $value = null)
     {
-        if(is_array($data) && ! $value) {
+        if (is_array($data) && ! $value) {
             $this->data = array_merge(
                 $this->data,
                 $data
             );
-        } else if (is_string($data)) {
+        } elseif (is_string($data)) {
             $this->data[$data] = $value;
         }
     }
@@ -87,13 +87,11 @@ class Template
      */
     public function setHelper($funcName, $funcDef)
     {
-        if (! isset($this->helperFunctions[$funcName])) {
-            $this->helperFunctions[$funcName] = $funcDef;
-        } else {
-            throw new \LogicException(
-                'The function "' . $funcName . '" is already associated with the template.'
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,13 +101,11 @@ class Template
      */
     public function removeHelper($funcName)
     {
-        if (isset($this->helperFunctions[$funcName])) {
-            unset($this->helperFunctions[$funcName]);
-        } else {
-            throw new \LogicException(
-                'The function "' . $funcName . '" is not associated with the template.'
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

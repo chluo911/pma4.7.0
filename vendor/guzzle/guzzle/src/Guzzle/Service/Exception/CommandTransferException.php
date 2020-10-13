@@ -54,7 +54,11 @@ class CommandTransferException extends MultiTransferException
      */
     public function getAllCommands()
     {
-        return array_merge($this->successfulCommands, $this->failedCommands);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -92,7 +96,11 @@ class CommandTransferException extends MultiTransferException
      */
     public function getSuccessfulCommands()
     {
-        return $this->successfulCommands;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -102,7 +110,11 @@ class CommandTransferException extends MultiTransferException
      */
     public function getFailedCommands()
     {
-        return $this->failedCommands;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -114,6 +126,10 @@ class CommandTransferException extends MultiTransferException
      */
     public function getExceptionForFailedCommand(CommandInterface $command)
     {
-        return $this->getExceptionForFailedRequest($command->getRequest());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

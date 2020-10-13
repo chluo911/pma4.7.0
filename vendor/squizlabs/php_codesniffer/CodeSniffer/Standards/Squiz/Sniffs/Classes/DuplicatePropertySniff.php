@@ -43,8 +43,11 @@ class Squiz_Sniffs_Classes_DuplicatePropertySniff implements PHP_CodeSniffer_Sni
      */
     public function register()
     {
-        return array(T_OBJECT);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,37 +62,10 @@ class Squiz_Sniffs_Classes_DuplicatePropertySniff implements PHP_CodeSniffer_Sni
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $properties   = array();
-        $wantedTokens = array(
-                         T_PROPERTY,
-                         T_OBJECT,
-                        );
-
-        $next = $phpcsFile->findNext($wantedTokens, ($stackPtr + 1), $tokens[$stackPtr]['bracket_closer']);
-        while ($next !== false && $next < $tokens[$stackPtr]['bracket_closer']) {
-            if ($tokens[$next]['code'] === T_OBJECT) {
-                // Skip nested objects.
-                $next = $tokens[$next]['bracket_closer'];
-            } else {
-                $propName = $tokens[$next]['content'];
-                if (isset($properties[$propName]) === true) {
-                    $error = 'Duplicate property definition found for "%s"; previously defined on line %s';
-                    $data  = array(
-                              $propName,
-                              $tokens[$properties[$propName]]['line'],
-                             );
-                    $phpcsFile->addError($error, $next, 'Found', $data);
-                }
-
-                $properties[$propName] = $next;
-            }//end if
-
-            $next = $phpcsFile->findNext($wantedTokens, ($next + 1), $tokens[$stackPtr]['bracket_closer']);
-        }//end while
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

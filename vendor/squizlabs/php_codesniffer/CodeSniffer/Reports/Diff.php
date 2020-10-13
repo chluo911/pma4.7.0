@@ -49,67 +49,11 @@ class PHP_CodeSniffer_Reports_Diff implements PHP_CodeSniffer_Report
         $showSources=false,
         $width=80
     ) {
-        $errors = $phpcsFile->getFixableCount();
-        if ($errors === 0) {
-            return false;
-        }
-
-        if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            ob_end_clean();
-            echo "\t*** START FILE FIXING ***".PHP_EOL;
-        }
-
-        if (PHP_CODESNIFFER_CBF === true) {
-            ob_end_clean();
-            $startTime = microtime(true);
-            echo "\t=> Fixing file: $errors/$errors violations remaining";
-        }
-
-        $fixed = $phpcsFile->fixer->fixFile();
-
-        if (PHP_CODESNIFFER_CBF === true) {
-            if ($fixed === false) {
-                echo "\033[31mERROR\033[0m";
-            } else {
-                echo "\033[32mDONE\033[0m";
-            }
-
-            $timeTaken = ((microtime(true) - $startTime) * 1000);
-            if ($timeTaken < 1000) {
-                $timeTaken = round($timeTaken);
-                echo " in {$timeTaken}ms".PHP_EOL;
-            } else {
-                $timeTaken = round(($timeTaken / 1000), 2);
-                echo " in $timeTaken secs".PHP_EOL;
-            }
-
-            ob_start();
-        }
-
-        if (PHP_CODESNIFFER_VERBOSITY > 1) {
-            echo "\t*** END FILE FIXING ***".PHP_EOL;
-            ob_start();
-        }
-
-        if ($fixed === false) {
-            return false;
-        }
-
-        if (PHP_CODESNIFFER_CBF === true) {
-            // Diff without colours.
-            $diff = $phpcsFile->fixer->generateDiff(null, false);
-        } else {
-            $diff = $phpcsFile->fixer->generateDiff();
-        }
-
-        if ($diff === '') {
-            // Nothing to print.
-            return false;
-        }
-
-        echo $diff.PHP_EOL;
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generateFileReport()
 
 
@@ -138,12 +82,10 @@ class PHP_CodeSniffer_Reports_Diff implements PHP_CodeSniffer_Report
         $width=80,
         $toScreen=true
     ) {
-        echo $cachedData;
-        if ($toScreen === true) {
-            echo PHP_EOL;
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generate()
-
-
 }//end class

@@ -43,15 +43,14 @@
 
 /**
  * Provides access to /element and /elements commands
- * 
+ *
  * @package    PHPUnit_Selenium
  * @copyright  2010-2013 Sebastian Bergmann <sebastian@phpunit.de>
  * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
  * @version    Release: @package_version@
  * @link       http://www.phpunit.de/
  */
-abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
-    extends PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
+abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor extends PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
 {
 
     /**
@@ -60,7 +59,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byClassName($value)
     {
-        return $this->by('class name', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,7 +72,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byCssSelector($value)
     {
-        return $this->by('css selector', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,7 +85,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byId($value)
     {
-        return $this->by('id', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,7 +98,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byLinkText($value)
     {
-        return $this->by('link text', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,7 +111,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byPartialLinkText($value)
     {
-        return $this->by('partial link text', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,7 +124,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byName($value)
     {
-        return $this->by('name', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -114,7 +137,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byTag($value)
     {
-        return $this->by('tag name', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -123,7 +150,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function byXPath($value)
     {
-        return $this->by('xpath', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -131,9 +162,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function element(PHPUnit_Extensions_Selenium2TestCase_ElementCriteria $criteria)
     {
-        $value = $this->postCommand('element', $criteria);
-        return PHPUnit_Extensions_Selenium2TestCase_Element::fromResponseValue(
-                $value, $this->getSessionUrl()->descend('element'), $this->driver);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,14 +174,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function elements(PHPUnit_Extensions_Selenium2TestCase_ElementCriteria $criteria)
     {
-        $values = $this->postCommand('elements', $criteria);
-        $elements = array();
-        foreach ($values as $value) {
-            $elements[] =
-                PHPUnit_Extensions_Selenium2TestCase_Element::fromResponseValue(
-                    $value, $this->getSessionUrl()->descend('element'), $this->driver);
-        }
-        return $elements;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -157,13 +187,17 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     public function using($strategy)
     {
-        return new PHPUnit_Extensions_Selenium2TestCase_ElementCriteria($strategy);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
      * @return PHPUnit_Extensions_Selenium2TestCase_URL
      */
-    protected abstract function getSessionUrl();
+    abstract protected function getSessionUrl();
 
     /**
      * @param string $strategy     supported by JsonWireProtocol element/ command
@@ -172,7 +206,10 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
      */
     private function by($strategy, $value)
     {
-        return $this->element($this->using($strategy)->value($value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-
 }

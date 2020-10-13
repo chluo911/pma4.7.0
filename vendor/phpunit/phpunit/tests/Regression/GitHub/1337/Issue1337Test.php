@@ -6,14 +6,19 @@ class Issue1337Test extends PHPUnit_Framework_TestCase
      */
     public function testProvider($a)
     {
-        $this->assertTrue($a);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function dataProvider()
     {
-        return array(
-          'c:\\'=> array(true),
-          0.9   => array(true)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

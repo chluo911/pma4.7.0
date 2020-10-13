@@ -34,34 +34,11 @@ class GetAttrNode extends Node
 
     public function compile(Compiler $compiler)
     {
-        switch ($this->attributes['type']) {
-            case self::PROPERTY_CALL:
-                $compiler
-                    ->compile($this->nodes['node'])
-                    ->raw('->')
-                    ->raw($this->nodes['attribute']->attributes['value'])
-                ;
-                break;
-
-            case self::METHOD_CALL:
-                $compiler
-                    ->compile($this->nodes['node'])
-                    ->raw('->')
-                    ->raw($this->nodes['attribute']->attributes['value'])
-                    ->raw('(')
-                    ->compile($this->nodes['arguments'])
-                    ->raw(')')
-                ;
-                break;
-
-            case self::ARRAY_CALL:
-                $compiler
-                    ->compile($this->nodes['node'])
-                    ->raw('[')
-                    ->compile($this->nodes['attribute'])->raw(']')
-                ;
-                break;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function evaluate($functions, $values)
@@ -97,15 +74,10 @@ class GetAttrNode extends Node
 
     public function toArray()
     {
-        switch ($this->attributes['type']) {
-            case self::PROPERTY_CALL:
-                return array($this->nodes['node'], '.', $this->nodes['attribute']);
-
-            case self::METHOD_CALL:
-                return array($this->nodes['node'], '.', $this->nodes['attribute'], '(', $this->nodes['arguments'], ')');
-
-            case self::ARRAY_CALL:
-                return array($this->nodes['node'], '[', $this->nodes['attribute'], ']');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

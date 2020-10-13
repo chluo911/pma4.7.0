@@ -36,37 +36,11 @@ class ChainAdapter implements AdapterInterface
      */
     public function __construct(array $adapters, $maxLifetime = 0)
     {
-        if (!$adapters) {
-            throw new InvalidArgumentException('At least one adapter must be specified.');
-        }
-
-        foreach ($adapters as $adapter) {
-            if (!$adapter instanceof CacheItemPoolInterface) {
-                throw new InvalidArgumentException(sprintf('The class "%s" does not implement the "%s" interface.', get_class($adapter), CacheItemPoolInterface::class));
-            }
-
-            if ($adapter instanceof AdapterInterface) {
-                $this->adapters[] = $adapter;
-            } else {
-                $this->adapters[] = new ProxyAdapter($adapter);
-            }
-        }
-        $this->adapterCount = count($this->adapters);
-
-        $this->saveUp = \Closure::bind(
-            function ($adapter, $item) use ($maxLifetime) {
-                $origDefaultLifetime = $item->defaultLifetime;
-
-                if (0 < $maxLifetime && ($origDefaultLifetime <= 0 || $maxLifetime < $origDefaultLifetime)) {
-                    $item->defaultLifetime = $maxLifetime;
-                }
-
-                $adapter->save($item);
-                $item->defaultLifetime = $origDefaultLifetime;
-            },
-            null,
-            CacheItem::class
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -147,14 +121,11 @@ class ChainAdapter implements AdapterInterface
      */
     public function clear()
     {
-        $cleared = true;
-        $i = $this->adapterCount;
-
-        while ($i--) {
-            $cleared = $this->adapters[$i]->clear() && $cleared;
-        }
-
-        return $cleared;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -15,10 +15,10 @@ class RedisArrayAdapterTest extends AbstractRedisAdapterTest
 {
     public static function setupBeforeClass()
     {
-        parent::setupBeforeClass();
-        if (!class_exists('RedisArray')) {
-            self::markTestSkipped('The RedisArray class is required.');
-        }
-        self::$redis = new \RedisArray(array(getenv('REDIS_HOST')), array('lazy_connect' => true));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

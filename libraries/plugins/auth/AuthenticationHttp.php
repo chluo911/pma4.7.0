@@ -28,19 +28,11 @@ class AuthenticationHttp extends AuthenticationPlugin
      */
     public function auth()
     {
-        $response = Response::getInstance();
-        if ($response->isAjax()) {
-            $response->setRequestStatus(false);
-            // reload_flag removes the token parameter from the URL and reloads
-            $response->addJSON('reload_flag', '1');
-            if (defined('TESTSUITE')) {
-                return true;
-            } else {
-                exit;
-            }
-        }
-
-        return $this->authForm();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -109,78 +101,11 @@ class AuthenticationHttp extends AuthenticationPlugin
      */
     public function authCheck()
     {
-        global $PHP_AUTH_USER, $PHP_AUTH_PW;
-
-        // Grabs the $PHP_AUTH_USER variable
-        if (empty($PHP_AUTH_USER)) {
-            if (PMA_getenv('PHP_AUTH_USER')) {
-                $PHP_AUTH_USER = PMA_getenv('PHP_AUTH_USER');
-            } elseif (PMA_getenv('REMOTE_USER')) {
-                // CGI, might be encoded, see below
-                $PHP_AUTH_USER = PMA_getenv('REMOTE_USER');
-            } elseif (PMA_getenv('REDIRECT_REMOTE_USER')) {
-                // CGI, might be encoded, see below
-                $PHP_AUTH_USER = PMA_getenv('REDIRECT_REMOTE_USER');
-            } elseif (PMA_getenv('AUTH_USER')) {
-                // WebSite Professional
-                $PHP_AUTH_USER = PMA_getenv('AUTH_USER');
-            } elseif (PMA_getenv('HTTP_AUTHORIZATION')) {
-                // IIS, might be encoded, see below
-                $PHP_AUTH_USER = PMA_getenv('HTTP_AUTHORIZATION');
-            } elseif (PMA_getenv('Authorization')) {
-                // FastCGI, might be encoded, see below
-                $PHP_AUTH_USER = PMA_getenv('Authorization');
-            }
-        }
-        // Grabs the $PHP_AUTH_PW variable
-        if (empty($PHP_AUTH_PW)) {
-            if (PMA_getenv('PHP_AUTH_PW')) {
-                $PHP_AUTH_PW = PMA_getenv('PHP_AUTH_PW');
-            } elseif (PMA_getenv('REMOTE_PASSWORD')) {
-                // Apache/CGI
-                $PHP_AUTH_PW = PMA_getenv('REMOTE_PASSWORD');
-            } elseif (PMA_getenv('AUTH_PASSWORD')) {
-                // WebSite Professional
-                $PHP_AUTH_PW = PMA_getenv('AUTH_PASSWORD');
-            }
-        }
-        // Sanitize empty password login
-        if (is_null($PHP_AUTH_PW)) {
-            $PHP_AUTH_PW = '';
-        }
-
-        // Decode possibly encoded information (used by IIS/CGI/FastCGI)
-        // (do not use explode() because a user might have a colon in his password
-        if (strcmp(substr($PHP_AUTH_USER, 0, 6), 'Basic ') == 0) {
-            $usr_pass = base64_decode(substr($PHP_AUTH_USER, 6));
-            if (!empty($usr_pass)) {
-                $colon = strpos($usr_pass, ':');
-                if ($colon) {
-                    $PHP_AUTH_USER = substr($usr_pass, 0, $colon);
-                    $PHP_AUTH_PW = substr($usr_pass, $colon + 1);
-                }
-                unset($colon);
-            }
-            unset($usr_pass);
-        }
-
-        // sanitize username
-        $PHP_AUTH_USER = PMA_sanitizeMySQLUser($PHP_AUTH_USER);
-
-        // User logged out -> ensure the new username is not the same
-        $old_usr = isset($_REQUEST['old_usr']) ? $_REQUEST['old_usr'] : '';
-        if (! empty($old_usr)
-            && (isset($PHP_AUTH_USER) && hash_equals($old_usr, $PHP_AUTH_USER))
-        ) {
-            $PHP_AUTH_USER = '';
-        }
-
-        // Returns whether we get authentication settings or not
-        if (empty($PHP_AUTH_USER)) {
-            return false;
-        } else {
-            return true;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -195,35 +120,11 @@ class AuthenticationHttp extends AuthenticationPlugin
      */
     public function authSetUser()
     {
-        global $cfg, $server;
-        global $PHP_AUTH_USER, $PHP_AUTH_PW;
-
-        // Ensures valid authentication mode, 'only_db', bookmark database and
-        // table names and relation table name are used
-        if (! hash_equals($cfg['Server']['user'], $PHP_AUTH_USER)) {
-            $servers_cnt = count($cfg['Servers']);
-            for ($i = 1; $i <= $servers_cnt; $i++) {
-                if (isset($cfg['Servers'][$i])
-                    && ($cfg['Servers'][$i]['host'] == $cfg['Server']['host']
-                    && hash_equals($cfg['Servers'][$i]['user'], $PHP_AUTH_USER))
-                ) {
-                    $server = $i;
-                    $cfg['Server'] = $cfg['Servers'][$i];
-                    break;
-                }
-            } // end for
-        } // end if
-
-        $cfg['Server']['user'] = $PHP_AUTH_USER;
-        $cfg['Server']['password'] = $PHP_AUTH_PW;
-
-        // Avoid showing the password in phpinfo()'s output
-        unset($GLOBALS['PHP_AUTH_PW']);
-        unset($_SERVER['PHP_AUTH_PW']);
-
-        $this->setSessionAccessTime();
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -252,6 +153,10 @@ class AuthenticationHttp extends AuthenticationPlugin
      */
     public function getLoginFormURL()
     {
-        return './index.php?old_usr=' . $GLOBALS['PHP_AUTH_USER'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

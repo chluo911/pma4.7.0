@@ -22,15 +22,19 @@ class FilterIterator extends \FilterIterator
      */
     public function __construct(\Iterator $iterator, $callback)
     {
-        parent::__construct($iterator);
-        if (!is_callable($callback)) {
-            throw new InvalidArgumentException('The callback must be callable');
-        }
-        $this->callback = $callback;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function accept()
     {
-        return call_user_func($this->callback, $this->current());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

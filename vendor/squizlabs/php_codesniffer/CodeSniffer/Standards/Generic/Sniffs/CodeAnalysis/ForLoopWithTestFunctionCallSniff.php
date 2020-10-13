@@ -51,8 +51,11 @@ class Generic_Sniffs_CodeAnalysis_ForLoopWithTestFunctionCallSniff implements PH
      */
     public function register()
     {
-        return array(T_FOR);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -67,45 +70,10 @@ class Generic_Sniffs_CodeAnalysis_ForLoopWithTestFunctionCallSniff implements PH
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
-
-        // Skip invalid statement.
-        if (isset($token['parenthesis_opener']) === false) {
-            return;
-        }
-
-        $next = ++$token['parenthesis_opener'];
-        $end  = --$token['parenthesis_closer'];
-
-        $position = 0;
-
-        for (; $next <= $end; ++$next) {
-            $code = $tokens[$next]['code'];
-            if ($code === T_SEMICOLON) {
-                ++$position;
-            }
-
-            if ($position < 1) {
-                continue;
-            } else if ($position > 1) {
-                break;
-            } else if ($code !== T_VARIABLE && $code !== T_STRING) {
-                continue;
-            }
-
-            // Find next non empty token, if it is a open curly brace we have a
-            // function call.
-            $index = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($next + 1), null, true);
-
-            if ($tokens[$index]['code'] === T_OPEN_PARENTHESIS) {
-                $error = 'Avoid function calls in a FOR loop test part';
-                $phpcsFile->addWarning($error, $stackPtr, 'NotAllowed');
-                break;
-            }
-        }//end for
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

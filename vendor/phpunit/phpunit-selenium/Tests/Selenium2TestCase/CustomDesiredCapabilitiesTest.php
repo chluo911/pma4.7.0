@@ -12,15 +12,19 @@ class Extensions_Selenium2TestCase_CustomDesiredCapabilitiesTest extends Tests_S
 {
     public function setUp()
     {
-        parent::setUp();
-        $this->setDesiredCapabilities(array(
-            'platform' => 'ANY'
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOpen()
     {
-        $this->url('html/test_open.html');
-        $this->assertStringEndsWith('html/test_open.html', $this->url());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

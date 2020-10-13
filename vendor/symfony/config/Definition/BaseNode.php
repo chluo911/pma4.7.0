@@ -77,7 +77,11 @@ abstract class BaseNode implements NodeInterface
 
     public function removeAttribute($key)
     {
-        unset($this->attributes[$key]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,7 +111,11 @@ abstract class BaseNode implements NodeInterface
      */
     public function setExample($example)
     {
-        $this->setAttribute('example', $example);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -117,7 +125,11 @@ abstract class BaseNode implements NodeInterface
      */
     public function getExample()
     {
-        return $this->getAttribute('example');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

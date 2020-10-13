@@ -11,23 +11,19 @@ class PostFieldVisitorTest extends AbstractVisitorTestCase
 {
     public function testVisitsLocation()
     {
-        $visitor = new Visitor();
-        $param = $this->getNestedCommand('postField')->getParam('foo');
-        $visitor->visit($this->command, $this->request, $param->setSentAs('test'), '123');
-        $this->assertEquals('123', (string) $this->request->getPostField('test'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRecursivelyBuildsPostFields()
     {
-        $command = $this->getCommand('postField');
-        $request = $command->prepare();
-        $visitor = new Visitor();
-        $param = $command->getOperation()->getParam('foo');
-        $visitor->visit($command, $request, $param, $command['foo']);
-        $visitor->after($command, $request);
-        $this->assertEquals(
-            'Foo[test][baz]=1&Foo[test][Jenga_Yall!]=HELLO&Foo[bar]=123',
-            rawurldecode((string) $request->getPostFields())
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

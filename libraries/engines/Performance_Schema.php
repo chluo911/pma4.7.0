@@ -27,4 +27,3 @@ class Performance_Schema extends StorageEngine
         return 'performance-schema';
     }
 }
-

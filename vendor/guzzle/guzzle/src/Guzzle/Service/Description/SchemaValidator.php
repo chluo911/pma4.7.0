@@ -125,7 +125,6 @@ class SchemaValidator implements ValidatorInterface
             }
 
             if ($traverse) {
-
                 if ($properties = $param->getProperties()) {
                     // if properties were found, the validate each property of the value
                     foreach ($properties as $property) {
@@ -151,7 +150,7 @@ class SchemaValidator implements ValidatorInterface
                     $diff = array_diff($keys, array_keys($properties));
                     if (!empty($diff)) {
                         // Determine which keys are not in the properties
-                        if ($additional instanceOf Parameter) {
+                        if ($additional instanceof Parameter) {
                             foreach ($diff as $key) {
                                 $this->recursiveProcess($additional, $value[$key], "{$path}[{$key}]", $depth);
                             }
@@ -172,7 +171,6 @@ class SchemaValidator implements ValidatorInterface
                     $valueIsArray = false;
                 }
             }
-
         } elseif ($type == 'array' && $valueIsArray && $param->getItems()) {
             foreach ($value as $i => &$item) {
                 // Validate each item in an array against the items attribute of the schema
@@ -226,9 +224,7 @@ class SchemaValidator implements ValidatorInterface
                     $this->errors[] = "{$path} length must be less than or equal to {$max}";
                 }
             }
-
         } elseif ($type == 'array') {
-
             $size = null;
             if ($min = $param->getMinItems()) {
                 $size = count($value);
@@ -241,7 +237,6 @@ class SchemaValidator implements ValidatorInterface
                     $this->errors[] = "{$path} must contain {$max} or fewer elements";
                 }
             }
-
         } elseif ($type == 'integer' || $type == 'number' || $type == 'numeric') {
             if (($min = $param->getMinimum()) && $value < $min) {
                 $this->errors[] = "{$path} must be greater than or equal to {$min}";

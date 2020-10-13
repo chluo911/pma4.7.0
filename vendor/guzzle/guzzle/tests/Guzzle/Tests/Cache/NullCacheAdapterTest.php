@@ -11,10 +11,10 @@ class NullCacheAdapterTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testNullCacheAdapter()
     {
-        $c = new NullCacheAdapter();
-        $this->assertEquals(false, $c->contains('foo'));
-        $this->assertEquals(true, $c->delete('foo'));
-        $this->assertEquals(false, $c->fetch('foo'));
-        $this->assertEquals(true, $c->save('foo', 'bar'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -353,4 +353,3 @@ function PMA_relationsCleanupUser($username)
         PMA_queryAsControlUser($remove_query);
     }
 }
-

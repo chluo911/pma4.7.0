@@ -25,7 +25,8 @@ function PMA_getItemsFromShowGrantsRow($row)
 {
     $db_name_offset = mb_strpos($row, ' ON ') + 4;
     $show_grants_dbname = mb_substr(
-        $row, $db_name_offset,
+        $row,
+        $db_name_offset,
         mb_strpos($row, '.', $db_name_offset) - $db_name_offset
     );
 
@@ -42,7 +43,8 @@ function PMA_getItemsFromShowGrantsRow($row)
     $tblname_end_offset = mb_strpos($row, ' TO ');
 
     $show_grants_tblname = mb_substr(
-        $row, $tblname_start_offset,
+        $row,
+        $tblname_start_offset,
         $tblname_end_offset - $tblname_start_offset
     );
     $show_grants_tblname = PMA\libraries\Util::unQuote($show_grants_tblname, '`');
@@ -75,8 +77,9 @@ function PMA_checkRequiredPrivilegesForAdjust(
     if ($show_grants_str == 'ALL'
         || $show_grants_str == 'ALL PRIVILEGES'
         || (mb_strpos(
-                $show_grants_str, 'SELECT, INSERT, UPDATE, DELETE'
-            ) !== false)
+            $show_grants_str,
+            'SELECT, INSERT, UPDATE, DELETE'
+        ) !== false)
     ) {
         if ($show_grants_dbname == '*'
             && $show_grants_tblname == '*'
@@ -210,7 +213,7 @@ function PMA_analyseShowGrant()
         }
 
         if (
-            mb_strpos($show_grants_str,'RELOAD') !== false
+            mb_strpos($show_grants_str, 'RELOAD') !== false
         ) {
             $GLOBALS['is_reload_priv'] = true;
         }
@@ -256,7 +259,9 @@ function PMA_analyseShowGrant()
                     && ! preg_match('/\\\\%|\\\\_/', $show_grants_dbname))
                     || (! $GLOBALS['dbi']->tryQuery(
                         'USE ' .  preg_replace(
-                            '/' . $re1 . '(%|_)/', '\\1\\3', $dbname_to_test
+                            '/' . $re1 . '(%|_)/',
+                            '\\1\\3',
+                            $dbname_to_test
                         )
                     )
                     && mb_substr($GLOBALS['dbi']->getError(), 1, 4) != 1044)
@@ -266,11 +271,13 @@ function PMA_analyseShowGrant()
                      * (this case must be rare anyway)
                      */
                     $GLOBALS['db_to_create'] = preg_replace(
-                        '/' . $re0 . '%/',     '\\1',
+                        '/' . $re0 . '%/',
+                        '\\1',
                         $show_grants_dbname
                     );
                     $GLOBALS['db_to_create'] = preg_replace(
-                        '/' . $re1 . '(%|_)/', '\\1\\3',
+                        '/' . $re1 . '(%|_)/',
+                        '\\1\\3',
                         $GLOBALS['db_to_create']
                     );
                     $GLOBALS['is_create_db_priv'] = true;
@@ -284,7 +291,6 @@ function PMA_analyseShowGrant()
                 } // end if
             } // end elseif
         } // end if
-
     } // end while
 
     $GLOBALS['dbi']->freeResult($rs_usr);

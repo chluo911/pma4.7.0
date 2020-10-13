@@ -57,22 +57,38 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
      */
     public function __construct(array $serviceBuilderConfig = array())
     {
-        $this->builderConfig = $serviceBuilderConfig;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getAllEvents()
     {
-        return array('service_builder.create_client');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function unserialize($serialized)
     {
-        $this->builderConfig = json_decode($serialized, true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function serialize()
     {
-        return json_encode($this->builderConfig);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -84,9 +100,11 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
      */
     public function addGlobalPlugin(EventSubscriberInterface $plugin)
     {
-        $this->plugins[] = $plugin;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -168,7 +186,11 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
 
     public function offsetSet($offset, $value)
     {
-        $this->set($offset, $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetUnset($offset)
@@ -179,11 +201,19 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
 
     public function offsetExists($offset)
     {
-        return isset($this->builderConfig[$offset]) || isset($this->clients[$offset]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetGet($offset)
     {
-        return $this->get($offset);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

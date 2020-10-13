@@ -29,8 +29,11 @@ class AsyncPlugin implements EventSubscriberInterface
      */
     public function onBeforeSend(Event $event)
     {
-        // Ensure that progress callbacks are dispatched
-        $event['request']->getCurlOptions()->set('progress', true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,18 +45,11 @@ class AsyncPlugin implements EventSubscriberInterface
      */
     public function onCurlProgress(Event $event)
     {
-        if ($event['handle'] &&
-            ($event['downloaded'] || (isset($event['uploaded']) && $event['upload_size'] === $event['uploaded']))
-        ) {
-            // Timeout after 1ms
-            curl_setopt($event['handle'], CURLOPT_TIMEOUT_MS, 1);
-            // Even if the response is quick, tell curl not to download the body.
-            // - Note that we can only perform this shortcut if the request transmitted a body so as to ensure that the
-            //   request method is not converted to a HEAD request before the request was sent via curl.
-            if ($event['uploaded']) {
-                curl_setopt($event['handle'], CURLOPT_NOBODY, true);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,11 +59,11 @@ class AsyncPlugin implements EventSubscriberInterface
      */
     public function onRequestTimeout(Event $event)
     {
-        if ($event['exception'] instanceof CurlException) {
-            $event['request']->setResponse(new Response(200, array(
-                'X-Guzzle-Async' => 'Did not wait for the response'
-            )));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,7 +74,10 @@ class AsyncPlugin implements EventSubscriberInterface
      */
     public function onRequestSent(Event $event)
     {
-        // Let the caller know this was meant to be async
-        $event['request']->getResponse()->setHeader('X-Guzzle-Async', 'Did not wait for the response');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

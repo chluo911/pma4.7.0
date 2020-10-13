@@ -46,7 +46,7 @@ abstract class SchemaPlugin
      *
      * @return void
      */
-    protected abstract function setProperties();
+    abstract protected function setProperties();
 
     /**
      * Exports the schema into the specified format.
@@ -55,7 +55,7 @@ abstract class SchemaPlugin
      *
      * @return bool Whether it succeeded
      */
-    public abstract function exportSchema($db);
+    abstract public function exportSchema($db);
 
     /**
      * Adds export options common to all plugins.
@@ -66,10 +66,11 @@ abstract class SchemaPlugin
      */
     protected function addCommonOptions(OptionsPropertyMainGroup $propertyGroup)
     {
-        $leaf = new BoolPropertyItem('show_color', __('Show color'));
-        $propertyGroup->addProperty($leaf);
-        $leaf = new BoolPropertyItem('show_keys', __('Only show keys'));
-        $propertyGroup->addProperty($leaf);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -79,11 +80,10 @@ abstract class SchemaPlugin
      */
     protected function getPaperSizeArray()
     {
-        $ret = array();
-        foreach ($GLOBALS['cfg']['PDFPageSizes'] as $val) {
-            $ret[$val] = $val;
-        }
-
-        return $ret;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

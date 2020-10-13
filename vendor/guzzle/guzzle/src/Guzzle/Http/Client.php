@@ -56,7 +56,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
 
     public static function getAllEvents()
     {
-        return array(self::CREATE_REQUEST);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -111,10 +115,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      */
     public function setDefaultOption($keyOrPath, $value)
     {
-        $keyOrPath = self::REQUEST_OPTIONS . '/' . $keyOrPath;
-        $this->config->setPath($keyOrPath, $value);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -126,9 +131,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      */
     public function getDefaultOption($keyOrPath)
     {
-        $keyOrPath = self::REQUEST_OPTIONS . '/' . $keyOrPath;
-
-        return $this->config->getPath($keyOrPath);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     final public function setSslVerification($certificateAuthority = true, $verifyPeer = true, $verifyHost = 2)
@@ -215,12 +222,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
 
     public function setUserAgent($userAgent, $includeDefault = false)
     {
-        if ($includeDefault) {
-            $userAgent .= ' ' . $this->getDefaultUserAgent();
-        }
-        $this->userAgent = $userAgent;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -245,22 +251,38 @@ class Client extends AbstractHasDispatcher implements ClientInterface
 
     public function head($uri = null, $headers = null, array $options = array())
     {
-        return $this->createRequest('HEAD', $uri, $headers, null, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function delete($uri = null, $headers = null, $body = null, array $options = array())
     {
-        return $this->createRequest('DELETE', $uri, $headers, $body, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function put($uri = null, $headers = null, $body = null, array $options = array())
     {
-        return $this->createRequest('PUT', $uri, $headers, $body, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function patch($uri = null, $headers = null, $body = null, array $options = array())
     {
-        return $this->createRequest('PATCH', $uri, $headers, $body, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function post($uri = null, $headers = null, $postBody = null, array $options = array())
@@ -270,7 +292,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
 
     public function options($uri = null, array $options = array())
     {
-        return $this->createRequest('OPTIONS', $uri, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function send($requests)
@@ -297,9 +323,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      */
     public function setCurlMulti(CurlMultiInterface $curlMulti)
     {
-        $this->curlMulti = $curlMulti;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -333,9 +361,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      */
     public function setUriTemplate(UriTemplateInterface $uriTemplate)
     {
-        $this->uriTemplate = $uriTemplate;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -459,8 +489,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      */
     public function getDefaultHeaders()
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use the request.options array to retrieve default request options');
-        return $this->defaultHeaders;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -468,16 +501,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      */
     public function setDefaultHeaders($headers)
     {
-        Version::warn(__METHOD__ . ' is deprecated. Use the request.options array to specify default request options');
-        if ($headers instanceof Collection) {
-            $this->defaultHeaders = $headers;
-        } elseif (is_array($headers)) {
-            $this->defaultHeaders = new Collection($headers);
-        } else {
-            throw new InvalidArgumentException('Headers must be an array or Collection');
-        }
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -485,7 +513,11 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      */
     public function preparePharCacert($md5Check = true)
     {
-        return sys_get_temp_dir() . '/guzzle-cacert.pem';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

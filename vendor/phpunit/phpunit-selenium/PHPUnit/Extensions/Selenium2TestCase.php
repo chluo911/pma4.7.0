@@ -153,14 +153,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public static function shareSession($shareSession)
     {
-        if (!is_bool($shareSession)) {
-            throw new InvalidArgumentException("The shared session support can only be switched on or off.");
-        }
-        if (!$shareSession) {
-            self::$sessionStrategy = self::defaultSessionStrategy();
-        } else {
-            self::$sessionStrategy = new PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Shared(self::defaultSessionStrategy());
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private static function sessionStrategy()
@@ -176,14 +173,14 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
         return new PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Isolated;
     }
 
-    public function __construct($name = NULL, array $data = array(), $dataName = '')
+    public function __construct($name = null, array $data = array(), $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
         $this->parameters = array(
             'host' => 'localhost',
             'port' => 4444,
-            'browser' => NULL,
-            'browserName' => NULL,
+            'browser' => null,
+            'browserName' => null,
             'desiredCapabilities' => array(),
             'seleniumServerRequestsTimeout' => 60
         );
@@ -193,41 +190,20 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
 
     public function setupSpecificBrowser($params)
     {
-        $this->setUpSessionStrategy($params);
-        $params = array_merge($this->parameters, $params);
-        $this->setHost($params['host']);
-        $this->setPort($params['port']);
-        $this->setBrowser($params['browserName']);
-        $this->parameters['browser'] = $params['browser'];
-        $this->setDesiredCapabilities($params['desiredCapabilities']);
-        $this->setSeleniumServerRequestsTimeout(
-            $params['seleniumServerRequestsTimeout']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUpSessionStrategy($params)
     {
-        // This logic enables us to have a session strategy reused for each
-        // item in self::$browsers. We don't want them both to share one
-        // and we don't want each test for a specific browser to have a
-        // new strategy
-        if ($params == self::$lastBrowserParams) {
-            // do nothing so we use the same session strategy for this
-            // browser
-        } elseif (isset($params['sessionStrategy'])) {
-            $strat = $params['sessionStrategy'];
-            if ($strat != "isolated" && $strat != "shared") {
-                throw new InvalidArgumentException("Session strategy must be either 'isolated' or 'shared'");
-            } elseif ($strat == "isolated") {
-                self::$browserSessionStrategy = new PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Isolated;
-            } else {
-                self::$browserSessionStrategy = new PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Shared(self::defaultSessionStrategy());
-            }
-        } else {
-            self::$browserSessionStrategy = self::defaultSessionStrategy();
-        }
-        self::$lastBrowserParams = $params;
-        $this->localSessionStrategy = self::$browserSessionStrategy;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function getStrategy()
@@ -251,11 +227,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
         return $this->session;
     }
 
-    public function run(PHPUnit_Framework_TestResult $result = NULL)
+    public function run(PHPUnit_Framework_TestResult $result = null)
     {
         $this->testId = get_class($this) . '__' . $this->getName();
 
-        if ($result === NULL) {
+        if ($result === null) {
             $result = $this->createResult();
         }
 
@@ -269,7 +245,8 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
                 $this->testId
             );
             $result->getCodeCoverage()->append(
-                $coverage->get(), $this
+                $coverage->get(),
+                $this
             );
         }
 
@@ -286,7 +263,7 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
     {
         $this->prepareSession();
 
-        $thrownException = NULL;
+        $thrownException = null;
 
         if ($this->collectCodeCoverageInformation) {
             $this->url($this->coverageScriptUrl);   // phpunit_coverage.php won't do anything if the cookie isn't set, which is exactly what we want
@@ -308,7 +285,7 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
             $this->session->cookie()->remove('PHPUNIT_SELENIUM_TEST_ID');
         }
 
-        if (NULL !== $thrownException) {
+        if (null !== $thrownException) {
             throw $thrownException;
         }
 
@@ -318,7 +295,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
 
     public static function suite($className)
     {
-        return PHPUnit_Extensions_SeleniumTestSuite::fromTestCaseClass($className);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function onNotSuccessfulTest(Exception $e)
@@ -336,11 +317,12 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function __call($command, $arguments)
     {
-        if ($this->session === NULL) {
+        if ($this->session === null) {
             throw new PHPUnit_Extensions_Selenium2TestCase_Exception("There is currently no active session to execute the '$command' command. You're probably trying to set some option in setUp() with an incorrect setter name. You may consider using setUpPage() instead.");
         }
         $result = call_user_func_array(
-          array($this->session, $command), $arguments
+            array($this->session, $command),
+            $arguments
         );
 
         return $result;
@@ -397,7 +379,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
 
     public function getBrowser()
     {
-        return $this->parameters['browserName'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -406,19 +392,20 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function setBrowserUrl($browserUrl)
     {
-        if (!is_string($browserUrl)) {
-            throw PHPUnit_Util_InvalidArgumentHelper::factory(1, 'string');
-        }
-
-        $this->parameters['browserUrl'] = new PHPUnit_Extensions_Selenium2TestCase_URL($browserUrl);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getBrowserUrl()
     {
-        if (isset($this->parameters['browserUrl'])) {
-            return $this->parameters['browserUrl'];
-        }
-        return '';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -426,13 +413,21 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function setDesiredCapabilities(array $capabilities)
     {
-        $this->parameters['desiredCapabilities'] = $capabilities;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 
     public function getDesiredCapabilities()
     {
-        return $this->parameters['desiredCapabilities'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -440,12 +435,20 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function setSeleniumServerRequestsTimeout($timeout)
     {
-        $this->parameters['seleniumServerRequestsTimeout'] = $timeout;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getSeleniumServerRequestsTimeout()
     {
-        return $this->parameters['seleniumServerRequestsTimeout'];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -454,7 +457,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function getTestId()
     {
-        return $this->testId;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -463,10 +470,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function getSessionId()
     {
-        if ($this->session) {
-            return $this->session->id();
-        }
-        return FALSE;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -476,10 +484,13 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      * @param null $timeout
      * @return mixed
      */
-    public function waitUntil($callback, $timeout = NULL)
+    public function waitUntil($callback, $timeout = null)
     {
-        $waitUntil = new PHPUnit_Extensions_Selenium2TestCase_WaitUntil($this);
-        return $waitUntil->run($callback, $timeout);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -492,11 +503,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function keysSpecial($name)
     {
-        $names = explode(',', $name);
-
-        foreach ($names as $key) {
-            $this->keys($this->keysHolder->specialKey(trim($key)));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -505,6 +516,5 @@ abstract class PHPUnit_Extensions_Selenium2TestCase extends PHPUnit_Framework_Te
      */
     public function setUpPage()
     {
-
     }
 }

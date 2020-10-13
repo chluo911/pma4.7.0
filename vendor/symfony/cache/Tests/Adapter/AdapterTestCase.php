@@ -18,7 +18,11 @@ if (!class_exists('PHPUnit_Framework_TestCase')) {
     {
         public static function setUpBeforeClass()
         {
-            self::markTestSkipped('cache/integration-tests is not yet compatible with namespaced phpunit versions.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
         }
     }
 
@@ -29,55 +33,29 @@ abstract class AdapterTestCase extends CachePoolTest
 {
     protected function setUp()
     {
-        parent::setUp();
-
-        if (!array_key_exists('testDeferredSaveWithoutCommit', $this->skippedTests) && defined('HHVM_VERSION')) {
-            $this->skippedTests['testDeferredSaveWithoutCommit'] = 'Destructors are called late on HHVM.';
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDefaultLifeTime()
     {
-        if (isset($this->skippedTests[__FUNCTION__])) {
-            $this->markTestSkipped($this->skippedTests[__FUNCTION__]);
-        }
-
-        $cache = $this->createCachePool(2);
-
-        $item = $cache->getItem('key.dlt');
-        $item->set('value');
-        $cache->save($item);
-        sleep(1);
-
-        $item = $cache->getItem('key.dlt');
-        $this->assertTrue($item->isHit());
-
-        sleep(2);
-        $item = $cache->getItem('key.dlt');
-        $this->assertFalse($item->isHit());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNotUnserializable()
     {
-        if (isset($this->skippedTests[__FUNCTION__])) {
-            $this->markTestSkipped($this->skippedTests[__FUNCTION__]);
-        }
-
-        $cache = $this->createCachePool();
-
-        $item = $cache->getItem('foo');
-        $cache->save($item->set(new NotUnserializable()));
-
-        $item = $cache->getItem('foo');
-        $this->assertFalse($item->isHit());
-
-        foreach ($cache->getItems(array('foo')) as $item) {
-        }
-        $cache->save($item->set(new NotUnserializable()));
-
-        foreach ($cache->getItems(array('foo')) as $item) {
-        }
-        $this->assertFalse($item->isHit());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -85,11 +63,19 @@ class NotUnserializable implements \Serializable
 {
     public function serialize()
     {
-        return serialize(123);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function unserialize($ser)
     {
-        throw new \Exception(__CLASS__);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

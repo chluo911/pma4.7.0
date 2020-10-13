@@ -24,7 +24,11 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
      */
     public function __construct($strictMode = false)
     {
-        $this->strictMode = $strictMode;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -36,7 +40,11 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
      */
     public function setStrictMode($strictMode)
     {
-        $this->strictMode = $strictMode;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function remove($domain = null, $path = null, $name = null)
@@ -51,21 +59,20 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
 
     public function removeTemporary()
     {
-        $this->cookies = array_filter($this->cookies, function (Cookie $cookie) {
-            return !$cookie->getDiscard() && $cookie->getExpires();
-        });
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function removeExpired()
     {
-        $currentTime = time();
-        $this->cookies = array_filter($this->cookies, function (Cookie $cookie) use ($currentTime) {
-            return !$cookie->getExpires() || $currentTime < $cookie->getExpires();
-        });
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function all($domain = null, $path = null, $name = null, $skipDiscardable = false, $skipExpired = true)
@@ -144,10 +151,11 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
      */
     public function serialize()
     {
-        // Only serialize long term cookies and unexpired cookies
-        return json_encode(array_map(function (Cookie $cookie) {
-            return $cookie->toArray();
-        }, $this->all(null, null, null, true, true)));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -155,14 +163,11 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
      */
     public function unserialize($data)
     {
-        $data = json_decode($data, true);
-        if (empty($data)) {
-            $this->cookies = array();
-        } else {
-            $this->cookies = array_map(function (array $cookie) {
-                return new Cookie($cookie);
-            }, $data);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -182,43 +187,29 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->cookies);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function addCookiesFromResponse(Response $response, RequestInterface $request = null)
     {
-        if ($cookieHeader = $response->getHeader('Set-Cookie')) {
-            $parser = ParserRegistry::getInstance()->getParser('cookie');
-            foreach ($cookieHeader as $cookie) {
-                if ($parsed = $request
-                    ? $parser->parseCookie($cookie, $request->getHost(), $request->getPath())
-                    : $parser->parseCookie($cookie)
-                ) {
-                    // Break up cookie v2 into multiple cookies
-                    foreach ($parsed['cookies'] as $key => $value) {
-                        $row = $parsed;
-                        $row['name'] = $key;
-                        $row['value'] = $value;
-                        unset($row['cookies']);
-                        $this->add(new Cookie($row));
-                    }
-                }
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getMatchingCookies(RequestInterface $request)
     {
-        // Find cookies that match this request
-        $cookies = $this->all($request->getHost(), $request->getPath());
-        // Remove ineligible cookies
-        foreach ($cookies as $index => $cookie) {
-            if (!$cookie->matchesPort($request->getPort()) || ($cookie->getSecure() && $request->getScheme() != 'https')) {
-                unset($cookies[$index]);
-            }
-        };
-
-        return $cookies;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

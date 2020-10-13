@@ -30,13 +30,11 @@ class DescriptionFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testDescriptionCanParseASimpleString($contents)
     {
-        $tagFactory = m::mock(TagFactory::class);
-        $tagFactory->shouldReceive('create')->never();
-
-        $factory     = new DescriptionFactory($tagFactory);
-        $description = $factory->create($contents, new Context(''));
-
-        $this->assertSame($contents, $description->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,13 +45,11 @@ class DescriptionFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testEscapeSequences($contents, $expected)
     {
-        $tagFactory = m::mock(TagFactory::class);
-        $tagFactory->shouldReceive('create')->never();
-
-        $factory     = new DescriptionFactory($tagFactory);
-        $description = $factory->create($contents, new Context(''));
-
-        $this->assertSame($expected, $description->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,19 +63,11 @@ class DescriptionFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testDescriptionCanParseAStringWithInlineTag()
     {
-        $contents   = 'This is text for a {@link http://phpdoc.org/ description} that uses an inline tag.';
-        $context    = new Context('');
-        $tagFactory = m::mock(TagFactory::class);
-        $tagFactory->shouldReceive('create')
-            ->once()
-            ->with('@link http://phpdoc.org/ description', $context)
-            ->andReturn(new Link('http://phpdoc.org/', new Description('description')))
-        ;
-
-        $factory     = new DescriptionFactory($tagFactory);
-        $description = $factory->create($contents, $context);
-
-        $this->assertSame($contents, $description->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,19 +81,11 @@ class DescriptionFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testDescriptionCanParseAStringStartingWithInlineTag()
     {
-        $contents   = '{@link http://phpdoc.org/ This} is text for a description that starts with an inline tag.';
-        $context    = new Context('');
-        $tagFactory = m::mock(TagFactory::class);
-        $tagFactory->shouldReceive('create')
-            ->once()
-            ->with('@link http://phpdoc.org/ This', $context)
-            ->andReturn(new Link('http://phpdoc.org/', new Description('This')))
-        ;
-
-        $factory     = new DescriptionFactory($tagFactory);
-        $description = $factory->create($contents, $context);
-
-        $this->assertSame($contents, $description->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -115,38 +95,11 @@ class DescriptionFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfSuperfluousStartingSpacesAreRemoved()
     {
-        $factory         = new DescriptionFactory(m::mock(TagFactory::class));
-        $descriptionText = <<<DESCRIPTION
-This is a multiline
-  description that you commonly
-  see with tags.
-
-      It does have a multiline code sample
-      that should align, no matter what
-
-  All spaces superfluous spaces on the
-  second and later lines should be
-  removed but the code sample should
-  still be indented.
-DESCRIPTION;
-
-        $expectedDescription = <<<DESCRIPTION
-This is a multiline
-description that you commonly
-see with tags.
-
-    It does have a multiline code sample
-    that should align, no matter what
-
-All spaces superfluous spaces on the
-second and later lines should be
-removed but the code sample should
-still be indented.
-DESCRIPTION;
-
-        $description = $factory->create($descriptionText, new Context(''));
-
-        $this->assertSame($expectedDescription, $description->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -156,19 +109,19 @@ DESCRIPTION;
      */
     public function provideSimpleExampleDescriptions()
     {
-        return [
-            ['This is text for a description.'],
-            ['This is text for a description containing { that is literal.'],
-            ['This is text for a description containing } that is literal.'],
-            ['This is text for a description with {just a text} that is not a tag.'],
-        ];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function provideEscapeSequences()
     {
-        return [
-            ['This is text for a description with a {@}.', 'This is text for a description with a @.'],
-            ['This is text for a description with a {}.', 'This is text for a description with a }.'],
-        ];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

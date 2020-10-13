@@ -14,23 +14,19 @@ class BatchClosureDivisorTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresCallableIsCallable()
     {
-        $d = new BatchClosureDivisor(new \stdClass());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDividesBatch()
     {
-        $queue = new \SplQueue();
-        $queue[] = 'foo';
-        $queue[] = 'baz';
-
-        $d = new BatchClosureDivisor(function (\SplQueue $queue, $context) {
-            return array(
-                array('foo'),
-                array('baz')
-            );
-        }, 'Bar!');
-
-        $batches = $d->createBatches($queue);
-        $this->assertEquals(array(array('foo'), array('baz')), $batches);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

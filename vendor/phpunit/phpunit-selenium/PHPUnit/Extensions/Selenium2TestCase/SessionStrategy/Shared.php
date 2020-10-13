@@ -53,29 +53,32 @@
  * @link       http://www.phpunit.de/
  * @since      Class available since Release 1.2.6
  */
-class PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Shared
-    implements PHPUnit_Extensions_Selenium2TestCase_SessionStrategy
+class PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Shared implements PHPUnit_Extensions_Selenium2TestCase_SessionStrategy
 {
     private $original;
     private $session;
     private $mainWindow;
-    private $lastTestWasNotSuccessful = FALSE;
+    private $lastTestWasNotSuccessful = false;
 
     public function __construct(PHPUnit_Extensions_Selenium2TestCase_SessionStrategy $originalStrategy)
     {
-        $this->original = $originalStrategy;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function session(array $parameters)
     {
         if ($this->lastTestWasNotSuccessful) {
-            if ($this->session !== NULL) {
+            if ($this->session !== null) {
                 $this->session->stop();
-                $this->session = NULL;
+                $this->session = null;
             }
-            $this->lastTestWasNotSuccessful = FALSE;
+            $this->lastTestWasNotSuccessful = false;
         }
-        if ($this->session === NULL) {
+        if ($this->session === null) {
             $this->session = $this->original->session($parameters);
             $this->mainWindow = $this->session->windowHandle();
         } else {
@@ -86,10 +89,10 @@ class PHPUnit_Extensions_Selenium2TestCase_SessionStrategy_Shared
 
     public function notSuccessfulTest()
     {
-        $this->lastTestWasNotSuccessful = TRUE;
+        $this->lastTestWasNotSuccessful = true;
     }
 
-    public function endOfTest(PHPUnit_Extensions_Selenium2TestCase_Session $session = NULL)
+    public function endOfTest(PHPUnit_Extensions_Selenium2TestCase_Session $session = null)
     {
     }
 }

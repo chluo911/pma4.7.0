@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_MissingColonSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_CURLY_BRACKET);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,41 +62,10 @@ class Squiz_Sniffs_CSS_MissingColonSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens   = $phpcsFile->getTokens();
-        $lastLine = $tokens[$stackPtr]['line'];
-        $end      = $tokens[$stackPtr]['bracket_closer'];
-        $endLine  = $tokens[$end]['line'];
-
-        // Do not check nested style definitions as, for example, in @media style rules.
-        $nested = $phpcsFile->findNext(T_OPEN_CURLY_BRACKET, ($stackPtr + 1), $end);
-        if ($nested !== false) {
-            return;
-        }
-
-        $foundColon  = false;
-        $foundString = false;
-        for ($i = ($stackPtr + 1); $i <= $end; $i++) {
-            if ($tokens[$i]['line'] !== $lastLine) {
-                // We changed lines.
-                if ($foundColon === false && $foundString !== false) {
-                    // We didn't find a colon on the previous line.
-                    $error = 'No style definition found on line; check for missing colon';
-                    $phpcsFile->addError($error, $foundString, 'Found');
-                }
-
-                $foundColon  = false;
-                $foundString = false;
-                $lastLine    = $tokens[$i]['line'];
-            }
-
-            if ($tokens[$i]['code'] === T_STRING) {
-                $foundString = $i;
-            } else if ($tokens[$i]['code'] === T_COLON) {
-                $foundColon = $i;
-            }
-        }//end for
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

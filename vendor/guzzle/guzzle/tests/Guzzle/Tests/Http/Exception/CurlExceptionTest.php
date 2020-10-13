@@ -12,16 +12,10 @@ class CurlExceptionTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testStoresCurlError()
     {
-        $e = new CurlException();
-        $this->assertNull($e->getError());
-        $this->assertNull($e->getErrorNo());
-        $this->assertSame($e, $e->setError('test', 12));
-        $this->assertEquals('test', $e->getError());
-        $this->assertEquals(12, $e->getErrorNo());
-
-        $handle = new CurlHandle(curl_init(), array());
-        $e->setCurlHandle($handle);
-        $this->assertSame($handle, $e->getCurlHandle());
-        $handle->close();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

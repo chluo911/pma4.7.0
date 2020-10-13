@@ -55,23 +55,11 @@ class GISMultilinestring extends GISGeometry
      */
     public function scaleRow($spatial)
     {
-        $min_max = array();
-
-        // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
-        $multilinestirng
-            = mb_substr(
-                $spatial,
-                17,
-                mb_strlen($spatial) - 19
-            );
-        // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
-
-        foreach ($linestirngs as $linestring) {
-            $min_max = $this->setMinMax($linestring, $min_max);
-        }
-
-        return $min_max;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,58 +81,11 @@ class GISMultilinestring extends GISGeometry
         $scale_data,
         $image
     ) {
-        // allocate colors
-        $black = imagecolorallocate($image, 0, 0, 0);
-        $red = hexdec(mb_substr($line_color, 1, 2));
-        $green = hexdec(mb_substr($line_color, 3, 2));
-        $blue = hexdec(mb_substr($line_color, 4, 2));
-        $color = imagecolorallocate($image, $red, $green, $blue);
-
-        // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
-        $multilinestirng
-            = mb_substr(
-                $spatial,
-                17,
-                mb_strlen($spatial) - 19
-            );
-        // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
-
-        $first_line = true;
-        foreach ($linestirngs as $linestring) {
-            $points_arr = $this->extractPoints($linestring, $scale_data);
-            foreach ($points_arr as $point) {
-                if (!isset($temp_point)) {
-                    $temp_point = $point;
-                } else {
-                    // draw line section
-                    imageline(
-                        $image,
-                        $temp_point[0],
-                        $temp_point[1],
-                        $point[0],
-                        $point[1],
-                        $color
-                    );
-                    $temp_point = $point;
-                }
-            }
-            unset($temp_point);
-            // print label if applicable
-            if (isset($label) && trim($label) != '' && $first_line) {
-                imagestring(
-                    $image,
-                    1,
-                    $points_arr[1][0],
-                    $points_arr[1][1],
-                    trim($label),
-                    $black
-                );
-            }
-            $first_line = false;
-        }
-
-        return $image;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -161,51 +102,11 @@ class GISMultilinestring extends GISGeometry
      */
     public function prepareRowAsPdf($spatial, $label, $line_color, $scale_data, $pdf)
     {
-        // allocate colors
-        $red = hexdec(mb_substr($line_color, 1, 2));
-        $green = hexdec(mb_substr($line_color, 3, 2));
-        $blue = hexdec(mb_substr($line_color, 4, 2));
-        $line = array('width' => 1.5, 'color' => array($red, $green, $blue));
-
-        // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
-        $multilinestirng
-            = mb_substr(
-                $spatial,
-                17,
-                mb_strlen($spatial) - 19
-            );
-        // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
-
-        $first_line = true;
-        foreach ($linestirngs as $linestring) {
-            $points_arr = $this->extractPoints($linestring, $scale_data);
-            foreach ($points_arr as $point) {
-                if (!isset($temp_point)) {
-                    $temp_point = $point;
-                } else {
-                    // draw line section
-                    $pdf->Line(
-                        $temp_point[0],
-                        $temp_point[1],
-                        $point[0],
-                        $point[1],
-                        $line
-                    );
-                    $temp_point = $point;
-                }
-            }
-            unset($temp_point);
-            // print label
-            if (isset($label) && trim($label) != '' && $first_line) {
-                $pdf->SetXY($points_arr[1][0], $points_arr[1][1]);
-                $pdf->SetFontSize(5);
-                $pdf->Cell(0, 0, trim($label));
-            }
-            $first_line = false;
-        }
-
-        return $pdf;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -221,41 +122,11 @@ class GISMultilinestring extends GISGeometry
      */
     public function prepareRowAsSvg($spatial, $label, $line_color, $scale_data)
     {
-        $line_options = array(
-            'name'         => $label,
-            'class'        => 'linestring vector',
-            'fill'         => 'none',
-            'stroke'       => $line_color,
-            'stroke-width' => 2,
-        );
-
-        // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
-        $multilinestirng
-            = mb_substr(
-                $spatial,
-                17,
-                mb_strlen($spatial) - 19
-            );
-        // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
-
-        $row = '';
-        foreach ($linestirngs as $linestring) {
-            $points_arr = $this->extractPoints($linestring, $scale_data);
-
-            $row .= '<polyline points="';
-            foreach ($points_arr as $point) {
-                $row .= $point[0] . ',' . $point[1] . ' ';
-            }
-            $row .= '"';
-            $line_options['id'] = $label . rand();
-            foreach ($line_options as $option => $val) {
-                $row .= ' ' . $option . '="' . trim($val) . '"';
-            }
-            $row .= '/>';
-        }
-
-        return $row;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -273,33 +144,11 @@ class GISMultilinestring extends GISGeometry
      */
     public function prepareRowAsOl($spatial, $srid, $label, $line_color, $scale_data)
     {
-        $style_options = array(
-            'strokeColor' => $line_color,
-            'strokeWidth' => 2,
-            'label'       => $label,
-            'fontSize'    => 10,
-        );
-        if ($srid == 0) {
-            $srid = 4326;
-        }
-        $row = $this->getBoundsForOl($srid, $scale_data);
-
-        // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
-        $multilinestirng
-            = mb_substr(
-                $spatial,
-                17,
-                mb_strlen($spatial) - 19
-            );
-        // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
-
-        $row .= 'vectorLayer.addFeatures(new OpenLayers.Feature.Vector('
-            . 'new OpenLayers.Geometry.MultiLineString('
-            . $this->getLineArrayForOpenLayers($linestirngs, $srid)
-            . '), null, ' . json_encode($style_options) . '));';
-
-        return $row;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -314,46 +163,11 @@ class GISMultilinestring extends GISGeometry
      */
     public function generateWkt($gis_data, $index, $empty = '')
     {
-        $data_row = $gis_data[$index]['MULTILINESTRING'];
-
-        $no_of_lines = isset($data_row['no_of_lines'])
-            ? $data_row['no_of_lines'] : 1;
-        if ($no_of_lines < 1) {
-            $no_of_lines = 1;
-        }
-
-        $wkt = 'MULTILINESTRING(';
-        for ($i = 0; $i < $no_of_lines; $i++) {
-            $no_of_points = isset($data_row[$i]['no_of_points'])
-                ? $data_row[$i]['no_of_points'] : 2;
-            if ($no_of_points < 2) {
-                $no_of_points = 2;
-            }
-            $wkt .= '(';
-            for ($j = 0; $j < $no_of_points; $j++) {
-                $wkt .= ((isset($data_row[$i][$j]['x'])
-                        && trim($data_row[$i][$j]['x']) != '')
-                        ? $data_row[$i][$j]['x'] : $empty)
-                    . ' ' . ((isset($data_row[$i][$j]['y'])
-                        && trim($data_row[$i][$j]['y']) != '')
-                        ? $data_row[$i][$j]['y'] : $empty) . ',';
-            }
-            $wkt
-                = mb_substr(
-                    $wkt,
-                    0, mb_strlen($wkt) - 1
-                );
-            $wkt .= '),';
-        }
-        $wkt
-            = mb_substr(
-                $wkt,
-                0,
-                mb_strlen($wkt) - 1
-            );
-        $wkt .= ')';
-
-        return $wkt;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -402,40 +216,10 @@ class GISMultilinestring extends GISGeometry
      */
     public function generateParams($value, $index = -1)
     {
-        $params = array();
-        if ($index == -1) {
-            $index = 0;
-            $data = GISGeometry::generateParams($value);
-            $params['srid'] = $data['srid'];
-            $wkt = $data['wkt'];
-        } else {
-            $params[$index]['gis_type'] = 'MULTILINESTRING';
-            $wkt = $value;
-        }
-
-        // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
-        $multilinestirng
-            = mb_substr(
-                $wkt,
-                17,
-                mb_strlen($wkt) - 19
-            );
-        // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
-        $params[$index]['MULTILINESTRING']['no_of_lines'] = count($linestirngs);
-
-        $j = 0;
-        foreach ($linestirngs as $linestring) {
-            $points_arr = $this->extractPoints($linestring, null);
-            $no_of_points = count($points_arr);
-            $params[$index]['MULTILINESTRING'][$j]['no_of_points'] = $no_of_points;
-            for ($i = 0; $i < $no_of_points; $i++) {
-                $params[$index]['MULTILINESTRING'][$j][$i]['x'] = $points_arr[$i][0];
-                $params[$index]['MULTILINESTRING'][$j][$i]['y'] = $points_arr[$i][1];
-            }
-            $j++;
-        }
-
-        return $params;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

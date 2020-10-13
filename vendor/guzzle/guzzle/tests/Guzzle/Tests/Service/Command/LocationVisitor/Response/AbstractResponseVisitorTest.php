@@ -18,12 +18,10 @@ abstract class AbstractResponseVisitorTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function setUp()
     {
-        $this->value = array();
-        $this->command = new MockCommand();
-        $this->response = new Response(200, array(
-            'X-Foo'          => 'bar',
-            'Content-Length' => 3,
-            'Content-Type'   => 'text/plain'
-        ), 'Foo');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

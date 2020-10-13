@@ -38,7 +38,10 @@ if (isset($_REQUEST['addNewPrimary'])) {
     $num_fields = 1;
     $columnMeta = array('Field'=>$table . "_id", 'Extra'=>'auto_increment');
     $html = PMA_getHtmlForCreateNewColumn(
-        $num_fields, $db, $table, $columnMeta
+        $num_fields,
+        $db,
+        $table,
+        $columnMeta
     );
     $html .= URL::getHiddenInputs($db, $table);
     echo $html;
@@ -96,7 +99,12 @@ if (isset($_POST['repeatingColumns'])) {
     $newColumn = $_POST['newColumn'];
     $primary_columns = $_POST['primary_columns'];
     $res = PMA_moveRepeatingGroup(
-        $repeatingColumns, $primary_columns, $newTable, $newColumn, $table, $db
+        $repeatingColumns,
+        $primary_columns,
+        $newTable,
+        $newColumn,
+        $table,
+        $db
     );
     $response->addJSON($res);
     exit;
@@ -104,19 +112,19 @@ if (isset($_POST['repeatingColumns'])) {
 if (isset($_REQUEST['step1'])) {
     $html = PMA_getHtmlFor1NFStep1($db, $table, $normalForm);
     $response->addHTML($html);
-} else if (isset($_REQUEST['step2'])) {
+} elseif (isset($_REQUEST['step2'])) {
     $res = PMA_getHtmlContentsFor1NFStep2($db, $table);
     $response->addJSON($res);
-} else if (isset($_REQUEST['step3'])) {
+} elseif (isset($_REQUEST['step3'])) {
     $res = PMA_getHtmlContentsFor1NFStep3($db, $table);
     $response->addJSON($res);
-} else if (isset($_REQUEST['step4'])) {
+} elseif (isset($_REQUEST['step4'])) {
     $res = PMA_getHtmlContentsFor1NFStep4($db, $table);
     $response->addJSON($res);
-} else if (isset($_REQUEST['step']) && $_REQUEST['step'] == '2.1') {
+} elseif (isset($_REQUEST['step']) && $_REQUEST['step'] == '2.1') {
     $res = PMA_getHtmlFor2NFstep1($db, $table);
     $response->addJSON($res);
-} else if (isset($_REQUEST['step']) && $_REQUEST['step'] == '3.1') {
+} elseif (isset($_REQUEST['step']) && $_REQUEST['step'] == '3.1') {
     $tables = $_REQUEST['tables'];
     $res = PMA_getHtmlFor3NFstep1($db, $tables);
     $response->addJSON($res);

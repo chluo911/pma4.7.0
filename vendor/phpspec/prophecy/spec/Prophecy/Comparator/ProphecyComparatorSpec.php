@@ -8,32 +8,30 @@ use Prophecy\Prophet;
 
 class ProphecyComparatorSpec extends ObjectBehavior
 {
-    function it_is_a_comparator()
+    public function it_is_a_comparator()
     {
-        $this->shouldHaveType('SebastianBergmann\Comparator\ObjectComparator');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_accepts_only_prophecy_objects()
+    public function it_accepts_only_prophecy_objects()
     {
-        $this->accepts(123, 321)->shouldReturn(false);
-        $this->accepts('string', 'string')->shouldReturn(false);
-        $this->accepts(false, true)->shouldReturn(false);
-        $this->accepts(true, false)->shouldReturn(false);
-        $this->accepts((object)array(), (object)array())->shouldReturn(false);
-        $this->accepts(function(){}, (object)array())->shouldReturn(false);
-        $this->accepts(function(){}, function(){})->shouldReturn(false);
-
-        $prophet = new Prophet();
-        $prophecy = $prophet->prophesize('Prophecy\Prophecy\ObjectProphecy');
-
-        $this->accepts($prophecy, $prophecy)->shouldReturn(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_asserts_that_an_object_is_equal_to_its_revealed_prophecy()
+    public function it_asserts_that_an_object_is_equal_to_its_revealed_prophecy()
     {
-        $prophet = new Prophet();
-        $prophecy = $prophet->prophesize('Prophecy\Prophecy\ObjectProphecy');
-
-        $this->shouldNotThrow()->duringAssertEquals($prophecy->reveal(), $prophecy);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

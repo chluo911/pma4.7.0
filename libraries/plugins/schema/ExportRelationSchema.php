@@ -28,10 +28,11 @@ class ExportRelationSchema
      */
     public function __construct($db, $diagram)
     {
-        $this->db = $db;
-        $this->diagram = $diagram;
-        $this->setPageNumber($_REQUEST['page_number']);
-        $this->setOffline(isset($_REQUEST['offline_export']));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected $db;
@@ -54,7 +55,11 @@ class ExportRelationSchema
      */
     public function setPageNumber($value)
     {
-        $this->pageNumber = intval($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,7 +69,11 @@ class ExportRelationSchema
      */
     public function getPageNumber()
     {
-        return $this->pageNumber;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -76,7 +85,11 @@ class ExportRelationSchema
      */
     public function setShowColor($value)
     {
-        $this->showColor = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,7 +99,11 @@ class ExportRelationSchema
      */
     public function isShowColor()
     {
-        return $this->showColor;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -98,7 +115,11 @@ class ExportRelationSchema
      */
     public function setTableDimension($value)
     {
-        $this->tableDimension = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -108,7 +129,11 @@ class ExportRelationSchema
      */
     public function isTableDimension()
     {
-        return $this->tableDimension;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -120,7 +145,11 @@ class ExportRelationSchema
      */
     public function setAllTablesSameWidth($value)
     {
-        $this->sameWide = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -130,7 +159,11 @@ class ExportRelationSchema
      */
     public function isAllTableSameWidth()
     {
-        return $this->sameWide;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -144,7 +177,11 @@ class ExportRelationSchema
      */
     public function setShowKeys($value)
     {
-        $this->showKeys = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -154,7 +191,11 @@ class ExportRelationSchema
      */
     public function isShowKeys()
     {
-        return $this->showKeys;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -168,7 +209,11 @@ class ExportRelationSchema
      */
     public function setOrientation($value)
     {
-        $this->orientation = ($value == 'P') ? 'P' : 'L';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -178,7 +223,11 @@ class ExportRelationSchema
      */
     public function getOrientation()
     {
-        return $this->orientation;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -192,7 +241,11 @@ class ExportRelationSchema
      */
     public function setPaper($value)
     {
-        $this->paper = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -202,7 +255,11 @@ class ExportRelationSchema
      */
     public function getPaper()
     {
-        return $this->paper;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -216,7 +273,11 @@ class ExportRelationSchema
      */
     public function setOffline($value)
     {
-        $this->offline = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -228,7 +289,11 @@ class ExportRelationSchema
      */
     public function isOffline()
     {
-        return $this->offline;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -238,15 +303,11 @@ class ExportRelationSchema
      */
     protected function getTablesFromRequest()
     {
-        $tables = array();
-        $dbLength = mb_strlen($this->db);
-        foreach ($_REQUEST['t_h'] as $key => $value) {
-            if ($value) {
-                $tables[] = mb_substr($key, $dbLength + 1);
-            }
-        }
-
-        return $tables;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -286,17 +347,10 @@ class ExportRelationSchema
      */
     public static function dieSchema($pageNumber, $type = '', $error_message = '')
     {
-        echo "<p><strong>" , __("SCHEMA ERROR: ") , $type , "</strong></p>" , "\n";
-        if (!empty($error_message)) {
-            $error_message = htmlspecialchars($error_message);
-        }
-        echo '<p>' , "\n";
-        echo '    ' , $error_message , "\n";
-        echo '</p>' , "\n";
-        echo '<a href="db_designer.php'
-            , URL::getCommon(array('db' => $GLOBALS['db']))
-            , '&page=' . htmlspecialchars($pageNumber) , '">' , __('Back') , '</a>';
-        echo "\n";
-        exit;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

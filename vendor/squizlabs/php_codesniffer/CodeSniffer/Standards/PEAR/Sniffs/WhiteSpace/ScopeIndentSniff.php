@@ -42,5 +42,4 @@ class PEAR_Sniffs_WhiteSpace_ScopeIndentSniff extends Generic_Sniffs_WhiteSpace_
      * @var array(int)
      */
     protected $nonIndentingScopes = array(T_SWITCH);
-
 }//end class

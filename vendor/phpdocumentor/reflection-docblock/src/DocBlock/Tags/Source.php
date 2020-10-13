@@ -33,12 +33,11 @@ final class Source extends BaseTag implements Factory\StaticMethod
 
     public function __construct($startingLine, $lineCount = null, Description $description = null)
     {
-        Assert::integerish($startingLine);
-        Assert::nullOrIntegerish($lineCount);
-
-        $this->startingLine = (int)$startingLine;
-        $this->lineCount    = $lineCount !== null ? (int)$lineCount : null;
-        $this->description  = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,23 +45,11 @@ final class Source extends BaseTag implements Factory\StaticMethod
      */
     public static function create($body, DescriptionFactory $descriptionFactory = null, TypeContext $context = null)
     {
-        Assert::stringNotEmpty($body);
-        Assert::notNull($descriptionFactory);
-
-        $startingLine = 1;
-        $lineCount    = null;
-        $description  = null;
-
-        // Starting line / Number of lines / Description
-        if (preg_match('/^([1-9]\d*)\s*(?:((?1))\s+)?(.*)$/sux', $body, $matches)) {
-            $startingLine = (int)$matches[1];
-            if (isset($matches[2]) && $matches[2] !== '') {
-                $lineCount = (int)$matches[2];
-            }
-            $description = $matches[3];
-        }
-
-        return new static($startingLine, $lineCount, $descriptionFactory->create($description, $context));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

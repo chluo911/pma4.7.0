@@ -564,7 +564,8 @@ class Parser extends Core
     {
         $error = new ParserException(
             Translator::gettext($msg),
-            $token, $code
+            $token,
+            $code
         );
         parent::error($error);
     }

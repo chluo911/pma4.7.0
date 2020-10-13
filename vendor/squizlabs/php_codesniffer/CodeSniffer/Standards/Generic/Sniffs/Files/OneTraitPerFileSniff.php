@@ -34,8 +34,11 @@ class Generic_Sniffs_Files_OneTraitPerFileSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_TRAIT);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -50,13 +53,10 @@ class Generic_Sniffs_Files_OneTraitPerFileSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $nextClass = $phpcsFile->findNext($this->register(), ($stackPtr + 1));
-        if ($nextClass !== false) {
-            $error = 'Only one trait is allowed in a file';
-            $phpcsFile->addError($error, $nextClass, 'MultipleFound');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

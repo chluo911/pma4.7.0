@@ -38,8 +38,11 @@ class Squiz_Sniffs_Files_FileExtensionSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_OPEN_TAG);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -54,30 +57,10 @@ class Squiz_Sniffs_Files_FileExtensionSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens    = $phpcsFile->getTokens();
-        $fileName  = $phpcsFile->getFileName();
-        $extension = substr($fileName, strrpos($fileName, '.'));
-        $nextClass = $phpcsFile->findNext(array(T_CLASS, T_INTERFACE, T_TRAIT), $stackPtr);
-
-        if ($nextClass !== false) {
-            $phpcsFile->recordMetric($stackPtr, 'File extension for class files', $extension);
-            if ($extension === '.php') {
-                $error = '%s found in ".php" file; use ".inc" extension instead';
-                $data  = array(ucfirst($tokens[$nextClass]['content']));
-                $phpcsFile->addError($error, $stackPtr, 'ClassFound', $data);
-            }
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'File extension for non-class files', $extension);
-            if ($extension === '.inc') {
-                $error = 'No interface or class found in ".inc" file; use ".php" extension instead';
-                $phpcsFile->addError($error, $stackPtr, 'NoClass');
-            }
-        }
-
-        // Ignore the rest of the file.
-        return ($phpcsFile->numTokens + 1);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

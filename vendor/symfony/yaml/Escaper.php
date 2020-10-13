@@ -50,7 +50,11 @@ class Escaper
      */
     public static function requiresDoubleQuoting($value)
     {
-        return preg_match('/'.self::REGEX_CHARACTER_TO_ESCAPE.'/u', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,7 +66,11 @@ class Escaper
      */
     public static function escapeWithDoubleQuotes($value)
     {
-        return sprintf('"%s"', str_replace(self::$escapees, self::$escaped, $value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -74,15 +82,11 @@ class Escaper
      */
     public static function requiresSingleQuoting($value)
     {
-        // Determines if a PHP value is entirely composed of a value that would
-        // require single quoting in YAML.
-        if (in_array(strtolower($value), array('null', '~', 'true', 'false', 'y', 'n', 'yes', 'no', 'on', 'off'))) {
-            return true;
-        }
-
-        // Determines if the PHP value contains any single characters that would
-        // cause it to require single quoting in YAML.
-        return preg_match('/[ \s \' " \: \{ \} \[ \] , & \* \# \?] | \A[ \- ? | < > = ! % @ ` ]/x', $value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -94,6 +98,10 @@ class Escaper
      */
     public static function escapeWithSingleQuotes($value)
     {
-        return sprintf("'%s'", str_replace('\'', '\'\'', $value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

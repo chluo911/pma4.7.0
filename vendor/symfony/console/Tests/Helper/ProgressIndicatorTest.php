@@ -13,91 +13,29 @@ class ProgressIndicatorTest extends TestCase
 {
     public function testDefaultIndicator()
     {
-        $bar = new ProgressIndicator($output = $this->getOutputStream());
-        $bar->start('Starting...');
-        usleep(101000);
-        $bar->advance();
-        usleep(101000);
-        $bar->advance();
-        usleep(101000);
-        $bar->advance();
-        usleep(101000);
-        $bar->advance();
-        usleep(101000);
-        $bar->advance();
-        usleep(101000);
-        $bar->setMessage('Advancing...');
-        $bar->advance();
-        $bar->finish('Done...');
-        $bar->start('Starting Again...');
-        usleep(101000);
-        $bar->advance();
-        $bar->finish('Done Again...');
-
-        rewind($output->getStream());
-
-        $this->assertEquals(
-            $this->generateOutput(' - Starting...').
-            $this->generateOutput(' \\ Starting...').
-            $this->generateOutput(' | Starting...').
-            $this->generateOutput(' / Starting...').
-            $this->generateOutput(' - Starting...').
-            $this->generateOutput(' \\ Starting...').
-            $this->generateOutput(' \\ Advancing...').
-            $this->generateOutput(' | Advancing...').
-            $this->generateOutput(' | Done...').
-            PHP_EOL.
-            $this->generateOutput(' - Starting Again...').
-            $this->generateOutput(' \\ Starting Again...').
-            $this->generateOutput(' \\ Done Again...').
-            PHP_EOL,
-            stream_get_contents($output->getStream())
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNonDecoratedOutput()
     {
-        $bar = new ProgressIndicator($output = $this->getOutputStream(false));
-
-        $bar->start('Starting...');
-        $bar->advance();
-        $bar->advance();
-        $bar->setMessage('Midway...');
-        $bar->advance();
-        $bar->advance();
-        $bar->finish('Done...');
-
-        rewind($output->getStream());
-
-        $this->assertEquals(
-            ' Starting...'.PHP_EOL.
-            ' Midway...'.PHP_EOL.
-            ' Done...'.PHP_EOL.PHP_EOL,
-            stream_get_contents($output->getStream())
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCustomIndicatorValues()
     {
-        $bar = new ProgressIndicator($output = $this->getOutputStream(), null, 100, array('a', 'b', 'c'));
-
-        $bar->start('Starting...');
-        usleep(101000);
-        $bar->advance();
-        usleep(101000);
-        $bar->advance();
-        usleep(101000);
-        $bar->advance();
-
-        rewind($output->getStream());
-
-        $this->assertEquals(
-            $this->generateOutput(' a Starting...').
-            $this->generateOutput(' b Starting...').
-            $this->generateOutput(' c Starting...').
-            $this->generateOutput(' a Starting...'),
-            stream_get_contents($output->getStream())
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -106,7 +44,11 @@ class ProgressIndicatorTest extends TestCase
      */
     public function testCannotSetInvalidIndicatorCharacters()
     {
-        $bar = new ProgressIndicator($this->getOutputStream(), null, 100, array('1'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -115,9 +57,11 @@ class ProgressIndicatorTest extends TestCase
      */
     public function testCannotStartAlreadyStartedIndicator()
     {
-        $bar = new ProgressIndicator($this->getOutputStream());
-        $bar->start('Starting...');
-        $bar->start('Starting Again.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -126,8 +70,11 @@ class ProgressIndicatorTest extends TestCase
      */
     public function testCannotAdvanceUnstartedIndicator()
     {
-        $bar = new ProgressIndicator($this->getOutputStream());
-        $bar->advance();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -136,8 +83,11 @@ class ProgressIndicatorTest extends TestCase
      */
     public function testCannotFinishUnstartedIndicator()
     {
-        $bar = new ProgressIndicator($this->getOutputStream());
-        $bar->finish('Finished');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -145,13 +95,11 @@ class ProgressIndicatorTest extends TestCase
      */
     public function testFormats($format)
     {
-        $bar = new ProgressIndicator($output = $this->getOutputStream(), $format);
-        $bar->start('Starting...');
-        $bar->advance();
-
-        rewind($output->getStream());
-
-        $this->assertNotEmpty(stream_get_contents($output->getStream()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -161,23 +109,28 @@ class ProgressIndicatorTest extends TestCase
      */
     public function provideFormat()
     {
-        return array(
-            array('normal'),
-            array('verbose'),
-            array('very_verbose'),
-            array('debug'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getOutputStream($decorated = true, $verbosity = StreamOutput::VERBOSITY_NORMAL)
     {
-        return new StreamOutput(fopen('php://memory', 'r+', false), $verbosity, $decorated);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function generateOutput($expected)
     {
-        $count = substr_count($expected, "\n");
-
-        return "\x0D\x1B[2K".($count ? sprintf("\033[%dA", $count) : '').$expected;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

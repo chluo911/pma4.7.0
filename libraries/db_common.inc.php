@@ -33,7 +33,8 @@ if ($db_is_system_schema) {
 $err_url_0 = 'index.php' . URL::getCommon();
 
 $err_url = PMA\libraries\Util::getScriptNameForOption(
-    $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+    $GLOBALS['cfg']['DefaultTabDatabase'],
+    'database'
 )
     . URL::getCommon(array('db' => $db));
 
@@ -106,4 +107,3 @@ if (isset($_REQUEST['submitcollation'])
  * Set parameters for links
  */
 $url_query = URL::getCommon(array('db' => $db));
-

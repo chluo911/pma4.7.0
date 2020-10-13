@@ -26,6 +26,10 @@ class ClassCreatorException extends \RuntimeException implements DoublerExceptio
 
     public function getClassNode()
     {
-        return $this->node;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

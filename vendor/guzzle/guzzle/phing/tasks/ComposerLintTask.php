@@ -22,7 +22,11 @@ class ComposerLintTask extends Task
      */
     public function setDir($str)
     {
-        $this->dir = $str;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,7 +46,11 @@ class ComposerLintTask extends Task
      */
     public function setPassthru($passthru)
     {
-        $this->passthru = (bool) $passthru;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,7 +62,11 @@ class ComposerLintTask extends Task
      */
     public function setComposer($str)
     {
-        $this->file = $str;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,7 +74,11 @@ class ComposerLintTask extends Task
      */
     public function init()
     {
-        // nothing needed here
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,47 +86,11 @@ class ComposerLintTask extends Task
      */
     public function main()
     {
-        if ($this->composer === null) {
-            $this->findComposer();
-        }
-
-        $files = array();
-        if (!empty($this->file) && file_exists($this->file)) {
-            $files[] = $this->file;
-        }
-
-        if (!empty($this->dir)) {
-            $found = $this->findFiles();
-            foreach ($found as $file) {
-                $files[] = $this->dir . DIRECTORY_SEPARATOR . $file;
-            }
-        }
-
-        foreach ($files as $file) {
-
-            $cmd = $this->composer . ' validate ' . $file;
-            $cmd = escapeshellcmd($cmd);
-
-            if ($this->passthru) {
-                $retval = null;
-                passthru($cmd, $retval);
-                if ($retval == 1) {
-                    throw new BuildException('invalid composer.json');
-                }
-            } else {
-                $out = array();
-                $retval = null;
-                exec($cmd, $out, $retval);
-                if ($retval == 1) {
-                    $err = join("\n", $out);
-                    throw new BuildException($err);
-                } else {
-                    $this->log($out[0]);
-                }
-            }
-
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -120,11 +100,11 @@ class ComposerLintTask extends Task
      */
     protected function findFiles()
     {
-        $ds = new DirectoryScanner();
-        $ds->setBasedir($this->dir);
-        $ds->setIncludes(array('**/composer.json'));
-        $ds->scan();
-        return $ds->getIncludedFiles();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -133,20 +113,10 @@ class ComposerLintTask extends Task
      */
     protected function findComposer()
     {
-        $basedir = $this->project->getBasedir();
-        $php = $this->project->getProperty('php.interpreter');
-
-        if (file_exists($basedir . '/composer.phar')) {
-            $this->composer = "$php $basedir/composer.phar";
-        } else {
-            $out = array();
-            exec('which composer', $out);
-            if (empty($out)) {
-                throw new BuildException(
-                    'Could not determine composer location.'
-                );
-            }
-            $this->composer = $out[0];
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

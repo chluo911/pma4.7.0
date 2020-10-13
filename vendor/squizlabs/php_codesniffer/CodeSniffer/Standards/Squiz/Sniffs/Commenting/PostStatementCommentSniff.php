@@ -48,8 +48,11 @@ class Squiz_Sniffs_Commenting_PostStatementCommentSniff implements PHP_CodeSniff
      */
     public function register()
     {
-        return array(T_COMMENT);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -64,40 +67,10 @@ class Squiz_Sniffs_Commenting_PostStatementCommentSniff implements PHP_CodeSniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if (substr($tokens[$stackPtr]['content'], 0, 2) !== '//') {
-            return;
-        }
-
-        $commentLine = $tokens[$stackPtr]['line'];
-        $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-
-        if ($tokens[$lastContent]['line'] !== $commentLine) {
-            return;
-        }
-
-        if ($tokens[$lastContent]['code'] === T_CLOSE_CURLY_BRACKET) {
-            return;
-        }
-
-        // Special case for JS files.
-        if ($tokens[$lastContent]['code'] === T_COMMA
-            || $tokens[$lastContent]['code'] === T_SEMICOLON
-        ) {
-            $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($lastContent - 1), null, true);
-            if ($tokens[$lastContent]['code'] === T_CLOSE_CURLY_BRACKET) {
-                return;
-            }
-        }
-
-        $error = 'Comments may not appear after statements';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
-        if ($fix === true) {
-            $phpcsFile->fixer->addNewlineBefore($stackPtr);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

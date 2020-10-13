@@ -20,52 +20,47 @@ class ResourceComparatorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->comparator = new ResourceComparator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function acceptsSucceedsProvider()
     {
-        $tmpfile1 = tmpfile();
-        $tmpfile2 = tmpfile();
-
-        return array(
-          array($tmpfile1, $tmpfile1),
-          array($tmpfile2, $tmpfile2),
-          array($tmpfile1, $tmpfile2)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function acceptsFailsProvider()
     {
-        $tmpfile1 = tmpfile();
-
-        return array(
-          array($tmpfile1, null),
-          array(null, $tmpfile1),
-          array(null, null)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsSucceedsProvider()
     {
-        $tmpfile1 = tmpfile();
-        $tmpfile2 = tmpfile();
-
-        return array(
-          array($tmpfile1, $tmpfile1),
-          array($tmpfile2, $tmpfile2)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsFailsProvider()
     {
-        $tmpfile1 = tmpfile();
-        $tmpfile2 = tmpfile();
-
-        return array(
-          array($tmpfile1, $tmpfile2),
-          array($tmpfile2, $tmpfile1)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -74,9 +69,11 @@ class ResourceComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAcceptsSucceeds($expected, $actual)
     {
-        $this->assertTrue(
-          $this->comparator->accepts($expected, $actual)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,9 +82,11 @@ class ResourceComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAcceptsFails($expected, $actual)
     {
-        $this->assertFalse(
-          $this->comparator->accepts($expected, $actual)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,16 +95,11 @@ class ResourceComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsSucceeds($expected, $actual)
     {
-        $exception = null;
-
-        try {
-            $this->comparator->assertEquals($expected, $actual);
-        }
-
-        catch (ComparisonFailure $exception) {
-        }
-
-        $this->assertNull($exception, 'Unexpected ComparisonFailure');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -114,7 +108,10 @@ class ResourceComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsFails($expected, $actual)
     {
-        $this->setExpectedException('SebastianBergmann\\Comparator\\ComparisonFailure');
-        $this->comparator->assertEquals($expected, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

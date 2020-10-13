@@ -194,7 +194,11 @@ class PHP_CodeCoverage
      */
     public function setTests(array $tests)
     {
-        $this->tests = $tests;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -371,7 +375,6 @@ class PHP_CodeCoverage
         }
 
         $this->tests = array_merge($this->tests, $that->getTests());
-
     }
 
     /**
@@ -486,14 +489,11 @@ class PHP_CodeCoverage
      */
     public function setDisableIgnoredLines($flag)
     {
-        if (!is_bool($flag)) {
-            throw PHP_CodeCoverage_Util_InvalidArgumentHelper::factory(
-                1,
-                'boolean'
-            );
-        }
-
-        $this->disableIgnoredLines = $flag;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -790,6 +790,7 @@ class PHP_CodeCoverage
                         $this->ignoredLines[$filename][] = $token->getEndLine();
 
                     // Intentional fallthrough
+                    // no break
                     case 'PHP_Token_OPEN_TAG':
                     case 'PHP_Token_CLOSE_TAG':
                     case 'PHP_Token_USE':

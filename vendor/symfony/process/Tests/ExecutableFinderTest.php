@@ -23,111 +23,82 @@ class ExecutableFinderTest extends TestCase
 
     protected function tearDown()
     {
-        if ($this->path) {
-            // Restore path if it was changed.
-            putenv('PATH='.$this->path);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function setPath($path)
     {
-        $this->path = getenv('PATH');
-        putenv('PATH='.$path);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFind()
     {
-        if (ini_get('open_basedir')) {
-            $this->markTestSkipped('Cannot test when open_basedir is set');
-        }
-
-        $this->setPath(dirname(PHP_BINARY));
-
-        $finder = new ExecutableFinder();
-        $result = $finder->find($this->getPhpBinaryName());
-
-        $this->assertSamePath(PHP_BINARY, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFindWithDefault()
     {
-        if (ini_get('open_basedir')) {
-            $this->markTestSkipped('Cannot test when open_basedir is set');
-        }
-
-        $expected = 'defaultValue';
-
-        $this->setPath('');
-
-        $finder = new ExecutableFinder();
-        $result = $finder->find('foo', $expected);
-
-        $this->assertEquals($expected, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFindWithExtraDirs()
     {
-        if (ini_get('open_basedir')) {
-            $this->markTestSkipped('Cannot test when open_basedir is set');
-        }
-
-        $this->setPath('');
-
-        $extraDirs = array(dirname(PHP_BINARY));
-
-        $finder = new ExecutableFinder();
-        $result = $finder->find($this->getPhpBinaryName(), null, $extraDirs);
-
-        $this->assertSamePath(PHP_BINARY, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFindWithOpenBaseDir()
     {
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('Cannot run test on windows');
-        }
-
-        if (ini_get('open_basedir')) {
-            $this->markTestSkipped('Cannot test when open_basedir is set');
-        }
-
-        $this->iniSet('open_basedir', dirname(PHP_BINARY).(!defined('HHVM_VERSION') || HHVM_VERSION_ID >= 30800 ? PATH_SEPARATOR.'/' : ''));
-
-        $finder = new ExecutableFinder();
-        $result = $finder->find($this->getPhpBinaryName());
-
-        $this->assertSamePath(PHP_BINARY, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFindProcessInOpenBasedir()
     {
-        if (ini_get('open_basedir')) {
-            $this->markTestSkipped('Cannot test when open_basedir is set');
-        }
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('Cannot run test on windows');
-        }
-
-        $this->setPath('');
-        $this->iniSet('open_basedir', PHP_BINARY.(!defined('HHVM_VERSION') || HHVM_VERSION_ID >= 30800 ? PATH_SEPARATOR.'/' : ''));
-
-        $finder = new ExecutableFinder();
-        $result = $finder->find($this->getPhpBinaryName(), false);
-
-        $this->assertSamePath(PHP_BINARY, $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function assertSamePath($expected, $tested)
     {
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->assertEquals(strtolower($expected), strtolower($tested));
-        } else {
-            $this->assertEquals($expected, $tested);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function getPhpBinaryName()
     {
-        return basename(PHP_BINARY, '\\' === DIRECTORY_SEPARATOR ? '.exe' : '');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

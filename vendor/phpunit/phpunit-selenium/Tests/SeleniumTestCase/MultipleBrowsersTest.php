@@ -71,14 +71,20 @@ class Extensions_SeleniumTestCaseMultipleBrowsersTest extends PHPUnit_Extensions
 
     public function setUp()
     {
-        $this->setBrowserUrl(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL);
-        $this->assertEquals('*firefox', $this->getBrowser());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSessionIsLaunchedCorrectly()
     {
-        $this->open('html/test_open.html');
-        $this->assertStringEndsWith('html/test_open.html', $this->getLocation());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,20 +92,28 @@ class Extensions_SeleniumTestCaseMultipleBrowsersTest extends PHPUnit_Extensions
      */
     public function testDataProvidersAreRecognized($url)
     {
-        $this->open($url);
-        $this->assertStringEndsWith($url, $this->getLocation());
-        $this->assertEquals('This is a test of the open command.', $this->getBodyText());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function urls()
     {
-        return array(
-            array('html/test_open.html')
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTheBrowserNameIsAccessible()
     {
-        $this->assertEquals('*firefox', $this->getBrowser());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

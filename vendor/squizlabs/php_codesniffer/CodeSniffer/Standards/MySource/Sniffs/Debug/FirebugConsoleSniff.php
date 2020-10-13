@@ -41,13 +41,11 @@ class MySource_Sniffs_Debug_FirebugConsoleSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(
-                T_STRING,
-                T_PROPERTY,
-                T_LABEL,
-                T_OBJECT,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -62,14 +60,10 @@ class MySource_Sniffs_Debug_FirebugConsoleSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if (strtolower($tokens[$stackPtr]['content']) === 'console') {
-            $error = 'Variables, functions and labels must not be named "console"; name may conflict with Firebug internal variable';
-            $phpcsFile->addError($error, $stackPtr, 'ConflictFound');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

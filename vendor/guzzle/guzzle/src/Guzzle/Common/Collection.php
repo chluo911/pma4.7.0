@@ -33,23 +33,29 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
      */
     public static function fromConfig(array $config = array(), array $defaults = array(), array $required = array())
     {
-        $data = $config + $defaults;
-
-        if ($missing = array_diff($required, array_keys($data))) {
-            throw new InvalidArgumentException('Config is missing the following keys: ' . implode(', ', $missing));
-        }
-
-        return new self($data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function count()
     {
-        return count($this->data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function toArray()
@@ -78,7 +84,11 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
      */
     public function getAll(array $keys = null)
     {
-        return $keys ? array_intersect_key($this->data, array_flip($keys)) : $this->data;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -151,7 +161,11 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
      */
     public function getKeys()
     {
-        return array_keys($this->data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -175,13 +189,11 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
      */
     public function keySearch($key)
     {
-        foreach (array_keys($this->data) as $k) {
-            if (!strcasecmp($k, $key)) {
-                return $k;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -193,7 +205,11 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
      */
     public function hasValue($value)
     {
-        return array_search($value, $this->data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -261,12 +277,11 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
      */
     public function map(\Closure $closure, array $context = array(), $static = true)
     {
-        $collection = $static ? new static() : new self();
-        foreach ($this as $key => $value) {
-            $collection->add($key, $closure($key, $value, $context));
-        }
-
-        return $collection;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -293,17 +308,29 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
 
     public function offsetExists($offset)
     {
-        return isset($this->data[$offset]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetGet($offset)
     {
-        return isset($this->data[$offset]) ? $this->data[$offset] : null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetSet($offset, $value)
     {
-        $this->data[$offset] = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetUnset($offset)
@@ -392,12 +419,10 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable, ToArra
      */
     public function inject($input)
     {
-        Version::warn(__METHOD__ . ' is deprecated');
-        $replace = array();
-        foreach ($this->data as $key => $val) {
-            $replace['{' . $key . '}'] = $val;
-        }
-
-        return strtr($input, $replace);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

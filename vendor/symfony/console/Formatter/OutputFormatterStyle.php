@@ -157,18 +157,11 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
      */
     public function unsetOption($option)
     {
-        if (!isset(static::$availableOptions[$option])) {
-            throw new InvalidArgumentException(sprintf(
-                'Invalid option specified: "%s". Expected one of (%s)',
-                $option,
-                implode(', ', array_keys(static::$availableOptions))
-            ));
-        }
-
-        $pos = array_search(static::$availableOptions[$option], $this->options);
-        if (false !== $pos) {
-            unset($this->options[$pos]);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

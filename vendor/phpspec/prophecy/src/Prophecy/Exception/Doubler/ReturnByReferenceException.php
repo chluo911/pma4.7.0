@@ -23,10 +23,11 @@ class ReturnByReferenceException extends DoubleException
      */
     public function __construct($message, $classname, $methodName)
     {
-        parent::__construct($message);
-
-        $this->classname  = $classname;
-        $this->methodName = $methodName;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getClassname()

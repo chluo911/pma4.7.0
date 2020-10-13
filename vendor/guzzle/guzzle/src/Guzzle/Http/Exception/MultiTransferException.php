@@ -21,7 +21,11 @@ class MultiTransferException extends ExceptionCollection
      */
     public function getAllRequests()
     {
-        return array_merge($this->successfulRequests, $this->failedRequests);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -106,9 +110,11 @@ class MultiTransferException extends ExceptionCollection
      */
     public function setFailedRequests(array $requests)
     {
-        $this->failedRequests = $requests;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

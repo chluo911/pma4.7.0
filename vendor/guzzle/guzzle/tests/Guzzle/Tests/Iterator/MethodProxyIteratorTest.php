@@ -12,17 +12,19 @@ class MethodProxyIteratorTest extends \PHPUnit_Framework_TestCase
 {
     public function testProxiesMagicCallsToInnermostIterator()
     {
-        $i = new \ArrayIterator();
-        $proxy = new MethodProxyIterator(new MethodProxyIterator(new MethodProxyIterator($i)));
-        $proxy->append('a');
-        $proxy->append('b');
-        $this->assertEquals(array('a', 'b'), $i->getArrayCopy());
-        $this->assertEquals(array('a', 'b'), $proxy->getArrayCopy());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testUsesInnerIterator()
     {
-        $i = new MethodProxyIterator(new ChunkedIterator(new \ArrayIterator(array(1, 2, 3, 4, 5)), 2));
-        $this->assertEquals(3, count(iterator_to_array($i, false)));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

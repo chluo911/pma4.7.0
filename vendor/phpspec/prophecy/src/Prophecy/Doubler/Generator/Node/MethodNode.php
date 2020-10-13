@@ -57,7 +57,8 @@ class MethodNode
 
         if (!in_array($visibility, array('public', 'private', 'protected'))) {
             throw new InvalidArgumentException(sprintf(
-                '`%s` method visibility is not supported.', $visibility
+                '`%s` method visibility is not supported.',
+                $visibility
             ));
         }
 
@@ -117,7 +118,7 @@ class MethodNode
                 $this->returnType = null;
                 break;
 
-            case 'string';
+            case 'string':
             case 'float':
             case 'int':
             case 'bool':
@@ -164,7 +165,11 @@ class MethodNode
      */
     public function hasNullableReturnType()
     {
-        return $this->nullableReturnType;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -177,8 +182,7 @@ class MethodNode
 
     public function getCode()
     {
-        if ($this->returnsReference)
-        {
+        if ($this->returnsReference) {
             return "throw new \Prophecy\Exception\Doubler\ReturnByReferenceException('Returning by reference not supported', get_class(\$this), '{$this->name}');";
         }
 
@@ -188,7 +192,10 @@ class MethodNode
     public function useParentCode()
     {
         $this->code = sprintf(
-            'return parent::%s(%s);', $this->getName(), implode(', ',
+            'return parent::%s(%s);',
+            $this->getName(),
+            implode(
+                ', ',
                 array_map(array($this, 'generateArgument'), $this->arguments)
             )
         );
@@ -196,12 +203,10 @@ class MethodNode
 
     private function generateArgument(ArgumentNode $arg)
     {
-        $argument = '$'.$arg->getName();
-
-        if ($arg->isVariadic()) {
-            $argument = '...'.$argument;
-        }
-
-        return $argument;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

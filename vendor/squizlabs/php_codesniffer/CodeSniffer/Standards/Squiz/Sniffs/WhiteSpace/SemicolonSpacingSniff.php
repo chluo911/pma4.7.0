@@ -48,8 +48,11 @@ class Squiz_Sniffs_WhiteSpace_SemicolonSpacingSniff implements PHP_CodeSniffer_S
      */
     public function register()
     {
-        return array(T_SEMICOLON);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -64,43 +67,10 @@ class Squiz_Sniffs_WhiteSpace_SemicolonSpacingSniff implements PHP_CodeSniffer_S
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $prevType = $tokens[($stackPtr - 1)]['code'];
-        if (isset(PHP_CodeSniffer_Tokens::$emptyTokens[$prevType]) === false) {
-            return;
-        }
-
-        $nonSpace = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 2), null, true);
-        if ($tokens[$nonSpace]['code'] === T_SEMICOLON) {
-            // Empty statement.
-            return;
-        }
-
-        $expected = $tokens[$nonSpace]['content'].';';
-        $found    = $phpcsFile->getTokensAsString($nonSpace, ($stackPtr - $nonSpace)).';';
-        $error    = 'Space found before semicolon; expected "%s" but found "%s"';
-        $data     = array(
-                     $expected,
-                     $found,
-                    );
-
-        $fix = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
-        if ($fix === true) {
-            $phpcsFile->fixer->beginChangeset();
-            $i = ($stackPtr - 1);
-            while (($tokens[$i]['code'] === T_WHITESPACE) && ($i > $nonSpace)) {
-                $phpcsFile->fixer->replaceToken($i, '');
-                $i--;
-            }
-
-            $phpcsFile->fixer->addContent($nonSpace, ';');
-            $phpcsFile->fixer->replaceToken($stackPtr, '');
-
-            $phpcsFile->fixer->endChangeset();
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

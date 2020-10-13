@@ -8,24 +8,39 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class ReturnArgumentPromiseSpec extends ObjectBehavior
 {
-    function it_is_promise()
+    public function it_is_promise()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Promise\PromiseInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_return_first_argument_if_provided(ObjectProphecy $object, MethodProphecy $method)
+    public function it_should_return_first_argument_if_provided(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->execute(array('one', 'two'), $object, $method)->shouldReturn('one');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_return_null_if_no_arguments_provided(ObjectProphecy $object, MethodProphecy $method)
+    public function it_should_return_null_if_no_arguments_provided(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->execute(array(), $object, $method)->shouldReturn(null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_return_nth_argument_if_provided(ObjectProphecy $object, MethodProphecy $method)
+    public function it_should_return_nth_argument_if_provided(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->beConstructedWith(1);
-        $this->execute(array('one', 'two'), $object, $method)->shouldReturn('two');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

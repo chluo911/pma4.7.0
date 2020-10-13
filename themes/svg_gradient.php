@@ -17,13 +17,11 @@ header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
  */
 function PMA_gradientGetColor($get_name, $default)
 {
-    // get color from GET args, only alphanumeric characters
-    $opts = array('options' => array('regexp' => '/^[a-z0-9]+$/i'));
-    $color = filter_input(INPUT_GET, $get_name, FILTER_VALIDATE_REGEXP, $opts);
-    if (preg_match('/^[a-f0-9]{6}$/', $color)) {
-        return '#' . $color;
-    }
-    return $color ? $color : $default;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 $from = PMA_gradientGetColor('from', 'white');

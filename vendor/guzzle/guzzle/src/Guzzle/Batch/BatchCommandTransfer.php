@@ -22,7 +22,11 @@ class BatchCommandTransfer implements BatchTransferInterface, BatchDivisorInterf
      */
     public function __construct($batchSize = 50)
     {
-        $this->batchSize = $batchSize;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -31,45 +35,19 @@ class BatchCommandTransfer implements BatchTransferInterface, BatchDivisorInterf
      */
     public function createBatches(\SplQueue $queue)
     {
-        $groups = new \SplObjectStorage();
-        foreach ($queue as $item) {
-            if (!$item instanceof CommandInterface) {
-                throw new InvalidArgumentException('All items must implement Guzzle\Service\Command\CommandInterface');
-            }
-            $client = $item->getClient();
-            if (!$groups->contains($client)) {
-                $groups->attach($client, new \ArrayObject(array($item)));
-            } else {
-                $groups[$client]->append($item);
-            }
-        }
-
-        $batches = array();
-        foreach ($groups as $batch) {
-            $batches = array_merge($batches, array_chunk($groups[$batch]->getArrayCopy(), $this->batchSize));
-        }
-
-        return $batches;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function transfer(array $batch)
     {
-        if (empty($batch)) {
-            return;
-        }
-
-        // Get the client of the first found command
-        $client = reset($batch)->getClient();
-
-        // Keep a list of all commands with invalid clients
-        $invalid = array_filter($batch, function ($command) use ($client) {
-            return $command->getClient() !== $client;
-        });
-
-        if (!empty($invalid)) {
-            throw new InconsistentClientTransferException($invalid);
-        }
-
-        $client->execute($batch);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

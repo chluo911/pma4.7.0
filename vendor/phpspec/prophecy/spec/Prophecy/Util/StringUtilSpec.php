@@ -6,86 +6,129 @@ use PhpSpec\ObjectBehavior;
 
 class StringUtilSpec extends ObjectBehavior
 {
-    function it_generates_proper_string_representation_for_integer()
+    public function it_generates_proper_string_representation_for_integer()
     {
-        $this->stringify(42)->shouldReturn('42');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_string()
+    public function it_generates_proper_string_representation_for_string()
     {
-        $this->stringify('some string')->shouldReturn('"some string"');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_single_line_representation_for_multiline_string()
+    public function it_generates_single_line_representation_for_multiline_string()
     {
-        $this->stringify("some\nstring")->shouldReturn('"some\\nstring"');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_double()
+    public function it_generates_proper_string_representation_for_double()
     {
-        $this->stringify(42.3)->shouldReturn('42.3');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_boolean_true()
+    public function it_generates_proper_string_representation_for_boolean_true()
     {
-        $this->stringify(true)->shouldReturn('true');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_boolean_false()
+    public function it_generates_proper_string_representation_for_boolean_false()
     {
-        $this->stringify(false)->shouldReturn('false');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_null()
+    public function it_generates_proper_string_representation_for_null()
     {
-        $this->stringify(null)->shouldReturn('null');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_empty_array()
+    public function it_generates_proper_string_representation_for_empty_array()
     {
-        $this->stringify(array())->shouldReturn('[]');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_array()
+    public function it_generates_proper_string_representation_for_array()
     {
-        $this->stringify(array('zet', 42))->shouldReturn('["zet", 42]');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_hash_containing_one_value()
+    public function it_generates_proper_string_representation_for_hash_containing_one_value()
     {
-        $this->stringify(array('ever' => 'zet'))->shouldReturn('["ever" => "zet"]');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_hash()
+    public function it_generates_proper_string_representation_for_hash()
     {
-        $this->stringify(array('ever' => 'zet', 52 => 'hey', 'num' => 42))->shouldReturn(
-            '["ever" => "zet", 52 => "hey", "num" => 42]'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_resource()
+    public function it_generates_proper_string_representation_for_resource()
     {
-        $resource = fopen(__FILE__, 'r');
-        $this->stringify($resource)->shouldReturn('stream:'.$resource);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_object(\stdClass $object)
+    public function it_generates_proper_string_representation_for_object(\stdClass $object)
     {
-        $objHash = sprintf('%s:%s',
-            get_class($object->getWrappedObject()),
-            spl_object_hash($object->getWrappedObject())
-        ) . " Object (\n    'objectProphecy' => Prophecy\Prophecy\ObjectProphecy Object (*Prophecy*)\n)";
-
-        $this->stringify($object)->shouldReturn("$objHash");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_generates_proper_string_representation_for_object_without_exporting(\stdClass $object)
+    public function it_generates_proper_string_representation_for_object_without_exporting(\stdClass $object)
     {
-        $objHash = sprintf('%s:%s',
-            get_class($object->getWrappedObject()),
-            spl_object_hash($object->getWrappedObject())
-        );
-
-        $this->stringify($object, false)->shouldReturn("$objHash");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

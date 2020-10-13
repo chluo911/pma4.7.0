@@ -18,7 +18,11 @@ class IoEmittingEntityBody extends AbstractEntityBodyDecorator implements HasDis
 
     public static function getAllEvents()
     {
-        return array('body.read', 'body.write');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

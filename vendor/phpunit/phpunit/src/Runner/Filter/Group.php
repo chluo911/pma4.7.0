@@ -25,20 +25,11 @@ abstract class PHPUnit_Runner_Filter_GroupFilterIterator extends RecursiveFilter
      */
     public function __construct(RecursiveIterator $iterator, array $groups, PHPUnit_Framework_TestSuite $suite)
     {
-        parent::__construct($iterator);
-
-        foreach ($suite->getGroupDetails() as $group => $tests) {
-            if (in_array($group, $groups)) {
-                $testHashes = array_map(
-                    function ($test) {
-                        return spl_object_hash($test);
-                    },
-                    $tests
-                );
-
-                $this->groupTests = array_merge($this->groupTests, $testHashes);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,13 +37,11 @@ abstract class PHPUnit_Runner_Filter_GroupFilterIterator extends RecursiveFilter
      */
     public function accept()
     {
-        $test = $this->getInnerIterator()->current();
-
-        if ($test instanceof PHPUnit_Framework_TestSuite) {
-            return true;
-        }
-
-        return $this->doAccept(spl_object_hash($test));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     abstract protected function doAccept($hash);

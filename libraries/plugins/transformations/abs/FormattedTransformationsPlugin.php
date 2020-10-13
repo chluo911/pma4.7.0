@@ -24,11 +24,11 @@ abstract class FormattedTransformationsPlugin extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Displays the contents of the column as-is, without running it'
-            . ' through htmlspecialchars(). That is, the column is assumed'
-            . ' to contain valid HTML.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,9 +42,11 @@ abstract class FormattedTransformationsPlugin extends TransformationsPlugin
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        return '<iframe srcdoc="'
-            . strtr($buffer, '"', '\'')
-            . '" sandbox=""></iframe>';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 

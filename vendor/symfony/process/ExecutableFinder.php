@@ -28,7 +28,11 @@ class ExecutableFinder
      */
     public function setSuffixes(array $suffixes)
     {
-        $this->suffixes = $suffixes;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,7 +42,11 @@ class ExecutableFinder
      */
     public function addSuffix($suffix)
     {
-        $this->suffixes[] = $suffix;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

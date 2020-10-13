@@ -32,9 +32,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new Property('myProperty', null, new Description('Description'));
-
-        $this->assertSame('property', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,14 +49,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new Property('myProperty', new String_(), new Description('Description'));
-        $this->assertSame('@property string $myProperty Description', $fixture->render());
-
-        $fixture = new Property('myProperty', null, new Description('Description'));
-        $this->assertSame('@property $myProperty Description', $fixture->render());
-
-        $fixture = new Property('myProperty');
-        $this->assertSame('@property $myProperty', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,12 +62,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new Property('myProperty');
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -77,11 +75,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasVariableName()
     {
-        $expected = 'myProperty';
-
-        $fixture = new Property($expected);
-
-        $this->assertSame($expected, $fixture->getVariableName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -90,11 +88,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasType()
     {
-        $expected = new String_();
-
-        $fixture = new Property('myProperty', $expected);
-
-        $this->assertSame($expected, $fixture->getType());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -104,11 +102,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasDescription()
     {
-        $expected = new Description('Description');
-
-        $fixture = new Property('1.0', null, $expected);
-
-        $this->assertSame($expected, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,9 +117,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new Property('myProperty', new String_(), new Description('Description'));
-
-        $this->assertSame('string $myProperty Description', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -133,19 +133,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $typeResolver = new TypeResolver();
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $context = new Context('');
-
-        $description = new Description('My Description');
-        $descriptionFactory->shouldReceive('create')->with('My Description', $context)->andReturn($description);
-
-        $fixture = Property::create('string $myProperty My Description', $typeResolver, $descriptionFactory, $context);
-
-        $this->assertSame('string $myProperty My Description', (string)$fixture);
-        $this->assertSame('myProperty', $fixture->getVariableName());
-        $this->assertInstanceOf(String_::class, $fixture->getType());
-        $this->assertSame($description, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -157,8 +149,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfEmptyBodyIsGiven()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        Property::create('', new TypeResolver(), $descriptionFactory);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -167,7 +162,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfBodyIsNotString()
     {
-        Property::create([]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -176,7 +175,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfResolverIsNull()
     {
-        Property::create('body');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -186,7 +189,11 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfDescriptionFactoryIsNull()
     {
-        Property::create('body', new TypeResolver());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -195,6 +202,10 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownIfVariableNameIsNotString()
     {
-        new Property([]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

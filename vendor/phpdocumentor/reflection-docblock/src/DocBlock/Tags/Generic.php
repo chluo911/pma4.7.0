@@ -31,10 +31,11 @@ class Generic extends BaseTag implements Factory\StaticMethod
      */
     public function __construct($name, Description $description = null)
     {
-        $this->validateTagName($name);
-
-        $this->name = $name;
-        $this->description = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,13 +54,11 @@ class Generic extends BaseTag implements Factory\StaticMethod
         DescriptionFactory $descriptionFactory = null,
         TypeContext $context = null
     ) {
-        Assert::string($body);
-        Assert::stringNotEmpty($name);
-        Assert::notNull($descriptionFactory);
-
-        $description = $descriptionFactory && $body ? $descriptionFactory->create($body, $context) : null;
-
-        return new static($name, $description);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,11 +80,10 @@ class Generic extends BaseTag implements Factory\StaticMethod
      */
     private function validateTagName($name)
     {
-        if (! preg_match('/^' . StandardTagFactory::REGEX_TAGNAME . '$/u', $name)) {
-            throw new \InvalidArgumentException(
-                'The tag name "' . $name . '" is not wellformed. Tags may only consist of letters, underscores, '
-                . 'hyphens and backslashes.'
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

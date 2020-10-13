@@ -15,6 +15,10 @@ class InterfaceNotFoundException extends ClassNotFoundException
 {
     public function getInterfaceName()
     {
-        return $this->getClassname();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

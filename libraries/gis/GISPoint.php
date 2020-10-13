@@ -55,15 +55,11 @@ class GISPoint extends GISGeometry
      */
     public function scaleRow($spatial)
     {
-        // Trim to remove leading 'POINT(' and trailing ')'
-        $point
-            = mb_substr(
-                $spatial,
-                6,
-                mb_strlen($spatial) - 7
-            );
-
-        return $this->setMinMax($point, array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,48 +81,11 @@ class GISPoint extends GISGeometry
         $scale_data,
         $image
     ) {
-        // allocate colors
-        $black = imagecolorallocate($image, 0, 0, 0);
-        $red = hexdec(mb_substr($point_color, 1, 2));
-        $green = hexdec(mb_substr($point_color, 3, 2));
-        $blue = hexdec(mb_substr($point_color, 4, 2));
-        $color = imagecolorallocate($image, $red, $green, $blue);
-
-        // Trim to remove leading 'POINT(' and trailing ')'
-        $point
-            = mb_substr(
-                $spatial,
-                6,
-                mb_strlen($spatial) - 7
-            );
-        $points_arr = $this->extractPoints($point, $scale_data);
-
-        // draw a small circle to mark the point
-        if ($points_arr[0][0] != '' && $points_arr[0][1] != '') {
-            imagearc(
-                $image,
-                $points_arr[0][0],
-                $points_arr[0][1],
-                7,
-                7,
-                0,
-                360,
-                $color
-            );
-            // print label if applicable
-            if (isset($label) && trim($label) != '') {
-                imagestring(
-                    $image,
-                    1,
-                    $points_arr[0][0],
-                    $points_arr[0][1],
-                    trim($label),
-                    $black
-                );
-            }
-        }
-
-        return $image;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -148,41 +107,11 @@ class GISPoint extends GISGeometry
         $scale_data,
         $pdf
     ) {
-        // allocate colors
-        $red = hexdec(mb_substr($point_color, 1, 2));
-        $green = hexdec(mb_substr($point_color, 3, 2));
-        $blue = hexdec(mb_substr($point_color, 4, 2));
-        $line = array('width' => 1.25, 'color' => array($red, $green, $blue));
-
-        // Trim to remove leading 'POINT(' and trailing ')'
-        $point
-            = mb_substr(
-                $spatial,
-                6,
-                mb_strlen($spatial) - 7
-            );
-        $points_arr = $this->extractPoints($point, $scale_data);
-
-        // draw a small circle to mark the point
-        if ($points_arr[0][0] != '' && $points_arr[0][1] != '') {
-            $pdf->Circle(
-                $points_arr[0][0],
-                $points_arr[0][1],
-                2,
-                0,
-                360,
-                'D',
-                $line
-            );
-            // print label if applicable
-            if (isset($label) && trim($label) != '') {
-                $pdf->SetXY($points_arr[0][0], $points_arr[0][1]);
-                $pdf->SetFontSize(5);
-                $pdf->Cell(0, 0, trim($label));
-            }
-        }
-
-        return $pdf;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -198,35 +127,11 @@ class GISPoint extends GISGeometry
      */
     public function prepareRowAsSvg($spatial, $label, $point_color, $scale_data)
     {
-        $point_options = array(
-            'name'         => $label,
-            'id'           => $label . rand(),
-            'class'        => 'point vector',
-            'fill'         => 'white',
-            'stroke'       => $point_color,
-            'stroke-width' => 2,
-        );
-
-        // Trim to remove leading 'POINT(' and trailing ')'
-        $point
-            = mb_substr(
-                $spatial,
-                6,
-                mb_strlen($spatial) - 7
-            );
-        $points_arr = $this->extractPoints($point, $scale_data);
-
-        $row = '';
-        if ($points_arr[0][0] != '' && $points_arr[0][1] != '') {
-            $row .= '<circle cx="' . $points_arr[0][0]
-                . '" cy="' . $points_arr[0][1] . '" r="3"';
-            foreach ($point_options as $option => $val) {
-                $row .= ' ' . $option . '="' . trim($val) . '"';
-            }
-            $row .= '/>';
-        }
-
-        return $row;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -249,36 +154,11 @@ class GISPoint extends GISGeometry
         $point_color,
         $scale_data
     ) {
-        $style_options = array(
-            'pointRadius'  => 3,
-            'fillColor'    => '#ffffff',
-            'strokeColor'  => $point_color,
-            'strokeWidth'  => 2,
-            'label'        => $label,
-            'labelYOffset' => -8,
-            'fontSize'     => 10,
-        );
-        if ($srid == 0) {
-            $srid = 4326;
-        }
-        $result = $this->getBoundsForOl($srid, $scale_data);
-
-        // Trim to remove leading 'POINT(' and trailing ')'
-        $point
-            = mb_substr(
-                $spatial,
-                6,
-                mb_strlen($spatial) - 7
-            );
-        $points_arr = $this->extractPoints($point, null);
-
-        if ($points_arr[0][0] != '' && $points_arr[0][1] != '') {
-            $result .= 'vectorLayer.addFeatures(new OpenLayers.Feature.Vector('
-                . $this->getPointForOpenLayers($points_arr[0], $srid) . ', null, '
-                . json_encode($style_options) . '));';
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -293,14 +173,11 @@ class GISPoint extends GISGeometry
      */
     public function generateWkt($gis_data, $index, $empty = '')
     {
-        return 'POINT('
-        . ((isset($gis_data[$index]['POINT']['x'])
-            && trim($gis_data[$index]['POINT']['x']) != '')
-            ? $gis_data[$index]['POINT']['x'] : '')
-        . ' '
-        . ((isset($gis_data[$index]['POINT']['y'])
-            && trim($gis_data[$index]['POINT']['y']) != '')
-            ? $gis_data[$index]['POINT']['y'] : '') . ')';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -328,29 +205,10 @@ class GISPoint extends GISGeometry
      */
     public function generateParams($value, $index = -1)
     {
-        $params = array();
-        if ($index == -1) {
-            $index = 0;
-            $data = GISGeometry::generateParams($value);
-            $params['srid'] = $data['srid'];
-            $wkt = $data['wkt'];
-        } else {
-            $params[$index]['gis_type'] = 'POINT';
-            $wkt = $value;
-        }
-
-        // Trim to remove leading 'POINT(' and trailing ')'
-        $point
-            = mb_substr(
-                $wkt,
-                6,
-                mb_strlen($wkt) - 7
-            );
-        $points_arr = $this->extractPoints($point, null);
-
-        $params[$index]['POINT']['x'] = $points_arr[0][0];
-        $params[$index]['POINT']['y'] = $points_arr[0][1];
-
-        return $params;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

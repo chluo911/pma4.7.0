@@ -98,6 +98,10 @@ class PHPUnit_Util_TestSuiteIterator implements RecursiveIterator
      */
     public function hasChildren()
     {
-        return $this->tests[$this->position] instanceof PHPUnit_Framework_TestSuite;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

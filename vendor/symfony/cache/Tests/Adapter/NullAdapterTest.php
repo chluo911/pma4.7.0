@@ -22,107 +22,100 @@ class NullAdapterTest extends TestCase
 {
     public function createCachePool()
     {
-        return new NullAdapter();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetItem()
     {
-        $adapter = $this->createCachePool();
-
-        $item = $adapter->getItem('key');
-        $this->assertFalse($item->isHit());
-        $this->assertNull($item->get(), "Item's value must be null when isHit is false.");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasItem()
     {
-        $this->assertFalse($this->createCachePool()->hasItem('key'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetItems()
     {
-        $adapter = $this->createCachePool();
-
-        $keys = array('foo', 'bar', 'baz', 'biz');
-
-        /** @var CacheItemInterface[] $items */
-        $items = $adapter->getItems($keys);
-        $count = 0;
-
-        foreach ($items as $key => $item) {
-            $itemKey = $item->getKey();
-
-            $this->assertEquals($itemKey, $key, 'Keys must be preserved when fetching multiple items');
-            $this->assertTrue(in_array($key, $keys), 'Cache key can not change.');
-            $this->assertFalse($item->isHit());
-
-            // Remove $key for $keys
-            foreach ($keys as $k => $v) {
-                if ($v === $key) {
-                    unset($keys[$k]);
-                }
-            }
-
-            ++$count;
-        }
-
-        $this->assertSame(4, $count);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsHit()
     {
-        $adapter = $this->createCachePool();
-
-        $item = $adapter->getItem('key');
-        $this->assertFalse($item->isHit());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testClear()
     {
-        $this->assertTrue($this->createCachePool()->clear());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDeleteItem()
     {
-        $this->assertTrue($this->createCachePool()->deleteItem('key'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDeleteItems()
     {
-        $this->assertTrue($this->createCachePool()->deleteItems(array('key', 'foo', 'bar')));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSave()
     {
-        $adapter = $this->createCachePool();
-
-        $item = $adapter->getItem('key');
-        $this->assertFalse($item->isHit());
-        $this->assertNull($item->get(), "Item's value must be null when isHit is false.");
-
-        $this->assertFalse($adapter->save($item));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDeferredSave()
     {
-        $adapter = $this->createCachePool();
-
-        $item = $adapter->getItem('key');
-        $this->assertFalse($item->isHit());
-        $this->assertNull($item->get(), "Item's value must be null when isHit is false.");
-
-        $this->assertFalse($adapter->saveDeferred($item));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCommit()
     {
-        $adapter = $this->createCachePool();
-
-        $item = $adapter->getItem('key');
-        $this->assertFalse($item->isHit());
-        $this->assertNull($item->get(), "Item's value must be null when isHit is false.");
-
-        $this->assertFalse($adapter->saveDeferred($item));
-        $this->assertFalse($this->createCachePool()->commit());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

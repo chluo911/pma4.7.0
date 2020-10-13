@@ -43,8 +43,11 @@ class Squiz_Sniffs_Commenting_ClassCommentSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_CLASS);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,39 +62,10 @@ class Squiz_Sniffs_Commenting_ClassCommentSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $find   = PHP_CodeSniffer_Tokens::$methodPrefixes;
-        $find[] = T_WHITESPACE;
-
-        $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
-        if ($tokens[$commentEnd]['code'] !== T_DOC_COMMENT_CLOSE_TAG
-            && $tokens[$commentEnd]['code'] !== T_COMMENT
-        ) {
-            $phpcsFile->addError('Missing class doc comment', $stackPtr, 'Missing');
-            $phpcsFile->recordMetric($stackPtr, 'Class has doc comment', 'no');
-            return;
-        }
-
-        $phpcsFile->recordMetric($stackPtr, 'Class has doc comment', 'yes');
-
-        if ($tokens[$commentEnd]['code'] === T_COMMENT) {
-            $phpcsFile->addError('You must use "/**" style comments for a class comment', $stackPtr, 'WrongStyle');
-            return;
-        }
-
-        if ($tokens[$commentEnd]['line'] !== ($tokens[$stackPtr]['line'] - 1)) {
-            $error = 'There must be no blank lines after the class comment';
-            $phpcsFile->addError($error, $commentEnd, 'SpacingAfter');
-        }
-
-        $commentStart = $tokens[$commentEnd]['comment_opener'];
-        foreach ($tokens[$commentStart]['comment_tags'] as $tag) {
-            $error = '%s tag is not allowed in class comment';
-            $data  = array($tokens[$tag]['content']);
-            $phpcsFile->addWarning($error, $tag, 'TagNotAllowed', $data);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

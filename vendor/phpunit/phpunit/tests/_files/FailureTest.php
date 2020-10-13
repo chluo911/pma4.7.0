@@ -3,73 +3,119 @@ class FailureTest extends PHPUnit_Framework_TestCase
 {
     public function testAssertArrayEqualsArray()
     {
-        $this->assertEquals(array(1), array(2), 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertIntegerEqualsInteger()
     {
-        $this->assertEquals(1, 2, 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertObjectEqualsObject()
     {
-        $a      = new StdClass;
-        $a->foo = 'bar';
-
-        $b      = new StdClass;
-        $b->bar = 'foo';
-
-        $this->assertEquals($a, $b, 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertNullEqualsString()
     {
-        $this->assertEquals(null, 'bar', 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertStringEqualsString()
     {
-        $this->assertEquals('foo', 'bar', 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertTextEqualsText()
     {
-        $this->assertEquals("foo\nbar\n", "foo\nbaz\n", 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertStringMatchesFormat()
     {
-        $this->assertStringMatchesFormat('*%s*', '**', 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertNumericEqualsNumeric()
     {
-        $this->assertEquals(1, 2, 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertTextSameText()
     {
-        $this->assertSame('foo', 'bar', 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertObjectSameObject()
     {
-        $this->assertSame(new StdClass, new StdClass, 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertObjectSameNull()
     {
-        $this->assertSame(new StdClass, null, 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAssertFloatSameFloat()
     {
-        $this->assertSame(1.0, 1.5, 'message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // Note that due to the implementation of this assertion it counts as 2 asserts
     public function testAssertStringMatchesFormatFile()
     {
-        $this->assertStringMatchesFormatFile(__DIR__ . '/expectedFileFormat.txt', '...BAR...');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

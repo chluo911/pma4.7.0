@@ -17,6 +17,10 @@ class EventDispatcherTest extends AbstractEventDispatcherTest
 {
     protected function createEventDispatcher()
     {
-        return new EventDispatcher();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

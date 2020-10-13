@@ -13,10 +13,10 @@ class Singleton
 
     public static function getInstance()
     {
-        if (self::$uniqueInstance === null) {
-            self::$uniqueInstance = new self;
-        }
-
-        return self::$uniqueInstance;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

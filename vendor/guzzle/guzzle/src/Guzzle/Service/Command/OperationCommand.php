@@ -24,9 +24,11 @@ class OperationCommand extends AbstractCommand
      */
     public function setResponseParser(ResponseParserInterface $parser)
     {
-        $this->responseParser = $parser;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,9 +40,11 @@ class OperationCommand extends AbstractCommand
      */
     public function setRequestSerializer(RequestSerializerInterface $serializer)
     {
-        $this->requestSerializer = $serializer;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -156,7 +156,9 @@ function PMA_getHtmlForServerStateTraffic($ServerStatusData)
     $retval .= implode(
         ' ',
         PMA\libraries\Util::formatByteDown(
-            $ServerStatusData->status['Bytes_received'], 3, 1
+            $ServerStatusData->status['Bytes_received'],
+            3,
+            1
         )
     );
     $retval .= '</td>';
@@ -164,7 +166,9 @@ function PMA_getHtmlForServerStateTraffic($ServerStatusData)
     $retval .= implode(
         ' ',
         PMA\libraries\Util::formatByteDown(
-            $ServerStatusData->status['Bytes_received'] * $hour_factor, 3, 1
+            $ServerStatusData->status['Bytes_received'] * $hour_factor,
+            3,
+            1
         )
     );
     $retval .= '</td>';
@@ -175,7 +179,9 @@ function PMA_getHtmlForServerStateTraffic($ServerStatusData)
     $retval .= implode(
         ' ',
         PMA\libraries\Util::formatByteDown(
-            $ServerStatusData->status['Bytes_sent'], 3, 1
+            $ServerStatusData->status['Bytes_sent'],
+            3,
+            1
         )
     );
     $retval .= '</td>';
@@ -183,7 +189,9 @@ function PMA_getHtmlForServerStateTraffic($ServerStatusData)
     $retval .= implode(
         ' ',
         PMA\libraries\Util::formatByteDown(
-            $ServerStatusData->status['Bytes_sent'] * $hour_factor, 3, 1
+            $ServerStatusData->status['Bytes_sent'] * $hour_factor,
+            3,
+            1
         )
     );
     $retval .= '</td>';
@@ -196,7 +204,9 @@ function PMA_getHtmlForServerStateTraffic($ServerStatusData)
     $retval .= implode(
         ' ',
         PMA\libraries\Util::formatByteDown(
-            $bytes_received + $bytes_sent, 3, 1
+            $bytes_received + $bytes_sent,
+            3,
+            1
         )
     );
     $retval .= '</td>';
@@ -206,7 +216,9 @@ function PMA_getHtmlForServerStateTraffic($ServerStatusData)
     $retval .= implode(
         ' ',
         PMA\libraries\Util::formatByteDown(
-            ($bytes_received + $bytes_sent) * $hour_factor, 3, 1
+            ($bytes_received + $bytes_sent) * $hour_factor,
+            3,
+            1
         )
     );
     $retval .= '</td>';
@@ -240,7 +252,8 @@ function PMA_getHtmlForServerStateConnections($ServerStatusData)
     $retval .= '<th class="name">' . __('Max. concurrent connections') . '</th>';
     $retval .= '<td class="value">';
     $retval .= PMA\libraries\Util::formatNumber(
-        $ServerStatusData->status['Max_used_connections'], 0
+        $ServerStatusData->status['Max_used_connections'],
+        0
     );
     $retval .= '</td>';
     $retval .= '<td class="value">--- </td>';
@@ -250,12 +263,18 @@ function PMA_getHtmlForServerStateConnections($ServerStatusData)
     $retval .= '<th class="name">' . __('Failed attempts') . '</th>';
     $retval .= '<td class="value">';
     $retval .= PMA\libraries\Util::formatNumber(
-        $ServerStatusData->status['Aborted_connects'], 4, 1, true
+        $ServerStatusData->status['Aborted_connects'],
+        4,
+        1,
+        true
     );
     $retval .= '</td>';
     $retval .= '<td class="value">';
     $retval .= PMA\libraries\Util::formatNumber(
-        $ServerStatusData->status['Aborted_connects'] * $hour_factor, 4, 2, true
+        $ServerStatusData->status['Aborted_connects'] * $hour_factor,
+        4,
+        2,
+        true
     );
     $retval .= '</td>';
     $retval .= '<td class="value">';
@@ -265,7 +284,9 @@ function PMA_getHtmlForServerStateConnections($ServerStatusData)
 
         $retval .= PMA\libraries\Util::formatNumber(
             $abortNum * 100 / $connectNum,
-            0, 2, true
+            0,
+            2,
+            true
         );
         $retval .= '%';
     } else {
@@ -277,12 +298,18 @@ function PMA_getHtmlForServerStateConnections($ServerStatusData)
     $retval .= '<th class="name">' . __('Aborted') . '</th>';
     $retval .= '<td class="value">';
     $retval .= PMA\libraries\Util::formatNumber(
-        $ServerStatusData->status['Aborted_clients'], 4, 1, true
+        $ServerStatusData->status['Aborted_clients'],
+        4,
+        1,
+        true
     );
     $retval .= '</td>';
     $retval .= '<td class="value">';
     $retval .= PMA\libraries\Util::formatNumber(
-        $ServerStatusData->status['Aborted_clients'] * $hour_factor, 4, 2, true
+        $ServerStatusData->status['Aborted_clients'] * $hour_factor,
+        4,
+        2,
+        true
     );
     $retval .= '</td>';
     $retval .= '<td class="value">';
@@ -292,7 +319,9 @@ function PMA_getHtmlForServerStateConnections($ServerStatusData)
 
         $retval .= PMA\libraries\Util::formatNumber(
             $abortNum * 100 / $connectNum,
-            0, 2, true
+            0,
+            2,
+            true
         );
         $retval .= '%';
     } else {
@@ -304,12 +333,16 @@ function PMA_getHtmlForServerStateConnections($ServerStatusData)
     $retval .= '<th class="name">' . __('Total') . '</th>';
     $retval .= '<td class="value">';
     $retval .= PMA\libraries\Util::formatNumber(
-        $ServerStatusData->status['Connections'], 4, 0
+        $ServerStatusData->status['Connections'],
+        4,
+        0
     );
     $retval .= '</td>';
     $retval .= '<td class="value">';
     $retval .= PMA\libraries\Util::formatNumber(
-        $ServerStatusData->status['Connections'] * $hour_factor, 4, 2
+        $ServerStatusData->status['Connections'] * $hour_factor,
+        4,
+        2
     );
     $retval .= '</td>';
     $retval .= '<td class="value">';
@@ -321,4 +354,3 @@ function PMA_getHtmlForServerStateConnections($ServerStatusData)
 
     return $retval;
 }
-

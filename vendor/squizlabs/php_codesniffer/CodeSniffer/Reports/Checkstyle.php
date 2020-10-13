@@ -53,42 +53,11 @@ class PHP_CodeSniffer_Reports_Checkstyle implements PHP_CodeSniffer_Report
         $showSources=false,
         $width=80
     ) {
-        $out = new XMLWriter;
-        $out->openMemory();
-        $out->setIndent(true);
-
-        if ($report['errors'] === 0 && $report['warnings'] === 0) {
-            // Nothing to print.
-            return false;
-        }
-
-        $out->startElement('file');
-        $out->writeAttribute('name', $report['filename']);
-
-        foreach ($report['messages'] as $line => $lineErrors) {
-            foreach ($lineErrors as $column => $colErrors) {
-                foreach ($colErrors as $error) {
-                    $error['type'] = strtolower($error['type']);
-                    if (PHP_CODESNIFFER_ENCODING !== 'utf-8') {
-                        $error['message'] = iconv(PHP_CODESNIFFER_ENCODING, 'utf-8', $error['message']);
-                    }
-
-                    $out->startElement('error');
-                    $out->writeAttribute('line', $line);
-                    $out->writeAttribute('column', $column);
-                    $out->writeAttribute('severity', $error['type']);
-                    $out->writeAttribute('message', $error['message']);
-                    $out->writeAttribute('source', $error['source']);
-                    $out->endElement();
-                }
-            }
-        }//end foreach
-
-        $out->endElement();
-        echo $out->flush();
-
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generateFileReport()
 
 
@@ -117,12 +86,10 @@ class PHP_CodeSniffer_Reports_Checkstyle implements PHP_CodeSniffer_Report
         $width=80,
         $toScreen=true
     ) {
-        echo '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
-        echo '<checkstyle version="'.PHP_CodeSniffer::VERSION.'">'.PHP_EOL;
-        echo $cachedData;
-        echo '</checkstyle>'.PHP_EOL;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generate()
-
-
 }//end class

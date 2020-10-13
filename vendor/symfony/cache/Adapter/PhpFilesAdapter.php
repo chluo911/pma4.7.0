@@ -26,19 +26,20 @@ class PhpFilesAdapter extends AbstractAdapter
 
     public static function isSupported()
     {
-        return function_exists('opcache_compile_file') && ini_get('opcache.enable');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function __construct($namespace = '', $defaultLifetime = 0, $directory = null)
     {
-        if (!static::isSupported()) {
-            throw new CacheException('OPcache is not enabled');
-        }
-        parent::__construct('', $defaultLifetime);
-        $this->init($namespace, $directory);
-
-        $e = new \Exception();
-        $this->includeHandler = function () use ($e) { throw $e; };
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

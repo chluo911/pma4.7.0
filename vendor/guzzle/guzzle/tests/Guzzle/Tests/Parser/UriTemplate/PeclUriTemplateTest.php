@@ -11,9 +11,11 @@ class PeclUriTemplateTest extends AbstractUriTemplateTest
 {
     protected function setUp()
     {
-        if (!extension_loaded('uri_template')) {
-            $this->markTestSkipped('uri_template PECL extension must be installed to test PeclUriTemplate');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -21,7 +23,10 @@ class PeclUriTemplateTest extends AbstractUriTemplateTest
      */
     public function testExpandsUriTemplates($template, $expansion, $params)
     {
-        $uri = new PeclUriTemplate($template);
-        $this->assertEquals($expansion, $uri->expand($template, $params));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

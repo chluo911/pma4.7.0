@@ -41,8 +41,11 @@ class MySource_Sniffs_Strings_JoinStringsSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_STRING);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -57,30 +60,10 @@ class MySource_Sniffs_Strings_JoinStringsSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        if ($tokens[$stackPtr]['content'] !== 'join') {
-            return;
-        }
-
-        $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 1), null, true);
-        if ($tokens[$prev]['code'] !== T_OBJECT_OPERATOR) {
-            return;
-        }
-
-        $prev = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($prev - 1), null, true);
-        if ($tokens[$prev]['code'] === T_CLOSE_SQUARE_BRACKET) {
-            $opener = $tokens[$prev]['bracket_opener'];
-            if ($tokens[($opener - 1)]['code'] !== T_STRING) {
-                // This means the array is declared inline, like x = [a,b,c].join()
-                // and not elsewhere, like x = y[a].join()
-                // The first is not allowed while the second is.
-                $error = 'Joining strings using inline arrays is not allowed; use the + operator instead';
-                $phpcsFile->addError($error, $stackPtr, 'ArrayNotAllowed');
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

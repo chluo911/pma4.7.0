@@ -38,19 +38,11 @@ class Squiz_Sniffs_ControlStructures_LowercaseDeclarationSniff implements PHP_Co
      */
     public function register()
     {
-        return array(
-                T_IF,
-                T_ELSE,
-                T_ELSEIF,
-                T_FOREACH,
-                T_FOR,
-                T_DO,
-                T_SWITCH,
-                T_WHILE,
-                T_TRY,
-                T_CATCH,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -65,24 +57,10 @@ class Squiz_Sniffs_ControlStructures_LowercaseDeclarationSniff implements PHP_Co
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $content = $tokens[$stackPtr]['content'];
-        if ($content !== strtolower($content)) {
-            $error = '%s keyword must be lowercase; expected "%s" but found "%s"';
-            $data  = array(
-                      strtoupper($content),
-                      strtolower($content),
-                      $content,
-                     );
-
-            $fix = $phpcsFile->addFixableError($error, $stackPtr, 'FoundUppercase', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($stackPtr, strtolower($content));
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

@@ -37,8 +37,11 @@ class Generic_Sniffs_Files_InlineHTMLSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_INLINE_HTML);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -53,18 +56,10 @@ class Generic_Sniffs_Files_InlineHTMLSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        // Ignore shebang lines.
-        $tokens = $phpcsFile->getTokens();
-        if (substr($tokens[$stackPtr]['content'], 0, 2) === '#!') {
-            return;
-        }
-
-        $error = 'PHP files must only contain PHP code';
-        $phpcsFile->addError($error, $stackPtr, 'Found');
-
-        return $phpcsFile->numTokens;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

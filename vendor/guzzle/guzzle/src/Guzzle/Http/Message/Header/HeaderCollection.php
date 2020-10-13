@@ -53,7 +53,11 @@ class HeaderCollection implements \IteratorAggregate, \Countable, \ArrayAccess, 
      */
     public function getAll()
     {
-        return $this->headers;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,12 +70,20 @@ class HeaderCollection implements \IteratorAggregate, \Countable, \ArrayAccess, 
 
     public function count()
     {
-        return count($this->headers);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetExists($offset)
     {
-        return isset($this->headers[strtolower($offset)]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetGet($offset)
@@ -83,7 +95,11 @@ class HeaderCollection implements \IteratorAggregate, \Countable, \ArrayAccess, 
 
     public function offsetSet($offset, $value)
     {
-        $this->add($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function offsetUnset($offset)
@@ -93,7 +109,11 @@ class HeaderCollection implements \IteratorAggregate, \Countable, \ArrayAccess, 
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->headers);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function toArray()

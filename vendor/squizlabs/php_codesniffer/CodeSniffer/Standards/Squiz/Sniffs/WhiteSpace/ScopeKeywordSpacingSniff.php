@@ -38,10 +38,11 @@ class Squiz_Sniffs_WhiteSpace_ScopeKeywordSpacingSniff implements PHP_CodeSniffe
      */
     public function register()
     {
-        $register   = PHP_CodeSniffer_Tokens::$scopeModifiers;
-        $register[] = T_STATIC;
-        return $register;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -56,37 +57,10 @@ class Squiz_Sniffs_WhiteSpace_ScopeKeywordSpacingSniff implements PHP_CodeSniffe
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
-        $nextToken = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-
-        if ($tokens[$stackPtr]['code'] === T_STATIC
-            && ($tokens[$nextToken]['code'] === T_DOUBLE_COLON
-            || $tokens[$prevToken]['code'] === T_NEW)
-        ) {
-            // Late static binding, e.g., static:: OR new static() usage.
-            return;
-        }
-
-        if ($tokens[$prevToken]['code'] === T_AS) {
-            // Trait visibilty change, e.g., "use HelloWorld { sayHello as private; }".
-            return;
-        }
-
-        $nextToken = $tokens[($stackPtr + 1)];
-        if (strlen($nextToken['content']) !== 1
-            || $nextToken['content'] === $phpcsFile->eolChar
-        ) {
-            $error = 'Scope keyword "%s" must be followed by a single space';
-            $data  = array($tokens[$stackPtr]['content']);
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Incorrect', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr + 1), ' ');
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

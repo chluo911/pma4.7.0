@@ -9,80 +9,85 @@ use Prophecy\Doubler\Generator\Node\MethodNode;
 
 class MagicCallPatchSpec extends ObjectBehavior
 {
-    function it_is_a_patch()
+    public function it_is_a_patch()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Doubler\ClassPatch\ClassPatchInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_supports_anything(ClassNode $node)
+    public function it_supports_anything(ClassNode $node)
     {
-        $this->supports($node)->shouldReturn(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_discovers_api_using_phpdoc(ClassNode $node)
+    public function it_discovers_api_using_phpdoc(ClassNode $node)
     {
-        $node->getParentClass()->willReturn('spec\Prophecy\Doubler\ClassPatch\MagicalApi');
-        $node->getInterfaces()->willReturn(array());
-
-        $node->addMethod(new MethodNode('undefinedMethod'))->shouldBeCalled();
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_ignores_existing_methods(ClassNode $node)
+    public function it_ignores_existing_methods(ClassNode $node)
     {
-        $node->getParentClass()->willReturn('spec\Prophecy\Doubler\ClassPatch\MagicalApiExtended');
-        $node->getInterfaces()->willReturn(array());
-
-        $node->addMethod(new MethodNode('undefinedMethod'))->shouldBeCalled();
-        $node->addMethod(new MethodNode('definedMethod'))->shouldNotBeCalled();
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_ignores_empty_methods_from_phpdoc(ClassNode $node)
+    public function it_ignores_empty_methods_from_phpdoc(ClassNode $node)
     {
-        $node->getParentClass()->willReturn('spec\Prophecy\Doubler\ClassPatch\MagicalApiInvalidMethodDefinition');
-        $node->getInterfaces()->willReturn(array());
-
-        $node->addMethod(new MethodNode(''))->shouldNotBeCalled();
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_discovers_api_using_phpdoc_from_implemented_interfaces(ClassNode $node)
+    public function it_discovers_api_using_phpdoc_from_implemented_interfaces(ClassNode $node)
     {
-        $node->getParentClass()->willReturn('spec\Prophecy\Doubler\ClassPatch\MagicalApiImplemented');
-        $node->getInterfaces()->willReturn(array());
-
-        $node->addMethod(new MethodNode('implementedMethod'))->shouldBeCalled();
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_discovers_api_using_phpdoc_from_own_interfaces(ClassNode $node)
+    public function it_discovers_api_using_phpdoc_from_own_interfaces(ClassNode $node)
     {
-        $node->getParentClass()->willReturn('stdClass');
-        $node->getInterfaces()->willReturn(array('spec\Prophecy\Doubler\ClassPatch\MagicalApiImplemented'));
-
-        $node->addMethod(new MethodNode('implementedMethod'))->shouldBeCalled();
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_discovers_api_using_phpdoc_from_extended_parent_interfaces(ClassNode $node)
+    public function it_discovers_api_using_phpdoc_from_extended_parent_interfaces(ClassNode $node)
     {
-        $node->getParentClass()->willReturn('spec\Prophecy\Doubler\ClassPatch\MagicalApiImplementedExtended');
-        $node->getInterfaces()->willReturn(array());
-
-        $node->addMethod(new MethodNode('implementedMethod'))->shouldBeCalled();
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_has_50_priority()
+    public function it_has_50_priority()
     {
-        $this->getPriority()->shouldReturn(50);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -96,7 +101,6 @@ class MagicalApi
      */
     public function definedMethod()
     {
-
     }
 }
 
@@ -115,14 +119,12 @@ class MagicalApiInvalidMethodDefinition
  */
 class MagicalApiExtended extends MagicalApi
 {
-
 }
 
 /**
  */
 class MagicalApiImplemented implements MagicalApiInterface
 {
-
 }
 
 /**
@@ -136,5 +138,4 @@ class MagicalApiImplementedExtended extends MagicalApiImplemented
  */
 interface MagicalApiInterface
 {
-
 }

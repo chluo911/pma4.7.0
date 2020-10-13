@@ -49,30 +49,11 @@ class ArgumentsWildcard
      */
     public function scoreArguments(array $arguments)
     {
-        if (0 == count($arguments) && 0 == count($this->tokens)) {
-            return 1;
-        }
-
-        $arguments  = array_values($arguments);
-        $totalScore = 0;
-        foreach ($this->tokens as $i => $token) {
-            $argument = isset($arguments[$i]) ? $arguments[$i] : null;
-            if (1 >= $score = $token->scoreArgument($argument)) {
-                return false;
-            }
-
-            $totalScore += $score;
-
-            if (true === $token->isLast()) {
-                return $totalScore;
-            }
-        }
-
-        if (count($arguments) > count($this->tokens)) {
-            return false;
-        }
-
-        return $totalScore;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

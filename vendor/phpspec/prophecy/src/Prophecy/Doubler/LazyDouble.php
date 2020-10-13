@@ -115,7 +115,9 @@ class LazyDouble
         if (null === $this->double) {
             if (null !== $this->arguments) {
                 return $this->double = $this->doubler->double(
-                    $this->class, $this->interfaces, $this->arguments
+                    $this->class,
+                    $this->interfaces,
+                    $this->arguments
                 );
             }
 

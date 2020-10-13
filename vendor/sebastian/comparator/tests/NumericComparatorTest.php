@@ -20,52 +20,47 @@ class NumericComparatorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->comparator = new NumericComparator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function acceptsSucceedsProvider()
     {
-        return array(
-          array(5, 10),
-          array(8, '0'),
-          array('10', 0),
-          array(0x74c3b00c, 42),
-          array(0755, 0777)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function acceptsFailsProvider()
     {
-        return array(
-          array('5', '10'),
-          array(8, 5.0),
-          array(5.0, 8),
-          array(10, null),
-          array(false, 12)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsSucceedsProvider()
     {
-        return array(
-          array(1337, 1337),
-          array('1337', 1337),
-          array(0x539, 1337),
-          array(02471, 1337),
-          array(1337, 1338, 1),
-          array('1337', 1340, 5),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function assertEqualsFailsProvider()
     {
-        return array(
-          array(1337, 1338),
-          array('1338', 1337),
-          array(0x539, 1338),
-          array(1337, 1339, 1),
-          array('1337', 1340, 2),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -74,9 +69,11 @@ class NumericComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAcceptsSucceeds($expected, $actual)
     {
-        $this->assertTrue(
-          $this->comparator->accepts($expected, $actual)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,9 +82,11 @@ class NumericComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAcceptsFails($expected, $actual)
     {
-        $this->assertFalse(
-          $this->comparator->accepts($expected, $actual)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,16 +95,11 @@ class NumericComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsSucceeds($expected, $actual, $delta = 0.0)
     {
-        $exception = null;
-
-        try {
-            $this->comparator->assertEquals($expected, $actual, $delta);
-        }
-
-        catch (ComparisonFailure $exception) {
-        }
-
-        $this->assertNull($exception, 'Unexpected ComparisonFailure');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -114,9 +108,10 @@ class NumericComparatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssertEqualsFails($expected, $actual, $delta = 0.0)
     {
-        $this->setExpectedException(
-          'SebastianBergmann\\Comparator\\ComparisonFailure', 'matches expected'
-        );
-        $this->comparator->assertEquals($expected, $actual, $delta);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

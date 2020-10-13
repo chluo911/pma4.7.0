@@ -25,32 +25,19 @@ class ArrayAdapterTest extends AdapterTestCase
 
     public function createCachePool($defaultLifetime = 0)
     {
-        return new ArrayAdapter($defaultLifetime);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetValuesHitAndMiss()
     {
-        /** @var ArrayAdapter $cache */
-        $cache = $this->createCachePool();
-
-        // Hit
-        $item = $cache->getItem('foo');
-        $item->set('4711');
-        $cache->save($item);
-
-        $fooItem = $cache->getItem('foo');
-        $this->assertTrue($fooItem->isHit());
-        $this->assertEquals('4711', $fooItem->get());
-
-        // Miss (should be present as NULL in $values)
-        $cache->getItem('bar');
-
-        $values = $cache->getValues();
-
-        $this->assertCount(2, $values);
-        $this->assertArrayHasKey('foo', $values);
-        $this->assertSame(serialize('4711'), $values['foo']);
-        $this->assertArrayHasKey('bar', $values);
-        $this->assertNull($values['bar']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

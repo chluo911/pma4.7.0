@@ -51,33 +51,11 @@ class ExactValueToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        if (is_object($argument) && is_object($this->value)) {
-            $comparator = $this->comparatorFactory->getComparatorFor(
-                $argument, $this->value
-            );
-
-            try {
-                $comparator->assertEquals($argument, $this->value);
-                return 10;
-            } catch (ComparisonFailure $failure) {}
-        }
-
-        // If either one is an object it should be castable to a string
-        if (is_object($argument) xor is_object($this->value)) {
-            if (is_object($argument) && !method_exists($argument, '__toString')) {
-                return false;
-            }
-
-            if (is_object($this->value) && !method_exists($this->value, '__toString')) {
-                return false;
-            }
-        } elseif (is_numeric($argument) && is_numeric($this->value)) {
-            // noop
-        } elseif (gettype($argument) !== gettype($this->value)) {
-            return false;
-        }
-
-        return $argument == $this->value ? 10 : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -97,7 +75,11 @@ class ExactValueToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

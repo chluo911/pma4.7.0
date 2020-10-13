@@ -70,7 +70,8 @@ class ExportOdt extends ExportPlugin
 
         // what to dump (structure/data/both) main group
         $dumpWhat = new OptionsPropertyMainGroup(
-            "general_opts", __('Dump table')
+            "general_opts",
+            __('Dump table')
         );
         // create primary items and add them to the group
         $leaf = new RadioPropertyItem("structure_or_data");
@@ -88,7 +89,8 @@ class ExportOdt extends ExportPlugin
         // structure options main group
         if (!$hide_structure) {
             $structureOptions = new OptionsPropertyMainGroup(
-                "structure", __('Object creation options')
+                "structure",
+                __('Object creation options')
             );
             $structureOptions->setForce('data');
             // create primary items and add them to the group
@@ -117,7 +119,8 @@ class ExportOdt extends ExportPlugin
 
         // data options main group
         $dataOptions = new OptionsPropertyMainGroup(
-            "data", __('Data dump options')
+            "data",
+            __('Data dump options')
         );
         $dataOptions->setForce('structure');
         // create primary items and add them to the group
@@ -146,13 +149,11 @@ class ExportOdt extends ExportPlugin
      */
     public function exportHeader()
     {
-        $GLOBALS['odt_buffer'] .= '<?xml version="1.0" encoding="utf-8"?' . '>'
-            . '<office:document-content '
-            . OpenDocument::NS . ' office:version="1.0">'
-            . '<office:body>'
-            . '<office:text>';
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -162,20 +163,11 @@ class ExportOdt extends ExportPlugin
      */
     public function exportFooter()
     {
-        $GLOBALS['odt_buffer'] .= '</office:text>'
-            . '</office:body>'
-            . '</office:document-content>';
-        if (!PMA_exportOutputHandler(
-            OpenDocument::create(
-                'application/vnd.oasis.opendocument.text',
-                $GLOBALS['odt_buffer']
-            )
-        )
-        ) {
-            return false;
-        }
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -188,16 +180,11 @@ class ExportOdt extends ExportPlugin
      */
     public function exportDBHeader($db, $db_alias = '')
     {
-        if (empty($db_alias)) {
-            $db_alias = $db;
-        }
-        $GLOBALS['odt_buffer']
-            .= '<text:h text:outline-level="1" text:style-name="Heading_1"'
-            . ' text:is-list-header="true">'
-            . __('Database') . ' ' . htmlspecialchars($db_alias)
-            . '</text:h>';
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -209,7 +196,11 @@ class ExportOdt extends ExportPlugin
      */
     public function exportDBFooter($db)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -223,7 +214,11 @@ class ExportOdt extends ExportPlugin
      */
     public function exportDBCreate($db, $export_type, $db_alias = '')
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -246,100 +241,11 @@ class ExportOdt extends ExportPlugin
         $sql_query,
         $aliases = array()
     ) {
-        global $what;
-
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-        // Gets the data from the database
-        $result = $GLOBALS['dbi']->query(
-            $sql_query,
-            null,
-            DatabaseInterface::QUERY_UNBUFFERED
-        );
-        $fields_cnt = $GLOBALS['dbi']->numFields($result);
-        $fields_meta = $GLOBALS['dbi']->getFieldsMeta($result);
-        $field_flags = array();
-        for ($j = 0; $j < $fields_cnt; $j++) {
-            $field_flags[$j] = $GLOBALS['dbi']->fieldFlags($result, $j);
-        }
-
-        $GLOBALS['odt_buffer']
-            .= '<text:h text:outline-level="2" text:style-name="Heading_2"'
-            . ' text:is-list-header="true">'
-            . __('Dumping data for table') . ' ' . htmlspecialchars($table_alias)
-            . '</text:h>'
-            . '<table:table'
-            . ' table:name="' . htmlspecialchars($table_alias) . '_structure">'
-            . '<table:table-column'
-            . ' table:number-columns-repeated="' . $fields_cnt . '"/>';
-
-        // If required, get fields name at the first line
-        if (isset($GLOBALS[$what . '_columns'])) {
-            $GLOBALS['odt_buffer'] .= '<table:table-row>';
-            for ($i = 0; $i < $fields_cnt; $i++) {
-                $col_as = $GLOBALS['dbi']->fieldName($result, $i);
-                if (!empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
-                    $col_as = $aliases[$db]['tables'][$table]['columns'][$col_as];
-                }
-                $GLOBALS['odt_buffer']
-                    .= '<table:table-cell office:value-type="string">'
-                    . '<text:p>'
-                    . htmlspecialchars(
-                        stripslashes($col_as)
-                    )
-                    . '</text:p>'
-                    . '</table:table-cell>';
-            } // end for
-            $GLOBALS['odt_buffer'] .= '</table:table-row>';
-        } // end if
-
-        // Format the data
-        while ($row = $GLOBALS['dbi']->fetchRow($result)) {
-            $GLOBALS['odt_buffer'] .= '<table:table-row>';
-            for ($j = 0; $j < $fields_cnt; $j++) {
-                if (!isset($row[$j]) || is_null($row[$j])) {
-                    $GLOBALS['odt_buffer']
-                        .= '<table:table-cell office:value-type="string">'
-                        . '<text:p>'
-                        . htmlspecialchars($GLOBALS[$what . '_null'])
-                        . '</text:p>'
-                        . '</table:table-cell>';
-                } elseif (stristr($field_flags[$j], 'BINARY')
-                    && $fields_meta[$j]->blob
-                ) {
-                    // ignore BLOB
-                    $GLOBALS['odt_buffer']
-                        .= '<table:table-cell office:value-type="string">'
-                        . '<text:p></text:p>'
-                        . '</table:table-cell>';
-                } elseif ($fields_meta[$j]->numeric
-                    && $fields_meta[$j]->type != 'timestamp'
-                    && !$fields_meta[$j]->blob
-                ) {
-                    $GLOBALS['odt_buffer']
-                        .= '<table:table-cell office:value-type="float"'
-                        . ' office:value="' . $row[$j] . '" >'
-                        . '<text:p>'
-                        . htmlspecialchars($row[$j])
-                        . '</text:p>'
-                        . '</table:table-cell>';
-                } else {
-                    $GLOBALS['odt_buffer']
-                        .= '<table:table-cell office:value-type="string">'
-                        . '<text:p>'
-                        . htmlspecialchars($row[$j])
-                        . '</text:p>'
-                        . '</table:table-cell>';
-                }
-            } // end for
-            $GLOBALS['odt_buffer'] .= '</table:table-row>';
-        } // end while
-        $GLOBALS['dbi']->freeResult($result);
-
-        $GLOBALS['odt_buffer'] .= '</table:table>';
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -590,58 +496,11 @@ class ExportOdt extends ExportPlugin
      */
     protected function getTriggers($db, $table, $aliases = array())
     {
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-        $GLOBALS['odt_buffer'] .= '<table:table'
-            . ' table:name="' . htmlspecialchars($table_alias) . '_triggers">'
-            . '<table:table-column'
-            . ' table:number-columns-repeated="4"/>'
-            . '<table:table-row>'
-            . '<table:table-cell office:value-type="string">'
-            . '<text:p>' . __('Name') . '</text:p>'
-            . '</table:table-cell>'
-            . '<table:table-cell office:value-type="string">'
-            . '<text:p>' . __('Time') . '</text:p>'
-            . '</table:table-cell>'
-            . '<table:table-cell office:value-type="string">'
-            . '<text:p>' . __('Event') . '</text:p>'
-            . '</table:table-cell>'
-            . '<table:table-cell office:value-type="string">'
-            . '<text:p>' . __('Definition') . '</text:p>'
-            . '</table:table-cell>'
-            . '</table:table-row>';
-
-        $triggers = $GLOBALS['dbi']->getTriggers($db, $table);
-
-        foreach ($triggers as $trigger) {
-            $GLOBALS['odt_buffer'] .= '<table:table-row>';
-            $GLOBALS['odt_buffer'] .= '<table:table-cell office:value-type="string">'
-                . '<text:p>'
-                . htmlspecialchars($trigger['name'])
-                . '</text:p>'
-                . '</table:table-cell>';
-            $GLOBALS['odt_buffer'] .= '<table:table-cell office:value-type="string">'
-                . '<text:p>'
-                . htmlspecialchars($trigger['action_timing'])
-                . '</text:p>'
-                . '</table:table-cell>';
-            $GLOBALS['odt_buffer'] .= '<table:table-cell office:value-type="string">'
-                . '<text:p>'
-                . htmlspecialchars($trigger['event_manipulation'])
-                . '</text:p>'
-                . '</table:table-cell>';
-            $GLOBALS['odt_buffer'] .= '<table:table-cell office:value-type="string">'
-                . '<text:p>'
-                . htmlspecialchars($trigger['definition'])
-                . '</text:p>'
-                . '</table:table-cell>';
-            $GLOBALS['odt_buffer'] .= '</table:table-row>';
-        }
-
-        $GLOBALS['odt_buffer'] .= '</table:table>';
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -679,76 +538,11 @@ class ExportOdt extends ExportPlugin
         $dates = false,
         $aliases = array()
     ) {
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-        switch ($export_mode) {
-        case 'create_table':
-            $GLOBALS['odt_buffer']
-                .= '<text:h text:outline-level="2" text:style-name="Heading_2"'
-                . ' text:is-list-header="true">'
-                . __('Table structure for table') . ' ' .
-                htmlspecialchars($table_alias)
-                . '</text:h>';
-            $this->getTableDef(
-                $db,
-                $table,
-                $crlf,
-                $error_url,
-                $do_relation,
-                $do_comments,
-                $do_mime,
-                $dates,
-                true,
-                false,
-                $aliases
-            );
-            break;
-        case 'triggers':
-            $triggers = $GLOBALS['dbi']->getTriggers($db, $table, $aliases);
-            if ($triggers) {
-                $GLOBALS['odt_buffer']
-                    .= '<text:h text:outline-level="2" text:style-name="Heading_2"'
-                    . ' text:is-list-header="true">'
-                    . __('Triggers') . ' '
-                    . htmlspecialchars($table_alias)
-                    . '</text:h>';
-                $this->getTriggers($db, $table);
-            }
-            break;
-        case 'create_view':
-            $GLOBALS['odt_buffer']
-                .= '<text:h text:outline-level="2" text:style-name="Heading_2"'
-                . ' text:is-list-header="true">'
-                . __('Structure for view') . ' '
-                . htmlspecialchars($table_alias)
-                . '</text:h>';
-            $this->getTableDef(
-                $db,
-                $table,
-                $crlf,
-                $error_url,
-                $do_relation,
-                $do_comments,
-                $do_mime,
-                $dates,
-                true,
-                true,
-                $aliases
-            );
-            break;
-        case 'stand_in':
-            $GLOBALS['odt_buffer']
-                .= '<text:h text:outline-level="2" text:style-name="Heading_2"'
-                . ' text:is-list-header="true">'
-                . __('Stand-in structure for view') . ' '
-                . htmlspecialchars($table_alias)
-                . '</text:h>';
-            // export a stand-in definition to resolve view dependencies
-            $this->getTableDefStandIn($db, $table, $crlf, $aliases);
-        } // end switch
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     } // end of the '$this->exportStructure' function
 
     /**

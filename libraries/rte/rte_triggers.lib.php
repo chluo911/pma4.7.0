@@ -205,7 +205,7 @@ function PMA_TRI_handleEditor()
             $title = PMA_RTE_getWord('add');
             $item = PMA_TRI_getDataFromRequest();
             $mode = 'add';
-        } else if (! empty($_REQUEST['edit_item'])) {
+        } elseif (! empty($_REQUEST['edit_item'])) {
             $title = __("Edit trigger");
             if (! empty($_REQUEST['item_name'])
                 && empty($_REQUEST['editor_process_edit'])
@@ -339,7 +339,7 @@ function PMA_TRI_getEditorForm($mode, $item)
         $selected = "";
         if ($mode == 'add' && $value == $table) {
             $selected = " selected='selected'";
-        } else if ($mode == 'edit' && $value == $item['item_table']) {
+        } elseif ($mode == 'edit' && $value == $item['item_table']) {
             $selected = " selected='selected'";
         }
         $retval .= "<option$selected>";
@@ -463,4 +463,3 @@ function PMA_TRI_getQueryFromRequest()
 
     return $query;
 } // end PMA_TRI_getQueryFromRequest()
-

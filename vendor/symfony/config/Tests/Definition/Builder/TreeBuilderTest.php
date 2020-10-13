@@ -23,105 +23,73 @@ class TreeBuilderTest extends TestCase
 {
     public function testUsingACustomNodeBuilder()
     {
-        $builder = new TreeBuilder();
-        $root = $builder->root('custom', 'array', new CustomNodeBuilder());
-
-        $nodeBuilder = $root->children();
-
-        $this->assertInstanceOf('Symfony\Component\Config\Tests\Definition\Builder\NodeBuilder', $nodeBuilder);
-
-        $nodeBuilder = $nodeBuilder->arrayNode('deeper')->children();
-
-        $this->assertInstanceOf('Symfony\Component\Config\Tests\Definition\Builder\NodeBuilder', $nodeBuilder);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOverrideABuiltInNodeType()
     {
-        $builder = new TreeBuilder();
-        $root = $builder->root('override', 'array', new CustomNodeBuilder());
-
-        $definition = $root->children()->variableNode('variable');
-
-        $this->assertInstanceOf('Symfony\Component\Config\Tests\Definition\Builder\VariableNodeDefinition', $definition);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddANodeType()
     {
-        $builder = new TreeBuilder();
-        $root = $builder->root('override', 'array', new CustomNodeBuilder());
-
-        $definition = $root->children()->barNode('variable');
-
-        $this->assertInstanceOf('Symfony\Component\Config\Tests\Definition\Builder\BarNodeDefinition', $definition);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCreateABuiltInNodeTypeWithACustomNodeBuilder()
     {
-        $builder = new TreeBuilder();
-        $root = $builder->root('builtin', 'array', new CustomNodeBuilder());
-
-        $definition = $root->children()->booleanNode('boolean');
-
-        $this->assertInstanceOf('Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition', $definition);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testPrototypedArrayNodeUseTheCustomNodeBuilder()
     {
-        $builder = new TreeBuilder();
-        $root = $builder->root('override', 'array', new CustomNodeBuilder());
-
-        $root->prototype('bar')->end();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAnExtendedNodeBuilderGetsPropagatedToTheChildren()
     {
-        $builder = new TreeBuilder();
-
-        $builder->root('propagation')
-            ->children()
-                ->setNodeClass('extended', 'Symfony\Component\Config\Tests\Definition\Builder\VariableNodeDefinition')
-                ->node('foo', 'extended')->end()
-                ->arrayNode('child')
-                    ->children()
-                        ->node('foo', 'extended')
-                    ->end()
-                ->end()
-            ->end()
-        ->end();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDefinitionInfoGetsTransferredToNode()
     {
-        $builder = new TreeBuilder();
-
-        $builder->root('test')->info('root info')
-            ->children()
-                ->node('child', 'variable')->info('child info')->defaultValue('default')
-            ->end()
-        ->end();
-
-        $tree = $builder->buildTree();
-        $children = $tree->getChildren();
-
-        $this->assertEquals('root info', $tree->getInfo());
-        $this->assertEquals('child info', $children['child']->getInfo());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDefinitionExampleGetsTransferredToNode()
     {
-        $builder = new TreeBuilder();
-
-        $builder->root('test')
-            ->example(array('key' => 'value'))
-            ->children()
-                ->node('child', 'variable')->info('child info')->defaultValue('default')->example('example')
-            ->end()
-        ->end();
-
-        $tree = $builder->buildTree();
-        $children = $tree->getChildren();
-
-        $this->assertInternalType('array', $tree->getExample());
-        $this->assertEquals('example', $children['child']->getExample());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

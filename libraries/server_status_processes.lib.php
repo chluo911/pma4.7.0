@@ -30,7 +30,7 @@ function PMA_getHtmlForProcessListAutoRefresh()
     $retval .= ServerStatusData::getHtmlForRefreshList(
         'refreshRate',
         5,
-        Array(2, 3, 4, 5, 10, 20, 40, 60, 120, 300, 600, 1200)
+        array(2, 3, 4, 5, 10, 20, 40, 60, 120, 300, 600, 1200)
     );
     $retval .= '</label>';
     $retval .= '<a id="toggleRefresh" href="#">';
@@ -53,7 +53,8 @@ function PMA_getHtmlForServerProcesslist()
     if ($show_full_sql) {
         $url_params['full'] = 1;
         $full_text_link = 'server_status_processes.php' . URL::getCommon(
-            array(), '?'
+            array(),
+            '?'
         );
     } else {
         $full_text_link = 'server_status_processes.php' . URL::getCommon(
@@ -129,7 +130,6 @@ function PMA_getHtmlForServerProcesslist()
     $retval .= '<tr>';
     $retval .= '<th>' . __('Processes') . '</th>';
     foreach ($sortable_columns as $column) {
-
         $is_sorted = ! empty($_REQUEST['order_by_field'])
             && ! empty($_REQUEST['sort_order'])
             && ($_REQUEST['order_by_field'] == $column['order_by_field']);
@@ -302,4 +302,3 @@ function PMA_getHtmlForServerProcessItem($process, $show_full_sql)
 
     return $retval;
 }
-

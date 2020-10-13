@@ -58,9 +58,11 @@ class OperationResponseParser extends DefaultResponseParser
      */
     public function addVisitor($location, ResponseVisitorInterface $visitor)
     {
-        $this->factory->addResponseVisitor($location, $visitor);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function handleParsing(CommandInterface $command, Response $response, $contentType)

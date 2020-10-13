@@ -35,10 +35,11 @@ final class Link extends BaseTag implements Factory\StaticMethod
      */
     public function __construct($link, Description $description = null)
     {
-        Assert::string($link);
-
-        $this->link = $link;
-        $this->description = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,13 +47,11 @@ final class Link extends BaseTag implements Factory\StaticMethod
      */
     public static function create($body, DescriptionFactory $descriptionFactory = null, TypeContext $context = null)
     {
-        Assert::string($body);
-        Assert::notNull($descriptionFactory);
-
-        $parts = preg_split('/\s+/Su', $body, 2);
-        $description = isset($parts[1]) ? $descriptionFactory->create($parts[1], $context) : null;
-
-        return new static($parts[0], $description);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

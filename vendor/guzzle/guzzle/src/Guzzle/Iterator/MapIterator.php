@@ -20,11 +20,11 @@ class MapIterator extends \IteratorIterator
      */
     public function __construct(\Traversable $iterator, $callback)
     {
-        parent::__construct($iterator);
-        if (!is_callable($callback)) {
-            throw new InvalidArgumentException('The callback must be callable');
-        }
-        $this->callback = $callback;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function current()

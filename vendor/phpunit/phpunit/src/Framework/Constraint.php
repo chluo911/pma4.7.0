@@ -83,7 +83,11 @@ abstract class PHPUnit_Framework_Constraint implements Countable, PHPUnit_Framew
      */
     public function count()
     {
-        return 1;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

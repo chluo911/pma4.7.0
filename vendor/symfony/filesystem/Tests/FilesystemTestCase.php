@@ -42,53 +42,29 @@ class FilesystemTestCase extends TestCase
 
     public static function setUpBeforeClass()
     {
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            self::$linkOnWindows = true;
-            $originFile = tempnam(sys_get_temp_dir(), 'li');
-            $targetFile = tempnam(sys_get_temp_dir(), 'li');
-            if (true !== @link($originFile, $targetFile)) {
-                $report = error_get_last();
-                if (is_array($report) && false !== strpos($report['message'], 'error code(1314)')) {
-                    self::$linkOnWindows = false;
-                }
-            } else {
-                @unlink($targetFile);
-            }
-
-            self::$symlinkOnWindows = true;
-            $originDir = tempnam(sys_get_temp_dir(), 'sl');
-            $targetDir = tempnam(sys_get_temp_dir(), 'sl');
-            if (true !== @symlink($originDir, $targetDir)) {
-                $report = error_get_last();
-                if (is_array($report) && false !== strpos($report['message'], 'error code(1314)')) {
-                    self::$symlinkOnWindows = false;
-                }
-            } else {
-                @unlink($targetDir);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUp()
     {
-        $this->umask = umask(0);
-        $this->filesystem = new Filesystem();
-        $this->workspace = sys_get_temp_dir().'/'.microtime(true).'.'.mt_rand();
-        mkdir($this->workspace, 0777, true);
-        $this->workspace = realpath($this->workspace);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        if (!empty($this->longPathNamesWindows)) {
-            foreach ($this->longPathNamesWindows as $path) {
-                exec('DEL '.$path);
-            }
-            $this->longPathNamesWindows = array();
-        }
-
-        $this->filesystem->remove($this->workspace);
-        umask($this->umask);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -97,70 +73,64 @@ class FilesystemTestCase extends TestCase
      */
     protected function assertFilePermissions($expectedFilePerms, $filePath)
     {
-        $actualFilePerms = (int) substr(sprintf('%o', fileperms($filePath)), -3);
-        $this->assertEquals(
-            $expectedFilePerms,
-            $actualFilePerms,
-            sprintf('File permissions for %s must be %s. Actual %s', $filePath, $expectedFilePerms, $actualFilePerms)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getFileOwner($filepath)
     {
-        $this->markAsSkippedIfPosixIsMissing();
-
-        $infos = stat($filepath);
-        if ($datas = posix_getpwuid($infos['uid'])) {
-            return $datas['name'];
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getFileGroup($filepath)
     {
-        $this->markAsSkippedIfPosixIsMissing();
-
-        $infos = stat($filepath);
-        if ($datas = posix_getgrgid($infos['gid'])) {
-            return $datas['name'];
-        }
-
-        $this->markTestSkipped('Unable to retrieve file group name');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function markAsSkippedIfLinkIsMissing()
     {
-        if (!function_exists('link')) {
-            $this->markTestSkipped('link is not supported');
-        }
-
-        if ('\\' === DIRECTORY_SEPARATOR && false === self::$linkOnWindows) {
-            $this->markTestSkipped('link requires "Create hard links" privilege on windows');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function markAsSkippedIfSymlinkIsMissing($relative = false)
     {
-        if ('\\' === DIRECTORY_SEPARATOR && false === self::$symlinkOnWindows) {
-            $this->markTestSkipped('symlink requires "Create symbolic links" privilege on Windows');
-        }
-
-        // https://bugs.php.net/bug.php?id=69473
-        if ($relative && '\\' === DIRECTORY_SEPARATOR && 1 === PHP_ZTS) {
-            $this->markTestSkipped('symlink does not support relative paths on thread safe Windows PHP versions');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function markAsSkippedIfChmodIsMissing()
     {
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('chmod is not supported on Windows');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function markAsSkippedIfPosixIsMissing()
     {
-        if (!function_exists('posix_isatty')) {
-            $this->markTestSkipped('Function posix_isatty is required.');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

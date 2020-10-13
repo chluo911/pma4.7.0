@@ -13,12 +13,19 @@ class Zf1LogAdapter extends AbstractLogAdapter
 {
     public function __construct(\Zend_Log $logObject)
     {
-        $this->log = $logObject;
-        Version::warn(__CLASS__ . ' is deprecated');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function log($message, $priority = LOG_INFO, $extras = array())
     {
-        $this->log->log($message, $priority, $extras);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

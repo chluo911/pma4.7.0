@@ -23,51 +23,28 @@ class ApcuAdapterTest extends AdapterTestCase
 
     public function createCachePool($defaultLifetime = 0)
     {
-        if (!function_exists('apcu_fetch') || !ini_get('apc.enabled') || ('cli' === PHP_SAPI && !ini_get('apc.enable_cli'))) {
-            $this->markTestSkipped('APCu extension is required.');
-        }
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            $this->markTestSkipped('Fails transiently on Windows.');
-        }
-
-        return new ApcuAdapter(str_replace('\\', '.', __CLASS__), $defaultLifetime);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testUnserializable()
     {
-        $pool = $this->createCachePool();
-
-        $item = $pool->getItem('foo');
-        $item->set(function () {});
-
-        $this->assertFalse($pool->save($item));
-
-        $item = $pool->getItem('foo');
-        $this->assertFalse($item->isHit());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testVersion()
     {
-        $namespace = str_replace('\\', '.', __CLASS__);
-
-        $pool1 = new ApcuAdapter($namespace, 0, 'p1');
-
-        $item = $pool1->getItem('foo');
-        $this->assertFalse($item->isHit());
-        $this->assertTrue($pool1->save($item->set('bar')));
-
-        $item = $pool1->getItem('foo');
-        $this->assertTrue($item->isHit());
-        $this->assertSame('bar', $item->get());
-
-        $pool2 = new ApcuAdapter($namespace, 0, 'p2');
-
-        $item = $pool2->getItem('foo');
-        $this->assertFalse($item->isHit());
-        $this->assertNull($item->get());
-
-        $item = $pool1->getItem('foo');
-        $this->assertFalse($item->isHit());
-        $this->assertNull($item->get());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -9,12 +9,20 @@ class CoveredParentClass
 
     protected function protectedMethod()
     {
-        $this->privateMethod();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function publicMethod()
     {
-        $this->protectedMethod();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -26,13 +34,19 @@ class CoveredClass extends CoveredParentClass
 
     protected function protectedMethod()
     {
-        parent::protectedMethod();
-        $this->privateMethod();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function publicMethod()
     {
-        parent::publicMethod();
-        $this->protectedMethod();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

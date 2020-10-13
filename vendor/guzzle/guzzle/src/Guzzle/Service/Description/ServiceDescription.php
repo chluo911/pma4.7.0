@@ -43,13 +43,11 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
      */
     public static function factory($config, array $options = array())
     {
-        // @codeCoverageIgnoreStart
-        if (!self::$descriptionLoader) {
-            self::$descriptionLoader = new ServiceDescriptionLoader();
-        }
-        // @codeCoverageIgnoreEnd
-
-        return self::$descriptionLoader->load($config, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,18 +55,29 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
      */
     public function __construct(array $config = array())
     {
-        $this->fromArray($config);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function serialize()
     {
-        return json_encode($this->toArray());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function unserialize($json)
     {
-        $this->operations = array();
-        $this->fromArray(json_decode($json, true));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function toArray()
@@ -107,9 +116,11 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
      */
     public function setBaseUrl($baseUrl)
     {
-        $this->baseUrl = $baseUrl;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getOperations()
@@ -123,7 +134,11 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
 
     public function hasOperation($name)
     {
-        return isset($this->operations[$name]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getOperation($name)
@@ -149,9 +164,11 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
      */
     public function addOperation(OperationInterface $operation)
     {
-        $this->operations[$operation->getName()] = $operation->setServiceDescription($this);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getModel($id)
@@ -169,12 +186,11 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
 
     public function getModels()
     {
-        // Ensure all models are converted into parameter objects
-        foreach (array_keys($this->models) as $id) {
-            $this->getModel($id);
-        }
-
-        return $this->models;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function hasModel($id)
@@ -191,14 +207,20 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
      */
     public function addModel(Parameter $model)
     {
-        $this->models[$model->getName()] = $model;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getApiVersion()
     {
-        return $this->apiVersion;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getName()
@@ -231,41 +253,10 @@ class ServiceDescription implements ServiceDescriptionInterface, ToArrayInterfac
      */
     protected function fromArray(array $config)
     {
-        // Keep a list of default keys used in service descriptions that is later used to determine extra data keys
-        static $defaultKeys = array('name', 'models', 'apiVersion', 'baseUrl', 'description');
-        // Pull in the default configuration values
-        foreach ($defaultKeys as $key) {
-            if (isset($config[$key])) {
-                $this->{$key} = $config[$key];
-            }
-        }
-
-        // Account for the Swagger name for Guzzle's baseUrl
-        if (isset($config['basePath'])) {
-            $this->baseUrl = $config['basePath'];
-        }
-
-        // Ensure that the models and operations properties are always arrays
-        $this->models = (array) $this->models;
-        $this->operations = (array) $this->operations;
-
-        // We want to add operations differently than adding the other properties
-        $defaultKeys[] = 'operations';
-
-        // Create operations for each operation
-        if (isset($config['operations'])) {
-            foreach ($config['operations'] as $name => $operation) {
-                if (!($operation instanceof Operation) && !is_array($operation)) {
-                    throw new InvalidArgumentException('Invalid operation in service description: '
-                        . gettype($operation));
-                }
-                $this->operations[$name] = $operation;
-            }
-        }
-
-        // Get all of the additional properties of the service description and store them in a data array
-        foreach (array_diff(array_keys($config), $defaultKeys) as $key) {
-            $this->extraData[$key] = $config[$key];
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

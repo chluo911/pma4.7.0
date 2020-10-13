@@ -40,15 +40,11 @@ final class Array_ implements Type
      */
     public function __construct(Type $valueType = null, Type $keyType = null)
     {
-        if ($keyType === null) {
-            $keyType = new Compound([ new String_(), new Integer() ]);
-        }
-        if ($valueType === null) {
-            $valueType = new Mixed();
-        }
-
-        $this->valueType = $valueType;
-        $this->keyType = $keyType;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,7 +54,11 @@ final class Array_ implements Type
      */
     public function getKeyType()
     {
-        return $this->keyType;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,7 +68,11 @@ final class Array_ implements Type
      */
     public function getValueType()
     {
-        return $this->valueType;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

@@ -42,10 +42,10 @@ class PHP_Token_Stream_CachingFactory
      */
     public static function clear($filename = null)
     {
-        if (is_string($filename)) {
-            unset(self::$cache[$filename]);
-        } else {
-            self::$cache = array();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -9,26 +9,30 @@ use Prophecy\Doubler\Generator\Node\MethodNode;
 
 class HhvmExceptionPatchSpec extends ObjectBehavior
 {
-    function it_is_a_patch()
+    public function it_is_a_patch()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Doubler\ClassPatch\ClassPatchInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function its_priority_is_minus_50()
+    public function its_priority_is_minus_50()
     {
-        $this->getPriority()->shouldReturn(-50);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_uses_parent_code_for_setTraceOptions(ClassNode $node, MethodNode $method, MethodNode $getterMethod)
+    public function it_uses_parent_code_for_setTraceOptions(ClassNode $node, MethodNode $method, MethodNode $getterMethod)
     {
-        $node->hasMethod('setTraceOptions')->willReturn(true);
-        $node->getMethod('setTraceOptions')->willReturn($method);
-        $node->hasMethod('getTraceOptions')->willReturn(true);
-        $node->getMethod('getTraceOptions')->willReturn($getterMethod);
-
-        $method->useParentCode()->shouldBeCalled();
-        $getterMethod->useParentCode()->shouldBeCalled();
-
-        $this->apply($node);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

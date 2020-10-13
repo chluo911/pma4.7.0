@@ -59,11 +59,11 @@ class Admin
      */
     public static function isValidRepository($url, array $options = array())
     {
-        $process = static::getProcess('ls-remote', array($url), $options);
-
-        $process->run();
-
-        return $process->isSuccessFul();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,9 +78,11 @@ class Admin
      */
     public static function cloneTo($path, $url, $bare = true, array $options = array())
     {
-        $args = $bare ? array('--bare') : array();
-
-        return static::cloneRepository($path, $url, $args, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,12 +98,11 @@ class Admin
      */
     public static function cloneBranchTo($path, $url, $branch, $bare = true, $options = array())
     {
-        $args = array('--branch', $branch);
-        if ($bare) {
-            $args[] = '--bare';
-        }
-
-        return static::cloneRepository($path, $url, $args, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -115,7 +116,11 @@ class Admin
      */
     public static function mirrorTo($path, $url, array $options = array())
     {
-        return static::cloneRepository($path, $url, array('--mirror'), $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -130,15 +135,11 @@ class Admin
      */
     public static function cloneRepository($path, $url, array $args = array(), array $options = array())
     {
-        $process = static::getProcess('clone', array_merge(array('-q'), $args, array($url, $path)), $options);
-
-        $process->run();
-
-        if (!$process->isSuccessFul()) {
-            throw new RuntimeException(sprintf('Error while initializing repository: %s', $process->getErrorOutput()));
-        }
-
-        return new Repository($path, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

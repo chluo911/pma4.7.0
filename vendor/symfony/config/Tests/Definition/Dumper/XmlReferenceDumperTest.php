@@ -19,92 +19,28 @@ class XmlReferenceDumperTest extends TestCase
 {
     public function testDumper()
     {
-        $configuration = new ExampleConfiguration();
-
-        $dumper = new XmlReferenceDumper();
-        $this->assertEquals($this->getConfigurationAsString(), $dumper->dump($configuration));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNamespaceDumper()
     {
-        $configuration = new ExampleConfiguration();
-
-        $dumper = new XmlReferenceDumper();
-        $this->assertEquals(str_replace('http://example.org/schema/dic/acme_root', 'http://symfony.com/schema/dic/symfony', $this->getConfigurationAsString()), $dumper->dump($configuration, 'http://symfony.com/schema/dic/symfony'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function getConfigurationAsString()
     {
-        return str_replace("\n", PHP_EOL, <<<'EOL'
-<!-- Namespace: http://example.org/schema/dic/acme_root -->
-<!-- scalar-required: Required -->
-<!-- enum-with-default: One of "this"; "that" -->
-<!-- enum: One of "this"; "that" -->
-<config
-    boolean="true"
-    scalar-empty=""
-    scalar-null="null"
-    scalar-true="true"
-    scalar-false="false"
-    scalar-default="default"
-    scalar-array-empty=""
-    scalar-array-defaults="elem1,elem2"
-    scalar-required=""
-    node-with-a-looong-name=""
-    enum-with-default="this"
-    enum=""
->
-
-    <!-- some info -->
-    <!--
-        child3: this is a long
-                multi-line info text
-                which should be indented;
-                Example: example setting
-    -->
-    <array
-        child1=""
-        child2=""
-        child3=""
-    />
-
-    <!-- prototype -->
-    <scalar-prototyped>scalar value</scalar-prototyped>
-
-    <!-- prototype: Parameter name -->
-    <parameter name="parameter name">scalar value</parameter>
-
-    <!-- prototype -->
-    <connection
-        user=""
-        pass=""
-    />
-
-    <!-- prototype -->
-    <cms-page page="cms page page">
-
-        <!-- prototype -->
-        <!-- title: Required -->
-        <!-- path: Required -->
-        <page
-            locale="page locale"
-            title=""
-            path=""
-        />
-
-    </cms-page>
-
-    <!-- prototype -->
-    <pipou name="pipou name">
-
-        <!-- prototype -->
-        <name didou="" />
-
-    </pipou>
-
-</config>
-
-EOL
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

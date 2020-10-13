@@ -70,8 +70,14 @@ class TableRelationController extends TableController
      * @param string $disp               Display
      * @param string $upd_query          Update query
      */
-    public function __construct($options_array, $cfgRelation, $tbl_storage_engine,
-        $existrel, $existrel_foreign, $disp, $upd_query
+    public function __construct(
+        $options_array,
+        $cfgRelation,
+        $tbl_storage_engine,
+        $existrel,
+        $existrel_foreign,
+        $disp,
+        $upd_query
     ) {
         parent::__construct();
 
@@ -91,109 +97,11 @@ class TableRelationController extends TableController
      */
     public function indexAction()
     {
-        // Send table of column names to populate corresponding dropdowns depending
-        // on the current selection
-        if (isset($_REQUEST['getDropdownValues'])
-            && $_REQUEST['getDropdownValues'] === 'true'
-        ) {
-            // if both db and table are selected
-            if (isset($_REQUEST['foreignTable'])) {
-                $this->getDropdownValueForTableAction();
-            } else { // if only the db is selected
-                $this->getDropdownValueForDbAction();
-            }
-            return;
-        }
-
-        $this->response->getHeader()->getScripts()->addFiles(
-            array(
-                'tbl_relation.js',
-                'indexes.js'
-            )
-        );
-
-        // Gets tables information
-        include_once 'libraries/tbl_info.inc.php';
-
-        // updates for Internal relations
-        if (isset($_POST['destination_db']) && $this->cfgRelation['relwork']) {
-            $this->updateForInternalRelationAction();
-        }
-
-        // updates for foreign keys
-        if (isset($_POST['destination_foreign_db'])) {
-            $this->updateForForeignKeysAction();
-        }
-
-        // Updates for display field
-        if ($this->cfgRelation['displaywork'] && isset($_POST['display_field'])) {
-            $this->updateForDisplayField();
-        }
-
-        // If we did an update, refresh our data
-        if (isset($_POST['destination_db']) && $this->cfgRelation['relwork']) {
-            $this->existrel = PMA_getForeigners(
-                $this->db, $this->table, '', 'internal'
-            );
-        }
-        if (isset($_POST['destination_foreign_db'])
-            && Util::isForeignKeySupported($this->tbl_storage_engine)
-        ) {
-            $this->existrel_foreign = PMA_getForeigners(
-                $this->db, $this->table, '', 'foreign'
-            );
-        }
-
-        if ($this->cfgRelation['displaywork']) {
-            $this->disp = PMA_getDisplayField($this->db, $this->table);
-        }
-
-        // display secondary level tabs if necessary
-        $engine = $this->dbi->getTable($this->db, $this->table)
-            ->getStatusInfo('ENGINE');
-
-        $this->response->addHTML(
-            Template::get('table/secondary_tabs')->render(
-                array(
-                    'url_params' => array(
-                        'db' => $GLOBALS['db'],
-                        'table' => $GLOBALS['table']
-                    ),
-                    'engine' => $engine
-                )
-            )
-        );
-        $this->response->addHTML('<div id="structure_content">');
-
-        /**
-         * Dialog
-         */
-        // Now find out the columns of our $table
-        // need to use DatabaseInterface::QUERY_STORE with $this->dbi->numRows()
-        // in mysqli
-        $columns = $this->dbi->getColumns($this->db, $this->table);
-
-        // common form
-        $this->response->addHTML(
-            Template::get('table/relation/common_form')->render(
-                array(
-                    'db' => $this->db,
-                    'table' => $this->table,
-                    'columns' => $columns,
-                    'cfgRelation' => $this->cfgRelation,
-                    'tbl_storage_engine' => $this->tbl_storage_engine,
-                    'existrel' => isset($this->existrel) ? $this->existrel : array(),
-                    'existrel_foreign' => isset($this->existrel_foreign)
-                        ? $this->existrel_foreign['foreign_keys_data'] : array(),
-                    'options_array' => $this->options_array
-                )
-            )
-        );
-
-        if (Util::isForeignKeySupported($this->tbl_storage_engine)) {
-            $this->response->addHTML(PMA_getHtmlForDisplayIndexes());
-        }
-        $this->response->addHTML('</div>');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -203,17 +111,11 @@ class TableRelationController extends TableController
      */
     public function updateForDisplayField()
     {
-        if ($this->upd_query->updateDisplayField(
-            $this->disp, $_POST['display_field'], $this->cfgRelation
-        )
-        ) {
-            $this->response->addHTML(
-                Util::getMessage(
-                    __('Display column was successfully updated.'),
-                    '', 'success'
-                )
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -223,38 +125,11 @@ class TableRelationController extends TableController
      */
     public function updateForForeignKeysAction()
     {
-        $multi_edit_columns_name = isset($_REQUEST['foreign_key_fields_name'])
-            ? $_REQUEST['foreign_key_fields_name']
-            : null;
-
-        // (for now, one index name only; we keep the definitions if the
-        // foreign db is not the same)
-        list($html, $preview_sql_data, $display_query, $seen_error)
-            = $this->upd_query->updateForeignKeys(
-                $_POST['destination_foreign_db'],
-                $multi_edit_columns_name, $_POST['destination_foreign_table'],
-                $_POST['destination_foreign_column'], $this->options_array,
-                $this->table,
-                isset($this->existrel_foreign)
-                ? $this->existrel_foreign['foreign_keys_data']
-                : null
-            );
-        $this->response->addHTML($html);
-
-        // If there is a request for SQL previewing.
-        if (isset($_REQUEST['preview_sql'])) {
-            PMA_previewSQL($preview_sql_data);
-        }
-
-        if (!empty($display_query) && !$seen_error) {
-            $GLOBALS['display_query'] = $display_query;
-            $this->response->addHTML(
-                Util::getMessage(
-                    __('Your SQL query has been executed successfully.'),
-                    null, 'success'
-                )
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -264,26 +139,11 @@ class TableRelationController extends TableController
      */
     public function updateForInternalRelationAction()
     {
-        $multi_edit_columns_name = isset($_REQUEST['fields_name'])
-            ? $_REQUEST['fields_name']
-            : null;
-
-        if ($this->upd_query->updateInternalRelations(
-            $multi_edit_columns_name,
-            $_POST['destination_db'],
-            $_POST['destination_table'],
-            $_POST['destination_column'],
-            $this->cfgRelation,
-            isset($this->existrel) ? $this->existrel : null
-        )
-        ) {
-            $this->response->addHTML(
-                Util::getMessage(
-                    __('Internal relationships were successfully updated.'),
-                    '', 'success'
-                )
-            );
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -294,31 +154,11 @@ class TableRelationController extends TableController
      */
     public function getDropdownValueForTableAction()
     {
-        $foreignTable = $_REQUEST['foreignTable'];
-        $table_obj = $this->dbi->getTable($_REQUEST['foreignDb'], $foreignTable);
-        // Since views do not have keys defined on them provide the full list of
-        // columns
-        if ($table_obj->isView()) {
-            $columnList = $table_obj->getColumns(false, false);
-        } else {
-            $columnList = $table_obj->getIndexedColumns(false, false);
-        }
-        $columns = array();
-        foreach ($columnList as $column) {
-            $columns[] = htmlspecialchars($column);
-        }
-        if ($GLOBALS['cfg']['NaturalOrder']) {
-            uksort($columns, 'strnatcasecmp');
-        }
-        $this->response->addJSON('columns', $columns);
-
-        // @todo should be: $server->db($db)->table($table)->primary()
-        $primary = Index::getPrimary($foreignTable, $_REQUEST['foreignDb']);
-        if (false === $primary) {
-            return;
-        }
-
-        $this->response->addJSON('primary', array_keys($primary->getColumns()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -329,40 +169,10 @@ class TableRelationController extends TableController
      */
     public function getDropdownValueForDbAction()
     {
-        $tables = array();
-        $foreign = isset($_REQUEST['foreign']) && $_REQUEST['foreign'] === 'true';
-
-        if ($foreign) {
-            $query = 'SHOW TABLE STATUS FROM '
-                . Util::backquote($_REQUEST['foreignDb']);
-            $tables_rs = $this->dbi->query(
-                $query,
-                null,
-                DatabaseInterface::QUERY_STORE
-            );
-
-            while ($row = $this->dbi->fetchArray($tables_rs)) {
-                if (isset($row['Engine'])
-                    &&  mb_strtoupper($row['Engine']) == $this->tbl_storage_engine
-                ) {
-                    $tables[] = htmlspecialchars($row['Name']);
-                }
-            }
-        } else {
-            $query = 'SHOW TABLES FROM '
-                . Util::backquote($_REQUEST['foreignDb']);
-            $tables_rs = $this->dbi->query(
-                $query,
-                null,
-                DatabaseInterface::QUERY_STORE
-            );
-            while ($row = $this->dbi->fetchArray($tables_rs)) {
-                $tables[] = htmlspecialchars($row[0]);
-            }
-        }
-        if ($GLOBALS['cfg']['NaturalOrder']) {
-            uksort($tables, 'strnatcasecmp');
-        }
-        $this->response->addJSON('tables', $tables);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -15,8 +15,11 @@ class MessageParserTest extends MessageParserProvider
      */
     public function testParsesRequests($message, $parts)
     {
-        $parser = new MessageParser();
-        $this->compareRequestResults($parts, $parser->parseRequest($message));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -24,35 +27,37 @@ class MessageParserTest extends MessageParserProvider
      */
     public function testParsesResponses($message, $parts)
     {
-        $parser = new MessageParser();
-        $this->compareResponseResults($parts, $parser->parseResponse($message));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testParsesRequestsWithMissingProtocol()
     {
-        $parser = new MessageParser();
-        $parts = $parser->parseRequest("GET /\r\nHost: Foo.com\r\n\r\n");
-        $this->assertEquals('GET', $parts['method']);
-        $this->assertEquals('HTTP', $parts['protocol']);
-        $this->assertEquals('1.1', $parts['version']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testParsesRequestsWithMissingVersion()
     {
-        $parser = new MessageParser();
-        $parts = $parser->parseRequest("GET / HTTP\r\nHost: Foo.com\r\n\r\n");
-        $this->assertEquals('GET', $parts['method']);
-        $this->assertEquals('HTTP', $parts['protocol']);
-        $this->assertEquals('1.1', $parts['version']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testParsesResponsesWithMissingReasonPhrase()
     {
-        $parser = new MessageParser();
-        $parts = $parser->parseResponse("HTTP/1.1 200\r\n\r\n");
-        $this->assertEquals('200', $parts['code']);
-        $this->assertEquals('', $parts['reason_phrase']);
-        $this->assertEquals('HTTP', $parts['protocol']);
-        $this->assertEquals('1.1', $parts['version']);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

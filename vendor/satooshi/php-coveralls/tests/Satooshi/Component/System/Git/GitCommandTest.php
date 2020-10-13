@@ -12,15 +12,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 {
     protected function createGitCommandMock($params)
     {
-        $class = 'Satooshi\Component\System\Git\GitCommand';
-        $adapter = $this->getMock($class, array('executeCommand'));
-
-        $adapter
-            ->expects($this->once())
-            ->method('executeCommand')
-            ->with($this->equalTo($params));
-
-        return $adapter;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getCommandPath()
@@ -30,11 +26,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeGitCommand()
     {
-        $object = new GitCommand();
-
-        $expected = 'git';
-
-        $this->assertSame($expected, $object->getCommandPath());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getBranches()
@@ -45,10 +41,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldExecuteGitBranchCommand()
     {
-        $expected = 'git branch';
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getBranches();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,11 +53,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldReturnBranches()
     {
-        $object = new GitCommand();
-        $actual = $object->getBranches();
-
-        $this->assertTrue(is_array($actual));
-        $this->assertNotEmpty($actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getHeadCommit()
@@ -70,10 +67,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldExecuteGitLogCommand()
     {
-        $expected = "git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'";
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getHeadCommit();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,12 +79,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldReturnHeadCommit()
     {
-        $object = new GitCommand();
-        $actual = $object->getHeadCommit();
-
-        $this->assertTrue(is_array($actual));
-        $this->assertNotEmpty($actual);
-        $this->assertCount(6, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getRemotes()
@@ -96,10 +93,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldExecuteGitRemoteCommand()
     {
-        $expected = 'git remote -v';
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getRemotes();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -107,11 +105,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldReturnRemotes()
     {
-        $object = new GitCommand();
-        $actual = $object->getRemotes();
-
-        $this->assertTrue(is_array($actual));
-        $this->assertNotEmpty($actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // execute()
@@ -122,9 +120,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function throwRuntimeExceptionIfExecutedWithoutArgs()
     {
-        // `git` return 1 and cause RuntimeException
-        $object = new GitCommand();
-        $object->execute();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // createCommand()
@@ -134,12 +134,10 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldCreateCommand()
     {
-        $object = new GitCommand();
-        $object->setCommandPath('ls');
-
-        $actual = $object->execute();
-
-        $this->assertTrue(is_array($actual));
-        $this->assertNotEmpty($actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

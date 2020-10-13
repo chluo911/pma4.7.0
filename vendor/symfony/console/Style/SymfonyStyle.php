@@ -78,12 +78,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function title($message)
     {
-        $this->autoPrependBlock();
-        $this->writeln(array(
-            sprintf('<comment>%s</>', OutputFormatter::escapeTrailingBackslash($message)),
-            sprintf('<comment>%s</>', str_repeat('=', Helper::strlenWithoutDecoration($this->getFormatter(), $message))),
-        ));
-        $this->newLine();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,12 +90,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function section($message)
     {
-        $this->autoPrependBlock();
-        $this->writeln(array(
-            sprintf('<comment>%s</>', OutputFormatter::escapeTrailingBackslash($message)),
-            sprintf('<comment>%s</>', str_repeat('-', Helper::strlenWithoutDecoration($this->getFormatter(), $message))),
-        ));
-        $this->newLine();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -104,13 +102,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function listing(array $elements)
     {
-        $this->autoPrependText();
-        $elements = array_map(function ($element) {
-            return sprintf(' * %s', $element);
-        }, $elements);
-
-        $this->writeln($elements);
-        $this->newLine();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -169,7 +165,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function note($message)
     {
-        $this->block($message, 'NOTE', 'fg=yellow', ' ! ');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -177,7 +177,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function caution($message)
     {
-        $this->block($message, 'CAUTION', 'fg=white;bg=red', ' ! ', true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,16 +189,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function table(array $headers, array $rows)
     {
-        $style = clone Table::getStyleDefinition('symfony-style-guide');
-        $style->setCellHeaderFormat('<info>%s</info>');
-
-        $table = new Table($this);
-        $table->setHeaders($headers);
-        $table->setRows($rows);
-        $table->setStyle($style);
-
-        $table->render();
-        $this->newLine();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -202,10 +201,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function ask($question, $default = null, $validator = null)
     {
-        $question = new Question($question, $default);
-        $question->setValidator($validator);
-
-        return $this->askQuestion($question);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -213,12 +213,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function askHidden($question, $validator = null)
     {
-        $question = new Question($question);
-
-        $question->setHidden(true);
-        $question->setValidator($validator);
-
-        return $this->askQuestion($question);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -226,7 +225,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function confirm($question, $default = true)
     {
-        return $this->askQuestion(new ConfirmationQuestion($question, $default));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -234,12 +237,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function choice($question, array $choices, $default = null)
     {
-        if (null !== $default) {
-            $values = array_flip($choices);
-            $default = $values[$default];
-        }
-
-        return $this->askQuestion(new ChoiceQuestion($question, $choices, $default));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -247,8 +249,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function progressStart($max = 0)
     {
-        $this->progressBar = $this->createProgressBar($max);
-        $this->progressBar->start();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -256,7 +261,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function progressAdvance($step = 1)
     {
-        $this->getProgressBar()->advance($step);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -264,9 +273,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function progressFinish()
     {
-        $this->getProgressBar()->finish();
-        $this->newLine(2);
-        $this->progressBar = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -274,15 +285,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function createProgressBar($max = 0)
     {
-        $progressBar = parent::createProgressBar($max);
-
-        if ('\\' !== DIRECTORY_SEPARATOR) {
-            $progressBar->setEmptyBarCharacter('░'); // light shade character \u2591
-            $progressBar->setProgressCharacter('');
-            $progressBar->setBarCharacter('▓'); // dark shade character \u2593
-        }
-
-        return $progressBar;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -292,22 +299,11 @@ class SymfonyStyle extends OutputStyle
      */
     public function askQuestion(Question $question)
     {
-        if ($this->input->isInteractive()) {
-            $this->autoPrependBlock();
-        }
-
-        if (!$this->questionHelper) {
-            $this->questionHelper = new SymfonyQuestionHelper();
-        }
-
-        $answer = $this->questionHelper->ask($this->input, $this, $question);
-
-        if ($this->input->isInteractive()) {
-            $this->newLine();
-            $this->bufferedOutput->write("\n");
-        }
-
-        return $answer;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -342,11 +338,11 @@ class SymfonyStyle extends OutputStyle
      */
     private function getProgressBar()
     {
-        if (!$this->progressBar) {
-            throw new RuntimeException('The ProgressBar is not started.');
-        }
-
-        return $this->progressBar;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function autoPrependBlock()

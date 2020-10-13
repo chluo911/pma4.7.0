@@ -11,7 +11,11 @@ class ArrayLogAdapter implements LogAdapterInterface
 
     public function log($message, $priority = LOG_INFO, $extras = array())
     {
-        $this->logs[] = array('message' => $message, 'priority' => $priority, 'extras' => $extras);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -21,7 +25,11 @@ class ArrayLogAdapter implements LogAdapterInterface
      */
     public function getLogs()
     {
-        return $this->logs;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -29,6 +37,10 @@ class ArrayLogAdapter implements LogAdapterInterface
      */
     public function clearLogs()
     {
-        $this->logs = array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

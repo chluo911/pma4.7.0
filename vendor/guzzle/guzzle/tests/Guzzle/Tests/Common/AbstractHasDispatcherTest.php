@@ -13,51 +13,46 @@ class AbstractHasAdapterTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testDoesNotRequireRegisteredEvents()
     {
-        $this->assertEquals(array(), AbstractHasDispatcher::getAllEvents());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowsDispatcherToBeInjected()
     {
-        $d = new EventDispatcher();
-        $mock = $this->getMockForAbstractClass('Guzzle\Common\AbstractHasDispatcher');
-        $this->assertSame($mock, $mock->setEventDispatcher($d));
-        $this->assertSame($d, $mock->getEventDispatcher());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCreatesDefaultEventDispatcherIfNeeded()
     {
-        $mock = $this->getMockForAbstractClass('Guzzle\Common\AbstractHasDispatcher');
-        $this->assertInstanceOf('Symfony\Component\EventDispatcher\EventDispatcher', $mock->getEventDispatcher());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHelperDispatchesEvents()
     {
-        $data = array();
-        $mock = $this->getMockForAbstractClass('Guzzle\Common\AbstractHasDispatcher');
-        $mock->getEventDispatcher()->addListener('test', function(Event $e) use (&$data) {
-            $data = $e->getIterator()->getArrayCopy();
-        });
-        $mock->dispatch('test', array(
-            'param' => 'abc'
-        ));
-        $this->assertEquals(array(
-            'param' => 'abc',
-        ), $data);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHelperAttachesSubscribers()
     {
-        $mock = $this->getMockForAbstractClass('Guzzle\Common\AbstractHasDispatcher');
-        $subscriber = $this->getMockForAbstractClass('Symfony\Component\EventDispatcher\EventSubscriberInterface');
-
-        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcher')
-            ->setMethods(array('addSubscriber'))
-            ->getMock();
-
-        $dispatcher->expects($this->once())
-            ->method('addSubscriber');
-
-        $mock->setEventDispatcher($dispatcher);
-        $mock->addSubscriber($subscriber);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

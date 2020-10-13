@@ -33,9 +33,11 @@ class LoaderResolver implements LoaderResolverInterface
      */
     public function __construct(array $loaders = array())
     {
-        foreach ($loaders as $loader) {
-            $this->addLoader($loader);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -43,13 +45,11 @@ class LoaderResolver implements LoaderResolverInterface
      */
     public function resolve($resource, $type = null)
     {
-        foreach ($this->loaders as $loader) {
-            if ($loader->supports($resource, $type)) {
-                return $loader;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -59,8 +59,11 @@ class LoaderResolver implements LoaderResolverInterface
      */
     public function addLoader(LoaderInterface $loader)
     {
-        $this->loaders[] = $loader;
-        $loader->setResolver($this);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,6 +73,10 @@ class LoaderResolver implements LoaderResolverInterface
      */
     public function getLoaders()
     {
-        return $this->loaders;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -45,11 +45,11 @@ class PushReference
 
     public function __construct(Repository $repository, $reference, $before, $after)
     {
-        $this->repository = $repository;
-        $this->reference = $reference;
-        $this->before = $before;
-        $this->after = $after;
-        $this->isForce = $this->getForce();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,7 +57,11 @@ class PushReference
      */
     public function getRepository()
     {
-        return $this->repository;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -65,7 +69,11 @@ class PushReference
      */
     public function getReference()
     {
-        return $this->reference;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -89,12 +97,11 @@ class PushReference
      */
     public function getLog($excludes = array())
     {
-        return $this->repository->getLog(array_merge(
-            array($this->getRevision()),
-            array_map(function ($e) {
-                return '^'.$e;
-            }, $excludes)
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getRevision()
@@ -131,7 +138,11 @@ class PushReference
      */
     public function isForce()
     {
-        return $this->isForce;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -139,7 +150,11 @@ class PushReference
      */
     public function isFastForward()
     {
-        return !$this->isDelete() && !$this->isCreate() && !$this->isForce();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -155,15 +170,10 @@ class PushReference
      */
     protected function getForce()
     {
-        if ($this->isDelete() || $this->isCreate()) {
-            return false;
-        }
-
-        $result = $this->repository->run('merge-base', array(
-            $this->before,
-            $this->after,
-        ));
-
-        return $this->before !== trim($result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

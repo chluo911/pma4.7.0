@@ -32,8 +32,11 @@ class IdenticalValueToken implements TokenInterface
      */
     public function __construct($value, StringUtil $util = null)
     {
-        $this->value = $value;
-        $this->util  = $util ?: new StringUtil();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,7 +48,11 @@ class IdenticalValueToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        return $argument === $this->value ? 11 : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -55,7 +62,11 @@ class IdenticalValueToken implements TokenInterface
      */
     public function isLast()
     {
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

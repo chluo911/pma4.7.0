@@ -22,34 +22,10 @@ class NodeProcedureContainer extends NodeDatabaseChildContainer
      */
     public function __construct()
     {
-        parent::__construct(__('Procedures'), Node::CONTAINER);
-        $this->icon = PMA\libraries\Util::getImage(
-            'b_routines.png',
-            __('Procedures')
-        );
-        $this->links = array(
-            'text' => 'db_routines.php?server=' . $GLOBALS['server']
-                . '&amp;db=%1$s&amp;type=PROCEDURE',
-            'icon' => 'db_routines.php?server=' . $GLOBALS['server']
-                . '&amp;db=%1$s&amp;type=PROCEDURE',
-        );
-        $this->real_name = 'procedures';
-
-        $new_label = _pgettext('Create new procedure', 'New');
-        $new = NodeFactory::getInstance(
-            'Node',
-            $new_label
-        );
-        $new->isNew = true;
-        $new->icon = PMA\libraries\Util::getImage('b_routine_add.png', $new_label);
-        $new->links = array(
-            'text' => 'db_routines.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s&add_item=1',
-            'icon' => 'db_routines.php?server=' . $GLOBALS['server']
-                . '&amp;db=%2$s&add_item=1',
-        );
-        $new->classes = 'new_procedure italics';
-        $this->addChild($new);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

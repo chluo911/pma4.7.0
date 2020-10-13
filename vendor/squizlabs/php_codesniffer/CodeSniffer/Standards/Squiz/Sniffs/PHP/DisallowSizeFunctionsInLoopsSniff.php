@@ -60,11 +60,11 @@ class Squiz_Sniffs_PHP_DisallowSizeFunctionsInLoopsSniff implements PHP_CodeSnif
      */
     public function register()
     {
-        return array(
-                T_WHILE,
-                T_FOR,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -79,49 +79,10 @@ class Squiz_Sniffs_PHP_DisallowSizeFunctionsInLoopsSniff implements PHP_CodeSnif
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens       = $phpcsFile->getTokens();
-        $tokenizer    = $phpcsFile->tokenizerType;
-        $openBracket  = $tokens[$stackPtr]['parenthesis_opener'];
-        $closeBracket = $tokens[$stackPtr]['parenthesis_closer'];
-
-        if ($tokens[$stackPtr]['code'] === T_FOR) {
-            // We only want to check the condition in FOR loops.
-            $start = $phpcsFile->findNext(T_SEMICOLON, ($openBracket + 1));
-            $end   = $phpcsFile->findPrevious(T_SEMICOLON, ($closeBracket - 1));
-        } else {
-            $start = $openBracket;
-            $end   = $closeBracket;
-        }
-
-        for ($i = ($start + 1); $i < $end; $i++) {
-            if ($tokens[$i]['code'] === T_STRING
-                && isset($this->forbiddenFunctions[$tokenizer][$tokens[$i]['content']]) === true
-            ) {
-                $functionName = $tokens[$i]['content'];
-                if ($tokenizer === 'JS') {
-                    // Needs to be in the form object.function to be valid.
-                    $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($i - 1), null, true);
-                    if ($prev === false || $tokens[$prev]['code'] !== T_OBJECT_OPERATOR) {
-                        continue;
-                    }
-
-                    $functionName = 'object.'.$functionName;
-                } else {
-                    // Make sure it isn't a member var.
-                    if ($tokens[($i - 1)]['code'] === T_OBJECT_OPERATOR) {
-                        continue;
-                    }
-
-                    $functionName .= '()';
-                }
-
-                $error = 'The use of %s inside a loop condition is not allowed; assign the return value to a variable and use the variable in the loop condition instead';
-                $data  = array($functionName);
-                $phpcsFile->addError($error, $i, 'Found', $data);
-            }//end if
-        }//end for
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

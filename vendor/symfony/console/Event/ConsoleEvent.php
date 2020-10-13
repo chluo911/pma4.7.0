@@ -42,7 +42,11 @@ class ConsoleEvent extends Event
      */
     public function getCommand()
     {
-        return $this->command;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,7 +56,11 @@ class ConsoleEvent extends Event
      */
     public function getInput()
     {
-        return $this->input;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

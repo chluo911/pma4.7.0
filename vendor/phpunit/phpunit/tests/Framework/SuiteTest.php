@@ -31,67 +31,47 @@ class Framework_SuiteTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->result = new PHPUnit_Framework_TestResult;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite;
-
-        $suite->addTest(new self('testAddTestSuite'));
-        $suite->addTest(new self('testInheritedTests'));
-        $suite->addTest(new self('testNoTestCases'));
-        $suite->addTest(new self('testNoTestCaseClass'));
-        $suite->addTest(new self('testNotExistingTestCase'));
-        $suite->addTest(new self('testNotPublicTestCase'));
-        $suite->addTest(new self('testNotVoidTestCase'));
-        $suite->addTest(new self('testOneTestCase'));
-        $suite->addTest(new self('testShadowedTests'));
-        $suite->addTest(new self('testBeforeClassAndAfterClassAnnotations'));
-        $suite->addTest(new self('testBeforeAnnotation'));
-        $suite->addTest(new self('testTestWithAnnotation'));
-        $suite->addTest(new self('testSkippedTestDataProvider'));
-        $suite->addTest(new self('testIncompleteTestDataProvider'));
-        $suite->addTest(new self('testRequirementsBeforeClassHook'));
-        $suite->addTest(new self('testDontSkipInheritedClass'));
-
-        return $suite;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddTestSuite()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'OneTestCase'
-        );
-
-        $suite->run($this->result);
-
-        $this->assertEquals(1, count($this->result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testInheritedTests()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'InheritedTestCase'
-        );
-
-        $suite->run($this->result);
-
-        $this->assertTrue($this->result->wasSuccessful());
-        $this->assertEquals(2, count($this->result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNoTestCases()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'NoTestCases'
-        );
-
-        $suite->run($this->result);
-
-        $this->assertTrue(!$this->result->wasSuccessful());
-        $this->assertEquals(1, $this->result->failureCount());
-        $this->assertEquals(1, count($this->result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,144 +79,118 @@ class Framework_SuiteTest extends PHPUnit_Framework_TestCase
      */
     public function testNoTestCaseClass()
     {
-        $suite = new PHPUnit_Framework_TestSuite('NoTestCaseClass');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNotExistingTestCase()
     {
-        $suite = new self('notExistingMethod');
-
-        $suite->run($this->result);
-
-        $this->assertEquals(0, $this->result->errorCount());
-        $this->assertEquals(1, $this->result->failureCount());
-        $this->assertEquals(1, count($this->result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNotPublicTestCase()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'NotPublicTestCase'
-        );
-
-        $this->assertEquals(2, count($suite));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNotVoidTestCase()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'NotVoidTestCase'
-        );
-
-        $this->assertEquals(1, count($suite));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOneTestCase()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'OneTestCase'
-        );
-
-        $suite->run($this->result);
-
-        $this->assertEquals(0, $this->result->errorCount());
-        $this->assertEquals(0, $this->result->failureCount());
-        $this->assertEquals(1, count($this->result));
-        $this->assertTrue($this->result->wasSuccessful());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testShadowedTests()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'OverrideTestCase'
-        );
-
-        $suite->run($this->result);
-
-        $this->assertEquals(1, count($this->result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testBeforeClassAndAfterClassAnnotations()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'BeforeClassAndAfterClassTest'
-        );
-
-        BeforeClassAndAfterClassTest::resetProperties();
-        $suite->run($this->result);
-
-        $this->assertEquals(1, BeforeClassAndAfterClassTest::$beforeClassWasRun, '@beforeClass method was not run once for the whole suite.');
-        $this->assertEquals(1, BeforeClassAndAfterClassTest::$afterClassWasRun, '@afterClass method was not run once for the whole suite.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testBeforeAnnotation()
     {
-        $test = new PHPUnit_Framework_TestSuite(
-            'BeforeAndAfterTest'
-        );
-
-        BeforeAndAfterTest::resetProperties();
-        $result = $test->run();
-
-        $this->assertEquals(2, BeforeAndAfterTest::$beforeWasRun);
-        $this->assertEquals(2, BeforeAndAfterTest::$afterWasRun);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTestWithAnnotation()
     {
-        $test = new PHPUnit_Framework_TestSuite(
-            'TestWithTest'
-        );
-
-        BeforeAndAfterTest::resetProperties();
-        $result = $test->run();
-
-        $this->assertEquals(4, count($result->passed()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSkippedTestDataProvider()
     {
-        $suite = new PHPUnit_Framework_TestSuite('DataProviderSkippedTest');
-
-        $suite->run($this->result);
-
-        $this->assertEquals(3, $this->result->count());
-        $this->assertEquals(1, $this->result->skippedCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIncompleteTestDataProvider()
     {
-        $suite = new PHPUnit_Framework_TestSuite('DataProviderIncompleteTest');
-
-        $suite->run($this->result);
-
-        $this->assertEquals(3, $this->result->count());
-        $this->assertEquals(1, $this->result->notImplementedCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRequirementsBeforeClassHook()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'RequirementsClassBeforeClassHookTest'
-        );
-
-        $suite->run($this->result);
-
-        $this->assertEquals(0, $this->result->errorCount());
-        $this->assertEquals(1, $this->result->skippedCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDontSkipInheritedClass()
     {
-        $suite = new PHPUnit_Framework_TestSuite(
-            'DontSkipInheritedClass'
-        );
-
-        $dir = dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Inheritance' . DIRECTORY_SEPARATOR;
-
-        $suite->addTestFile($dir . 'InheritanceA.php');
-        $suite->addTestFile($dir . 'InheritanceB.php');
-        $result = $suite->run();
-        $this->assertEquals(2, count($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

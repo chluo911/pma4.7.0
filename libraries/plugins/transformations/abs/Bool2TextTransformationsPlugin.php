@@ -25,10 +25,11 @@ abstract class Bool2TextTransformationsPlugin extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Converts Boolean values to text (default \'T\' and \'F\').'
-            . ' First option is for TRUE, second for FALSE. Nonzero=true.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,13 +43,11 @@ abstract class Bool2TextTransformationsPlugin extends TransformationsPlugin
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        $options = $this->getOptions($options, array('T', 'F'));
-
-        if ($buffer == '0') {
-            return $options[1];   // return false label
-        }
-
-        return $options[0];       // or true one if nonzero
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */

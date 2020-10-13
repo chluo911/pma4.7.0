@@ -8,42 +8,59 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class ReturnPromiseSpec extends ObjectBehavior
 {
-    function let()
+    public function let()
     {
-        $this->beConstructedWith(array(42));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_is_promise()
+    public function it_is_promise()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Promise\PromiseInterface');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_returns_value_it_was_constructed_with(ObjectProphecy $object, MethodProphecy $method)
+    public function it_returns_value_it_was_constructed_with(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->execute(array(), $object, $method)->shouldReturn(42);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_always_returns_last_value_left_in_the_return_values(ObjectProphecy $object, MethodProphecy $method)
+    public function it_always_returns_last_value_left_in_the_return_values(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->execute(array(), $object, $method)->shouldReturn(42);
-        $this->execute(array(), $object, $method)->shouldReturn(42);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_consequently_returns_multiple_values_it_was_constructed_with(
+    public function it_consequently_returns_multiple_values_it_was_constructed_with(
         ObjectProphecy $object,
         MethodProphecy $method
     ) {
-        $this->beConstructedWith(array(42, 24, 12));
-
-        $this->execute(array(), $object, $method)->shouldReturn(42);
-        $this->execute(array(), $object, $method)->shouldReturn(24);
-        $this->execute(array(), $object, $method)->shouldReturn(12);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_returns_null_if_constructed_with_empty_array(ObjectProphecy $object, MethodProphecy $method)
+    public function it_returns_null_if_constructed_with_empty_array(ObjectProphecy $object, MethodProphecy $method)
     {
-        $this->beConstructedWith(array());
-
-        $this->execute(array(), $object, $method)->shouldReturn(null);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

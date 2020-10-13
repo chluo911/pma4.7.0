@@ -254,7 +254,8 @@ class Translator
             $this->pluralexpression = new ExpressionLanguage();
         }
         $plural = $this->pluralexpression->evaluate(
-            $this->getPluralForms(), array('n' => $n)
+            $this->getPluralForms(),
+            array('n' => $n)
         );
 
         if ($plural >= $this->pluralcount) {
@@ -321,12 +322,10 @@ class Translator
      */
     public function npgettext($msgctxt, $msgid, $msgidPlural, $number)
     {
-        $key = implode(chr(4), array($msgctxt, $msgid));
-        $ret = $this->ngettext($key, $msgidPlural, $number);
-        if (strpos($ret, chr(4)) !== false) {
-            return $msgid;
-        } else {
-            return $ret;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

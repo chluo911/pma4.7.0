@@ -168,9 +168,11 @@ class Jobs extends CoverallsApi
      */
     public function setJsonFile(JsonFile $jsonFile)
     {
-        $this->jsonFile = $jsonFile;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

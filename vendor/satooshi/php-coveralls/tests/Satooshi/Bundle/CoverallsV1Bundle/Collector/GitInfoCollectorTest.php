@@ -16,98 +16,92 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->getBranchesValue = array(
-            '  master',
-            '* branch1',
-            '  branch2',
-        );
-        $this->getHeadCommitValue = array(
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            'Author Name',
-            'author@satooshi.jp',
-            'Committer Name',
-            'committer@satooshi.jp',
-            'commit message',
-        );
-        $this->getRemotesValue = array(
-            "origin\tgit@github.com:satooshi/php-coveralls.git (fetch)",
-            "origin\tgit@github.com:satooshi/php-coveralls.git (push)",
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function createGitCommandStub()
     {
-        $class = 'Satooshi\Component\System\Git\GitCommand';
-
-        return $this->getMock($class);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
-
-        $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
-        $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
-        $this->setUpGitCommandStubWithGetRemotesOnce($stub, $getRemotesValue);
-
-        return $stub;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function createGitCommandStubCalledBranches($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
-
-        $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
-        $this->setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue);
-        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
-
-        return $stub;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function createGitCommandStubCalledHeadCommit($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
-
-        $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
-        $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
-        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
-
-        return $stub;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue)
     {
-        $stub->expects($this->once())
-        ->method('getBranches')
-        ->will($this->returnValue($getBranchesValue));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue)
     {
-        $stub->expects($this->once())
-        ->method('getHeadCommit')
-        ->will($this->returnValue($getHeadCommitValue));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue)
     {
-        $stub->expects($this->never())
-        ->method('getHeadCommit')
-        ->will($this->returnValue($getHeadCommitValue));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUpGitCommandStubWithGetRemotesOnce($stub, $getRemotesValue)
     {
-        $stub->expects($this->once())
-        ->method('getRemotes')
-        ->will($this->returnValue($getRemotesValue));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue)
     {
-        $stub->expects($this->never())
-        ->method('getRemotes')
-        ->will($this->returnValue($getRemotesValue));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getCommand()
@@ -117,10 +111,11 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveGitCommandOnConstruction()
     {
-        $command = new GitCommand();
-        $object = new GitInfoCollector($command);
-
-        $this->assertSame($command, $object->getCommand());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // collect()
@@ -130,48 +125,38 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldCollect()
     {
-        $gitCommand = $this->createGitCommandStubWith($this->getBranchesValue, $this->getHeadCommitValue, $this->getRemotesValue);
-        $object = new GitInfoCollector($gitCommand);
-
-        $git = $object->collect();
-
-        $gitClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git';
-        $this->assertTrue($git instanceof $gitClass);
-        $this->assertGit($git);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function assertGit(Git $git)
     {
-        $this->assertSame('branch1', $git->getBranch());
-
-        $commit = $git->getHead();
-
-        $commitClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit';
-        $this->assertTrue($commit instanceof $commitClass);
-        $this->assertCommit($commit);
-
-        $remotes = $git->getRemotes();
-        $this->assertCount(1, $remotes);
-
-        $remoteClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote';
-        $this->assertTrue($remotes[0] instanceof $remoteClass);
-        $this->assertRemote($remotes[0]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function assertCommit(Commit $commit)
     {
-        $this->assertSame('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', $commit->getId());
-        $this->assertSame('Author Name', $commit->getAuthorName());
-        $this->assertSame('author@satooshi.jp', $commit->getAuthorEmail());
-        $this->assertSame('Committer Name', $commit->getCommitterName());
-        $this->assertSame('committer@satooshi.jp', $commit->getCommitterEmail());
-        $this->assertSame('commit message', $commit->getMessage());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function assertRemote(Remote $remote)
     {
-        $this->assertSame('origin', $remote->getName());
-        $this->assertSame('git@github.com:satooshi/php-coveralls.git', $remote->getUrl());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // collectBranch() exception
@@ -182,14 +167,11 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
      */
     public function throwRuntimeExceptionIfCurrentBranchNotFound()
     {
-        $getBranchesValue = array(
-            '  master',
-        );
-        $gitCommand = $this->createGitCommandStubCalledBranches($getBranchesValue, $this->getHeadCommitValue, $this->getRemotesValue);
-
-        $object = new GitInfoCollector($gitCommand);
-
-        $object->collect();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // collectCommit() exception
@@ -200,12 +182,11 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
      */
     public function throwRuntimeExceptionIfHeadCommitIsInvalid()
     {
-        $getHeadCommitValue = array();
-        $gitCommand = $this->createGitCommandStubCalledHeadCommit($this->getBranchesValue, $getHeadCommitValue, $this->getRemotesValue);
-
-        $object = new GitInfoCollector($gitCommand);
-
-        $object->collect();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // collectRemotes() exception
@@ -216,11 +197,10 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
      */
     public function throwRuntimeExceptionIfRemoteIsInvalid()
     {
-        $getRemotesValue = array();
-        $gitCommand = $this->createGitCommandStubWith($this->getBranchesValue, $this->getHeadCommitValue, $getRemotesValue);
-
-        $object = new GitInfoCollector($gitCommand);
-
-        $object->collect();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -30,7 +30,6 @@ if (defined('TESTSUITE')) {
      */
     $extension = 'mysqli';
     if (!DatabaseInterface::checkDbExtension($extension)) {
-
         $docurl = PMA\libraries\Util::getDocuLink('faq', 'faqmysql');
         $doclink = sprintf(
             __('See %sour documentation%s for more information.'),
@@ -72,11 +71,11 @@ if (defined('TESTSUITE')) {
     /**
      * Including The DBI Plugin
      */
-    switch($extension) {
-    case 'mysql' :
+    switch ($extension) {
+    case 'mysql':
         $extension = new DBIMysql();
         break;
-    case 'mysqli' :
+    case 'mysqli':
         include_once 'libraries/dbi/DBIMysqli.lib.php';
         $extension = new DBIMysqli();
         break;

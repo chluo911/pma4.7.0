@@ -80,6 +80,9 @@ function PMA_printGitRevision()
                 . htmlspecialchars($author['name']) . '</a>'
             )
             : ''),
-        'li_pma_version_git', null, null, null
+        'li_pma_version_git',
+        null,
+        null,
+        null
     );
 }

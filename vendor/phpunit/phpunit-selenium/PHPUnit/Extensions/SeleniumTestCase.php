@@ -508,7 +508,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
     /**
      * @var    boolean
      */
-    protected $collectCodeCoverageInformation = FALSE;
+    protected $collectCodeCoverageInformation = false;
 
     /**
      * @var    string
@@ -523,7 +523,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
     /**
      * @var    boolean
      */
-    protected $inDefaultAssertions = FALSE;
+    protected $inDefaultAssertions = false;
 
     /**
      * @var    string
@@ -539,7 +539,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
     /**
      * @var    boolean
      */
-    protected $captureScreenshotOnFailure = FALSE;
+    protected $captureScreenshotOnFailure = false;
 
     /**
      * @var    string
@@ -583,7 +583,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public static function shareSession($shareSession)
     {
-        self::$shareSession = $shareSession;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -593,16 +597,20 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      * @param  array  $browser
      * @throws InvalidArgumentException
      */
-    public function __construct($name = NULL, array $data = array(), $dataName = '', array $browser = array())
+    public function __construct($name = null, array $data = array(), $dataName = '', array $browser = array())
     {
         parent::__construct($name, $data, $dataName);
-        $this->testId = md5(uniqid(rand(), TRUE));
+        $this->testId = md5(uniqid(rand(), true));
         $this->getDriver($browser);
     }
 
     public function setupSpecificBrowser(array $browser)
     {
-        $this->getDriver($browser);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -621,7 +629,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public static function suite($className)
     {
-        return PHPUnit_Extensions_SeleniumTestSuite::fromTestCaseClass($className);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -632,9 +644,9 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      * @return PHPUnit_Framework_TestResult
      * @throws InvalidArgumentException
      */
-    public function run(PHPUnit_Framework_TestResult $result = NULL)
+    public function run(PHPUnit_Framework_TestResult $result = null)
     {
-        if ($result === NULL) {
+        if ($result === null) {
             $result = $this->createResult();
         }
 
@@ -642,7 +654,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
 
         foreach ($this->drivers as $driver) {
             $driver->setCollectCodeCoverageInformation(
-              $this->collectCodeCoverageInformation
+                $this->collectCodeCoverageInformation
             );
         }
 
@@ -650,7 +662,8 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
 
         if ($this->collectCodeCoverageInformation) {
             $result->getCodeCoverage()->append(
-              $this->getCodeCoverage(), $this
+                $this->getCodeCoverage(),
+                $this
             );
         }
 
@@ -666,7 +679,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
         if (isset($browser['name'])) {
             if (!is_string($browser['name'])) {
                 throw new InvalidArgumentException(
-                  'Array element "name" is no string.'
+                    'Array element "name" is no string.'
                 );
             }
         } else {
@@ -676,7 +689,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
         if (isset($browser['browser'])) {
             if (!is_string($browser['browser'])) {
                 throw new InvalidArgumentException(
-                  'Array element "browser" is no string.'
+                    'Array element "browser" is no string.'
                 );
             }
         } else {
@@ -686,7 +699,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
         if (isset($browser['host'])) {
             if (!is_string($browser['host'])) {
                 throw new InvalidArgumentException(
-                  'Array element "host" is no string.'
+                    'Array element "host" is no string.'
                 );
             }
         } else {
@@ -696,7 +709,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
         if (isset($browser['port'])) {
             if (!is_int($browser['port'])) {
                 throw new InvalidArgumentException(
-                  'Array element "port" is no integer.'
+                    'Array element "port" is no integer.'
                 );
             }
         } else {
@@ -706,7 +719,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
         if (isset($browser['timeout'])) {
             if (!is_int($browser['timeout'])) {
                 throw new InvalidArgumentException(
-                  'Array element "timeout" is no integer.'
+                    'Array element "timeout" is no integer.'
                 );
             }
         } else {
@@ -716,7 +729,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
         if (isset($browser['httpTimeout'])) {
             if (!is_int($browser['httpTimeout'])) {
                 throw new InvalidArgumentException(
-                  'Array element "httpTimeout" is no integer.'
+                    'Array element "httpTimeout" is no integer.'
                 );
             }
         } else {
@@ -742,7 +755,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
     {
         try {
             fsockopen($this->drivers[0]->getHost(), $this->drivers[0]->getPort(), $errno, $errstr, $this->serverConnectionTimeOut);
-            $this->serverRunning = TRUE;
+            $this->serverRunning = true;
         } catch (PHPUnit_Framework_Error_Warning $e) {
             $this->markTestSkipped(
                 sprintf(
@@ -751,7 +764,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
                     $this->drivers[0]->getPort()
                 )
             );
-            $this->serverRunning = FALSE;
+            $this->serverRunning = false;
         }
     }
 
@@ -764,7 +777,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
         if ($testCaseClassVars['browsers']) {
             return $this->start();
         }
-        if (self::$shareSession && self::$sessionId !== NULL) {
+        if (self::$shareSession && self::$sessionId !== null) {
             $this->setSessionId(self::$sessionId);
             $this->selectWindow('null');
         } else {
@@ -783,11 +796,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
 
         $this->prepareTestSession();
 
-        if (!is_file($this->getName(FALSE))) {
+        if (!is_file($this->getName(false))) {
             $result = parent::runTest();
         } else {
-            $this->runSelenese($this->getName(FALSE));
-            $result = NULL;
+            $this->runSelenese($this->getName(false));
+            $result = null;
         }
 
         if (!empty($this->verificationErrors)) {
@@ -805,7 +818,8 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
     {
         try {
             $this->stop();
-        } catch (RuntimeException $e) { }
+        } catch (RuntimeException $e) {
+        }
     }
 
     /**
@@ -831,17 +845,17 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function runSelenese($filename)
     {
-        $document = PHPUnit_Util_XML::loadFile($filename, TRUE);
+        $document = PHPUnit_Util_XML::loadFile($filename, true);
         $xpath    = new DOMXPath($document);
         $rows     = $xpath->query('body/table/tbody/tr');
 
         foreach ($rows as $row) {
-            $action    = NULL;
+            $action    = null;
             $arguments = array();
             $columns   = $xpath->query('td', $row);
 
             foreach ($columns as $column) {
-                if ($action === NULL) {
+                if ($action === null) {
                     $action = PHPUnit_Util_XML::nodeToText($column);
                 } else {
                     $arguments[] = PHPUnit_Util_XML::nodeToText($column);
@@ -866,11 +880,13 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
     public function __call($command, $arguments)
     {
         $result = call_user_func_array(
-          array($this->drivers[0], $command), $arguments
+            array($this->drivers[0], $command),
+            $arguments
         );
 
         $this->verificationErrors = array_merge(
-          $this->verificationErrors, $this->drivers[0]->getVerificationErrors()
+            $this->verificationErrors,
+            $this->drivers[0]->getVerificationErrors()
         );
 
         $this->drivers[0]->clearVerificationErrors();
@@ -887,7 +903,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertElementValueEquals($locator, $text, $message = '')
     {
-        $this->assertEquals($text, $this->getValue($locator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -899,7 +919,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertElementValueNotEquals($locator, $text, $message = '')
     {
-        $this->assertNotEquals($text, $this->getValue($locator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -911,7 +935,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertElementValueContains($locator, $text, $message = '')
     {
-        $this->assertContains($text, $this->getValue($locator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -923,7 +951,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertElementValueNotContains($locator, $text, $message = '')
     {
-        $this->assertNotContains($text, $this->getValue($locator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -935,7 +967,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertElementContainsText($locator, $text, $message = '')
     {
-        $this->assertContains($text, $this->getText($locator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -947,7 +983,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertElementNotContainsText($locator, $text, $message = '')
     {
-        $this->assertNotContains($text, $this->getText($locator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -959,7 +999,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertSelectHasOption($selectLocator, $option, $message = '')
     {
-        $this->assertContains($option, $this->getSelectOptions($selectLocator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -971,7 +1015,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertSelectNotHasOption($selectLocator, $option, $message = '')
     {
-        $this->assertNotContains($option, $this->getSelectOptions($selectLocator), $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -983,19 +1031,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertSelected($selectLocator, $option, $message = '')
     {
-        if ($message == '') {
-            $message = sprintf(
-              'Label "%s" not selected in "%s".',
-              $option,
-              $selectLocator
-            );
-        }
-
-        $this->assertEquals(
-          $option,
-          $this->getSelectedLabel($selectLocator),
-          $message
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1007,19 +1047,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertNotSelected($selectLocator, $option, $message = '')
     {
-        if ($message == '') {
-            $message = sprintf(
-              'Label "%s" selected in "%s".',
-              $option,
-              $selectLocator
-            );
-        }
-
-        $this->assertNotEquals(
-          $option,
-          $this->getSelectedLabel($selectLocator),
-          $message
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1031,18 +1063,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertIsSelected($selectLocator, $value, $message = '')
     {
-        if ($message == '') {
-            $message = sprintf(
-              'Value "%s" not selected in "%s".',
-              $value,
-              $selectLocator
-            );
-        }
-
-        $this->assertEquals(
-          $value, $this->getSelectedValue($selectLocator),
-          $message
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1054,19 +1079,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function assertIsNotSelected($selectLocator, $value, $message = '')
     {
-        if ($message == '') {
-            $message = sprintf(
-              'Value "%s" selected in "%s".',
-              $value,
-              $selectLocator
-            );
-        }
-
-        $this->assertNotEquals(
-          $value,
-          $this->getSelectedValue($selectLocator),
-          $message
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1095,11 +1112,11 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     public function runDefaultAssertions($action)
     {
-        if (!$this->inDefaultAssertions) {
-            $this->inDefaultAssertions = TRUE;
-            $this->defaultAssertions($action);
-            $this->inDefaultAssertions = FALSE;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -1160,7 +1177,7 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
 
     private function restoreSessionStateAfterFailedTest()
     {
-        self::$sessionId = NULL;
+        self::$sessionId = null;
     }
 
     /**
@@ -1213,6 +1230,10 @@ abstract class PHPUnit_Extensions_SeleniumTestCase extends PHPUnit_Framework_Tes
      */
     protected function pause($milliseconds)
     {
-		    sleep(round($milliseconds/1000));
-	  }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
+    }
 }

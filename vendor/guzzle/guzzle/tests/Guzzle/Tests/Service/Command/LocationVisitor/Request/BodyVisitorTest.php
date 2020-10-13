@@ -12,52 +12,46 @@ class BodyVisitorTest extends AbstractVisitorTestCase
 {
     public function testVisitsLocation()
     {
-        $visitor = new Visitor();
-        $param = $this->getNestedCommand('body')->getParam('foo')->setSentAs('Foo');
-        $visitor->visit($this->command, $this->request, $param, '123');
-        $this->assertEquals('123', (string) $this->request->getBody());
-        $this->assertNull($this->request->getHeader('Expect'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddsExpectHeaderWhenSetToTrue()
     {
-        $visitor = new Visitor();
-        $param = $this->getNestedCommand('body')->getParam('foo')->setSentAs('Foo');
-        $param->setData('expect_header', true);
-        $visitor->visit($this->command, $this->request, $param, '123');
-        $this->assertEquals('123', (string) $this->request->getBody());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCanDisableExpectHeader()
     {
-        $visitor = new Visitor();
-        $param = $this->getNestedCommand('body')->getParam('foo')->setSentAs('Foo');
-        $param->setData('expect_header', false);
-        $visitor->visit($this->command, $this->request, $param, '123');
-        $this->assertNull($this->request->getHeader('Expect'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCanSetExpectHeaderBasedOnSize()
     {
-        $visitor = new Visitor();
-        $param = $this->getNestedCommand('body')->getParam('foo')->setSentAs('Foo');
-        // The body is less than the cutoff
-        $param->setData('expect_header', 5);
-        $visitor->visit($this->command, $this->request, $param, '123');
-        $this->assertNull($this->request->getHeader('Expect'));
-        // Now check when the body is greater than the cutoff
-        $param->setData('expect_header', 2);
-        $visitor->visit($this->command, $this->request, $param, '123');
-        $this->assertEquals('100-Continue', (string) $this->request->getHeader('Expect'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddsContentEncodingWhenSetOnBody()
     {
-        $visitor = new Visitor();
-        $param = $this->getNestedCommand('body')->getParam('foo')->setSentAs('Foo');
-        $body = EntityBody::factory('foo');
-        $body->compress();
-        $visitor->visit($this->command, $this->request, $param, $body);
-        $this->assertEquals('gzip', (string) $this->request->getHeader('Content-Encoding'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -69,5 +69,4 @@ class PHPUnit_Extensions_Selenium2TestCase_Window extends PHPUnit_Extensions_Sel
             'maximize' => 'PHPUnit_Extensions_Selenium2TestCase_ElementCommand_GenericPost',
         );
     }
-
 }

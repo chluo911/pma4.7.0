@@ -6,6 +6,7 @@
  * @package PhpMyAdmin
  */
 use PMA\libraries\Response;
+
 require_once 'libraries/common.inc.php';
 require_once 'libraries/error_report.lib.php';
 require_once 'libraries/user_preferences.lib.php';

@@ -51,94 +51,11 @@ class EpsRelationSchema extends ExportRelationSchema
      */
     public function __construct($db)
     {
-        parent::__construct($db, new Eps());
-
-        $this->setShowColor(isset($_REQUEST['eps_show_color']));
-        $this->setShowKeys(isset($_REQUEST['eps_show_keys']));
-        $this->setTableDimension(isset($_REQUEST['eps_show_table_dimension']));
-        $this->setAllTablesSameWidth(isset($_REQUEST['eps_all_tables_same_width']));
-        $this->setOrientation($_REQUEST['eps_orientation']);
-
-        $this->diagram->setTitle(
-            sprintf(
-                __('Schema of the %s database - Page %s'),
-                $this->db,
-                $this->pageNumber
-            )
-        );
-        $this->diagram->setAuthor('phpMyAdmin ' . PMA_VERSION);
-        $this->diagram->setDate(date("j F Y, g:i a"));
-        $this->diagram->setOrientation($this->orientation);
-        $this->diagram->setFont('Verdana', '10');
-
-        $alltables = $this->getTablesFromRequest();
-
-        foreach ($alltables as $table) {
-            if (! isset($this->_tables[$table])) {
-                $this->_tables[$table] = new TableStatsEps(
-                    $this->diagram, $this->db,
-                    $table, $this->diagram->getFont(),
-                    $this->diagram->getFontSize(), $this->pageNumber,
-                    $this->_tablewidth, $this->showKeys,
-                    $this->tableDimension, $this->offline
-                );
-            }
-
-            if ($this->sameWide) {
-                $this->_tables[$table]->width = $this->_tablewidth;
-            }
-        }
-
-        $seen_a_relation = false;
-        foreach ($alltables as $one_table) {
-            $exist_rel = PMA_getForeigners($this->db, $one_table, '', 'both');
-            if (!$exist_rel) {
-                continue;
-            }
-
-            $seen_a_relation = true;
-            foreach ($exist_rel as $master_field => $rel) {
-                /* put the foreign table on the schema only if selected
-                * by the user
-                * (do not use array_search() because we would have to
-                * to do a === false and this is not PHP3 compatible)
-                */
-                if ($master_field != 'foreign_keys_data') {
-                    if (in_array($rel['foreign_table'], $alltables)) {
-                        $this->_addRelation(
-                            $one_table, $this->diagram->getFont(), $this->diagram->getFontSize(),
-                            $master_field, $rel['foreign_table'],
-                            $rel['foreign_field'], $this->tableDimension
-                        );
-                    }
-                    continue;
-                }
-
-                foreach ($rel as $one_key) {
-                    if (!in_array($one_key['ref_table_name'], $alltables)) {
-                        continue;
-                    }
-
-                    foreach ($one_key['index_list']
-                        as $index => $one_field
-                    ) {
-                        $this->_addRelation(
-                            $one_table, $this->diagram->getFont(),
-                            $this->diagram->getFontSize(),
-                            $one_field, $one_key['ref_table_name'],
-                            $one_key['ref_index_list'][$index],
-                            $this->tableDimension
-                        );
-                    }
-                }
-            }
-        }
-        if ($seen_a_relation) {
-            $this->_drawRelations();
-        }
-
-        $this->_drawTables();
-        $this->diagram->endEpsDoc();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -148,7 +65,11 @@ class EpsRelationSchema extends ExportRelationSchema
      */
     public function showOutput()
     {
-        $this->diagram->showOutput($this->getFileName('.eps'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -168,28 +89,19 @@ class EpsRelationSchema extends ExportRelationSchema
      * PMA\libraries\plugins\schema\eps\RelationStatsEps::__construct()
      */
     private function _addRelation(
-        $masterTable, $font, $fontSize, $masterField,
-        $foreignTable, $foreignField, $tableDimension
+        $masterTable,
+        $font,
+        $fontSize,
+        $masterField,
+        $foreignTable,
+        $foreignField,
+        $tableDimension
     ) {
-        if (! isset($this->_tables[$masterTable])) {
-            $this->_tables[$masterTable] = new TableStatsEps(
-                $this->diagram, $this->db, $masterTable, $font, $fontSize,
-                $this->pageNumber, $this->_tablewidth, false, $tableDimension
-            );
-        }
-        if (! isset($this->_tables[$foreignTable])) {
-            $this->_tables[$foreignTable] = new TableStatsEps(
-                $this->diagram, $this->db, $foreignTable, $font, $fontSize,
-                $this->pageNumber, $this->_tablewidth, false, $tableDimension
-            );
-        }
-        $this->_relations[] = new RelationStatsEps(
-            $this->diagram,
-            $this->_tables[$masterTable],
-            $masterField,
-            $this->_tables[$foreignTable],
-            $foreignField
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -202,9 +114,11 @@ class EpsRelationSchema extends ExportRelationSchema
      */
     private function _drawRelations()
     {
-        foreach ($this->_relations as $relation) {
-            $relation->relationDraw();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -216,8 +130,10 @@ class EpsRelationSchema extends ExportRelationSchema
      */
     private function _drawTables()
     {
-        foreach ($this->_tables as $table) {
-            $table->tableDraw($this->showColor);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

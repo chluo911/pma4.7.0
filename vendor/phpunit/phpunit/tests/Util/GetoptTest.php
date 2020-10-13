@@ -14,49 +14,19 @@ class Util_GetoptTest extends PHPUnit_Framework_TestCase
 {
     public function testItIncludeTheLongOptionsAfterTheArgument()
     {
-        $args = array(
-            'command',
-            'myArgument',
-            '--colors',
-        );
-        $actual = PHPUnit_Util_Getopt::getopt($args, '', array('colors=='));
-
-        $expected = array(
-            array(
-                array(
-                    '--colors',
-                    null,
-                ),
-            ),
-            array(
-                'myArgument',
-            ),
-        );
-
-        $this->assertEquals($expected, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testItIncludeTheShortOptionsAfterTheArgument()
     {
-        $args = array(
-            'command',
-            'myArgument',
-            '-v',
-        );
-        $actual = PHPUnit_Util_Getopt::getopt($args, 'v');
-
-        $expected = array(
-            array(
-                array(
-                    'v',
-                    null,
-                ),
-            ),
-            array(
-                'myArgument',
-            ),
-        );
-
-        $this->assertEquals($expected, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -27,7 +27,11 @@ class AnyValuesToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        return 2;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -37,7 +41,11 @@ class AnyValuesToken implements TokenInterface
      */
     public function isLast()
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

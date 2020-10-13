@@ -33,14 +33,11 @@ class ConfigCache extends ResourceCheckerConfigCache
      */
     public function __construct($file, $debug)
     {
-        $this->debug = (bool) $debug;
-
-        $checkers = array();
-        if (true === $this->debug) {
-            $checkers = array(new SelfCheckingResourceChecker());
-        }
-
-        parent::__construct($file, $checkers);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -53,10 +50,10 @@ class ConfigCache extends ResourceCheckerConfigCache
      */
     public function isFresh()
     {
-        if (!$this->debug && is_file($this->getPath())) {
-            return true;
-        }
-
-        return parent::isFresh();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

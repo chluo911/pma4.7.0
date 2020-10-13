@@ -52,18 +52,20 @@ class EntityBody extends Stream implements EntityBodyInterface
 
     public function setRewindFunction($callable)
     {
-        if (!is_callable($callable)) {
-            throw new InvalidArgumentException('Must specify a callable');
-        }
-
-        $this->rewindFunction = $callable;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function rewind()
     {
-        return $this->rewindFunction ? call_user_func($this->rewindFunction, $this) : parent::rewind();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,32 +88,20 @@ class EntityBody extends Stream implements EntityBodyInterface
 
     public function compress($filter = 'zlib.deflate')
     {
-        $result = $this->handleCompression($filter);
-        $this->contentEncoding = $result ? $filter : false;
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function uncompress($filter = 'zlib.inflate')
     {
-        $offsetStart = 0;
-
-        // When inflating gzipped data, the first 10 bytes must be stripped
-        // if a gzip header is present
-        if ($filter == 'zlib.inflate') {
-            // @codeCoverageIgnoreStart
-            if (!$this->isReadable() || ($this->isConsumed() && !$this->isSeekable())) {
-                return false;
-            }
-            // @codeCoverageIgnoreEnd
-            if (stream_get_contents($this->stream, 3, 0) === "\x1f\x8b\x08") {
-                $offsetStart = 10;
-            }
-        }
-
-        $this->contentEncoding = false;
-
-        return $this->handleCompression($filter, $offsetStart);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getContentLength()
@@ -126,11 +116,11 @@ class EntityBody extends Stream implements EntityBodyInterface
 
     public function getContentMd5($rawOutput = false, $base64Encode = false)
     {
-        if ($hash = self::getHash($this, 'md5', $rawOutput)) {
-            return $hash && $base64Encode ? base64_encode($hash) : $hash;
-        } else {
-            return false;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -146,56 +136,37 @@ class EntityBody extends Stream implements EntityBodyInterface
      */
     public static function calculateMd5(EntityBodyInterface $body, $rawOutput = false, $base64Encode = false)
     {
-        Version::warn(__CLASS__ . ' is deprecated. Use getContentMd5()');
-        return $body->getContentMd5($rawOutput, $base64Encode);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setStreamFilterContentEncoding($streamFilterContentEncoding)
     {
-        $this->contentEncoding = $streamFilterContentEncoding;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getContentEncoding()
     {
-        return strtr($this->contentEncoding, array(
-            'zlib.deflate' => 'gzip',
-            'bzip2.compress' => 'compress'
-        )) ?: false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function handleCompression($filter, $offsetStart = 0)
     {
-        // @codeCoverageIgnoreStart
-        if (!$this->isReadable() || ($this->isConsumed() && !$this->isSeekable())) {
-            return false;
-        }
-        // @codeCoverageIgnoreEnd
-
-        $handle = fopen('php://temp', 'r+');
-        $filter = @stream_filter_append($handle, $filter, STREAM_FILTER_WRITE);
-        if (!$filter) {
-            return false;
-        }
-
-        // Seek to the offset start if possible
-        $this->seek($offsetStart);
-        while ($data = fread($this->stream, 8096)) {
-            fwrite($handle, $data);
-        }
-
-        fclose($this->stream);
-        $this->stream = $handle;
-        stream_filter_remove($filter);
-        $stat = fstat($this->stream);
-        $this->size = $stat['size'];
-        $this->rebuildCache();
-        $this->seek(0);
-
-        // Remove any existing rewind function as the underlying stream has been replaced
-        $this->rewindFunction = null;
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

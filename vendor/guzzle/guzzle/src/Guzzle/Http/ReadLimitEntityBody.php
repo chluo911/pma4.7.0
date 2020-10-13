@@ -22,8 +22,11 @@ class ReadLimitEntityBody extends AbstractEntityBodyDecorator
      */
     public function __construct(EntityBodyInterface $body, $limit, $offset = 0)
     {
-        parent::__construct($body);
-        $this->setLimit($limit)->setOffset($offset);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,10 +91,11 @@ class ReadLimitEntityBody extends AbstractEntityBodyDecorator
      */
     public function setOffset($offset)
     {
-        $this->body->seek($offset);
-        $this->offset = $offset;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,9 +107,11 @@ class ReadLimitEntityBody extends AbstractEntityBodyDecorator
      */
     public function setLimit($limit)
     {
-        $this->limit = $limit;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function read($length)

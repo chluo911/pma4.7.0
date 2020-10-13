@@ -53,27 +53,11 @@ class PHP_CodeSniffer_Reports_Csv implements PHP_CodeSniffer_Report
         $showSources=false,
         $width=80
     ) {
-        if ($report['errors'] === 0 && $report['warnings'] === 0) {
-            // Nothing to print.
-            return false;
-        }
-
-        foreach ($report['messages'] as $line => $lineErrors) {
-            foreach ($lineErrors as $column => $colErrors) {
-                foreach ($colErrors as $error) {
-                    $filename = str_replace('"', '\"', $report['filename']);
-                    $message  = str_replace('"', '\"', $error['message']);
-                    $type     = strtolower($error['type']);
-                    $source   = $error['source'];
-                    $severity = $error['severity'];
-                    $fixable  = (int) $error['fixable'];
-                    echo "\"$filename\",$line,$column,$type,\"$message\",$source,$severity,$fixable".PHP_EOL;
-                }
-            }
-        }
-
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generateFileReport()
 
 
@@ -102,10 +86,10 @@ class PHP_CodeSniffer_Reports_Csv implements PHP_CodeSniffer_Report
         $width=80,
         $toScreen=true
     ) {
-        echo 'File,Line,Column,Type,Message,Source,Severity,Fixable'.PHP_EOL;
-        echo $cachedData;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generate()
-
-
 }//end class

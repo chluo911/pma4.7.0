@@ -88,7 +88,11 @@ class Log implements \Countable, \IteratorAggregate
      */
     public function getRevisions()
     {
-        return $this->revisions;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -104,7 +108,11 @@ class Log implements \Countable, \IteratorAggregate
      */
     public function getOffset()
     {
-        return $this->offset;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -112,9 +120,11 @@ class Log implements \Countable, \IteratorAggregate
      */
     public function setOffset($offset)
     {
-        $this->offset = $offset;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -122,7 +132,11 @@ class Log implements \Countable, \IteratorAggregate
      */
     public function getLimit()
     {
-        return $this->limit;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -203,7 +217,11 @@ class Log implements \Countable, \IteratorAggregate
      */
     public function count()
     {
-        return $this->countCommits();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -211,7 +229,11 @@ class Log implements \Countable, \IteratorAggregate
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->getCommits());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -221,12 +243,10 @@ class Log implements \Countable, \IteratorAggregate
      */
     public function countCommits()
     {
-        if (count($this->revisions)) {
-            $output = $this->repository->run('rev-list', array_merge(array('--count'), $this->revisions->getAsTextArray(), array('--'), $this->paths));
-        } else {
-            $output = $this->repository->run('rev-list', array_merge(array('--count', '--all', '--'), $this->paths));
-        }
-
-        return (int) $output;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

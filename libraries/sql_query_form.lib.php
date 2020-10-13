@@ -42,7 +42,9 @@ require_once './libraries/file_listing.lib.php'; // used for file listing
  * @usedby  tbl_tracking.php
  */
 function PMA_getHtmlForSqlQueryForm(
-    $query = true, $display_tab = false, $delimiter = ';'
+    $query = true,
+    $display_tab = false,
+    $delimiter = ';'
 ) {
     $html = '';
     if (! $display_tab) {
@@ -96,7 +98,8 @@ function PMA_getHtmlForSqlQueryForm(
     // display querybox
     if ($display_tab === 'full' || $display_tab === 'sql') {
         $html .= PMA_getHtmlForSqlQueryFormInsert(
-            $query, $delimiter
+            $query,
+            $delimiter
         );
     }
 
@@ -148,7 +151,8 @@ function PMA_initQueryForm($query)
         $db     = $GLOBALS['db'];
         // if you want navigation:
         $tmp_db_link = '<a href="' . PMA\libraries\Util::getScriptNameForOption(
-            $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+            $GLOBALS['cfg']['DefaultTabDatabase'],
+            'database'
         )
             . URL::getCommon(array('db' => $db)) . '"';
         $tmp_db_link .= '>'
@@ -156,7 +160,8 @@ function PMA_initQueryForm($query)
         $legend = sprintf(__('Run SQL query/queries on database %s'), $tmp_db_link);
         if (empty($query)) {
             $query = PMA\libraries\Util::expandUserString(
-                $GLOBALS['cfg']['DefaultQueryDatabase'], 'backquote'
+                $GLOBALS['cfg']['DefaultQueryDatabase'],
+                'backquote'
             );
         }
     } else {
@@ -166,18 +171,23 @@ function PMA_initQueryForm($query)
         // we do a try_query here, because we could be in the query window,
         // trying to synchronize and the table has not yet been created
         $columns_list = $GLOBALS['dbi']->getColumns(
-            $db, $GLOBALS['table'], null, true
+            $db,
+            $GLOBALS['table'],
+            null,
+            true
         );
 
         $tmp_tbl_link = '<a href="' . PMA\libraries\Util::getScriptNameForOption(
-            $GLOBALS['cfg']['DefaultTabTable'], 'table'
+            $GLOBALS['cfg']['DefaultTabTable'],
+            'table'
         ) . URL::getCommon(array('db' => $db, 'table' => $table)) . '" >';
         $tmp_tbl_link .= htmlspecialchars($db)
             . '.' . htmlspecialchars($table) . '</a>';
         $legend = sprintf(__('Run SQL query/queries on table %s'), $tmp_tbl_link);
         if (empty($query)) {
             $query = PMA\libraries\Util::expandUserString(
-                $GLOBALS['cfg']['DefaultQueryTable'], 'backquote'
+                $GLOBALS['cfg']['DefaultQueryTable'],
+                'backquote'
             );
         }
     }
@@ -197,7 +207,8 @@ function PMA_initQueryForm($query)
  * @usedby  PMA_getHtmlForSqlQueryForm()
  */
 function PMA_getHtmlForSqlQueryFormInsert(
-    $query = '', $delimiter = ';'
+    $query = '',
+    $delimiter = ';'
 ) {
     // enable auto select text in textarea
     if ($GLOBALS['cfg']['TextareaAutoSelect']) {

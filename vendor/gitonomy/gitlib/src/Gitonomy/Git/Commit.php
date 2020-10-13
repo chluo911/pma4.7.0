@@ -85,7 +85,11 @@ class Commit extends Revision
      */
     public function getShortHash()
     {
-        return $this->getData('shortHash');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -93,7 +97,11 @@ class Commit extends Revision
      */
     public function getFixedShortHash($length = 6)
     {
-        return StringHelper::substr($this->revision, 0, $length);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -103,7 +111,11 @@ class Commit extends Revision
      */
     public function getParentHashes()
     {
-        return $this->getData('parentHashes');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -113,12 +125,11 @@ class Commit extends Revision
      */
     public function getParents()
     {
-        $result = array();
-        foreach ($this->getData('parentHashes') as $parentHash) {
-            $result[] = $this->repository->getCommit($parentHash);
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -128,12 +139,20 @@ class Commit extends Revision
      */
     public function getTreeHash()
     {
-        return $this->getData('treeHash');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getTree()
     {
-        return $this->getData('tree');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,17 +160,11 @@ class Commit extends Revision
      */
     public function getLastModification($path = null)
     {
-        if (0 === strpos($path, '/')) {
-            $path = StringHelper::substr($path, 1);
-        }
-
-        if ($getWorkingDir = $this->repository->getWorkingDir()) {
-            $path = $getWorkingDir.'/'.$path;
-        }
-
-        $result = $this->repository->run('log', array('--format=%H', '-n', 1, $this->revision, '--', $path));
-
-        return $this->repository->getCommit(trim($result));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -167,17 +180,11 @@ class Commit extends Revision
      */
     public function getShortMessage($length = 50, $preserve = false, $separator = '...')
     {
-        $message = $this->getData('subjectMessage');
-
-        if (StringHelper::strlen($message) > $length) {
-            if ($preserve && false !== ($breakpoint = StringHelper::strpos($message, ' ', $length))) {
-                $length = $breakpoint;
-            }
-
-            return rtrim(StringHelper::substr($message, 0, $length)).$separator;
-        }
-
-        return $message;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,7 +194,11 @@ class Commit extends Revision
      */
     public function resolveReferences()
     {
-        return $this->repository->getReferences()->resolve($this);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -200,44 +211,11 @@ class Commit extends Revision
      */
     public function getIncludingBranches($local = true, $remote = true)
     {
-        $arguments = array('--contains', $this->revision);
-
-        if ($local && $remote) {
-            $arguments[] = '-a';
-        } elseif (!$local && $remote) {
-            $arguments[] = '-r';
-        } elseif (!$local && !$remote) {
-            throw new InvalidArgumentException('You should a least set one argument to true');
-        }
-
-        try {
-            $result = $this->repository->run('branch', $arguments);
-        } catch (ProcessException $e) {
-            return array();
-        }
-
-        if (!$result) {
-            return array();
-        }
-
-        $branchesName = explode("\n", trim(str_replace('*', '', $result)));
-        $branchesName = array_filter($branchesName, function ($v) { return false === StringHelper::strpos($v, '->');});
-        $branchesName = array_map('trim', $branchesName);
-
-        $references = $this->repository->getReferences();
-
-        $branches = array();
-        foreach ($branchesName as $branchName) {
-            if (false === $local) {
-                $branches[] = $references->getRemoteBranch($branchName);
-            } elseif (0 === StringHelper::strrpos($branchName, 'remotes/')) {
-                $branches[] = $references->getRemoteBranch(str_replace('remotes/', '', $branchName));
-            } else {
-                $branches[] = $references->getBranch($branchName);
-            }
-        }
-
-        return $branches;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -247,7 +225,11 @@ class Commit extends Revision
      */
     public function getAuthorName()
     {
-        return $this->getData('authorName');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -257,7 +239,11 @@ class Commit extends Revision
      */
     public function getAuthorEmail()
     {
-        return $this->getData('authorEmail');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -267,7 +253,11 @@ class Commit extends Revision
      */
     public function getAuthorDate()
     {
-        return $this->getData('authorDate');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -277,7 +267,11 @@ class Commit extends Revision
      */
     public function getCommitterName()
     {
-        return $this->getData('committerName');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -287,7 +281,11 @@ class Commit extends Revision
      */
     public function getCommitterEmail()
     {
-        return $this->getData('committerEmail');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -297,7 +295,11 @@ class Commit extends Revision
      */
     public function getCommitterDate()
     {
-        return $this->getData('committerDate');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -317,7 +319,11 @@ class Commit extends Revision
      */
     public function getSubjectMessage()
     {
-        return $this->getData('subjectMessage');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -327,7 +333,11 @@ class Commit extends Revision
      */
     public function getBodyMessage()
     {
-        return $this->getData('bodyMessage');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

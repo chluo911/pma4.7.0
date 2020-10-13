@@ -27,54 +27,45 @@ class PHP_Token_NamespaceTest extends PHPUnit_Framework_TestCase
      */
     public function testGetName()
     {
-        $tokenStream = new PHP_Token_Stream(
-          TEST_FILES_PATH . 'classInNamespace.php'
-        );
-
-        foreach ($tokenStream as $token) {
-            if ($token instanceof PHP_Token_NAMESPACE) {
-                $this->assertSame('Foo\\Bar', $token->getName());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetStartLineWithUnscopedNamespace()
     {
-        $tokenStream = new PHP_Token_Stream(TEST_FILES_PATH . 'classInNamespace.php');
-        foreach($tokenStream as $token) {
-            if($token instanceOf PHP_Token_NAMESPACE) {
-                $this->assertSame(2, $token->getLine());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetEndLineWithUnscopedNamespace()
     {
-        $tokenStream = new PHP_Token_Stream(TEST_FILES_PATH . 'classInNamespace.php');
-        foreach($tokenStream as $token) {
-            if($token instanceOf PHP_Token_NAMESPACE) {
-                $this->assertSame(2, $token->getEndLine());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
     public function testGetStartLineWithScopedNamespace()
     {
-        $tokenStream = new PHP_Token_Stream(TEST_FILES_PATH . 'classInScopedNamespace.php');
-        foreach($tokenStream as $token) {
-            if($token instanceOf PHP_Token_NAMESPACE) {
-                $this->assertSame(2, $token->getLine());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetEndLineWithScopedNamespace()
     {
-        $tokenStream = new PHP_Token_Stream(TEST_FILES_PATH . 'classInScopedNamespace.php');
-        foreach($tokenStream as $token) {
-            if($token instanceOf PHP_Token_NAMESPACE) {
-                $this->assertSame(8, $token->getEndLine());
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
-
 }

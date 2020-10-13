@@ -30,8 +30,11 @@ if (!@function_exists('session_name')) {
 
 // session cookie settings
 session_set_cookie_params(
-    0, $GLOBALS['PMA_Config']->getRootPath(),
-    '', $GLOBALS['PMA_Config']->isHttps(), true
+    0,
+    $GLOBALS['PMA_Config']->getRootPath(),
+    '',
+    $GLOBALS['PMA_Config']->isHttps(),
+    true
 );
 
 // cookies are safer (use @ini_set() in case this function is disabled)
@@ -73,39 +76,11 @@ session_cache_limiter('private');
 
 function PMA_sessionFailed($errors)
 {
-    $messages = array();
-    foreach ($errors as $error) {
-        /*
-         * Remove path from open() in error message to avoid path disclossure
-         *
-         * This can happen with PHP 5 when nonexisting session ID is provided,
-         * since PHP 7, session existence is checked first.
-         *
-         * This error can also happen in case of session backed error (eg.
-         * read only filesystem) on any PHP version.
-         *
-         * The message string is currently hardcoded in PHP, so hopefully it
-         * will not change in future.
-         */
-        $messages[] = preg_replace(
-            '/open\(.*, O_RDWR\)/',
-            'open(SESSION_FILE, O_RDWR)',
-            htmlspecialchars($error->getMessage())
-        );
-    }
-
-    /*
-     * Session initialization is done before selecting language, so we
-     * can not use translations here.
-     */
-    PMA_fatalError(
-        'Error during session start; please check your PHP and/or '
-        . 'webserver log file and configure your PHP '
-        . 'installation properly. Also ensure that cookies are enabled '
-        . 'in your browser.'
-        . '<br /><br />'
-        . implode('<br /><br />', $messages)
-    );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 // See bug #1538132. This would block normal behavior on a cluster

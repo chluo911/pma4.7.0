@@ -15,7 +15,11 @@ class PHPUnit_Extensions_SeleniumCommon_ExitHandler
      */
     public static function init()
     {
-        register_shutdown_function( array( 'PHPUnit_Extensions_SeleniumCommon_ExitHandler', 'handle' ) );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -23,9 +27,10 @@ class PHPUnit_Extensions_SeleniumCommon_ExitHandler
      */
     public static function handle()
     {
-        $execFile = ini_get('auto_append_file');
-        if ($execFile!=='') {
-            include_once ($execFile);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

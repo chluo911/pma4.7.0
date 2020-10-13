@@ -51,10 +51,11 @@ abstract class OptionsPropertyGroup extends OptionsPropertyItem
      */
     public function removeProperty($property)
     {
-        $this->_properties = array_diff(
-            $this->getProperties(),
-            array($property)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 
@@ -67,7 +68,11 @@ abstract class OptionsPropertyGroup extends OptionsPropertyItem
      */
     public function getGroup()
     {
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,6 +92,10 @@ abstract class OptionsPropertyGroup extends OptionsPropertyItem
      */
     public function getNrOfProperties()
     {
-        return count($this->_properties);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

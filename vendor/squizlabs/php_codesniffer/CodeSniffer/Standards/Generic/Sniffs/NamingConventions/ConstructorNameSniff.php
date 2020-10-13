@@ -54,8 +54,11 @@ class Generic_Sniffs_NamingConventions_ConstructorNameSniff extends PHP_CodeSnif
      */
     public function __construct()
     {
-        parent::__construct(array(T_CLASS, T_ANON_CLASS, T_INTERFACE), array(T_FUNCTION), true);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end __construct()
 
 
@@ -74,49 +77,11 @@ class Generic_Sniffs_NamingConventions_ConstructorNameSniff extends PHP_CodeSnif
         $stackPtr,
         $currScope
     ) {
-        $className = $phpcsFile->getDeclarationName($currScope);
-        if ($className !== $this->_currentClass) {
-            $this->loadFunctionNamesInScope($phpcsFile, $currScope);
-            $this->_currentClass = $className;
-        }
-
-        $methodName = $phpcsFile->getDeclarationName($stackPtr);
-
-        if (strcasecmp($methodName, $className) === 0) {
-            if (in_array('__construct', $this->_functionList) === false) {
-                $error = 'PHP4 style constructors are not allowed; use "__construct()" instead';
-                $phpcsFile->addError($error, $stackPtr, 'OldStyle');
-            }
-        } else if (strcasecmp($methodName, '__construct') !== 0) {
-            // Not a constructor.
-            return;
-        }
-
-        $tokens = $phpcsFile->getTokens();
-
-        $parentClassName = $phpcsFile->findExtendedClassName($currScope);
-        if ($parentClassName === false) {
-            return;
-        }
-
-        // Stop if the constructor doesn't have a body, like when it is abstract.
-        if (isset($tokens[$stackPtr]['scope_closer']) === false) {
-            return;
-        }
-
-        $endFunctionIndex = $tokens[$stackPtr]['scope_closer'];
-        $startIndex       = $stackPtr;
-        while (($doubleColonIndex = $phpcsFile->findNext(T_DOUBLE_COLON, $startIndex, $endFunctionIndex)) !== false) {
-            if ($tokens[($doubleColonIndex + 1)]['code'] === T_STRING
-                && $tokens[($doubleColonIndex + 1)]['content'] === $parentClassName
-            ) {
-                $error = 'PHP4 style calls to parent constructors are not allowed; use "parent::__construct()" instead';
-                $phpcsFile->addError($error, ($doubleColonIndex + 1), 'OldStyleCall');
-            }
-
-            $startIndex = ($doubleColonIndex + 1);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end processTokenWithinScope()
 
 
@@ -130,19 +95,10 @@ class Generic_Sniffs_NamingConventions_ConstructorNameSniff extends PHP_CodeSnif
      */
     protected function loadFunctionNamesInScope(PHP_CodeSniffer_File $phpcsFile, $currScope)
     {
-        $this->_functionList = array();
-        $tokens = $phpcsFile->getTokens();
-
-        for ($i = ($tokens[$currScope]['scope_opener'] + 1); $i < $tokens[$currScope]['scope_closer']; $i++) {
-            if ($tokens[$i]['code'] !== T_FUNCTION) {
-                continue;
-            }
-
-            $next = $phpcsFile->findNext(T_STRING, $i);
-            $this->_functionList[] = trim($tokens[$next]['content']);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end loadFunctionNamesInScope()
-
-
 }//end class

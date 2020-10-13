@@ -47,4 +47,3 @@ class NodeEvent extends NodeDatabaseChild
         return 'event';
     }
 }
-

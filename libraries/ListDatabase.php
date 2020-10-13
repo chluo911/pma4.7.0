@@ -92,7 +92,8 @@ class ListDatabase extends ListAbstract
             } else {
                 foreach ($GLOBALS['dbs_to_test'] as $db) {
                     $database_list = array_merge(
-                        $database_list, $this->retrieve($db)
+                        $database_list,
+                        $this->retrieve($db)
                     );
                 }
             }
@@ -100,7 +101,10 @@ class ListDatabase extends ListAbstract
 
         if ($command) {
             $database_list = $GLOBALS['dbi']->fetchResult(
-                $command, null, null, $this->db_link
+                $command,
+                null,
+                null,
+                $this->db_link
             );
         }
 

@@ -100,6 +100,10 @@ class PHP_CodeCoverage_Report_Node_Iterator implements RecursiveIterator
      */
     public function hasChildren()
     {
-        return $this->nodes[$this->position] instanceof PHP_CodeCoverage_Report_Node_Directory;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

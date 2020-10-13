@@ -28,27 +28,20 @@ class LintCommandTest extends TestCase
 
     public function testLintCorrectFile()
     {
-        $tester = $this->createCommandTester();
-        $filename = $this->createFile('foo: bar');
-
-        $ret = $tester->execute(array('filename' => $filename), array('verbosity' => OutputInterface::VERBOSITY_VERBOSE, 'decorated' => false));
-
-        $this->assertEquals(0, $ret, 'Returns 0 in case of success');
-        $this->assertRegExp('/^\/\/ OK in /', trim($tester->getDisplay()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testLintIncorrectFile()
     {
-        $incorrectContent = '
-foo:
-bar';
-        $tester = $this->createCommandTester();
-        $filename = $this->createFile($incorrectContent);
-
-        $ret = $tester->execute(array('filename' => $filename), array('decorated' => false));
-
-        $this->assertEquals(1, $ret, 'Returns 1 in case of error');
-        $this->assertContains('Unable to parse at line 3 (near "bar").', trim($tester->getDisplay()));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,11 +49,11 @@ bar';
      */
     public function testLintFileNotReadable()
     {
-        $tester = $this->createCommandTester();
-        $filename = $this->createFile('');
-        unlink($filename);
-
-        $ret = $tester->execute(array('filename' => $filename), array('decorated' => false));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -68,12 +61,11 @@ bar';
      */
     private function createFile($content)
     {
-        $filename = tempnam(sys_get_temp_dir().'/framework-yml-lint-test', 'sf-');
-        file_put_contents($filename, $content);
-
-        $this->files[] = $filename;
-
-        return $filename;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,27 +73,28 @@ bar';
      */
     protected function createCommandTester()
     {
-        $application = new Application();
-        $application->add(new LintCommand());
-        $command = $application->find('lint:yaml');
-
-        return new CommandTester($command);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function setUp()
     {
-        $this->files = array();
-        @mkdir(sys_get_temp_dir().'/framework-yml-lint-test');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        foreach ($this->files as $file) {
-            if (file_exists($file)) {
-                unlink($file);
-            }
-        }
-
-        rmdir(sys_get_temp_dir().'/framework-yml-lint-test');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

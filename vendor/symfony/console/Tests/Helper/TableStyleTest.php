@@ -22,7 +22,10 @@ class TableStyleTest extends TestCase
      */
     public function testSetPadTypeWithInvalidType()
     {
-        $style = new TableStyle();
-        $style->setPadType('TEST');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

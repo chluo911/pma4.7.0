@@ -40,15 +40,15 @@ class Pdf extends PDF_lib
     /**
      * Defines properties
      */
-    var $_xMin;
-    var $_yMin;
-    var $leftMargin = 10;
-    var $topMargin = 10;
-    var $scale;
-    var $PMA_links;
-    var $Outlines = array();
-    var $def_outlines;
-    var $widths;
+    public $_xMin;
+    public $_yMin;
+    public $leftMargin = 10;
+    public $topMargin = 10;
+    public $scale;
+    public $PMA_links;
+    public $Outlines = array();
+    public $def_outlines;
+    public $widths;
     private $_ff = PDF_lib::PMA_PDF_FONT;
     private $_offline;
     private $_pageNumber;
@@ -68,7 +68,12 @@ class Pdf extends PDF_lib
      * @access public
      */
     public function __construct(
-        $orientation, $unit, $paper, $pageNumber, $withDoc, $db
+        $orientation,
+        $unit,
+        $paper,
+        $pageNumber,
+        $withDoc,
+        $db
     ) {
         parent::__construct($orientation, $unit, $paper);
         $this->_pageNumber = $pageNumber;
@@ -85,7 +90,11 @@ class Pdf extends PDF_lib
      */
     public function setCMargin($c_margin)
     {
-        $this->cMargin = $c_margin;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,18 +108,18 @@ class Pdf extends PDF_lib
      *
      * @return void
      */
-    public function setScale($scale = 1, $xMin = 0, $yMin = 0,
-        $leftMargin = -1, $topMargin = -1
+    public function setScale(
+        $scale = 1,
+        $xMin = 0,
+        $yMin = 0,
+        $leftMargin = -1,
+        $topMargin = -1
     ) {
-        $this->scale = $scale;
-        $this->_xMin = $xMin;
-        $this->_yMin = $yMin;
-        if ($this->leftMargin != -1) {
-            $this->leftMargin = $leftMargin;
-        }
-        if ($this->topMargin != -1) {
-            $this->topMargin = $topMargin;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -129,12 +138,21 @@ class Pdf extends PDF_lib
      *
      * @see TCPDF::Cell()
      */
-    public function cellScale($w, $h = 0, $txt = '', $border = 0, $ln = 0,
-        $align = '', $fill = 0, $link = ''
+    public function cellScale(
+        $w,
+        $h = 0,
+        $txt = '',
+        $border = 0,
+        $ln = 0,
+        $align = '',
+        $fill = 0,
+        $link = ''
     ) {
-        $h = $h / $this->scale;
-        $w = $w / $this->scale;
-        $this->Cell($w, $h, $txt, $border, $ln, $align, $fill, $link);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -151,11 +169,11 @@ class Pdf extends PDF_lib
      */
     public function lineScale($x1, $y1, $x2, $y2)
     {
-        $x1 = ($x1 - $this->_xMin) / $this->scale + $this->leftMargin;
-        $y1 = ($y1 - $this->_yMin) / $this->scale + $this->topMargin;
-        $x2 = ($x2 - $this->_xMin) / $this->scale + $this->leftMargin;
-        $y2 = ($y2 - $this->_yMin) / $this->scale + $this->topMargin;
-        $this->Line($x1, $y1, $x2, $y2);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -170,9 +188,11 @@ class Pdf extends PDF_lib
      */
     public function setXyScale($x, $y)
     {
-        $x = ($x - $this->_xMin) / $this->scale + $this->leftMargin;
-        $y = ($y - $this->_yMin) / $this->scale + $this->topMargin;
-        $this->SetXY($x, $y);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -186,8 +206,11 @@ class Pdf extends PDF_lib
      */
     public function setXScale($x)
     {
-        $x = ($x - $this->_xMin) / $this->scale + $this->leftMargin;
-        $this->SetX($x);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -201,9 +224,11 @@ class Pdf extends PDF_lib
      */
     public function setFontSizeScale($size)
     {
-        // Set font size in points
-        $size = $size / $this->scale;
-        $this->SetFontSize($size);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -217,8 +242,11 @@ class Pdf extends PDF_lib
      */
     public function setLineWidthScale($width)
     {
-        $width = $width / $this->scale;
-        $this->SetLineWidth($width);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -230,28 +258,11 @@ class Pdf extends PDF_lib
      */
     public function Header()
     {
-        // We only show this if we find something in the new pdf_pages table
-
-        // This function must be named "Header" to work with the TCPDF library
-        if ($this->_withDoc) {
-            if ($this->_offline || $this->_pageNumber == -1) {
-                $pg_name = __("PDF export page");
-            } else {
-                $test_query = 'SELECT * FROM '
-                    . Util::backquote($GLOBALS['cfgRelation']['db']) . '.'
-                    . Util::backquote($GLOBALS['cfgRelation']['pdf_pages'])
-                    . ' WHERE db_name = \'' . $GLOBALS['dbi']->escapeString($this->_db)
-                    . '\' AND page_nr = \'' . $this->_pageNumber . '\'';
-                $test_rs = PMA_queryAsControlUser($test_query);
-                $pages = @$GLOBALS['dbi']->fetchAssoc($test_rs);
-                $pg_name = ucfirst($pages['page_descr']);
-            }
-
-            $this->SetFont($this->_ff, 'B', 14);
-            $this->Cell(0, 6, $pg_name, 'B', 1, 'C');
-            $this->SetFont($this->_ff, '');
-            $this->Ln();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -263,9 +274,11 @@ class Pdf extends PDF_lib
      */
     public function Footer()
     {
-        if ($this->_withDoc) {
-            parent::Footer();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -277,8 +290,11 @@ class Pdf extends PDF_lib
      */
     public function SetWidths($w)
     {
-        // column widths
-        $this->widths = $w;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -291,35 +307,11 @@ class Pdf extends PDF_lib
      */
     public function Row($data, $links)
     {
-        // line height
-        $nb = 0;
-        $data_cnt = count($data);
-        for ($i = 0;$i < $data_cnt;$i++) {
-            $nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
-        }
-        $il = $this->FontSize;
-        $h = ($il + 1) * $nb;
-        // page break if necessary
-        $this->CheckPageBreak($h);
-        // draw the cells
-        $data_cnt = count($data);
-        for ($i = 0;$i < $data_cnt;$i++) {
-            $w = $this->widths[$i];
-            // save current position
-            $x = $this->GetX();
-            $y = $this->GetY();
-            // draw the border
-            $this->Rect($x, $y, $w, $h);
-            if (isset($links[$i])) {
-                $this->Link($x, $y, $w, $h, $links[$i]);
-            }
-            // print text
-            $this->MultiCell($w, $il + 1, $data[$i], 0, 'L');
-            // go to right side
-            $this->SetXY($x + $w, $y);
-        }
-        // go to line
-        $this->Ln($h);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -332,52 +324,11 @@ class Pdf extends PDF_lib
      */
     public function NbLines($w, $txt)
     {
-        $cw = &$this->CurrentFont['cw'];
-        if ($w == 0) {
-            $w = $this->w - $this->rMargin - $this->x;
-        }
-        $wmax = ($w-2 * $this->cMargin) * 1000 / $this->FontSize;
-        $s = str_replace("\r", '', $txt);
-        $nb = strlen($s);
-        if ($nb > 0 && $s[$nb-1] == "\n") {
-            $nb--;
-        }
-        $sep = -1;
-        $i = 0;
-        $j = 0;
-        $l = 0;
-        $nl = 1;
-        while ($i < $nb) {
-            $c = $s[$i];
-            if ($c == "\n") {
-                $i++;
-                $sep = -1;
-                $j = $i;
-                $l = 0;
-                $nl++;
-                continue;
-            }
-            if ($c == ' ') {
-                $sep = $i;
-            }
-            $l += isset($cw[mb_ord($c)])?$cw[mb_ord($c)]:0 ;
-            if ($l > $wmax) {
-                if ($sep == -1) {
-                    if ($i == $j) {
-                        $i++;
-                    }
-                } else {
-                    $i = $sep + 1;
-                }
-                $sep = -1;
-                $j = $i;
-                $l = 0;
-                $nl++;
-            } else {
-                $i++;
-            }
-        }
-        return $nl;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -391,6 +342,10 @@ class Pdf extends PDF_lib
      */
     public function setOffline($value)
     {
-        $this->_offline = $value;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

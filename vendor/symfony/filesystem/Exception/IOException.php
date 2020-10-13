@@ -34,6 +34,10 @@ class IOException extends \RuntimeException implements IOExceptionInterface
      */
     public function getPath()
     {
-        return $this->path;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

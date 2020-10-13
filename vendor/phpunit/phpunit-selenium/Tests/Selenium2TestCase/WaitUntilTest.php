@@ -54,15 +54,11 @@ class Tests_Selenium2TestCase_WaitUntilTest extends Tests_Selenium2TestCase_Base
 {
     public function testWaitSuccessfully()
     {
-        $this->url('html/test_wait.html');
-
-        $this->waitUntil(function($testCase) {
-            try {
-                $testCase->byXPath('//div[@id="parent"][contains(text(), "default text")]');
-            } catch (PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {
-                return TRUE;
-            }
-        }, 8000);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,15 +66,11 @@ class Tests_Selenium2TestCase_WaitUntilTest extends Tests_Selenium2TestCase_Base
      */
     public function testWaitUnsuccessfully()
     {
-        $this->url('html/test_wait.html');
-
-        $this->waitUntil(function($testCase) {
-            try {
-                $testCase->byXPath('//div[@id="parent"][contains(text(), "default text")]');
-            } catch (PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {
-                return TRUE;
-            }
-        }, 42);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,48 +79,37 @@ class Tests_Selenium2TestCase_WaitUntilTest extends Tests_Selenium2TestCase_Base
      */
     public function testInvalidCallback()
     {
-        $this->waitUntil('not a callback');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testImplicitWaitIsRestoredAfterFailure()
     {
-        $this->url('html/test_wait.html');
-        $this->timeouts()->implicitWait(7000);
-
-        try {
-            $this->waitUntil(function($testCase) {
-                $testCase->byId('testBox');
-                return TRUE;
-            });
-            $this->fail('Should fail because of the element not exists there yet');
-        } catch (PHPUnit_Extensions_Selenium2TestCase_WebDriverException $e) {}
-
-        // in this case - element should be found, because of the implicitWait
-        $element = $this->byId('testBox');
-        $this->assertEquals('testBox', $element->attribute('id'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testImplicitWaitIsRestoredAfterSuccess()
     {
-        $this->url('html/test_wait.html');
-        $this->timeouts()->implicitWait(8000);
-
-        $this->waitUntil(function($testCase) {
-            $testCase->byId('parent');
-            return TRUE;
-        });
-
-        // in this case - element should be found, because we set a 8000ms implicitWait before the waitUntil.
-        $element = $this->byId('testBox');
-        $this->assertEquals('testBox', $element->attribute('id'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testReturnValue()
     {
-        $result = $this->waitUntil(function() {
-            return 'return value';
-        });
-
-        $this->assertEquals('return value', $result);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -59,7 +59,11 @@ class StopwatchEvent
      */
     public function getCategory()
     {
-        return $this->category;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -69,7 +73,11 @@ class StopwatchEvent
      */
     public function getOrigin()
     {
-        return $this->origin;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,7 +127,11 @@ class StopwatchEvent
      */
     public function lap()
     {
-        return $this->stop()->start();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -127,9 +139,11 @@ class StopwatchEvent
      */
     public function ensureStopped()
     {
-        while (count($this->started)) {
-            $this->stop();
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -139,7 +153,11 @@ class StopwatchEvent
      */
     public function getPeriods()
     {
-        return $this->periods;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -149,7 +167,11 @@ class StopwatchEvent
      */
     public function getStartTime()
     {
-        return isset($this->periods[0]) ? $this->periods[0]->getStartTime() : 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -159,9 +181,11 @@ class StopwatchEvent
      */
     public function getEndTime()
     {
-        $count = count($this->periods);
-
-        return $count ? $this->periods[$count - 1]->getEndTime() : 0;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

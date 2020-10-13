@@ -43,7 +43,9 @@ $foreign_limit = PMA_getForeignLimit(
 );
 
 $foreignData = PMA_getForeignData(
-    $foreigners, $_REQUEST['field'], true,
+    $foreigners,
+    $_REQUEST['field'],
+    true,
     isset($_REQUEST['foreign_filter'])
     ? $_REQUEST['foreign_filter']
     : '',
@@ -53,7 +55,10 @@ $foreignData = PMA_getForeignData(
 
 // HTML output
 $html = PMA_getHtmlForRelationalFieldSelection(
-    $db, $table, $_REQUEST['field'], $foreignData,
+    $db,
+    $table,
+    $_REQUEST['field'],
+    $foreignData,
     isset($fieldkey) ? $fieldkey : null,
     isset($data) ? $data : null
 );

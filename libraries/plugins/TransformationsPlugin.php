@@ -24,7 +24,11 @@ abstract class TransformationsPlugin implements TransformationsInterface
      */
     public function applyTransformationNoWrap($options = array())
     {
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,15 +56,10 @@ abstract class TransformationsPlugin implements TransformationsInterface
      */
     public function getOptions($options, $defaults)
     {
-        $result = array();
-        foreach ($defaults as $key => $value) {
-            if (isset($options[$key]) && $options[$key] !== '') {
-                $result[$key] = $options[$key];
-            } else {
-                $result[$key] = $value;
-            }
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

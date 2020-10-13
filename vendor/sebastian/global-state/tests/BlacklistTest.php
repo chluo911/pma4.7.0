@@ -23,91 +23,82 @@ class BlacklistTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->blacklist = new Blacklist;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalVariableThatIsNotBlacklistedIsNotTreatedAsBlacklisted()
     {
-        $this->assertFalse($this->blacklist->isGlobalVariableBlacklisted('variable'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGlobalVariableCanBeBlacklisted()
     {
-        $this->blacklist->addGlobalVariable('variable');
-
-        $this->assertTrue($this->blacklist->isGlobalVariableBlacklisted('variable'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStaticAttributeThatIsNotBlacklistedIsNotTreatedAsBlacklisted()
     {
-        $this->assertFalse(
-            $this->blacklist->isStaticAttributeBlacklisted(
-                'SebastianBergmann\GlobalState\TestFixture\BlacklistedClass',
-                'attribute'
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testClassCanBeBlacklisted()
     {
-        $this->blacklist->addClass('SebastianBergmann\GlobalState\TestFixture\BlacklistedClass');
-
-        $this->assertTrue(
-            $this->blacklist->isStaticAttributeBlacklisted(
-                'SebastianBergmann\GlobalState\TestFixture\BlacklistedClass',
-                'attribute'
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSubclassesCanBeBlacklisted()
     {
-        $this->blacklist->addSubclassesOf('SebastianBergmann\GlobalState\TestFixture\BlacklistedClass');
-
-        $this->assertTrue(
-            $this->blacklist->isStaticAttributeBlacklisted(
-                'SebastianBergmann\GlobalState\TestFixture\BlacklistedChildClass',
-                'attribute'
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testImplementorsCanBeBlacklisted()
     {
-        $this->blacklist->addImplementorsOf('SebastianBergmann\GlobalState\TestFixture\BlacklistedInterface');
-
-        $this->assertTrue(
-            $this->blacklist->isStaticAttributeBlacklisted(
-                'SebastianBergmann\GlobalState\TestFixture\BlacklistedImplementor',
-                'attribute'
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testClassNamePrefixesCanBeBlacklisted()
     {
-        $this->blacklist->addClassNamePrefix('SebastianBergmann\GlobalState');
-
-        $this->assertTrue(
-            $this->blacklist->isStaticAttributeBlacklisted(
-                'SebastianBergmann\GlobalState\TestFixture\BlacklistedClass',
-                'attribute'
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStaticAttributeCanBeBlacklisted()
     {
-        $this->blacklist->addStaticAttribute(
-            'SebastianBergmann\GlobalState\TestFixture\BlacklistedClass',
-            'attribute'
-        );
-
-        $this->assertTrue(
-            $this->blacklist->isStaticAttributeBlacklisted(
-                'SebastianBergmann\GlobalState\TestFixture\BlacklistedClass',
-                'attribute'
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -43,8 +43,11 @@ class Squiz_Sniffs_CSS_DisallowMultipleStyleDefinitionsSniff implements PHP_Code
      */
     public function register()
     {
-        return array(T_STYLE);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -59,26 +62,10 @@ class Squiz_Sniffs_CSS_DisallowMultipleStyleDefinitionsSniff implements PHP_Code
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $next   = $phpcsFile->findNext(T_STYLE, ($stackPtr + 1));
-        if ($next === false) {
-            return;
-        }
-
-        if ($tokens[$next]['content'] === 'progid') {
-            // Special case for IE filters.
-            return;
-        }
-
-        if ($tokens[$next]['line'] === $tokens[$stackPtr]['line']) {
-            $error = 'Each style definition must be on a line by itself';
-            $fix   = $phpcsFile->addFixableError($error, $next, 'Found');
-            if ($fix === true) {
-                $phpcsFile->fixer->addNewlineBefore($next);
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

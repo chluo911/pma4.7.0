@@ -19,7 +19,8 @@ require_once 'libraries/tbl_info.inc.php';
 $container = \PMA\libraries\di\Container::getDefaultContainer();
 $container->factory('PMA\libraries\controllers\table\TableSearchController');
 $container->alias(
-    'TableSearchController', 'PMA\libraries\controllers\table\TableSearchController'
+    'TableSearchController',
+    'PMA\libraries\controllers\table\TableSearchController'
 );
 $container->set('PMA\libraries\Response', Response::getInstance());
 $container->alias('response', 'PMA\libraries\Response');

@@ -6,9 +6,12 @@ use PhpSpec\ObjectBehavior;
 
 class DoubleExceptionSpec extends ObjectBehavior
 {
-    function it_is_a_double_exception()
+    public function it_is_a_double_exception()
     {
-        $this->shouldBeAnInstanceOf('RuntimeException');
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Doubler\DoublerException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

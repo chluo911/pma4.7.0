@@ -176,44 +176,11 @@ class LoadStatement extends Statement
      */
     public function build()
     {
-        $ret = 'LOAD DATA ' . $this->options
-            . ' INFILE ' . $this->file_name;
-
-        if ($this->replace_ignore !== null) {
-            $ret .= ' ' . trim($this->replace_ignore);
-        }
-
-        $ret .= ' INTO TABLE ' . $this->table;
-
-        if ($this->partition !== null && strlen($this->partition) > 0) {
-            $ret .= ' PARTITION ' . ArrayObj::build($this->partition);
-        }
-
-        if ($this->charset_name !== null) {
-            $ret .= ' CHARACTER SET ' . $this->charset_name;
-        }
-
-        if ($this->fields_keyword !== null) {
-            $ret .= ' ' . $this->fields_keyword . ' ' . $this->fields_options;
-        }
-
-        if ($this->lines_options !== null && strlen($this->lines_options) > 0) {
-            $ret .= ' LINES ' . $this->lines_options;
-        }
-
-        if ($this->ignore_number !== null) {
-            $ret .= ' IGNORE ' . $this->ignore_number . ' ' . $this->lines_rows;
-        }
-
-        if ($this->col_name_or_user_var !== null && count($this->col_name_or_user_var) > 0) {
-            $ret .= ' ' . ExpressionArray::build($this->col_name_or_user_var);
-        }
-
-        if ($this->set !== null && count($this->set) > 0) {
-            $ret .= ' SET ' . SetOperation::build($this->set);
-        }
-
-        return $ret;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -232,7 +199,7 @@ class LoadStatement extends Statement
         );
         ++$list->idx;
 
-                /**
+        /**
          * The state of the parser.
          *
          * @var int
@@ -300,7 +267,9 @@ class LoadStatement extends Statement
             } elseif ($state >= 3 && $state <= 7) {
                 if ($token->type === Token::TYPE_KEYWORD) {
                     $newState = $this->parseKeywordsAccordingToState(
-                        $parser, $list, $state
+                        $parser,
+                        $list,
+                        $state
                     );
                     if ($newState === $state) {
                         // Avoid infinite loop
@@ -346,7 +315,8 @@ class LoadStatement extends Statement
     }
 
 
-    public function parseKeywordsAccordingToState($parser, $list, $state) {
+    public function parseKeywordsAccordingToState($parser, $list, $state)
+    {
         $token = $list->tokens[$list->idx];
 
         switch ($state) {
@@ -357,6 +327,7 @@ class LoadStatement extends Statement
                     $state = 4;
                     return $state;
                 }
+                // no break
             case 4:
                 if ($token->keyword === 'CHARACTER SET') {
                     $list->idx++;
@@ -364,6 +335,7 @@ class LoadStatement extends Statement
                     $state = 5;
                     return $state;
                 }
+                // no break
             case 5:
                 if ($token->keyword === 'FIELDS'
                     || $token->keyword === 'COLUMNS'
@@ -373,6 +345,7 @@ class LoadStatement extends Statement
                     $state = 6;
                     return $state;
                 }
+                // no break
             case 6:
                 if ($token->keyword === 'IGNORE') {
                     $list->idx++;
@@ -389,6 +362,7 @@ class LoadStatement extends Statement
                     $state = 7;
                     return $state;
                 }
+                // no break
             case 7:
                 if ($token->keyword === 'SET') {
                     $list->idx++;
@@ -396,9 +370,9 @@ class LoadStatement extends Statement
                     $state = 8;
                     return $state;
                 }
+                // no break
             default:
         }
         return $state;
     }
-
 }

@@ -36,9 +36,11 @@ class Diff
      */
     public function __construct($from, $to, array $chunks = array())
     {
-        $this->from   = $from;
-        $this->to     = $to;
-        $this->chunks = $chunks;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,7 +48,11 @@ class Diff
      */
     public function getFrom()
     {
-        return $this->from;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,7 +60,11 @@ class Diff
      */
     public function getTo()
     {
-        return $this->to;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -62,7 +72,11 @@ class Diff
      */
     public function getChunks()
     {
-        return $this->chunks;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,6 +84,10 @@ class Diff
      */
     public function setChunks(array $chunks)
     {
-        $this->chunks = $chunks;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

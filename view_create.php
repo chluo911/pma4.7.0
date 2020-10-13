@@ -74,7 +74,7 @@ if (isset($_REQUEST['createview']) || isset($_REQUEST['alterview'])) {
     }
 
     if (! empty($_REQUEST['view']['definer'])) {
-        if (strpos($_REQUEST['view']['definer'], '@') === FALSE) {
+        if (strpos($_REQUEST['view']['definer'], '@') === false) {
             $sql_query .= $sep . 'DEFINER='
                 . PMA\libraries\Util::backquote($_REQUEST['view']['definer']);
         } else {
@@ -131,7 +131,8 @@ if (isset($_REQUEST['createview']) || isset($_REQUEST['alterview'])) {
     }
 
     $column_map = $GLOBALS['dbi']->getColumnMapFromSql(
-        $_REQUEST['view']['as'], $view_columns
+        $_REQUEST['view']['as'],
+        $view_columns
     );
 
     $systemDb = $GLOBALS['dbi']->getSystemDatabase();
@@ -143,15 +144,16 @@ if (isset($_REQUEST['createview']) || isset($_REQUEST['alterview'])) {
 
         // SQL for store new transformation details of VIEW
         $new_transformations_sql = $systemDb->getNewTransformationDataSql(
-            $pma_transformation_data, $column_map,
-            $_REQUEST['view']['name'], $GLOBALS['db']
+            $pma_transformation_data,
+            $column_map,
+            $_REQUEST['view']['name'],
+            $GLOBALS['db']
         );
 
         // Store new transformations
         if ($new_transformations_sql != '') {
             $GLOBALS['dbi']->tryQuery($new_transformations_sql);
         }
-
     }
     unset($pma_transformation_data);
 
@@ -201,7 +203,8 @@ $htmlString = '<!-- CREATE VIEW options -->'
     . URL::getHiddenInputs($url_params)
     . '<fieldset>'
     . '<legend>'
-    . (isset($_REQUEST['ajax_dialog']) ?
+    . (
+        isset($_REQUEST['ajax_dialog']) ?
         __('Details') :
         ($view['operation'] == 'create' ? __('Create view') : __('Edit view'))
     )
@@ -295,13 +298,13 @@ $htmlString .= '</table>'
 if (! isset($_REQUEST['ajax_dialog'])) {
     $htmlString .= '<fieldset class="tblFooters">'
         . '<input type="hidden" name="'
-        . ($view['operation'] == 'create' ? 'createview' : 'alterview' )
+        . ($view['operation'] == 'create' ? 'createview' : 'alterview')
         . '" value="1" />'
         . '<input type="submit" name="" value="' . __('Go') . '" />'
         . '</fieldset>';
 } else {
     $htmlString .= '<input type="hidden" name="'
-        . ($view['operation'] == 'create' ? 'createview' : 'alterview' )
+        . ($view['operation'] == 'create' ? 'createview' : 'alterview')
         . '" value="1" />'
         . '<input type="hidden" name="ajax_dialog" value="1" />'
         . '<input type="hidden" name="ajax_request" value="1" />';

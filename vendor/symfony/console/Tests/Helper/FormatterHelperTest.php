@@ -18,112 +18,82 @@ class FormatterHelperTest extends TestCase
 {
     public function testFormatSection()
     {
-        $formatter = new FormatterHelper();
-
-        $this->assertEquals(
-            '<info>[cli]</info> Some text to display',
-            $formatter->formatSection('cli', 'Some text to display'),
-            '::formatSection() formats a message in a section'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFormatBlock()
     {
-        $formatter = new FormatterHelper();
-
-        $this->assertEquals(
-            '<error> Some text to display </error>',
-            $formatter->formatBlock('Some text to display', 'error'),
-            '::formatBlock() formats a message in a block'
-        );
-
-        $this->assertEquals(
-            '<error> Some text to display </error>'."\n".
-            '<error> foo bar              </error>',
-            $formatter->formatBlock(array('Some text to display', 'foo bar'), 'error'),
-            '::formatBlock() formats a message in a block'
-        );
-
-        $this->assertEquals(
-            '<error>                        </error>'."\n".
-            '<error>  Some text to display  </error>'."\n".
-            '<error>                        </error>',
-            $formatter->formatBlock('Some text to display', 'error', true),
-            '::formatBlock() formats a message in a block'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFormatBlockWithDiacriticLetters()
     {
-        $formatter = new FormatterHelper();
-
-        $this->assertEquals(
-            '<error>                       </error>'."\n".
-            '<error>  Du texte à afficher  </error>'."\n".
-            '<error>                       </error>',
-            $formatter->formatBlock('Du texte à afficher', 'error', true),
-            '::formatBlock() formats a message in a block'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFormatBlockWithDoubleWidthDiacriticLetters()
     {
-        $formatter = new FormatterHelper();
-        $this->assertEquals(
-            '<error>                    </error>'."\n".
-            '<error>  表示するテキスト  </error>'."\n".
-            '<error>                    </error>',
-            $formatter->formatBlock('表示するテキスト', 'error', true),
-            '::formatBlock() formats a message in a block'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFormatBlockLGEscaping()
     {
-        $formatter = new FormatterHelper();
-
-        $this->assertEquals(
-            '<error>                            </error>'."\n".
-            '<error>  \<info>some info\</info>  </error>'."\n".
-            '<error>                            </error>',
-            $formatter->formatBlock('<info>some info</info>', 'error', true),
-            '::formatBlock() escapes \'<\' chars'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTruncatingWithShorterLengthThanMessageWithSuffix()
     {
-        $formatter = new FormatterHelper();
-        $message = 'testing truncate';
-
-        $this->assertSame('test...', $formatter->truncate($message, 4));
-        $this->assertSame('testing truncat...', $formatter->truncate($message, 15));
-        $this->assertSame('testing truncate...', $formatter->truncate($message, 16));
-        $this->assertSame('zażółć gęślą...', $formatter->truncate('zażółć gęślą jaźń', 12));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTruncatingMessageWithCustomSuffix()
     {
-        $formatter = new FormatterHelper();
-        $message = 'testing truncate';
-
-        $this->assertSame('test!', $formatter->truncate($message, 4, '!'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTruncatingWithLongerLengthThanMessageWithSuffix()
     {
-        $formatter = new FormatterHelper();
-        $message = 'test';
-
-        $this->assertSame($message, $formatter->truncate($message, 10));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTruncatingWithNegativeLength()
     {
-        $formatter = new FormatterHelper();
-        $message = 'testing truncate';
-
-        $this->assertSame('testing tru...', $formatter->truncate($message, -5));
-        $this->assertSame('...', $formatter->truncate($message, -100));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

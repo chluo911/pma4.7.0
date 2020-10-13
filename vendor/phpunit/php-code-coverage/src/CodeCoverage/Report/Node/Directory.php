@@ -112,15 +112,11 @@ class PHP_CodeCoverage_Report_Node_Directory extends PHP_CodeCoverage_Report_Nod
      */
     public function count()
     {
-        if ($this->numFiles == -1) {
-            $this->numFiles = 0;
-
-            foreach ($this->children as $child) {
-                $this->numFiles += count($child);
-            }
-        }
-
-        return $this->numFiles;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -130,10 +126,11 @@ class PHP_CodeCoverage_Report_Node_Directory extends PHP_CodeCoverage_Report_Nod
      */
     public function getIterator()
     {
-        return new RecursiveIteratorIterator(
-            new PHP_CodeCoverage_Report_Node_Iterator($this),
-            RecursiveIteratorIterator::SELF_FIRST
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

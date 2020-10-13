@@ -92,10 +92,19 @@ if (! empty($submit_mult)
             $views = $GLOBALS['dbi']->getVirtualTables($db);
             list($full_query, $reload, $full_query_views)
                 = PMA_getQueryFromSelected(
-                    $submit_mult, $table, $selected, $views
+                    $submit_mult,
+                    $table,
+                    $selected,
+                    $views
                 );
             $_url_params = PMA_getUrlParams(
-                $submit_mult, $reload, $action, $db, $table, $selected, $views,
+                $submit_mult,
+                $reload,
+                $action,
+                $db,
+                $table,
+                $selected,
+                $views,
                 isset($original_sql_query)? $original_sql_query : null,
                 isset($original_url_query)? $original_url_query : null
             );
@@ -176,7 +185,6 @@ if (!empty($submit_mult) && !empty($what)) {
             $tooltip_aliasname,
             $pos
         ) = PMA\libraries\Util::getDbInfo($db, isset($sub_part) ? $sub_part : '');
-
     } else {
         include_once './libraries/server_common.inc.php';
     }
@@ -184,12 +192,21 @@ if (!empty($submit_mult) && !empty($what)) {
     // Builds the query
     list($full_query, $reload, $full_query_views)
         = PMA_getQueryFromSelected(
-            $what, $table, $selected, $views
+            $what,
+            $table,
+            $selected,
+            $views
         );
 
     // Displays the confirmation form
     $_url_params = PMA_getUrlParams(
-        $what, $reload, $action, $db, $table, $selected, $views,
+        $what,
+        $reload,
+        $action,
+        $db,
+        $table,
+        $selected,
+        $views,
         isset($original_sql_query)? $original_sql_query : null,
         isset($original_url_query)? $original_url_query : null
     );
@@ -209,7 +226,6 @@ if (!empty($submit_mult) && !empty($what)) {
         );
     }
     exit;
-
 } elseif (! empty($mult_btn) && $mult_btn == __('Yes')) {
     /**
      * Executes the query - dropping rows, columns/fields, tables or dbs
@@ -248,7 +264,11 @@ if (!empty($submit_mult) && !empty($what)) {
         $result, $rebuild_database_list, $reload_ret,
         $run_parts, $execute_query_later, $sql_query, $sql_query_views
     ) = PMA_buildOrExecuteQueryForMulti(
-        $query_type, $selected, $db, $table, $views,
+        $query_type,
+        $selected,
+        $db,
+        $table,
+        $views,
         isset($primary) ? $primary : null,
         isset($from_prefix) ? $from_prefix : null,
         isset($to_prefix) ? $to_prefix : null

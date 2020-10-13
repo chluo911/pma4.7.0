@@ -55,7 +55,11 @@ class UriTemplate implements UriTemplateInterface
      */
     public function setRegex($regexPattern)
     {
-        $this->regex = $regexPattern;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,37 +71,11 @@ class UriTemplate implements UriTemplateInterface
      */
     private function parseExpression($expression)
     {
-        // Check for URI operators
-        $operator = '';
-
-        if (isset(self::$operatorHash[$expression[0]])) {
-            $operator = $expression[0];
-            $expression = substr($expression, 1);
-        }
-
-        $values = explode(',', $expression);
-        foreach ($values as &$value) {
-            $value = trim($value);
-            $varspec = array();
-            $substrPos = strpos($value, ':');
-            if ($substrPos) {
-                $varspec['value'] = substr($value, 0, $substrPos);
-                $varspec['modifier'] = ':';
-                $varspec['position'] = (int) substr($value, $substrPos + 1);
-            } elseif (substr($value, -1) == '*') {
-                $varspec['modifier'] = '*';
-                $varspec['value'] = substr($value, 0, -1);
-            } else {
-                $varspec['value'] = (string) $value;
-                $varspec['modifier'] = '';
-            }
-            $value = $varspec;
-        }
-
-        return array(
-            'operator' => $operator,
-            'values'   => $values
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -109,123 +87,11 @@ class UriTemplate implements UriTemplateInterface
      */
     private function expandMatch(array $matches)
     {
-        static $rfc1738to3986 = array(
-            '+'   => '%20',
-            '%7e' => '~'
-        );
-
-        $parsed = self::parseExpression($matches[1]);
-        $replacements = array();
-
-        $prefix = $parsed['operator'];
-        $joiner = $parsed['operator'];
-        $useQueryString = false;
-        if ($parsed['operator'] == '?') {
-            $joiner = '&';
-            $useQueryString = true;
-        } elseif ($parsed['operator'] == '&') {
-            $useQueryString = true;
-        } elseif ($parsed['operator'] == '#') {
-            $joiner = ',';
-        } elseif ($parsed['operator'] == ';') {
-            $useQueryString = true;
-        } elseif ($parsed['operator'] == '' || $parsed['operator'] == '+') {
-            $joiner = ',';
-            $prefix = '';
-        }
-
-        foreach ($parsed['values'] as $value) {
-
-            if (!array_key_exists($value['value'], $this->variables) || $this->variables[$value['value']] === null) {
-                continue;
-            }
-
-            $variable = $this->variables[$value['value']];
-            $actuallyUseQueryString = $useQueryString;
-            $expanded = '';
-
-            if (is_array($variable)) {
-
-                $isAssoc = $this->isAssoc($variable);
-                $kvp = array();
-                foreach ($variable as $key => $var) {
-
-                    if ($isAssoc) {
-                        $key = rawurlencode($key);
-                        $isNestedArray = is_array($var);
-                    } else {
-                        $isNestedArray = false;
-                    }
-
-                    if (!$isNestedArray) {
-                        $var = rawurlencode($var);
-                        if ($parsed['operator'] == '+' || $parsed['operator'] == '#') {
-                            $var = $this->decodeReserved($var);
-                        }
-                    }
-
-                    if ($value['modifier'] == '*') {
-                        if ($isAssoc) {
-                            if ($isNestedArray) {
-                                // Nested arrays must allow for deeply nested structures
-                                $var = strtr(http_build_query(array($key => $var)), $rfc1738to3986);
-                            } else {
-                                $var = $key . '=' . $var;
-                            }
-                        } elseif ($key > 0 && $actuallyUseQueryString) {
-                            $var = $value['value'] . '=' . $var;
-                        }
-                    }
-
-                    $kvp[$key] = $var;
-                }
-
-                if (empty($variable)) {
-                    $actuallyUseQueryString = false;
-                } elseif ($value['modifier'] == '*') {
-                    $expanded = implode($joiner, $kvp);
-                    if ($isAssoc) {
-                        // Don't prepend the value name when using the explode modifier with an associative array
-                        $actuallyUseQueryString = false;
-                    }
-                } else {
-                    if ($isAssoc) {
-                        // When an associative array is encountered and the explode modifier is not set, then the
-                        // result must be a comma separated list of keys followed by their respective values.
-                        foreach ($kvp as $k => &$v) {
-                            $v = $k . ',' . $v;
-                        }
-                    }
-                    $expanded = implode(',', $kvp);
-                }
-
-            } else {
-                if ($value['modifier'] == ':') {
-                    $variable = substr($variable, 0, $value['position']);
-                }
-                $expanded = rawurlencode($variable);
-                if ($parsed['operator'] == '+' || $parsed['operator'] == '#') {
-                    $expanded = $this->decodeReserved($expanded);
-                }
-            }
-
-            if ($actuallyUseQueryString) {
-                if (!$expanded && $joiner != '&') {
-                    $expanded = $value['value'];
-                } else {
-                    $expanded = $value['value'] . '=' . $expanded;
-                }
-            }
-
-            $replacements[] = $expanded;
-        }
-
-        $ret = implode($joiner, $replacements);
-        if ($ret && $prefix) {
-            return $prefix . $ret;
-        }
-
-        return $ret;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -237,7 +103,11 @@ class UriTemplate implements UriTemplateInterface
      */
     private function isAssoc(array $array)
     {
-        return (bool) count(array_filter(array_keys($array), 'is_string'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -249,6 +119,10 @@ class UriTemplate implements UriTemplateInterface
      */
     private function decodeReserved($string)
     {
-        return str_replace(self::$delimsPct, self::$delims, $string);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

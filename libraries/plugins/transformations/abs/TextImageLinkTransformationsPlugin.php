@@ -29,11 +29,11 @@ abstract class TextImageLinkTransformationsPlugin extends TransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Displays an image and a link; the column contains the filename. The'
-            . ' first option is a URL prefix like "https://www.example.com/". The'
-            . ' second and third options are the width and the height in pixels.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,16 +47,11 @@ abstract class TextImageLinkTransformationsPlugin extends TransformationsPlugin
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        $url = (isset($options[0]) ? $options[0] : '') . $buffer;
-        /* Do not allow javascript links */
-        if (! Sanitize::checkLink($url, true, true)) {
-            return htmlspecialchars($url);
-        }
-        return '<a href="' . htmlspecialchars($url)
-            . '" rel="noopener noreferrer" target="_blank"><img src="' . htmlspecialchars($url)
-            . '" border="0" width="' . (isset($options[1]) ? intval($options[1]) : 100)
-            . '" height="' . (isset($options[2]) ? intval($options[2]) : 50) . '" />'
-            . htmlspecialchars($buffer) . '</a>';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
 

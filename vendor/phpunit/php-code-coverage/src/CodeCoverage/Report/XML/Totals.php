@@ -82,7 +82,11 @@ class PHP_CodeCoverage_Report_XML_Totals
 
     public function getContainer()
     {
-        return $this->container;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setNumLines($loc, $cloc, $ncloc, $executable, $executed)

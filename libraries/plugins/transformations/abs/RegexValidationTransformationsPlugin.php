@@ -26,11 +26,11 @@ abstract class RegexValidationTransformationsPlugin extends IOTransformationsPlu
      */
     public static function getInfo()
     {
-        return __(
-            'Validates the string using regular expression '
-            . 'and performs insert only if string matches it. '
-            . 'The first option is the Regular Expression.'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -44,17 +44,11 @@ abstract class RegexValidationTransformationsPlugin extends IOTransformationsPlu
      */
     public function applyTransformation($buffer, $options = array(), $meta = '')
     {
-        // reset properties of object
-        $this->reset();
-        if (!empty($options[0]) && !preg_match($options[0], $buffer)) {
-            $this->success = false;
-            $this->error = sprintf(
-                __('Validation failed for the input string %s.'),
-                htmlspecialchars($buffer)
-            );
-        }
-
-        return $buffer;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */

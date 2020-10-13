@@ -13,15 +13,20 @@ class VisitorFlyweightTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testUsesDefaultMappingsWithGetInstance()
     {
-        $f = VisitorFlyweight::getInstance();
-        $this->assertInstanceOf('Guzzle\Service\Command\LocationVisitor\Request\JsonVisitor', $f->getRequestVisitor('json'));
-        $this->assertInstanceOf('Guzzle\Service\Command\LocationVisitor\Response\JsonVisitor', $f->getResponseVisitor('json'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCanUseCustomMappings()
     {
-        $f = new VisitorFlyweight(array());
-        $this->assertEquals(array(), $this->readAttribute($f, 'mappings'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -30,24 +35,28 @@ class VisitorFlyweightTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testThrowsExceptionWhenRetrievingUnknownVisitor()
     {
-        VisitorFlyweight::getInstance()->getRequestVisitor('foo');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCachesVisitors()
     {
-        $f = new VisitorFlyweight();
-        $v1 = $f->getRequestVisitor('json');
-        $this->assertSame($v1, $f->getRequestVisitor('json'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowsAddingVisitors()
     {
-        $f = new VisitorFlyweight();
-        $j1 = new JsonRequestVisitor();
-        $j2 = new JsonResponseVisitor();
-        $f->addRequestVisitor('json', $j1);
-        $f->addResponseVisitor('json', $j2);
-        $this->assertSame($j1, $f->getRequestVisitor('json'));
-        $this->assertSame($j2, $f->getResponseVisitor('json'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

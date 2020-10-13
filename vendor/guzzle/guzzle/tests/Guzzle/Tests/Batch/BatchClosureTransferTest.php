@@ -17,29 +17,29 @@ class BatchClosureTransferTest extends \Guzzle\Tests\GuzzleTestCase
 
     protected function setUp()
     {
-        $this->itemsTransferred = null;
-        $itemsTransferred =& $this->itemsTransferred;
-
-        $this->transferStrategy = new BatchClosureTransfer(function (array $batch) use (&$itemsTransferred) {
-            $itemsTransferred = $batch;
-            return;
-        });
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTransfersBatch()
     {
-        $batchedItems = array('foo', 'bar', 'baz');
-        $this->transferStrategy->transfer($batchedItems);
-
-        $this->assertEquals($batchedItems, $this->itemsTransferred);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTransferBailsOnEmptyBatch()
     {
-        $batchedItems = array();
-        $this->transferStrategy->transfer($batchedItems);
-
-        $this->assertNull($this->itemsTransferred);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,6 +47,10 @@ class BatchClosureTransferTest extends \Guzzle\Tests\GuzzleTestCase
      */
     public function testEnsuresCallableIsCallable()
     {
-        $foo = new BatchClosureTransfer('uh oh!');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

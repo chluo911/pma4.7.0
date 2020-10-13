@@ -16,21 +16,29 @@ class CompositeResourceIteratorFactory implements ResourceIteratorFactoryInterfa
     /** @param array $factories Array of factories used to instantiate iterators */
     public function __construct(array $factories)
     {
-        $this->factories = $factories;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function build(CommandInterface $command, array $options = array())
     {
-        if (!($factory = $this->getFactory($command))) {
-            throw new InvalidArgumentException('Iterator was not found for ' . $command->getName());
-        }
-
-        return $factory->build($command, $options);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function canBuild(CommandInterface $command)
     {
-        return $this->getFactory($command) !== false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,9 +50,11 @@ class CompositeResourceIteratorFactory implements ResourceIteratorFactoryInterfa
      */
     public function addFactory(ResourceIteratorFactoryInterface $factory)
     {
-        $this->factories[] = $factory;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,12 +66,10 @@ class CompositeResourceIteratorFactory implements ResourceIteratorFactoryInterfa
      */
     protected function getFactory(CommandInterface $command)
     {
-        foreach ($this->factories as $factory) {
-            if ($factory->canBuild($command)) {
-                return $factory;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

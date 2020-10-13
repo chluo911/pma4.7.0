@@ -17,22 +17,10 @@ class PHPUnit_Util_Type
 {
     public static function isType($type)
     {
-        return in_array(
-            $type,
-            array(
-            'numeric',
-            'integer',
-            'int',
-            'float',
-            'string',
-            'boolean',
-            'bool',
-            'null',
-            'array',
-            'object',
-            'resource',
-            'scalar'
-            )
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

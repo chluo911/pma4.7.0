@@ -48,8 +48,11 @@ class Generic_Sniffs_CodeAnalysis_ForLoopShouldBeWhileLoopSniff implements PHP_C
      */
     public function register()
     {
-        return array(T_FOR);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -64,39 +67,10 @@ class Generic_Sniffs_CodeAnalysis_ForLoopShouldBeWhileLoopSniff implements PHP_C
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
-
-        // Skip invalid statement.
-        if (isset($token['parenthesis_opener']) === false) {
-            return;
-        }
-
-        $next = ++$token['parenthesis_opener'];
-        $end  = --$token['parenthesis_closer'];
-
-        $parts = array(
-                  0,
-                  0,
-                  0,
-                 );
-        $index = 0;
-
-        for (; $next <= $end; ++$next) {
-            $code = $tokens[$next]['code'];
-            if ($code === T_SEMICOLON) {
-                ++$index;
-            } else if (isset(PHP_CodeSniffer_Tokens::$emptyTokens[$code]) === false) {
-                ++$parts[$index];
-            }
-        }
-
-        if ($parts[0] === 0 && $parts[2] === 0 && $parts[1] > 0) {
-            $error = 'This FOR loop can be simplified to a WHILE loop';
-            $phpcsFile->addWarning($error, $stackPtr, 'CanSimplify');
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

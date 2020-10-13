@@ -71,8 +71,10 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
      */
     protected $commands;
 
-    public function __construct($driver,
-                                PHPUnit_Extensions_Selenium2TestCase_URL $url)
+    public function __construct(
+        $driver,
+        PHPUnit_Extensions_Selenium2TestCase_URL $url
+    )
     {
         $this->driver = $driver;
         $this->url = $url;
@@ -80,7 +82,7 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
         foreach ($this->initCommands() as $commandName => $handler) {
             if (is_string($handler)) {
                 $this->commands[$commandName] = $this->factoryMethod($handler);
-            } else if (is_callable($handler)) {
+            } elseif (is_callable($handler)) {
                 $this->commands[$commandName] = $handler;
             } else {
                 throw new InvalidArgumentException("Command $commandName is not configured correctly.");
@@ -92,7 +94,7 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
      * @return array    class names, or
      *                  callables of the form function($parameter, $commandUrl)
      */
-    protected abstract function initCommands();
+    abstract protected function initCommands();
 
     public function __call($commandName, $arguments)
     {
@@ -103,10 +105,11 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
 
     protected function postCommand($name, PHPUnit_Extensions_Selenium2TestCase_ElementCriteria $criteria)
     {
-        $response = $this->driver->curl('POST',
-                                        $this->url->addCommand($name),
-                                        $criteria->getArrayCopy());
-        return $response->getValue();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -116,26 +119,27 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
      */
     private function factoryMethod($commandClass)
     {
-        return function($jsonParameters, $url) use ($commandClass) {
+        return function ($jsonParameters, $url) use ($commandClass) {
             return new $commandClass($jsonParameters, $url);
         };
     }
 
     private function extractJsonParameters($arguments)
     {
-        $this->checkArguments($arguments);
-
-        if (count($arguments) == 0) {
-            return NULL;
-        }
-        return $arguments[0];
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function checkArguments($arguments)
     {
-        if (count($arguments) > 1) {
-            throw new Exception('You cannot call a command with multiple method arguments.');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -146,12 +150,10 @@ abstract class PHPUnit_Extensions_Selenium2TestCase_CommandsHolder
      */
     protected function newCommand($commandName, $jsonParameters)
     {
-        if (isset($this->commands[$commandName])) {
-            $factoryMethod = $this->commands[$commandName];
-            $url = $this->url->addCommand($commandName);
-            $command = $factoryMethod($jsonParameters, $url);
-            return $command;
-        }
-        throw new BadMethodCallException("The command '$commandName' is not existent or not supported yet.");
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

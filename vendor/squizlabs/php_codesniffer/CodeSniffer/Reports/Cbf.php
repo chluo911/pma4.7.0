@@ -57,63 +57,11 @@ class PHP_CodeSniffer_Reports_Cbf implements PHP_CodeSniffer_Report
         $showSources=false,
         $width=80
     ) {
-        $cliValues = $phpcsFile->phpcs->cli->getCommandLineValues();
-        $errors    = $phpcsFile->getFixableCount();
-        if ($errors !== 0) {
-            if (empty($cliValues['files']) === false) {
-                ob_end_clean();
-                $errors    = $phpcsFile->getFixableCount();
-                $startTime = microtime(true);
-                echo "\t=> Fixing file: $errors/$errors violations remaining";
-            }
-
-            $fixed = $phpcsFile->fixer->fixFile();
-        }
-
-        if (empty($cliValues['files']) === true) {
-            // Replacing STDIN, so output current file to STDOUT
-            // even if nothing was fixed. Exit here because we
-            // can't process any more than 1 file in this setup.
-            echo $phpcsFile->fixer->getContents();
-            ob_end_flush();
-            exit(1);
-        }
-
-        if ($errors === 0) {
-            return false;
-        }
-
-        if ($fixed === false) {
-            echo 'ERROR';
-        } else {
-            echo 'DONE';
-        }
-
-        $timeTaken = ((microtime(true) - $startTime) * 1000);
-        if ($timeTaken < 1000) {
-            $timeTaken = round($timeTaken);
-            echo " in {$timeTaken}ms".PHP_EOL;
-        } else {
-            $timeTaken = round(($timeTaken / 1000), 2);
-            echo " in $timeTaken secs".PHP_EOL;
-        }
-
-        if ($fixed === true) {
-            $newFilename = $report['filename'].$cliValues['phpcbf-suffix'];
-            $newContent  = $phpcsFile->fixer->getContents();
-            file_put_contents($newFilename, $newContent);
-
-            if ($newFilename === $report['filename']) {
-                echo "\t=> File was overwritten".PHP_EOL;
-            } else {
-                echo "\t=> Fixed file written to ".basename($newFilename).PHP_EOL;
-            }
-        }
-
-        ob_start();
-
-        return $fixed;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generateFileReport()
 
 
@@ -142,10 +90,10 @@ class PHP_CodeSniffer_Reports_Cbf implements PHP_CodeSniffer_Report
         $width=80,
         $toScreen=true
     ) {
-        echo $cachedData;
-        echo "Fixed $totalFiles files".PHP_EOL;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generate()
-
-
 }//end class

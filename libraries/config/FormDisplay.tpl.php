@@ -86,7 +86,10 @@ function PMA_displayTabsTop($tabs)
  *
  * @return string
  */
-function PMA_displayFieldsetTop($title = '', $description = '', $errors = null,
+function PMA_displayFieldsetTop(
+    $title = '',
+    $description = '',
+    $errors = null,
     $attributes = array()
 ) {
     global $_FormDisplayGroup;
@@ -143,8 +146,14 @@ function PMA_displayFieldsetTop($title = '', $description = '', $errors = null,
  *
  * @return string
  */
-function PMA_displayInput($path, $name, $type, $value, $description = '',
-    $value_is_default = true, $opts = null
+function PMA_displayInput(
+    $path,
+    $name,
+    $type,
+    $value,
+    $description = '',
+    $value_is_default = true,
+    $opts = null
 ) {
     global $_FormDisplayGroup;
     static $icons;    // An array of IMG tags used further below in the function
@@ -186,7 +195,8 @@ function PMA_displayInput($path, $name, $type, $value, $description = '',
             // In this case we just use getImage() because it's available
             foreach ($icon_init as $k => $v) {
                 $icons[$k] = Util::getImage(
-                    $v[0], $v[1]
+                    $v[0],
+                    $v[1]
                 );
             }
         }
@@ -357,7 +367,7 @@ function PMA_displayInput($path, $name, $type, $value, $description = '',
         };
         $htmlOutput .= '/>';
         $htmlOutput .= '</td>';
-    } else if ($is_setup_script) {
+    } elseif ($is_setup_script) {
         $htmlOutput .= '<td>&nbsp;</td>';
     }
     $htmlOutput .= '</tr>';
@@ -439,9 +449,11 @@ function PMA_displayFieldsetBottom($show_buttons = true)
  */
 function PMA_displayFieldsetBottomSimple()
 {
-    $htmlOutput = '</table>';
-    $htmlOutput .= '</fieldset>';
-    return $htmlOutput;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**

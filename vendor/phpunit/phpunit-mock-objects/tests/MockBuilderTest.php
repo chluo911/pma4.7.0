@@ -15,93 +15,100 @@ class Framework_MockBuilderTest extends PHPUnit_Framework_TestCase
 {
     public function testMockBuilderRequiresClassName()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $mock = $spec->getMock();
-        $this->assertTrue($mock instanceof Mockable);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testByDefaultMocksAllMethods()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $mock = $spec->getMock();
-        $this->assertNull($mock->mockableMethod());
-        $this->assertNull($mock->anotherMockableMethod());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testMethodsToMockCanBeSpecified()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $spec->setMethods(array('mockableMethod'));
-        $mock = $spec->getMock();
-        $this->assertNull($mock->mockableMethod());
-        $this->assertTrue($mock->anotherMockableMethod());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testByDefaultDoesNotPassArgumentsToTheConstructor()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $mock = $spec->getMock();
-        $this->assertEquals(array(null, null), $mock->constructorArgs);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testMockClassNameCanBeSpecified()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $spec->setMockClassName('ACustomClassName');
-        $mock = $spec->getMock();
-        $this->assertTrue($mock instanceof ACustomClassName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructorArgumentsCanBeSpecified()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $spec->setConstructorArgs($expected = array(23, 42));
-        $mock = $spec->getMock();
-        $this->assertEquals($expected, $mock->constructorArgs);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOriginalConstructorCanBeDisabled()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $spec->disableOriginalConstructor();
-        $mock = $spec->getMock();
-        $this->assertNull($mock->constructorArgs);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testByDefaultOriginalCloneIsPreserved()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $mock = $spec->getMock();
-        $cloned = clone $mock;
-        $this->assertTrue($cloned->cloned);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOriginalCloneCanBeDisabled()
     {
-        $spec = $this->getMockBuilder('Mockable');
-        $spec->disableOriginalClone();
-        $mock = $spec->getMock();
-        $mock->cloned = false;
-        $cloned = clone $mock;
-        $this->assertFalse($cloned->cloned);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCallingAutoloadCanBeDisabled()
     {
-        // it is not clear to me how to test this nor the difference
-        // between calling it or not
-        $this->markTestIncomplete();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testProvidesAFluentInterface()
     {
-        $spec = $this->getMockBuilder('Mockable')
-                     ->setMethods(array('mockableMethod'))
-                     ->setConstructorArgs(array())
-                     ->setMockClassName('DummyClassName')
-                     ->disableOriginalConstructor()
-                     ->disableOriginalClone()
-                     ->disableAutoload();
-        $this->assertTrue($spec instanceof PHPUnit_Framework_MockObject_MockBuilder);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

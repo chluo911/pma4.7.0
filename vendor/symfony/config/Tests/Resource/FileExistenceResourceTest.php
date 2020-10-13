@@ -22,50 +22,55 @@ class FileExistenceResourceTest extends TestCase
 
     protected function setUp()
     {
-        $this->file = realpath(sys_get_temp_dir()).'/tmp.xml';
-        $this->time = time();
-        $this->resource = new FileExistenceResource($this->file);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        if (file_exists($this->file)) {
-            unlink($this->file);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testToString()
     {
-        $this->assertSame($this->file, (string) $this->resource);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetResource()
     {
-        $this->assertSame($this->file, $this->resource->getResource(), '->getResource() returns the path to the resource');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsFreshWithExistingResource()
     {
-        touch($this->file, $this->time);
-        $serialized = serialize(new FileExistenceResource($this->file));
-
-        $resource = unserialize($serialized);
-        $this->assertTrue($resource->isFresh($this->time), '->isFresh() returns true if the resource is still present');
-
-        unlink($this->file);
-        $resource = unserialize($serialized);
-        $this->assertFalse($resource->isFresh($this->time), '->isFresh() returns false if the resource has been deleted');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testIsFreshWithAbsentResource()
     {
-        $serialized = serialize(new FileExistenceResource($this->file));
-
-        $resource = unserialize($serialized);
-        $this->assertTrue($resource->isFresh($this->time), '->isFresh() returns true if the resource is still absent');
-
-        touch($this->file, $this->time);
-        $resource = unserialize($serialized);
-        $this->assertFalse($resource->isFresh($this->time), '->isFresh() returns false if the resource has been created');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

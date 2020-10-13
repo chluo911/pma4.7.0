@@ -57,21 +57,10 @@ class Tests_SeleniumTestCase_StringMatchPattersTest extends Tests_SeleniumTestCa
      */
     public function testGlob()
     {
-        $this->open('html/test_text_patterns.html');
-
-        //http://release.seleniumhq.org/selenium-core/0.8.0/reference.html#patterns
-
-        //page title is <title>"Test page" not found</title>
-        //so:
-
-        //default pattern should be glob and "match_all":
-        $this->verifyNotTitle('Test page');
-        $this->verifyTitle('"Test page" not found');
-        $this->verifyTitle('"*" not found');
-
-        //explicit glob: should work too:
-        $this->verifyNotTitle('glob:Test page');
-        $this->verifyTitle('glob:"Test page" not found');
-        $this->verifyTitle('glob:"*" not found');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

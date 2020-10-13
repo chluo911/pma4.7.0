@@ -4,82 +4,55 @@ class Framework_MockObject_Invocation_ObjectTest extends PHPUnit_Framework_TestC
 {
     public function testConstructorRequiresClassAndMethodAndParametersAndObject()
     {
-        new PHPUnit_Framework_MockObject_Invocation_Object(
-            'FooClass',
-            'FooMethod',
-            array('an_argument'),
-        new StdClass
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowToGetClassNameSetInConstructor()
     {
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Object(
-            'FooClass',
-            'FooMethod',
-            array('an_argument'),
-            new StdClass
-        );
-
-        $this->assertSame('FooClass', $invocation->className);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowToGetMethodNameSetInConstructor()
     {
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Object(
-            'FooClass',
-            'FooMethod',
-            array('an_argument'),
-            new StdClass
-        );
-
-        $this->assertSame('FooMethod', $invocation->methodName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowToGetObjectSetInConstructor()
     {
-        $expectedObject = new StdClass;
-
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Object(
-            'FooClass',
-            'FooMethod',
-            array('an_argument'),
-            $expectedObject
-        );
-
-        $this->assertSame($expectedObject, $invocation->object);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAllowToGetMethodParametersSetInConstructor()
     {
-        $expectedParameters = array(
-          'foo', 5, array('a', 'b'), new StdClass, null, false
-        );
-
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Object(
-            'FooClass',
-            'FooMethod',
-            $expectedParameters,
-            new StdClass
-        );
-
-        $this->assertSame($expectedParameters, $invocation->parameters);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructorAllowToSetFlagCloneObjectsInParameters()
     {
-        $parameters   = array(new StdClass);
-        $cloneObjects = true;
-
-        $invocation = new PHPUnit_Framework_MockObject_Invocation_Object(
-            'FooClass',
-            'FooMethod',
-            $parameters,
-            new StdClass,
-            $cloneObjects
-        );
-
-        $this->assertEquals($parameters, $invocation->parameters);
-        $this->assertNotSame($parameters, $invocation->parameters);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

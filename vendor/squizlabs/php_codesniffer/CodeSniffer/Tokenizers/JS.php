@@ -392,7 +392,7 @@ class PHP_CodeSniffer_Tokenizers_JS
                         $stringChar      = null;
                         continue;
                     }//end if
-                } else if ($inString === '') {
+                } elseif ($inString === '') {
                     $inString        = $char;
                     $stringChar      = $i;
                     $preStringBuffer = $buffer;
@@ -544,7 +544,7 @@ class PHP_CodeSniffer_Tokenizers_JS
 
                     $cleanBuffer = true;
                 }//end if
-            } else if (isset($this->tokenValues[strtolower($char)]) === true) {
+            } elseif (isset($this->tokenValues[strtolower($char)]) === true) {
                 // No matter what token we end up using, we don't
                 // need the content in the buffer any more because we have
                 // found a valid token.
@@ -655,7 +655,7 @@ class PHP_CodeSniffer_Tokenizers_JS
                         echo "\t\t* looking for end of comment *".PHP_EOL;
                     }
                 }//end if
-            } else if ($inComment !== '') {
+            } elseif ($inComment !== '') {
                 if ($this->commentTokens[$inComment] === null) {
                     // Comment ends at the next newline.
                     if (strpos($buffer, "\n") !== false) {
@@ -876,7 +876,6 @@ class PHP_CodeSniffer_Tokenizers_JS
         }
 
         return $finalTokens;
-
     }//end tokenizeString()
 
 
@@ -950,7 +949,7 @@ class PHP_CodeSniffer_Tokenizers_JS
                 if ($chars[($next - 1)] !== '\\') {
                     // In the simple form: /.../ so we found the end.
                     break;
-                } else if ($chars[($next - 2)] === '\\') {
+                } elseif ($chars[($next - 2)] === '\\') {
                     // In the form: /...\\/ so we found the end.
                     break;
                 }
@@ -1018,7 +1017,6 @@ class PHP_CodeSniffer_Tokenizers_JS
                  );
 
         return $token;
-
     }//end getRegexToken()
 
 
@@ -1082,7 +1080,7 @@ class PHP_CodeSniffer_Tokenizers_JS
                 }//end if
 
                 continue;
-            } else if ($tokens[$i]['code'] === T_OPEN_CURLY_BRACKET
+            } elseif ($tokens[$i]['code'] === T_OPEN_CURLY_BRACKET
                 && isset($tokens[$i]['scope_condition']) === false
                 && isset($tokens[$i]['bracket_closer']) === true
             ) {
@@ -1110,9 +1108,9 @@ class PHP_CodeSniffer_Tokenizers_JS
                         echo "\t\t* added T_OBJECT condition to $x ($type) *".PHP_EOL;
                     }
                 }
-            } else if ($tokens[$i]['code'] === T_CLOSE_OBJECT) {
+            } elseif ($tokens[$i]['code'] === T_CLOSE_OBJECT) {
                 $opener = array_pop($classStack);
-            } else if ($tokens[$i]['code'] === T_COLON) {
+            } elseif ($tokens[$i]['code'] === T_COLON) {
                 // If it is a scope opener, it belongs to a
                 // DEFAULT or CASE statement.
                 if (isset($tokens[$i]['scope_condition']) === true) {
@@ -1131,7 +1129,7 @@ class PHP_CodeSniffer_Tokenizers_JS
                         }
 
                         continue(2);
-                    } else if ($tokens[$x]['line'] < $tokens[$i]['line']) {
+                    } elseif ($tokens[$x]['line'] < $tokens[$i]['line']) {
                         break;
                     }
                 }
@@ -1172,8 +1170,5 @@ class PHP_CodeSniffer_Tokenizers_JS
         if (PHP_CODESNIFFER_VERBOSITY > 1) {
             echo "\t*** END ADDITIONAL JS PROCESSING ***".PHP_EOL;
         }
-
     }//end processAdditional()
-
-
 }//end class

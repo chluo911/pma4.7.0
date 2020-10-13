@@ -56,7 +56,11 @@ class Extensions_SeleniumTestCaseRegressionsTest extends Tests_SeleniumTestCase_
 
     public static function setUpBeforeClass()
     {
-        self::$setUpBeforeClassExecuted = true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,9 +68,11 @@ class Extensions_SeleniumTestCaseRegressionsTest extends Tests_SeleniumTestCase_
      */
     public function testDependency()
     {
-        $this->open("html/test_open.html");
-        $title = $this->getTitle();
-        return $title;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -76,13 +82,19 @@ class Extensions_SeleniumTestCaseRegressionsTest extends Tests_SeleniumTestCase_
      */
     public function testDependent($expectedTitle)
     {
-        $this->open("html/test_open.html");
-        $actualTitle = $this->getTitle();
-        $this->assertSame($expectedTitle, $actualTitle);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetUpBeforeClassIsExecuted()
     {
-        $this->assertTrue(self::$setUpBeforeClassExecuted);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

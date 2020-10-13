@@ -11,19 +11,19 @@ class HeaderFactoryTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testCreatesBasicHeaders()
     {
-        $f = new HeaderFactory();
-        $h = $f->createHeader('Foo', 'Bar');
-        $this->assertInstanceOf('Guzzle\Http\Message\Header', $h);
-        $this->assertEquals('Foo', $h->getName());
-        $this->assertEquals('Bar', (string) $h);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCreatesSpecificHeaders()
     {
-        $f = new HeaderFactory();
-        $h = $f->createHeader('Link', '<http>; rel="test"');
-        $this->assertInstanceOf('Guzzle\Http\Message\Header\Link', $h);
-        $this->assertEquals('Link', $h->getName());
-        $this->assertEquals('<http>; rel="test"', (string) $h);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

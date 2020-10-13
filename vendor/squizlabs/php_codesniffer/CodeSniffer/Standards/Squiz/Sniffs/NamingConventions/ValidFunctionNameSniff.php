@@ -47,26 +47,10 @@ class Squiz_Sniffs_NamingConventions_ValidFunctionNameSniff extends PEAR_Sniffs_
      */
     protected function processTokenOutsideScope(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $functionName = $phpcsFile->getDeclarationName($stackPtr);
-        if ($functionName === null) {
-            return;
-        }
-
-        $errorData = array($functionName);
-
-        // Does this function claim to be magical?
-        if (preg_match('|^__[^_]|', $functionName) !== 0) {
-            $error = 'Function name "%s" is invalid; only PHP magic methods should be prefixed with a double underscore';
-            $phpcsFile->addError($error, $stackPtr, 'DoubleUnderscore', $errorData);
-            return;
-        }
-
-        if (PHP_CodeSniffer::isCamelCaps($functionName, false, true, false) === false) {
-            $error = 'Function name "%s" is not in camel caps format';
-            $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $errorData);
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end processTokenOutsideScope()
-
-
 }//end class

@@ -3,7 +3,10 @@ class Issue1437Test extends PHPUnit_Framework_TestCase
 {
     public function testFailure()
     {
-        ob_start();
-        $this->assertTrue(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

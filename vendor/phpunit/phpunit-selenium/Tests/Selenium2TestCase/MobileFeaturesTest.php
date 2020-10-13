@@ -87,91 +87,109 @@ class Tests_Selenium2TestCase_MobileFeaturesTest extends PHPUnit_Extensions_Sele
 
     public function setUp()
     {
-        if (!defined('SAUCE_ACCESS_KEY') || !defined('SAUCE_USERNAME')) {
-            $this->markTestSkipped("SAUCE_USERNAME and SAUCE_ACCESS_KEY must be set to run tests on Sauce");
-        } elseif ($this->getBrowser() == 'iPhone') {
-            $this->markTestSkipped('iPhone does not yet support touch interactions');
-        } elseif ($this->getName() == "testLocation") {
-            $this->markTestSkipped('Mobile drivers don\'t yet reliably support location');
-        } else {
-            $caps = $this->getDesiredCapabilities();
-            $caps['name'] = get_called_class() . '::' . $this->getName();
-            $this->setDesiredCapabilities($caps);
-            $this->setBrowserUrl('http://saucelabs.com/test/guinea-pig');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testMove()
     {
-        $this->url('/');
-        $this->touchMove(array('x' => 100, 'y' => 100));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGeneralScroll()
     {
-        $this->url('/');
-        $this->touchScroll(array('xoffset' => 0, 'yoffset' => 100));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTouchDownUp()
     {
-        $this->url('/');
-        $this->touchDown(array('x' => 100, 'y' => 100));
-        $this->touchUp(array('x' => 100, 'y' => 100));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGeneralFlick()
     {
-        $this->url('/');
-        $this->flick(array('ySpeed' => -20));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTap()
     {
-        $this->url('/');
-        $this->byId('i am a link')->tap();
-        $this->assertContains("I am another page title", $this->title());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testElementScroll()
     {
-        $this->url('/');
-        $this->byId('i_am_a_textbox')->scroll(array('yoffset' => 50, 'xoffset' => 0));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testElementFlick()
     {
-        $this->url('/');
-        $this->byId('i_am_a_textbox')->flick(array('yoffset' => 50, 'speed' => 10, 'xoffset' => 0));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDoubleTap()
     {
-        $this->url('/');
-        $this->byId('i_am_an_id')->doubletap();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testLongTap()
     {
-        $this->url('/');
-        $this->byId('i am a link')->longtap();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testLocation()
     {
-        $this->url('/');
-        $this->location(array('latitude' => 35.5, 'longitude' => 17.6, 'altitude' => 50));
-        $location = $this->location();
-        $this->assertEquals($location['latitude'], 35.5);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOrientation()
     {
-        $this->url('/');
-        $this->landscape();
-        $this->assertEquals($this->orientation(), 'LANDSCAPE');
-        $this->portrait();
-        $this->assertEquals($this->orientation(), 'PORTRAIT');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
-

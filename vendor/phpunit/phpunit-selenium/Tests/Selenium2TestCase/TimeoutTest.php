@@ -3,14 +3,20 @@ class Tests_Selenium2TestCase_TimeoutTest extends Tests_Selenium2TestCase_BaseTe
 {
     public function setUp()
     {
-        parent::setUp();
-        $this->setSeleniumServerRequestsTimeout(60);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOpen()
     {
-        $this->url('html/test_open.html');
-        $this->assertStringEndsWith('html/test_open.html', $this->url());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -18,13 +24,19 @@ class Tests_Selenium2TestCase_TimeoutTest extends Tests_Selenium2TestCase_BaseTe
      */
     public function testAnImplicitWaitValueToRespectOnTheServerMustBeSmallerThanTheSeleniumServerCallsTimeout()
     {
-        $this->timeouts()->implicitWait(120000);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetLastImplicitWaitValue()
     {
-        $this->assertEquals(0, $this->timeouts()->getLastImplicitWaitValue());
-        $this->timeouts()->implicitWait(42);
-        $this->assertEquals(42, $this->timeouts()->getLastImplicitWaitValue());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -15,20 +15,19 @@ class MapResourceIteratorFactory extends AbstractResourceIteratorFactory
     /** @param array $map Associative array mapping iterator names to class names */
     public function __construct(array $map)
     {
-        $this->map = $map;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getClassName(CommandInterface $command)
     {
-        $className = $command->getName();
-
-        if (isset($this->map[$className])) {
-            return $this->map[$className];
-        } elseif (isset($this->map['*'])) {
-            // If a wildcard was added, then always use that
-            return $this->map['*'];
-        }
-
-        return null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

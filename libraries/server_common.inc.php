@@ -44,11 +44,11 @@ if ($GLOBALS['is_superuser']) {
 }
 
 PMA\libraries\Util::checkParameters(
-    array('is_superuser', 'url_query'), false
+    array('is_superuser', 'url_query'),
+    false
 );
 
 /**
  * shared functions for server page
  */
 require_once './libraries/server_common.lib.php';
-

@@ -44,11 +44,11 @@ class Squiz_Sniffs_WhiteSpace_PropertyLabelSpacingSniff implements PHP_CodeSniff
      */
     public function register()
     {
-        return array(
-                T_PROPERTY,
-                T_LABEL,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -63,31 +63,10 @@ class Squiz_Sniffs_WhiteSpace_PropertyLabelSpacingSniff implements PHP_CodeSniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $colon = $phpcsFile->findNext(T_COLON, ($stackPtr + 1));
-
-        if ($colon !== ($stackPtr + 1)) {
-            $error = 'There must be no space before the colon in a property/label declaration';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Before');
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
-            }
-        }
-
-        if ($tokens[($colon + 1)]['code'] !== T_WHITESPACE || $tokens[($colon + 1)]['content'] !== ' ') {
-            $error = 'There must be a single space after the colon in a property/label declaration';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'After');
-            if ($fix === true) {
-                if ($tokens[($colon + 1)]['code'] === T_WHITESPACE) {
-                    $phpcsFile->fixer->replaceToken(($colon + 1), ' ');
-                } else {
-                    $phpcsFile->fixer->addContent($colon, ' ');
-                }
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

@@ -13,26 +13,29 @@ namespace Symfony\Component\Debug;
 
 function headers_sent()
 {
-    return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 function header($str, $replace = true, $status = null)
 {
-    Tests\testHeader($str, $replace, $status);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 namespace Symfony\Component\Debug\Tests;
 
 function testHeader()
 {
-    static $headers = array();
-
-    if (!$h = func_get_args()) {
-        $h = $headers;
-        $headers = array();
-
-        return $h;
-    }
-
-    $headers[] = func_get_args();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

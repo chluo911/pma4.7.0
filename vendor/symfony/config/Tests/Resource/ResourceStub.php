@@ -19,7 +19,11 @@ class ResourceStub implements SelfCheckingResourceInterface
 
     public function setFresh($isFresh)
     {
-        $this->fresh = $isFresh;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function __toString()
@@ -29,6 +33,10 @@ class ResourceStub implements SelfCheckingResourceInterface
 
     public function isFresh($timestamp)
     {
-        return $this->fresh;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -32,27 +32,11 @@ class SerializerTest extends \PHPUnit_Framework_TestCase
      */
     public function testReconstructsADocCommentFromADocBlock()
     {
-        $expected = <<<'DOCCOMMENT'
-/**
- * This is a summary
- *
- * This is a description
- *
- * @unknown-tag Test description for the unknown tag
- */
-DOCCOMMENT;
-
-        $fixture = new Serializer();
-
-        $docBlock = new DocBlock(
-            'This is a summary',
-            new Description('This is a description'),
-            [
-                new DocBlock\Tags\Generic('unknown-tag', new Description('Test description for the unknown tag'))
-            ]
-        );
-
-        $this->assertSame($expected, $fixture->getDocComment($docBlock));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -66,27 +50,11 @@ DOCCOMMENT;
      */
     public function testAddPrefixToDocBlock()
     {
-        $expected = <<<'DOCCOMMENT'
-aa/**
-aa * This is a summary
-aa *
-aa * This is a description
-aa *
-aa * @unknown-tag Test description for the unknown tag
-aa */
-DOCCOMMENT;
-
-        $fixture = new Serializer(2, 'a');
-
-        $docBlock = new DocBlock(
-            'This is a summary',
-            new Description('This is a description'),
-            [
-                new DocBlock\Tags\Generic('unknown-tag', new Description('Test description for the unknown tag'))
-            ]
-        );
-
-        $this->assertSame($expected, $fixture->getDocComment($docBlock));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -100,27 +68,11 @@ DOCCOMMENT;
      */
     public function testAddPrefixToDocBlockExceptFirstLine()
     {
-        $expected = <<<'DOCCOMMENT'
-/**
-aa * This is a summary
-aa *
-aa * This is a description
-aa *
-aa * @unknown-tag Test description for the unknown tag
-aa */
-DOCCOMMENT;
-
-        $fixture = new Serializer(2, 'a', false);
-
-        $docBlock = new DocBlock(
-            'This is a summary',
-            new Description('This is a description'),
-            [
-                new DocBlock\Tags\Generic('unknown-tag', new Description('Test description for the unknown tag'))
-            ]
-        );
-
-        $this->assertSame($expected, $fixture->getDocComment($docBlock));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -134,33 +86,11 @@ DOCCOMMENT;
      */
     public function testWordwrapsAroundTheGivenAmountOfCharacters()
     {
-        $expected = <<<'DOCCOMMENT'
-/**
- * This is a
- * summary
- *
- * This is a
- * description
- *
- * @unknown-tag
- * Test
- * description
- * for the
- * unknown tag
- */
-DOCCOMMENT;
-
-        $fixture = new Serializer(0, '', true, 15);
-
-        $docBlock = new DocBlock(
-            'This is a summary',
-            new Description('This is a description'),
-            [
-                new DocBlock\Tags\Generic('unknown-tag', new Description('Test description for the unknown tag'))
-            ]
-        );
-
-        $this->assertSame($expected, $fixture->getDocComment($docBlock));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -169,7 +99,11 @@ DOCCOMMENT;
      */
     public function testInitializationFailsIfIndentIsNotAnInteger()
     {
-        new Serializer([]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -178,7 +112,11 @@ DOCCOMMENT;
      */
     public function testInitializationFailsIfIndentStringIsNotAString()
     {
-        new Serializer(0, []);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,7 +125,11 @@ DOCCOMMENT;
      */
     public function testInitializationFailsIfIndentFirstLineIsNotABoolean()
     {
-        new Serializer(0, '', []);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -196,6 +138,10 @@ DOCCOMMENT;
      */
     public function testInitializationFailsIfLineLengthIsNotNullNorAnInteger()
     {
-        new Serializer(0, '', false, []);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

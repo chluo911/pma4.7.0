@@ -31,12 +31,11 @@ class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
      */
     public function __construct($resource, $pattern = null)
     {
-        $this->resource = realpath($resource) ?: (file_exists($resource) ? $resource : false);
-        $this->pattern = $pattern;
-
-        if (false === $this->resource || !is_dir($this->resource)) {
-            throw new \InvalidArgumentException(sprintf('The directory "%s" does not exist.', $resource));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -52,7 +51,11 @@ class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
      */
     public function getResource()
     {
-        return $this->resource;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -70,49 +73,28 @@ class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
      */
     public function isFresh($timestamp)
     {
-        if (!is_dir($this->resource)) {
-            return false;
-        }
-
-        if ($timestamp < filemtime($this->resource)) {
-            return false;
-        }
-
-        foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->resource), \RecursiveIteratorIterator::SELF_FIRST) as $file) {
-            // if regex filtering is enabled only check matching files
-            if ($this->pattern && $file->isFile() && !preg_match($this->pattern, $file->getBasename())) {
-                continue;
-            }
-
-            // always monitor directories for changes, except the .. entries
-            // (otherwise deleted files wouldn't get detected)
-            if ($file->isDir() && '/..' === substr($file, -3)) {
-                continue;
-            }
-
-            // for broken links
-            try {
-                $fileMTime = $file->getMTime();
-            } catch (\RuntimeException $e) {
-                continue;
-            }
-
-            // early return if a file's mtime exceeds the passed timestamp
-            if ($timestamp < $fileMTime) {
-                return false;
-            }
-        }
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function serialize()
     {
-        return serialize(array($this->resource, $this->pattern));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function unserialize($serialized)
     {
-        list($this->resource, $this->pattern) = unserialize($serialized);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

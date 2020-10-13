@@ -3,6 +3,10 @@ class ThrowExceptionTestCase extends PHPUnit_Framework_TestCase
 {
     public function test()
     {
-        throw new RuntimeException('A runtime error occurred');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

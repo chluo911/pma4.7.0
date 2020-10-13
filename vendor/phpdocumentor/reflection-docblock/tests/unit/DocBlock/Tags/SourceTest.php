@@ -32,9 +32,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new Source(1, null, new Description('Description'));
-
-        $this->assertSame('source', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -47,14 +49,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new Source(1, 10, new Description('Description'));
-        $this->assertSame('@source 1 10 Description', $fixture->render());
-
-        $fixture = new Source(1, null, new Description('Description'));
-        $this->assertSame('@source 1 Description', $fixture->render());
-
-        $fixture = new Source(1);
-        $this->assertSame('@source 1', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,12 +62,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new Source(1);
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -77,11 +75,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasStartingLine()
     {
-        $expected = 1;
-
-        $fixture = new Source($expected);
-
-        $this->assertSame($expected, $fixture->getStartingLine());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -90,11 +88,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasLineCount()
     {
-        $expected = 2;
-
-        $fixture = new Source(1, $expected);
-
-        $this->assertSame($expected, $fixture->getLineCount());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -104,11 +102,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasDescription()
     {
-        $expected = new Description('Description');
-
-        $fixture = new Source('1', null, $expected);
-
-        $this->assertSame($expected, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,9 +117,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new Source(1, 10, new Description('Description'));
-
-        $this->assertSame('1 10 Description', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -133,18 +133,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $context            = new Context('');
-
-        $description = new Description('My Description');
-        $descriptionFactory->shouldReceive('create')->with('My Description', $context)->andReturn($description);
-
-        $fixture = Source::create('1 10 My Description', $descriptionFactory, $context);
-
-        $this->assertSame('1 10 My Description', (string)$fixture);
-        $this->assertSame(1, $fixture->getStartingLine());
-        $this->assertSame(10, $fixture->getLineCount());
-        $this->assertSame($description, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -156,8 +149,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfEmptyBodyIsGiven()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        Source::create('', $descriptionFactory);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -166,7 +162,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfBodyIsNotString()
     {
-        Source::create([]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -176,7 +176,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfDescriptionFactoryIsNull()
     {
-        Source::create('1');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -185,7 +189,11 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownIfStartingLineIsNotInteger()
     {
-        new Source('blabla');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -194,6 +202,10 @@ class SourceTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownIfLineCountIsNotIntegerOrNull()
     {
-        new Source('1', []);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

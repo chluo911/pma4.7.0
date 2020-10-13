@@ -23,8 +23,11 @@ class ArrayNodeTest extends TestCase
      */
     public function testNormalizeThrowsExceptionWhenFalseIsNotAllowed()
     {
-        $node = new ArrayNode('root');
-        $node->normalize(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -33,20 +36,20 @@ class ArrayNodeTest extends TestCase
      */
     public function testExceptionThrownOnUnrecognizedChild()
     {
-        $node = new ArrayNode('root');
-        $node->normalize(array('foo' => 'bar'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function ignoreAndRemoveMatrixProvider()
     {
-        $unrecognizedOptionException = new InvalidConfigurationException('Unrecognized option "foo" under "root"');
-
-        return array(
-            array(true, true, array(), 'no exception is thrown for an unrecognized child if the ignoreExtraKeys option is set to true'),
-            array(true, false, array('foo' => 'bar'), 'extra keys are not removed when ignoreExtraKeys second option is set to false'),
-            array(false, true, $unrecognizedOptionException),
-            array(false, false, $unrecognizedOptionException),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -54,18 +57,11 @@ class ArrayNodeTest extends TestCase
      */
     public function testIgnoreAndRemoveBehaviors($ignore, $remove, $expected, $message = '')
     {
-        if ($expected instanceof \Exception) {
-            if (method_exists($this, 'expectException')) {
-                $this->expectException(get_class($expected));
-                $this->expectExceptionMessage($expected->getMessage());
-            } else {
-                $this->setExpectedException(get_class($expected), $expected->getMessage());
-            }
-        }
-        $node = new ArrayNode('root');
-        $node->setIgnoreExtraKeys($ignore, $remove);
-        $result = $node->normalize(array('foo' => 'bar'));
-        $this->assertSame($expected, $result, $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,34 +69,20 @@ class ArrayNodeTest extends TestCase
      */
     public function testPreNormalize($denormalized, $normalized)
     {
-        $node = new ArrayNode('foo');
-
-        $r = new \ReflectionMethod($node, 'preNormalize');
-        $r->setAccessible(true);
-
-        $this->assertSame($normalized, $r->invoke($node, $denormalized));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getPreNormalizationTests()
     {
-        return array(
-            array(
-                array('foo-bar' => 'foo'),
-                array('foo_bar' => 'foo'),
-            ),
-            array(
-                array('foo-bar_moo' => 'foo'),
-                array('foo-bar_moo' => 'foo'),
-            ),
-            array(
-                array('anything-with-dash-and-no-underscore' => 'first', 'no_dash' => 'second'),
-                array('anything_with_dash_and_no_underscore' => 'first', 'no_dash' => 'second'),
-            ),
-            array(
-                array('foo-bar' => null, 'foo_bar' => 'foo'),
-                array('foo-bar' => null, 'foo_bar' => 'foo'),
-            ),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -108,47 +90,20 @@ class ArrayNodeTest extends TestCase
      */
     public function testNodeNameCanBeZero($denormalized, $normalized)
     {
-        $zeroNode = new ArrayNode(0);
-        $zeroNode->addChild(new ScalarNode('name'));
-        $fiveNode = new ArrayNode(5);
-        $fiveNode->addChild(new ScalarNode(0));
-        $fiveNode->addChild(new ScalarNode('new_key'));
-        $rootNode = new ArrayNode('root');
-        $rootNode->addChild($zeroNode);
-        $rootNode->addChild($fiveNode);
-        $rootNode->addChild(new ScalarNode('string_key'));
-        $r = new \ReflectionMethod($rootNode, 'normalizeValue');
-        $r->setAccessible(true);
-
-        $this->assertSame($normalized, $r->invoke($rootNode, $denormalized));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getZeroNamedNodeExamplesData()
     {
-        return array(
-            array(
-                array(
-                    0 => array(
-                        'name' => 'something',
-                    ),
-                    5 => array(
-                        0 => 'this won\'t work too',
-                        'new_key' => 'some other value',
-                    ),
-                    'string_key' => 'just value',
-                ),
-                array(
-                    0 => array(
-                        'name' => 'something',
-                    ),
-                    5 => array(
-                        0 => 'this won\'t work too',
-                        'new_key' => 'some other value',
-                    ),
-                    'string_key' => 'just value',
-                ),
-            ),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -156,28 +111,20 @@ class ArrayNodeTest extends TestCase
      */
     public function testChildrenOrderIsMaintainedOnNormalizeValue($prenormalized, $normalized)
     {
-        $scalar1 = new ScalarNode('1');
-        $scalar2 = new ScalarNode('2');
-        $scalar3 = new ScalarNode('3');
-        $node = new ArrayNode('foo');
-        $node->addChild($scalar1);
-        $node->addChild($scalar3);
-        $node->addChild($scalar2);
-
-        $r = new \ReflectionMethod($node, 'normalizeValue');
-        $r->setAccessible(true);
-
-        $this->assertSame($normalized, $r->invoke($node, $prenormalized));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getPreNormalizedNormalizedOrderedData()
     {
-        return array(
-            array(
-                array('2' => 'two', '1' => 'one', '3' => 'three'),
-                array('2' => 'two', '1' => 'one', '3' => 'three'),
-            ),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -186,10 +133,11 @@ class ArrayNodeTest extends TestCase
      */
     public function testAddChildEmptyName()
     {
-        $node = new ArrayNode('root');
-
-        $childNode = new ArrayNode('');
-        $node->addChild($childNode);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -198,13 +146,11 @@ class ArrayNodeTest extends TestCase
      */
     public function testAddChildNameAlreadyExists()
     {
-        $node = new ArrayNode('root');
-
-        $childNode = new ArrayNode('foo');
-        $node->addChild($childNode);
-
-        $childNodeWithSameName = new ArrayNode('foo');
-        $node->addChild($childNodeWithSameName);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -213,7 +159,10 @@ class ArrayNodeTest extends TestCase
      */
     public function testGetDefaultValueWithoutDefaultValue()
     {
-        $node = new ArrayNode('foo');
-        $node->getDefaultValue();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

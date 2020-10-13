@@ -51,7 +51,11 @@ class CurlException extends RequestException
      */
     public function getCurlHandle()
     {
-        return $this->handle;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,7 +85,11 @@ class CurlException extends RequestException
      */
     public function getCurlInfo()
     {
-        return $this->curlInfo;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

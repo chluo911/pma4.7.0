@@ -44,12 +44,11 @@ interface RequestFactoryInterface
      * @return RequestInterface
      */
     public function fromParts(
-        $method,
-        array $urlParts,
-        $headers = null,
-        $body = null,
-        $protocol = 'HTTP',
-        $protocolVersion = '1.1'
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     );
 
     /**

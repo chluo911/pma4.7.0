@@ -108,8 +108,13 @@ class ServerDatabasesController extends Controller
          */
         if ($GLOBALS['server'] > 0) {
             $this->_databases = $this->dbi->getDatabasesFull(
-                null, $this->_dbstats, null, $this->_sort_by,
-                $this->_sort_order, $this->_pos, true
+                null,
+                $this->_dbstats,
+                null,
+                $this->_sort_by,
+                $this->_sort_order,
+                $this->_pos,
+                true
             );
             $this->_database_count = count($GLOBALS['dblist']->databases);
         } else {
@@ -168,14 +173,16 @@ class ServerDatabasesController extends Controller
             $message->addParam($_POST['new_db']);
             $this->response->addJSON('message', $message);
             $this->response->addJSON(
-                'sql_query', Util::getMessage(null, $sql_query, 'success')
+                'sql_query',
+                Util::getMessage(null, $sql_query, 'success')
             );
 
             $url_query = URL::getCommon(array('db' => $_POST['new_db']));
             $this->response->addJSON(
                 'url_query',
                 Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
+                    $GLOBALS['cfg']['DefaultTabDatabase'],
+                    'database'
                 )
                 . $url_query . '&amp;db='
                 . urlencode($_POST['new_db'])
@@ -265,7 +272,6 @@ class ServerDatabasesController extends Controller
      */
     private function _getHtmlForDatabases($replication_types)
     {
-
         $html = '<div id="tableslistcontainer">';
         $first_database = reset($this->_databases);
         // table col order
@@ -279,8 +285,12 @@ class ServerDatabasesController extends Controller
         );
 
         $html .= Util::getListNavigator(
-            $this->_database_count, $this->_pos, $_url_params,
-            'server_databases.php', 'frame_content', $GLOBALS['cfg']['MaxDbList']
+            $this->_database_count,
+            $this->_pos,
+            $_url_params,
+            'server_databases.php',
+            'frame_content',
+            $GLOBALS['cfg']['MaxDbList']
         );
 
         $_url_params['pos'] = $this->_pos;
@@ -308,7 +318,9 @@ class ServerDatabasesController extends Controller
         // database table
         $html .= '<table id="tabledatabases" class="data">' . "\n";
         $html .= $this->_getHtmlForTableHeader(
-            $_url_params, $column_order, $first_database
+            $_url_params,
+            $column_order,
+            $first_database
         );
         $html .= $this->_getHtmlForTableBody($column_order, $replication_types);
         $html .= $this->_getHtmlForTableFooter($column_order, $first_database);
@@ -399,7 +411,8 @@ class ServerDatabasesController extends Controller
         $html .= Util::getButtonOrImage(
             '',
             'mult_submit' . ' ajax',
-            __('Drop'), 'b_deltbl.png'
+            __('Drop'),
+            'b_deltbl.png'
         );
 
         return $html;
@@ -472,9 +485,13 @@ class ServerDatabasesController extends Controller
      *
      * @return array $column_order, $out
      */
-    function _buildHtmlForDb(
-        $current, $url_query, $column_order,
-        $replication_types, $replication_info, $tr_class = ''
+    public function _buildHtmlForDb(
+        $current,
+        $url_query,
+        $column_order,
+        $replication_types,
+        $replication_info,
+        $tr_class = ''
     ) {
         $master_replication = $slave_replication = '';
         foreach ($replication_types as $type) {
@@ -491,7 +508,8 @@ class ServerDatabasesController extends Controller
                     );
                 } else {
                     $key = array_search(
-                        $current["SCHEMA_NAME"], $replication_info[$type]['Do_DB']
+                        $current["SCHEMA_NAME"],
+                        $replication_info[$type]['Do_DB']
                     );
 
                     if (strlen($key) > 0
@@ -539,7 +557,9 @@ class ServerDatabasesController extends Controller
      * @return string
      */
     private function _getHtmlForTableHeader(
-        $_url_params, $column_order, $first_database
+        $_url_params,
+        $column_order,
+        $first_database
     ) {
         return Template::get('server/databases/table_header')->render(
             array(

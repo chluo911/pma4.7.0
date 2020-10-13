@@ -58,12 +58,12 @@ interface PHPUnit_Extensions_Selenium2TestCase_SessionStrategy
     /**
      * @param array $parameters 'host' => Selenium Server machine
                                 'port' => Selenium Server port
-                                'browser' => a browser name 
+                                'browser' => a browser name
      *                          'browserUrl' => base URL to use during the test
      */
     public function session(array $parameters);
 
     public function notSuccessfulTest();
 
-    public function endOfTest(PHPUnit_Extensions_Selenium2TestCase_Session $session = NULL);
+    public function endOfTest(PHPUnit_Extensions_Selenium2TestCase_Session $session = null);
 }

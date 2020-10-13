@@ -25,7 +25,9 @@ interface DBIExtension
      * @return mixed false on error or a connection object on success
      */
     public function connect(
-        $user, $password, $server
+        $user,
+        $password,
+        $server
     );
 
     /**

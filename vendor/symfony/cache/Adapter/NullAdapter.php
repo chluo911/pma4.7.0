@@ -23,17 +23,11 @@ class NullAdapter implements AdapterInterface
 
     public function __construct()
     {
-        $this->createCacheItem = \Closure::bind(
-            function ($key) {
-                $item = new CacheItem();
-                $item->key = $key;
-                $item->isHit = false;
-
-                return $item;
-            },
-            $this,
-            CacheItem::class
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -67,7 +61,11 @@ class NullAdapter implements AdapterInterface
      */
     public function clear()
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

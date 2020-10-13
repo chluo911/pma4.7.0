@@ -17,9 +17,10 @@ class DescriptorApplication2 extends Application
 {
     public function __construct()
     {
-        parent::__construct('My Symfony application', 'v1.0');
-        $this->add(new DescriptorCommand1());
-        $this->add(new DescriptorCommand2());
-        $this->add(new DescriptorCommand3());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

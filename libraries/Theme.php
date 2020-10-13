@@ -24,37 +24,37 @@ class Theme
      * @var string theme version
      * @access  protected
      */
-    var $version = '0.0.0.0';
+    public $version = '0.0.0.0';
 
     /**
      * @var string theme name
      * @access  protected
      */
-    var $name = '';
+    public $name = '';
 
     /**
      * @var string theme id
      * @access  protected
      */
-    var $id = '';
+    public $id = '';
 
     /**
      * @var string theme path
      * @access  protected
      */
-    var $path = '';
+    public $path = '';
 
     /**
      * @var string image path
      * @access  protected
      */
-    var $img_path = '';
+    public $img_path = '';
 
     /**
      * @var integer last modification time for info file
      * @access  protected
      */
-    var $mtime_info = 0;
+    public $mtime_info = 0;
 
     /**
      * needed because sometimes, the mtime for different themes
@@ -62,7 +62,7 @@ class Theme
      * @var integer filesize for info file
      * @access  protected
      */
-    var $filesize_info = 0;
+    public $filesize_info = 0;
 
     /**
      * @var array List of css files to load
@@ -86,7 +86,7 @@ class Theme
      * @return boolean whether loading them info was successful or not
      * @access  public
      */
-    function loadInfo()
+    public function loadInfo()
     {
         if (! file_exists($this->getPath() . '/info.inc.php')) {
             return false;
@@ -126,7 +126,7 @@ class Theme
      * @static
      * @access public
      */
-    static public function load($folder)
+    public static function load($folder)
     {
         $theme = new Theme();
 
@@ -243,7 +243,11 @@ class Theme
      */
     public function checkVersion($version)
     {
-        return version_compare($this->getVersion(), $version, 'lt');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -356,7 +360,7 @@ class Theme
             if (is_readable($path)) {
                 echo "\n/* FILE: " , $file , ".css.php */\n";
                 include $path;
-            } else if (is_readable($fallback)) {
+            } elseif (is_readable($fallback)) {
                 echo "\n/* FILE: " , $file , ".css.php */\n";
                 include $fallback;
             } else {
@@ -367,9 +371,7 @@ class Theme
         $sprites = $this->getSpriteData();
         /* Check if there is a valid data file for sprites */
         if (count($sprites) > 0) {
-
-            $bg = $this->getImgPath() . 'sprites.png?v=' . urlencode(PMA_VERSION);
-            ?>
+            $bg = $this->getImgPath() . 'sprites.png?v=' . urlencode(PMA_VERSION); ?>
             /* Icon sprites */
             .icon {
             margin: 0;
@@ -473,7 +475,7 @@ class Theme
      *
      * @return String with font size.
      */
-    function getFontSize()
+    public function getFontSize()
     {
         $fs = $GLOBALS['PMA_Config']->get('fontsize');
         if (!is_null($fs)) {
@@ -490,7 +492,7 @@ class Theme
      *
      * @return string CSS code.
      */
-    function getCssGradient($start_color, $end_color)
+    public function getCssGradient($start_color, $end_color)
     {
         $result = array();
         // Opera 9.5+, IE 9

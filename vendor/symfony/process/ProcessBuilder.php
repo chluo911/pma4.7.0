@@ -62,9 +62,11 @@ class ProcessBuilder
      */
     public function add($argument)
     {
-        $this->arguments[] = $argument;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -78,9 +80,11 @@ class ProcessBuilder
      */
     public function setPrefix($prefix)
     {
-        $this->prefix = is_array($prefix) ? $prefix : array($prefix);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -109,9 +113,11 @@ class ProcessBuilder
      */
     public function setWorkingDirectory($cwd)
     {
-        $this->cwd = $cwd;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -159,9 +165,11 @@ class ProcessBuilder
      */
     public function addEnvironmentVariables(array $variables)
     {
-        $this->env = array_replace($this->env, $variables);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -244,9 +252,11 @@ class ProcessBuilder
      */
     public function enableOutput()
     {
-        $this->outputDisabled = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

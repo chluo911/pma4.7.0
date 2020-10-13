@@ -27,19 +27,11 @@ class AuthenticationConfig extends AuthenticationPlugin
      */
     public function auth()
     {
-        $response = Response::getInstance();
-        if ($response->isAjax()) {
-            $response->setRequestStatus(false);
-            // reload_flag removes the token parameter from the URL and reloads
-            $response->addJSON('reload_flag', '1');
-            if (defined('TESTSUITE')) {
-                return true;
-            } else {
-                exit;
-            }
-        }
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,11 +41,11 @@ class AuthenticationConfig extends AuthenticationPlugin
      */
     public function authCheck()
     {
-        if ($GLOBALS['token_provided'] && $GLOBALS['token_mismatch']) {
-            return false;
-        }
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -63,9 +55,11 @@ class AuthenticationConfig extends AuthenticationPlugin
      */
     public function authSetUser()
     {
-        $this->setSessionAccessTime();
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

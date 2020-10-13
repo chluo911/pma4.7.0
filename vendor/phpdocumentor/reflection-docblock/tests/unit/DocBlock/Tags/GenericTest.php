@@ -30,9 +30,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new Generic('generic', new Description('Description'));
-
-        $this->assertSame('generic', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,9 +47,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new Generic('generic', new Description('Description'));
-
-        $this->assertSame('@generic Description', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,12 +61,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new Generic('generic', new Description('Description'));
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -72,11 +75,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasDescription()
     {
-        $expected = new Description('Description');
-
-        $fixture = new Generic('generic', $expected);
-
-        $this->assertSame($expected, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,9 +90,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new Generic('generic', new Description('Description'));
-
-        $this->assertSame('Description', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -101,19 +106,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $context = new Context('');
-
-        $generics = 'generic';
-        $description = new Description('My Description');
-
-        $descriptionFactory->shouldReceive('create')->with('My Description', $context)->andReturn($description);
-
-        $fixture = Generic::create('My Description', 'generic', $descriptionFactory, $context);
-
-        $this->assertSame('My Description', (string)$fixture);
-        $this->assertSame($generics, $fixture->getName());
-        $this->assertSame($description, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -122,7 +119,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfNameIsNotString()
     {
-        Generic::create('', []);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -131,7 +132,11 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfNameIsNotEmpty()
     {
-        Generic::create('', '');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,6 +146,10 @@ class GenericTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfNameContainsIllegalCharacters()
     {
-        Generic::create('', 'name/myname');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -39,14 +39,11 @@ class RelationStatsSvg extends RelationStats
         $foreign_table,
         $foreign_field
     ) {
-        $this->wTick = 10;
-        parent::__construct(
-            $diagram,
-            $master_table,
-            $master_field,
-            $foreign_table,
-            $foreign_field
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,78 +58,10 @@ class RelationStatsSvg extends RelationStats
      */
     public function relationDraw($showColor)
     {
-        if ($showColor) {
-            $listOfColors = array(
-                '#c00',
-                '#bbb',
-                '#333',
-                '#cb0',
-                '#0b0',
-                '#0bf',
-                '#b0b',
-            );
-            shuffle($listOfColors);
-            $color = $listOfColors[0];
-        } else {
-            $color = '#333';
-        }
-
-        $this->diagram->printElementLine(
-            'line',
-            $this->xSrc,
-            $this->ySrc,
-            $this->xSrc + $this->srcDir * $this->wTick,
-            $this->ySrc,
-            'stroke:' . $color . ';stroke-width:1;'
-        );
-        $this->diagram->printElementLine(
-            'line',
-            $this->xDest + $this->destDir * $this->wTick,
-            $this->yDest,
-            $this->xDest,
-            $this->yDest,
-            'stroke:' . $color . ';stroke-width:1;'
-        );
-        $this->diagram->printElementLine(
-            'line',
-            $this->xSrc + $this->srcDir * $this->wTick,
-            $this->ySrc,
-            $this->xDest + $this->destDir * $this->wTick,
-            $this->yDest,
-            'stroke:' . $color . ';stroke-width:1;'
-        );
-        $root2 = 2 * sqrt(2);
-        $this->diagram->printElementLine(
-            'line',
-            $this->xSrc + $this->srcDir * $this->wTick * 0.75,
-            $this->ySrc,
-            $this->xSrc + $this->srcDir * (0.75 - 1 / $root2) * $this->wTick,
-            $this->ySrc + $this->wTick / $root2,
-            'stroke:' . $color . ';stroke-width:2;'
-        );
-        $this->diagram->printElementLine(
-            'line',
-            $this->xSrc + $this->srcDir * $this->wTick * 0.75,
-            $this->ySrc,
-            $this->xSrc + $this->srcDir * (0.75 - 1 / $root2) * $this->wTick,
-            $this->ySrc - $this->wTick / $root2,
-            'stroke:' . $color . ';stroke-width:2;'
-        );
-        $this->diagram->printElementLine(
-            'line',
-            $this->xDest + $this->destDir * $this->wTick / 2,
-            $this->yDest,
-            $this->xDest + $this->destDir * (0.5 + 1 / $root2) * $this->wTick,
-            $this->yDest + $this->wTick / $root2,
-            'stroke:' . $color . ';stroke-width:2;'
-        );
-        $this->diagram->printElementLine(
-            'line',
-            $this->xDest + $this->destDir * $this->wTick / 2,
-            $this->yDest,
-            $this->xDest + $this->destDir * (0.5 + 1 / $root2) * $this->wTick,
-            $this->yDest - $this->wTick / $root2,
-            'stroke:' . $color . ';stroke-width:2;'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

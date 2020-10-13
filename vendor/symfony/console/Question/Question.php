@@ -38,8 +38,11 @@ class Question
      */
     public function __construct($question, $default = null)
     {
-        $this->question = $question;
-        $this->default = $default;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -49,7 +52,11 @@ class Question
      */
     public function getQuestion()
     {
-        return $this->question;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,7 +106,11 @@ class Question
      */
     public function isHiddenFallback()
     {
-        return $this->hiddenFallback;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -111,9 +122,11 @@ class Question
      */
     public function setHiddenFallback($fallback)
     {
-        $this->hiddenFallback = (bool) $fallback;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -123,7 +136,11 @@ class Question
      */
     public function getAutocompleterValues()
     {
-        return $this->autocompleterValues;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -138,23 +155,11 @@ class Question
      */
     public function setAutocompleterValues($values)
     {
-        if (is_array($values)) {
-            $values = $this->isAssoc($values) ? array_merge(array_keys($values), array_values($values)) : array_values($values);
-        }
-
-        if (null !== $values && !is_array($values)) {
-            if (!$values instanceof \Traversable || !$values instanceof \Countable) {
-                throw new InvalidArgumentException('Autocompleter values can be either an array, `null` or an object implementing both `Countable` and `Traversable` interfaces.');
-            }
-        }
-
-        if ($this->hidden) {
-            throw new LogicException('A hidden question cannot use the autocompleter.');
-        }
-
-        $this->autocompleterValues = $values;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -166,9 +171,11 @@ class Question
      */
     public function setValidator(callable $validator = null)
     {
-        $this->validator = $validator;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -178,7 +185,11 @@ class Question
      */
     public function getValidator()
     {
-        return $this->validator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -194,13 +205,11 @@ class Question
      */
     public function setMaxAttempts($attempts)
     {
-        if (null !== $attempts && $attempts < 1) {
-            throw new InvalidArgumentException('Maximum number of attempts must be a positive value.');
-        }
-
-        $this->attempts = $attempts;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -212,7 +221,11 @@ class Question
      */
     public function getMaxAttempts()
     {
-        return $this->attempts;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -226,9 +239,11 @@ class Question
      */
     public function setNormalizer(callable $normalizer)
     {
-        $this->normalizer = $normalizer;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -240,11 +255,19 @@ class Question
      */
     public function getNormalizer()
     {
-        return $this->normalizer;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function isAssoc($array)
     {
-        return (bool) count(array_filter(array_keys($array), 'is_string'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

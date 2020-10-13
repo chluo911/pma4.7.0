@@ -183,9 +183,11 @@ class Configuration
      */
     public function addCloverXmlPath($cloverXmlPath)
     {
-        $this->cloverXmlPaths[] = $cloverXmlPath;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -331,7 +333,11 @@ class Configuration
      */
     public function getEnv()
     {
-        return $this->env;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -351,7 +357,11 @@ class Configuration
      */
     public function isDevEnv()
     {
-        return $this->env === 'dev';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -361,6 +371,10 @@ class Configuration
      */
     public function isProdEnv()
     {
-        return $this->env === 'prod';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

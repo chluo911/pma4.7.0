@@ -27,6 +27,7 @@ $container->alias('response', 'PMA\libraries\Response');
 
 /** @var ServerCollationsController $controller */
 $controller = $container->get(
-    'ServerCollationsController', array()
+    'ServerCollationsController',
+    array()
 );
 $controller->indexAction();

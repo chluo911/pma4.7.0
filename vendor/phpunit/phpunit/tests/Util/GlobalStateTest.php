@@ -17,19 +17,10 @@ class Util_GlobalStateTest extends PHPUnit_Framework_TestCase
      */
     public function testIncludedFilesAsStringSkipsVfsProtocols()
     {
-        $dir   = __DIR__;
-        $files = array(
-            'phpunit', // The 0 index is not used
-            $dir . '/ConfigurationTest.php',
-            $dir . '/GlobalStateTest.php',
-            'vfs://' . $dir . '/RegexTest.php',
-            'phpvfs53e46260465c7://' . $dir . '/TestTest.php',
-            'file://' . $dir . '/XMLTest.php'
-        );
-
-        $this->assertEquals(
-            "require_once '" . $dir . "/ConfigurationTest.php';\n" .
-            "require_once '" . $dir . "/GlobalStateTest.php';\n" .
-            "require_once 'file://" . $dir . "/XMLTest.php';\n", PHPUnit_Util_GlobalState::processIncludedFilesAsString($files));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

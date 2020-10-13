@@ -96,7 +96,11 @@ class NodeBuilder implements NodeParentInterface
      */
     public function integerNode($name)
     {
-        return $this->node($name, 'integer');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -108,7 +112,11 @@ class NodeBuilder implements NodeParentInterface
      */
     public function floatNode($name)
     {
-        return $this->node($name, 'float');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -211,9 +219,11 @@ class NodeBuilder implements NodeParentInterface
      */
     public function setNodeClass($type, $class)
     {
-        $this->nodeMapping[strtolower($type)] = $class;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

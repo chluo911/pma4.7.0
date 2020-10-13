@@ -26,7 +26,7 @@ require_once './libraries/session.lib.php';
  */
 if (! empty($_REQUEST['target'])) {
     $GLOBALS['target'] = $_REQUEST['target'];
-} else if (PMA_getenv('SCRIPT_NAME')) {
+} elseif (PMA_getenv('SCRIPT_NAME')) {
     $GLOBALS['target'] = basename(PMA_getenv('SCRIPT_NAME'));
 }
 
@@ -64,7 +64,11 @@ class AuthenticationCookie extends AuthenticationPlugin
      */
     public function setUseOpenSSL($use)
     {
-        $this->_use_openssl = $use;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -187,10 +191,11 @@ class AuthenticationCookie extends AuthenticationPlugin
             echo '" size="24" class="textfield" title="';
             echo __(
                 'You can enter hostname/IP address and port separated by space.'
-            ); echo '" />
+            );
+            echo '" />
             </div>';
         }
-            echo '<div class="item">
+        echo '<div class="item">
                 <label for="input_username">' , __('Username:') , '</label>
                 <input type="text" name="pma_username" id="input_username" '
                 , 'value="' , htmlspecialchars($default_user) , '" size="24"'
@@ -306,7 +311,7 @@ class AuthenticationCookie extends AuthenticationPlugin
                             $GLOBALS['cfg']['CaptchaLoginPrivateKey'],
                             new ReCaptcha\RequestMethod\CurlPost()
                         );
-                    } else if (ini_get('allow_url_fopen')) {
+                    } elseif (ini_get('allow_url_fopen')) {
                         $reCaptcha = new ReCaptcha\ReCaptcha(
                             $GLOBALS['cfg']['CaptchaLoginPrivateKey'],
                             new ReCaptcha\RequestMethod\Post()
@@ -350,7 +355,8 @@ class AuthenticationCookie extends AuthenticationPlugin
                     }
 
                     $match = preg_match(
-                        $GLOBALS['cfg']['ArbitraryServerRegexp'], $tmp_host
+                        $GLOBALS['cfg']['ArbitraryServerRegexp'],
+                        $tmp_host
                     );
                     if (! $match) {
                         $conn_error = __(
@@ -895,22 +901,10 @@ class AuthenticationCookie extends AuthenticationPlugin
      */
     public function logOut()
     {
-        // -> delete password cookie(s)
-        if ($GLOBALS['cfg']['LoginCookieDeleteAll']) {
-            foreach ($GLOBALS['cfg']['Servers'] as $key => $val) {
-                $GLOBALS['PMA_Config']->removeCookie('pmaAuth-' . $key);
-                if (isset($_COOKIE['pmaAuth-' . $key])) {
-                    unset($_COOKIE['pmaAuth-' . $key]);
-                }
-            }
-        } else {
-            $GLOBALS['PMA_Config']->removeCookie(
-                'pmaAuth-' . $GLOBALS['server']
-            );
-            if (isset($_COOKIE['pmaAuth-' . $GLOBALS['server']])) {
-                unset($_COOKIE['pmaAuth-' . $GLOBALS['server']]);
-            }
-        }
-        parent::logOut();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

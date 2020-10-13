@@ -31,7 +31,11 @@ class Hooks
      */
     public function __construct(Repository $repository)
     {
-        $this->repository = $repository;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,14 +79,11 @@ class Hooks
      */
     public function setSymlink($name, $file)
     {
-        if ($this->has($name)) {
-            throw new LogicException(sprintf('A hook "%s" is already defined', $name));
-        }
-
-        $path = $this->getPath($name);
-        if (false === symlink($file, $path)) {
-            throw new RuntimeException(sprintf('Unable to create hook "%s"', $name, $path));
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

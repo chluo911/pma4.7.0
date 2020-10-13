@@ -34,7 +34,11 @@ class PHPUnit_Framework_MockObject_InvocationMocker implements PHPUnit_Framework
      */
     public function addMatcher(PHPUnit_Framework_MockObject_Matcher_Invocation $matcher)
     {
-        $this->matchers[] = $matcher;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,13 +46,11 @@ class PHPUnit_Framework_MockObject_InvocationMocker implements PHPUnit_Framework
      */
     public function hasMatchers()
     {
-        foreach ($this->matchers as $matcher) {
-            if ($matcher->hasMatchers()) {
-                return true;
-            }
-        }
-
-        return false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -71,13 +73,11 @@ class PHPUnit_Framework_MockObject_InvocationMocker implements PHPUnit_Framework
      */
     public function registerId($id, PHPUnit_Framework_MockObject_Builder_Match $builder)
     {
-        if (isset($this->builderMap[$id])) {
-            throw new PHPUnit_Framework_Exception(
-                'Match builder with id <' . $id . '> is already registered.'
-            );
-        }
-
-        $this->builderMap[$id] = $builder;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -86,10 +86,11 @@ class PHPUnit_Framework_MockObject_InvocationMocker implements PHPUnit_Framework
      */
     public function expects(PHPUnit_Framework_MockObject_Matcher_Invocation $matcher)
     {
-        return new PHPUnit_Framework_MockObject_Builder_InvocationMocker(
-            $this,
-            $matcher
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

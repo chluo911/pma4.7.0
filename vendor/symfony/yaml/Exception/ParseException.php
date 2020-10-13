@@ -51,7 +51,11 @@ class ParseException extends RuntimeException
      */
     public function getSnippet()
     {
-        return $this->snippet;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -75,7 +79,11 @@ class ParseException extends RuntimeException
      */
     public function getParsedFile()
     {
-        return $this->parsedFile;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,9 +93,11 @@ class ParseException extends RuntimeException
      */
     public function setParsedFile($parsedFile)
     {
-        $this->parsedFile = $parsedFile;
-
-        $this->updateRepr();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -97,7 +107,11 @@ class ParseException extends RuntimeException
      */
     public function getParsedLine()
     {
-        return $this->parsedLine;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

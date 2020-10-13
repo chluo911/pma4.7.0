@@ -18,19 +18,11 @@
  */
 function handleSignal($signal)
 {
-    switch ($signal) {
-        case SIGTERM:
-            $name = 'SIGTERM';
-            break;
-        case SIGINT:
-            $name = 'SIGINT';
-            break;
-        default:
-            $name = $signal.' (unknown)';
-            break;
-    }
-
-    echo "signal $name\n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 pcntl_signal(SIGTERM, 'handleSignal');

@@ -7,18 +7,30 @@ use Prophecy\Prophecy\ObjectProphecy;
 
 class ObjectProphecyExceptionSpec extends ObjectBehavior
 {
-    function let(ObjectProphecy $objectProphecy)
+    public function let(ObjectProphecy $objectProphecy)
     {
-        $this->beConstructedWith('message', $objectProphecy);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_should_be_a_prophecy_exception()
+    public function it_should_be_a_prophecy_exception()
     {
-        $this->shouldBeAnInstanceOf('Prophecy\Exception\Prophecy\ProphecyException');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
-    function it_holds_double_reference($objectProphecy)
+    public function it_holds_double_reference($objectProphecy)
     {
-        $this->getObjectProphecy()->shouldReturn($objectProphecy);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -60,7 +60,7 @@ class PHPUnit_Extensions_SeleniumBrowserSuite extends PHPUnit_Framework_TestSuit
      * Overriding the default: Selenium suites are always built from a TestCase class.
      * @var boolean
      */
-    protected $testCase = TRUE;
+    protected $testCase = true;
 
     public function addTestMethod(ReflectionClass $class, ReflectionMethod $method)
     {
@@ -69,31 +69,28 @@ class PHPUnit_Extensions_SeleniumBrowserSuite extends PHPUnit_Framework_TestSuit
 
     public static function fromClassAndBrowser($className, array $browser)
     {
-        $browserSuite = new self();
-        if (isset($browser['browserName'])) {
-            $name = $browser['browserName'];
-        } else if (isset($browser['name'])) {
-            $name = $browser['name'];
-        } else {
-            $name = $browser['browser'];
-        }
-        $browserSuite->setName($className . ': ' . $name);
-        return $browserSuite;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setupSpecificBrowser(array $browser)
     {
-        $this->browserOnAllTests($this, $browser);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function browserOnAllTests(PHPUnit_Framework_TestSuite $suite, array $browser)
     {
-        foreach ($suite->tests() as $test) {
-            if ($test instanceof PHPUnit_Framework_TestSuite) {
-                $this->browserOnAllTests($test, $browser);
-            } else {
-                $test->setupSpecificBrowser($browser);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

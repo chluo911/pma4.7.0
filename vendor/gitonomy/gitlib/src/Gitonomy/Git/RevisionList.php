@@ -50,17 +50,29 @@ class RevisionList implements \IteratorAggregate, \Countable
 
     public function getAll()
     {
-        return $this->revisions;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->revisions);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function count()
     {
-        return count($this->revisions);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getAsTextArray()

@@ -52,5 +52,4 @@ class Squiz_Sniffs_PHP_DiscouragedFunctionsSniff extends Generic_Sniffs_PHP_Forb
      * @var bool
      */
     public $error = false;
-
 }//end class

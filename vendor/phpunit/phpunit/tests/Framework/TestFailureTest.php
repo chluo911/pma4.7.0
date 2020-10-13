@@ -18,10 +18,10 @@ class Framework_TestFailureTest extends PHPUnit_Framework_TestCase
      */
     public function testToString()
     {
-        $test      = new self(__FUNCTION__);
-        $exception = new PHPUnit_Framework_Exception('message');
-        $failure   = new PHPUnit_Framework_TestFailure($test, $exception);
-
-        $this->assertEquals(__METHOD__ . ': message', $failure->toString());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

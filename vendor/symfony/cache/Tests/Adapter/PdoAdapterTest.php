@@ -22,23 +22,28 @@ class PdoAdapterTest extends AdapterTestCase
 
     public static function setupBeforeClass()
     {
-        if (!extension_loaded('pdo_sqlite')) {
-            self::markTestSkipped('Extension pdo_sqlite required.');
-        }
-
-        self::$dbFile = tempnam(sys_get_temp_dir(), 'sf_sqlite_cache');
-
-        $pool = new PdoAdapter('sqlite:'.self::$dbFile);
-        $pool->createTable();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function tearDownAfterClass()
     {
-        @unlink(self::$dbFile);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function createCachePool($defaultLifetime = 0)
     {
-        return new PdoAdapter('sqlite:'.self::$dbFile, 'ns', $defaultLifetime);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

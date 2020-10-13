@@ -11,21 +11,37 @@ class MimetypesTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testGetsFromExtension()
     {
-        $this->assertEquals('text/x-php', Mimetypes::getInstance()->fromExtension('php'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetsFromFilename()
     {
-        $this->assertEquals('text/x-php', Mimetypes::getInstance()->fromFilename(__FILE__));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetsFromCaseInsensitiveFilename()
     {
-        $this->assertEquals('text/x-php', Mimetypes::getInstance()->fromFilename(strtoupper(__FILE__)));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testReturnsNullWhenNoMatchFound()
     {
-        $this->assertNull(Mimetypes::getInstance()->fromExtension('foobar'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

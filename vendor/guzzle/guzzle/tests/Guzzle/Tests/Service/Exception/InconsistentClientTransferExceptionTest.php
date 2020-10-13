@@ -8,8 +8,10 @@ class InconsistentClientTransferExceptionTest extends \Guzzle\Tests\GuzzleTestCa
 {
     public function testStoresCommands()
     {
-        $items = array('foo', 'bar');
-        $e = new InconsistentClientTransferException($items);
-        $this->assertEquals($items, $e->getCommands());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

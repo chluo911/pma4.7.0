@@ -31,21 +31,21 @@ class GISFactory
     public static function factory($type)
     {
         switch (strtoupper($type)) {
-        case 'MULTIPOLYGON' :
+        case 'MULTIPOLYGON':
             return GISMultipolygon::singleton();
-        case 'POLYGON' :
+        case 'POLYGON':
             return GISPolygon::singleton();
-        case 'MULTIPOINT' :
+        case 'MULTIPOINT':
             return GISMultipoint::singleton();
-        case 'POINT' :
+        case 'POINT':
             return GISPoint::singleton();
-        case 'MULTILINESTRING' :
+        case 'MULTILINESTRING':
             return GISMultilinestring::singleton();
-        case 'LINESTRING' :
+        case 'LINESTRING':
             return GISLinestring::singleton();
-        case 'GEOMETRYCOLLECTION' :
+        case 'GEOMETRYCOLLECTION':
             return GISGeometrycollection::singleton();
-        default :
+        default:
             return false;
         }
     }

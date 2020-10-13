@@ -27,63 +27,56 @@ class InputDefinitionTest extends TestCase
 
     public static function setUpBeforeClass()
     {
-        self::$fixtures = __DIR__.'/../Fixtures/';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructorArguments()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $this->assertEquals(array(), $definition->getArguments(), '__construct() creates a new InputDefinition object');
-
-        $definition = new InputDefinition(array($this->foo, $this->bar));
-        $this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getArguments(), '__construct() takes an array of InputArgument objects as its first argument');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testConstructorOptions()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition();
-        $this->assertEquals(array(), $definition->getOptions(), '__construct() creates a new InputDefinition object');
-
-        $definition = new InputDefinition(array($this->foo, $this->bar));
-        $this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getOptions(), '__construct() takes an array of InputOption objects as its first argument');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetArguments()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->setArguments(array($this->foo));
-        $this->assertEquals(array('foo' => $this->foo), $definition->getArguments(), '->setArguments() sets the array of InputArgument objects');
-        $definition->setArguments(array($this->bar));
-
-        $this->assertEquals(array('bar' => $this->bar), $definition->getArguments(), '->setArguments() clears all InputArgument objects');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddArguments()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArguments(array($this->foo));
-        $this->assertEquals(array('foo' => $this->foo), $definition->getArguments(), '->addArguments() adds an array of InputArgument objects');
-        $definition->addArguments(array($this->bar));
-        $this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getArguments(), '->addArguments() does not clear existing InputArgument objects');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddArgument()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArgument($this->foo);
-        $this->assertEquals(array('foo' => $this->foo), $definition->getArguments(), '->addArgument() adds a InputArgument object');
-        $definition->addArgument($this->bar);
-        $this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getArguments(), '->addArgument() adds a InputArgument object');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -92,11 +85,11 @@ class InputDefinitionTest extends TestCase
      */
     public function testArgumentsMustHaveDifferentNames()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArgument($this->foo);
-        $definition->addArgument($this->foo1);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -105,11 +98,11 @@ class InputDefinitionTest extends TestCase
      */
     public function testArrayArgumentHasToBeLast()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArgument(new InputArgument('fooarray', InputArgument::IS_ARRAY));
-        $definition->addArgument(new InputArgument('anotherbar'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -118,20 +111,20 @@ class InputDefinitionTest extends TestCase
      */
     public function testRequiredArgumentCannotFollowAnOptionalOne()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArgument($this->foo);
-        $definition->addArgument($this->foo2);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetArgument()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArguments(array($this->foo));
-        $this->assertEquals($this->foo, $definition->getArgument('foo'), '->getArgument() returns a InputArgument by its name');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -140,70 +133,56 @@ class InputDefinitionTest extends TestCase
      */
     public function testGetInvalidArgument()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArguments(array($this->foo));
-        $definition->getArgument('bar');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasArgument()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArguments(array($this->foo));
-
-        $this->assertTrue($definition->hasArgument('foo'), '->hasArgument() returns true if a InputArgument exists for the given name');
-        $this->assertFalse($definition->hasArgument('bar'), '->hasArgument() returns false if a InputArgument exists for the given name');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetArgumentRequiredCount()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArgument($this->foo2);
-        $this->assertEquals(1, $definition->getArgumentRequiredCount(), '->getArgumentRequiredCount() returns the number of required arguments');
-        $definition->addArgument($this->foo);
-        $this->assertEquals(1, $definition->getArgumentRequiredCount(), '->getArgumentRequiredCount() returns the number of required arguments');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetArgumentCount()
     {
-        $this->initializeArguments();
-
-        $definition = new InputDefinition();
-        $definition->addArgument($this->foo2);
-        $this->assertEquals(1, $definition->getArgumentCount(), '->getArgumentCount() returns the number of arguments');
-        $definition->addArgument($this->foo);
-        $this->assertEquals(2, $definition->getArgumentCount(), '->getArgumentCount() returns the number of arguments');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetArgumentDefaults()
     {
-        $definition = new InputDefinition(array(
-            new InputArgument('foo1', InputArgument::OPTIONAL),
-            new InputArgument('foo2', InputArgument::OPTIONAL, '', 'default'),
-            new InputArgument('foo3', InputArgument::OPTIONAL | InputArgument::IS_ARRAY),
-        //  new InputArgument('foo4', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, '', array(1, 2)),
-        ));
-        $this->assertEquals(array('foo1' => null, 'foo2' => 'default', 'foo3' => array()), $definition->getArgumentDefaults(), '->getArgumentDefaults() return the default values for each argument');
-
-        $definition = new InputDefinition(array(
-            new InputArgument('foo4', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, '', array(1, 2)),
-        ));
-        $this->assertEquals(array('foo4' => array(1, 2)), $definition->getArgumentDefaults(), '->getArgumentDefaults() return the default values for each argument');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSetOptions()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $this->assertEquals(array('foo' => $this->foo), $definition->getOptions(), '->setOptions() sets the array of InputOption objects');
-        $definition->setOptions(array($this->bar));
-        $this->assertEquals(array('bar' => $this->bar), $definition->getOptions(), '->setOptions() clears all InputOption objects');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -212,32 +191,29 @@ class InputDefinitionTest extends TestCase
      */
     public function testSetOptionsClearsOptions()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $definition->setOptions(array($this->bar));
-        $definition->getOptionForShortcut('f');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddOptions()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $this->assertEquals(array('foo' => $this->foo), $definition->getOptions(), '->addOptions() adds an array of InputOption objects');
-        $definition->addOptions(array($this->bar));
-        $this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getOptions(), '->addOptions() does not clear existing InputOption objects');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddOption()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition();
-        $definition->addOption($this->foo);
-        $this->assertEquals(array('foo' => $this->foo), $definition->getOptions(), '->addOption() adds a InputOption object');
-        $definition->addOption($this->bar);
-        $this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getOptions(), '->addOption() adds a InputOption object');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -246,11 +222,11 @@ class InputDefinitionTest extends TestCase
      */
     public function testAddDuplicateOption()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition();
-        $definition->addOption($this->foo);
-        $definition->addOption($this->foo2);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -259,19 +235,20 @@ class InputDefinitionTest extends TestCase
      */
     public function testAddDuplicateShortcutOption()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition();
-        $definition->addOption($this->foo);
-        $definition->addOption($this->foo1);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetOption()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $this->assertEquals($this->foo, $definition->getOption('foo'), '->getOption() returns a InputOption by its name');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -280,45 +257,47 @@ class InputDefinitionTest extends TestCase
      */
     public function testGetInvalidOption()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $definition->getOption('bar');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasOption()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $this->assertTrue($definition->hasOption('foo'), '->hasOption() returns true if a InputOption exists for the given name');
-        $this->assertFalse($definition->hasOption('bar'), '->hasOption() returns false if a InputOption exists for the given name');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasShortcut()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $this->assertTrue($definition->hasShortcut('f'), '->hasShortcut() returns true if a InputOption exists for the given shortcut');
-        $this->assertFalse($definition->hasShortcut('b'), '->hasShortcut() returns false if a InputOption exists for the given shortcut');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetOptionForShortcut()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $this->assertEquals($this->foo, $definition->getOptionForShortcut('f'), '->getOptionForShortcut() returns a InputOption by its shortcut');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetOptionForMultiShortcut()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->multi));
-        $this->assertEquals($this->multi, $definition->getOptionForShortcut('m'), '->getOptionForShortcut() returns a InputOption by its shortcut');
-        $this->assertEquals($this->multi, $definition->getOptionForShortcut('mmm'), '->getOptionForShortcut() returns a InputOption by its shortcut');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -327,33 +306,20 @@ class InputDefinitionTest extends TestCase
      */
     public function testGetOptionForInvalidShortcut()
     {
-        $this->initializeOptions();
-
-        $definition = new InputDefinition(array($this->foo));
-        $definition->getOptionForShortcut('l');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetOptionDefaults()
     {
-        $definition = new InputDefinition(array(
-            new InputOption('foo1', null, InputOption::VALUE_NONE),
-            new InputOption('foo2', null, InputOption::VALUE_REQUIRED),
-            new InputOption('foo3', null, InputOption::VALUE_REQUIRED, '', 'default'),
-            new InputOption('foo4', null, InputOption::VALUE_OPTIONAL),
-            new InputOption('foo5', null, InputOption::VALUE_OPTIONAL, '', 'default'),
-            new InputOption('foo6', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY),
-            new InputOption('foo7', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, '', array(1, 2)),
-        ));
-        $defaults = array(
-            'foo1' => false,
-            'foo2' => null,
-            'foo3' => 'default',
-            'foo4' => null,
-            'foo5' => 'default',
-            'foo6' => array(),
-            'foo7' => array(1, 2),
-        );
-        $this->assertSame($defaults, $definition->getOptionDefaults(), '->getOptionDefaults() returns the default values for all options');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -361,46 +327,46 @@ class InputDefinitionTest extends TestCase
      */
     public function testGetSynopsis(InputDefinition $definition, $expectedSynopsis, $message = null)
     {
-        $this->assertEquals($expectedSynopsis, $definition->getSynopsis(), $message ? '->getSynopsis() '.$message : '');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getGetSynopsisData()
     {
-        return array(
-            array(new InputDefinition(array(new InputOption('foo'))), '[--foo]', 'puts optional options in square brackets'),
-            array(new InputDefinition(array(new InputOption('foo', 'f'))), '[-f|--foo]', 'separates shortcut with a pipe'),
-            array(new InputDefinition(array(new InputOption('foo', 'f', InputOption::VALUE_REQUIRED))), '[-f|--foo FOO]', 'uses shortcut as value placeholder'),
-            array(new InputDefinition(array(new InputOption('foo', 'f', InputOption::VALUE_OPTIONAL))), '[-f|--foo [FOO]]', 'puts optional values in square brackets'),
-
-            array(new InputDefinition(array(new InputArgument('foo', InputArgument::REQUIRED))), '<foo>', 'puts arguments in angle brackets'),
-            array(new InputDefinition(array(new InputArgument('foo'))), '[<foo>]', 'puts optional arguments in square brackets'),
-            array(new InputDefinition(array(new InputArgument('foo', InputArgument::IS_ARRAY))), '[<foo>]...', 'uses an ellipsis for array arguments'),
-            array(new InputDefinition(array(new InputArgument('foo', InputArgument::REQUIRED | InputArgument::IS_ARRAY))), '<foo> (<foo>)...', 'uses parenthesis and ellipsis for required array arguments'),
-
-            array(new InputDefinition(array(new InputOption('foo'), new InputArgument('foo', InputArgument::REQUIRED))), '[--foo] [--] <foo>', 'puts [--] between options and arguments'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetShortSynopsis()
     {
-        $definition = new InputDefinition(array(new InputOption('foo'), new InputOption('bar'), new InputArgument('cat')));
-        $this->assertEquals('[options] [--] [<cat>]', $definition->getSynopsis(true), '->getSynopsis(true) groups options in [options]');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function initializeArguments()
     {
-        $this->foo = new InputArgument('foo');
-        $this->bar = new InputArgument('bar');
-        $this->foo1 = new InputArgument('foo');
-        $this->foo2 = new InputArgument('foo2', InputArgument::REQUIRED);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function initializeOptions()
     {
-        $this->foo = new InputOption('foo', 'f');
-        $this->bar = new InputOption('bar', 'b');
-        $this->foo1 = new InputOption('fooBis', 'f');
-        $this->foo2 = new InputOption('foo', 'p');
-        $this->multi = new InputOption('multi', 'm|mm|mmm');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

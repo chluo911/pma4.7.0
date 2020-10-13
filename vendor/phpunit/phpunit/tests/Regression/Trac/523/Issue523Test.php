@@ -3,7 +3,11 @@ class Issue523Test extends PHPUnit_Framework_TestCase
 {
     public function testAttributeEquals()
     {
-        $this->assertAttributeEquals('foo', 'field', new Issue523());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 };
 

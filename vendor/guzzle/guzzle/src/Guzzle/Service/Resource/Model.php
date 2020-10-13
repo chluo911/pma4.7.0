@@ -30,7 +30,11 @@ class Model extends Collection
      */
     public function getStructure()
     {
-        return $this->structure ?: new Parameter();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

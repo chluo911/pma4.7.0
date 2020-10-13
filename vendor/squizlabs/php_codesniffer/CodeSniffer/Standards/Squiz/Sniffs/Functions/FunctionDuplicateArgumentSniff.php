@@ -38,8 +38,11 @@ class Squiz_Sniffs_Functions_FunctionDuplicateArgumentSniff implements PHP_CodeS
      */
     public function register()
     {
-        return array(T_FUNCTION);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -54,26 +57,10 @@ class Squiz_Sniffs_Functions_FunctionDuplicateArgumentSniff implements PHP_CodeS
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $openBracket  = $tokens[$stackPtr]['parenthesis_opener'];
-        $closeBracket = $tokens[$stackPtr]['parenthesis_closer'];
-
-        $foundVariables = array();
-        for ($i = ($openBracket + 1); $i < $closeBracket; $i++) {
-            if ($tokens[$i]['code'] === T_VARIABLE) {
-                $variable = $tokens[$i]['content'];
-                if (in_array($variable, $foundVariables) === true) {
-                    $error = 'Variable "%s" appears more than once in function declaration';
-                    $data  = array($variable);
-                    $phpcsFile->addError($error, $i, 'Found', $data);
-                } else {
-                    $foundVariables[] = $variable;
-                }
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

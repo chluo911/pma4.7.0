@@ -45,10 +45,11 @@ final class Deprecated extends BaseTag implements Factory\StaticMethod
 
     public function __construct($version = null, Description $description = null)
     {
-        Assert::nullOrStringNotEmpty($version);
-
-        $this->version = $version;
-        $this->description = $description;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -56,23 +57,11 @@ final class Deprecated extends BaseTag implements Factory\StaticMethod
      */
     public static function create($body, DescriptionFactory $descriptionFactory = null, TypeContext $context = null)
     {
-        Assert::nullOrString($body);
-        if (empty($body)) {
-            return new static();
-        }
-
-        $matches = [];
-        if (!preg_match('/^(' . self::REGEX_VECTOR . ')\s*(.+)?$/sux', $body, $matches)) {
-            return new static(
-                null,
-                null !== $descriptionFactory ? $descriptionFactory->create($body, $context) : null
-            );
-        }
-
-        return new static(
-            $matches[1],
-            $descriptionFactory->create(isset($matches[2]) ? $matches[2] : '', $context)
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

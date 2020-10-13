@@ -55,75 +55,11 @@ class CallCenter
      */
     public function makeCall(ObjectProphecy $prophecy, $methodName, array $arguments)
     {
-        // For efficiency exclude 'args' from the generated backtrace
-        if (PHP_VERSION_ID >= 50400) {
-            // Limit backtrace to last 3 calls as we don't use the rest
-            // Limit argument was introduced in PHP 5.4.0
-            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
-        } elseif (defined('DEBUG_BACKTRACE_IGNORE_ARGS')) {
-            // DEBUG_BACKTRACE_IGNORE_ARGS was introduced in PHP 5.3.6
-            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
-        } else {
-            $backtrace = debug_backtrace();
-        }
-
-        $file = $line = null;
-        if (isset($backtrace[2]) && isset($backtrace[2]['file'])) {
-            $file = $backtrace[2]['file'];
-            $line = $backtrace[2]['line'];
-        }
-
-        // If no method prophecies defined, then it's a dummy, so we'll just return null
-        if ('__destruct' === $methodName || 0 == count($prophecy->getMethodProphecies())) {
-            $this->recordedCalls[] = new Call($methodName, $arguments, null, null, $file, $line);
-
-            return null;
-        }
-
-        // There are method prophecies, so it's a fake/stub. Searching prophecy for this call
-        $matches = array();
-        foreach ($prophecy->getMethodProphecies($methodName) as $methodProphecy) {
-            if (0 < $score = $methodProphecy->getArgumentsWildcard()->scoreArguments($arguments)) {
-                $matches[] = array($score, $methodProphecy);
-            }
-        }
-
-        // If fake/stub doesn't have method prophecy for this call - throw exception
-        if (!count($matches)) {
-            throw $this->createUnexpectedCallException($prophecy, $methodName, $arguments);
-        }
-
-        // Sort matches by their score value
-        @usort($matches, function ($match1, $match2) { return $match2[0] - $match1[0]; });
-
-        // If Highest rated method prophecy has a promise - execute it or return null instead
-        $methodProphecy = $matches[0][1];
-        $returnValue = null;
-        $exception   = null;
-        if ($promise = $methodProphecy->getPromise()) {
-            try {
-                $returnValue = $promise->execute($arguments, $prophecy, $methodProphecy);
-            } catch (\Exception $e) {
-                $exception = $e;
-            }
-        }
-
-        if ($methodProphecy->hasReturnVoid() && $returnValue !== null) {
-            throw new MethodProphecyException(
-                "The method \"$methodName\" has a void return type, but the promise returned a value",
-                $methodProphecy
-            );
-        }
-
-        $this->recordedCalls[] = new Call(
-            $methodName, $arguments, $returnValue, $exception, $file, $line
-        );
-
-        if (null !== $exception) {
-            throw $exception;
-        }
-
-        return $returnValue;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -145,27 +81,16 @@ class CallCenter
         );
     }
 
-    private function createUnexpectedCallException(ObjectProphecy $prophecy, $methodName,
-                                                   array $arguments)
+    private function createUnexpectedCallException(
+        ObjectProphecy $prophecy,
+        $methodName,
+        array $arguments
+    )
     {
-        $classname = get_class($prophecy->reveal());
-        $argstring = implode(', ', array_map(array($this->util, 'stringify'), $arguments));
-        $expected  = implode("\n", array_map(function (MethodProphecy $methodProphecy) {
-            return sprintf('  - %s(%s)',
-                $methodProphecy->getMethodName(),
-                $methodProphecy->getArgumentsWildcard()
-            );
-        }, call_user_func_array('array_merge', $prophecy->getMethodProphecies())));
-
-        return new UnexpectedCallException(
-            sprintf(
-                "Method call:\n".
-                "  - %s(%s)\n".
-                "on %s was not expected, expected calls were:\n%s",
-
-                $methodName, $argstring, $classname, $expected
-            ),
-            $prophecy, $methodName, $arguments
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

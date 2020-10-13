@@ -24,12 +24,10 @@ class ReconstitutingADocBlockTest extends \PHPUnit_Framework_TestCase
 {
     public function testReconstituteADocBlock()
     {
-        /**
-         * @var string $docComment
-         * @var string $reconstitutedDocComment
-         */
-        include(__DIR__ . '/../../examples/03-reconstituting-a-docblock.php');
-
-        $this->assertSame($docComment, $reconstitutedDocComment);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

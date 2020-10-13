@@ -55,8 +55,11 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
      */
     public function register()
     {
-        return array(T_FOR);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -71,41 +74,11 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $token  = $tokens[$stackPtr];
-
-        // Skip for-loop without body.
-        if (isset($token['scope_opener']) === false) {
-            return;
-        }
-
-        // Find incrementors for outer loop.
-        $outer = $this->findIncrementers($tokens, $token);
-
-        // Skip if empty.
-        if (count($outer) === 0) {
-            return;
-        }
-
-        // Find nested for loops.
-        $start = ++$token['scope_opener'];
-        $end   = --$token['scope_closer'];
-
-        for (; $start <= $end; ++$start) {
-            if ($tokens[$start]['code'] !== T_FOR) {
-                continue;
-            }
-
-            $inner = $this->findIncrementers($tokens, $tokens[$start]);
-            $diff  = array_intersect($outer, $inner);
-
-            if (count($diff) !== 0) {
-                $error = 'Loop incrementor (%s) jumbling with inner loop';
-                $data  = array(join(', ', $diff));
-                $phpcsFile->addWarning($error, $stackPtr, 'Found', $data);
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
 
 
@@ -119,28 +92,10 @@ class Generic_Sniffs_CodeAnalysis_JumbledIncrementerSniff implements PHP_CodeSni
      */
     protected function findIncrementers(array $tokens, array $token)
     {
-        // Skip invalid statement.
-        if (isset($token['parenthesis_opener']) === false) {
-            return array();
-        }
-
-        $start = ++$token['parenthesis_opener'];
-        $end   = --$token['parenthesis_closer'];
-
-        $incrementers = array();
-        $semicolons   = 0;
-        for ($next = $start; $next <= $end; ++$next) {
-            $code = $tokens[$next]['code'];
-            if ($code === T_SEMICOLON) {
-                ++$semicolons;
-            } else if ($semicolons === 2 && $code === T_VARIABLE) {
-                $incrementers[] = $tokens[$next]['content'];
-            }
-        }
-
-        return $incrementers;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end findIncrementers()
-
-
 }//end class

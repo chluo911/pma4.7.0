@@ -65,6 +65,10 @@ abstract class PHPUnit_Framework_Constraint_Composite extends PHPUnit_Framework_
      */
     public function count()
     {
-        return count($this->innerConstraint);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

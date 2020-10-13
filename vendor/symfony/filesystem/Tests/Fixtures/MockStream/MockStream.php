@@ -30,7 +30,11 @@ class MockStream
      */
     public function stream_open($path, $mode, $options, &$opened_path)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -41,6 +45,10 @@ class MockStream
      */
     public function url_stat($path, $flags)
     {
-        return array();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

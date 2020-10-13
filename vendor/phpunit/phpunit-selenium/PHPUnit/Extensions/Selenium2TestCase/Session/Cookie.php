@@ -58,8 +58,10 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie
     private $driver;
     private $url;
 
-    public function __construct(PHPUnit_Extensions_Selenium2TestCase_Driver $driver,
-                                PHPUnit_Extensions_Selenium2TestCase_URL $url)
+    public function __construct(
+        PHPUnit_Extensions_Selenium2TestCase_Driver $driver,
+        PHPUnit_Extensions_Selenium2TestCase_URL $url
+    )
     {
         $this->driver = $driver;
         $this->url = $url;
@@ -115,10 +117,10 @@ class PHPUnit_Extensions_Selenium2TestCase_Session_Cookie
      */
     public function postCookie(array $data)
     {
-        $this->driver->curl('POST',
-                            $this->url,
-                            array(
-                                'cookie' => $data
-                            ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

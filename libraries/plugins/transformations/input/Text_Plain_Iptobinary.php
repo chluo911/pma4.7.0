@@ -25,9 +25,11 @@ class Text_Plain_Iptobinary extends IOTransformationsPlugin
      */
     public static function getInfo()
     {
-        return __(
-            'Converts an Internet network address in (IPv4/IPv6) format to binary'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -123,7 +125,11 @@ class Text_Plain_Iptobinary extends IOTransformationsPlugin
      */
     public static function getMIMEType()
     {
-        return "Text";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

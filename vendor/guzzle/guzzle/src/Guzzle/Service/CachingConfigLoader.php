@@ -21,26 +21,19 @@ class CachingConfigLoader implements ConfigLoaderInterface
      */
     public function __construct(ConfigLoaderInterface $loader, CacheAdapterInterface $cache)
     {
-        $this->loader = $loader;
-        $this->cache = $cache;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function load($config, array $options = array())
     {
-        if (!is_string($config)) {
-            $key = false;
-        } else {
-            $key = 'loader_' . crc32($config);
-            if ($result = $this->cache->fetch($key)) {
-                return $result;
-            }
-        }
-
-        $result = $this->loader->load($config, $options);
-        if ($key) {
-            $this->cache->save($key, $result);
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

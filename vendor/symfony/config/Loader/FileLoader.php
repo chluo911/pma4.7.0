@@ -41,7 +41,11 @@ abstract class FileLoader extends Loader
      */
     public function __construct(FileLocatorInterface $locator)
     {
-        $this->locator = $locator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -51,7 +55,11 @@ abstract class FileLoader extends Loader
      */
     public function setCurrentDir($dir)
     {
-        $this->currentDir = $dir;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -61,7 +69,11 @@ abstract class FileLoader extends Loader
      */
     public function getLocator()
     {
-        return $this->locator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -79,44 +91,10 @@ abstract class FileLoader extends Loader
      */
     public function import($resource, $type = null, $ignoreErrors = false, $sourceResource = null)
     {
-        try {
-            $loader = $this->resolve($resource, $type);
-
-            if ($loader instanceof self && null !== $this->currentDir) {
-                $resource = $loader->getLocator()->locate($resource, $this->currentDir, false);
-            }
-
-            $resources = is_array($resource) ? $resource : array($resource);
-            for ($i = 0; $i < $resourcesCount = count($resources); ++$i) {
-                if (isset(self::$loading[$resources[$i]])) {
-                    if ($i == $resourcesCount - 1) {
-                        throw new FileLoaderImportCircularReferenceException(array_keys(self::$loading));
-                    }
-                } else {
-                    $resource = $resources[$i];
-                    break;
-                }
-            }
-            self::$loading[$resource] = true;
-
-            try {
-                $ret = $loader->load($resource, $type);
-            } finally {
-                unset(self::$loading[$resource]);
-            }
-
-            return $ret;
-        } catch (FileLoaderImportCircularReferenceException $e) {
-            throw $e;
-        } catch (\Exception $e) {
-            if (!$ignoreErrors) {
-                // prevent embedded imports from nesting multiple exceptions
-                if ($e instanceof FileLoaderLoadException) {
-                    throw $e;
-                }
-
-                throw new FileLoaderLoadException($resource, $sourceResource, null, $e);
-            }
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

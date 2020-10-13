@@ -29,10 +29,11 @@ class ConfirmationQuestion extends Question
      */
     public function __construct($question, $default = true, $trueAnswerRegex = '/^y/i')
     {
-        parent::__construct($question, (bool) $default);
-
-        $this->trueAnswerRegex = $trueAnswerRegex;
-        $this->setNormalizer($this->getDefaultNormalizer());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -42,20 +43,10 @@ class ConfirmationQuestion extends Question
      */
     private function getDefaultNormalizer()
     {
-        $default = $this->getDefault();
-        $regex = $this->trueAnswerRegex;
-
-        return function ($answer) use ($default, $regex) {
-            if (is_bool($answer)) {
-                return $answer;
-            }
-
-            $answerIsTrue = (bool) preg_match($regex, $answer);
-            if (false === $default) {
-                return $answer && $answerIsTrue;
-            }
-
-            return !$answer || $answerIsTrue;
-        };
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

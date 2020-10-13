@@ -21,30 +21,19 @@ class ProcessUtilsTest extends TestCase
      */
     public function testEscapeArgument($result, $argument)
     {
-        $this->assertSame($result, ProcessUtils::escapeArgument($argument));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function dataArguments()
     {
-        if ('\\' === DIRECTORY_SEPARATOR) {
-            return array(
-                array('"\"php\" \"-v\""', '"php" "-v"'),
-                array('"foo bar"', 'foo bar'),
-                array('^%"path"^%', '%path%'),
-                array('"<|>\\" \\"\'f"', '<|>" "\'f'),
-                array('""', ''),
-                array('"with\trailingbs\\\\"', 'with\trailingbs\\'),
-            );
-        }
-
-        return array(
-            array("'\"php\" \"-v\"'", '"php" "-v"'),
-            array("'foo bar'", 'foo bar'),
-            array("'%path%'", '%path%'),
-            array("'<|>\" \"'\\''f'", '<|>" "\'f'),
-            array("''", ''),
-            array("'with\\trailingbs\\'", 'with\trailingbs\\'),
-            array("'withNonAsciiAccentLikeéÉèÈàÀöä'", 'withNonAsciiAccentLikeéÉèÈàÀöä'),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

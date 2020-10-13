@@ -63,26 +63,11 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
         $showSources=false,
         $width=80
     ) {
-        $metrics = $phpcsFile->getMetrics();
-        foreach ($metrics as $metric => $data) {
-            if (isset($this->_metricCache[$metric]) === false) {
-                $this->_metricCache[$metric] = array();
-            }
-
-            foreach ($data['values'] as $value => $locations) {
-                $locations = array_unique($locations);
-                $count     = count($locations);
-
-                if (isset($this->_metricCache[$metric][$value]) === false) {
-                    $this->_metricCache[$metric][$value] = $count;
-                } else {
-                    $this->_metricCache[$metric][$value] += $count;
-                }
-            }
-        }//end foreach
-
-        return true;
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generateFileReport()
 
 
@@ -111,52 +96,10 @@ class PHP_CodeSniffer_Reports_Info implements PHP_CodeSniffer_Report
         $width=80,
         $toScreen=true
     ) {
-        if (empty($this->_metricCache) === true) {
-            // Nothing to show.
-            return;
-        }
-
-        ksort($this->_metricCache);
-
-        echo PHP_EOL."\033[1m".'PHP CODE SNIFFER INFORMATION REPORT'."\033[0m".PHP_EOL;
-        echo str_repeat('-', 70).PHP_EOL;
-
-        foreach ($this->_metricCache as $metric => $values) {
-            $winner      = '';
-            $winnerCount = 0;
-            $totalCount  = 0;
-            foreach ($values as $value => $count) {
-                $totalCount += $count;
-                if ($count > $winnerCount) {
-                    $winner      = $value;
-                    $winnerCount = $count;
-                }
-            }
-
-            $winPercent = round(($winnerCount / $totalCount * 100), 2);
-            echo "$metric: \033[4m$winner\033[0m [$winnerCount/$totalCount, $winPercent%]".PHP_EOL;
-
-            asort($values);
-            $values = array_reverse($values, true);
-            foreach ($values as $value => $count) {
-                if ($value === $winner) {
-                    continue;
-                }
-
-                $percent = round(($count / $totalCount * 100), 2);
-                echo "\t$value => $count ($percent%)".PHP_EOL;
-            }
-
-            echo PHP_EOL;
-        }//end foreach
-
-        echo str_repeat('-', 70).PHP_EOL;
-
-        if ($toScreen === true && PHP_CODESNIFFER_INTERACTIVE === false) {
-            PHP_CodeSniffer_Reporting::printRunTime();
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end generate()
-
-
 }//end class

@@ -40,7 +40,8 @@ function PMA_getTablesInfo()
             = $GLOBALS['db'] . "." . $one_table['TABLE_NAME'];
         $GLOBALS['PMD']['OWNER'][$i] = $GLOBALS['db'];
         $GLOBALS['PMD']['TABLE_NAME_SMALL'][$i] = htmlspecialchars(
-            $one_table['TABLE_NAME'], ENT_QUOTES
+            $one_table['TABLE_NAME'],
+            ENT_QUOTES
         );
 
         $GLOBALS['PMD_URL']['TABLE_NAME'][$i]
@@ -50,13 +51,16 @@ function PMA_getTablesInfo()
             = $one_table['TABLE_NAME'];
 
         $GLOBALS['PMD_OUT']['TABLE_NAME'][$i] = htmlspecialchars(
-            $GLOBALS['db'] . "." . $one_table['TABLE_NAME'], ENT_QUOTES
+            $GLOBALS['db'] . "." . $one_table['TABLE_NAME'],
+            ENT_QUOTES
         );
         $GLOBALS['PMD_OUT']['OWNER'][$i] = htmlspecialchars(
-            $GLOBALS['db'], ENT_QUOTES
+            $GLOBALS['db'],
+            ENT_QUOTES
         );
         $GLOBALS['PMD_OUT']['TABLE_NAME_SMALL'][$i] = htmlspecialchars(
-            $one_table['TABLE_NAME'], ENT_QUOTES
+            $one_table['TABLE_NAME'],
+            ENT_QUOTES
         );
 
         $GLOBALS['PMD']['TABLE_TYPE'][$i] = mb_strtoupper(
@@ -319,7 +323,9 @@ function PMA_deletePage($pg)
         . "." . PMA\libraries\Util::backquote($cfgRelation['table_coords'])
         . " WHERE " . PMA\libraries\Util::backquote('pdf_page_number') . " = " . intval($pg);
     $success = PMA_queryAsControlUser(
-        $query, true, PMA\libraries\DatabaseInterface::QUERY_STORE
+        $query,
+        true,
+        PMA\libraries\DatabaseInterface::QUERY_STORE
     );
 
     if ($success) {
@@ -327,7 +333,9 @@ function PMA_deletePage($pg)
             . "." . PMA\libraries\Util::backquote($cfgRelation['pdf_pages'])
             . " WHERE " . PMA\libraries\Util::backquote('page_nr') . " = " . intval($pg);
         $success = PMA_queryAsControlUser(
-            $query, true, PMA\libraries\DatabaseInterface::QUERY_STORE
+            $query,
+            true,
+            PMA\libraries\DatabaseInterface::QUERY_STORE
         );
     }
 
@@ -483,7 +491,9 @@ function PMA_saveTablePositions($pg)
             . "'" . $GLOBALS['dbi']->escapeString($_REQUEST['t_y'][$key]) . "')";
 
         $res = PMA_queryAsControlUser(
-            $query,  true, PMA\libraries\DatabaseInterface::QUERY_STORE
+            $query,
+            true,
+            PMA\libraries\DatabaseInterface::QUERY_STORE
         );
     }
 
@@ -735,7 +745,6 @@ function PMA_saveDesignerSetting($index, $value)
 
     $success = true;
     if ($GLOBALS['cfgRelation']['designersettingswork']) {
-
         $orig_data_query = "SELECT settings_data"
             . " FROM " . PMA\libraries\Util::backquote($cfgDesigner['db'])
             . "." . PMA\libraries\Util::backquote($cfgDesigner['table'])
@@ -743,7 +752,9 @@ function PMA_saveDesignerSetting($index, $value)
             . $GLOBALS['dbi']->escapeString($cfgDesigner['user']) . "';";
 
         $orig_data = $GLOBALS['dbi']->fetchSingleRow(
-            $orig_data_query, 'ASSOC', $GLOBALS['controllink']
+            $orig_data_query,
+            'ASSOC',
+            $GLOBALS['controllink']
         );
 
         if (! empty($orig_data)) {

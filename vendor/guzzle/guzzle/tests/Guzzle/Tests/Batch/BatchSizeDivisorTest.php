@@ -11,14 +11,10 @@ class BatchSizeDivisorTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testDividesBatch()
     {
-        $queue = new \SplQueue();
-        $queue[] = 'foo';
-        $queue[] = 'baz';
-        $queue[] = 'bar';
-        $d = new BatchSizeDivisor(3);
-        $this->assertEquals(3, $d->getSize());
-        $d->setSize(2);
-        $batches = $d->createBatches($queue);
-        $this->assertEquals(array(array('foo', 'baz'), array('bar')), $batches);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -38,11 +38,11 @@ class Generic_Sniffs_PHP_DisallowShortOpenTagSniff implements PHP_CodeSniffer_Sn
      */
     public function register()
     {
-        return array(
-                T_OPEN_TAG,
-                T_OPEN_TAG_WITH_ECHO,
-               );
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -57,41 +57,10 @@ class Generic_Sniffs_PHP_DisallowShortOpenTagSniff implements PHP_CodeSniffer_Sn
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens  = $phpcsFile->getTokens();
-        $openTag = $tokens[$stackPtr];
-
-        if ($openTag['content'] === '<?') {
-            $error = 'Short PHP opening tag used; expected "<?php" but found "%s"';
-            $data  = array($openTag['content']);
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found', $data);
-            if ($fix === true) {
-                $phpcsFile->fixer->replaceToken($stackPtr, '<?php');
-            }
-
-            $phpcsFile->recordMetric($stackPtr, 'PHP short open tag used', 'yes');
-        } else {
-            $phpcsFile->recordMetric($stackPtr, 'PHP short open tag used', 'no');
-        }
-
-        if ($openTag['code'] === T_OPEN_TAG_WITH_ECHO) {
-            $nextVar = $tokens[$phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr + 1), null, true)];
-            $error   = 'Short PHP opening tag used with echo; expected "<?php echo %s ..." but found "%s %s ..."';
-            $data    = array(
-                        $nextVar['content'],
-                        $openTag['content'],
-                        $nextVar['content'],
-                       );
-            $fix     = $phpcsFile->addFixableError($error, $stackPtr, 'EchoFound', $data);
-            if ($fix === true) {
-                if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
-                    $phpcsFile->fixer->replaceToken($stackPtr, '<?php echo ');
-                } else {
-                    $phpcsFile->fixer->replaceToken($stackPtr, '<?php echo');
-                }
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

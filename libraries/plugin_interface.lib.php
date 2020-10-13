@@ -211,7 +211,7 @@ function PMA_pluginGetChoice($section, $name, &$list, $cfgname = null)
             )
         );
         $ret .= '<option';
-         // If the form is being repopulated using $_GET data, that is priority
+        // If the form is being repopulated using $_GET data, that is priority
         if (isset($_GET[$name])
             && $plugin_name == $_GET[$name]
             || ! isset($_GET[$name])
@@ -339,7 +339,9 @@ function PMA_pluginGetOneOption(
 
             // single property item
             $ret .= PMA_getHtmlForProperty(
-                $section, $plugin_name, $propertyItem
+                $section,
+                $plugin_name,
+                $propertyItem
             );
         }
     }
@@ -398,7 +400,9 @@ function PMA_pluginGetOneOption(
  * @return string
  */
 function PMA_getHtmlForProperty(
-    $section, $plugin_name, $propertyItem
+    $section,
+    $plugin_name,
+    $propertyItem
 ) {
     $ret = null;
     $property_class = get_class($propertyItem);

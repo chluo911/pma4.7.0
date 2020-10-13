@@ -57,14 +57,10 @@ class Tests_SeleniumTestCase_CountMethodsTest extends Tests_SeleniumTestCase_Bas
      */
     public function testCount()
     {
-        $this->open("html/test_count.html");
-
-        //we have eleven <li> elements
-        $this->verifyXpathCount('//ul/li', 11);
-
-        $this->verifyNotXpathCount('//ul/li', 0);
-        $this->verifyNotXpathCount('//ul/li', 1); //check for regexp bug
-        $this->verifyNotXpathCount('//ul/li', 2);
-        $this->verifyNotXpathCount('//ul/li', 10);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

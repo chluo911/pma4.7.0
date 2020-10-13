@@ -70,12 +70,11 @@ class Util
      */
     public static function swap($binValue)
     {
-        $result = $binValue[strlen($binValue) - 1];
-        for ($i = strlen($binValue) - 2; $i >= 0; --$i) {
-            $result .= $binValue[$i];
-        }
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -87,17 +86,11 @@ class Util
      */
     public static function packDouble($value)
     {
-        $bin = pack('d', (float) $value);
-
-        if (is_null(self::$little_endian)) {
-            self::$little_endian = (pack('L', 1) == pack('V', 1));
-        }
-
-        if (self::$little_endian) {
-            return $bin;
-        } else {
-            return self::swap($bin);
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

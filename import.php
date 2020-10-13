@@ -42,7 +42,8 @@ $response = Response::getInstance();
 // If it's a refresh console bookmarks request
 if (isset($_REQUEST['console_bookmark_refresh'])) {
     $response->addJSON(
-        'console_message_bookmark', PMA\libraries\Console::getBookmarkContent()
+        'console_message_bookmark',
+        PMA\libraries\Console::getBookmarkContent()
     );
     exit;
 }
@@ -460,7 +461,6 @@ if (! empty($local_import_file) && ! empty($cfg['UploadDir'])) {
     if (@is_link($import_file)) {
         $import_file  = 'none';
     }
-
 } elseif (empty($import_file) || ! is_uploaded_file($import_file)) {
     $import_file  = 'none';
 }
@@ -666,13 +666,16 @@ if ($sqlLength <= $GLOBALS['cfg']['MaxCharactersInDisplayedSQL']) {
 if (isset($my_die)) {
     foreach ($my_die as $key => $die) {
         PMA\libraries\Util::mysqlDie(
-            $die['error'], $die['sql'], false, $err_url, $error
+            $die['error'],
+            $die['sql'],
+            false,
+            $err_url,
+            $error
         );
     }
 }
 
 if ($go_sql) {
-
     if (! empty($sql_data) && ($sql_data['valid_queries'] > 1)) {
         $_SESSION['is_multi_query'] = true;
         $sql_queries = $sql_data['valid_sql'];
@@ -696,7 +699,9 @@ if ($go_sql) {
 
         // Check if User is allowed to issue a 'DROP DATABASE' Statement
         if (PMA_hasNoRightsToDropDatabase(
-            $analyzed_sql_results, $cfg['AllowUserDropDatabase'], $GLOBALS['is_superuser']
+            $analyzed_sql_results,
+            $cfg['AllowUserDropDatabase'],
+            $GLOBALS['is_superuser']
         )) {
             PMA\libraries\Util::mysqlDie(
                 __('"DROP DATABASE" statements are disabled.'),
@@ -739,8 +744,10 @@ if ($go_sql) {
     if (! empty($_POST['bkm_label']) && ! empty($import_text)) {
         $cfgBookmark = Bookmark::getParams();
         PMA_storeTheQueryAsBookmark(
-            $db, $cfgBookmark['user'],
-            $_REQUEST['sql_query'], $_POST['bkm_label'],
+            $db,
+            $cfgBookmark['user'],
+            $_REQUEST['sql_query'],
+            $_POST['bkm_label'],
             isset($_POST['bkm_replace']) ? $_POST['bkm_replace'] : null
         );
     }
@@ -748,14 +755,15 @@ if ($go_sql) {
     $response->addJSON('ajax_reload', $ajax_reload);
     $response->addHTML($html_output);
     exit();
-
-} else if ($result) {
+} elseif ($result) {
     // Save a Bookmark with more than one queries (if Bookmark label given).
     if (! empty($_POST['bkm_label']) && ! empty($import_text)) {
         $cfgBookmark = Bookmark::getParams();
         PMA_storeTheQueryAsBookmark(
-            $db, $cfgBookmark['user'],
-            $_REQUEST['sql_query'], $_POST['bkm_label'],
+            $db,
+            $cfgBookmark['user'],
+            $_REQUEST['sql_query'],
+            $_POST['bkm_label'],
             isset($_POST['bkm_replace']) ? $_POST['bkm_replace'] : null
         );
     }
@@ -766,7 +774,7 @@ if ($go_sql) {
         'sql_query',
         PMA\libraries\Util::getMessage($msg, $sql_query, 'success')
     );
-} else if ($result == false) {
+} elseif ($result == false) {
     $response->setRequestStatus(false);
     $response->addJSON('message', PMA\libraries\Message::error($msg));
 } else {

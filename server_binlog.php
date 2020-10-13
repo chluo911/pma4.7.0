@@ -27,6 +27,7 @@ $container->alias('response', 'PMA\libraries\Response');
 
 /** @var ServerBinlogController $controller */
 $controller = $container->get(
-    'ServerBinlogController', array()
+    'ServerBinlogController',
+    array()
 );
 $controller->indexAction();

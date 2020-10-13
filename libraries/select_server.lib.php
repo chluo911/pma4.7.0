@@ -31,7 +31,8 @@ function PMA_selectServer($not_only_options, $omit_fieldset)
     if ($not_only_options) {
         $retval .= '<form method="post" action="'
             . PMA\libraries\Util::getScriptNameForOption(
-                $GLOBALS['cfg']['DefaultTabServer'], 'server'
+                $GLOBALS['cfg']['DefaultTabServer'],
+                'server'
             )
             . '" class="disableAjax">';
 
@@ -71,7 +72,7 @@ function PMA_selectServer($not_only_options, $omit_fieldset)
         if (! empty($server['only_db'])) {
             if (! is_array($server['only_db'])) {
                 $label .= ' - ' . $server['only_db'];
-                // try to avoid displaying a too wide selector
+            // try to avoid displaying a too wide selector
             } elseif (count($server['only_db']) < 4) {
                 $label .= ' - ' . implode(', ', $server['only_db']);
             }
@@ -85,10 +86,10 @@ function PMA_selectServer($not_only_options, $omit_fieldset)
             if ($selected) {
                 $retval .= '<strong>' . htmlspecialchars($label) . '</strong>';
             } else {
-
                 $retval .= '<a class="disableAjax item" href="'
                     . PMA\libraries\Util::getScriptNameForOption(
-                        $GLOBALS['cfg']['DefaultTabServer'], 'server'
+                        $GLOBALS['cfg']['DefaultTabServer'],
+                        'server'
                     )
                     . URL::getCommon(array('server' => $key))
                     . '" >' . htmlspecialchars($label) . '</a>';

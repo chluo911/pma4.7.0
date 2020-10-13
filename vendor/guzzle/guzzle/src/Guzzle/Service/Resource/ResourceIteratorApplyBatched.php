@@ -29,14 +29,11 @@ class ResourceIteratorApplyBatched extends AbstractHasDispatcher
 
     public static function getAllEvents()
     {
-        return array(
-            // About to send a batch of requests to the callback
-            'iterator_batch.before_batch',
-            // Finished sending a batch of requests to the callback
-            'iterator_batch.after_batch',
-            // Created the batch object
-            'iterator_batch.created_batch'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,9 +43,11 @@ class ResourceIteratorApplyBatched extends AbstractHasDispatcher
      */
     public function __construct(ResourceIteratorInterface $iterator, $callback)
     {
-        $this->iterator = $iterator;
-        $this->callback = $callback;
-        Version::warn(__CLASS__ . ' is deprecated');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -60,33 +59,11 @@ class ResourceIteratorApplyBatched extends AbstractHasDispatcher
      */
     public function apply($perBatch = 50)
     {
-        $this->iterated = $this->batches = $batches = 0;
-        $that = $this;
-        $it = $this->iterator;
-        $callback = $this->callback;
-
-        $batch = BatchBuilder::factory()
-            ->createBatchesWith(new BatchSizeDivisor($perBatch))
-            ->transferWith(new BatchClosureTransfer(function (array $batch) use ($that, $callback, &$batches, $it) {
-                $batches++;
-                $that->dispatch('iterator_batch.before_batch', array('iterator' => $it, 'batch' => $batch));
-                call_user_func_array($callback, array($it, $batch));
-                $that->dispatch('iterator_batch.after_batch', array('iterator' => $it, 'batch' => $batch));
-            }))
-            ->autoFlushAt($perBatch)
-            ->build();
-
-        $this->dispatch('iterator_batch.created_batch', array('batch' => $batch));
-
-        foreach ($this->iterator as $resource) {
-            $this->iterated++;
-            $batch->add($resource);
-        }
-
-        $batch->flush();
-        $this->batches = $batches;
-
-        return $this->iterated;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -96,7 +73,11 @@ class ResourceIteratorApplyBatched extends AbstractHasDispatcher
      */
     public function getBatchCount()
     {
-        return $this->batches;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -106,6 +87,10 @@ class ResourceIteratorApplyBatched extends AbstractHasDispatcher
      */
     public function getIteratedCount()
     {
-        return $this->iterated;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

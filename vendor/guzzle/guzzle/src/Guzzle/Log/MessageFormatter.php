@@ -52,7 +52,11 @@ class MessageFormatter
      */
     public function __construct($template = self::DEFAULT_FORMAT)
     {
-        $this->template = $template ?: self::DEFAULT_FORMAT;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -64,9 +68,11 @@ class MessageFormatter
      */
     public function setTemplate($template)
     {
-        $this->template = $template;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -90,7 +96,6 @@ class MessageFormatter
         return preg_replace_callback(
             '/{\s*([A-Za-z_\-\.0-9]+)\s*}/',
             function (array $matches) use ($request, $response, $handle, &$cache) {
-
                 if (array_key_exists($matches[1], $cache)) {
                     return $cache[$matches[1]];
                 }

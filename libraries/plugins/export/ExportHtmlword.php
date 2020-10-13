@@ -57,7 +57,8 @@ class ExportHtmlword extends ExportPlugin
 
         // what to dump (structure/data/both)
         $dumpWhat = new OptionsPropertyMainGroup(
-            "dump_what", __('Dump table')
+            "dump_what",
+            __('Dump table')
         );
         // create primary items and add them to the group
         $leaf = new RadioPropertyItem("structure_or_data");
@@ -74,7 +75,8 @@ class ExportHtmlword extends ExportPlugin
 
         // data options main group
         $dataOptions = new OptionsPropertyMainGroup(
-            "dump_what", __('Data dump options')
+            "dump_what",
+            __('Data dump options')
         );
         $dataOptions->setForce('structure');
         // create primary items and add them to the group
@@ -103,22 +105,11 @@ class ExportHtmlword extends ExportPlugin
      */
     public function exportHeader()
     {
-        global $charset;
-
-        return PMA_exportOutputHandler(
-            '<html xmlns:o="urn:schemas-microsoft-com:office:office"
-            xmlns:x="urn:schemas-microsoft-com:office:word"
-            xmlns="http://www.w3.org/TR/REC-html40">
-
-            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"'
-            . ' "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-            <html>
-            <head>
-                <meta http-equiv="Content-type" content="text/html;charset='
-            . (isset($charset) ? $charset : 'utf-8') . '" />
-            </head>
-            <body>'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -128,7 +119,11 @@ class ExportHtmlword extends ExportPlugin
      */
     public function exportFooter()
     {
-        return PMA_exportOutputHandler('</body></html>');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -141,13 +136,11 @@ class ExportHtmlword extends ExportPlugin
      */
     public function exportDBHeader($db, $db_alias = '')
     {
-        if (empty($db_alias)) {
-            $db_alias = $db;
-        }
-
-        return PMA_exportOutputHandler(
-            '<h1>' . __('Database') . ' ' . htmlspecialchars($db_alias) . '</h1>'
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -159,7 +152,11 @@ class ExportHtmlword extends ExportPlugin
      */
     public function exportDBFooter($db)
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -173,7 +170,11 @@ class ExportHtmlword extends ExportPlugin
      */
     public function exportDBCreate($db, $export_type, $db_alias = '')
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -196,80 +197,11 @@ class ExportHtmlword extends ExportPlugin
         $sql_query,
         $aliases = array()
     ) {
-        global $what;
-
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-
-        if (!PMA_exportOutputHandler(
-            '<h2>'
-            . __('Dumping data for table') . ' ' . htmlspecialchars($table_alias)
-            . '</h2>'
-        )
-        ) {
-            return false;
-        }
-        if (!PMA_exportOutputHandler(
-            '<table class="width100" cellspacing="1">'
-        )
-        ) {
-            return false;
-        }
-
-        // Gets the data from the database
-        $result = $GLOBALS['dbi']->query(
-            $sql_query,
-            null,
-            DatabaseInterface::QUERY_UNBUFFERED
-        );
-        $fields_cnt = $GLOBALS['dbi']->numFields($result);
-
-        // If required, get fields name at the first line
-        if (isset($GLOBALS['htmlword_columns'])) {
-            $schema_insert = '<tr class="print-category">';
-            for ($i = 0; $i < $fields_cnt; $i++) {
-                $col_as = $GLOBALS['dbi']->fieldName($result, $i);
-                if (!empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
-                    $col_as = $aliases[$db]['tables'][$table]['columns'][$col_as];
-                }
-                $col_as = stripslashes($col_as);
-                $schema_insert .= '<td class="print"><strong>'
-                    . htmlspecialchars($col_as)
-                    . '</strong></td>';
-            } // end for
-            $schema_insert .= '</tr>';
-            if (!PMA_exportOutputHandler($schema_insert)) {
-                return false;
-            }
-        } // end if
-
-        // Format the data
-        while ($row = $GLOBALS['dbi']->fetchRow($result)) {
-            $schema_insert = '<tr class="print-category">';
-            for ($j = 0; $j < $fields_cnt; $j++) {
-                if (!isset($row[$j]) || is_null($row[$j])) {
-                    $value = $GLOBALS[$what . '_null'];
-                } elseif ($row[$j] == '0' || $row[$j] != '') {
-                    $value = $row[$j];
-                } else {
-                    $value = '';
-                }
-                $schema_insert .= '<td class="print">'
-                    . htmlspecialchars($value)
-                    . '</td>';
-            } // end for
-            $schema_insert .= '</tr>';
-            if (!PMA_exportOutputHandler($schema_insert)) {
-                return false;
-            }
-        } // end while
-        $GLOBALS['dbi']->freeResult($result);
-        if (!PMA_exportOutputHandler('</table>')) {
-            return false;
-        }
-
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -480,36 +412,11 @@ class ExportHtmlword extends ExportPlugin
      */
     protected function getTriggers($db, $table)
     {
-        $dump = '<table class="width100" cellspacing="1">';
-        $dump .= '<tr class="print-category">';
-        $dump .= '<th class="print">' . __('Name') . '</th>';
-        $dump .= '<td class="print"><strong>' . __('Time') . '</strong></td>';
-        $dump .= '<td class="print"><strong>' . __('Event') . '</strong></td>';
-        $dump .= '<td class="print"><strong>' . __('Definition') . '</strong></td>';
-        $dump .= '</tr>';
-
-        $triggers = $GLOBALS['dbi']->getTriggers($db, $table);
-
-        foreach ($triggers as $trigger) {
-            $dump .= '<tr class="print-category">';
-            $dump .= '<td class="print">'
-                . htmlspecialchars($trigger['name'])
-                . '</td>'
-                . '<td class="print">'
-                . htmlspecialchars($trigger['action_timing'])
-                . '</td>'
-                . '<td class="print">'
-                . htmlspecialchars($trigger['event_manipulation'])
-                . '</td>'
-                . '<td class="print">'
-                . htmlspecialchars($trigger['definition'])
-                . '</td>'
-                . '</tr>';
-        }
-
-        $dump .= '</table>';
-
-        return $dump;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -548,62 +455,11 @@ class ExportHtmlword extends ExportPlugin
         $dates = false,
         $aliases = array()
     ) {
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
-
-        $dump = '';
-
-        switch ($export_mode) {
-        case 'create_table':
-            $dump .= '<h2>'
-                . __('Table structure for table') . ' '
-                . htmlspecialchars($table_alias)
-                . '</h2>';
-            $dump .= $this->getTableDef(
-                $db,
-                $table,
-                $do_relation,
-                $do_comments,
-                $do_mime,
-                false,
-                $aliases
-            );
-            break;
-        case 'triggers':
-            $dump = '';
-            $triggers = $GLOBALS['dbi']->getTriggers($db, $table);
-            if ($triggers) {
-                $dump .= '<h2>'
-                    . __('Triggers') . ' ' . htmlspecialchars($table_alias)
-                    . '</h2>';
-                $dump .= $this->getTriggers($db, $table);
-            }
-            break;
-        case 'create_view':
-            $dump .= '<h2>'
-                . __('Structure for view') . ' ' . htmlspecialchars($table_alias)
-                . '</h2>';
-            $dump .= $this->getTableDef(
-                $db,
-                $table,
-                $do_relation,
-                $do_comments,
-                $do_mime,
-                true,
-                $aliases
-            );
-            break;
-        case 'stand_in':
-            $dump .= '<h2>'
-                . __('Stand-in structure for view') . ' '
-                . htmlspecialchars($table_alias)
-                . '</h2>';
-            // export a stand-in definition to resolve view dependencies
-            $dump .= $this->getTableDefStandIn($db, $table, $crlf, $aliases);
-        } // end switch
-
-        return PMA_exportOutputHandler($dump);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

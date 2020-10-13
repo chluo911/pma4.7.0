@@ -16,9 +16,11 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotHaveReadEnvOnConstruction()
     {
-        $object = new RequirementsNotSatisfiedException();
-
-        $this->assertNull($object->getReadEnv());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // setReadEnv()
@@ -28,14 +30,11 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetReadEnv()
     {
-        $expected = array(
-            'ENV_NAME' => 'value',
-        );
-
-        $object = new RequirementsNotSatisfiedException();
-        $object->setReadEnv($expected);
-
-        $this->assertSame($expected, $object->getReadEnv());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getHelpMessage()
@@ -45,16 +44,11 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithStringEnvVar()
     {
-        $expected = array(
-            'ENV_NAME' => 'value',
-        );
-
-        $object = new RequirementsNotSatisfiedException();
-        $object->setReadEnv($expected);
-
-        $message = $object->getHelpMessage();
-
-        $this->assertContains("  - ENV_NAME='value'", $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     // getHelpMessage()
@@ -64,18 +58,11 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithSecretStringEnvVarHidden()
     {
-        // Make sure the secret repo token is HIDDEN.
-        $env = array(
-            'COVERALLS_REPO_TOKEN' => 'secret',
-        );
-        $expected = "  - COVERALLS_REPO_TOKEN='********(HIDDEN)'";
-
-        $object = new RequirementsNotSatisfiedException();
-        $object->setReadEnv($env);
-
-        $message = $object->getHelpMessage();
-
-        $this->assertContains($expected, $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -83,18 +70,11 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithSecretEmptyStringEnvVarShown()
     {
-        // Make sure the secret repo token is shown when it's empty.
-        $env = array(
-            'COVERALLS_REPO_TOKEN' => '',
-        );
-        $expected = "  - COVERALLS_REPO_TOKEN=''";
-
-        $object = new RequirementsNotSatisfiedException();
-        $object->setReadEnv($env);
-
-        $message = $object->getHelpMessage();
-
-        $this->assertContains($expected, $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -102,16 +82,11 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithIntegerEnvVar()
     {
-        $expected = array(
-            'ENV_NAME' => 123,
-        );
-
-        $object = new RequirementsNotSatisfiedException();
-        $object->setReadEnv($expected);
-
-        $message = $object->getHelpMessage();
-
-        $this->assertContains('  - ENV_NAME=123', $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -119,15 +94,10 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithBooleanEnvVar()
     {
-        $expected = array(
-            'ENV_NAME' => true,
-        );
-
-        $object = new RequirementsNotSatisfiedException();
-        $object->setReadEnv($expected);
-
-        $message = $object->getHelpMessage();
-
-        $this->assertContains('  - ENV_NAME=true', $message);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -30,9 +30,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfCorrectTagNameIsReturned()
     {
-        $fixture = new Version('1.0', new Description('Description'));
-
-        $this->assertSame('version', $fixture->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -45,9 +47,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingDefaultFormatter()
     {
-        $fixture = new Version('1.0', new Description('Description'));
-
-        $this->assertSame('@version 1.0 Description', $fixture->render());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -57,12 +61,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testIfTagCanBeRenderedUsingSpecificFormatter()
     {
-        $fixture = new Version('1.0', new Description('Description'));
-
-        $formatter = m::mock(Formatter::class);
-        $formatter->shouldReceive('format')->with($fixture)->andReturn('Rendered output');
-
-        $this->assertSame('Rendered output', $fixture->render($formatter));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -71,11 +74,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasVersionNumber()
     {
-        $expected = '1.0';
-
-        $fixture = new Version($expected);
-
-        $this->assertSame($expected, $fixture->getVersion());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -85,11 +88,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testHasDescription()
     {
-        $expected = new Description('Description');
-
-        $fixture = new Version('1.0', $expected);
-
-        $this->assertSame($expected, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,9 +102,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testStringRepresentationIsReturned()
     {
-        $fixture = new Version('1.0', new Description('Description'));
-
-        $this->assertSame('1.0 Description', (string)$fixture);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -113,19 +118,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethod()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $context            = new Context('');
-
-        $version     = '1.0';
-        $description = new Description('My Description');
-
-        $descriptionFactory->shouldReceive('create')->with('My Description', $context)->andReturn($description);
-
-        $fixture = Version::create('1.0 My Description', $descriptionFactory, $context);
-
-        $this->assertSame('1.0 My Description', (string)$fixture);
-        $this->assertSame($version, $fixture->getVersion());
-        $this->assertSame($description, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -137,14 +134,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodCreatesEmptyVersionTag()
     {
-        $descriptionFactory = m::mock(DescriptionFactory::class);
-        $descriptionFactory->shouldReceive('create')->never();
-
-        $fixture = Version::create('', $descriptionFactory, new Context(''));
-
-        $this->assertSame('', (string)$fixture);
-        $this->assertSame(null, $fixture->getVersion());
-        $this->assertSame(null, $fixture->getDescription());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -153,7 +147,11 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodFailsIfVersionIsNotString()
     {
-        $this->assertNull(Version::create([]));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -161,6 +159,10 @@ class VersionTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryMethodReturnsNullIfBodyDoesNotMatchRegex()
     {
-        $this->assertNull(Version::create('dkhf<'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

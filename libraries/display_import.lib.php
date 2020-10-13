@@ -62,9 +62,7 @@ function PMA_getHtmlForImportJS($upload_id)
     $html .= '        $("#upload_form_form").css("display", "none");';
 
     if ($_SESSION[$SESSION_KEY]["handler"] != 'PMA\libraries\plugins\import\upload\UploadNoplugin') {
-
         $html .= PMA_getHtmlForImportWithPlugin($upload_id);
-
     } else { // no plugin available
         $image_tag = '<img src="' . $GLOBALS['pmaThemeImage']
             . 'ajax_clock_small.gif" width="16" height="16" alt="ajax clock" /> '
@@ -217,7 +215,9 @@ function PMA_getHtmlForImportCharset()
  * @return string
  */
 function PMA_getHtmlForImportOptionsFile(
-    $max_upload_size, $import_list, $local_import_file
+    $max_upload_size,
+    $import_list,
+    $local_import_file
 ) {
     global $cfg;
     $html  = '    <div class="importoptions">';
@@ -248,7 +248,6 @@ function PMA_getHtmlForImportOptionsFile(
         );
         $html .= '            </li>';
         $html .= '            </ul>';
-
     } elseif ($GLOBALS['is_upload']) {
         $html .= PMA\libraries\Util::getBrowseUploadFileBlock($max_upload_size);
         $html .= '<br />' . __('You may also drag and drop a file on any page.');
@@ -319,7 +318,6 @@ function PMA_getHtmlForImportOptionsPartialImport($timeout_passed, $offset)
             . PMA_pluginGetDefault('Import', 'skip_queries')
             . '" id="text_skip_queries" min="0" />';
         $html .= '        </div>';
-
     } else {
         // If timeout has passed,
         // do not show the Skip dialog to avoid the risk of someone
@@ -381,7 +379,6 @@ function PMA_getHtmlForImportOptionsFormat($import_list)
         $html .= '            <h3>' . __('Encoding Conversion:') . '</h3>';
         $html .= Encoding::kanjiEncodingForm();
         $html .= '        </div>';
-
     }
     $html .= "\n";
 
@@ -418,8 +415,15 @@ function PMA_getHtmlForImportOptionsSubmit()
  * @return string
  */
 function PMA_getHtmlForImport(
-    $upload_id, $import_type, $db, $table,
-    $max_upload_size, $import_list, $timeout_passed, $offset, $local_import_file
+    $upload_id,
+    $import_type,
+    $db,
+    $table,
+    $max_upload_size,
+    $import_list,
+    $timeout_passed,
+    $offset,
+    $local_import_file
 ) {
     global $SESSION_KEY;
     $html  = '';
@@ -449,7 +453,9 @@ function PMA_getHtmlForImport(
     $html .= PMA_getHtmlForImportOptions($import_type, $db, $table);
 
     $html .= PMA_getHtmlForImportOptionsFile(
-        $max_upload_size, $import_list, $local_import_file
+        $max_upload_size,
+        $import_list,
+        $local_import_file
     );
 
     $html .= PMA_getHtmlForImportOptionsPartialImport($timeout_passed, $offset);

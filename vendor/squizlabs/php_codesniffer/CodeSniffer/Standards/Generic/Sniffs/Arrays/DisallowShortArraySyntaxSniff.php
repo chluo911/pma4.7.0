@@ -34,8 +34,11 @@ class Generic_Sniffs_Arrays_DisallowShortArraySyntaxSniff implements PHP_CodeSni
      */
     public function register()
     {
-        return array(T_OPEN_SHORT_ARRAY);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -50,23 +53,10 @@ class Generic_Sniffs_Arrays_DisallowShortArraySyntaxSniff implements PHP_CodeSni
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $phpcsFile->recordMetric($stackPtr, 'Short array syntax used', 'yes');
-
-        $error = 'Short array syntax is not allowed';
-        $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'Found');
-
-        if ($fix === true) {
-            $tokens = $phpcsFile->getTokens();
-            $opener = $tokens[$stackPtr]['bracket_opener'];
-            $closer = $tokens[$stackPtr]['bracket_closer'];
-
-            $phpcsFile->fixer->beginChangeset();
-            $phpcsFile->fixer->replaceToken($opener, 'array(');
-            $phpcsFile->fixer->replaceToken($closer, ')');
-            $phpcsFile->fixer->endChangeset();
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

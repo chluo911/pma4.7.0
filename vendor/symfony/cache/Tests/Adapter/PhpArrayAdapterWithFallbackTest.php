@@ -32,18 +32,28 @@ class PhpArrayAdapterWithFallbackTest extends AdapterTestCase
 
     public static function setupBeforeClass()
     {
-        self::$file = sys_get_temp_dir().'/symfony-cache/php-array-adapter-test.php';
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        if (file_exists(sys_get_temp_dir().'/symfony-cache')) {
-            FilesystemAdapterTest::rmdir(sys_get_temp_dir().'/symfony-cache');
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function createCachePool()
     {
-        return new PhpArrayAdapter(self::$file, new FilesystemAdapter('php-array-fallback'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

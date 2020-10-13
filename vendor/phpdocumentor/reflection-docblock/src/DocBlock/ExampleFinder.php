@@ -53,7 +53,11 @@ class ExampleFinder
      */
     public function setSourceDirectory($directory = '')
     {
-        $this->sourceDirectory = $directory;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,7 +77,11 @@ class ExampleFinder
      */
     public function setExampleDirectories(array $directories)
     {
-        $this->exampleDirectories = $directories;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -83,7 +91,11 @@ class ExampleFinder
      */
     public function getExampleDirectories()
     {
-        return $this->exampleDirectories;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

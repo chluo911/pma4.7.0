@@ -53,7 +53,11 @@ function _bindtextdomain($domain, $path)
  */
 function _bind_textdomain_codeset($domain, $codeset)
 {
-    return;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -106,7 +110,9 @@ function __($msgid)
 function _ngettext($msgid, $msgidPlural, $number)
 {
     return Loader::getInstance()->getTranslator()->ngettext(
-        $msgid, $msgidPlural, $number
+        $msgid,
+        $msgidPlural,
+        $number
     );
 }
 
@@ -121,7 +127,8 @@ function _ngettext($msgid, $msgidPlural, $number)
 function _pgettext($msgctxt, $msgid)
 {
     return Loader::getInstance()->getTranslator()->pgettext(
-        $msgctxt, $msgid
+        $msgctxt,
+        $msgid
     );
 }
 
@@ -137,9 +144,11 @@ function _pgettext($msgctxt, $msgid)
  */
 function _npgettext($msgctxt, $msgid, $msgidPlural, $number)
 {
-    return Loader::getInstance()->getTranslator()->npgettext(
-        $msgctxt, $msgid, $msgidPlural, $number
-    );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -152,9 +161,11 @@ function _npgettext($msgctxt, $msgid, $msgidPlural, $number)
  */
 function _dgettext($domain, $msgid)
 {
-    return Loader::getInstance()->getTranslator($domain)->gettext(
-        $msgid
-    );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -169,9 +180,11 @@ function _dgettext($domain, $msgid)
  */
 function _dngettext($domain, $msgid, $msgidPlural, $number)
 {
-    return Loader::getInstance()->getTranslator($domain)->ngettext(
-        $msgid, $msgidPlural, $number
-    );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -185,9 +198,11 @@ function _dngettext($domain, $msgid, $msgidPlural, $number)
  */
 function _dpgettext($domain, $msgctxt, $msgid)
 {
-    return Loader::getInstance()->getTranslator($domain)->pgettext(
-        $msgctxt, $msgid
-    );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }
 
 /**
@@ -203,7 +218,9 @@ function _dpgettext($domain, $msgctxt, $msgid)
  */
 function _dnpgettext($domain, $msgctxt, $msgid, $msgidPlural, $number)
 {
-    return Loader::getInstance()->getTranslator($domain)->npgettext(
-        $msgctxt, $msgid, $msgidPlural, $number
-    );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
 }

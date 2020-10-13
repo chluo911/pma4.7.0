@@ -18,20 +18,20 @@ class EnumNodeDefinitionTest extends TestCase
 {
     public function testWithOneValue()
     {
-        $def = new EnumNodeDefinition('foo');
-        $def->values(array('foo'));
-
-        $node = $def->getNode();
-        $this->assertEquals(array('foo'), $node->getValues());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testWithOneDistinctValue()
     {
-        $def = new EnumNodeDefinition('foo');
-        $def->values(array('foo', 'foo'));
-
-        $node = $def->getNode();
-        $this->assertEquals(array('foo'), $node->getValues());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,8 +40,11 @@ class EnumNodeDefinitionTest extends TestCase
      */
     public function testNoValuesPassed()
     {
-        $def = new EnumNodeDefinition('foo');
-        $def->getNode();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -50,16 +53,19 @@ class EnumNodeDefinitionTest extends TestCase
      */
     public function testWithNoValues()
     {
-        $def = new EnumNodeDefinition('foo');
-        $def->values(array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetNode()
     {
-        $def = new EnumNodeDefinition('foo');
-        $def->values(array('foo', 'bar'));
-
-        $node = $def->getNode();
-        $this->assertEquals(array('foo', 'bar'), $node->getValues());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

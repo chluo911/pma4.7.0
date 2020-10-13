@@ -65,23 +65,23 @@
  * @method void submit() Submits a form; can be called on its children
  * @method string text() Get content of ordinary elements
  */
-class PHPUnit_Extensions_Selenium2TestCase_Element
-    extends PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
+class PHPUnit_Extensions_Selenium2TestCase_Element extends PHPUnit_Extensions_Selenium2TestCase_Element_Accessor
 {
     /**
      * @return \self
      * @throws InvalidArgumentException
      */
     public static function fromResponseValue(
-            array $value,
-            PHPUnit_Extensions_Selenium2TestCase_URL $parentFolder,
-            PHPUnit_Extensions_Selenium2TestCase_Driver $driver)
+        array $value,
+        PHPUnit_Extensions_Selenium2TestCase_URL $parentFolder,
+        PHPUnit_Extensions_Selenium2TestCase_Driver $driver
+    )
     {
-        if (!isset($value['ELEMENT'])) {
-            throw new InvalidArgumentException('Element not found.');
-        }
-        $url = $parentFolder->descend($value['ELEMENT']);
-        return new self($driver, $url);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -145,7 +145,11 @@ class PHPUnit_Extensions_Selenium2TestCase_Element
      */
     public function name()
     {
-        return strtolower(parent::name());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -168,12 +172,12 @@ class PHPUnit_Extensions_Selenium2TestCase_Element
      * @param string $newValue
      * @return null|string
      */
-    public function value($newValue = NULL)
+    public function value($newValue = null)
     {
-        if ($newValue !== NULL) {
-            return parent::value($newValue);
-        }
-
-        return $this->attribute('value');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

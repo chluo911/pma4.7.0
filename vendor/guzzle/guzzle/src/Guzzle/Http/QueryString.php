@@ -111,7 +111,11 @@ class QueryString extends Collection
      */
     public function getFieldSeparator()
     {
-        return $this->fieldSeparator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -121,7 +125,11 @@ class QueryString extends Collection
      */
     public function getValueSeparator()
     {
-        return $this->valueSeparator;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -133,7 +141,11 @@ class QueryString extends Collection
      */
     public function getUrlEncoding()
     {
-        return $this->urlEncode;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -195,9 +207,11 @@ class QueryString extends Collection
      */
     public function setFieldSeparator($separator)
     {
-        $this->fieldSeparator = $separator;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -209,9 +223,11 @@ class QueryString extends Collection
      */
     public function setValueSeparator($separator)
     {
-        $this->valueSeparator = $separator;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -281,17 +297,10 @@ class QueryString extends Collection
      */
     private function convertKvp($name, $value)
     {
-        if ($value === self::BLANK || $value === null || $value === false) {
-            return $name;
-        } elseif (!is_array($value)) {
-            return $name . $this->valueSeparator . $value;
-        }
-
-        $result = '';
-        foreach ($value as $v) {
-            $result .= $this->convertKvp($name, $v) . $this->fieldSeparator;
-        }
-
-        return rtrim($result, $this->fieldSeparator);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

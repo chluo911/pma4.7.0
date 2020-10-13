@@ -21,23 +21,20 @@ class ScalarNodeTest extends TestCase
      */
     public function testNormalize($value)
     {
-        $node = new ScalarNode('test');
-        $this->assertSame($value, $node->normalize($value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getValidValues()
     {
-        return array(
-            array(false),
-            array(true),
-            array(null),
-            array(''),
-            array('foo'),
-            array(0),
-            array(1),
-            array(0.0),
-            array(0.1),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -46,46 +43,38 @@ class ScalarNodeTest extends TestCase
      */
     public function testNormalizeThrowsExceptionOnInvalidValues($value)
     {
-        $node = new ScalarNode('test');
-        $node->normalize($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getInvalidValues()
     {
-        return array(
-            array(array()),
-            array(array('foo' => 'bar')),
-            array(new \stdClass()),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNormalizeThrowsExceptionWithoutHint()
     {
-        $node = new ScalarNode('test');
-
-        if (method_exists($this, 'expectException')) {
-            $this->expectException('Symfony\Component\Config\Definition\Exception\InvalidTypeException');
-            $this->expectExceptionMessage('Invalid type for path "test". Expected scalar, but got array.');
-        } else {
-            $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidTypeException', 'Invalid type for path "test". Expected scalar, but got array.');
-        }
-
-        $node->normalize(array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testNormalizeThrowsExceptionWithErrorMessage()
     {
-        $node = new ScalarNode('test');
-        $node->setInfo('"the test value"');
-
-        if (method_exists($this, 'expectException')) {
-            $this->expectException('Symfony\Component\Config\Definition\Exception\InvalidTypeException');
-            $this->expectExceptionMessage("Invalid type for path \"test\". Expected scalar, but got array.\nHint: \"the test value\"");
-        } else {
-            $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidTypeException', "Invalid type for path \"test\". Expected scalar, but got array.\nHint: \"the test value\"");
-        }
-
-        $node->normalize(array());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -95,23 +84,20 @@ class ScalarNodeTest extends TestCase
      */
     public function testValidNonEmptyValues($value)
     {
-        $node = new ScalarNode('test');
-        $node->setAllowEmptyValue(false);
-
-        $this->assertSame($value, $node->finalize($value));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getValidNonEmptyValues()
     {
-        return array(
-            array(false),
-            array(true),
-            array('foo'),
-            array(0),
-            array(1),
-            array(0.0),
-            array(0.1),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -122,16 +108,19 @@ class ScalarNodeTest extends TestCase
      */
     public function testNotAllowedEmptyValuesThrowException($value)
     {
-        $node = new ScalarNode('test');
-        $node->setAllowEmptyValue(false);
-        $node->finalize($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getEmptyValues()
     {
-        return array(
-            array(null),
-            array(''),
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

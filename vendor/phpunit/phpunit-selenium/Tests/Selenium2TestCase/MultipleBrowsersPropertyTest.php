@@ -77,31 +77,38 @@ class Extensions_Selenium2TestCaseMultipleBrowsersPropertyTest extends PHPUnit_E
 
     public function setUp()
     {
-        if (!defined('PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL')) {
-            $this->markTestSkipped("You must serve the selenium-1-tests folder from an HTTP server and configure the PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL constant accordingly.");
-        }
-        if ($this->getBrowser() == 'safari') {
-            $this->markTestSkipped("Skipping safari since it might not be present");
-        }
-        $this->setBrowserUrl(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function setupSpecificBrowser($params)
     {
-        $this->_browserWeSetUp = $params['browserName'];
-        parent::setupSpecificBrowser($params);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testOpen()
     {
-        $this->url(PHPUNIT_TESTSUITE_EXTENSION_SELENIUM_TESTS_URL);
-        $this->assertEquals($this->_browserWeSetUp, $this->getBrowser());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSessionIsLaunchedCorrectly()
     {
-        $this->url('html/test_open.html');
-        $this->assertStringEndsWith('html/test_open.html', $this->url());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -109,21 +116,28 @@ class Extensions_Selenium2TestCaseMultipleBrowsersPropertyTest extends PHPUnit_E
      */
     public function testDataProvidersAreRecognized($url)
     {
-        $this->url($url);
-        $this->assertStringEndsWith($url, $this->url());
-        $body = $this->byCssSelector('body');
-        $this->assertEquals('This is a test of the open command.', $body->text());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function urls()
     {
-        return array(
-            array('html/test_open.html')
-        );
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTheBrowserNameIsAccessible()
     {
-        $this->assertEquals($this->_browserWeSetUp, $this->getBrowser());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

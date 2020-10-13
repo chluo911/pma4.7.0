@@ -26,7 +26,11 @@ class LogicalNotToken implements TokenInterface
      */
     public function __construct($value)
     {
-        $this->token = $value instanceof TokenInterface? $value : new ExactValueToken($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -38,7 +42,11 @@ class LogicalNotToken implements TokenInterface
      */
     public function scoreArgument($argument)
     {
-        return false === $this->token->scoreArgument($argument) ? 4 : false;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -48,7 +56,11 @@ class LogicalNotToken implements TokenInterface
      */
     public function isLast()
     {
-        return $this->token->isLast();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -58,7 +70,11 @@ class LogicalNotToken implements TokenInterface
      */
     public function getOriginatingToken()
     {
-        return $this->token;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

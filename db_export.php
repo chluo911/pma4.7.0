@@ -93,25 +93,29 @@ foreach (array('table_select', 'table_structure', 'table_data') as $one_key) {
 foreach ($tables as $each_table) {
     if (isset($_GET['table_select']) && is_array($_GET['table_select'])) {
         $is_checked = PMA_getCheckedClause(
-            $each_table['Name'], $_GET['table_select']
+            $each_table['Name'],
+            $_GET['table_select']
         );
     } elseif (isset($table_select)) {
         $is_checked = PMA_getCheckedClause(
-            $each_table['Name'], $table_select
+            $each_table['Name'],
+            $table_select
         );
     } else {
         $is_checked = ' checked="checked"';
     }
     if (isset($_GET['table_structure']) && is_array($_GET['table_structure'])) {
         $structure_checked = PMA_getCheckedClause(
-            $each_table['Name'], $_GET['table_structure']
+            $each_table['Name'],
+            $_GET['table_structure']
         );
     } else {
         $structure_checked = $is_checked;
     }
     if (isset($_GET['table_data']) && is_array($_GET['table_data'])) {
         $data_checked = PMA_getCheckedClause(
-            $each_table['Name'], $_GET['table_data']
+            $each_table['Name'],
+            $_GET['table_data']
         );
     } else {
         $data_checked = $is_checked;
@@ -150,7 +154,12 @@ if (! isset($multi_values)) {
 $response = Response::getInstance();
 $response->addHTML(
     PMA_getExportDisplay(
-        'database', $db, $table, $sql_query, $num_tables,
-        $unlim_num_rows, $multi_values
+        'database',
+        $db,
+        $table,
+        $sql_query,
+        $num_tables,
+        $unlim_num_rows,
+        $multi_values
     )
 );

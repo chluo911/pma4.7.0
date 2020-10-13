@@ -13,13 +13,19 @@ class ReasonPhraseBackoffStrategy extends AbstractErrorCodeBackoffStrategy
 {
     public function makesDecision()
     {
-        return true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function getDelay($retries, RequestInterface $request, Response $response = null, HttpException $e = null)
     {
-        if ($response) {
-            return isset($this->errorCodes[$response->getReasonPhrase()]) ? true : null;
-        }
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

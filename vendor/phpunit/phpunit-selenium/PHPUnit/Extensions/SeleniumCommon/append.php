@@ -42,7 +42,7 @@
  * @since      File available since Release 1.0.0
  */
 
-if ( isset($_COOKIE['PHPUNIT_SELENIUM_TEST_ID']) &&
+if (isset($_COOKIE['PHPUNIT_SELENIUM_TEST_ID']) &&
     !isset($_GET['PHPUNIT_SELENIUM_TEST_ID']) &&
     extension_loaded('xdebug')) {
     $GLOBALS['PHPUNIT_FILTERED_FILES'][] = __FILE__;
@@ -63,7 +63,7 @@ if ( isset($_COOKIE['PHPUNIT_SELENIUM_TEST_ID']) &&
     }
 
     file_put_contents(
-      $name = $file . '.' . md5(uniqid(rand(), TRUE)) . '.' . $_COOKIE['PHPUNIT_SELENIUM_TEST_ID'],
-      serialize($data)
+        $name = $file . '.' . md5(uniqid(rand(), true)) . '.' . $_COOKIE['PHPUNIT_SELENIUM_TEST_ID'],
+        serialize($data)
     );
 }

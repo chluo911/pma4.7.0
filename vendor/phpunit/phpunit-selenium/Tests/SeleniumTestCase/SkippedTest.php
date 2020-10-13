@@ -59,16 +59,11 @@ class Extensions_SeleniumTestCaseSkippedTest extends PHPUnit_Framework_TestCase
      */
     public function testATestIsSkippedIfTheHostConfiguredInSetupDoesNotRespond()
     {
-        $testCase = new Extensions_SeleniumTestCase_SkippedExample();
-        $testCase->setUp();
-
-        try {
-            $testCase->skipWithNoServerRunning();
-        } catch (PHPUnit_Framework_SkippedTestError $e) {
-            $this->assertEquals('Could not connect to the Selenium Server on google.com:12345.', $e->getMessage());
-            return;
-        }
-        $this->fail('Should throw a special exception to skip the test.');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -76,7 +71,10 @@ class Extensions_SeleniumTestCase_SkippedExample extends PHPUnit_Extensions_Sele
 {
     public function setUp()
     {
-        $this->setHost('google.com');
-        $this->setPort(12345);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

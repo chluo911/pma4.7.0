@@ -32,40 +32,38 @@ class ImmutableEventDispatcherTest extends TestCase
 
     protected function setUp()
     {
-        $this->innerDispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
-        $this->dispatcher = new ImmutableEventDispatcher($this->innerDispatcher);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDispatchDelegates()
     {
-        $event = new Event();
-
-        $this->innerDispatcher->expects($this->once())
-            ->method('dispatch')
-            ->with('event', $event)
-            ->will($this->returnValue('result'));
-
-        $this->assertSame('result', $this->dispatcher->dispatch('event', $event));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetListenersDelegates()
     {
-        $this->innerDispatcher->expects($this->once())
-            ->method('getListeners')
-            ->with('event')
-            ->will($this->returnValue('result'));
-
-        $this->assertSame('result', $this->dispatcher->getListeners('event'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasListenersDelegates()
     {
-        $this->innerDispatcher->expects($this->once())
-            ->method('hasListeners')
-            ->with('event')
-            ->will($this->returnValue('result'));
-
-        $this->assertSame('result', $this->dispatcher->hasListeners('event'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -73,7 +71,11 @@ class ImmutableEventDispatcherTest extends TestCase
      */
     public function testAddListenerDisallowed()
     {
-        $this->dispatcher->addListener('event', function () { return 'foo'; });
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -81,9 +83,11 @@ class ImmutableEventDispatcherTest extends TestCase
      */
     public function testAddSubscriberDisallowed()
     {
-        $subscriber = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventSubscriberInterface')->getMock();
-
-        $this->dispatcher->addSubscriber($subscriber);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -91,7 +95,11 @@ class ImmutableEventDispatcherTest extends TestCase
      */
     public function testRemoveListenerDisallowed()
     {
-        $this->dispatcher->removeListener('event', function () { return 'foo'; });
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -99,8 +107,10 @@ class ImmutableEventDispatcherTest extends TestCase
      */
     public function testRemoveSubscriberDisallowed()
     {
-        $subscriber = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventSubscriberInterface')->getMock();
-
-        $this->dispatcher->removeSubscriber($subscriber);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

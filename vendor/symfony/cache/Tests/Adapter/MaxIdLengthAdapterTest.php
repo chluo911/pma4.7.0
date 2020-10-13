@@ -18,20 +18,11 @@ class MaxIdLengthAdapterTest extends TestCase
 {
     public function testLongKey()
     {
-        $cache = $this->getMockBuilder(MaxIdLengthAdapter::class)
-            ->setConstructorArgs(array(str_repeat('-', 10)))
-            ->setMethods(array('doHave', 'doFetch', 'doDelete', 'doSave', 'doClear'))
-            ->getMock();
-
-        $cache->expects($this->exactly(2))
-            ->method('doHave')
-            ->withConsecutive(
-                array($this->equalTo('----------:0GTYWa9n4ed8vqNlOT2iEr:')),
-                array($this->equalTo('----------:---------------------------------------'))
-            );
-
-        $cache->hasItem(str_repeat('-', 40));
-        $cache->hasItem(str_repeat('-', 39));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,9 +31,11 @@ class MaxIdLengthAdapterTest extends TestCase
      */
     public function testTooLongNamespace()
     {
-        $cache = $this->getMockBuilder(MaxIdLengthAdapter::class)
-            ->setConstructorArgs(array(str_repeat('-', 40)))
-            ->getMock();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -52,6 +45,10 @@ abstract class MaxIdLengthAdapter extends AbstractAdapter
 
     public function __construct($ns)
     {
-        parent::__construct($ns);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

@@ -33,108 +33,76 @@ abstract class AbstractEventDispatcherTest extends TestCase
 
     protected function setUp()
     {
-        $this->dispatcher = $this->createEventDispatcher();
-        $this->listener = new TestEventListener();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function tearDown()
     {
-        $this->dispatcher = null;
-        $this->listener = null;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     abstract protected function createEventDispatcher();
 
     public function testInitialState()
     {
-        $this->assertEquals(array(), $this->dispatcher->getListeners());
-        $this->assertFalse($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertFalse($this->dispatcher->hasListeners(self::postFoo));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddListener()
     {
-        $this->dispatcher->addListener('pre.foo', array($this->listener, 'preFoo'));
-        $this->dispatcher->addListener('post.foo', array($this->listener, 'postFoo'));
-        $this->assertTrue($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertTrue($this->dispatcher->hasListeners(self::postFoo));
-        $this->assertCount(1, $this->dispatcher->getListeners(self::preFoo));
-        $this->assertCount(1, $this->dispatcher->getListeners(self::postFoo));
-        $this->assertCount(2, $this->dispatcher->getListeners());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetListenersSortsByPriority()
     {
-        $listener1 = new TestEventListener();
-        $listener2 = new TestEventListener();
-        $listener3 = new TestEventListener();
-        $listener1->name = '1';
-        $listener2->name = '2';
-        $listener3->name = '3';
-
-        $this->dispatcher->addListener('pre.foo', array($listener1, 'preFoo'), -10);
-        $this->dispatcher->addListener('pre.foo', array($listener2, 'preFoo'), 10);
-        $this->dispatcher->addListener('pre.foo', array($listener3, 'preFoo'));
-
-        $expected = array(
-            array($listener2, 'preFoo'),
-            array($listener3, 'preFoo'),
-            array($listener1, 'preFoo'),
-        );
-
-        $this->assertSame($expected, $this->dispatcher->getListeners('pre.foo'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetAllListenersSortsByPriority()
     {
-        $listener1 = new TestEventListener();
-        $listener2 = new TestEventListener();
-        $listener3 = new TestEventListener();
-        $listener4 = new TestEventListener();
-        $listener5 = new TestEventListener();
-        $listener6 = new TestEventListener();
-
-        $this->dispatcher->addListener('pre.foo', $listener1, -10);
-        $this->dispatcher->addListener('pre.foo', $listener2);
-        $this->dispatcher->addListener('pre.foo', $listener3, 10);
-        $this->dispatcher->addListener('post.foo', $listener4, -10);
-        $this->dispatcher->addListener('post.foo', $listener5);
-        $this->dispatcher->addListener('post.foo', $listener6, 10);
-
-        $expected = array(
-            'pre.foo' => array($listener3, $listener2, $listener1),
-            'post.foo' => array($listener6, $listener5, $listener4),
-        );
-
-        $this->assertSame($expected, $this->dispatcher->getListeners());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetListenerPriority()
     {
-        $listener1 = new TestEventListener();
-        $listener2 = new TestEventListener();
-
-        $this->dispatcher->addListener('pre.foo', $listener1, -10);
-        $this->dispatcher->addListener('pre.foo', $listener2);
-
-        $this->assertSame(-10, $this->dispatcher->getListenerPriority('pre.foo', $listener1));
-        $this->assertSame(0, $this->dispatcher->getListenerPriority('pre.foo', $listener2));
-        $this->assertNull($this->dispatcher->getListenerPriority('pre.bar', $listener2));
-        $this->assertNull($this->dispatcher->getListenerPriority('pre.foo', function () {}));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDispatch()
     {
-        $this->dispatcher->addListener('pre.foo', array($this->listener, 'preFoo'));
-        $this->dispatcher->addListener('post.foo', array($this->listener, 'postFoo'));
-        $this->dispatcher->dispatch(self::preFoo);
-        $this->assertTrue($this->listener->preFooInvoked);
-        $this->assertFalse($this->listener->postFooInvoked);
-        $this->assertInstanceOf('Symfony\Component\EventDispatcher\Event', $this->dispatcher->dispatch('noevent'));
-        $this->assertInstanceOf('Symfony\Component\EventDispatcher\Event', $this->dispatcher->dispatch(self::preFoo));
-        $event = new Event();
-        $return = $this->dispatcher->dispatch(self::preFoo, $event);
-        $this->assertSame($event, $return);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -142,126 +110,101 @@ abstract class AbstractEventDispatcherTest extends TestCase
      */
     public function testLegacyDispatch()
     {
-        $event = new Event();
-        $this->dispatcher->dispatch(self::preFoo, $event);
-        $this->assertEquals('pre.foo', $event->getName());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDispatchForClosure()
     {
-        $invoked = 0;
-        $listener = function () use (&$invoked) {
-            ++$invoked;
-        };
-        $this->dispatcher->addListener('pre.foo', $listener);
-        $this->dispatcher->addListener('post.foo', $listener);
-        $this->dispatcher->dispatch(self::preFoo);
-        $this->assertEquals(1, $invoked);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testStopEventPropagation()
     {
-        $otherListener = new TestEventListener();
-
-        // postFoo() stops the propagation, so only one listener should
-        // be executed
-        // Manually set priority to enforce $this->listener to be called first
-        $this->dispatcher->addListener('post.foo', array($this->listener, 'postFoo'), 10);
-        $this->dispatcher->addListener('post.foo', array($otherListener, 'preFoo'));
-        $this->dispatcher->dispatch(self::postFoo);
-        $this->assertTrue($this->listener->postFooInvoked);
-        $this->assertFalse($otherListener->postFooInvoked);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDispatchByPriority()
     {
-        $invoked = array();
-        $listener1 = function () use (&$invoked) {
-            $invoked[] = '1';
-        };
-        $listener2 = function () use (&$invoked) {
-            $invoked[] = '2';
-        };
-        $listener3 = function () use (&$invoked) {
-            $invoked[] = '3';
-        };
-        $this->dispatcher->addListener('pre.foo', $listener1, -10);
-        $this->dispatcher->addListener('pre.foo', $listener2);
-        $this->dispatcher->addListener('pre.foo', $listener3, 10);
-        $this->dispatcher->dispatch(self::preFoo);
-        $this->assertEquals(array('3', '2', '1'), $invoked);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRemoveListener()
     {
-        $this->dispatcher->addListener('pre.bar', $this->listener);
-        $this->assertTrue($this->dispatcher->hasListeners(self::preBar));
-        $this->dispatcher->removeListener('pre.bar', $this->listener);
-        $this->assertFalse($this->dispatcher->hasListeners(self::preBar));
-        $this->dispatcher->removeListener('notExists', $this->listener);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddSubscriber()
     {
-        $eventSubscriber = new TestEventSubscriber();
-        $this->dispatcher->addSubscriber($eventSubscriber);
-        $this->assertTrue($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertTrue($this->dispatcher->hasListeners(self::postFoo));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddSubscriberWithPriorities()
     {
-        $eventSubscriber = new TestEventSubscriber();
-        $this->dispatcher->addSubscriber($eventSubscriber);
-
-        $eventSubscriber = new TestEventSubscriberWithPriorities();
-        $this->dispatcher->addSubscriber($eventSubscriber);
-
-        $listeners = $this->dispatcher->getListeners('pre.foo');
-        $this->assertTrue($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertCount(2, $listeners);
-        $this->assertInstanceOf('Symfony\Component\EventDispatcher\Tests\TestEventSubscriberWithPriorities', $listeners[0][0]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAddSubscriberWithMultipleListeners()
     {
-        $eventSubscriber = new TestEventSubscriberWithMultipleListeners();
-        $this->dispatcher->addSubscriber($eventSubscriber);
-
-        $listeners = $this->dispatcher->getListeners('pre.foo');
-        $this->assertTrue($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertCount(2, $listeners);
-        $this->assertEquals('preFoo2', $listeners[0][1]);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRemoveSubscriber()
     {
-        $eventSubscriber = new TestEventSubscriber();
-        $this->dispatcher->addSubscriber($eventSubscriber);
-        $this->assertTrue($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertTrue($this->dispatcher->hasListeners(self::postFoo));
-        $this->dispatcher->removeSubscriber($eventSubscriber);
-        $this->assertFalse($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertFalse($this->dispatcher->hasListeners(self::postFoo));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRemoveSubscriberWithPriorities()
     {
-        $eventSubscriber = new TestEventSubscriberWithPriorities();
-        $this->dispatcher->addSubscriber($eventSubscriber);
-        $this->assertTrue($this->dispatcher->hasListeners(self::preFoo));
-        $this->dispatcher->removeSubscriber($eventSubscriber);
-        $this->assertFalse($this->dispatcher->hasListeners(self::preFoo));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testRemoveSubscriberWithMultipleListeners()
     {
-        $eventSubscriber = new TestEventSubscriberWithMultipleListeners();
-        $this->dispatcher->addSubscriber($eventSubscriber);
-        $this->assertTrue($this->dispatcher->hasListeners(self::preFoo));
-        $this->assertCount(2, $this->dispatcher->getListeners(self::preFoo));
-        $this->dispatcher->removeSubscriber($eventSubscriber);
-        $this->assertFalse($this->dispatcher->hasListeners(self::preFoo));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -269,23 +212,20 @@ abstract class AbstractEventDispatcherTest extends TestCase
      */
     public function testLegacyEventReceivesTheDispatcherInstance()
     {
-        $dispatcher = null;
-        $this->dispatcher->addListener('test', function ($event) use (&$dispatcher) {
-            $dispatcher = $event->getDispatcher();
-        });
-        $this->dispatcher->dispatch('test');
-        $this->assertSame($this->dispatcher, $dispatcher);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testEventReceivesTheDispatcherInstanceAsArgument()
     {
-        $listener = new TestWithDispatcher();
-        $this->dispatcher->addListener('test', array($listener, 'foo'));
-        $this->assertNull($listener->name);
-        $this->assertNull($listener->dispatcher);
-        $this->dispatcher->dispatch('test');
-        $this->assertEquals('test', $listener->name);
-        $this->assertSame($this->dispatcher, $listener->dispatcher);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -298,32 +238,38 @@ abstract class AbstractEventDispatcherTest extends TestCase
      */
     public function testWorkaroundForPhpBug62976()
     {
-        $dispatcher = $this->createEventDispatcher();
-        $dispatcher->addListener('bug.62976', new CallableClass());
-        $dispatcher->removeListener('bug.62976', function () {});
-        $this->assertTrue($dispatcher->hasListeners('bug.62976'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasListenersWhenAddedCallbackListenerIsRemoved()
     {
-        $listener = function () {};
-        $this->dispatcher->addListener('foo', $listener);
-        $this->dispatcher->removeListener('foo', $listener);
-        $this->assertFalse($this->dispatcher->hasListeners());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetListenersWhenAddedCallbackListenerIsRemoved()
     {
-        $listener = function () {};
-        $this->dispatcher->addListener('foo', $listener);
-        $this->dispatcher->removeListener('foo', $listener);
-        $this->assertSame(array(), $this->dispatcher->getListeners());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testHasListenersWithoutEventsReturnsFalseAfterHasListenersWithEventHasBeenCalled()
     {
-        $this->assertFalse($this->dispatcher->hasListeners('foo'));
-        $this->assertFalse($this->dispatcher->hasListeners());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -343,14 +289,20 @@ class TestEventListener
 
     public function preFoo(Event $e)
     {
-        $this->preFooInvoked = true;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function postFoo(Event $e)
     {
-        $this->postFooInvoked = true;
-
-        $e->stopPropagation();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 
@@ -361,8 +313,11 @@ class TestWithDispatcher
 
     public function foo(Event $e, $name, $dispatcher)
     {
-        $this->name = $name;
-        $this->dispatcher = $dispatcher;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
 

@@ -177,9 +177,11 @@ abstract class NodeDefinition implements NodeParentInterface
      */
     public function treatNullLike($value)
     {
-        $this->nullEquivalent = $value;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -191,9 +193,11 @@ abstract class NodeDefinition implements NodeParentInterface
      */
     public function treatTrueLike($value)
     {
-        $this->trueEquivalent = $value;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -205,9 +209,11 @@ abstract class NodeDefinition implements NodeParentInterface
      */
     public function treatFalseLike($value)
     {
-        $this->falseEquivalent = $value;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -247,7 +253,11 @@ abstract class NodeDefinition implements NodeParentInterface
      */
     public function beforeNormalization()
     {
-        return $this->normalization()->before();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -257,9 +267,11 @@ abstract class NodeDefinition implements NodeParentInterface
      */
     public function cannotBeEmpty()
     {
-        $this->allowEmptyValue = false;
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -285,9 +297,11 @@ abstract class NodeDefinition implements NodeParentInterface
      */
     public function cannotBeOverwritten($deny = true)
     {
-        $this->merge()->denyOverwrite($deny);
-
-        return $this;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

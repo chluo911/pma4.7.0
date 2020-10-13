@@ -8,7 +8,11 @@ class TemplateMethodsTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        print __METHOD__ . "\n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function assertPreConditions()
@@ -18,14 +22,20 @@ class TemplateMethodsTest extends PHPUnit_Framework_TestCase
 
     public function testOne()
     {
-        print __METHOD__ . "\n";
-        $this->assertTrue(true);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTwo()
     {
-        print __METHOD__ . "\n";
-        $this->assertTrue(false);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     protected function assertPostConditions()
@@ -35,7 +45,11 @@ class TemplateMethodsTest extends PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        print __METHOD__ . "\n";
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function tearDownAfterClass()

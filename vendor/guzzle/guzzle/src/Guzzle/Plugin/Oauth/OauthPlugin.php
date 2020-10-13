@@ -43,19 +43,11 @@ class OauthPlugin implements EventSubscriberInterface
      */
     public function __construct($config)
     {
-        $this->config = Collection::fromConfig($config, array(
-            'version' => '1.0',
-            'request_method' => self::REQUEST_METHOD_HEADER,
-            'consumer_key' => 'anonymous',
-            'consumer_secret' => 'anonymous',
-            'signature_method' => 'HMAC-SHA1',
-            'signature_callback' => function($stringToSign, $key) {
-                return hash_hmac('sha1', $stringToSign, $key, true);
-            }
-        ), array(
-            'signature_method', 'signature_callback', 'version',
-            'consumer_key', 'consumer_secret'
-        ));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public static function getSubscribedEvents()
@@ -74,32 +66,11 @@ class OauthPlugin implements EventSubscriberInterface
      */
     public function onRequestBeforeSend(Event $event)
     {
-        $timestamp = $this->getTimestamp($event);
-        $request = $event['request'];
-        $nonce = $this->generateNonce($request);
-        $authorizationParams = $this->getOauthParams($timestamp, $nonce);
-        $authorizationParams['oauth_signature']  = $this->getSignature($request, $timestamp, $nonce);
-
-        switch ($this->config['request_method']) {
-            case self::REQUEST_METHOD_HEADER:
-                $request->setHeader(
-                    'Authorization',
-                    $this->buildAuthorizationHeader($authorizationParams)
-                );
-                break;
-            case self::REQUEST_METHOD_QUERY:
-                foreach ($authorizationParams as $key => $value) {
-                    $request->getQuery()->set($key, $value);
-                }
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf(
-                    'Invalid consumer method "%s"',
-                    $this->config['request_method']
-                ));
-        }
-
-        return $authorizationParams;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -111,14 +82,11 @@ class OauthPlugin implements EventSubscriberInterface
      */
     private function buildAuthorizationHeader($authorizationParams)
     {
-        $authorizationString = 'OAuth ';
-        foreach ($authorizationParams as $key => $val) {
-            if ($val) {
-                $authorizationString .= $key . '="' . urlencode($val) . '", ';
-            }
-        }
-
-        return substr($authorizationString, 0, -2);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -219,8 +187,7 @@ class OauthPlugin implements EventSubscriberInterface
         $params->merge($request->getQuery());
 
         // Add POST fields to signing string if required
-        if ($this->shouldPostFieldsBeSigned($request))
-        {
+        if ($this->shouldPostFieldsBeSigned($request)) {
             $params->merge($request->getPostFields());
         }
 
@@ -244,8 +211,7 @@ class OauthPlugin implements EventSubscriberInterface
     {
         if (!$this->config->get('disable_post_params') &&
             $request instanceof EntityEnclosingRequestInterface &&
-            false !== strpos($request->getHeader('Content-Type'), 'application/x-www-form-urlencoded'))
-        {
+            false !== strpos($request->getHeader('Content-Type'), 'application/x-www-form-urlencoded')) {
             return true;
         }
 
@@ -262,7 +228,11 @@ class OauthPlugin implements EventSubscriberInterface
      */
     public function generateNonce(RequestInterface $request)
     {
-        return sha1(uniqid('', true) . $request->getUrl());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -274,7 +244,11 @@ class OauthPlugin implements EventSubscriberInterface
      */
     public function getTimestamp(Event $event)
     {
-       return $event['timestamp'] ?: time();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

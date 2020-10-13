@@ -34,15 +34,11 @@ class NotImplementedStatement extends Statement
      */
     public function build()
     {
-        // Building the parsed part of the query (if any).
-        $query = parent::build() . ' ';
-
-        // Rebuilding the unknown part from tokens.
-        foreach ($this->unknown as $token) {
-            $query .= $token->token;
-        }
-
-        return $query;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

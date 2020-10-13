@@ -5,6 +5,10 @@ class Issue797Test extends PHPUnit_Framework_TestCase
 
     public function testBootstrapPhpIsExecutedInIsolation()
     {
-        $this->assertEquals(GITHUB_ISSUE, 797);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

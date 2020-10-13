@@ -20,7 +20,11 @@ class ExceptionMessageRegExpTest extends PHPUnit_Framework_TestCase
      */
     public function testRegexMessage()
     {
-        throw new Exception('A polymorphic exception message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -29,7 +33,11 @@ class ExceptionMessageRegExpTest extends PHPUnit_Framework_TestCase
      */
     public function testRegexMessageExtreme()
     {
-        throw new Exception('A polymorphic exception message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -40,8 +48,11 @@ class ExceptionMessageRegExpTest extends PHPUnit_Framework_TestCase
      */
     public function testMessageXdebugScreamCompatibility()
     {
-        ini_set('xdebug.scream', '1');
-        throw new Exception('Screaming preg_match');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -51,6 +62,10 @@ class ExceptionMessageRegExpTest extends PHPUnit_Framework_TestCase
      */
     public function testSimultaneousLiteralAndRegExpExceptionMessage()
     {
-        throw new Exception('A variadic exception message');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

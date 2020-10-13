@@ -78,7 +78,11 @@ class CachingEntityBody extends AbstractEntityBodyDecorator
 
     public function rewind()
     {
-        return $this->seek(0);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -88,7 +92,11 @@ class CachingEntityBody extends AbstractEntityBodyDecorator
      */
     public function setRewindFunction($callable)
     {
-        throw new RuntimeException(__CLASS__ . ' does not support custom stream rewind functions');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function read($length)
@@ -135,18 +143,11 @@ class CachingEntityBody extends AbstractEntityBodyDecorator
      */
     public function readLine($maxLength = null)
     {
-        $buffer = '';
-        $size = 0;
-        while (!$this->isConsumed()) {
-            $byte = $this->read(1);
-            $buffer .= $byte;
-            // Break when a new line is found or the max length - 1 is reached
-            if ($byte == PHP_EOL || ++$size == $maxLength - 1) {
-                break;
-            }
-        }
-
-        return $buffer;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function isConsumed()
@@ -174,12 +175,20 @@ class CachingEntityBody extends AbstractEntityBodyDecorator
 
     public function getContentEncoding()
     {
-        return $this->remoteStream->getContentEncoding();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getMetaData($key = null)
     {
-        return $this->remoteStream->getMetaData($key);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getStream()
@@ -189,17 +198,29 @@ class CachingEntityBody extends AbstractEntityBodyDecorator
 
     public function getWrapper()
     {
-        return $this->remoteStream->getWrapper();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getWrapperData()
     {
-        return $this->remoteStream->getWrapperData();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getStreamType()
     {
-        return $this->remoteStream->getStreamType();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function getUri()
@@ -213,7 +234,11 @@ class CachingEntityBody extends AbstractEntityBodyDecorator
      */
     public function getCustomData($key)
     {
-        return $this->remoteStream->getCustomData($key);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**

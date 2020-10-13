@@ -114,7 +114,9 @@ class ImportShp extends ImportPlugin
                             // Replace the .dbf with .*, as required
                             // by the bsShapeFiles library.
                             $file_name = substr(
-                                $dbf_file_path, 0, strlen($dbf_file_path) - 4
+                                $dbf_file_path,
+                                0,
+                                strlen($dbf_file_path) - 4
                             ) . '.*';
                             $shp->FileName = $file_name;
                         }
@@ -293,18 +295,10 @@ class ImportShp extends ImportPlugin
      */
     public static function readFromBuffer($length)
     {
-        global $buffer, $eof;
-
-        if (strlen($buffer) < $length) {
-            if ($GLOBALS['finished']) {
-                $eof = true;
-            } else {
-                $buffer .= PMA_importGetNextChunk();
-            }
-        }
-        $result = substr($buffer, 0, $length);
-        $buffer = substr($buffer, $length);
-
-        return $result;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

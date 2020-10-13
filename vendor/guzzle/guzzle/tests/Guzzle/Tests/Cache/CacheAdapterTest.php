@@ -22,9 +22,11 @@ class CacheAdapterTest extends \Guzzle\Tests\GuzzleTestCase
      */
     protected function setUp()
     {
-        parent::setUp();
-        $this->cache = new ArrayCache();
-        $this->adapter = new DoctrineCacheAdapter($this->cache);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     /**
@@ -32,37 +34,55 @@ class CacheAdapterTest extends \Guzzle\Tests\GuzzleTestCase
      */
     protected function tearDown()
     {
-        $this->adapter = null;
-        $this->cache = null;
-        parent::tearDown();
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testGetCacheObject()
     {
-        $this->assertEquals($this->cache, $this->adapter->getCacheObject());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testSave()
     {
-        $this->assertTrue($this->adapter->save('test', 'data', 1000));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testFetch()
     {
-        $this->assertTrue($this->adapter->save('test', 'data', 1000));
-        $this->assertEquals('data', $this->adapter->fetch('test'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testContains()
     {
-        $this->assertTrue($this->adapter->save('test', 'data', 1000));
-        $this->assertTrue($this->adapter->contains('test'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testDelete()
     {
-        $this->assertTrue($this->adapter->save('test', 'data', 1000));
-        $this->assertTrue($this->adapter->delete('test'));
-        $this->assertFalse($this->adapter->contains('test'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

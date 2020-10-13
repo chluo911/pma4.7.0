@@ -38,8 +38,11 @@ class Squiz_Sniffs_PHP_EvalSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_EVAL);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -54,10 +57,10 @@ class Squiz_Sniffs_PHP_EvalSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $error = 'Use of eval() is discouraged';
-        $phpcsFile->addWarning($error, $stackPtr, 'Discouraged');
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

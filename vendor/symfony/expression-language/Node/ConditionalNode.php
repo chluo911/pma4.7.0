@@ -29,15 +29,11 @@ class ConditionalNode extends Node
 
     public function compile(Compiler $compiler)
     {
-        $compiler
-            ->raw('((')
-            ->compile($this->nodes['expr1'])
-            ->raw(') ? (')
-            ->compile($this->nodes['expr2'])
-            ->raw(') : (')
-            ->compile($this->nodes['expr3'])
-            ->raw('))')
-        ;
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function evaluate($functions, $values)
@@ -51,6 +47,10 @@ class ConditionalNode extends Node
 
     public function toArray()
     {
-        return array('(', $this->nodes['expr1'], ' ? ', $this->nodes['expr2'], ' : ', $this->nodes['expr3'], ')');
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }

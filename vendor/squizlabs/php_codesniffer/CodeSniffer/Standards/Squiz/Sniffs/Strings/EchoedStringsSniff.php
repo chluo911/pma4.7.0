@@ -39,8 +39,11 @@ class Squiz_Sniffs_Strings_EchoedStringsSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_ECHO);
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end register()
 
 
@@ -55,49 +58,10 @@ class Squiz_Sniffs_Strings_EchoedStringsSniff implements PHP_CodeSniffer_Sniff
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-
-        $firstContent = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
-        // If the first non-whitespace token is not an opening parenthesis, then we are not concerned.
-        if ($tokens[$firstContent]['code'] !== T_OPEN_PARENTHESIS) {
-            $phpcsFile->recordMetric($stackPtr, 'Brackets around echoed strings', 'no');
-            return;
-        }
-
-        $end = $phpcsFile->findNext(array(T_SEMICOLON, T_CLOSE_TAG), $stackPtr, null, false);
-
-        // If the token before the semi-colon is not a closing parenthesis, then we are not concerned.
-        $prev = $phpcsFile->findPrevious(T_WHITESPACE, ($end - 1), null, true);
-        if ($tokens[$prev]['code'] !== T_CLOSE_PARENTHESIS) {
-            $phpcsFile->recordMetric($stackPtr, 'Brackets around echoed strings', 'no');
-            return;
-        }
-
-        // If the parenthesis don't match, then we are not concerned.
-        if ($tokens[$firstContent]['parenthesis_closer'] !== $prev) {
-            $phpcsFile->recordMetric($stackPtr, 'Brackets around echoed strings', 'no');
-            return;
-        }
-
-        $phpcsFile->recordMetric($stackPtr, 'Brackets around echoed strings', 'yes');
-
-        if (($phpcsFile->findNext(PHP_CodeSniffer_Tokens::$operators, $stackPtr, $end, false)) === false) {
-            // There are no arithmetic operators in this.
-            $error = 'Echoed strings should not be bracketed';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'HasBracket');
-            if ($fix === true) {
-                $phpcsFile->fixer->beginChangeset();
-                $phpcsFile->fixer->replaceToken($firstContent, '');
-                if ($tokens[($firstContent - 1)]['code'] !== T_WHITESPACE) {
-                    $phpcsFile->fixer->addContent(($firstContent - 1), ' ');
-                }
-
-                $phpcsFile->fixer->replaceToken($prev, '');
-                $phpcsFile->fixer->endChangeset();
-            }
-        }
-
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }//end process()
-
-
 }//end class

@@ -52,52 +52,73 @@ class Extensions_Selenium2TestCase_URLTest extends PHPUnit_Framework_TestCase
 {
     public function testDescendsAnURLWithAnAdditionalFolder()
     {
-        $this->assertURLEquals($this->url('/posts/1'),
-                            $this->url('/posts')->descend('1'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testAscendsAnURByEliminatingAnAdditionalFolder()
     {
-        $this->assertURLEquals($this->url('/posts'),
-                            $this->url('/posts/1')->ascend());
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testTransformsCamelCaseIntoWhileAddingACommandToAnURL()
     {
-        $this->assertURLEquals($this->url('/posts/alert_text'),
-                            $this->url('/posts')->addCommand('alertText'));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testCompletesARelativeUrl()
     {
-        $exampleFolder = 'example/';
-        $this->assertURLEquals($this->url('http://localhost/example/'),
-                            $this->url('http://localhost')->jump($exampleFolder));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testJumpsToAnAbsoluteUrl()
     {
-        $exampleDotCom = 'http://www.example.com';
-        $this->assertURLEquals($this->url($exampleDotCom),
-                            $this->url('http://localhost')->jump($exampleDotCom));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     public function testJumpsToASecureAbsoluteUrl()
     {
-        $exampleDotCom = 'https://www.example.com';
-        $this->assertURLEquals($this->url($exampleDotCom),
-                            $this->url('http://localhost')->jump($exampleDotCom));
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function assertURLEquals($expected, $actual)
     {
-        $this->assertInstanceOf('PHPUnit_Extensions_Selenium2TestCase_URL', $expected);
-        $this->assertInstanceOf('PHPUnit_Extensions_Selenium2TestCase_URL', $actual);
-        $this->assertEquals($expected, $actual);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 
     private function url($value)
     {
-        return new PHPUnit_Extensions_Selenium2TestCase_URL($value);
+$trace = debug_backtrace();
+	  error_log(__FILE__);
+	  error_log(__FUNCTION__);
+     error_log( print_r( $trace, true ));
+	  die();
     }
 }
